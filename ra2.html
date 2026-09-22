@@ -2,224 +2,818 @@
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RA2. Infraestructura propia y en la nube | Módulo 5165</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/estilos.css">
-</head><body style="--ra:var(--ra2)">
-
-<header class="cab"><div class="dentro"><div class="ruta"><a href="index.html">Módulo 5165</a> / <a href="calendario.html">Calendario</a></div><h1>Unidad 2. Infraestructura propia y en la nube</h1><p>Dónde vive la infraestructura: en el CPD propio (on premise) o en la nube. Cómo funciona la nube, cuánto cuesta y de qué está hecha.</p></div></header>
-<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Sesiones de la unidad 2"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación<small>RA y criterios</small></button><button role="tab" id="tab-s6" data-panel="s6">Sesión 6<small>26 oct</small></button><button role="tab" id="tab-s7" data-panel="s7">Sesión 7<small>30 oct</small></button><button role="tab" id="tab-s8" data-panel="s8">Sesión 8<small>2 nov</small></button><button role="tab" id="tab-s9" data-panel="s9">Sesión 9<small>6 nov</small></button><button role="tab" id="tab-s10" data-panel="s10">Sesión 10<small>9 nov</small></button><button role="tab" id="tab-s11" data-panel="s11">Sesión 11<small>13 nov</small></button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos<small>y glosario</small></button></div></nav>
-<main>
-<section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
-<p class="meta">Unidad 2 de 7, 6 sesiones, 12 horas</p>
+</head><body style="--ra:#2a7a8c">
+<header class="cab"><div class="dentro"><nav class="menu" aria-label="Secciones"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="ra1.html">RA1</a><a href="ra2.html" aria-current="page">RA2</a><a href="ra3.html">RA3</a><a href="ra4.html">RA4</a><a href="ra5.html">RA5</a><a href="ra6.html">RA6</a><a href="ra7.html">RA7</a></nav>
+<h1>Unidad 2. Infraestructura propia y en la nube</h1><p>Dónde viven las máquinas: en nuestras instalaciones (on premise) o en un proveedor de nube.</p></div></header>
+<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Sesiones de la unidad 2"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-s6" data-panel="s6">Sesión 6<small>26 oct</small></button><button role="tab" id="tab-s7" data-panel="s7">Sesión 7<small>30 oct</small></button><button role="tab" id="tab-s8" data-panel="s8">Sesión 8<small>2 nov</small></button><button role="tab" id="tab-s9" data-panel="s9">Sesión 9<small>6 nov</small></button><button role="tab" id="tab-s10" data-panel="s10">Sesión 10<small>9 nov</small></button><button role="tab" id="tab-s11" data-panel="s11">Sesión 11<small>13 nov</small></button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
+<main><section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
+<p class="meta">Unidad 2 de 7 · 6 sesiones · 12 horas · del 26 oct al 13 nov</p>
 <h2>Resultado de aprendizaje 2</h2>
-<p class="clave"><b>Evalúa la localización de la infraestructura física de tecnologías de la información (TI), diferenciando entre su ubicación en instalaciones propias (on premise) y en la nube (cloud).</b></p>
-
-<p>Cualquier entorno de despliegue se apoya en máquinas, redes y discos que están en algún sitio. En esta unidad comparamos las dos grandes opciones: tener esa infraestructura en instalaciones propias, como el servidor Proxmox del centro, o alquilarla a un proveedor de nube como AWS o Azure. Veremos cómo funciona la nube por dentro, por qué su modelo de negocio es el pago por uso y cómo se traducen servidores, redes y almacenamiento en recursos virtuales.</p>
-<p>Usaremos la consola de un proveedor de nube (AWS Academy Learner Lab o Azure for Students) y las calculadoras de precios públicas. La mayor parte del trabajo es de análisis y comparación.</p>
-
-<h3>Criterios de evaluación y dónde se trabajan</h3>
-<div class="tabla"><table><tr><th>CE</th><th>Criterio (RD 144/2026)</th><th>Sesiones</th></tr><tr><td><b>2a)</b></td><td>Se ha definido el concepto de infraestructura de nube, diferenciándolo del de infraestructura propia (on premise). <em>(evidencia parcial en la formación en empresa)</em></td><td><a href="#s6">S6</a></td></tr><tr><td><b>2b)</b></td><td>Se ha descrito el funcionamiento de la infraestructura de nube, vinculándolo con su modelo de negocio.</td><td><a href="#s7">S7</a></td></tr><tr><td><b>2c)</b></td><td>Se han analizado los beneficios de la infraestructura de nube con respecto a la infraestructura propia (on premise). <em>(evidencia parcial en la formación en empresa)</em></td><td><a href="#s8">S8</a></td></tr><tr><td><b>2d)</b></td><td>Se ha diferenciado entre la infraestructura de nube y la arquitectura de nube, relacionándolos con los recursos de computación y la ejecución de aplicaciones web.</td><td><a href="#s9">S9</a></td></tr><tr><td><b>2e)</b></td><td>Se ha determinado el conjunto de componentes hardware y software básico de la infraestructura en la nube, relacionándolo con el aprovisionamiento de recursos virtuales y la implementación de cargas de trabajo en la nube.</td><td><a href="#s10">S10</a></td></tr><tr><td><b>2f)</b></td><td>Se han caracterizado los componentes de la infraestructura de nube, especificando lo relativo a servidores, redes, almacenamiento y software.</td><td><a href="#s11">S11</a></td></tr></table></div>
+<p class="ra-texto">Evalúa la localización de la infraestructura física de tecnologías de la información (TI), diferenciando entre su ubicación en instalaciones propias (on premise) y en la nube (cloud).</p>
+<p>Cualquier entorno de despliegue se apoya en servidores, redes y discos que están en algún sitio. En esta unidad comparamos las dos grandes opciones: tener esa infraestructura en instalaciones propias, como el servidor Proxmox del centro, o alquilarla a un proveedor de nube como AWS, Azure o Google Cloud. Veremos cómo funciona la nube por dentro, por qué se paga por uso, cuándo sale a cuenta y cómo se traducen servidores, redes y almacenamiento en recursos virtuales que se crean en segundos.</p>
+<p>Trabajaremos con la consola de un proveedor (AWS Academy Learner Lab o Azure for Students), sus calculadoras de precios y el Proxmox del centro.</p>
+<h3>Criterios de evaluación</h3>
+<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Sesiones</th></tr><tr><td><b>2a)</b></td><td>Se ha definido el concepto de infraestructura de nube, diferenciándolo del de infraestructura propia (on premise). <em>(se completa en la formación en empresa)</em></td><td><a href="#s6">S6</a></td></tr><tr><td><b>2b)</b></td><td>Se ha descrito el funcionamiento de la infraestructura de nube, vinculándolo con su modelo de negocio.</td><td><a href="#s7">S7</a></td></tr><tr><td><b>2c)</b></td><td>Se han analizado los beneficios de la infraestructura de nube con respecto a la infraestructura propia (on premise). <em>(se completa en la formación en empresa)</em></td><td><a href="#s8">S8</a></td></tr><tr><td><b>2d)</b></td><td>Se ha diferenciado entre la infraestructura de nube y la arquitectura de nube, relacionándolos con los recursos de computación y la ejecución de aplicaciones web.</td><td><a href="#s9">S9</a></td></tr><tr><td><b>2e)</b></td><td>Se ha determinado el conjunto de componentes hardware y software básico de la infraestructura en la nube, relacionándolo con el aprovisionamiento de recursos virtuales y la implementación de cargas de trabajo en la nube.</td><td><a href="#s10">S10</a></td></tr><tr><td><b>2f)</b></td><td>Se han caracterizado los componentes de la infraestructura de nube, especificando lo relativo a servidores, redes, almacenamiento y software.</td><td><a href="#s11">S11</a></td></tr></table></div>
 <h3>Plan de sesiones</h3>
-<div class="tabla"><table><tr><th>Sesión</th><th>Fecha</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#s6">S6</a></td><td>26 oct</td><td>On premise frente a nube: qué es la infraestructura de nube</td><td>a</td></tr><tr><td><a href="#s7">S7</a></td><td>30 oct</td><td>Cómo funciona la nube y cómo se paga</td><td>b</td></tr><tr><td><a href="#s8">S8</a></td><td>2 nov</td><td>Beneficios de la nube frente a on premise: CapEx, OpEx y TCO</td><td>c</td></tr><tr><td><a href="#s9">S9</a></td><td>6 nov</td><td>Infraestructura de nube frente a arquitectura de nube</td><td>d</td></tr><tr><td><a href="#s10">S10</a></td><td>9 nov</td><td>Componentes y aprovisionamiento: de la máquina física a la máquina virtual</td><td>e</td></tr><tr><td><a href="#s11">S11</a></td><td>13 nov</td><td>Servidores, redes, almacenamiento y software en la nube. Prueba de la unidad</td><td>f</td></tr></table></div>
-<h3>Cómo se evalúa esta unidad</h3>
-<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>60 %</b> prueba escrita (sesión 11) y <b>40 %</b> trabajos de clase (inventario on premise frente a nube, estimación de costes, estudio TCO, diagrama de arquitectura, práctica de aprovisionamiento y ficha técnica).</p>
-<p>Los criterios a y c se completan con un breve informe durante la formación en empresa: qué infraestructura usa la empresa (propia, nube o mixta) y por qué.</p>
-
-<h3>Relación con otros módulos</h3><p>Contenido exclusivo de este módulo. El módulo 5166 parte de aquí para crear VPC e interfaces de acceso a la nube.</p>
-</section>
-<section class="panel" role="tabpanel" id="p-s6" aria-labelledby="tab-s6" hidden>
-<p class="meta">Sesión 6 de 42, lunes 26 de octubre de 2026, 2 horas</p>
-<h2>On premise frente a nube: qué es la infraestructura de nube</h2>
-<p><a class="ce fe" href="#presentacion" title="Se ha definido el concepto de infraestructura de nube, diferenciándolo del de infraestructura propia (on premise).">CE 2a</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Definir infraestructura de nube según el NIST.</li><li>Diferenciarla de la infraestructura propia.</li><li>Clasificar servicios reales en una u otra categoría.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Infraestructura propia (on premise)</h4>
-<p>La organización compra servidores, almacenamiento y electrónica de red, los instala en un CPD propio (o alquila espacio en un <em>housing</em>) y los opera con su personal. Es suya: decide todo, pero paga todo por adelantado y dimensiona para el pico de demanda. El servidor Proxmox del centro es infraestructura on premise.</p>
-<h4>Infraestructura de nube</h4>
-<p>El NIST (SP 800-145) define la computación en la nube como un modelo que permite acceso por red, cómodo y bajo demanda, a un conjunto compartido de recursos configurables que se aprovisionan y liberan rápidamente con un esfuerzo mínimo de gestión. Tiene <b>cinco características esenciales</b>:</p>
-<ol class="pasos">
-<li><b>Autoservicio bajo demanda:</b> creas una máquina sin hablar con nadie.</li>
-<li><b>Acceso amplio por red:</b> desde navegador, CLI o API.</li>
-<li><b>Agrupación de recursos (multi-tenancy):</b> el hardware físico se comparte entre clientes aislados.</li>
-<li><b>Elasticidad rápida:</b> crecer y decrecer en minutos, incluso de forma automática.</li>
-<li><b>Servicio medido:</b> se mide y factura el consumo.</li>
-</ol>
-<div class="clave"><b>Idea clave.</b> Virtualizar no es tener nube. Un Proxmox con máquinas virtuales es infraestructura propia virtualizada; se acerca a una nube privada cuando ofrece autoservicio, API, cuotas y medición del uso.</div>
-
-<h3>Actividad</h3><div class="bloque actividad">
-<ol class="pasos">
-<li>(25′) <b>Inventario del centro.</b> Con la ayuda del profesor, listad la infraestructura TI del instituto que conozcáis: servidor Proxmox, red, wifi, Aules, correo, copia de seguridad. Para cada elemento indicad si es on premise o nube y quién lo opera.</li>
-<li>(25′) <b>¿Es nube?</b> Evaluad con las 5 características del NIST estos casos: un VPS de 5 €/mes, Google Drive, un servidor alquilado en un housing, AWS EC2, el Proxmox del centro, Microsoft 365, un NAS doméstico con acceso remoto. Justificad cada respuesta en una tabla (característica cumplida sí/no).</li>
-<li>(25′) Redactad una definición propia de infraestructura de nube y otra de on premise (máximo 60 palabras cada una) y 3 ejemplos de empresas de Castellón o del entorno que podrían usar cada una.</li>
-</ol>
-</div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Debatimos los casos más discutidos de la tabla (normalmente el VPS y el Proxmox).</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Tabla de evaluación NIST y definiciones (CE 2a).</p></div>
-<details class="docente"><summary>Notas para el docente</summary><p>Aprovechar para enseñar el Proxmox del centro si ya está operativo (aunque sea solo la interfaz web). Si no, mostrar la demo de la documentación de Proxmox.</p></details>
-</section>
-<section class="panel" role="tabpanel" id="p-s7" aria-labelledby="tab-s7" hidden>
-<p class="meta">Sesión 7 de 42, viernes 30 de octubre de 2026, 2 horas</p>
-<h2>Cómo funciona la nube y cómo se paga</h2>
-<p><a class="ce" href="#presentacion" title="Se ha descrito el funcionamiento de la infraestructura de nube, vinculándolo con su modelo de negocio.">CE 2b</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Describir la organización física de un proveedor: regiones, zonas y CPD.</li><li>Relacionar el funcionamiento técnico con el modelo de negocio de pago por uso.</li><li>Estimar el coste mensual de un escenario con una calculadora oficial.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Por dentro: regiones, zonas y hiperescala</h4>
-<p>Un proveedor como AWS, Azure o Google Cloud opera decenas de <b>regiones</b> (por ejemplo, AWS eu-south-2 en Aragón o Azure Spain Central en Madrid). Cada región tiene varias <b>zonas de disponibilidad</b>: CPD independientes con energía y red propias, separados kilómetros entre sí. Encima, un plano de control (APIs, facturación, identidad) orquesta millones de servidores virtualizados con hipervisores propios (AWS Nitro, Hyper-V en Azure).</p>
-<h4>El modelo de negocio</h4>
-<p>Comprar a escala masiva abarata cada servidor (economía de escala) y compartirlo entre muchos clientes aumenta su uso. El proveedor gana alquilando capacidad por unidades pequeñas de tiempo:</p>
+<div class="tabla"><table><tr><th>Sesión</th><th>Fecha</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#s6">S6</a></td><td>26 oct</td><td>On premise y nube: qué es la infraestructura de nube</td><td>a</td></tr><tr><td><a href="#s7">S7</a></td><td>30 oct</td><td>Cómo funciona la nube y cuál es su modelo de negocio</td><td>b</td></tr><tr><td><a href="#s8">S8</a></td><td>2 nov</td><td>Beneficios de la nube frente a on premise: CapEx, OpEx y TCO</td><td>c</td></tr><tr><td><a href="#s9">S9</a></td><td>6 nov</td><td>Infraestructura de nube y arquitectura de nube</td><td>d</td></tr><tr><td><a href="#s10">S10</a></td><td>9 nov</td><td>Componentes y aprovisionamiento: de la máquina física a la máquina virtual</td><td>e</td></tr><tr><td><a href="#s11">S11</a></td><td>13 nov</td><td>Servidores, redes, almacenamiento y software en la nube</td><td>f</td></tr></table></div>
+<h3>Evaluación</h3>
+<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>60 %</b> prueba escrita (fecha por confirmar) y <b>40 %</b> trabajos de clase (inventario on premise, estimación de costes, estudio TCO, diagrama de arquitectura, práctica de aprovisionamiento y ficha técnica de componentes).</p>
+<p>Los criterios a y c se completan en la formación en empresa: qué infraestructura usa la empresa (propia, nube o mixta) y por qué.</p>
+</section><section class="panel" role="tabpanel" id="p-s6" aria-labelledby="tab-s6" hidden>
+<p class="meta">Sesión 6 de 41 · lunes 26 de octubre de 2026 · 2 horas</p>
+<h2>On premise y nube: qué es la infraestructura de nube</h2>
+<p class="chips"><span class="ce" title="Se ha definido el concepto de infraestructura de nube, diferenciándolo del de infraestructura propia (on premise).">CE 2a</span></p>
+<h3>Objetivos de la sesión</h3>
 <ul>
-<li><b>Bajo demanda:</b> por segundo u hora, sin compromiso. El más caro por hora.</li>
-<li><b>Reservas y planes de ahorro:</b> compromiso de 1 o 3 años a cambio de descuentos altos.</li>
-<li><b>Capacidad sobrante (spot):</b> muy barata, pero el proveedor puede retirarla con poco aviso.</li>
-<li><b>Capa gratuita:</b> para atraer usuarios y estudiantes.</li>
-<li>Se paga también la <b>transferencia de datos de salida</b>, el almacenamiento por GB/mes y las peticiones a servicios gestionados.</li>
+<li>Definir qué es la infraestructura de TI y qué componentes la forman.</li>
+<li>Explicar qué significa tener la infraestructura en instalaciones propias (on premise) y qué responsabilidades implica.</li>
+<li>Definir la infraestructura de nube según el NIST y sus cinco características esenciales.</li>
+<li>Diferenciar on premise, alojamiento tradicional, colocation y nube.</li>
+<li>Explorar la consola de un proveedor de nube y el servidor Proxmox del centro.</li>
 </ul>
-<div class="clave"><b>Idea clave.</b> En la nube la arquitectura y la factura van unidas: una decisión técnica (tamaño de máquina, región, tráfico) es una decisión económica. De ahí nace la disciplina FinOps.</div>
 
-<h3>Actividad</h3><div class="bloque actividad">
-<p><b>Presupuesto de "Cita Previa Salud" en la nube.</b> En parejas, con la calculadora de AWS o de Azure (media clase cada una):</p>
-<ol class="pasos">
-<li>Escenario: 2 servidores web de 2 vCPU y 4 GB, una base de datos gestionada pequeña, 100 GB de almacenamiento, 200 GB/mes de tráfico de salida, región España.</li>
-<li>Calculad el coste mensual bajo demanda y con reserva a 1 año. Anotad el porcentaje de ahorro.</li>
-<li>Cambiad la región a EE. UU. (Virginia). ¿Cambia el precio? ¿Por qué podría no convenir aun siendo más barato? (latencia, RGPD).</li>
-<li>Identificad en la factura estimada qué partidas corresponden a cómputo, almacenamiento, red y servicios gestionados.</li>
-<li>Exportad o capturad la estimación y explicad en 10 líneas cómo el modelo de negocio del proveedor se refleja en esos precios.</li>
-</ol>
-</div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Comparamos los resultados de las parejas: ¿por qué dan cifras distintas para el mismo escenario? Anotamos los factores que más pesan en la factura.</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Estimación de costes con análisis del modelo de negocio (CE 2b).</p></div>
-<details class="docente"><summary>Notas para el docente</summary><p>Si es posible, dar de alta hoy a la clase en AWS Academy Learner Lab (o Azure for Students) para tenerlo listo en la sesión 10.</p></details>
-</section>
-<section class="panel" role="tabpanel" id="p-s8" aria-labelledby="tab-s8" hidden>
-<p class="meta">Sesión 8 de 42, lunes 2 de noviembre de 2026, 2 horas</p>
-<h2>Beneficios de la nube frente a on premise: CapEx, OpEx y TCO</h2>
-<p><a class="ce fe" href="#presentacion" title="Se han analizado los beneficios de la infraestructura de nube con respecto a la infraestructura propia (on premise).">CE 2c</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Analizar beneficios y limitaciones de la nube frente a la infraestructura propia.</li><li>Calcular un TCO simplificado a 3 años.</li><li>Argumentar en qué casos no compensa la nube.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Los beneficios que se suelen atribuir a la nube</h4>
-<ul>
-<li><b>Coste variable en lugar de inversión inicial</b> (OpEx frente a CapEx).</li>
-<li><b>Elasticidad:</b> no se dimensiona para el pico; se crece cuando hace falta.</li>
-<li><b>Velocidad:</b> un entorno nuevo en minutos, no en semanas de compra.</li>
-<li><b>Alcance global y alta disponibilidad</b> con varias zonas y regiones.</li>
-<li><b>Servicios gestionados:</b> bases de datos, colas o IA sin tener que operarlos.</li>
-<li><b>Seguridad física y certificaciones</b> del proveedor (ISO 27001, ENS).</li>
-</ul>
-<h4>Y sus límites</h4>
-<p>Coste alto con cargas estables y grandes (varias empresas han repatriado sistemas, como 37signals en 2023), dependencia del proveedor (<em>lock-in</em>), costes de tráfico de salida, soberanía de los datos y necesidad de nuevas competencias.</p>
-<h4>Coste total de propiedad (TCO)</h4>
-<p>Para comparar hay que sumar todo lo que cuesta cada opción durante su vida útil:</p>
-<div class="tabla"><table><tr><th>On premise</th><th>Nube</th></tr>
-<tr><td>Servidores, cabina, red, SAI (amortización 4-5 años), licencias, energía y refrigeración, espacio, personal de sistemas, mantenimiento y garantía, sustitución de averías</td><td>Instancias, almacenamiento, tráfico de salida, servicios gestionados, soporte del proveedor, personal (menos, pero con otras competencias), formación, herramientas FinOps</td></tr></table></div>
-
-<h3>Actividad</h3><div class="bloque actividad">
-<p><b>Estudio TCO a 3 años.</b> Una asesoría de Castellón con 40 empleados necesita alojar su ERP y un servidor de ficheros. En grupos de 3-4:</p>
-<ol class="pasos">
-<li>(30′) Opción A on premise: buscad precios reales de un servidor (por ejemplo, un Dell PowerEdge de gama media), SAI y NAS de copias. Estimad energía (W × horas × precio kWh), un 20 % de la jornada de un técnico y el mantenimiento.</li>
-<li>(25′) Opción B nube: dimensionad el equivalente con la calculadora (reutilizad lo aprendido en la sesión 7).</li>
-<li>(20′) Construid una hoja de cálculo con ambos costes año a año y una tabla de beneficios no económicos (tiempo de puesta en marcha, disponibilidad, seguridad, dependencia). Escribid una recomendación razonada.</li>
-</ol>
-</div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Cada grupo presenta su recomendación en 2 minutos. ¿Ha salido la misma en todos? ¿Qué supuestos cambian el resultado?</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Hoja de TCO y recomendación argumentada (CE 2c).</p></div>
-</section>
-<section class="panel" role="tabpanel" id="p-s9" aria-labelledby="tab-s9" hidden>
-<p class="meta">Sesión 9 de 42, viernes 6 de noviembre de 2026, 2 horas</p>
-<h2>Infraestructura de nube frente a arquitectura de nube</h2>
-<p><a class="ce" href="#presentacion" title="Se ha diferenciado entre la infraestructura de nube y la arquitectura de nube, relacionándolos con los recursos de computación y la ejecución de aplicaciones web.">CE 2d</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Diferenciar infraestructura (los recursos) de arquitectura (cómo se combinan).</li><li>Relacionar ambas con los recursos de cómputo y la ejecución de una aplicación web.</li><li>Diseñar la arquitectura de una aplicación web en la nube.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Dos palabras que se confunden</h4>
-<p>La <b>infraestructura de nube</b> son los recursos físicos y virtuales que ofrece el proveedor: servidores, hipervisores, redes, almacenamiento. La <b>arquitectura de nube</b> es el diseño que decide qué recursos se usan, cómo se conectan y cómo se comportan ante la carga o los fallos para ejecutar una aplicación concreta. Con la misma infraestructura se pueden construir arquitecturas muy distintas.</p>
-<h4>Una aplicación web en la nube</h4>
-<p>La arquitectura típica de tres capas:</p>
-<ol class="pasos">
-<li><b>Presentación:</b> DNS, CDN y un balanceador de carga que reparte peticiones.</li>
-<li><b>Aplicación:</b> varias instancias o contenedores en un grupo de autoescalado repartidos en dos zonas de disponibilidad.</li>
-<li><b>Datos:</b> base de datos gestionada con réplica en otra zona y almacenamiento de objetos para ficheros estáticos.</li>
-</ol>
-<p>Los recursos de cómputo (vCPU, memoria) se eligen según la carga; la arquitectura decide cuántas instancias, dónde y cuándo escalar. Los marcos de buenas prácticas, como AWS Well-Architected o Azure Well-Architected, evalúan una arquitectura con seis pilares: excelencia operativa, seguridad, fiabilidad, eficiencia del rendimiento, optimización de costes y sostenibilidad.</p>
-
-<h3>Actividad</h3><div class="bloque actividad">
-<ol class="pasos">
-<li>(35′) En parejas, diseñad en diagrams.net (librería de iconos de AWS o Azure) la arquitectura de "Cita Previa Salud" para soportar 50 000 usuarios en campaña de vacunación. Incluid red, balanceador, cómputo con autoescalado, base de datos, almacenamiento y dos zonas.</li>
-<li>(20′) Sobre el diagrama, marcad en un color los <b>elementos de infraestructura</b> y en otro las <b>decisiones de arquitectura</b> (réplicas, escalado, zonas). Justificad cada decisión con un pilar Well-Architected.</li>
-<li>(20′) Recorred una petición de un paciente desde el navegador hasta la base de datos y describid qué recurso de cómputo la atiende en cada paso.</li>
-</ol>
-</div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Revisión cruzada: cada pareja revisa el diagrama de otra y detecta un punto único de fallo.</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Diagrama de arquitectura con infraestructura y decisiones diferenciadas y justificadas (CE 2d).</p></div>
-</section>
-<section class="panel" role="tabpanel" id="p-s10" aria-labelledby="tab-s10" hidden>
-<p class="meta">Sesión 10 de 42, lunes 9 de noviembre de 2026, 2 horas</p>
-<h2>Componentes y aprovisionamiento: de la máquina física a la máquina virtual</h2>
-<p><a class="ce" href="#presentacion" title="Se ha determinado el conjunto de componentes hardware y software básico de la infraestructura en la nube, relacionándolo con el aprovisionamiento de recursos virtuales y la implementación de cargas de trabajo en la nube.">CE 2e</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Identificar los componentes hardware y software básicos de una nube.</li><li>Aprovisionar una máquina virtual y desplegar una carga de trabajo sencilla.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>La pila de una nube</h4>
-<ol class="pasos">
-<li><b>Hardware:</b> servidores con CPU con extensiones de virtualización (Intel VT-x, AMD-V), memoria, discos, conmutadores y enrutadores.</li>
-<li><b>Hipervisor</b> de tipo 1 sobre el hardware: KVM (Proxmox, OpenStack, Google), Nitro/KVM (AWS), Hyper-V (Azure), ESXi.</li>
-<li><b>Red y almacenamiento definidos por software</b> (SDN, SDS: Ceph, vSAN).</li>
-<li><b>Plano de control:</b> APIs, gestión de identidades, planificador que decide en qué servidor físico arranca cada VM, facturación.</li>
-<li><b>Imágenes</b> (AMI, plantillas) y herramientas de inicialización como <code>cloud-init</code>.</li>
-</ol>
-<h4>Aprovisionar y desplegar una carga</h4>
-<p>Aprovisionar es pedir recursos virtuales (tamaño de instancia, imagen, red, disco, clave SSH). Implementar una carga de trabajo es poner algo a funcionar sobre ellos: un servidor web, una aplicación, un contenedor. Hoy lo haremos a mano para entender cada pieza; en la unidad 6 lo automatizaremos con Terraform.</p>
-<pre><code># cloud-init mínimo (user data) para instalar nginx al arrancar
-#cloud-config
-package_update: true
-packages: [nginx]
-runcmd:
-  - echo "Hola desde $(hostname)" &gt; /var/www/html/index.html</code></pre>
-
-<h3>Actividad</h3><div class="bloque actividad">
-<p>Seguid la opción que indique el profesor según el estado del laboratorio:</p>
-<h4>Opción A. Nube pública (AWS Learner Lab o Azure for Students)</h4>
-<ol class="pasos">
-<li>Lanzad una instancia Ubuntu del tamaño más pequeño. Anotad cada decisión del asistente: región, zona, imagen, tipo, par de claves, red, grupo de seguridad (puertos 22 y 80), disco.</li>
-<li>Pegad el cloud-init de arriba en <em>User data</em>. Comprobad en el navegador la IP pública.</li>
-<li>Conectad por SSH desde Ubuntu MATE: <code>ssh -i clave.pem ubuntu@IP</code> y ejecutad <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code>, <code>ip a</code>. Relacionad lo que veis con lo que pedisteis.</li>
-<li>Terminad (no solo parad) la instancia al acabar.</li>
-</ol>
-<h4>Opción B. Proxmox del centro</h4>
-<ol class="pasos"><li>Cread una VM desde la plantilla Ubuntu cloud-init indicada, con 1 vCPU, 1 GB y el cloud-init anterior. Anotad las mismas decisiones y comprobad lo mismo.</li></ol>
-<p>En ambos casos, cread una tabla que asocie cada decisión con el componente de la pila que la hace posible.</p>
-</div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Comparamos: ¿cuánto se tardó en tener una web funcionando? ¿Qué parte del proceso haría falta repetir 50 veces si fueran 50 servidores?</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Registro de aprovisionamiento con capturas y tabla de componentes (CE 2e).</p></div>
-<details class="docente"><summary>Notas para el docente</summary><p>Si ni el Learner Lab ni Proxmox están disponibles, usar KVM en los portátiles: <code>sudo apt install virt-manager cloud-image-utils</code> y crear la VM con una imagen cloud de Ubuntu. Recordar al alumnado que en el Learner Lab el crédito es limitado y que hay que terminar los recursos.</p></details>
-</section>
-<section class="panel" role="tabpanel" id="p-s11" aria-labelledby="tab-s11" hidden>
-<p class="meta">Sesión 11 de 42, viernes 13 de noviembre de 2026, 2 horas</p>
-<h2>Servidores, redes, almacenamiento y software en la nube. Prueba de la unidad</h2>
-<p><a class="ce" href="#presentacion" title="Se han caracterizado los componentes de la infraestructura de nube, especificando lo relativo a servidores, redes, almacenamiento y software.">CE 2f</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:40" title="Actividad: 40 min"><i>Actividad</i>40′</span><span class="t-exa" style="flex:50" title="Prueba escrita: 50 min"><i>Prueba escrita</i>50′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Caracterizar cada familia de componentes de la nube con sus opciones y parámetros.</li></ul>
-<h3>Introducción del tema</h3>
+<h3>1. Qué es la infraestructura de TI</h3>
+<p>La <b>infraestructura de tecnologías de la información</b> es el conjunto de elementos físicos y lógicos sobre los que funcionan las aplicaciones y los servicios de una organización. Se suele dividir en capas:</p>
 <div class="tabla"><table>
-<tr><th>Componente</th><th>Qué se elige</th><th>Ejemplos AWS / Azure</th></tr>
-<tr><td><b>Servidores</b> (cómputo)</td><td>Familia (general, cómputo, memoria, GPU), vCPU y RAM, arquitectura x86 o ARM, SO, modelo de pago</td><td>EC2 t3, m7g / Azure VM B, D</td></tr>
-<tr><td><b>Redes</b></td><td>VPC/VNet, rango CIDR, subredes públicas y privadas, tablas de rutas, puerta de enlace a Internet y NAT, grupos de seguridad (cortafuegos por instancia), balanceadores, DNS, VPN</td><td>VPC, Security Group, ELB, Route 53 / VNet, NSG, Load Balancer, Azure DNS</td></tr>
-<tr><td><b>Almacenamiento</b></td><td>Bloque (disco de una VM; IOPS, tipo SSD/HDD), archivo (compartido NFS/SMB), objeto (HTTP, ilimitado, clases de acceso), copias e instantáneas</td><td>EBS, EFS, S3 / Managed Disks, Azure Files, Blob Storage</td></tr>
-<tr><td><b>Software</b></td><td>Imagen del SO, marketplace, servicios gestionados (bases de datos, contenedores), agentes de monitorización, licencias</td><td>AMI, RDS, ECS / Marketplace, Azure SQL, AKS</td></tr>
+<tr><th>Capa</th><th>Componentes</th></tr>
+<tr><td>Instalaciones</td><td>Edificio o sala técnica (CPD), suministro eléctrico, SAI (sistemas de alimentación ininterrumpida), generadores, climatización, detección y extinción de incendios, control de acceso físico.</td></tr>
+<tr><td>Cómputo</td><td>Servidores físicos (en rack, blade), con sus CPU, memoria y discos locales.</td></tr>
+<tr><td>Almacenamiento</td><td>Cabinas de discos (SAN, NAS), sistemas de copia de seguridad, cintas.</td></tr>
+<tr><td>Red</td><td>Conmutadores (switches), enrutadores, cortafuegos, balanceadores de carga, cableado, conexión a Internet.</td></tr>
+<tr><td>Software de base</td><td>Hipervisores (Proxmox VE, VMware ESXi, Hyper-V), sistemas operativos, bases de datos, servidores web, herramientas de monitorización y copia.</td></tr>
 </table></div>
-<p>Una buena caracterización responde siempre a tres preguntas: qué es, qué parámetros se configuran y qué impacto tiene en rendimiento, disponibilidad y coste.</p>
+<p>Sobre esta infraestructura se ejecutan las <b>cargas de trabajo</b> (<i>workloads</i>): las aplicaciones y servicios que usa la organización, como la web de Cita Previa, el correo o el ERP.</p>
 
-<h3>Actividad</h3><div class="bloque actividad">
-<p><b>Ficha técnica (40′).</b> En parejas, a partir de la arquitectura de la sesión 9, elaborad la ficha técnica de cada componente: tipo de instancia elegido y por qué, diseño de red (CIDR de la VPC y subredes, reglas de los grupos de seguridad), tipo de almacenamiento para cada dato (sistema, base de datos, ficheros de pacientes) y software base de cada servidor.</p>
-<p><b>Prueba escrita (50′)</b> sobre los criterios a a f de la unidad.</p>
+<h3>2. Infraestructura propia: on premise</h3>
+<p><b>On premise</b> ("en las instalaciones", a menudo abreviado <i>on-prem</i>) significa que la organización <b>compra, instala, aloja y gestiona</b> su propia infraestructura en sus propias instalaciones. El ejemplo más cercano es el servidor Proxmox del centro: está en una sala del instituto, se compró con presupuesto del centro y lo administra el profesorado.</p>
+<h4>El centro de proceso de datos (CPD)</h4>
+<p>Una organización mediana o grande tiene uno o varios <b>CPD</b> (centro de proceso de datos, <i>data center</i>). Diseñar y mantener un CPD exige cuidar aspectos que a menudo se olvidan:</p>
+<ul>
+<li><b>Energía</b>: doble acometida eléctrica, SAI para aguantar cortes cortos y generadores diésel para cortes largos. Un rack de servidores puede consumir entre 5 y 20 kW.</li>
+<li><b>Refrigeración</b>: todo lo que se consume se convierte en calor. Se organizan pasillos fríos y calientes. La eficiencia se mide con el <b>PUE</b> (<i>Power Usage Effectiveness</i>): energía total del CPD entre energía de los equipos TI. Un PUE de 2 significa que por cada vatio de servidores se gasta otro en climatización e instalaciones; los grandes proveedores de nube declaran PUE cercanos a 1,1.</li>
+<li><b>Seguridad física</b>: control de accesos, cámaras, protección contra incendios con gas inerte.</li>
+<li><b>Conectividad</b>: varias líneas de proveedores distintos.</li>
+<li><b>Redundancia</b>: el estándar <b>TIA-942</b> y la clasificación del Uptime Institute definen niveles (<i>Tier</i> I a IV). Un Tier I no tiene redundancia (disponibilidad esperada en torno al 99,67 %); un Tier IV tolera fallos de cualquier componente (en torno al 99,995 %).</li>
+</ul>
+<h4>Responsabilidades del modelo on premise</h4>
+<p>En on premise, la organización es responsable de <b>todo</b>: elegir y comprar el hardware (con plazos de entrega de semanas o meses), instalarlo, mantener el firmware, sustituir discos que fallan, renovar los equipos cada 4-6 años, pagar la electricidad, asegurar el edificio, hacer copias de seguridad, tener personal disponible 24 horas si el servicio lo requiere, y planificar la capacidad con años de antelación: si Cita Previa necesita el doble de servidores en campaña de vacunación, hay que haberlos comprado antes.</p>
+<h4>Ventajas del on premise</h4>
+<ul>
+<li><b>Control total</b> sobre el hardware, la ubicación de los datos y la configuración.</li>
+<li><b>Cumplimiento normativo</b> más sencillo de demostrar en ciertos sectores (defensa, algunos datos sanitarios o bancarios), aunque la nube también ofrece certificaciones.</li>
+<li><b>Coste predecible</b> y, para cargas estables y muy grandes, a menudo más barato a largo plazo.</li>
+<li><b>Latencia</b> baja para sistemas que deben estar cerca de las máquinas o de los usuarios (una fábrica, un hospital).</li>
+<li>No depender de la conexión a Internet ni de un proveedor externo.</li>
+</ul>
+
+<h3>3. Entre ambos mundos: alojamiento y colocation</h3>
+<ul>
+<li><b>Colocation (housing)</b>: la organización compra sus servidores, pero los instala en el CPD de un proveedor, que ofrece el espacio, la energía, la climatización, la seguridad física y la conectividad. La organización sigue gestionando sus máquinas.</li>
+<li><b>Hosting tradicional</b> (alojamiento dedicado o compartido): el proveedor alquila servidores o espacio en ellos, normalmente con contratos mensuales o anuales y aprovisionamiento manual (se pide un servidor y te lo entregan en horas o días).</li>
+<li><b>Servidor privado virtual (VPS)</b>: una máquina virtual alquilada a un proveedor de alojamiento. Se parece a la nube, pero suele carecer de autoservicio completo, elasticidad y pago por uso fino.</li>
+</ul>
+
+<h3>4. La infraestructura de nube</h3>
+<h4>La definición del NIST</h4>
+<p>La definición de referencia es la del <b>NIST</b> (Instituto Nacional de Estándares y Tecnología de EE. UU.), publicación SP 800-145 de 2011:</p>
+<div class="nota"><p>La computación en la nube es un modelo que permite el acceso ubicuo, cómodo y bajo demanda a través de la red a un conjunto compartido de recursos de computación configurables (redes, servidores, almacenamiento, aplicaciones y servicios) que pueden aprovisionarse y liberarse rápidamente con un mínimo esfuerzo de gestión o interacción con el proveedor.</p></div>
+<p>El NIST establece <b>cinco características esenciales</b>. Si falta alguna, no es realmente nube:</p>
+<ol>
+<li><b>Autoservicio bajo demanda</b>: el cliente crea recursos (una máquina, una base de datos) él mismo, desde una consola web, una API o una herramienta de línea de órdenes, sin hablar con nadie del proveedor.</li>
+<li><b>Acceso amplio a través de la red</b>: los recursos se usan a través de la red con mecanismos estándar, desde cualquier tipo de dispositivo.</li>
+<li><b>Agrupación de recursos</b> (<i>resource pooling</i>): el proveedor junta sus recursos físicos y los reparte entre muchos clientes (<b>multitenencia</b>), asignándolos dinámicamente. El cliente no sabe en qué servidor concreto está su máquina, aunque puede elegir una ubicación general (región).</li>
+<li><b>Elasticidad rápida</b>: los recursos se amplían y se reducen rápidamente, a veces automáticamente, según la demanda. Para el cliente, la capacidad parece ilimitada.</li>
+<li><b>Servicio medido</b>: el uso de los recursos se mide (horas de CPU, GB almacenados, GB transferidos) y se factura según lo consumido, con transparencia para el cliente y el proveedor.</li>
+</ol>
+<p>El mismo documento define también los <b>modelos de servicio</b> (SaaS, PaaS, IaaS, que veremos en la unidad 4) y los <b>modelos de despliegue</b> (pública, privada, comunitaria e híbrida, unidad 3).</p>
+<h4>Un poco de historia</h4>
+<p>La idea de la computación como servicio público (como la electricidad) es de los años 60 (John McCarthy). La nube actual empieza en <b>2006</b>, cuando Amazon lanza <b>Amazon Web Services</b> con S3 (almacenamiento) y EC2 (máquinas virtuales): Amazon había construido una enorme infraestructura para su tienda y decidió alquilarla. Después llegaron Google App Engine (2008), Microsoft Azure (2010) y muchos otros. Hoy los tres grandes proveedores, a menudo llamados <b>hiperescala</b>, son AWS, Microsoft Azure y Google Cloud, seguidos de Alibaba Cloud, Oracle Cloud, IBM Cloud y proveedores europeos como OVHcloud, Hetzner, Scaleway o IONOS.</p>
+<h4>On premise frente a nube, resumen</h4>
+<div class="tabla"><table>
+<tr><th></th><th>On premise</th><th>Nube</th></tr>
+<tr><td>Propiedad del hardware</td><td>La organización</td><td>El proveedor</td></tr>
+<tr><td>Ubicación</td><td>Instalaciones propias</td><td>CPD del proveedor, en la región elegida</td></tr>
+<tr><td>Tiempo para tener un servidor nuevo</td><td>Semanas o meses (compra, envío, instalación)</td><td>Minutos (autoservicio)</td></tr>
+<tr><td>Capacidad</td><td>Limitada a lo comprado; se dimensiona para el pico</td><td>Elástica; se ajusta a la demanda</td></tr>
+<tr><td>Pago</td><td>Inversión inicial y costes fijos</td><td>Por uso, como un gasto mensual</td></tr>
+<tr><td>Mantenimiento físico</td><td>Propio</td><td>Del proveedor</td></tr>
+<tr><td>Control</td><td>Total</td><td>Limitado a lo que el proveedor expone</td></tr>
+<tr><td>Responsabilidad de seguridad</td><td>Toda de la organización</td><td>Compartida (sesión 7)</td></tr>
+</table></div>
+<div class="aviso"><p><b>Cuidado con la palabra "nube".</b> Tener un servidor en un armario y acceder a él por Internet no es "tener nube". Si no hay autoservicio, agrupación de recursos, elasticidad y medición, es infraestructura propia accesible por la red.</p></div>
+
+<h3>5. Cómo se organiza físicamente la nube</h3>
+<ul>
+<li><b>Región</b>: una zona geográfica con varios CPD (por ejemplo, AWS <code>eu-south-2</code> en Aragón, Azure <i>Spain Central</i> en Madrid, Google <code>europe-southwest1</code> en Madrid). Se elige por latencia, precio, servicios disponibles y normativa (datos dentro de la UE).</li>
+<li><b>Zona de disponibilidad</b> (AZ): uno o varios CPD independientes dentro de una región, con energía, red y refrigeración separadas, conectados entre sí con baja latencia. Repartir una aplicación entre varias zonas la protege del fallo de un CPD.</li>
+<li><b>Ubicaciones perimetrales</b> (<i>edge</i>): puntos de presencia cerca de los usuarios para servir contenido (CDN) con poca latencia.</li>
+</ul>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Inventario de la infraestructura del centro <span class="dur">25 min</span></h4>
+<p>En parejas. El profesor enseñará el servidor Proxmox del centro (interfaz web) y, si es posible, la sala donde está. Completad una ficha con: hardware (modelo, CPU, núcleos, RAM, discos), hipervisor y versión, red (a qué red está conectado, IP de gestión), almacenamiento (tipos de almacenamiento definidos en Proxmox), energía (¿tiene SAI?), refrigeración, copias de seguridad y quién lo administra. Después, clasificad cada elemento en las capas del apartado 1 y escribid tres riesgos de este servidor (qué pasaría si falla un disco, si se va la luz un fin de semana o si se necesita el triple de máquinas).</p>
 </div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Ficha técnica de componentes (CE 2f). Prueba escrita (CE 2a a 2f, 60 % de la nota de la unidad).</p></div>
-<details class="docente"><summary>Notas para el docente</summary><p>Prueba sugerida: definición NIST y diferencia con on premise; interpretar una factura; ventajas e inconvenientes en un caso; distinguir infraestructura y arquitectura en un diagrama; completar la pila de componentes; elegir almacenamiento para tres tipos de dato.</p></details>
-</section>
-<section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden><h2>Recursos y glosario</h2>
+<div class="actividad">
+<h4>Actividad 2. ¿Es nube o no? <span class="dur">20 min</span></h4>
+<p>Para cada caso, decidid si es on premise, colocation, hosting tradicional o nube, y comprobad cuáles de las cinco características del NIST cumple: (a) la Conselleria tiene sus servidores en un CPD propio en Valencia; (b) una empresa alquila un VPS por 5 € al mes con contrato anual y lo pide por correo; (c) una startup crea y destruye decenas de máquinas al día con Terraform en AWS; (d) un hospital lleva sus servidores al CPD de un proveedor en Madrid y los administra él mismo; (e) una universidad monta OpenStack y permite a sus grupos de investigación crear máquinas desde un portal pagando por horas; (f) usáis Google Drive para los apuntes. Justificad cada respuesta.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 3. Primer contacto con la consola de nube <span class="dur">30 min</span></h4>
+<p>Individual. Entrad en el laboratorio que indique el profesor (AWS Academy Learner Lab o Azure for Students) y, <b>sin crear todavía ningún recurso</b>:</p>
+<ol>
+<li>Localizad el selector de región. Anotad qué regiones hay en Europa y si hay alguna en España.</li>
+<li>Recorred el catálogo de servicios y encontrad uno de cada tipo: máquinas virtuales, almacenamiento de objetos, bases de datos gestionadas, red virtual, contenedores y funciones serverless. Anotad su nombre en ese proveedor.</li>
+<li>Buscad en la documentación pública del proveedor cuántas zonas de disponibilidad tiene la región de España.</li>
+<li>Buscad la página de "infraestructura global" del proveedor y comparad con otro proveedor: número de regiones en el mundo.</li>
+</ol>
+<p class="entrega">Entrega en Aules: ficha del inventario, tabla de casos y respuestas del recorrido por la consola. En la puesta en común (5 min) comparamos el Proxmox del centro con lo que ofrece una región de nube.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>Enumera las cinco características esenciales de la nube según el NIST y explica una con un ejemplo.</li>
+<li>¿Qué diferencia hay entre colocation y nube?</li>
+<li>¿Qué es el PUE y por qué los grandes proveedores tienen valores mejores que un CPD pequeño?</li>
+<li>¿Qué es una zona de disponibilidad y para qué sirve repartir una aplicación entre varias?</li>
+<li>Cita dos situaciones en las que on premise es preferible a la nube.</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s7" aria-labelledby="tab-s7" hidden>
+<p class="meta">Sesión 7 de 41 · viernes 30 de octubre de 2026 · 2 horas</p>
+<h2>Cómo funciona la nube y cuál es su modelo de negocio</h2>
+<p class="chips"><span class="ce" title="Se ha descrito el funcionamiento de la infraestructura de nube, vinculándolo con su modelo de negocio.">CE 2b</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Describir cómo funciona por dentro un proveedor de nube: virtualización, plano de control, API y multitenencia.</li>
+<li>Explicar el modelo de negocio de la nube: economías de escala y pago por uso.</li>
+<li>Conocer las modalidades de precio (bajo demanda, reservas, planes de ahorro, instancias spot, capa gratuita) y qué se factura.</li>
+<li>Entender el modelo de responsabilidad compartida y los acuerdos de nivel de servicio (SLA).</li>
+<li>Crear una máquina virtual por la consola y por la API, y estimar el coste de Cita Previa con una calculadora de precios.</li>
+</ul>
+
+<h3>1. Cómo funciona la nube por dentro</h3>
+<p>Desde fuera, la nube parece magia: pulsas un botón y en un minuto tienes un servidor. Por dentro es una enorme infraestructura física automatizada al máximo.</p>
+<h4>Capa física</h4>
+<p>Cada región tiene varios CPD con decenas de miles de servidores casi idénticos, organizados en racks. Los proveedores diseñan su propio hardware (servidores, conmutadores, incluso procesadores como AWS Graviton o Google TPU) para abaratar costes y consumir menos. Cuando un servidor falla, no se repara en caliente: sus cargas se mueven a otro y el servidor se retira para sustituirlo.</p>
+<h4>Virtualización</h4>
+<p>Sobre cada servidor físico corre un <b>hipervisor</b> que lo divide en máquinas virtuales para distintos clientes: AWS usa <b>Nitro</b> (basado en KVM, con tarjetas hardware que descargan la red, el almacenamiento y la seguridad), Azure usa una versión de <b>Hyper-V</b> y Google usa <b>KVM</b>. También se virtualizan la red (redes definidas por software, cada cliente tiene su red privada virtual aislada) y el almacenamiento (los discos de las VM están en sistemas distribuidos, no en el servidor físico).</p>
+<h4>Plano de control y plano de datos</h4>
+<ul>
+<li>El <b>plano de datos</b> es donde se ejecutan los recursos del cliente: sus máquinas, sus discos, su tráfico.</li>
+<li>El <b>plano de control</b> es el software que gestiona todo: recibe las peticiones de los clientes, decide en qué servidor físico colocar cada VM (<i>scheduler</i>), configura la red, asigna IP, gestiona permisos y mide el consumo para facturarlo.</li>
+</ul>
+<h4>Todo es una API</h4>
+<p>La consola web es solo una interfaz bonita: por debajo, cada clic es una llamada a una <b>API</b> REST del proveedor. Las mismas API las usan la línea de órdenes (AWS CLI, <code>az</code>, <code>gcloud</code>), los kits de desarrollo (SDK) para Python, Java, etc., y las herramientas de infraestructura como código (Terraform, unidad 6). Por eso la nube se puede <b>automatizar por completo</b>: todo lo que se hace con el ratón se puede hacer con un script.</p>
+<pre><code>Consola web ─┐
+AWS CLI      ├─→ API del proveedor (autenticada y autorizada) ─→ plano de control ─→ servidores físicos
+Terraform    │
+SDK Python  ─┘</code></pre>
+<p>Ejemplo: crear una máquina virtual en AWS desde la línea de órdenes:</p>
+<pre><code>aws ec2 run-instances --image-id ami-0abcdef1234567890 --instance-type t3.micro \
+    --count 1 --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=prueba}]'</code></pre>
+<h4>Multitenencia y aislamiento</h4>
+<p>En un mismo servidor físico pueden convivir máquinas de clientes distintos (<b>inquilinos</b>, <i>tenants</i>). El proveedor garantiza el aislamiento mediante el hipervisor, la red virtual y el cifrado. Para quien lo necesite (por normativa o licencias), existen <b>instancias dedicadas</b> o <b>servidores dedicados</b> en los que el hardware es solo para un cliente, a un precio mayor.</p>
+
+<h3>2. El modelo de negocio</h3>
+<h4>Economías de escala</h4>
+<p>Un proveedor de hiperescala compra millones de servidores, discos y energía, y consigue precios que ninguna empresa normal puede obtener. Además, automatiza la operación: una persona puede gestionar miles de servidores. Ese ahorro se traslada, en parte, al cliente.</p>
+<h4>Multiplexación estadística</h4>
+<p>Cada cliente tiene picos de demanda en momentos distintos: la tienda online en el Black Friday, Cita Previa los lunes por la mañana, la declaración de la renta en abril. Al juntar miles de clientes, la demanda total es mucho más estable que la de cada uno. El proveedor puede tener sus servidores ocupados en un porcentaje alto, mientras que un CPD propio dimensionado para el pico pasa la mayor parte del tiempo infrautilizado (es habitual que los servidores on premise estén por debajo del 20-30 % de uso medio).</p>
+<h4>Pago por uso</h4>
+<p>La consecuencia es el modelo de <b>pago por uso</b> (<i>pay as you go</i>): el cliente no compra, alquila; y paga solo por lo que consume, con granularidad muy fina. Una máquina virtual se factura por segundos u horas mientras está encendida; el almacenamiento, por GB y mes; la transferencia de datos, por GB. Esto convierte la infraestructura en un <b>servicio medido</b>, como la luz o el agua (<i>utility computing</i>).</p>
+<p>Para el proveedor, el negocio está en el volumen y en la <b>fidelización</b>: una vez que una empresa construye sus sistemas usando servicios propios de un proveedor, cambiar a otro es costoso (<b>dependencia del proveedor</b>, <i>vendor lock-in</i>). Por eso los proveedores ofrecen servicios cada vez más específicos, créditos gratuitos para startups y estudiantes, y capas gratuitas.</p>
+
+<h3>3. Qué se paga y cómo</h3>
+<h4>Dimensiones de facturación</h4>
+<div class="tabla"><table>
+<tr><th>Recurso</th><th>Unidad habitual</th><th>Ejemplos</th></tr>
+<tr><td>Cómputo</td><td>Tiempo de ejecución (segundo u hora) según el tamaño de la instancia</td><td>Una VM de 2 vCPU y 4 GB por hora encendida</td></tr>
+<tr><td>Almacenamiento en bloque</td><td>GB aprovisionados al mes (aunque estén vacíos) y, a veces, rendimiento (IOPS)</td><td>Disco de 30 GB de la VM</td></tr>
+<tr><td>Almacenamiento de objetos</td><td>GB almacenados al mes, número de peticiones y clase de almacenamiento</td><td>Copias de seguridad, imágenes, documentos</td></tr>
+<tr><td>Transferencia de datos</td><td>GB que <b>salen</b> hacia Internet o entre regiones (la entrada suele ser gratis)</td><td>Páginas servidas a los pacientes</td></tr>
+<tr><td>Servicios gestionados</td><td>Hora de instancia, peticiones, GB procesados...</td><td>Base de datos gestionada, balanceador de carga</td></tr>
+<tr><td>Funciones serverless</td><td>Número de invocaciones y GB-segundo de ejecución</td><td>Enviar recordatorios de citas</td></tr>
+<tr><td>Otros</td><td>IP públicas, licencias de software, soporte técnico</td><td>Licencia de Windows Server incluida</td></tr>
+</table></div>
+<div class="aviso"><p><b>Costes que sorprenden.</b> La salida de datos (<i>egress</i>), los discos y las IP que siguen existiendo cuando se apaga la máquina, las instantáneas (snapshots) olvidadas, los recursos creados en otra región para una prueba y nunca borrados. En la nube, apagar no siempre es borrar.</p></div>
+<h4>Modalidades de precio de cómputo</h4>
+<ul>
+<li><b>Bajo demanda</b> (<i>on demand</i>): el precio de lista por hora o segundo, sin compromiso. El más flexible y el más caro.</li>
+<li><b>Instancias reservadas</b> y <b>planes de ahorro</b> (<i>savings plans</i>): el cliente se compromete a un uso durante 1 o 3 años a cambio de descuentos que pueden superar el 50-60 %. Para cargas estables y previsibles.</li>
+<li><b>Instancias spot</b> (<i>preemptible</i>, <i>spot VMs</i>): capacidad sobrante del proveedor con descuentos de hasta el 90 %, pero el proveedor puede quitarla con un aviso de minutos. Para trabajos que se pueden interrumpir: procesamiento por lotes, pruebas, CI.</li>
+<li><b>Capa gratuita</b> (<i>free tier</i>): cantidades limitadas de ciertos servicios gratis durante 12 meses o de forma permanente, pensadas para aprender y probar.</li>
+</ul>
+<h4>Controlar el gasto: FinOps</h4>
+<p>Como cualquiera con permisos puede crear recursos, el gasto puede dispararse. La disciplina <b>FinOps</b> se ocupa de gestionarlo: presupuestos con alertas, etiquetas en cada recurso para saber a qué proyecto o entorno pertenece, informes de costes, apagado automático de entornos de pruebas fuera de horario y ajuste del tamaño de las máquinas a su uso real (<i>rightsizing</i>).</p>
+
+<h3>4. Responsabilidad compartida</h3>
+<p>En la nube, la seguridad es una <b>responsabilidad compartida</b> entre el proveedor y el cliente. La frase que usa AWS lo resume bien: el proveedor es responsable de la seguridad <b>de</b> la nube; el cliente, de la seguridad <b>en</b> la nube.</p>
+<div class="tabla"><table>
+<tr><th>Responsabilidad</th><th>On premise</th><th>IaaS (VM en la nube)</th><th>PaaS</th><th>SaaS</th></tr>
+<tr><td>Datos y cuentas de usuario</td><td>Cliente</td><td>Cliente</td><td>Cliente</td><td>Cliente</td></tr>
+<tr><td>Aplicación</td><td>Cliente</td><td>Cliente</td><td>Cliente</td><td>Proveedor</td></tr>
+<tr><td>Sistema operativo, parches, cortafuegos del SO</td><td>Cliente</td><td>Cliente</td><td>Proveedor</td><td>Proveedor</td></tr>
+<tr><td>Virtualización, servidores, red física</td><td>Cliente</td><td>Proveedor</td><td>Proveedor</td><td>Proveedor</td></tr>
+<tr><td>CPD: edificio, energía, seguridad física</td><td>Cliente</td><td>Proveedor</td><td>Proveedor</td><td>Proveedor</td></tr>
+</table></div>
+<p>La mayoría de los incidentes de seguridad en la nube no se deben a fallos del proveedor sino a errores de configuración del cliente: almacenamiento público por error, credenciales publicadas en un repositorio, puertos abiertos a todo Internet, contraseñas débiles sin doble factor.</p>
+
+<h3>5. Acuerdos de nivel de servicio (SLA)</h3>
+<p>Un <b>SLA</b> (<i>Service Level Agreement</i>) es el compromiso contractual del proveedor sobre la disponibilidad de un servicio. Por ejemplo, un proveedor puede comprometer un 99,99 % de disponibilidad mensual para máquinas repartidas en varias zonas y un 99,5 % para una única máquina. Si no lo cumple, devuelve un porcentaje de la factura en forma de <b>créditos</b>; no compensa las pérdidas del cliente.</p>
+<div class="tabla"><table>
+<tr><th>Disponibilidad</th><th>Caída máxima al mes (30 días)</th><th>Caída máxima al año</th></tr>
+<tr><td>99 %</td><td>7,2 horas</td><td>3,65 días</td></tr>
+<tr><td>99,5 %</td><td>3,6 horas</td><td>1,8 días</td></tr>
+<tr><td>99,9 %</td><td>43,2 minutos</td><td>8,76 horas</td></tr>
+<tr><td>99,99 %</td><td>4,32 minutos</td><td>52,6 minutos</td></tr>
+</table></div>
+<p>Si una aplicación depende de varios servicios en serie, su disponibilidad es como mucho el <b>producto</b> de sus disponibilidades: una web sobre una VM al 99,5 % y una base de datos al 99,9 % tiene como máximo 0,995 × 0,999 ≈ 99,4 %.</p>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Crear una máquina por la consola y por la API <span class="dur">35 min</span></h4>
+<p>Individual, en el laboratorio de nube (AWS Academy Learner Lab. Si usáis Azure for Students, haced lo mismo con una VM B1s, el Azure Cloud Shell y la orden <code>az vm</code>).</p>
+<ol>
+<li>Arrancad el laboratorio y entrad en la consola. Cread una instancia EC2 <code>t3.micro</code> con Ubuntu Server 24.04, etiqueta <code>Name=s7-vuestronombre</code>, un par de claves nuevo y un grupo de seguridad que solo permita SSH desde vuestra IP.</li>
+<li>Cronometrad cuánto tarda desde que pulsáis "Lanzar" hasta que podéis entrar por SSH. Comparadlo con el tiempo que costaría tener un servidor físico nuevo en el centro.</li>
+<li>Dentro de la máquina, consultad sus metadatos: <code>TOKEN=$(curl -sX PUT http://169.254.169.254/latest/api/token -H "X-aws-ec2-metadata-token-ttl-seconds: 60")</code> y <code>curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/availability-zone</code>. ¿En qué zona de disponibilidad está?</li>
+<li>Desde el terminal del laboratorio (AWS CLI ya configurada), listad vuestras instancias: <code>aws ec2 describe-instances --query "Reservations[].Instances[].[InstanceId,State.Name,InstanceType]" --output table</code>.</li>
+<li>Parad la instancia con la CLI (<code>aws ec2 stop-instances --instance-ids ...</code>). ¿Qué recursos siguen existiendo y facturando aunque esté parada? Buscadlos en la consola (volumen EBS, IP...).</li>
+<li>Terminad la instancia y comprobad que el disco se ha borrado.</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 2. ¿Cuánto cuesta Cita Previa en la nube? <span class="dur">30 min</span></h4>
+<p>En parejas, con la calculadora pública de precios (<a href="https://calculator.aws/">AWS Pricing Calculator</a> o <a href="https://azure.microsoft.com/es-es/pricing/calculator/">calculadora de Azure</a>), en una región europea, estimad el coste mensual de esta arquitectura:</p>
+<ul>
+<li>2 máquinas virtuales de 2 vCPU y 4 GB de RAM con Linux, encendidas 24 horas.</li>
+<li>Una base de datos gestionada PostgreSQL pequeña con 50 GB y copia en otra zona.</li>
+<li>200 GB de almacenamiento de objetos para documentos.</li>
+<li>Un balanceador de carga.</li>
+<li>300 GB al mes de transferencia de salida a Internet.</li>
+</ul>
+<p>Calculad tres escenarios: todo bajo demanda; con compromiso a 1 año en las máquinas; y un entorno de revisión con máquinas más pequeñas que solo está encendido de lunes a viernes de 8 a 20 h. ¿Qué partida pesa más? ¿Cuánto ahorra apagar revisión fuera de horario?</p>
+</div>
+<div class="actividad">
+<h4>Actividad 3. Responsabilidad y disponibilidad <span class="dur">15 min</span></h4>
+<ol>
+<li>Para cada incidente, indicad quién es responsable según el modelo de responsabilidad compartida: (a) falla la refrigeración del CPD de la región; (b) un servidor de Cita Previa en una VM no tenía instalados los parches del sistema operativo; (c) un empleado deja su contraseña de la consola en un repositorio público; (d) se estropea un disco físico; (e) un bucket con documentos de pacientes se configura como público.</li>
+<li>Cita Previa usa una VM (SLA 99,5 %), una base de datos gestionada (99,95 %) y un balanceador (99,99 %). Calculad la disponibilidad máxima esperada y cuántas horas al año podría estar caída. ¿Qué haríais para mejorarla?</li>
+</ol>
+<p class="entrega">Entrega en Aules: capturas y respuestas de la actividad 1, hoja de estimación de la actividad 2 y respuestas de la 3. Comprobad antes de salir que no os queda ningún recurso creado.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué es el plano de control de un proveedor de nube?</li>
+<li>¿Por qué se dice que en la nube "todo es una API"? ¿Qué permite eso?</li>
+<li>Explica la multiplexación estadística y por qué abarata la nube.</li>
+<li>¿Cuándo usarías instancias spot y cuándo instancias reservadas?</li>
+<li>¿Qué significa "seguridad de la nube" frente a "seguridad en la nube"?</li>
+<li>¿Qué compensa un proveedor si incumple su SLA?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s8" aria-labelledby="tab-s8" hidden>
+<p class="meta">Sesión 8 de 41 · lunes 2 de noviembre de 2026 · 2 horas</p>
+<h2>Beneficios de la nube frente a on premise: CapEx, OpEx y TCO</h2>
+<p class="chips"><span class="ce" title="Se han analizado los beneficios de la infraestructura de nube con respecto a la infraestructura propia (on premise).">CE 2c</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Distinguir gasto de capital (CapEx) y gasto operativo (OpEx) y su impacto en una organización.</li>
+<li>Calcular el coste total de propiedad (TCO) de una infraestructura on premise y compararlo con la nube.</li>
+<li>Analizar los beneficios de la nube (agilidad, elasticidad, alcance global, fiabilidad, seguridad) y sus inconvenientes.</li>
+<li>Argumentar cuándo compensa la nube, cuándo el on premise y cuándo una mezcla.</li>
+</ul>
+
+<h3>1. CapEx y OpEx</h3>
+<p>La forma de pagar la infraestructura cambia radicalmente entre on premise y nube, y eso tiene consecuencias financieras, no solo técnicas.</p>
+<ul>
+<li><b>CapEx</b> (<i>capital expenditure</i>, gasto de capital o inversión): dinero que se gasta de golpe en adquirir activos que se usarán durante años: servidores, cabinas de almacenamiento, el propio CPD. En contabilidad no se imputa como gasto el año de la compra, sino que se <b>amortiza</b> a lo largo de su vida útil (por ejemplo, un servidor de 12.000 € amortizado en 4 años supone 3.000 € de gasto anual).</li>
+<li><b>OpEx</b> (<i>operational expenditure</i>, gasto operativo): gastos corrientes del día a día que se imputan en el periodo en que se producen: electricidad, sueldos, alquileres, licencias por suscripción y, por supuesto, la factura mensual de la nube.</li>
+</ul>
+<div class="tabla"><table>
+<tr><th></th><th>CapEx (on premise)</th><th>OpEx (nube)</th></tr>
+<tr><td>Desembolso</td><td>Grande al principio y en cada renovación</td><td>Pequeño y periódico, proporcional al uso</td></tr>
+<tr><td>Riesgo</td><td>Si el proyecto fracasa, el hardware ya está comprado</td><td>Si el proyecto fracasa, se apagan los recursos y deja de pagarse</td></tr>
+<tr><td>Planificación</td><td>Hay que prever la demanda con años de antelación</td><td>Se ajusta mes a mes</td></tr>
+<tr><td>Aprobación</td><td>Procesos de compra lentos (en el sector público, contratación con licitación)</td><td>Rápida, pero exige controlar el gasto continuamente</td></tr>
+<tr><td>Previsibilidad</td><td>Alta: el coste se conoce</td><td>Menor: la factura varía con el uso</td></tr>
+</table></div>
+<p>Pasar de CapEx a OpEx es atractivo para una startup, que no tiene capital para comprar servidores, y para cualquier organización que quiera probar ideas sin arriesgar una gran inversión. Pero no siempre es mejor: a una organización con presupuesto de inversión disponible y cargas estables le puede convenir comprar.</p>
+
+<h3>2. El coste total de propiedad (TCO)</h3>
+<p>Comparar el precio de un servidor con el precio por hora de una máquina en la nube es un error clásico. Hay que comparar el <b>coste total de propiedad</b> (<i>Total Cost of Ownership</i>, TCO): todos los costes directos e indirectos de tener y operar la infraestructura durante su vida útil (normalmente 3 a 5 años).</p>
+<h4>Costes de una infraestructura on premise</h4>
+<ul>
+<li><b>Hardware</b>: servidores, almacenamiento, red, cortafuegos, SAI, repuestos. Y el hardware de reserva para redundancia.</li>
+<li><b>Instalaciones</b>: espacio del CPD (alquiler o coste del suelo), acondicionamiento, climatización, protección contra incendios, seguridad física.</li>
+<li><b>Energía</b>: consumo de los equipos multiplicado por el PUE (climatización incluida).</li>
+<li><b>Licencias</b>: hipervisor, sistemas operativos, bases de datos, copias de seguridad, monitorización, antivirus.</li>
+<li><b>Conectividad</b>: líneas de Internet, enlaces entre sedes.</li>
+<li><b>Mantenimiento y soporte</b>: contratos de garantía extendida del fabricante.</li>
+<li><b>Personal</b>: horas de técnicos para instalar, actualizar, parchear, sustituir componentes, hacer copias y atender incidencias, incluidas guardias fuera de horario. Suele ser el coste más infravalorado.</li>
+<li><b>Recuperación ante desastres</b>: un segundo CPD o un servicio de respaldo en otra ubicación.</li>
+<li><b>Renovación</b>: al final de la vida útil hay que volver a comprar.</li>
+<li><b>Coste de oportunidad</b>: la capacidad comprada y no usada; el tiempo que el equipo dedica a mantener hardware en lugar de mejorar el servicio.</li>
+</ul>
+<h4>Costes de la nube</h4>
+<ul>
+<li>Factura del proveedor: cómputo, almacenamiento, transferencia, servicios gestionados, soporte.</li>
+<li>Personal: menos horas de hardware, pero hacen falta perfiles que sepan diseñar, automatizar, asegurar y optimizar costes en la nube.</li>
+<li>Migración: trasladar datos y aplicaciones, adaptar aplicaciones, formación.</li>
+<li>Conectividad: mejores líneas a Internet, enlaces dedicados con el proveedor.</li>
+<li>Herramientas de gestión, seguridad y control de costes.</li>
+</ul>
+<h4>Un ejemplo simplificado de TCO a 5 años</h4>
+<p>Una infraestructura para Cita Previa con 4 servidores (dos para producción, uno para revisión y uno de reserva), almacenamiento y red. Cifras aproximadas y redondeadas, solo para practicar el método:</p>
+<div class="tabla"><table>
+<tr><th>Concepto on premise</th><th>Cálculo</th><th>5 años</th></tr>
+<tr><td>Servidores</td><td>4 × 9.000 €</td><td>36.000 €</td></tr>
+<tr><td>Almacenamiento y red</td><td>Cabina + switches + cortafuegos</td><td>25.000 €</td></tr>
+<tr><td>Energía</td><td>2 kW × 8.760 h × 1,8 PUE × 0,18 €/kWh × 5 años</td><td>28.382 €</td></tr>
+<tr><td>Licencias y soporte</td><td>6.000 €/año</td><td>30.000 €</td></tr>
+<tr><td>Espacio y climatización</td><td>Proporción del CPD</td><td>10.000 €</td></tr>
+<tr><td>Personal</td><td>0,5 técnicos × 40.000 €/año</td><td>100.000 €</td></tr>
+<tr><td><b>Total</b></td><td></td><td><b>≈ 229.000 €</b></td></tr>
+</table></div>
+<p>Si la misma carga en la nube cuesta 2.500 € al mes de factura más 0,25 técnicos (10.000 €/año), el total a 5 años sería 150.000 + 50.000 = <b>200.000 €</b>. Pero si la carga fuera estable y se contrataran reservas a 3 años, la factura podría bajar bastante; y si la carga creciera o tuviera picos, el on premise necesitaría más hardware comprado por adelantado. <b>La respuesta depende de los datos</b>, y por eso se hace el cálculo.</p>
+<div class="nota"><p><b>Idea clave.</b> El TCO on premise casi siempre es mayor de lo que parece porque se olvidan la energía, el personal y la renovación. El coste de la nube casi siempre es mayor de lo que parece porque se olvidan la transferencia de datos, los recursos olvidados encendidos y el soporte. Un buen análisis incluye ambos lados completos.</p></div>
+
+<h3>3. Beneficios de la nube frente al on premise</h3>
+<p>Los proveedores (y documentos como el <i>AWS Cloud Adoption Framework</i> o la certificación <i>Cloud Practitioner</i>) suelen resumir los beneficios así:</p>
+<ol>
+<li><b>Cambiar gasto de capital por gasto variable.</b> No hay que invertir antes de saber cuánto se usará.</li>
+<li><b>Beneficiarse de economías de escala</b>: el proveedor compra y opera más barato que cualquier organización.</li>
+<li><b>Dejar de adivinar la capacidad.</b> On premise se compra para el pico previsto: si se sobreestima, se tira dinero; si se subestima, el servicio se cae. En la nube la capacidad se ajusta a la demanda real (<b>elasticidad</b>).</li>
+<li><b>Velocidad y agilidad.</b> Un recurso tarda minutos en estar disponible, no semanas. Se puede experimentar barato: probar una idea cuesta unas horas de máquina.</li>
+<li><b>Dejar de gastar en mantener CPD</b> y dedicar el personal a lo que aporta valor al negocio.</li>
+<li><b>Alcance global en minutos</b>: desplegar en otra región del mundo cerca de nuevos usuarios.</li>
+</ol>
+<p>A estos se suman:</p>
+<ul>
+<li><b>Fiabilidad</b>: varias zonas de disponibilidad, copias gestionadas, recuperación ante desastres que on premise exigiría un segundo CPD.</li>
+<li><b>Seguridad</b>: los proveedores invierten en seguridad física y lógica más de lo que puede una organización mediana, y tienen certificaciones (ISO 27001, ENS en España, SOC 2...). Aunque, recordad, la configuración es responsabilidad del cliente.</li>
+<li><b>Acceso a servicios avanzados</b> sin montarlos: bases de datos gestionadas, inteligencia artificial, análisis de datos, colas de mensajes.</li>
+<li><b>Sostenibilidad</b>: CPD más eficientes y mayor uso de energía renovable, aunque el consumo total de los CPD está creciendo mucho.</li>
+</ul>
+
+<h3>4. Inconvenientes y riesgos de la nube</h3>
+<ul>
+<li><b>Coste a largo plazo</b> para cargas grandes y estables. Algunas empresas han vuelto parcialmente a infraestructura propia (<b>repatriación</b>) tras comprobar que les salía más barato; un caso muy comentado fue el de la empresa 37signals en 2022-2023.</li>
+<li><b>Factura impredecible</b> si no se controla (FinOps).</li>
+<li><b>Dependencia del proveedor</b> (<i>lock-in</i>): servicios propietarios, formatos, costes de salida de datos.</li>
+<li><b>Soberanía y cumplimiento normativo</b>: el RGPD exige garantías para los datos personales; ciertas leyes de otros países (como la CLOUD Act de EE. UU.) pueden permitir a sus autoridades pedir datos a sus empresas aunque estén en Europa. Los datos de salud de Cita Previa son de categoría especial en el RGPD. En el sector público español, el <b>Esquema Nacional de Seguridad</b> (ENS) exige que los proveedores estén certificados.</li>
+<li><b>Dependencia de la conectividad</b>: sin Internet no hay servicio.</li>
+<li><b>Menor control</b>: no se elige el hardware, ni cuándo el proveedor hace mantenimientos, y las caídas del proveedor afectan a muchos clientes a la vez.</li>
+<li><b>Nuevas competencias</b>: el equipo debe aprender seguridad en la nube, IaC, gestión de costes.</li>
+</ul>
+
+<h3>5. Cómo decidir</h3>
+<p>No hay una respuesta universal. Estas preguntas ayudan a decidir:</p>
+<div class="tabla"><table>
+<tr><th>Pregunta</th><th>Inclina hacia la nube si...</th><th>Inclina hacia on premise si...</th></tr>
+<tr><td>¿Cómo es la demanda?</td><td>Variable, con picos, o incierta</td><td>Estable y predecible</td></tr>
+<tr><td>¿Qué tamaño tiene?</td><td>Pequeña o mediana, o en crecimiento</td><td>Muy grande y estable</td></tr>
+<tr><td>¿Hay capital disponible?</td><td>No, o se prefiere no inmovilizarlo</td><td>Sí, y hay CPD amortizado</td></tr>
+<tr><td>¿Qué dice la normativa?</td><td>Permite la nube con proveedores certificados</td><td>Exige ubicación o control físico concretos</td></tr>
+<tr><td>¿Qué personal hay?</td><td>Poco personal de sistemas</td><td>Un equipo experto en infraestructura</td></tr>
+<tr><td>¿Qué velocidad se necesita?</td><td>Lanzar y experimentar rápido</td><td>Cambios poco frecuentes</td></tr>
+<tr><td>¿Latencia y ubicación?</td><td>Usuarios repartidos</td><td>Máquinas o usuarios locales que exigen latencia mínima</td></tr>
+</table></div>
+<p>Muchas organizaciones acaban en un modelo <b>híbrido</b>: parte on premise y parte en la nube. Lo estudiaremos en la unidad 3.</p>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Estudio de TCO <span class="dur">45 min</span></h4>
+<p>En parejas, con una hoja de cálculo (LibreOffice Calc o Google Sheets). Caso: la Consejería debe renovar la infraestructura de Cita Previa para 5 años. Datos:</p>
+<ul>
+<li>Carga: 6 máquinas virtuales de 4 vCPU y 16 GB en producción, 3 de 2 vCPU y 8 GB en revisión, 2 TB de base de datos y documentos, 1 TB/mes de salida a Internet.</li>
+<li>On premise: 3 servidores de 10.000 € (cada uno con capacidad para 4 máquinas como las de producción), cabina de 15.000 €, red y cortafuegos 12.000 €, consumo total 2,5 kW, PUE 1,7, electricidad 0,18 €/kWh, licencias y soporte 8.000 €/año, 0,6 técnicos a 42.000 €/año.</li>
+<li>Nube: obtened los precios reales con la calculadora de AWS o Azure en una región europea, bajo demanda y con reservas a 3 años. Personal: 0,3 técnicos.</li>
+</ul>
+<p>Construid la hoja con una fila por concepto y columnas por año, calculad el total a 5 años de cada opción y un gráfico comparativo. Añadid después un escenario: durante la campaña de vacunación (2 meses al año) la carga de producción se triplica. ¿Cómo afecta a cada opción?</p>
+</div>
+<div class="actividad">
+<h4>Actividad 2. Beneficios y riesgos en el caso real <span class="dur">20 min</span></h4>
+<p>Con los resultados, redactad un informe de una página para la dirección de la Consejería con: la opción recomendada, tres beneficios que obtendría, tres riesgos y cómo mitigarlos (incluyendo protección de datos y ENS), y qué haría falta para que la otra opción fuera la mejor.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 3. Debate: ¿nube o no? <span class="dur">15 min</span></h4>
+<p>Dividimos la clase en dos bandos, a favor de la nube y a favor del on premise, para Cita Previa. Cada bando tiene 3 minutos de exposición con los datos de sus hojas de cálculo, 2 minutos de réplica y 1 minuto de conclusión. El resto de la clase vota al final qué argumento ha sido más sólido.</p>
+<p class="entrega">Entrega en Aules: hoja de cálculo del TCO e informe para la dirección.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué diferencia hay entre CapEx y OpEx? Pon un ejemplo de cada uno en una infraestructura de TI.</li>
+<li>¿Qué costes del on premise se suelen olvidar al calcular el TCO?</li>
+<li>¿Qué significa "dejar de adivinar la capacidad"?</li>
+<li>¿Qué es la repatriación a on premise y por qué la hacen algunas empresas?</li>
+<li>¿Por qué los datos de Cita Previa exigen especial cuidado al elegir proveedor de nube?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s9" aria-labelledby="tab-s9" hidden>
+<p class="meta">Sesión 9 de 41 · viernes 6 de noviembre de 2026 · 2 horas</p>
+<h2>Infraestructura de nube y arquitectura de nube</h2>
+<p class="chips"><span class="ce" title="Se ha diferenciado entre la infraestructura de nube y la arquitectura de nube, relacionándolos con los recursos de computación y la ejecución de aplicaciones web.">CE 2d</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Diferenciar infraestructura de nube y arquitectura de nube.</li>
+<li>Relacionar ambas con los recursos de computación y con la ejecución de aplicaciones web.</li>
+<li>Conocer las arquitecturas habituales de una aplicación web en la nube (tres capas, escalado horizontal, microservicios) y sus componentes.</li>
+<li>Conocer los pilares de un buen diseño en la nube (marcos <i>Well-Architected</i>).</li>
+<li>Dibujar la arquitectura de Cita Previa en la nube y justificar cada componente.</li>
+</ul>
+
+<h3>1. Dos palabras que se confunden</h3>
+<p>En el lenguaje del día a día se habla de "la infraestructura" y "la arquitectura" como si fueran lo mismo. No lo son, y el criterio de evaluación nos pide diferenciarlas.</p>
+<div class="tabla"><table>
+<tr><th></th><th>Infraestructura de nube</th><th>Arquitectura de nube</th></tr>
+<tr><td>Qué es</td><td>El conjunto de <b>recursos</b> físicos y virtuales que hacen posible la nube: servidores, almacenamiento, red, hipervisores, CPD, y el software que los gestiona.</td><td>El <b>diseño</b>: cómo se eligen, se combinan y se conectan esos recursos y servicios para que una aplicación concreta cumpla sus requisitos.</td></tr>
+<tr><td>Pregunta que responde</td><td>¿Con qué se construye?</td><td>¿Cómo se organiza para que funcione bien?</td></tr>
+<tr><td>Analogía</td><td>Los ladrillos, las vigas, las tuberías y el cableado</td><td>Los planos del edificio</td></tr>
+<tr><td>Ejemplos</td><td>Una VM de 2 vCPU, un disco de 50 GB, una red virtual, un balanceador</td><td>"Dos VM en zonas distintas detrás de un balanceador, con la base de datos gestionada replicada y los ficheros en almacenamiento de objetos servidos por una CDN"</td></tr>
+<tr><td>Quién la gestiona</td><td>El proveedor (la física) y el cliente (la virtual que crea)</td><td>El cliente: arquitectos y equipo de desarrollo y operaciones</td></tr>
+</table></div>
+<p>Dicho de otro modo: la infraestructura es la <b>materia prima</b> y la arquitectura es <b>la forma de usarla</b>. Con la misma infraestructura de AWS se puede construir una aplicación frágil y cara o una resistente y barata; la diferencia está en la arquitectura.</p>
+
+<h3>2. La infraestructura: recursos de computación</h3>
+<p>Los recursos de infraestructura que usa una aplicación se agrupan en cuatro familias, que veremos en detalle en las sesiones 10 y 11:</p>
+<ul>
+<li><b>Cómputo</b>: capacidad de procesamiento para ejecutar código. Máquinas virtuales (AWS EC2, Azure Virtual Machines, Google Compute Engine), contenedores (ECS, AKS, Cloud Run) y funciones (Lambda, Azure Functions).</li>
+<li><b>Almacenamiento</b>: discos de bloque, sistemas de ficheros compartidos y almacenamiento de objetos.</li>
+<li><b>Red</b>: redes virtuales, subredes, tablas de rutas, puertas de enlace a Internet, balanceadores, DNS, CDN.</li>
+<li><b>Bases de datos y otros servicios</b>: bases de datos gestionadas, cachés, colas de mensajes.</li>
+</ul>
+<p>La nube también divide la arquitectura conceptual en dos partes: el <b>front end</b> (lo que usa el cliente para acceder: navegador, app, consola) y el <b>back end</b> (los recursos del proveedor: cómputo, almacenamiento, red, seguridad, gestión), unidos por la red.</p>
+
+<h3>3. Cómo se ejecuta una aplicación web en la nube</h3>
+<p>Sigamos el camino de una petición de un paciente que abre <code>https://citaprevia.example.es</code>:</p>
+<ol>
+<li>El navegador pregunta al <b>DNS</b> la dirección del nombre. El DNS (Route 53, Azure DNS...) responde con la dirección de la CDN o del balanceador.</li>
+<li>Los ficheros estáticos (CSS, imágenes, JavaScript) los sirve la <b>CDN</b> desde el punto más cercano al usuario.</li>
+<li>Las peticiones dinámicas llegan al <b>balanceador de carga</b>, que termina la conexión HTTPS (tiene el certificado) y reparte las peticiones entre varias instancias de la aplicación que estén sanas.</li>
+<li>Un <b>cortafuegos de aplicación web</b> (WAF) puede filtrar ataques conocidos antes de que lleguen a la aplicación.</li>
+<li>La <b>capa de aplicación</b> (VM o contenedores en subredes privadas, sin IP pública) ejecuta el código. Si hace falta, consulta una <b>caché</b> (Redis) para no ir siempre a la base de datos.</li>
+<li>La <b>capa de datos</b>: una base de datos gestionada, en subred privada, con réplica en otra zona de disponibilidad. Los documentos se guardan en <b>almacenamiento de objetos</b>.</li>
+<li>Las tareas lentas (enviar el correo de confirmación, el SMS de recordatorio) se ponen en una <b>cola de mensajes</b> y las procesa un trabajador o una función aparte, para no hacer esperar al usuario.</li>
+<li>Todo envía métricas y registros al servicio de <b>monitorización</b>.</li>
+</ol>
+
+<h3>4. Arquitecturas habituales</h3>
+<h4>Arquitectura en tres capas</h4>
+<p>La más clásica para aplicaciones web: <b>presentación</b> (servidor web o front end), <b>lógica</b> (aplicación) y <b>datos</b> (base de datos). Cada capa en su subred, con reglas de red que solo permiten el tráfico necesario: Internet → balanceador → aplicación → base de datos, y nunca Internet → base de datos.</p>
+<pre><code>                  Internet
+                     │
+             ┌───────┴────────┐  subred pública
+             │  Balanceador   │
+             └───┬────────┬───┘
+      zona A     │        │      zona B        subredes privadas (aplicación)
+       ┌─────────┴──┐  ┌──┴─────────┐
+       │ App (VM/   │  │ App (VM/   │  ← grupo de autoescalado
+       │ contenedor)│  │ contenedor)│
+       └─────┬──────┘  └──────┬─────┘
+       ┌─────┴──────┐  ┌──────┴─────┐          subredes privadas (datos)
+       │ BD primaria│←→│ BD réplica │
+       └────────────┘  └────────────┘</code></pre>
+<h4>Escalado vertical y horizontal</h4>
+<ul>
+<li><b>Escalado vertical</b> (<i>scale up</i>): usar una máquina más grande. Sencillo, pero tiene un límite y suele exigir reiniciar.</li>
+<li><b>Escalado horizontal</b> (<i>scale out</i>): añadir más máquinas iguales detrás del balanceador. No tiene límite práctico y permite el <b>autoescalado</b>: un grupo de instancias crece cuando la CPU supera, por ejemplo, el 70 % y decrece cuando baja. Exige que la aplicación sea <b>sin estado</b> (<i>stateless</i>): nada importante se guarda en la máquina (sesiones en caché o base de datos, ficheros en almacenamiento de objetos), así cualquier instancia puede atender cualquier petición y se puede destruir sin perder nada.</li>
+</ul>
+<h4>Monolito, microservicios y nativo de nube</h4>
+<ul>
+<li><b>Monolito</b>: toda la aplicación en un único programa que se despliega entero. Sencillo al principio; difícil de escalar y de cambiar cuando crece.</li>
+<li><b>Microservicios</b>: la aplicación se divide en servicios pequeños e independientes (citas, pacientes, notificaciones), cada uno con sus datos, que se comunican por API o mensajes y se despliegan por separado, normalmente en contenedores. Más flexibles, pero mucho más complejos de operar.</li>
+<li><b>Nativo de nube</b> (<i>cloud native</i>): aplicaciones diseñadas para aprovechar la nube: contenedores, microservicios, infraestructura inmutable, API declarativas, automatización y observabilidad. Es la filosofía de la <i>Cloud Native Computing Foundation</i> (CNCF).</li>
+</ul>
+<h4>Diseñar para el fallo</h4>
+<p>Werner Vogels, director técnico de Amazon, lo resume así: <i>"todo falla, todo el tiempo"</i>. En la nube un servidor puede desaparecer en cualquier momento, así que la arquitectura debe asumirlo: varias instancias en varias zonas, comprobaciones de salud, reintentos, copias de seguridad automáticas y recuperación automática. Se habla de tratar los servidores como <b>ganado y no como mascotas</b> (<i>cattle, not pets</i>): no se cuida con cariño cada servidor; si uno enferma, se sustituye por otro idéntico creado automáticamente.</p>
+
+<h3>5. Pilares de una buena arquitectura</h3>
+<p>Los grandes proveedores publican marcos de buenas prácticas para revisar una arquitectura: <b>AWS Well-Architected Framework</b>, <b>Azure Well-Architected Framework</b> y el <b>Google Cloud Architecture Framework</b>. Coinciden en estos pilares:</p>
+<div class="tabla"><table>
+<tr><th>Pilar</th><th>Pregunta clave</th><th>Prácticas típicas</th></tr>
+<tr><td>Excelencia operativa</td><td>¿Podemos operar, cambiar y mejorar el sistema con seguridad?</td><td>Infraestructura como código, despliegues pequeños y frecuentes, monitorización, procedimientos documentados</td></tr>
+<tr><td>Seguridad</td><td>¿Protegemos datos, sistemas y activos?</td><td>Mínimo privilegio, cifrado en tránsito y en reposo, trazabilidad, redes privadas</td></tr>
+<tr><td>Fiabilidad</td><td>¿Se recupera de los fallos y cumple lo que promete?</td><td>Varias zonas, autoescalado, copias, pruebas de recuperación</td></tr>
+<tr><td>Eficiencia del rendimiento</td><td>¿Usa los recursos adecuados para la demanda?</td><td>Elegir el tipo de recurso correcto, cachés, CDN, medir</td></tr>
+<tr><td>Optimización de costes</td><td>¿Evita gastos innecesarios?</td><td>Ajuste de tamaño, reservas, apagado fuera de horario, etiquetado</td></tr>
+<tr><td>Sostenibilidad</td><td>¿Minimiza el impacto ambiental?</td><td>Uso eficiente, regiones con energía renovable, borrar lo que no se usa</td></tr>
+</table></div>
+<p>Muchas decisiones implican <b>compromisos</b> entre pilares: replicar la base de datos en otra zona mejora la fiabilidad pero duplica su coste.</p>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. ¿Infraestructura o arquitectura? <span class="dur">15 min</span></h4>
+<p>En parejas, clasificad cada afirmación como infraestructura o arquitectura y explicad por qué: (a) la región de Madrid tiene tres zonas de disponibilidad; (b) las instancias de la aplicación no tienen IP pública y solo aceptan tráfico del balanceador; (c) una VM <code>t3.medium</code> tiene 2 vCPU y 4 GB; (d) las sesiones se guardan en Redis para poder escalar horizontalmente; (e) el disco de la base de datos es SSD de 100 GB; (f) los recordatorios se envían mediante una cola para no bloquear la web; (g) el proveedor usa el hipervisor Nitro; (h) la base de datos tiene una réplica en otra zona.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 2. Diagrama de arquitectura de Cita Previa <span class="dur">45 min</span></h4>
+<p>En grupos de 3. Requisitos: 20.000 citas diarias con picos los lunes de 8 a 10 h, disponibilidad objetivo del 99,9 %, datos de salud (deben quedar en la UE y cifrados), envío de recordatorios por correo y SMS, panel de gestión solo accesible desde la red de los centros de salud, entornos de revisión y producción.</p>
+<ol>
+<li>Dibujad la arquitectura en <a href="https://app.diagrams.net/">diagrams.net</a> con la biblioteca de iconos del proveedor (menú <i>Más formas</i> → AWS o Azure): región, zonas, red virtual, subredes públicas y privadas, balanceador, grupo de autoescalado o servicio de contenedores, base de datos, almacenamiento de objetos, cola, CDN y monitorización.</li>
+<li>Numerad el camino de una petición de un paciente, como en el apartado 3.</li>
+<li>Al lado, una tabla con cada componente: servicio concreto del proveedor, recurso de infraestructura que usa, qué requisito cubre y a qué pilar contribuye.</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 3. Revisión cruzada con el marco Well-Architected <span class="dur">20 min</span></h4>
+<p>Intercambiad el diagrama con otro grupo. Para cada pilar, escribid una pregunta al otro grupo sobre su diseño y un punto débil que hayáis detectado (por ejemplo: "¿qué pasa si cae la zona A?", "¿quién puede acceder a la base de datos?", "¿cuánto cuesta el entorno de revisión?"). Devolved la revisión y corregid vuestro diagrama con lo que os hayan señalado.</p>
+<p class="entrega">Entrega en Aules: clasificación de la actividad 1, diagrama definitivo con su tabla y la revisión que hicisteis al otro grupo.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>Explica con tus palabras la diferencia entre infraestructura y arquitectura de nube.</li>
+<li>¿Qué papel tiene el balanceador de carga en una aplicación web?</li>
+<li>¿Por qué el escalado horizontal exige que la aplicación no guarde estado?</li>
+<li>¿Qué quiere decir tratar los servidores "como ganado y no como mascotas"?</li>
+<li>Pon un ejemplo de conflicto entre el pilar de fiabilidad y el de costes.</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s10" aria-labelledby="tab-s10" hidden>
+<p class="meta">Sesión 10 de 41 · lunes 9 de noviembre de 2026 · 2 horas</p>
+<h2>Componentes y aprovisionamiento: de la máquina física a la máquina virtual</h2>
+<p class="chips"><span class="ce" title="Se ha determinado el conjunto de componentes hardware y software básico de la infraestructura en la nube, relacionándolo con el aprovisionamiento de recursos virtuales y la implementación de cargas de trabajo en la nube.">CE 2e</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Identificar los componentes hardware básicos de la infraestructura de nube: servidores, CPU, memoria, almacenamiento y red.</li>
+<li>Identificar los componentes software: hipervisor, sistema operativo anfitrión, plano de control, imágenes y agentes.</li>
+<li>Explicar la virtualización y cómo convierte recursos físicos en recursos virtuales.</li>
+<li>Describir el proceso de aprovisionamiento de una máquina virtual y cómo se implementa una carga de trabajo con cloud-init.</li>
+<li>Aprovisionar máquinas en Proxmox y en la nube a partir de plantillas, sin instalación manual.</li>
+</ul>
+
+<h3>1. Componentes hardware</h3>
+<p>Aunque el cliente de la nube no ve el hardware, todo se apoya en él, y sus características explican las opciones que ofrece el proveedor.</p>
+<h4>Servidor</h4>
+<p>Un servidor de CPD se monta en <b>rack</b> (armario estándar de 19 pulgadas, con alturas medidas en unidades de 1U = 4,45 cm) o en chasis <b>blade</b> que comparten alimentación y red. Tiene fuentes de alimentación y ventiladores redundantes, gestión remota fuera de banda (iDRAC, iLO, IPMI) para encenderlo o reinstalarlo sin ir físicamente, y componentes pensados para funcionar 24 horas durante años.</p>
+<h4>Procesador (CPU)</h4>
+<ul>
+<li><b>Sockets, núcleos e hilos</b>: un servidor puede tener 1 o 2 sockets (procesadores físicos), cada uno con decenas de núcleos (hasta más de 100 en los modelos actuales), y cada núcleo puede ejecutar 2 hilos con SMT (Hyper-Threading).</li>
+<li><b>Arquitecturas</b>: x86-64 (Intel Xeon, AMD EPYC) y, cada vez más, ARM (AWS Graviton, Ampere), que ofrecen mejor rendimiento por vatio.</li>
+<li><b>Extensiones de virtualización</b>: Intel VT-x y AMD-V permiten que el hipervisor ejecute máquinas virtuales de forma eficiente. Sin ellas, la virtualización sería mucho más lenta.</li>
+<li>En la nube, la unidad que se vende es la <b>vCPU</b>, que normalmente corresponde a un hilo de un núcleo físico.</li>
+</ul>
+<h4>Memoria</h4>
+<p>RAM con corrección de errores (<b>ECC</b>), en cantidades de cientos de GB o varios TB por servidor. En servidores con varios sockets, cada procesador accede más rápido a su memoria cercana (<b>NUMA</b>), algo que el hipervisor tiene en cuenta al colocar las VM.</p>
+<h4>Almacenamiento</h4>
+<ul>
+<li><b>Discos locales</b>: HDD (baratos y lentos), SSD SATA/SAS y SSD <b>NVMe</b> (muy rápidos). Se agrupan en <b>RAID</b> (1, 5, 6, 10) para tolerar fallos.</li>
+<li><b>Almacenamiento en red</b>: cabinas <b>SAN</b> (bloques por Fibre Channel o iSCSI) y <b>NAS</b> (ficheros por NFS/SMB).</li>
+<li><b>Almacenamiento distribuido definido por software</b>: muchos servidores con discos locales forman un único sistema replicado (Ceph en Proxmox y OpenStack; sistemas propios en los grandes proveedores). Es la base de los discos virtuales de la nube.</li>
+</ul>
+<h4>Red</h4>
+<p>Tarjetas de red de 10, 25, 100 Gb/s o más, conmutadores organizados en topologías <i>leaf-spine</i> para que cualquier servidor hable con cualquier otro con la misma latencia, y tarjetas inteligentes (<b>SmartNIC</b>, DPU) que descargan del procesador el trabajo de la red virtual, el cifrado y el almacenamiento, como las tarjetas Nitro de AWS.</p>
+
+<h3>2. Componentes software</h3>
+<div class="tabla"><table>
+<tr><th>Componente</th><th>Función</th><th>Ejemplos</th></tr>
+<tr><td>Firmware y gestión fuera de banda</td><td>Arranque, control remoto del servidor</td><td>UEFI, IPMI, iDRAC, iLO</td></tr>
+<tr><td>Hipervisor</td><td>Crear y ejecutar máquinas virtuales aisladas</td><td>KVM, Xen, VMware ESXi, Hyper-V, Nitro</td></tr>
+<tr><td>Red definida por software (SDN)</td><td>Redes virtuales aisladas por cliente sobre la red física</td><td>Open vSwitch, VXLAN, Linux bridge</td></tr>
+<tr><td>Almacenamiento definido por software</td><td>Discos virtuales replicados sobre muchos servidores</td><td>Ceph, ZFS, vSAN</td></tr>
+<tr><td>Plataforma de gestión (plano de control)</td><td>Autoservicio, API, planificación, permisos, medición</td><td>OpenStack, Proxmox VE, vCenter, el software propio de AWS/Azure/Google</td></tr>
+<tr><td>Imágenes</td><td>Plantillas de disco con un sistema operativo listo para arrancar</td><td>AMI de AWS, imágenes cloud de Ubuntu, plantillas de Proxmox</td></tr>
+<tr><td>Agentes dentro de la VM</td><td>Configuración inicial y comunicación con la plataforma</td><td>cloud-init, qemu-guest-agent, agentes de monitorización</td></tr>
+</table></div>
+
+<h3>3. Virtualización: de lo físico a lo virtual</h3>
+<p>La <b>virtualización</b> crea versiones lógicas (virtuales) de recursos físicos. Gracias a ella, un servidor físico de 128 hilos y 1 TB de RAM se puede repartir en decenas de máquinas virtuales de distintos tamaños, cada una con su propio sistema operativo, aislada de las demás.</p>
+<h4>Tipos de hipervisor</h4>
+<ul>
+<li><b>Tipo 1 o nativo</b> (<i>bare metal</i>): se ejecuta directamente sobre el hardware. Es el que se usa en CPD y nubes: ESXi, Hyper-V, Xen, y KVM (que convierte el propio kernel de Linux en hipervisor; Proxmox VE lo usa).</li>
+<li><b>Tipo 2 o alojado</b>: se ejecuta como una aplicación sobre un sistema operativo: VirtualBox, VMware Workstation. Para escritorio y pruebas.</li>
+</ul>
+<h4>Qué recibe una máquina virtual</h4>
+<ul>
+<li><b>vCPU</b>: hilos virtuales que el planificador del hipervisor asigna a núcleos reales.</li>
+<li><b>Memoria</b> virtual respaldada por RAM física.</li>
+<li><b>Discos virtuales</b>: ficheros (qcow2, vmdk) o volúmenes en un almacenamiento local o distribuido.</li>
+<li><b>Tarjetas de red virtuales</b> conectadas a un puente (<i>bridge</i>) o a una red definida por software. Los dispositivos <b>virtio</b> son paravirtualizados: el sistema invitado sabe que es virtual y se comunica con el hipervisor de forma más eficiente.</li>
+</ul>
+<h4>Sobresuscripción (overcommit)</h4>
+<p>Como las máquinas rara vez usan el 100 % de su CPU a la vez, un hipervisor puede asignar más vCPU que hilos físicos tiene (por ejemplo, 4:1). Con la memoria se hace con más cuidado, porque si se agota el rendimiento cae drásticamente. Los proveedores de nube controlan esta proporción; en algunos tipos de instancia la CPU es compartida y "a ráfagas" (<b>burstable</b>, como las familias <code>t</code> de AWS o <code>B</code> de Azure): baratas, pero solo pueden usar el 100 % de la CPU durante un tiempo limitado.</p>
+<h4>Familias de instancias</h4>
+<p>Los proveedores ofrecen tamaños de máquina agrupados por su proporción de CPU y memoria:</p>
+<div class="tabla"><table>
+<tr><th>Familia</th><th>Proporción</th><th>Uso</th><th>Ejemplos</th></tr>
+<tr><td>Propósito general</td><td>Equilibrada (≈ 1 vCPU : 4 GB)</td><td>Servidores web, aplicaciones</td><td>AWS m7, Azure D</td></tr>
+<tr><td>Optimizadas para cómputo</td><td>Más CPU (≈ 1:2)</td><td>Procesamiento, compilación, servidores con mucha carga</td><td>AWS c7, Azure F</td></tr>
+<tr><td>Optimizadas para memoria</td><td>Más RAM (≈ 1:8)</td><td>Bases de datos, cachés</td><td>AWS r7, Azure E</td></tr>
+<tr><td>Ráfagas</td><td>CPU compartida con créditos</td><td>Cargas pequeñas y variables, pruebas</td><td>AWS t3/t4g, Azure B</td></tr>
+<tr><td>Aceleradas</td><td>Con GPU u otros aceleradores</td><td>Inteligencia artificial, vídeo</td><td>AWS g/p, Azure N</td></tr>
+</table></div>
+
+<h3>4. Aprovisionar recursos virtuales</h3>
+<p><b>Aprovisionar</b> es preparar y entregar un recurso listo para usar. Cuando pedimos una VM, el plano de control:</p>
+<ol>
+<li><b>Autentica y autoriza</b> la petición (¿quién eres?, ¿puedes crear esto?, ¿te queda cuota?).</li>
+<li><b>Planifica</b>: elige un servidor físico con capacidad libre en la zona pedida.</li>
+<li><b>Crea el disco</b> a partir de la <b>imagen</b> elegida (copia o clonación rápida).</li>
+<li><b>Configura la red</b>: interfaz virtual, IP privada, IP pública si se pidió, reglas de cortafuegos.</li>
+<li><b>Arranca la VM</b> en el hipervisor.</li>
+<li>Dentro de la VM, <b>cloud-init</b> lee los metadatos y los datos de usuario y hace la configuración inicial.</li>
+<li>Empieza la <b>medición</b> para la facturación.</li>
+</ol>
+<p>Todo esto tarda menos de un minuto. En on premise tradicional, los pasos equivalentes (pedir el servidor, recibirlo, instalarlo en el rack, cablearlo, instalar el sistema desde un USB, configurar la red a mano) tardaban semanas.</p>
+<h4>Imágenes y plantillas</h4>
+<p>No se instala el sistema operativo desde cero cada vez: se parte de una <b>imagen</b> preparada. Las distribuciones publican <b>imágenes cloud</b> (por ejemplo, <code>noble-server-cloudimg-amd64.img</code> de Ubuntu 24.04) sin usuarios ni claves, que se personalizan en el primer arranque. En Proxmox, una VM se convierte en <b>plantilla</b> y se clona (clon completo o enlazado). Las organizaciones pueden crear sus propias <b>imágenes de oro</b> con su software y sus configuraciones de seguridad (con herramientas como Packer).</p>
+<h4>cloud-init: implementar la carga de trabajo en el primer arranque</h4>
+<p><b>cloud-init</b> es el estándar de facto para configurar máquinas en su primer arranque. Lo usan AWS, Azure, Google, OpenStack y Proxmox. Recibe unos <b>datos de usuario</b> (<i>user data</i>) en formato <code>#cloud-config</code> (YAML) con lo que debe hacer:</p>
+<p class="fichero">user-data.yaml</p>
+<pre><code>#cloud-config
+hostname: citaprevia-web-1
+users:
+  - name: despliegue
+    groups: [sudo]
+    shell: /bin/bash
+    sudo: "ALL=(ALL) NOPASSWD:ALL"
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAA... alumno@portatil
+package_update: true
+packages:
+  - nginx
+write_files:
+  - path: /var/www/html/index.html
+    content: |
+      &lt;h1&gt;Cita Previa - servidor aprovisionado con cloud-init&lt;/h1&gt;
+runcmd:
+  - systemctl enable --now nginx</code></pre>
+<p>Con esto, la máquina arranca ya con el usuario, la clave SSH, los paquetes y el servicio web funcionando: la <b>carga de trabajo queda implementada</b> sin que nadie entre a configurarla. Es el primer paso hacia la automatización completa que haremos con Terraform (unidad 6) y Ansible (unidad 7).</p>
+<h4>Cargas de trabajo en la nube</h4>
+<p>Una <b>carga de trabajo</b> es una aplicación o proceso con sus recursos asociados. Al llevarla a la nube hay que decidir qué recursos necesita (cómputo, memoria, almacenamiento, red), cómo se instalará (imagen, cloud-init, contenedor) y cómo crecerá (vertical, horizontal). Las estrategias de migración se suelen resumir en las "R": <b>rehost</b> (llevar la VM tal cual, <i>lift and shift</i>), <b>replatform</b> (pequeños cambios, por ejemplo usar una base de datos gestionada), <b>refactor</b> (rediseñarla para la nube, por ejemplo en contenedores), <b>repurchase</b> (sustituirla por un SaaS), <b>retain</b> (dejarla on premise) y <b>retire</b> (eliminarla).</p>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Del hardware físico al virtual en Proxmox <span class="dur">15 min</span></h4>
+<p>En la interfaz web del Proxmox del centro, con vuestro usuario, anotad: CPU del nodo (modelo, sockets, núcleos, hilos), memoria total y usada, almacenamientos definidos y su tipo, puentes de red (<code>vmbr0</code>...). Calculad la proporción de vCPU asignadas a todas las VM frente a hilos físicos. ¿Hay sobresuscripción?</p>
+</div>
+<div class="actividad">
+<h4>Actividad 2. Aprovisionar desde plantilla con cloud-init en Proxmox <span class="dur">35 min</span></h4>
+<p>En parejas. El profesor ha preparado la plantilla <code>ubuntu-2404-cloudinit</code>.</p>
+<ol>
+<li>Clonad la plantilla (clon completo) con el nombre <code>s10-apellido1-apellido2</code> en vuestro pool.</li>
+<li>En la pestaña <i>Cloud-Init</i>: usuario <code>despliegue</code>, vuestra clave pública SSH (generadla con <code>ssh-keygen -t ed25519</code> si no la tenéis), IP por DHCP. Ajustad a 1 vCPU y 1 GB.</li>
+<li>Arrancad y cronometrad hasta que podéis entrar por SSH.</li>
+<li>Dentro: <code>cloud-init status --long</code>, <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code>, <code>ip a</code>. Comparad lo que ve la VM con lo que tiene el nodo físico. ¿Qué modelo de CPU y qué tipo de disco y de tarjeta de red ve?</li>
+<li>Consultad los registros <code>/var/log/cloud-init.log</code> y <code>/var/log/cloud-init-output.log</code>: ¿qué hizo cloud-init?</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 3. La misma carga de trabajo en la nube <span class="dur">30 min</span></h4>
+<p>En el laboratorio de nube, lanzad una VM Ubuntu 24.04 pequeña pegando el fichero <code>user-data.yaml</code> del apartado 4 (con vuestra clave) en <i>Detalles avanzados → Datos de usuario</i>. Abrid el puerto 80 solo a vuestra IP. Cuando arranque, abrid su IP pública en el navegador. Comprobad que el servidor web funciona sin haber entrado por SSH, y después entrad y revisad los registros de cloud-init. Terminad la instancia al acabar.</p>
+<p>Completad una tabla comparando Proxmox y nube: tiempo de aprovisionamiento, cómo se elige el tamaño, de dónde sale la imagen, cómo se pasa la configuración, cómo se accede y qué tuvisteis que hacer a mano.</p>
+<p class="entrega">Entrega en Aules: ficha del nodo, capturas y salidas de las actividades 2 y 3, y la tabla comparativa. Borrad la VM de Proxmox al terminar, salvo que el profesor indique lo contrario.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué diferencia hay entre un hipervisor de tipo 1 y uno de tipo 2? ¿Cuál usa Proxmox?</li>
+<li>¿Qué es una vCPU y qué relación tiene con los núcleos físicos?</li>
+<li>¿Qué pasos sigue el plano de control para aprovisionar una VM?</li>
+<li>¿Para qué sirve cloud-init? ¿Qué información recibe?</li>
+<li>¿Qué diferencia hay entre rehost y refactor al migrar una carga de trabajo?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s11" aria-labelledby="tab-s11" hidden>
+<p class="meta">Sesión 11 de 41 · viernes 13 de noviembre de 2026 · 2 horas</p>
+<h2>Servidores, redes, almacenamiento y software en la nube</h2>
+<p class="chips"><span class="ce" title="Se han caracterizado los componentes de la infraestructura de nube, especificando lo relativo a servidores, redes, almacenamiento y software.">CE 2f</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Caracterizar los servidores virtuales de la nube: tipos, imágenes, ciclo de vida y opciones.</li>
+<li>Caracterizar las redes en la nube: red privada virtual, subredes, rutas, puertas de enlace, grupos de seguridad, IP y DNS.</li>
+<li>Caracterizar los tipos de almacenamiento: bloque, fichero y objeto, y sus clases.</li>
+<li>Caracterizar el software de la infraestructura: sistemas operativos, servicios gestionados y software de gestión.</li>
+<li>Construir una pequeña infraestructura de red con una máquina pública y otra privada, y documentarla en una ficha técnica.</li>
+</ul>
+
+<h3>1. Servidores (cómputo)</h3>
+<p>El servidor virtual es el recurso básico de la nube: AWS lo llama <b>instancia EC2</b>, Azure <b>máquina virtual</b> y Google <b>instancia de Compute Engine</b>. Sus características principales son:</p>
+<ul>
+<li><b>Tipo o tamaño</b>: número de vCPU, memoria, rendimiento de red y, a veces, discos locales o GPU (sesión 10).</li>
+<li><b>Imagen</b>: el sistema operativo de partida (AMI en AWS). Hay imágenes oficiales, del marketplace (con software preinstalado, a veces con licencia de pago) y propias.</li>
+<li><b>Ubicación</b>: región y zona de disponibilidad.</li>
+<li><b>Red</b>: en qué subred está, qué IP privada tiene y si tiene IP pública.</li>
+<li><b>Seguridad</b>: grupos de seguridad (cortafuegos), par de claves SSH, rol o identidad para acceder a otros servicios sin guardar contraseñas en la máquina.</li>
+<li><b>Datos de usuario</b> para cloud-init.</li>
+</ul>
+<h4>Ciclo de vida</h4>
+<pre><code>pendiente → en ejecución ⇄ detenida → terminada (borrada)
+                  │
+                  └→ reinicio</code></pre>
+<p>Detenida: no se paga el cómputo, pero sí los discos. Terminada: se borra la máquina y, por defecto, su disco raíz. Una máquina en la nube es <b>efímera</b>: puede desaparecer, así que los datos importantes no deben estar solo en ella.</p>
+<h4>Otras formas de cómputo</h4>
+<p>Además de VM: <b>servidores físicos dedicados</b> (<i>bare metal</i>) para cargas que no admiten virtualización o necesitan licencias por núcleo físico; <b>grupos de autoescalado</b> que mantienen un número de VM idénticas; <b>contenedores gestionados</b> y <b>funciones serverless</b> (unidad 4).</p>
+
+<h3>2. Redes</h3>
+<h4>Red privada virtual (VPC / VNet)</h4>
+<p>Cada cliente crea sus propias redes privadas aisladas dentro de la nube: <b>VPC</b> (<i>Virtual Private Cloud</i>) en AWS y Google, <b>VNet</b> en Azure. Se define con un rango de direcciones privadas en notación CIDR (por ejemplo, <code>10.0.0.0/16</code>, 65.536 direcciones) y está limitada a una región.</p>
+<h4>Subredes</h4>
+<p>La VPC se divide en <b>subredes</b> (por ejemplo, <code>10.0.1.0/24</code>, 256 direcciones, de las que el proveedor reserva algunas). En AWS cada subred está en una sola zona de disponibilidad. Se distinguen:</p>
+<ul>
+<li><b>Subred pública</b>: su tabla de rutas envía el tráfico de Internet (<code>0.0.0.0/0</code>) a una <b>puerta de enlace de Internet</b> (<i>Internet Gateway</i>). Las máquinas con IP pública son alcanzables desde Internet. Aquí van los balanceadores y, como mucho, un bastión.</li>
+<li><b>Subred privada</b>: sin ruta directa desde Internet. Si sus máquinas necesitan salir (por ejemplo, a descargar actualizaciones), lo hacen a través de una <b>puerta de enlace NAT</b> situada en la subred pública, que permite salir pero no entrar. Aquí van la aplicación y la base de datos.</li>
+</ul>
+<h4>Tablas de rutas, direcciones IP y DNS</h4>
+<ul>
+<li><b>Tabla de rutas</b>: decide adónde va el tráfico según su destino. Todas incluyen una ruta local para la comunicación dentro de la VPC.</li>
+<li><b>IP privada</b>: dentro de la VPC, fija durante la vida de la máquina.</li>
+<li><b>IP pública</b>: puede ser dinámica (cambia al detener la máquina) o <b>elástica/estática</b> (reservada, se mantiene y se puede mover). En muchos proveedores las IPv4 públicas se cobran porque son escasas.</li>
+<li><b>DNS</b>: servicio de nombres gestionado (Route 53, Azure DNS, Cloud DNS) para dominios públicos y privados.</li>
+</ul>
+<h4>Seguridad de red</h4>
+<div class="tabla"><table>
+<tr><th></th><th>Grupo de seguridad (AWS) / NSG (Azure)</th><th>ACL de red (AWS)</th></tr>
+<tr><td>Se aplica a</td><td>La interfaz de la máquina (o a una subred en Azure)</td><td>La subred</td></tr>
+<tr><td>Tipo de reglas</td><td>Solo de permiso (todo lo no permitido se deniega)</td><td>Permiso y denegación, evaluadas en orden</td></tr>
+<tr><td>Estado</td><td><b>Con estado</b>: si se permite una entrada, su respuesta sale automáticamente</td><td>Sin estado: hay que permitir la entrada y la respuesta</td></tr>
+</table></div>
+<p>Una buena práctica es que las reglas hagan referencia a otros grupos en lugar de a direcciones: "la base de datos acepta el puerto 5432 solo desde el grupo de la aplicación".</p>
+<h4>Conectar redes</h4>
+<ul>
+<li><b>Peering</b>: conecta dos VPC como si fueran una.</li>
+<li><b>VPN sitio a sitio</b>: túnel cifrado por Internet entre la VPC y la red on premise.</li>
+<li><b>Conexión dedicada</b> (AWS Direct Connect, Azure ExpressRoute): enlace privado con el proveedor, más estable y rápido. Base de la nube híbrida (unidad 3).</li>
+<li><b>Balanceadores de carga</b> de capa 7 (HTTP, con reglas por ruta y certificados) y de capa 4 (TCP/UDP), y <b>CDN</b>.</li>
+</ul>
+
+<h3>3. Almacenamiento</h3>
+<p>Hay tres tipos de almacenamiento, y es importante elegir bien:</p>
+<div class="tabla"><table>
+<tr><th></th><th>Bloque</th><th>Fichero</th><th>Objeto</th></tr>
+<tr><td>Qué es</td><td>Un disco virtual que la máquina formatea y monta</td><td>Un sistema de ficheros compartido por red</td><td>Un almacén de objetos (datos + metadatos + clave) accesible por HTTP</td></tr>
+<tr><td>Acceso</td><td>Una máquina (normalmente)</td><td>Muchas máquinas a la vez (NFS, SMB)</td><td>Cualquiera con permiso, por API REST</td></tr>
+<tr><td>Servicios</td><td>AWS EBS, Azure Managed Disks, Google Persistent Disk</td><td>AWS EFS/FSx, Azure Files, Google Filestore</td><td>AWS S3, Azure Blob Storage, Google Cloud Storage</td></tr>
+<tr><td>Rendimiento</td><td>El más rápido y con menor latencia</td><td>Intermedio</td><td>Mayor latencia, pero escala casi sin límite</td></tr>
+<tr><td>Se paga por</td><td>GB aprovisionados (y a veces IOPS)</td><td>GB usados</td><td>GB usados, peticiones y transferencia</td></tr>
+<tr><td>Usos</td><td>Disco del sistema, bases de datos</td><td>Carpetas compartidas, contenido web común</td><td>Copias, imágenes, documentos, ficheros estáticos, lagos de datos</td></tr>
+</table></div>
+<h4>Detalles de cada tipo</h4>
+<ul>
+<li><b>Bloque</b>: se elige tipo (SSD de propósito general, SSD de alto rendimiento con IOPS garantizadas, HDD para grandes volúmenes secuenciales), tamaño y cifrado. Se pueden hacer <b>instantáneas</b> (<i>snapshots</i>) incrementales para copias o para crear discos nuevos. Además existe el <b>almacenamiento de instancia</b>: discos locales del servidor físico, muy rápidos pero que se pierden al detener la máquina.</li>
+<li><b>Objeto</b>: los objetos se guardan en <b>contenedores</b> (<i>buckets</i>) con nombres únicos. Durabilidad muy alta (S3 anuncia "once nueves", 99,999999999 %, replicando en varias zonas). Tiene <b>clases de almacenamiento</b> según la frecuencia de acceso: estándar, acceso poco frecuente y archivo (muy barato de guardar, lento y caro de recuperar), con <b>reglas de ciclo de vida</b> que mueven los objetos de clase automáticamente. Admite <b>versionado</b> y bloqueo contra borrado (útil frente a ransomware). Riesgo clásico: dejar un bucket <b>público</b> por error.</li>
+</ul>
+<h4>Bases de datos gestionadas</h4>
+<p>Aunque técnicamente son un servicio, forman parte de la capa de datos: AWS RDS/Aurora, Azure SQL/Database for PostgreSQL, Cloud SQL. El proveedor gestiona la instalación, los parches, las copias, la réplica en otra zona y la recuperación a un momento concreto; el cliente gestiona el esquema, los datos y los accesos.</p>
+
+<h3>4. Software de la infraestructura</h3>
+<ul>
+<li><b>Sistemas operativos</b> de las imágenes: distribuciones Linux (Ubuntu, Debian, Red Hat, Amazon Linux) y Windows Server (con licencia incluida en el precio o traída por el cliente).</li>
+<li><b>Software de base y middleware</b>: servidores web, bases de datos, motores de contenedores.</li>
+<li><b>Servicios gestionados</b> que sustituyen software que antes se instalaba a mano: bases de datos, colas, cachés, balanceadores, DNS.</li>
+<li><b>Software de gestión</b>: consola, CLI, API, infraestructura como código, gestión de identidades (IAM), monitorización (CloudWatch, Azure Monitor), registros de auditoría (CloudTrail, Activity Log), gestión de secretos (Secrets Manager, Key Vault) y de claves de cifrado (KMS).</li>
+<li><b>Licencias</b>: incluidas en la tarifa por hora, traídas por el cliente (BYOL) o del marketplace.</li>
+</ul>
+
+<h3>5. La misma infraestructura en Proxmox</h3>
+<div class="tabla"><table>
+<tr><th>Nube pública</th><th>Proxmox (nube privada del centro)</th></tr>
+<tr><td>Instancia / VM</td><td>VM KVM o contenedor LXC</td></tr>
+<tr><td>Imagen / AMI</td><td>Plantilla</td></tr>
+<tr><td>VPC y subredes</td><td>Puentes Linux (<code>vmbr</code>), VLAN, zonas y VNets SDN</td></tr>
+<tr><td>Grupo de seguridad</td><td>Cortafuegos de Proxmox por VM</td></tr>
+<tr><td>Disco EBS</td><td>Disco en almacenamiento LVM-thin, ZFS o Ceph</td></tr>
+<tr><td>Almacenamiento de objetos</td><td>No incluido (se puede montar MinIO o Ceph RGW)</td></tr>
+<tr><td>IAM</td><td>Usuarios, grupos, roles y permisos por pool</td></tr>
+</table></div>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Red con subred pública y privada <span class="dur">45 min</span></h4>
+<p>En parejas, en el laboratorio de nube (AWS; en Azure el equivalente es una VNet con dos subredes y NSG). Etiquetad todo con <code>Proyecto=s11-vuestrosnombres</code>.</p>
+<ol>
+<li>Cread una VPC <code>10.20.0.0/16</code> (opción "Solo VPC", para crear cada pieza a mano).</li>
+<li>Cread dos subredes en la misma zona: <code>10.20.1.0/24</code> (pública) y <code>10.20.2.0/24</code> (privada).</li>
+<li>Cread una puerta de enlace de Internet, asociadla a la VPC y cread una tabla de rutas para la subred pública con la ruta <code>0.0.0.0/0</code> hacia ella.</li>
+<li>Grupos de seguridad: <code>sg-bastion</code> (SSH solo desde vuestra IP) y <code>sg-privada</code> (SSH solo desde <code>sg-bastion</code>).</li>
+<li>Lanzad una VM pequeña en la subred pública con IP pública (bastión) y otra en la privada sin IP pública.</li>
+<li>Entrad al bastión y, desde él, a la privada: <code>ssh -J ubuntu@IP_PUBLICA ubuntu@10.20.2.X</code> (con el agente SSH cargado con vuestra clave).</li>
+<li>Desde la privada, intentad <code>curl -I https://ubuntu.com</code>. ¿Por qué falla? ¿Qué haría falta? (No creéis la NAT: es de pago por hora.)</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 2. Almacenamiento de bloque y de objeto <span class="dur">20 min</span></h4>
+<ol>
+<li>Cread un volumen de 1 GB en la misma zona, conectadlo a la VM pública, formateadlo (<code>sudo mkfs.ext4 /dev/nvme1n1</code>; comprobad el nombre con <code>lsblk</code>), montadlo y escribid un fichero. Haced una instantánea.</li>
+<li>Cread un bucket con un nombre único, subid un fichero desde la consola y otro desde el terminal del laboratorio (<code>aws s3 cp</code>). Intentad abrir la URL del objeto en el navegador: ¿qué ocurre y por qué es lo correcto?</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 3. Ficha técnica y limpieza <span class="dur">15 min</span></h4>
+<p>Redactad una ficha técnica de la infraestructura creada con una tabla por tipo de componente (servidores, red, almacenamiento, software): identificador, características, ubicación, coste aproximado por hora o mes y función. Añadid un esquema de red. Después <b>borrad todo</b> en orden (instancias, volúmenes e instantáneas, bucket, grupos de seguridad, subredes, puerta de enlace, VPC) y comprobadlo filtrando por la etiqueta.</p>
+<p class="entrega">Entrega en Aules: capturas de la actividad 1 y 2 (incluida la conexión a la VM privada) y la ficha técnica con el esquema.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué diferencia una subred pública de una privada?</li>
+<li>¿Qué hace una puerta de enlace NAT y por qué no permite conexiones entrantes?</li>
+<li>¿Qué significa que un grupo de seguridad sea "con estado"?</li>
+<li>¿Qué tipo de almacenamiento usarías para: el disco de una base de datos, los documentos escaneados de los pacientes, una carpeta compartida entre tres servidores web?</li>
+<li>¿Qué pasa con los datos de un almacenamiento de instancia cuando se detiene la máquina?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden>
+<h2>Recursos y glosario</h2>
 <h3>Referencias</h3>
 <ul>
 <li>Definición NIST de computación en la nube (SP 800-145): <a href="https://csrc.nist.gov/pubs/sp/800/145/final">csrc.nist.gov</a></li>
@@ -238,7 +832,7 @@ runcmd:
 <tr><td>VPC</td><td>Red privada virtual aislada dentro de la nube pública.</td></tr>
 <tr><td>Almacenamiento de bloque, archivo y objeto</td><td>Disco virtual (EBS), carpeta compartida (EFS/NFS) y almacén de objetos por HTTP (S3).</td></tr>
 </table></div>
-</section>
-</main>
-<footer class="pie">Módulo 5165 Metodología DevOps: preparación de entornos de despliegue. Curso de especialización en Despliegue de productos software en contenedores (RD 144/2026). Curso 2026-2027.</footer>
-<script src="assets/pestanas.js"></script></body></html>
+</section></main>
+<script src="assets/pestanas.js"></script>
+<footer class="pie">Módulo 5165. Metodología DevOps: preparación de entornos de despliegue. Curso de especialización en Despliegue de productos software en contenedores. IES Caminàs, curso 2026-2027.</footer>
+</body></html>

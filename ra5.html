@@ -2,232 +2,765 @@
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RA5. Repositorios de código, calidad y seguridad | Módulo 5165</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/estilos.css">
-</head><body style="--ra:var(--ra5)">
-
-<header class="cab"><div class="dentro"><div class="ruta"><a href="index.html">Módulo 5165</a> / <a href="calendario.html">Calendario</a></div><h1>Unidad 5. Repositorios de código, calidad y seguridad</h1><p>Crear y proteger el acceso a los repositorios y comprobar automáticamente la calidad y la seguridad de cada cambio antes de desplegarlo.</p></div></header>
-<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Sesiones de la unidad 5"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación<small>RA y criterios</small></button><button role="tab" id="tab-s23" data-panel="s23">Sesión 23<small>8 ene</small></button><button role="tab" id="tab-s24" data-panel="s24">Sesión 24<small>11 ene</small></button><button role="tab" id="tab-s25" data-panel="s25">Sesión 25<small>15 ene</small></button><button role="tab" id="tab-s26" data-panel="s26">Sesión 26<small>18 ene</small></button><button role="tab" id="tab-s27" data-panel="s27">Sesión 27<small>22 ene</small></button><button role="tab" id="tab-s28" data-panel="s28">Sesión 28<small>25 ene</small></button><button role="tab" id="tab-s29" data-panel="s29">Sesión 29<small>29 ene</small></button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos<small>y glosario</small></button></div></nav>
-<main>
-<section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
-<p class="meta">Unidad 5 de 7, 7 sesiones, 14 horas</p>
+</head><body style="--ra:#9a6a0b">
+<header class="cab"><div class="dentro"><nav class="menu" aria-label="Secciones"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="ra1.html">RA1</a><a href="ra2.html">RA2</a><a href="ra3.html">RA3</a><a href="ra4.html">RA4</a><a href="ra5.html" aria-current="page">RA5</a><a href="ra6.html">RA6</a><a href="ra7.html">RA7</a></nav>
+<h1>Unidad 5. Repositorios de código, calidad y seguridad</h1><p>Controlar quién toca el código y validar cada cambio antes de desplegarlo.</p></div></header>
+<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Sesiones de la unidad 5"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-s23" data-panel="s23">Sesión 23<small>8 ene</small></button><button role="tab" id="tab-s24" data-panel="s24">Sesión 24<small>11 ene</small></button><button role="tab" id="tab-s25" data-panel="s25">Sesión 25<small>15 ene</small></button><button role="tab" id="tab-s26" data-panel="s26">Sesión 26<small>18 ene</small></button><button role="tab" id="tab-s27" data-panel="s27">Sesión 27<small>22 ene</small></button><button role="tab" id="tab-s28" data-panel="s28">Sesión 28<small>25 ene</small></button><button role="tab" id="tab-s29" data-panel="s29">Sesión 29<small>29 ene</small></button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
+<main><section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
+<p class="meta">Unidad 5 de 7 · 7 sesiones · 14 horas · del 8 ene al 29 ene</p>
 <h2>Resultado de aprendizaje 5</h2>
-<p class="clave"><b>Crea el acceso a los repositorios de código de infraestructura y/o servicios, comprobando las herramientas de gestión y de validación de la calidad y seguridad de las modificaciones de código fuente previas al despliegue.</b></p>
-
-<p>Empieza la parte técnica del módulo. Antes de desplegar nada hay que tener bajo control el código: quién puede leerlo y cambiarlo, qué cambios se aceptan y con qué comprobaciones. En esta unidad montamos, por parejas, una <b>organización de GitHub</b> con equipos y permisos, un repositorio protegido con la aplicación de ejemplo y un conjunto de flujos de GitHub Actions que validan calidad (pruebas, linter, SonarQube Cloud), seguridad (CodeQL, detección de secretos) y dependencias (Dependabot, revisión de dependencias, escaneo de la imagen).</p>
-<p>Las dos primeras sesiones son de panorama de herramientas; el resto, laboratorio. Lo que construyáis aquí se reutiliza en las unidades 6 y 7.</p>
-<div class="clave"><b>Requisito:</b> repositorios <b>públicos</b>. Así CodeQL, la revisión de dependencias y SonarQube Cloud son gratuitos. No subáis nunca contraseñas ni datos reales.</div>
-
-<h3>Criterios de evaluación y dónde se trabajan</h3>
-<div class="tabla"><table><tr><th>CE</th><th>Criterio (RD 144/2026)</th><th>Sesiones</th></tr><tr><td><b>5a)</b></td><td>Se han enumerado herramientas relacionadas con el despliegue en contenedores, describiendo sus objetivos, características y funcionamiento.</td><td><a href="#s23">S23</a>, <a href="#s25">S25</a></td></tr><tr><td><b>5b)</b></td><td>Se han clasificado las herramientas de validación de calidad y seguridad del código y dependencias de librerías externas o integraciones, describiendo sus características y aplicaciones.</td><td><a href="#s24">S24</a>, <a href="#s25">S25</a></td></tr><tr><td><b>5c)</b></td><td>Se ha habilitado el acceso a los recursos y herramientas para desplegar y/o gestionar los entornos de producción definidos en la arquitectura, definiendo personas usuarias y perfiles que permitan y limiten.</td><td><a href="#s25">S25</a>, <a href="#s26">S26</a></td></tr><tr><td><b>5d)</b></td><td>Se ha configurado el acceso a un código fuente para ser gestionado a través de herramientas, identificando los parámetros de seguridad y políticas de acceso, a través de las personas usuarias y/o grupos asignados.</td><td><a href="#s26">S26</a></td></tr><tr><td><b>5e)</b></td><td>Se han validado unas modificaciones del código fuente, ejecutando pruebas de calidad mediante herramientas específicas y documentándolas.</td><td><a href="#s27">S27</a></td></tr><tr><td><b>5f)</b></td><td>Se han ejecutado comprobaciones de parámetros de seguridad del código, mediante herramientas específicas y de forma periódica.</td><td><a href="#s28">S28</a></td></tr><tr><td><b>5g)</b></td><td>Se han validado, con anterioridad al despliegue, las dependencias del código de librerías externas o integraciones, usando herramientas de comprobación para verificar la seguridad y funcionalidad e integración con el resto de los componentes del aplicativo.</td><td><a href="#s29">S29</a></td></tr></table></div>
+<p class="ra-texto">Crea el acceso a los repositorios de código de infraestructura y/o servicios, comprobando las herramientas de gestión y de validación de la calidad y seguridad de las modificaciones de código fuente previas al despliegue.</p>
+<p>Empieza la parte técnica del módulo. Antes de desplegar nada hay que tener bajo control el código: quién puede leerlo y cambiarlo, qué cambios se aceptan y con qué comprobaciones. En esta unidad montamos, por parejas, una organización de GitHub con equipos y permisos, un repositorio protegido con la aplicación <code>cita-previa-app</code> (pestaña Recursos) y un conjunto de flujos de GitHub Actions que validan la calidad (pruebas, linter, SonarQube Cloud), la seguridad (CodeQL, detección de secretos) y las dependencias (Dependabot, pip-audit, escaneo de la imagen con Trivy).</p>
+<p>Lo que construyáis aquí se reutiliza en las unidades 6 y 7. Los repositorios serán públicos (así CodeQL y SonarQube Cloud son gratuitos): no subáis nunca contraseñas ni datos reales.</p>
+<h3>Criterios de evaluación</h3>
+<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Sesiones</th></tr><tr><td><b>5a)</b></td><td>Se han enumerado herramientas relacionadas con el despliegue en contenedores, describiendo sus objetivos, características y funcionamiento.</td><td><a href="#s23">S23</a></td></tr><tr><td><b>5b)</b></td><td>Se han clasificado las herramientas de validación de calidad y seguridad del código y dependencias de librerías externas o integraciones, describiendo sus características y aplicaciones.</td><td><a href="#s24">S24</a></td></tr><tr><td><b>5c)</b></td><td>Se ha habilitado el acceso a los recursos y herramientas para desplegar y/o gestionar los entornos de producción definidos en la arquitectura, definiendo personas usuarias y perfiles que permitan y limiten.</td><td><a href="#s25">S25</a></td></tr><tr><td><b>5d)</b></td><td>Se ha configurado el acceso a un código fuente para ser gestionado a través de herramientas, identificando los parámetros de seguridad y políticas de acceso, a través de las personas usuarias y/o grupos asignados.</td><td><a href="#s26">S26</a></td></tr><tr><td><b>5e)</b></td><td>Se han validado unas modificaciones del código fuente, ejecutando pruebas de calidad mediante herramientas específicas y documentándolas.</td><td><a href="#s27">S27</a></td></tr><tr><td><b>5f)</b></td><td>Se han ejecutado comprobaciones de parámetros de seguridad del código, mediante herramientas específicas y de forma periódica.</td><td><a href="#s28">S28</a></td></tr><tr><td><b>5g)</b></td><td>Se han validado, con anterioridad al despliegue, las dependencias del código de librerías externas o integraciones, usando herramientas de comprobación para verificar la seguridad y funcionalidad e integración con el resto de los componentes del aplicativo.</td><td><a href="#s29">S29</a></td></tr></table></div>
 <h3>Plan de sesiones</h3>
-<div class="tabla"><table><tr><th>Sesión</th><th>Fecha</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#s23">S23</a></td><td>8 ene</td><td>El ecosistema de herramientas del despliegue en contenedores</td><td>a</td></tr><tr><td><a href="#s24">S24</a></td><td>11 ene</td><td>Herramientas de validación de calidad y seguridad</td><td>b</td></tr><tr><td><a href="#s25">S25</a></td><td>15 ene</td><td>Usuarios, perfiles y entornos. Prueba teórica de la unidad</td><td>a, b, c</td></tr><tr><td><a href="#s26">S26</a></td><td>18 ene</td><td>Acceso seguro al código fuente: políticas y protección de ramas</td><td>c, d</td></tr><tr><td><a href="#s27">S27</a></td><td>22 ene</td><td>Validar cada cambio: pruebas y análisis de calidad automáticos</td><td>e</td></tr><tr><td><a href="#s28">S28</a></td><td>25 ene</td><td>Comprobaciones de seguridad periódicas</td><td>f</td></tr><tr><td><a href="#s29">S29</a></td><td>29 ene</td><td>Validar dependencias e integración antes de desplegar. Entrega de la unidad</td><td>g</td></tr></table></div>
-<h3>Cómo se evalúa esta unidad</h3>
-<p>La unidad pesa un <b>20 %</b> de la nota del módulo, con la ponderación particular de la segunda evaluación:</p>
-<ul><li><b>30 %</b> prueba escrita (sesión 25) sobre los criterios teóricos a y b.</li>
-<li><b>70 %</b> prácticas: organización y repositorio configurados (c, d) y flujos de validación funcionando y documentados (e, f, g). Se revisa el repositorio al final de la sesión 29 con la lista de comprobación de la pestaña Recursos.</li></ul>
-
-<h3>Relación con otros módulos</h3><p>El módulo 5167 retoma la gestión de repositorios desde otro ángulo: organización de ramas, modificación de código de integración y copias de seguridad de repositorios. Aquí nos centramos en el acceso y la validación.</p>
-</section>
-<section class="panel" role="tabpanel" id="p-s23" aria-labelledby="tab-s23" hidden>
-<p class="meta">Sesión 23 de 42, viernes 8 de enero de 2027, 2 horas</p>
+<div class="tabla"><table><tr><th>Sesión</th><th>Fecha</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#s23">S23</a></td><td>8 ene</td><td>El ecosistema de herramientas del despliegue en contenedores</td><td>a</td></tr><tr><td><a href="#s24">S24</a></td><td>11 ene</td><td>Herramientas de validación de calidad y seguridad del código</td><td>b</td></tr><tr><td><a href="#s25">S25</a></td><td>15 ene</td><td>Usuarios, perfiles y entornos: el principio de mínimo privilegio</td><td>c</td></tr><tr><td><a href="#s26">S26</a></td><td>18 ene</td><td>Acceso seguro al código fuente: autenticación, políticas y protección de ramas</td><td>d</td></tr><tr><td><a href="#s27">S27</a></td><td>22 ene</td><td>Validar cada cambio: pruebas y análisis de calidad automáticos</td><td>e</td></tr><tr><td><a href="#s28">S28</a></td><td>25 ene</td><td>Comprobaciones de seguridad periódicas</td><td>f</td></tr><tr><td><a href="#s29">S29</a></td><td>29 ene</td><td>Validar dependencias e integración antes de desplegar</td><td>g</td></tr></table></div>
+<h3>Evaluación</h3>
+<p>La unidad pesa un <b>20 %</b> de la nota del módulo: <b>30 %</b> prueba escrita sobre los criterios a y b (fecha por confirmar) y <b>70 %</b> prácticas: organización y repositorio configurados (c, d) y flujos de validación funcionando y documentados (e, f, g), revisados con la lista de comprobación de la pestaña Recursos.</p>
+</section><section class="panel" role="tabpanel" id="p-s23" aria-labelledby="tab-s23" hidden>
+<p class="meta">Sesión 23 de 41 · viernes 8 de enero de 2027 · 2 horas</p>
 <h2>El ecosistema de herramientas del despliegue en contenedores</h2>
-<p><a class="ce" href="#presentacion" title="Se han enumerado herramientas relacionadas con el despliegue en contenedores, describiendo sus objetivos, características y funcionamiento.">CE 5a</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:60" title="Fichas: 60 min"><i>Fichas</i>60′</span><span class="t-cie" style="flex:30" title="Presentaciones: 30 min"><i>Presentaciones</i>30′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Enumerar las herramientas de cada etapa del despliegue en contenedores.</li><li>Describir objetivos, características y funcionamiento de una de ellas en profundidad.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Un mapa por etapas</h4>
-<div class="tabla"><table><tr><th>Etapa</th><th>Objetivo</th><th>Herramientas</th></tr>
-<tr><td>Control de versiones</td><td>Guardar y colaborar sobre el código</td><td>Git, GitHub, GitLab, Gitea, Bitbucket</td></tr>
-<tr><td>Construcción de imágenes</td><td>Empaquetar la app en una imagen OCI</td><td>Docker/BuildKit, Podman/Buildah, Kaniko</td></tr>
-<tr><td>Registro de imágenes</td><td>Almacenar y versionar imágenes</td><td>Docker Hub, GitHub Container Registry, Harbor, Amazon ECR</td></tr>
-<tr><td>Integración y entrega continua</td><td>Automatizar pruebas, construcción y despliegue</td><td>GitHub Actions, GitLab CI, Jenkins, Argo CD, Flux</td></tr>
-<tr><td>Infraestructura como código</td><td>Crear la infraestructura desde ficheros</td><td>Terraform/OpenTofu, Pulumi, CloudFormation</td></tr>
+<p class="chips"><span class="ce" title="Se han enumerado herramientas relacionadas con el despliegue en contenedores, describiendo sus objetivos, características y funcionamiento.">CE 5a</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Enumerar las herramientas que intervienen en cada etapa del despliegue de aplicaciones en contenedores.</li>
+<li>Describir los objetivos, características y funcionamiento de las principales: Git, Docker, Podman, registros, GitHub Actions, Jenkins, Argo CD, Terraform, Ansible, Kubernetes, Prometheus.</li>
+<li>Clasificar las herramientas según su forma de trabajar: declarativa o imperativa, con o sin agente, push o pull.</li>
+<li>Elaborar y presentar una ficha técnica de una herramienta, probándola en el portátil.</li>
+</ul>
+
+<h3>1. El mapa de herramientas</h3>
+<p>En la sesión 5 dibujamos el recorrido de un cambio desde el commit hasta producción. Cada etapa de ese recorrido tiene sus herramientas:</p>
+<div class="tabla"><table>
+<tr><th>Etapa</th><th>Objetivo</th><th>Herramientas</th></tr>
+<tr><td>Control de versiones</td><td>Guardar el historial del código y colaborar</td><td>Git; plataformas GitHub, GitLab, Gitea/Forgejo, Bitbucket</td></tr>
+<tr><td>Construcción de imágenes</td><td>Empaquetar la aplicación en una imagen OCI</td><td>Docker/BuildKit, Podman/Buildah, Kaniko</td></tr>
+<tr><td>Registro de imágenes</td><td>Almacenar, versionar y distribuir imágenes</td><td>Docker Hub, GitHub Container Registry, GitLab Registry, Harbor, Amazon ECR, Azure ACR</td></tr>
+<tr><td>Integración y entrega continuas</td><td>Automatizar pruebas, construcción y despliegue</td><td>GitHub Actions, GitLab CI/CD, Jenkins, Azure Pipelines; y para GitOps, Argo CD y Flux</td></tr>
+<tr><td>Infraestructura como código</td><td>Crear la infraestructura desde ficheros</td><td>Terraform/OpenTofu, Pulumi, AWS CloudFormation, Azure Bicep</td></tr>
 <tr><td>Gestión de la configuración</td><td>Configurar servidores de forma repetible</td><td>Ansible, Puppet, Chef, Salt</td></tr>
-<tr><td>Ejecución y orquestación</td><td>Ejecutar y escalar contenedores</td><td>Docker Engine, containerd, Docker Compose, Kubernetes, Docker Swarm, Nomad</td></tr>
-<tr><td>Observabilidad</td><td>Métricas, registros y trazas</td><td>Prometheus, Grafana, Loki, OpenTelemetry, cAdvisor</td></tr>
-<tr><td>Seguridad y calidad</td><td>Validar el código, dependencias e imágenes</td><td>SonarQube, CodeQL, Trivy, Dependabot (sesión 24)</td></tr>
+<tr><td>Ejecución y orquestación</td><td>Ejecutar, escalar y mantener vivos los contenedores</td><td>Docker Engine, containerd, Podman, Docker Compose, Kubernetes, Docker Swarm, Nomad</td></tr>
+<tr><td>Empaquetado para Kubernetes</td><td>Distribuir aplicaciones para el orquestador</td><td>Helm, Kustomize</td></tr>
+<tr><td>Observabilidad</td><td>Métricas, registros y trazas</td><td>Prometheus, Grafana, Loki, OpenTelemetry, cAdvisor, Elastic</td></tr>
+<tr><td>Seguridad y calidad</td><td>Validar código, dependencias e imágenes</td><td>SonarQube, CodeQL, Trivy, Dependabot, gitleaks (sesión 24)</td></tr>
+<tr><td>Gestión de secretos</td><td>Guardar y entregar contraseñas y claves</td><td>HashiCorp Vault, OpenBao, secretos de GitHub, Ansible Vault, gestores de la nube</td></tr>
 </table></div>
-<p>Muchas de estas herramientas son proyectos de la <b>Cloud Native Computing Foundation</b> (Kubernetes, Prometheus, containerd, Helm, Argo). Su "paisaje" es un buen mapa de lo que existe, pero el objetivo no es conocerlas todas, sino saber qué problema resuelve cada categoría.</p>
+<p>Muchas de estas herramientas son proyectos de la <b>Cloud Native Computing Foundation</b> (CNCF): Kubernetes, containerd, Prometheus, Helm, Argo, Flux, OpenTelemetry... Su <i>landscape</i> (landscape.cncf.io) muestra cientos de herramientas. El objetivo no es conocerlas todas, sino saber <b>qué problema resuelve cada categoría</b> y conocer a fondo una o dos de cada una.</p>
 
-<h3>Actividad</h3><div class="bloque actividad">
-<p><b>Fichas de herramienta.</b> Cada persona elige una herramienta distinta de la tabla (sin repetir) y elabora una ficha de una página en Markdown en un repositorio común <code>herramientas-devops</code> (una carpeta por herramienta):</p>
-<ol class="pasos"><li>Objetivo y etapa del ciclo en la que actúa.</li><li>Características principales, licencia y quién la mantiene.</li><li>Funcionamiento: arquitectura (cliente/servidor, agente o sin agente, declarativa o imperativa) y un ejemplo mínimo de uso (un fichero de configuración o un comando).</li><li>Alternativas y cuándo elegir cada una.</li><li>Si es posible, instaladla en el portátil y pegad la salida de <code>--version</code>.</li></ol>
-<p>Últimos 15 minutos: cada persona presenta su ficha en 90 segundos.</p>
+<h3>2. Cómo clasificar una herramienta</h3>
+<p>Más allá de la etapa, conviene analizar <b>cómo funciona</b>:</p>
+<ul>
+<li><b>Declarativa o imperativa</b>. Declarativa: describes el <b>estado deseado</b> ("debe haber 3 contenedores de esta imagen") y la herramienta calcula qué hacer para llegar a él. Imperativa: das las <b>órdenes</b> paso a paso ("arranca un contenedor, luego otro..."). Terraform, Kubernetes y los módulos de Ansible son declarativos; un script de Bash es imperativo. Lo declarativo es <b>idempotente</b>: aplicarlo varias veces da el mismo resultado.</li>
+<li><b>Con agente o sin agente</b>. Puppet y Chef instalan un programa (agente) en cada servidor gestionado; Ansible se conecta por SSH sin instalar nada.</li>
+<li><b>Push o pull</b>. En push, un servidor central envía los cambios (Ansible, un pipeline que ejecuta <code>docker run</code> en el servidor). En pull, un agente en el destino consulta periódicamente el estado deseado y lo aplica (Puppet, Argo CD, Flux). El modelo pull es la base de <b>GitOps</b>.</li>
+<li><b>Arquitectura</b>: cliente/servidor (Docker CLI y el demonio <code>dockerd</code>), sin demonio (Podman), controlador con bucle de reconciliación (Kubernetes).</li>
+<li><b>Licencia y gobierno</b>: libre (Apache 2.0, MIT, GPL), de código disponible con restricciones o propietaria; mantenida por una fundación, por una empresa o por la comunidad. Importa: en 2023 HashiCorp cambió la licencia de Terraform a BSL, y la comunidad creó <b>OpenTofu</b> bajo la Linux Foundation.</li>
+</ul>
+
+<h3>3. Las herramientas principales en detalle</h3>
+<h4>Git y las plataformas de código</h4>
+<p><b>Git</b> (Linus Torvalds, 2005) es un sistema de control de versiones <b>distribuido</b>: cada copia del repositorio tiene el historial completo. Conceptos: commit, rama, fusión, etiqueta, remoto. Las <b>plataformas</b> (GitHub, GitLab, Gitea) añaden alojamiento, pull requests con revisión, gestión de permisos, issues, CI/CD integrado y registro de paquetes. Son el punto de partida de todo el flujo DevOps: el repositorio es la <b>fuente única de verdad</b> del código, de la infraestructura y de la configuración.</p>
+<h4>Docker</h4>
+<p>Popularizó los contenedores en 2013. Su arquitectura:</p>
+<pre><code>docker (CLI) ──API REST──► dockerd (demonio) ──► containerd ──► runc ──► contenedor
+                                  │
+                                  └── BuildKit (construcción de imágenes)</code></pre>
+<p>La CLI habla con el demonio <code>dockerd</code>, que se ejecuta como root; este delega en <b>containerd</b> (gestión del ciclo de vida de contenedores e imágenes) y en <b>runc</b> (el que realmente crea el contenedor con namespaces y cgroups, según la especificación OCI). <b>Docker Compose</b> define aplicaciones de varios contenedores en un fichero YAML. Docker Desktop tiene licencia de pago para empresas grandes; Docker Engine en Linux es libre.</p>
+<h4>Podman, Buildah y Kaniko</h4>
+<p><b>Podman</b> (Red Hat) es compatible con la CLI de Docker (<code>alias docker=podman</code> funciona en la mayoría de casos) pero <b>no tiene demonio</b>: cada contenedor es un proceso hijo del usuario, y funciona sin root (<b>rootless</b>) por defecto, lo que mejora la seguridad. Agrupa contenedores en <i>pods</i> como Kubernetes y se integra con systemd (Quadlet). <b>Buildah</b> construye imágenes sin demonio, y <b>Kaniko</b> las construye dentro de un contenedor sin privilegios, útil en pipelines sobre Kubernetes.</p>
+<h4>Registros</h4>
+<p><b>Docker Hub</b> es el registro público por defecto (con límites de descargas para usuarios anónimos). <b>GitHub Container Registry</b> (<code>ghcr.io</code>) está integrado con los repositorios y los permisos de GitHub. <b>Harbor</b> (CNCF) es un registro autoalojado con control de acceso por proyectos, escaneo de vulnerabilidades integrado, firma de imágenes, replicación entre registros y políticas de retención.</p>
+<h4>GitHub Actions, GitLab CI y Jenkins</h4>
+<p>Herramientas de CI/CD. <b>GitHub Actions</b> define <i>workflows</i> en YAML dentro del repositorio (<code>.github/workflows/</code>), disparados por eventos (push, pull request, programación); los trabajos se ejecutan en máquinas (<i>runners</i>) de GitHub o propias, y reutilizan <b>acciones</b> del Marketplace. <b>GitLab CI</b> es similar con el fichero <code>.gitlab-ci.yml</code>. <b>Jenkins</b> es el veterano libre: un servidor autoalojado, extensible con miles de plugins, con pipelines escritos en Groovy (<code>Jenkinsfile</code>); muy flexible, pero exige mantenerlo.</p>
+<h4>Argo CD y Flux: GitOps</h4>
+<p>Agentes que se ejecutan dentro de un clúster Kubernetes y comparan continuamente lo que hay en el clúster con lo declarado en un repositorio Git. Si alguien cambia algo a mano o se fusiona un cambio en Git, lo reconcilian. El despliegue se hace con un pull request: Git es la fuente de verdad del estado de producción.</p>
+<h4>Terraform / OpenTofu</h4>
+<p>Infraestructura como código declarativa. Se describen recursos en lenguaje <b>HCL</b> y la herramienta, mediante <b>proveedores</b> (plugins para AWS, Azure, Proxmox, Docker, GitHub...), calcula un plan de cambios y lo aplica. Guarda un <b>estado</b> con lo que ha creado. Lo usaremos en la unidad 6.</p>
+<h4>Ansible</h4>
+<p>Gestión de la configuración y automatización, sin agente, por SSH, en modo push. Se escriben <i>playbooks</i> en YAML con tareas que usan <b>módulos</b> idempotentes. Unidad 7.</p>
+<h4>Kubernetes</h4>
+<p>Orquestador de contenedores creado por Google (2014) y donado a la CNCF. Declarativo: se describen objetos (<i>Deployment</i>, <i>Service</i>, <i>Ingress</i>) y sus controladores trabajan en un <b>bucle de reconciliación</b> para que la realidad coincida con lo declarado: reinician contenedores caídos, reparten la carga entre nodos, escalan y actualizan sin corte. Es el estándar de facto para ejecutar contenedores a escala; lo veréis en el módulo 5166.</p>
+<h4>Prometheus y Grafana</h4>
+<p><b>Prometheus</b> recoge métricas <b>consultando</b> (modelo pull, <i>scraping</i>) cada cierto tiempo un punto HTTP <code>/metrics</code> de cada servicio, las guarda como series temporales y evalúa reglas de alerta. <b>Grafana</b> dibuja paneles con esas métricas. Unidad 7.</p>
+
+<h3>4. Cómo encajan en nuestro proyecto</h3>
+<pre><code>Git/GitHub ──► GitHub Actions ──► pruebas + SonarQube + CodeQL + Trivy ──► imagen en ghcr.io
+                                                                              │
+Terraform ──► VM en Proxmox (revisión y producción) ◄── Ansible instala Docker y despliega la imagen
+                                                                              │
+                                              Prometheus + Grafana vigilan los contenedores</code></pre>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Ficha técnica de una herramienta <span class="dur">45 min</span></h4>
+<p>Individual. Cada persona elige una herramienta distinta (sin repetir, lista en la pizarra): Docker, Podman, Harbor, GitHub Actions, GitLab CI, Jenkins, Argo CD, Terraform/OpenTofu, Ansible, Puppet, Kubernetes, Helm, Prometheus, Grafana, Vault, Kaniko. En el repositorio común <code>herramientas-devops</code> (el profesor os da permiso de escritura), cread una carpeta con vuestra herramienta y un <code>README.md</code> con:</p>
+<ol>
+<li>Objetivo y etapa del ciclo en la que actúa.</li>
+<li>Características principales, licencia, quién la mantiene y desde cuándo existe.</li>
+<li>Funcionamiento: arquitectura con un pequeño esquema, y clasificación según el apartado 2 (declarativa/imperativa, agente, push/pull).</li>
+<li>Un ejemplo mínimo real: un fichero de configuración o un par de órdenes comentadas.</li>
+<li>Alternativas y cuándo elegir cada una.</li>
+<li>Evidencia de prueba: instalad la herramienta en el portátil (o ejecutadla con Docker) y pegad la salida de su orden de versión y de un ejemplo sencillo. Si no se puede instalar, explicad por qué.</li>
+</ol>
+<p>Subid el trabajo en una rama y abrid un pull request (así practicamos el flujo que automatizaremos en las próximas sesiones).</p>
 </div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Ficha de herramienta en el repositorio común (CE 5a).</p></div>
-<details class="docente"><summary>Notas para el docente</summary><p>Crear antes de la sesión el repositorio común y dar permisos de escritura. Herramientas sugeridas para 10 personas: Docker, Podman, Harbor, GitHub Actions, Jenkins, Argo CD, Terraform, Ansible, Kubernetes, Prometheus.</p></details>
-</section>
-<section class="panel" role="tabpanel" id="p-s24" aria-labelledby="tab-s24" hidden>
-<p class="meta">Sesión 24 de 42, lunes 11 de enero de 2027, 2 horas</p>
-<h2>Herramientas de validación de calidad y seguridad</h2>
-<p><a class="ce" href="#presentacion" title="Se han clasificado las herramientas de validación de calidad y seguridad del código y dependencias de librerías externas o integraciones, describiendo sus características y aplicaciones.">CE 5b</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Clasificar las herramientas de validación de código, dependencias e imágenes.</li><li>Describir características y aplicaciones de cada categoría.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Clasificación</h4>
-<div class="tabla"><table><tr><th>Categoría</th><th>Qué analiza y cuándo</th><th>Ejemplos</th></tr>
-<tr><td>Linters y formateadores</td><td>Estilo y errores simples en el código fuente, al escribir o en cada commit</td><td>ruff, pylint, ESLint, hadolint (Dockerfile), tflint, ansible-lint</td></tr>
-<tr><td>Pruebas automáticas</td><td>Comportamiento: unitarias, integración, extremo a extremo; cobertura</td><td>pytest, JUnit, Jest, Playwright</td></tr>
-<tr><td>Análisis de calidad</td><td>Duplicación, complejidad, code smells, cobertura; aplica un <em>quality gate</em></td><td>SonarQube Server y SonarQube Cloud, Codacy</td></tr>
-<tr><td>SAST (pruebas estáticas de seguridad)</td><td>Vulnerabilidades en el código sin ejecutarlo (inyección SQL, XSS...)</td><td>CodeQL, Semgrep, Bandit, SonarQube</td></tr>
-<tr><td>Detección de secretos</td><td>Contraseñas y tokens subidos por error</td><td>GitHub secret scanning, gitleaks, TruffleHog</td></tr>
-<tr><td>SCA (análisis de composición del software)</td><td>Vulnerabilidades y licencias de las librerías externas</td><td>Dependabot, OWASP Dependency-Check, pip-audit, Snyk, Renovate</td></tr>
-<tr><td>Escaneo de imágenes y de IaC</td><td>Paquetes vulnerables del sistema en la imagen; malas configuraciones en Terraform o Kubernetes</td><td>Trivy, Grype, Docker Scout, Checkov</td></tr>
-<tr><td>DAST (pruebas dinámicas)</td><td>La aplicación en ejecución, atacándola desde fuera</td><td>OWASP ZAP</td></tr>
-</table></div>
-<p>La idea de <b>desplazar a la izquierda</b> (<em>shift left</em>) consiste en ejecutar estas comprobaciones lo antes posible: en el editor, en el commit y en cada pull request, no justo antes de producción. Las vulnerabilidades conocidas se identifican con un código <b>CVE</b> y se puntúan con <b>CVSS</b> (de 0 a 10).</p>
+<div class="actividad">
+<h4>Actividad 2. Docker frente a Podman <span class="dur">15 min</span></h4>
+<p>En parejas. Instalad Podman (<code>sudo apt install -y podman</code>) y ejecutad la misma imagen de <code>cita-previa-app</code> con Docker y con Podman. Comparad: ¿qué proceso es el padre del contenedor en cada caso (<code>ps -ef --forest</code>)? ¿Con qué usuario del anfitrión se ejecuta (<code>ps -o user,pid,cmd</code>)? ¿Hace falta sudo o pertenecer a un grupo? ¿Qué implicaciones de seguridad tiene?</p>
+</div>
+<div class="actividad">
+<h4>Actividad 3. Presentaciones relámpago <span class="dur">25 min</span></h4>
+<p>Cada persona presenta su ficha en 90 segundos: problema que resuelve, cómo funciona y el ejemplo. Al final, entre todos, colocamos cada herramienta en el diagrama del apartado 4.</p>
+<p class="entrega">Entrega: pull request con la ficha en <code>herramientas-devops</code> y respuestas de la actividad 2 en Aules.</p>
+</div>
 
-<h3>Actividad</h3><div class="bloque actividad">
-<ol class="pasos">
-<li>(35′) En parejas, elegid dos categorías y probad localmente una herramienta de cada una sobre la aplicación de ejemplo (pestaña Recursos): por ejemplo, <code>pipx install ruff bandit pip-audit</code> y luego <code>ruff check .</code>, <code>bandit -r .</code>, <code>pip-audit -r requirements.txt</code>. Para Trivy: <code>docker run --rm -v "$PWD":/src aquasec/trivy fs /src</code>.</li>
-<li>(20′) Introducid a propósito un problema que la herramienta detecte (una contraseña en el código, <code>eval()</code> con datos del usuario, una versión antigua de una librería) y capturad el resultado.</li>
-<li>(20′) Completad la tabla de clasificación con: qué detecta, en qué momento del pipeline se ejecuta, ejemplo de salida, falsos positivos observados.</li>
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué diferencia hay entre una herramienta declarativa y una imperativa? Pon un ejemplo de cada una.</li>
+<li>¿Qué componentes intervienen cuando se ejecuta <code>docker run</code>?</li>
+<li>¿Qué ventajas de seguridad tiene Podman frente a Docker?</li>
+<li>¿Qué es GitOps y qué herramientas lo implementan?</li>
+<li>¿Por qué se creó OpenTofu?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s24" aria-labelledby="tab-s24" hidden>
+<p class="meta">Sesión 24 de 41 · lunes 11 de enero de 2027 · 2 horas</p>
+<h2>Herramientas de validación de calidad y seguridad del código</h2>
+<p class="chips"><span class="ce" title="Se han clasificado las herramientas de validación de calidad y seguridad del código y dependencias de librerías externas o integraciones, describiendo sus características y aplicaciones.">CE 5b</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Clasificar las herramientas de validación de calidad y seguridad del código, de las dependencias y de las imágenes.</li>
+<li>Describir las características y aplicaciones de cada tipo: linters, pruebas, análisis estático (SAST), análisis de dependencias (SCA), detección de secretos, escaneo de imágenes e IaC, análisis dinámico (DAST).</li>
+<li>Entender los conceptos asociados: CVE, CVSS, SBOM, quality gate, falsos positivos, <i>shift left</i>.</li>
+<li>Ejecutar en local varias herramientas sobre un código con fallos deliberados e interpretar sus resultados.</li>
+</ul>
+
+<h3>1. Por qué validar antes de desplegar</h3>
+<p>Cada cambio que llega a producción puede introducir errores funcionales, código difícil de mantener, vulnerabilidades o dependencias con fallos conocidos. Revisarlo todo a mano es imposible cuando se despliega a menudo. La solución DevOps es <b>automatizar las comprobaciones</b> y ejecutarlas en cada cambio, lo antes posible: es el principio de <b>desplazar a la izquierda</b> (<i>shift left</i>), porque en un diagrama del ciclo de vida de izquierda a derecha, las comprobaciones se mueven hacia el principio, donde corregir es más barato. Integrar la seguridad en todo el ciclo es lo que se llama <b>DevSecOps</b>.</p>
+
+<h3>2. Herramientas de calidad del código</h3>
+<h4>Formateadores y linters</h4>
+<ul>
+<li><b>Formateadores</b>: reescriben el código con un estilo uniforme (Black o <code>ruff format</code> en Python, Prettier en JavaScript). Eliminan discusiones sobre estilo en las revisiones.</li>
+<li><b>Linters</b>: analizan el código sin ejecutarlo en busca de errores probables, malas prácticas y problemas de estilo: variables sin usar, importaciones que faltan, comparaciones sospechosas, complejidad excesiva. Ejemplos: <b>Ruff</b> y Pylint (Python), ESLint (JavaScript), <b>hadolint</b> (Dockerfile), <b>ShellCheck</b> (Bash), <b>yamllint</b>, <b>ansible-lint</b>, <code>terraform fmt</code> y <code>terraform validate</code>.</li>
+</ul>
+<h4>Pruebas automáticas</h4>
+<div class="tabla"><table>
+<tr><th>Tipo</th><th>Qué prueba</th><th>Velocidad</th><th>Herramientas</th></tr>
+<tr><td>Unitarias</td><td>Una función o clase aislada</td><td>Milisegundos</td><td>pytest, JUnit, Jest</td></tr>
+<tr><td>De integración</td><td>Varios componentes juntos (aplicación + base de datos)</td><td>Segundos</td><td>pytest con contenedores (Testcontainers), Docker Compose</td></tr>
+<tr><td>Extremo a extremo (E2E)</td><td>El sistema completo como lo usaría una persona</td><td>Minutos</td><td>Playwright, Selenium, Cypress</td></tr>
+<tr><td>De rendimiento y carga</td><td>Comportamiento con muchos usuarios</td><td>Minutos</td><td>k6, JMeter, Locust</td></tr>
+</table></div>
+<p>La <b>pirámide de pruebas</b> recomienda muchas pruebas unitarias, bastantes de integración y pocas E2E, porque estas son lentas y frágiles. La <b>cobertura</b> mide qué porcentaje del código se ejecuta durante las pruebas (pytest-cov, JaCoCo); una cobertura alta no garantiza buenas pruebas, pero una baja indica código sin probar.</p>
+<h4>Análisis estático de calidad</h4>
+<p><b>SonarQube</b> (autoalojado) y <b>SonarQube Cloud</b> (SaaS, gratuito para proyectos públicos) analizan el código en decenas de lenguajes y clasifican los problemas en <b>fiabilidad</b> (bugs), <b>mantenibilidad</b> (<i>code smells</i>, deuda técnica, complejidad, duplicación) y <b>seguridad</b> (vulnerabilidades y puntos calientes de seguridad a revisar). Su concepto central es el <b>quality gate</b>: un conjunto de condiciones que debe cumplir el <b>código nuevo</b> para que el análisis se considere aprobado (por ejemplo, cobertura ≥ 80 %, duplicación ≤ 3 %, ninguna vulnerabilidad nueva). Si no se cumple, el pipeline falla y el cambio no se puede fusionar. Aplicarlo al código nuevo evita que la deuda crezca sin obligar a arreglar todo lo antiguo de golpe.</p>
+<h4>Revisión de código</h4>
+<p>La revisión por otra persona en el pull request sigue siendo imprescindible: detecta problemas de diseño y de lógica que ninguna herramienta ve. Las herramientas automáticas liberan a quien revisa de lo mecánico.</p>
+
+<h3>3. Herramientas de seguridad</h3>
+<div class="tabla"><table>
+<tr><th>Tipo</th><th>Qué analiza</th><th>Cómo</th><th>Herramientas</th></tr>
+<tr><td><b>SAST</b> (<i>Static Application Security Testing</i>)</td><td>El código fuente propio</td><td>Sin ejecutarlo, busca patrones de vulnerabilidad: inyección SQL, XSS, rutas manipulables, criptografía débil</td><td>CodeQL, Semgrep, Bandit (Python), SonarQube</td></tr>
+<tr><td><b>Detección de secretos</b></td><td>Código e historial de Git</td><td>Busca contraseñas, tokens y claves por patrones y entropía</td><td>gitleaks, TruffleHog, secret scanning y push protection de GitHub</td></tr>
+<tr><td><b>SCA</b> (<i>Software Composition Analysis</i>)</td><td>Las dependencias externas</td><td>Compara las versiones usadas con bases de datos de vulnerabilidades conocidas; revisa licencias</td><td>Dependabot, Renovate, pip-audit, npm audit, OWASP Dependency-Check, Snyk, Trivy</td></tr>
+<tr><td><b>Escaneo de imágenes</b></td><td>Las imágenes de contenedor</td><td>Analiza los paquetes del sistema y las librerías que contiene la imagen, y su configuración</td><td>Trivy, Grype, Docker Scout, el escáner de Harbor</td></tr>
+<tr><td><b>Escaneo de IaC y configuración</b></td><td>Terraform, Dockerfile, Kubernetes, Ansible</td><td>Detecta configuraciones inseguras (puertos abiertos al mundo, almacenamiento sin cifrar, contenedores como root)</td><td>Checkov, Trivy (modo config), hadolint, KICS</td></tr>
+<tr><td><b>DAST</b> (<i>Dynamic Application Security Testing</i>)</td><td>La aplicación en ejecución</td><td>La ataca desde fuera como lo haría un atacante, sin ver el código</td><td>OWASP ZAP, Burp Suite, Nikto</td></tr>
+</table></div>
+<h4>Conceptos que hay que conocer</h4>
+<ul>
+<li><b>CVE</b> (<i>Common Vulnerabilities and Exposures</i>): identificador público de una vulnerabilidad conocida, como <code>CVE-2021-44228</code> (Log4Shell). Las herramientas SCA y de imágenes buscan CVE en las versiones que usamos.</li>
+<li><b>CVSS</b>: puntuación de gravedad de 0 a 10 (baja, media, alta, crítica). Ayuda a priorizar, aunque hay que valorar si la parte vulnerable se usa realmente.</li>
+<li><b>Bases de datos de vulnerabilidades</b>: NVD (EE. UU.), GitHub Advisory Database, OSV.</li>
+<li><b>CWE</b>: catálogo de tipos de debilidad (por ejemplo, CWE-89 inyección SQL). El <b>OWASP Top 10</b> resume los riesgos más frecuentes en aplicaciones web.</li>
+<li><b>SBOM</b> (<i>Software Bill of Materials</i>): lista de todos los componentes y versiones que contiene un software o una imagen, en formatos estándar como SPDX o CycloneDX. Permite saber en minutos si estamos afectados por una nueva vulnerabilidad. Herramientas: Syft, Trivy.</li>
+<li><b>Falsos positivos</b>: avisos que no son un problema real. Se revisan y se marcan justificadamente; ignorarlos sin más hace que se pierda la confianza en la herramienta.</li>
+<li><b>Firma de imágenes</b> (cosign, de Sigstore): permite comprobar que una imagen la construyó nuestro pipeline y no se ha manipulado.</li>
+</ul>
+<h4>Integraciones y dependencias externas</h4>
+<p>Además de librerías, las aplicaciones dependen de <b>integraciones</b>: API de terceros, servicios de pago, proveedores de SMS. Se validan con <b>pruebas de contrato</b> (el formato de las peticiones y respuestas no cambia sin avisar), pruebas de integración contra entornos de prueba del proveedor o simulaciones (<i>mocks</i>), y revisando la seguridad de la conexión (TLS, credenciales en secretos). Lo trabajaremos en la sesión 29.</p>
+
+<h3>4. Dónde se coloca cada herramienta en el pipeline</h3>
+<div class="tabla"><table>
+<tr><th>Momento</th><th>Comprobaciones</th></tr>
+<tr><td>En el portátil, antes del commit (<i>pre-commit hooks</i>)</td><td>Formateador, linter, detección de secretos</td></tr>
+<tr><td>En cada pull request</td><td>Linter, pruebas unitarias con cobertura, SonarQube con quality gate, CodeQL, revisión de dependencias, gitleaks, hadolint, escaneo IaC</td></tr>
+<tr><td>Al construir la imagen</td><td>Trivy sobre la imagen, SBOM, firma</td></tr>
+<tr><td>En el entorno de revisión</td><td>Pruebas de integración y E2E, DAST con ZAP</td></tr>
+<tr><td>De forma periódica (aunque nadie cambie el código)</td><td>Análisis programados de CodeQL y Trivy, Dependabot: aparecen CVE nuevas cada día en código que ayer era seguro</td></tr>
+</table></div>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Batería de herramientas sobre un código con fallos <span class="dur">55 min</span></h4>
+<p>En parejas. Cread una carpeta <code>validacion-local</code> con estos ficheros, que contienen fallos deliberados:</p>
+<p class="fichero">app_insegura.py</p>
+<pre><code>import os, sqlite3, subprocess, hashlib
+from flask import Flask, request
+
+app = Flask(__name__)
+SMS_API_KEY = "a8Fk29dLq0ZxP4mT7vB1nW6yR3sE5uJc"
+
+@app.route("/cita")
+def cita():
+    dni = request.args.get("dni")
+    con = sqlite3.connect("citas.db")
+    return str(con.execute("SELECT * FROM citas WHERE dni = '" + dni + "'").fetchall())
+
+@app.route("/ping")
+def ping():
+    return subprocess.check_output("ping -c 1 " + request.args.get("host"), shell=True)
+
+def hash_clave(p):
+    return hashlib.md5(p.encode()).hexdigest()
+
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0")</code></pre>
+<p class="fichero">requirements.txt</p>
+<pre><code>flask==2.0.1
+requests==2.25.0
+jinja2==2.11.2</code></pre>
+<p class="fichero">Dockerfile</p>
+<pre><code>FROM python:3.8
+COPY . /app
+RUN pip install -r /app/requirements.txt
+CMD python /app/app_insegura.py</code></pre>
+<p>Instalad las herramientas en un entorno virtual y ejecutadlas:</p>
+<pre><code>python3 -m venv .venv &amp;&amp; . .venv/bin/activate
+pip install ruff bandit pip-audit
+ruff check .                         # linter
+bandit -r .                          # SAST para Python
+pip-audit -r requirements.txt        # SCA de dependencias
+docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:latest detect --source /repo --no-git -v   # secretos
+docker run --rm -i hadolint/hadolint &lt; Dockerfile                                             # Dockerfile
+docker run --rm -v "$PWD:/src" aquasec/trivy:latest fs /src                                    # dependencias con Trivy
+docker build -t insegura . &amp;&amp; docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image --severity HIGH,CRITICAL insegura</code></pre>
+<p>Para cada herramienta, anotad en una tabla: tipo (según el apartado 3), qué ha encontrado, gravedad, si hay falsos positivos y cómo corregiríais cada problema. ¿Qué fallo no ha detectado ninguna herramienta? (Pista: pensad en quién puede ver las citas de quién.)</p>
+</div>
+<div class="actividad">
+<h4>Actividad 2. Corregir y volver a validar <span class="dur">20 min</span></h4>
+<p>Corregid los problemas: consulta parametrizada (<code>execute("... WHERE dni = ?", (dni,))</code>), sin <code>shell=True</code>, clave en variable de entorno, hash seguro (o mejor, no guardar contraseñas en la aplicación), sin <code>debug=True</code>, dependencias actualizadas, Dockerfile con imagen <code>slim</code> reciente, usuario no root y dependencias antes que el código. Volved a ejecutar la batería y comparad el número de problemas antes y después.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 3. Clasificación y ubicación <span class="dur">10 min</span></h4>
+<p>Completad un esquema del pipeline de Cita Previa (el de la sesión 5) indicando en qué etapa colocaríais cada herramienta usada hoy y cuáles ejecutaríais además de forma periódica.</p>
+<p class="entrega">Entrega en Aules: tabla de resultados antes y después, código corregido y esquema del pipeline.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué diferencia hay entre SAST, SCA y DAST? ¿En qué momento del pipeline se usa cada uno?</li>
+<li>¿Qué es un quality gate y por qué se aplica sobre el código nuevo?</li>
+<li>¿Qué es una CVE y qué indica su puntuación CVSS?</li>
+<li>¿Para qué sirve un SBOM?</li>
+<li>¿Por qué hay que ejecutar análisis de seguridad periódicos aunque el código no cambie?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s25" aria-labelledby="tab-s25" hidden>
+<p class="meta">Sesión 25 de 41 · viernes 15 de enero de 2027 · 2 horas</p>
+<h2>Usuarios, perfiles y entornos: el principio de mínimo privilegio</h2>
+<p class="chips"><span class="ce" title="Se ha habilitado el acceso a los recursos y herramientas para desplegar y/o gestionar los entornos de producción definidos en la arquitectura, definiendo personas usuarias y perfiles que permitan y limiten.">CE 5c</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Aplicar el principio de mínimo privilegio y el control de acceso basado en roles (RBAC).</li>
+<li>Conocer los modelos de permisos de GitHub (organizaciones, equipos, roles de repositorio), de Proxmox y de la nube (IAM).</li>
+<li>Definir entornos de revisión y producción con reglas de protección y secretos propios.</li>
+<li>Diseñar una matriz de accesos y configurarla en una organización de GitHub con el repositorio <code>cita-previa-app</code>.</li>
+</ul>
+
+<h3>1. Principios de control de acceso</h3>
+<h4>Autenticación, autorización y auditoría</h4>
+<ul>
+<li><b>Autenticación</b>: comprobar quién eres (contraseña, doble factor, clave SSH, token).</li>
+<li><b>Autorización</b>: decidir qué puedes hacer (permisos).</li>
+<li><b>Auditoría</b> (<i>accounting</i>): registrar qué has hecho, para poder revisarlo.</li>
+</ul>
+<h4>Mínimo privilegio</h4>
+<p>Cada persona y cada proceso debe tener <b>solo los permisos que necesita, solo sobre los recursos que necesita y solo durante el tiempo que los necesita</b>. Si una cuenta se ve comprometida, el daño queda limitado a lo que esa cuenta podía hacer. Es el principio de seguridad más importante de esta unidad y de la siguiente.</p>
+<h4>Control de acceso basado en roles (RBAC)</h4>
+<p>No se asignan permisos persona a persona: se definen <b>roles</b> (conjuntos de permisos) y <b>grupos</b> (conjuntos de personas), y se asigna un rol a un grupo sobre un recurso. Cuando alguien entra en el equipo, se le añade al grupo; cuando cambia de puesto, se le mueve; cuando se va, se le quita. Así la gestión es sencilla y auditable. Es el ciclo de vida de las identidades: <b>alta, cambio y baja</b> (<i>joiner, mover, leaver</i>).</p>
+<h4>Separación de funciones</h4>
+<p>Las acciones críticas no debe poder completarlas una sola persona: quien escribe un cambio no debe poder aprobarlo y desplegarlo a producción sin que otra persona lo revise. Protege frente a errores y frente a abusos.</p>
+<h4>Identidades de máquina</h4>
+<p>No solo las personas acceden: también los procesos (el pipeline de CI/CD, Terraform, Ansible). Necesitan sus propias credenciales (<b>cuentas de servicio</b>, tokens, claves de despliegue) con permisos mínimos, nunca las credenciales personales de alguien del equipo.</p>
+
+<h3>2. Permisos en GitHub</h3>
+<h4>Organizaciones</h4>
+<p>Una <b>organización</b> agrupa repositorios y personas de un proyecto o empresa. Roles de organización:</p>
+<ul>
+<li><b>Owner</b> (propietario): control total, incluida la facturación y la seguridad. Debe haber al menos dos, y pocos.</li>
+<li><b>Member</b> (miembro): participa según los permisos de sus equipos.</li>
+<li><b>Colaborador externo</b>: persona ajena a la organización con acceso a repositorios concretos.</li>
+</ul>
+<p>En la configuración de la organización se fijan los <b>permisos base</b> de los miembros sobre todos los repositorios (recomendado: <i>No permission</i> o <i>Read</i>), si pueden crear repositorios y si se exige doble factor.</p>
+<h4>Equipos y roles de repositorio</h4>
+<p>Los <b>equipos</b> (<i>teams</i>) agrupan miembros. A cada equipo se le da un rol sobre cada repositorio:</p>
+<div class="tabla"><table>
+<tr><th>Rol</th><th>Puede</th><th>Pensado para</th></tr>
+<tr><td>Read</td><td>Ver y clonar el código, abrir issues y comentar</td><td>Auditoría, personas interesadas</td></tr>
+<tr><td>Triage</td><td>Además, gestionar issues y pull requests (etiquetas, asignaciones, cerrar)</td><td>Gestión de proyecto</td></tr>
+<tr><td>Write</td><td>Además, crear ramas, hacer push y fusionar pull requests (si las reglas lo permiten)</td><td>Desarrollo</td></tr>
+<tr><td>Maintain</td><td>Además, gestionar parte de la configuración del repositorio sin acceso a lo sensible</td><td>Responsables del proyecto</td></tr>
+<tr><td>Admin</td><td>Todo: configuración, reglas, secretos, borrar el repositorio</td><td>Muy pocas personas</td></tr>
+</table></div>
+<h4>Entornos (environments)</h4>
+<p>Un <b>entorno</b> de GitHub representa un destino de despliegue (<code>revision</code>, <code>produccion</code>). Cada entorno tiene:</p>
+<ul>
+<li><b>Secretos y variables propios</b>: la contraseña de la base de datos de producción solo la ve un trabajo que despliega en producción.</li>
+<li><b>Reglas de protección</b>: <b>revisores obligatorios</b> (el trabajo queda en pausa hasta que una persona o equipo autorizado lo aprueba), <b>temporizador de espera</b>, <b>ramas o etiquetas permitidas</b> (solo se despliega a producción desde <code>main</code>) y evitar que quien lanzó el despliegue se lo apruebe a sí mismo.</li>
+<li><b>Historial de despliegues</b>: qué versión está en cada entorno y quién la aprobó.</li>
+</ul>
+<pre><code>jobs:
+  desplegar-produccion:
+    runs-on: ubuntu-latest
+    environment: produccion        # aplica reglas y secretos del entorno
+    steps:
+      - run: echo "Desplegando con ${{ secrets.DB_PASSWORD != '' }}"</code></pre>
+<h4>Permisos de los workflows</h4>
+<p>Cada ejecución de GitHub Actions recibe un token temporal, <code>GITHUB_TOKEN</code>, con permisos sobre el repositorio. Por mínimo privilegio, se configuran como <b>solo lectura por defecto</b> en la organización y cada workflow pide explícitamente lo que necesita:</p>
+<pre><code>permissions:
+  contents: read
+  packages: write      # solo si publica imágenes en ghcr.io</code></pre>
+
+<h3>3. Acceso a los recursos de los entornos</h3>
+<p>El criterio de evaluación pide habilitar el acceso a <b>los recursos y herramientas para desplegar y gestionar los entornos de producción</b>, no solo al código. Los mismos principios se aplican en cada plataforma:</p>
+<div class="tabla"><table>
+<tr><th>Concepto</th><th>GitHub</th><th>Proxmox</th><th>AWS / Azure</th></tr>
+<tr><td>Identidad de persona</td><td>Cuenta de usuario</td><td>Usuario (<code>ana@pve</code>, o del directorio)</td><td>Usuario IAM o identidad federada / Entra ID</td></tr>
+<tr><td>Grupo</td><td>Equipo</td><td>Grupo</td><td>Grupo IAM / grupo de Entra</td></tr>
+<tr><td>Rol</td><td>Read, Write, Maintain, Admin...</td><td>PVEAuditor, PVEVMUser, PVEVMAdmin...</td><td>Políticas IAM / roles RBAC (Reader, Contributor, Owner)</td></tr>
+<tr><td>Ámbito</td><td>Organización, repositorio, entorno</td><td>Ruta: <code>/</code>, <code>/pool/produccion</code>, <code>/vms/101</code>, <code>/storage/x</code></td><td>Cuenta, recurso (ARN) / grupo de recursos, suscripción</td></tr>
+<tr><td>Identidad de máquina</td><td>GITHUB_TOKEN, claves de despliegue, apps</td><td>Token de API</td><td>Roles asumibles, identidades administradas</td></tr>
+</table></div>
+<p>En la unidad 6 crearemos en Proxmox un usuario y un token para cada entorno, con permisos solo sobre su pool.</p>
+
+<h3>4. La matriz de accesos</h3>
+<p>Antes de configurar nada, se diseña una <b>matriz de accesos</b>: filas con los perfiles, columnas con las acciones, y en cada celda si está permitido. Para Cita Previa:</p>
+<div class="tabla"><table>
+<tr><th>Perfil (equipo)</th><th>Leer código</th><th>Proponer cambios (PR)</th><th>Fusionar en main</th><th>Desplegar en revisión</th><th>Aprobar despliegue a producción</th><th>Ver secretos</th><th>Administrar repositorio</th></tr>
+<tr><td>desarrollo</td><td>Sí</td><td>Sí</td><td>Sí, con 1 aprobación y checks en verde</td><td>Sí (automático)</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>operaciones</td><td>Sí</td><td>Sí</td><td>Sí, con aprobación</td><td>Sí</td><td>Sí</td><td>No (los usa el workflow)</td><td>No</td></tr>
+<tr><td>auditoria</td><td>Sí</td><td>No</td><td>No</td><td>No</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Owners (2 personas)</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Gestionan, no leen</td><td>Sí</td></tr>
+<tr><td>Pipeline (GITHUB_TOKEN)</td><td>Sí</td><td>No</td><td>No</td><td>Sí</td><td>No (espera aprobación)</td><td>Solo los de su entorno</td><td>No</td></tr>
+</table></div>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Matriz de accesos de vuestro proyecto <span class="dur">15 min</span></h4>
+<p>En parejas, partiendo de la matriz del apartado 4, adaptadla a vuestra pareja y al profesor (que actuará como auditoría): quién de vosotros estará en cada equipo, y añadid una columna para el acceso a Proxmox (unidad 6). Guardadla como <code>ACCESOS.md</code>.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 2. Organización, equipos, repositorio y entornos <span class="dur">50 min</span></h4>
+<ol>
+<li>Cread una organización gratuita en GitHub: <code>citaprevia-APELLIDO1-APELLIDO2</code>. Invitad a vuestra pareja y al profesor.</li>
+<li>En <i>Settings → Member privileges</i>: permisos base <i>No permission</i>; desactivad la creación de repositorios por los miembros. En <i>Authentication security</i>, exigid doble factor.</li>
+<li>Cread los equipos <code>desarrollo</code>, <code>operaciones</code> y <code>auditoria</code> y repartid a las personas según vuestra matriz.</li>
+<li>Cread el repositorio público <code>cita-previa-app</code> con los ficheros de la pestaña Recursos, <code>ACCESOS.md</code> y un <code>README.md</code>. Dad a cada equipo su rol: desarrollo <i>Write</i>, operaciones <i>Maintain</i>, auditoría <i>Read</i>.</li>
+<li>En <i>Settings → Actions → General</i>, poned los permisos del <code>GITHUB_TOKEN</code> en solo lectura.</li>
+<li>En <i>Settings → Environments</i>, cread:
+ <ul><li><code>revision</code>: sin revisores, solo desde la rama <code>main</code>. Secreto <code>DB_PASSWORD</code> con un valor de prueba y variable <code>URL_ENTORNO</code>.</li>
+ <li><code>produccion</code>: revisor obligatorio el equipo <code>operaciones</code>, impedir la autoaprobación, solo desde <code>main</code>. Su propio <code>DB_PASSWORD</code> (distinto) y <code>URL_ENTORNO</code>.</li></ul></li>
+<li>Cread un workflow <code>.github/workflows/entornos.yml</code> que se lance a mano (<code>workflow_dispatch</code>) con dos trabajos: uno en <code>revision</code> y otro en <code>produccion</code> que dependa del primero. Cada uno imprime <code>${{ vars.URL_ENTORNO }}</code> y la longitud del secreto (<code>${#DB_PASSWORD}</code>, pasándolo como variable de entorno), nunca su valor.</li>
+<li>Lanzadlo y observad cómo el trabajo de producción queda esperando aprobación. Aprobadlo con una persona de <code>operaciones</code>.</li>
 </ol>
 </div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Juntamos las tablas de todas las parejas en una sola: ya tenemos la chuleta para la prueba de la próxima sesión.</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Tabla de clasificación con pruebas reales (CE 5b). Se evalúa además en la prueba escrita.</p></div>
-</section>
-<section class="panel" role="tabpanel" id="p-s25" aria-labelledby="tab-s25" hidden>
-<p class="meta">Sesión 25 de 42, viernes 15 de enero de 2027, 2 horas</p>
-<h2>Usuarios, perfiles y entornos. Prueba teórica de la unidad</h2>
-<p><a class="ce" href="#presentacion" title="Se han enumerado herramientas relacionadas con el despliegue en contenedores, describiendo sus objetivos, características y funcionamiento.">CE 5a</a><a class="ce" href="#presentacion" title="Se han clasificado las herramientas de validación de calidad y seguridad del código y dependencias de librerías externas o integraciones, describiendo sus características y aplicaciones.">CE 5b</a><a class="ce" href="#presentacion" title="Se ha habilitado el acceso a los recursos y herramientas para desplegar y/o gestionar los entornos de producción definidos en la arquitectura, definiendo personas usuarias y perfiles que permitan y limiten.">CE 5c</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-exa" style="flex:30" title="Prueba escrita: 30 min"><i>Prueba escrita</i>30′</span><span class="t-int" style="flex:15" title="Introducción: 15 min"><i>Introducción</i>15′</span><span class="t-act" style="flex:50" title="Laboratorio: 50 min"><i>Laboratorio</i>50′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Crear una organización con equipos y roles que permitan y limiten.</li><li>Definir entornos de revisión y producción con su propio control de acceso.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Principio de mínimo privilegio</h4>
-<p>Cada persona y cada proceso debe tener <b>solo los permisos que necesita</b>, durante el tiempo que los necesita. Se gestiona por <b>grupos o perfiles</b>, no persona a persona.</p>
-<h4>En GitHub</h4>
-<ul><li><b>Organización</b> con roles de propietario (owner) y miembro.</li>
-<li><b>Equipos</b> (teams) con un rol en cada repositorio: Read, Triage, Write, Maintain o Admin.</li>
-<li><b>Entornos</b> (environments) como <code>revision</code> y <code>produccion</code>: cada uno con sus secretos y reglas de protección (revisores obligatorios, espera, ramas permitidas). Un workflow que despliega a producción queda en pausa hasta que alguien autorizado lo aprueba.</li></ul>
-<h4>Y en la infraestructura</h4>
-<p>El mismo principio se aplica en Proxmox (usuarios, grupos, roles como <code>PVEVMUser</code>, permisos por pool) y en la nube (IAM: usuarios, grupos, roles y políticas). Lo aplicaremos a fondo en la unidad 6.</p>
-
-<h3>Actividad</h3><div class="bloque actividad">
-<p><b>Prueba escrita (30′)</b> sobre los criterios a y b.</p>
-<p><b>Laboratorio (50′), por parejas.</b> Diseñad primero una matriz de accesos y después configuradla:</p>
-<ol class="pasos">
-<li>Cread una organización gratuita en GitHub (<code>citaprevia-NOMBRES</code>) e invitad a vuestra pareja y al profesor.</li>
-<li>Cread los equipos <code>desarrollo</code> (Write), <code>operaciones</code> (Maintain) y <code>auditoria</code> (Read). Cada miembro en al menos uno.</li>
-<li>Cread el repositorio público <code>cita-previa-app</code> con los ficheros de la pestaña Recursos y asignad los equipos.</li>
-<li>En <em>Settings, Environments</em>: cread <code>revision</code> (sin restricciones) y <code>produccion</code> (revisor obligatorio: equipo operaciones; solo desde la rama <code>main</code>). Añadid un secreto de ejemplo distinto en cada uno (<code>DB_PASSWORD</code>).</li>
-<li>Documentad en <code>ACCESOS.md</code> la matriz: quién puede leer, cambiar código, aprobar despliegues a producción y administrar.</li>
-</ol>
+<div class="actividad">
+<h4>Actividad 3. Probar los límites <span class="dur">15 min</span></h4>
+<p>Comprobad y documentad en <code>ACCESOS.md</code> (con capturas) qué ocurre cuando: alguien del equipo auditoría intenta crear una rama; alguien de desarrollo intenta aprobar el despliegue a producción; se intenta lanzar el despliegue a producción desde otra rama; alguien intenta leer el valor de un secreto en la configuración o imprimirlo en un workflow (GitHub lo enmascara con <code>***</code>).</p>
+<p class="entrega">Entrega: enlace al repositorio con <code>ACCESOS.md</code>, el workflow y las pruebas documentadas.</p>
 </div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Probamos los límites: ¿puede alguien del equipo auditoría abrir un pull request? ¿Y aprobar un despliegue a producción?</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Prueba escrita (CE 5a, 5b; 30 % de la unidad). Organización, equipos, entornos y <code>ACCESOS.md</code> (CE 5c).</p></div>
-<details class="docente"><summary>Notas para el docente</summary><p>Prueba sugerida: relacionar 10 herramientas con su etapa; clasificar 8 herramientas de validación en su categoría; explicar la diferencia entre SAST, SCA y DAST; describir en qué punto del pipeline colocaríais cada comprobación.</p></details>
-</section>
-<section class="panel" role="tabpanel" id="p-s26" aria-labelledby="tab-s26" hidden>
-<p class="meta">Sesión 26 de 42, lunes 18 de enero de 2027, 2 horas</p>
-<h2>Acceso seguro al código fuente: políticas y protección de ramas</h2>
-<p><a class="ce" href="#presentacion" title="Se ha habilitado el acceso a los recursos y herramientas para desplegar y/o gestionar los entornos de producción definidos en la arquitectura, definiendo personas usuarias y perfiles que permitan y limiten.">CE 5c</a><a class="ce" href="#presentacion" title="Se ha configurado el acceso a un código fuente para ser gestionado a través de herramientas, identificando los parámetros de seguridad y políticas de acceso, a través de las personas usuarias y/o grupos asignados.">CE 5d</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Configurar el acceso al repositorio con parámetros de seguridad y políticas por usuarios y grupos.</li><li>Proteger la rama principal con reglas que obliguen a revisar y validar.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Autenticación: quién eres</h4>
-<ul><li><b>Doble factor (2FA)</b> obligatorio en la organización.</li>
-<li><b>Claves SSH</b> para Git desde el portátil (una por persona y equipo), preferiblemente ed25519.</li>
-<li><b>Tokens de acceso personal de grano fino</b>: limitados a unos repositorios, unos permisos y una fecha de caducidad. Nunca los clásicos con acceso a todo.</li>
-<li><b>Deploy keys</b> para que un servidor lea un único repositorio.</li></ul>
-<h4>Autorización: qué puedes hacer</h4>
-<ul><li><b>Rulesets</b> (reglas) sobre ramas: exigir pull request, número de aprobaciones, comprobaciones de estado superadas, historial lineal, bloquear force-push y borrado.</li>
-<li><b>CODEOWNERS</b>: quién debe revisar obligatoriamente cada ruta del repositorio.</li>
-<li>Commits firmados para garantizar la autoría.</li></ul>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>Explica el principio de mínimo privilegio con un ejemplo de Cita Previa.</li>
+<li>¿Por qué se asignan permisos a grupos y no a personas?</li>
+<li>¿Qué aporta un entorno de GitHub con revisores obligatorios?</li>
+<li>¿Por qué los secretos deben ser distintos en revisión y en producción?</li>
+<li>¿Qué es una identidad de máquina y por qué no se deben usar credenciales personales en un pipeline?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s26" aria-labelledby="tab-s26" hidden>
+<p class="meta">Sesión 26 de 41 · lunes 18 de enero de 2027 · 2 horas</p>
+<h2>Acceso seguro al código fuente: autenticación, políticas y protección de ramas</h2>
+<p class="chips"><span class="ce" title="Se ha configurado el acceso a un código fuente para ser gestionado a través de herramientas, identificando los parámetros de seguridad y políticas de acceso, a través de las personas usuarias y/o grupos asignados.">CE 5d</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Identificar los parámetros de seguridad del acceso a un repositorio: autenticación de personas y de máquinas.</li>
+<li>Configurar políticas de acceso sobre ramas y rutas mediante reglas (rulesets) y CODEOWNERS.</li>
+<li>Conocer las estrategias de ramas y cómo se relacionan con la protección de la rama principal.</li>
+<li>Configurar el repositorio <code>cita-previa-app</code> con doble factor, SSH, commits firmados, reglas de protección y tokens de grano fino, y comprobar que las políticas funcionan.</li>
+</ul>
+
+<h3>1. Autenticación: quién accede</h3>
+<h4>Personas</h4>
+<ul>
+<li><b>Contraseña + doble factor (2FA)</b>: aplicación de autenticación (TOTP), llave de seguridad física o <b>passkey</b>. GitHub exige 2FA a quien contribuye código, y la organización puede exigirlo a todos sus miembros. Guardad los códigos de recuperación.</li>
+<li><b>Claves SSH</b> para las operaciones de Git desde el portátil. Se genera un par de claves: la privada nunca sale del portátil (protegida con frase de paso), la pública se registra en GitHub. Recomendado: tipo <b>ed25519</b>, una por persona y dispositivo, para poder revocar solo la de un portátil perdido.</li>
+<li>Git por HTTPS no admite contraseñas: requiere un token o el gestor de credenciales.</li>
+</ul>
+<h4>Máquinas y programas</h4>
+<div class="tabla"><table>
+<tr><th>Credencial</th><th>Alcance</th><th>Uso recomendado</th></tr>
+<tr><td>Token de acceso personal <b>clásico</b></td><td>Todos los repositorios del usuario, permisos amplios</td><td>Evitarlo</td></tr>
+<tr><td>Token de acceso personal <b>de grano fino</b></td><td>Repositorios concretos, permisos concretos (por ejemplo, solo lectura de contenidos), caducidad obligatoria</td><td>Scripts personales, integraciones puntuales</td></tr>
+<tr><td><b>Clave de despliegue</b> (<i>deploy key</i>)</td><td>Una clave SSH para un único repositorio, solo lectura por defecto</td><td>Un servidor que necesita clonar un repositorio</td></tr>
+<tr><td><b>GitHub App</b></td><td>Permisos detallados por instalación, tokens de corta duración</td><td>Integraciones de organización, bots</td></tr>
+<tr><td><code>GITHUB_TOKEN</code></td><td>El repositorio del workflow, dura lo que el trabajo</td><td>GitHub Actions</td></tr>
+<tr><td>OIDC</td><td>Sin secretos guardados: la nube confía en tokens firmados por GitHub</td><td>Workflows que despliegan en AWS, Azure o Google</td></tr>
+</table></div>
+<h4>Integridad de la autoría: commits firmados</h4>
+<p>Git permite poner cualquier nombre y correo en un commit (<code>git config user.name "otra persona"</code>). Firmando los commits con una clave GPG o SSH, GitHub muestra la etiqueta <b>Verified</b> y garantiza que el commit lo hizo quien tiene esa clave. Configuración con la misma clave SSH:</p>
+<pre><code>git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/id_ed25519.pub
+git config --global commit.gpgsign true
+# y en GitHub: Settings → SSH and GPG keys → New SSH key → tipo "Signing Key"</code></pre>
+
+<h3>2. Autorización: qué se puede hacer con el código</h3>
+<h4>Reglas de protección (rulesets)</h4>
+<p>Los <b>rulesets</b> de GitHub (sustitutos modernos de las antiguas <i>branch protection rules</i>) aplican políticas sobre ramas o etiquetas que coinciden con un patrón, a nivel de repositorio o de toda la organización. Las reglas más importantes para la rama <code>main</code>:</p>
+<div class="tabla"><table>
+<tr><th>Regla</th><th>Qué impide o exige</th></tr>
+<tr><td>Restringir borrados</td><td>Que alguien borre la rama</td></tr>
+<tr><td>Bloquear force push</td><td>Reescribir el historial publicado</td></tr>
+<tr><td>Exigir pull request</td><td>Hacer push directo: todo cambio pasa por un PR</td></tr>
+<tr><td>Aprobaciones requeridas</td><td>Fusionar sin N revisiones aprobadas</td></tr>
+<tr><td>Descartar aprobaciones con nuevos commits</td><td>Aprobar una versión y colar otra después</td></tr>
+<tr><td>Revisión de los propietarios del código</td><td>Fusionar cambios en ciertas rutas sin su responsable</td></tr>
+<tr><td>Resolver conversaciones</td><td>Fusionar con comentarios de revisión pendientes</td></tr>
+<tr><td>Comprobaciones de estado obligatorias</td><td>Fusionar si los checks del CI (pruebas, análisis) no están en verde</td></tr>
+<tr><td>Rama actualizada antes de fusionar</td><td>Fusionar código probado contra una versión antigua de main</td></tr>
+<tr><td>Historial lineal</td><td>Commits de fusión; obliga a squash o rebase</td></tr>
+<tr><td>Commits firmados</td><td>Commits sin firma verificada</td></tr>
+</table></div>
+<p>Los rulesets permiten definir <b>excepciones</b> (<i>bypass list</i>) para roles o apps concretos, y un modo <b>Evaluate</b> para probar una regla sin aplicarla. También se pueden proteger las <b>etiquetas</b> de versión (<code>v*</code>) para que nadie las mueva o borre.</p>
+<h4>CODEOWNERS</h4>
+<p>El fichero <code>.github/CODEOWNERS</code> asigna responsables a rutas del repositorio. Cuando un pull request toca esas rutas, se solicita automáticamente su revisión y, con la regla correspondiente, es obligatoria:</p>
 <p class="fichero">.github/CODEOWNERS</p>
-<pre><code>*                 @citaprevia-NOMBRES/desarrollo
-Dockerfile        @citaprevia-NOMBRES/operaciones
-.github/          @citaprevia-NOMBRES/operaciones</code></pre>
+<pre><code># La última coincidencia gana
+*                  @citaprevia-NOMBRES/desarrollo
+Dockerfile         @citaprevia-NOMBRES/operaciones
+/infra/            @citaprevia-NOMBRES/operaciones
+/ansible/          @citaprevia-NOMBRES/operaciones
+/.github/          @citaprevia-NOMBRES/operaciones
+/.github/CODEOWNERS @citaprevia-NOMBRES/operaciones</code></pre>
+<p>Así, un cambio en el pipeline o en la infraestructura siempre lo revisa operaciones, aunque lo proponga desarrollo.</p>
+<h4>Estrategias de ramas</h4>
+<ul>
+<li><b>GitHub flow</b> y <b>desarrollo basado en troncal</b> (<i>trunk-based</i>): una rama principal siempre desplegable y ramas cortas (horas o pocos días) que se fusionan mediante pull request. Es la recomendada para CI/CD.</li>
+<li><b>Git flow</b>: ramas <code>develop</code>, <code>release</code>, <code>hotfix</code>... Pensada para versiones planificadas; más compleja y con integración menos continua.</li>
+</ul>
+<p>Con cualquiera de ellas, la rama que se despliega debe estar protegida.</p>
 
-<h3>Actividad</h3><div class="bloque actividad">
-<ol class="pasos">
-<li>(15′) Activad 2FA en vuestra cuenta y exigidlo en la organización.</li>
-<li>(15′) En Ubuntu MATE: <code>ssh-keygen -t ed25519 -C "correo"</code>, añadid la clave pública a GitHub y comprobad con <code>ssh -T git@github.com</code>. Clonad el repositorio por SSH.</li>
-<li>(20′) Cread un ruleset para <code>main</code>: pull request obligatorio con 1 aprobación, descartar aprobaciones al añadir commits, revisión de CODEOWNERS obligatoria, bloquear force-push y borrado. Añadid el fichero CODEOWNERS.</li>
-<li>(10′) Cread un token de grano fino de solo lectura sobre un repositorio y 7 días de caducidad; probadlo con <code>curl</code> contra la API y revocadlo.</li>
-<li>(15′) Intentad saltaros las reglas: push directo a main, fusionar sin aprobación, force-push. Documentad qué mensaje da GitHub en cada caso en <code>ACCESOS.md</code>.</li>
+<h3>3. Otros parámetros de seguridad del repositorio</h3>
+<ul>
+<li><b>Visibilidad</b>: público, privado o interno. Un repositorio público nunca debe contener secretos ni datos personales.</li>
+<li><b>Secret scanning</b> y <b>push protection</b>: GitHub detecta credenciales conocidas en el código y, con push protection, rechaza el push que las contiene (sesión 28).</li>
+<li><b>Alertas de Dependabot</b> y <b>notificación privada de vulnerabilidades</b>.</li>
+<li><b>Fichero <code>SECURITY.md</code></b>: cómo comunicar una vulnerabilidad.</li>
+<li><b>Registro de auditoría</b> de la organización: quién cambió permisos, reglas o secretos y cuándo.</li>
+<li><b>Revisión periódica</b> de miembros, colaboradores externos, claves de despliegue y tokens autorizados.</li>
+</ul>
+<div class="nota"><p><b>Idea clave.</b> La seguridad del acceso al código combina tres capas: <b>quién</b> entra (autenticación fuerte, credenciales de máquina limitadas), <b>qué</b> puede hacer (roles y equipos, sesión 25) y <b>cómo</b> debe hacerlo (reglas que obligan a revisar y validar cada cambio).</p></div>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Autenticación fuerte y SSH <span class="dur">20 min</span></h4>
+<ol>
+<li>Si no lo teníais, activad el doble factor en vuestra cuenta con una aplicación de autenticación y guardad los códigos de recuperación.</li>
+<li>En el portátil: <code>ssh-keygen -t ed25519 -C "vuestro correo"</code> con frase de paso. Añadid la clave pública en GitHub como <i>Authentication Key</i>.</li>
+<li>Comprobad: <code>ssh -T git@github.com</code>. Clonad <code>cita-previa-app</code> por SSH.</li>
+<li>Cargad la clave en el agente para no repetir la frase: <code>eval "$(ssh-agent)"; ssh-add</code>.</li>
 </ol>
 </div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Repasamos qué parámetros de seguridad tiene cada repositorio y quién los puede cambiar.</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Repositorio con 2FA, SSH, ruleset y CODEOWNERS, y pruebas documentadas (CE 5d, completa 5c).</p></div>
-</section>
-<section class="panel" role="tabpanel" id="p-s27" aria-labelledby="tab-s27" hidden>
-<p class="meta">Sesión 27 de 42, viernes 22 de enero de 2027, 2 horas</p>
+<div class="actividad">
+<h4>Actividad 2. Commits firmados <span class="dur">10 min</span></h4>
+<p>Configurad la firma con SSH (apartado 1), registrad la misma clave como <i>Signing Key</i> en GitHub, haced un commit y comprobad en GitHub la etiqueta <b>Verified</b>. Haced otro commit con <code>git -c commit.gpgsign=false commit</code> y observad la diferencia.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 3. Ruleset y CODEOWNERS <span class="dur">25 min</span></h4>
+<ol>
+<li>En una rama, añadid el fichero <code>CODEOWNERS</code> adaptado a vuestra organización. Abrid un pull request y fusionadlo.</li>
+<li>Cread un ruleset <code>proteger-main</code> (<i>Settings → Rules → Rulesets</i>), estado <i>Active</i>, destino la rama por defecto, con: restringir borrados, bloquear force push, exigir pull request con 1 aprobación, descartar aprobaciones con nuevos commits, revisión de CODEOWNERS obligatoria, resolver conversaciones, commits firmados. Sin excepciones.</li>
+<li>Cread un segundo ruleset para etiquetas <code>v*</code> que impida borrarlas y actualizarlas.</li>
+<li>Añadid un <code>SECURITY.md</code> breve mediante pull request (tendréis que pedir la revisión a vuestra pareja).</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 4. Token de grano fino y clave de despliegue <span class="dur">10 min</span></h4>
+<ol>
+<li>Cread un token de grano fino, con acceso solo a <code>cita-previa-app</code>, permiso <i>Contents: Read-only</i> y caducidad de 7 días. Probadlo: <code>curl -H "Authorization: Bearer $TOKEN" https://api.github.com/repos/ORG/cita-previa-app/contents/README.md</code>. Intentad crear un fichero con él (<code>PUT</code> en la misma ruta): ¿qué responde la API? Revocadlo.</li>
+<li>Generad una clave SSH nueva y añadidla como <i>Deploy key</i> de solo lectura. La usaremos en la unidad 7 para que el servidor clone el repositorio.</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 5. Intentad saltaros las reglas <span class="dur">15 min</span></h4>
+<p>Documentad en <code>ACCESOS.md</code>, con el mensaje exacto que devuelve GitHub, qué pasa al intentar: hacer push directo a <code>main</code>; fusionar vuestro propio PR sin aprobación; añadir un commit después de la aprobación; hacer <code>git push --force</code> a main; borrar la etiqueta <code>v0.1</code> (creadla antes con <code>git tag v0.1 &amp;&amp; git push origin v0.1</code>); hacer push de un commit sin firmar. ¿Puede el propietario de la organización saltarse las reglas? ¿Debería poder?</p>
+<p class="entrega">Entrega: repositorio con CODEOWNERS, rulesets activos, SECURITY.md, commits verificados y ACCESOS.md con las pruebas.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Por qué se recomienda una clave SSH por persona y por dispositivo?</li>
+<li>¿Qué diferencia hay entre un token clásico y uno de grano fino?</li>
+<li>¿Qué garantiza un commit firmado que no garantiza uno normal?</li>
+<li>¿Para qué sirve la regla "descartar aprobaciones con nuevos commits"?</li>
+<li>¿Qué problema resuelve CODEOWNERS en un repositorio con código de aplicación y de infraestructura?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s27" aria-labelledby="tab-s27" hidden>
+<p class="meta">Sesión 27 de 41 · viernes 22 de enero de 2027 · 2 horas</p>
 <h2>Validar cada cambio: pruebas y análisis de calidad automáticos</h2>
-<p><a class="ce" href="#presentacion" title="Se han validado unas modificaciones del código fuente, ejecutando pruebas de calidad mediante herramientas específicas y documentándolas.">CE 5e</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Ejecutar pruebas de calidad en cada pull request mediante GitHub Actions.</li><li>Integrar SonarQube Cloud con un quality gate.</li><li>Documentar la validación de una modificación.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Anatomía de un workflow de GitHub Actions</h4>
-<p>Un fichero YAML en <code>.github/workflows/</code> con: <b>eventos</b> que lo disparan (<code>on</code>), <b>trabajos</b> (<code>jobs</code>) que se ejecutan en una máquina (<code>runs-on</code>) y <b>pasos</b> (<code>steps</code>) que son comandos o acciones reutilizables.</p>
+<p class="chips"><span class="ce" title="Se han validado unas modificaciones del código fuente, ejecutando pruebas de calidad mediante herramientas específicas y documentándolas.">CE 5e</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Conocer en profundidad GitHub Actions: eventos, trabajos, pasos, runners, acciones, matrices, caché y artefactos.</li>
+<li>Escribir pruebas automáticas con pytest y medir la cobertura.</li>
+<li>Ejecutar en cada pull request el linter, las pruebas y el análisis de SonarQube Cloud con un quality gate obligatorio.</li>
+<li>Validar una modificación del código de principio a fin y documentar la validación.</li>
+</ul>
+
+<h3>1. GitHub Actions en profundidad</h3>
+<p>Un <b>workflow</b> es un fichero YAML en <code>.github/workflows/</code>. Sus piezas:</p>
+<div class="tabla"><table>
+<tr><th>Elemento</th><th>Qué es</th><th>Ejemplo</th></tr>
+<tr><td><code>on</code></td><td>Eventos que lo disparan</td><td><code>push</code>, <code>pull_request</code>, <code>schedule</code> (cron), <code>workflow_dispatch</code> (manual), <code>release</code></td></tr>
+<tr><td><code>jobs</code></td><td>Trabajos; por defecto se ejecutan en paralelo, cada uno en una máquina limpia</td><td><code>pruebas</code>, <code>analisis</code></td></tr>
+<tr><td><code>needs</code></td><td>Dependencias entre trabajos (orden)</td><td><code>needs: pruebas</code></td></tr>
+<tr><td><code>runs-on</code></td><td>Tipo de runner</td><td><code>ubuntu-latest</code> o un runner propio (<code>self-hosted</code>)</td></tr>
+<tr><td><code>steps</code></td><td>Pasos secuenciales: órdenes (<code>run</code>) o acciones reutilizables (<code>uses</code>)</td><td><code>uses: actions/checkout@v4</code></td></tr>
+<tr><td><code>with</code> / <code>env</code></td><td>Parámetros de una acción / variables de entorno</td><td><code>python-version: "3.12"</code></td></tr>
+<tr><td><code>strategy.matrix</code></td><td>Ejecutar el mismo trabajo con varias combinaciones</td><td>Python 3.11, 3.12 y 3.13</td></tr>
+<tr><td><code>if</code></td><td>Condiciones</td><td><code>if: github.ref == 'refs/heads/main'</code></td></tr>
+<tr><td>Caché</td><td>Reutilizar descargas entre ejecuciones</td><td><code>cache: pip</code> en <code>setup-python</code></td></tr>
+<tr><td>Artefactos</td><td>Ficheros que produce un trabajo y se guardan o se pasan a otro</td><td>Informe de cobertura</td></tr>
+</table></div>
+<p>Cada trabajo que termina publica un <b>check</b> (comprobación de estado) en el commit y en el pull request, en verde o en rojo. Esos checks son los que el ruleset puede exigir antes de fusionar (sesión 26).</p>
+<h4>Buenas prácticas</h4>
+<ul>
+<li>Fijar las versiones de las acciones (<code>@v4</code>, o mejor por hash de commit para máxima seguridad).</li>
+<li>Permisos mínimos del <code>GITHUB_TOKEN</code> con <code>permissions</code>.</li>
+<li>Trabajos rápidos: caché, pruebas en paralelo, cancelar ejecuciones obsoletas con <code>concurrency</code>.</li>
+<li>Nunca imprimir secretos. Cuidado con <code>pull_request_target</code>, que ejecuta con permisos sobre código que viene de forks.</li>
+</ul>
+
+<h3>2. Pruebas automáticas con pytest</h3>
+<p><b>pytest</b> busca ficheros <code>test_*.py</code> y ejecuta las funciones <code>test_*</code>. Cada prueba sigue el esquema <b>preparar, actuar, comprobar</b> (<i>arrange, act, assert</i>). Flask ofrece un cliente de pruebas que simula peticiones HTTP sin arrancar un servidor:</p>
+<p class="fichero">test_app.py</p>
+<pre><code>import pytest
+from app import app
+
+@pytest.fixture
+def cliente():
+    app.config["TESTING"] = True
+    return app.test_client()
+
+def test_salud(cliente):
+    r = cliente.get("/salud")
+    assert r.status_code == 200
+    assert r.get_json()["estado"] == "ok"
+
+def test_citas_devuelve_lista(cliente):
+    r = cliente.get("/citas")
+    assert r.status_code == 200
+    assert isinstance(r.get_json(), list)
+
+@pytest.mark.parametrize("ruta", ["/no-existe", "/citas/extra"])
+def test_rutas_inexistentes(cliente, ruta):
+    assert cliente.get(ruta).status_code == 404</code></pre>
+<ul>
+<li>Una <b>fixture</b> prepara lo que necesitan las pruebas (aquí, el cliente) y se inyecta por nombre.</li>
+<li><code>parametrize</code> ejecuta la misma prueba con varios datos.</li>
+<li>La <b>cobertura</b> con <code>pytest --cov=. --cov-report=term-missing --cov-report=xml</code> indica qué líneas no se han ejecutado; el XML lo lee SonarQube.</li>
+<li>Una buena prueba comprueba también los <b>casos de error</b>: identificadores que no existen, datos mal formados, límites.</li>
+</ul>
+
+<h3>3. Linter en el pipeline</h3>
+<p><b>Ruff</b> es un linter y formateador de Python muy rápido. Se configura en <code>pyproject.toml</code>:</p>
+<p class="fichero">pyproject.toml</p>
+<pre><code>[tool.ruff]
+line-length = 100
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "S"]   # errores, pyflakes, avisos, imports, bugbear, seguridad (bandit)
+[tool.ruff.lint.per-file-ignores]
+"test_*.py" = ["S101"]                     # en las pruebas se permite assert</code></pre>
+
+<h3>4. SonarQube Cloud y el quality gate</h3>
+<p>SonarQube Cloud se conecta con la cuenta de GitHub, importa la organización y analiza cada rama y pull request. Configuración mínima:</p>
+<p class="fichero">sonar-project.properties</p>
+<pre><code>sonar.organization=citaprevia-nombres
+sonar.projectKey=citaprevia-nombres_cita-previa-app
+sonar.sources=.
+sonar.exclusions=test_*.py
+sonar.tests=.
+sonar.test.inclusions=test_*.py
+sonar.python.coverage.reportPaths=coverage.xml
+sonar.python.version=3.12</code></pre>
+<p>El <b>quality gate</b> por defecto ("Sonar way") exige en el código nuevo: sin problemas nuevos de fiabilidad ni de seguridad por encima de cierto nivel, todos los puntos calientes de seguridad revisados, cobertura ≥ 80 % y duplicación ≤ 3 %. El resultado aparece como check en el pull request y como comentario con el resumen.</p>
+<h4>El workflow completo</h4>
 <p class="fichero">.github/workflows/calidad.yml</p>
 <pre><code>name: Calidad
 on:
   pull_request:
   push:
     branches: [main]
+permissions:
+  contents: read
+  pull-requests: read
+concurrency:
+  group: calidad-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   pruebas:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - name: Linter
+        run: ruff check . --output-format=github
+      - name: Formato
+        run: ruff format --check .
+      - name: Pruebas con cobertura
+        run: pytest --cov=. --cov-report=xml --cov-report=term-missing
+      - uses: actions/upload-artifact@v4
+        if: matrix.python == '3.12'
+        with:
+          name: cobertura
+          path: coverage.xml
+
+  sonar:
+    needs: pruebas
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0          # SonarQube Cloud necesita el historial
-      - uses: actions/setup-python@v5
+          fetch-depth: 0              # SonarQube necesita el historial
+      - uses: actions/download-artifact@v4
         with:
-          python-version: "3.12"
-      - run: pip install -r requirements-dev.txt
-      - name: Linter
-        run: ruff check .
-      - name: Pruebas con cobertura
-        run: pytest --cov=. --cov-report=xml
-      - name: Análisis SonarQube Cloud
-        uses: SonarSource/sonarqube-scan-action@v5
+          name: cobertura
+      - uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}</code></pre>
-<p class="fichero">sonar-project.properties</p>
-<pre><code>sonar.organization=citaprevia-nombres
-sonar.projectKey=citaprevia-nombres_cita-previa-app
-sonar.python.coverage.reportPaths=coverage.xml
-sonar.qualitygate.wait=true</code></pre>
-<p>El <b>quality gate</b> define las condiciones mínimas del código nuevo (cobertura, duplicación, sin bugs ni vulnerabilidades nuevas). Si no se cumple, el check falla y el ruleset impide fusionar.</p>
+<p>Con <code>sonar.qualitygate.wait=true</code> en las propiedades, el paso espera el resultado del quality gate y falla si no se cumple. Comprobad en el Marketplace de GitHub la versión vigente de la acción de SonarSource.</p>
 
-<h3>Actividad</h3><div class="bloque actividad">
-<ol class="pasos">
-<li>(15′) Entrad en SonarQube Cloud con vuestra cuenta de GitHub, importad la organización y el proyecto, desactivad el análisis automático y generad el token. Guardadlo como secreto <code>SONAR_TOKEN</code> del repositorio.</li>
-<li>(20′) Cread en una rama el workflow y el fichero de propiedades. Abrid un pull request y corregid hasta que todo esté en verde.</li>
-<li>(10′) Añadid los checks <em>pruebas</em> y el quality gate como obligatorios en el ruleset de main.</li>
-<li>(20′) <b>Modificación a validar:</b> añadid una ruta <code>/citas/&lt;id&gt;</code> que devuelva una cita o 404, con sus pruebas. Probad primero sin pruebas (¿qué dice el quality gate de la cobertura?) y luego con ellas.</li>
-<li>(10′) Documentad en <code>docs/validacion.md</code>: cambio realizado, herramientas ejecutadas, resultados (capturas), problemas encontrados y cómo se resolvieron.</li>
+<h3>5. Documentar la validación</h3>
+<p>El criterio de evaluación pide validar las modificaciones <b>y documentarlas</b>. La documentación de una validación responde: qué cambio se ha hecho y por qué (enlace a la issue), qué herramientas se han ejecutado y con qué resultado (enlaces a la ejecución del workflow y al análisis de SonarQube), qué problemas se encontraron, cómo se corrigieron y quién revisó y aprobó el cambio. Gran parte queda registrada automáticamente en el pull request; el documento lo resume para quien audite.</p>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Pruebas y linter en cada pull request <span class="dur">25 min</span></h4>
+<ol>
+<li>En una rama <code>ci-calidad</code>, añadid <code>requirements-dev.txt</code> (Recursos), <code>pyproject.toml</code> y el <code>test_app.py</code> del apartado 2. Ejecutad en local <code>ruff check .</code>, <code>ruff format --check .</code> y <code>pytest --cov=.</code>; corregid lo que salga.</li>
+<li>Añadid el trabajo <code>pruebas</code> del workflow (todavía sin <code>sonar</code>), haced push y abrid un pull request. Observad las dos ejecuciones de la matriz.</li>
 </ol>
 </div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Revisamos un pull request de cada pareja en el proyector: checks, comentarios de SonarQube Cloud y aprobación.</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Workflow de calidad en verde, quality gate obligatorio y <code>docs/validacion.md</code> (CE 5e).</p></div>
-<details class="docente"><summary>Notas para el docente</summary><p>Comprobar en el Marketplace de GitHub la versión vigente de <code>SonarSource/sonarqube-scan-action</code> antes de la sesión. SonarQube Cloud es gratuito para proyectos públicos.</p></details>
-</section>
-<section class="panel" role="tabpanel" id="p-s28" aria-labelledby="tab-s28" hidden>
-<p class="meta">Sesión 28 de 42, lunes 25 de enero de 2027, 2 horas</p>
+<div class="actividad">
+<h4>Actividad 2. SonarQube Cloud <span class="dur">20 min</span></h4>
+<ol>
+<li>Entrad en <a href="https://sonarcloud.io/">SonarQube Cloud</a> con GitHub, importad vuestra organización y el proyecto <code>cita-previa-app</code>. Elegid el análisis con GitHub Actions y <b>desactivad el análisis automático</b>.</li>
+<li>Generad el token y guardadlo como secreto del repositorio <code>SONAR_TOKEN</code>.</li>
+<li>Añadid <code>sonar-project.properties</code> (con vuestra organización y clave, y <code>sonar.qualitygate.wait=true</code>) y el trabajo <code>sonar</code>. Haced push al pull request y revisad el comentario de SonarQube.</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 3. Checks obligatorios <span class="dur">10 min</span></h4>
+<p>Fusionad el pull request (con la aprobación de vuestra pareja). Editad el ruleset <code>proteger-main</code>: añadid <i>Require status checks to pass</i> con los checks <code>pruebas (3.12)</code>, <code>pruebas (3.13)</code> y <code>sonar</code>, y <i>Require branches to be up to date</i>.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 4. Validar una modificación <span class="dur">20 min</span></h4>
+<p>Cread una issue "Consultar una cita por su identificador". En una rama, añadid la ruta <code>/citas/&lt;int:id&gt;</code> que devuelva la cita o un 404 con <code>{"error": "cita no encontrada"}</code>.</p>
+<ol>
+<li>Primero haced push <b>sin pruebas</b> nuevas: ¿qué dice el quality gate sobre la cobertura del código nuevo? ¿Se puede fusionar?</li>
+<li>Introducid a propósito un problema que detecte el linter (una variable sin usar) y comprobad que el check falla.</li>
+<li>Corregidlo y añadid las pruebas (cita existente, inexistente, identificador no numérico). Todo en verde, revisión de la pareja y fusión con "Squash and merge" enlazando la issue (<code>Closes #N</code>).</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 5. Documento de validación <span class="dur">10 min</span></h4>
+<p>Redactad <code>docs/validacion.md</code> con la estructura del apartado 5 para la modificación de la actividad 4, con enlaces a la issue, al pull request, a las ejecuciones fallidas y correctas y al análisis de SonarQube, y una tabla con cada comprobación y su resultado.</p>
+<p class="entrega">Entrega: repositorio con el workflow de calidad en verde, checks obligatorios en el ruleset, la nueva ruta con pruebas y <code>docs/validacion.md</code>.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué diferencia hay entre un trabajo y un paso en GitHub Actions?</li>
+<li>¿Para qué sirve una matriz? ¿Y una fixture de pytest?</li>
+<li>¿Por qué SonarQube necesita <code>fetch-depth: 0</code>?</li>
+<li>¿Qué condiciones del quality gate por defecto se aplican al código nuevo?</li>
+<li>¿Qué debe incluir la documentación de la validación de un cambio?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s28" aria-labelledby="tab-s28" hidden>
+<p class="meta">Sesión 28 de 41 · lunes 25 de enero de 2027 · 2 horas</p>
 <h2>Comprobaciones de seguridad periódicas</h2>
-<p><a class="ce" href="#presentacion" title="Se han ejecutado comprobaciones de parámetros de seguridad del código, mediante herramientas específicas y de forma periódica.">CE 5f</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Ejecutar análisis de seguridad del código con herramientas específicas.</li><li>Programarlos para que se ejecuten de forma periódica y no solo cuando hay cambios.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>¿Por qué periódicamente?</h4>
-<p>Cada día se publican vulnerabilidades nuevas. Un código que ayer estaba limpio puede ser vulnerable hoy sin que nadie lo toque. Por eso, además de analizar cada cambio, se <b>programa</b> un análisis completo, por ejemplo cada noche o cada semana, con el evento <code>schedule</code> y la sintaxis de cron.</p>
-<pre><code># minuto hora día-mes mes día-semana   (hora UTC)
-- cron: "0 3 * * 1"      # cada lunes a las 03:00 UTC</code></pre>
+<p class="chips"><span class="ce" title="Se han ejecutado comprobaciones de parámetros de seguridad del código, mediante herramientas específicas y de forma periódica.">CE 5f</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Explicar por qué las comprobaciones de seguridad deben ser periódicas y no solo al cambiar el código.</li>
+<li>Conocer el funcionamiento de CodeQL, de la detección de secretos y del escaneo con Trivy.</li>
+<li>Programar ejecuciones periódicas con <code>schedule</code> y centralizar los resultados en la pestaña Security con SARIF.</li>
+<li>Definir un proceso de clasificación y corrección de hallazgos con plazos según la gravedad.</li>
+<li>Crear un workflow de seguridad programado y comprobar que detecta problemas reales.</li>
+</ul>
+
+<h3>1. Por qué comprobar de forma periódica</h3>
+<p>El código que ayer era seguro puede no serlo hoy sin que nadie lo toque: cada día se publican decenas de <b>CVE nuevas</b> que afectan a librerías, a imágenes base y a patrones de código. Además, las herramientas mejoran sus reglas y detectan problemas que antes no veían. Por eso, además de validar cada cambio (sesión 27), hay que ejecutar las comprobaciones de seguridad <b>de forma periódica</b> sobre la rama principal y sobre lo que está desplegado.</p>
+<p>El ejemplo clásico es <b>Log4Shell</b> (CVE-2021-44228, diciembre de 2021): una vulnerabilidad crítica en la librería de registros Log4j de Java, presente en miles de aplicaciones que llevaban años sin cambiar. Las organizaciones que tenían escaneos periódicos y SBOM supieron en horas qué sistemas estaban afectados; las demás tardaron semanas.</p>
+
+<h3>2. CodeQL: análisis estático de seguridad</h3>
+<p><b>CodeQL</b> es el motor SAST de GitHub, gratuito para repositorios públicos. Funciona en dos fases:</p>
+<ol>
+<li><b>Extracción</b>: convierte el código en una <b>base de datos</b> que representa su estructura (sintaxis, flujo de datos, flujo de control). En lenguajes compilados, observa la compilación.</li>
+<li><b>Consultas</b>: ejecuta consultas escritas en el lenguaje QL que buscan patrones de vulnerabilidad. La más importante es el análisis de <b>flujo de datos contaminados</b> (<i>taint tracking</i>): sigue un dato que entra desde el usuario (un parámetro de la petición, la "fuente") hasta un punto peligroso (una consulta SQL, una orden del sistema, el "sumidero") sin pasar por una validación o saneamiento.</li>
+</ol>
+<p>Hay conjuntos de consultas predefinidos: <code>default</code> (alta precisión) y <code>security-extended</code> (más consultas, más falsos positivos). Soporta Python, JavaScript/TypeScript, Java, C#, C/C++, Go, Ruby, Swift, Kotlin y las propias GitHub Actions. Se activa de dos formas: <b>configuración por defecto</b> (un clic en <i>Settings → Code security</i>) o <b>avanzada</b> (un workflow que se puede personalizar y programar).</p>
+
+<h3>3. Detección de secretos</h3>
+<ul>
+<li><b>Secret scanning de GitHub</b>: busca en todo el historial del repositorio patrones de credenciales de cientos de proveedores (AWS, Azure, Google, Slack, Stripe, tokens de GitHub...) y avisa. En repositorios públicos, además, avisa al proveedor para que revoque la credencial.</li>
+<li><b>Push protection</b>: detecta la credencial <b>antes</b> de que llegue al repositorio y rechaza el push. Es mucho mejor prevenir que detectar: un secreto que se ha publicado, aunque se borre en el siguiente commit, sigue en el historial y debe considerarse comprometido.</li>
+<li><b>gitleaks</b> y <b>TruffleHog</b>: herramientas libres que buscan secretos en el historial con reglas y entropía; se pueden usar en local (pre-commit), en CI y en otras plataformas. Detectan también secretos genéricos (contraseñas, claves) que no siguen un patrón de proveedor.</li>
+</ul>
+<div class="aviso"><p><b>Si se filtra un secreto</b>: 1) revocarlo o rotarlo inmediatamente en el servicio; 2) revisar los registros para ver si se ha usado; 3) después, si se quiere, limpiarlo del historial (<code>git filter-repo</code>). Borrarlo del código no sirve de nada si no se revoca.</p></div>
+
+<h3>4. Trivy</h3>
+<p><b>Trivy</b> (Aqua Security, libre) es un escáner "todo en uno":</p>
+<ul>
+<li><code>trivy fs .</code>: dependencias declaradas en el repositorio (requirements.txt, package-lock.json...), secretos y configuraciones.</li>
+<li><code>trivy config .</code>: configuraciones inseguras en Dockerfile, Terraform, Kubernetes.</li>
+<li><code>trivy image IMAGEN</code>: paquetes del sistema operativo y librerías dentro de una imagen.</li>
+<li><code>trivy image --format cyclonedx</code>: genera el SBOM.</li>
+</ul>
+<p>Sus resultados se pueden exportar en <b>SARIF</b> (<i>Static Analysis Results Interchange Format</i>), un formato JSON estándar que GitHub muestra en la pestaña <b>Security → Code scanning</b> junto a los de CodeQL. Así todos los hallazgos quedan en un único sitio, con su historial.</p>
+
+<h3>5. Programar ejecuciones: <code>schedule</code></h3>
+<p>El evento <code>schedule</code> usa la sintaxis de <b>cron</b> (en hora UTC):</p>
+<pre><code>┌───────── minuto (0-59)
+│ ┌─────── hora (0-23)
+│ │ ┌───── día del mes (1-31)
+│ │ │ ┌─── mes (1-12)
+│ │ │ │ ┌─ día de la semana (0-6, 0 = domingo)
+│ │ │ │ │
+30 2 * * 1      → cada lunes a las 02:30 UTC
+0 4 * * *       → todos los días a las 04:00 UTC</code></pre>
+<p>Los workflows programados solo se ejecutan sobre la rama por defecto, y GitHub los desactiva en repositorios públicos sin actividad durante 60 días.</p>
 <p class="fichero">.github/workflows/seguridad.yml</p>
 <pre><code>name: Seguridad
 on:
+  push:
+    branches: [main]
   pull_request:
   schedule:
-    - cron: "0 3 * * 1"
-  workflow_dispatch:           # permite lanzarlo a mano
+    - cron: "30 2 * * 1"
+  workflow_dispatch:
 permissions:
   contents: read
-  security-events: write       # necesario para subir resultados de CodeQL
+  security-events: write     # para subir resultados SARIF
 jobs:
   codeql:
     runs-on: ubuntu-latest
@@ -236,98 +769,282 @@ jobs:
       - uses: github/codeql-action/init@v3
         with:
           languages: python
+          queries: security-extended
       - uses: github/codeql-action/analyze@v3
-  secretos-y-ficheros:
+
+  secretos:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      - name: Secretos en todo el historial (gitleaks)
-        run: docker run --rm -v "$PWD":/repo zricethezav/gitleaks:latest detect --source=/repo -v
-      - name: Configuración insegura y vulnerabilidades (Trivy)
-        run: docker run --rm -v "$PWD":/src aquasec/trivy:latest fs --scanners vuln,secret,misconfig --exit-code 1 --severity HIGH,CRITICAL /src</code></pre>
-<p>Además, en <em>Settings, Code security</em> se activan el <b>secret scanning</b> y la <b>push protection</b>, que bloquea el push si detecta un token conocido.</p>
-<div class="clave"><b>Buena práctica.</b> Dad a cada workflow solo los permisos que necesita (<code>permissions</code>) y, en entornos profesionales, fijad las acciones de terceros por su hash de commit en lugar de por etiqueta: ha habido ataques a la cadena de suministro que modificaban etiquetas de acciones populares.</div>
+          fetch-depth: 0          # todo el historial
+      - name: gitleaks
+        run: |
+          docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:latest \
+            detect --source /repo --redact -v --exit-code 1
 
-<h3>Actividad</h3><div class="bloque actividad">
-<ol class="pasos">
-<li>(10′) Activad secret scanning, push protection y Dependabot alerts en la organización.</li>
-<li>(20′) Añadid el workflow de seguridad y ejecutadlo a mano (<em>Run workflow</em>). Revisad la pestaña <em>Security</em>.</li>
-<li>(20′) Introducid en una rama un fallo que detecte CodeQL (por ejemplo, <code>subprocess.run(request.args["cmd"], shell=True)</code>) y un fichero con un token falso con formato real. Observad qué herramienta lo detecta y en qué momento (push protection, PR, análisis).</li>
-<li>(10′) Añadid a Trivy un <code>.trivyignore</code> justificado si aparece algún falso positivo.</li>
-<li>(15′) Documentad en <code>docs/seguridad.md</code>: herramientas, periodicidad elegida y por qué, un ejemplo de hallazgo y su corrección.</li>
+  trivy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Trivy (dependencias, secretos y configuración)
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: fs
+          scanners: vuln,secret,misconfig
+          format: sarif
+          output: trivy.sarif
+          severity: MEDIUM,HIGH,CRITICAL
+      - uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: trivy.sarif
+          category: trivy</code></pre>
+<p>Comprobad en el Marketplace las versiones vigentes de <code>aquasecurity/trivy-action</code> y de <code>github/codeql-action</code>.</p>
+
+<h3>6. Qué hacer con los hallazgos</h3>
+<p>Detectar no sirve de nada si nadie actúa. Un proceso mínimo de gestión de vulnerabilidades:</p>
+<ol>
+<li><b>Clasificar</b> (<i>triage</i>): ¿es real o un falso positivo? ¿Afecta a código que se usa? ¿Es explotable en nuestro contexto?</li>
+<li><b>Priorizar</b> por gravedad y exposición.</li>
+<li><b>Corregir</b> dentro de un plazo acordado, o <b>aceptar el riesgo</b> justificadamente (descartando la alerta con el motivo).</li>
+<li><b>Verificar</b> que la corrección cierra la alerta.</li>
+</ol>
+<div class="tabla"><table>
+<tr><th>Gravedad</th><th>Plazo de corrección orientativo</th></tr>
+<tr><td>Crítica</td><td>24-72 horas</td></tr>
+<tr><td>Alta</td><td>7 días</td></tr>
+<tr><td>Media</td><td>30 días</td></tr>
+<tr><td>Baja</td><td>Siguiente ciclo de mantenimiento</td></tr>
+</table></div>
+<p>Otras herramientas periódicas útiles: <b>OpenSSF Scorecard</b>, que puntúa las prácticas de seguridad de un repositorio (reglas de protección, dependencias fijadas, workflows con permisos mínimos...).</p>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Activar la seguridad del repositorio <span class="dur">10 min</span></h4>
+<p>En <i>Settings → Code security</i> de <code>cita-previa-app</code>, activad: <i>Dependency graph</i>, <i>Dependabot alerts</i>, <i>Secret scanning</i> y <i>Push protection</i>, y <i>Private vulnerability reporting</i>. No activéis todavía CodeQL por defecto: lo haremos con el workflow avanzado.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 2. Workflow de seguridad programado <span class="dur">35 min</span></h4>
+<ol>
+<li>En una rama, añadid <code>.github/workflows/seguridad.yml</code> del apartado 5. Programadlo para que se ejecute dentro de 10 minutos (calculad la hora UTC) y así podréis ver una ejecución programada en esta misma sesión. Después dejadlo semanal.</li>
+<li>Abrid el pull request. Revisad cada trabajo y los resultados en <i>Security → Code scanning</i>.</li>
+<li>Añadid un fichero <code>.gitleaks.toml</code> si necesitáis excluir falsos positivos (por ejemplo, datos de prueba), justificándolo en un comentario.</li>
+<li>Fusionad y añadid <code>codeql</code>, <code>secretos</code> y <code>trivy</code> como checks obligatorios en el ruleset.</li>
 </ol>
 </div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>¿Qué hacemos cuando el análisis del lunes falla en main sin que nadie haya cambiado nada?</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Workflow programado, alertas detectadas y corregidas, <code>docs/seguridad.md</code> (CE 5f).</p></div>
-</section>
-<section class="panel" role="tabpanel" id="p-s29" aria-labelledby="tab-s29" hidden>
-<p class="meta">Sesión 29 de 42, viernes 29 de enero de 2027, 2 horas</p>
-<h2>Validar dependencias e integración antes de desplegar. Entrega de la unidad</h2>
-<p><a class="ce" href="#presentacion" title="Se han validado, con anterioridad al despliegue, las dependencias del código de librerías externas o integraciones, usando herramientas de comprobación para verificar la seguridad y funcionalidad e integración con el resto de los componentes del aplicativo.">CE 5g</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Detectar dependencias vulnerables o desactualizadas y actualizarlas de forma controlada.</li><li>Comprobar que la imagen del contenedor es segura y se integra con el resto antes de publicarla.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>La mayor parte de tu código no lo has escrito tú</h4>
-<p>Una aplicación moderna tiene decenas o cientos de dependencias directas y transitivas. Los ataques a la cadena de suministro (Log4Shell en 2021, la puerta trasera de xz-utils en 2024) muestran que validar dependencias es imprescindible.</p>
-<ul><li><b>Dependabot alerts</b> avisa de dependencias con CVE conocidos; <b>security updates</b> abre PR para corregirlas.</li>
-<li><b>Dependabot version updates</b> propone actualizaciones periódicas de versión.</li>
-<li><b>Dependency review</b> bloquea un PR que introduce una dependencia vulnerable.</li>
-<li><b>Escaneo de la imagen</b> y <b>prueba de integración</b>: construir la imagen, arrancarla y comprobar que responde, antes de publicarla en el registro.</li></ul>
+<div class="actividad">
+<h4>Actividad 3. Provocar detecciones <span class="dur">20 min</span></h4>
+<ol>
+<li><b>Push protection</b>: copiad en un fichero <code>credenciales.txt</code> las credenciales temporales del laboratorio de AWS Academy (<i>AWS Details → AWS CLI</i>), haced commit e intentad hacer push. Anotad el mensaje. <b>No elijáis nunca "permitir el secreto"</b>: aunque sean temporales, son reales. Deshaced el commit (<code>git reset HEAD~1</code>) y borrad el fichero.</li>
+<li><b>SAST</b>: en una rama, añadid una ruta <code>/buscar</code> que construya una consulta SQL concatenando un parámetro (como en la sesión 24). Abrid el PR y observad el comentario de CodeQL en la línea afectada, con el camino desde la fuente hasta el sumidero.</li>
+<li><b>Dependencias</b>: en otra rama, cambiad en <code>requirements.txt</code> Flask por una versión antigua con vulnerabilidades conocidas (por ejemplo, <code>flask==2.2.0</code>) y observad lo que detecta Trivy.</li>
+<li>Cerrad esos PR sin fusionar.</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 4. Clasificar hallazgos y política <span class="dur">15 min</span></h4>
+<p>Revisad todas las alertas abiertas en la pestaña Security. Para cada una decidid: corregir, descartar como falso positivo o aceptar el riesgo, y hacedlo en GitHub con el motivo. Añadid a <code>SECURITY.md</code> la tabla de plazos de corrección del apartado 6 y la frecuencia de cada análisis periódico.</p>
+<p class="entrega">Entrega: workflow <code>seguridad.yml</code> con al menos una ejecución programada, capturas de las tres detecciones y <code>SECURITY.md</code> actualizado.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Por qué un código que no ha cambiado puede volverse vulnerable?</li>
+<li>¿Qué es el análisis de flujo de datos contaminados de CodeQL?</li>
+<li>¿Qué diferencia hay entre secret scanning y push protection?</li>
+<li>Si se publica una contraseña en un repositorio, ¿basta con borrarla en el siguiente commit? ¿Qué hay que hacer?</li>
+<li>¿Qué significa <code>0 4 * * *</code> en un <code>schedule</code>?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s29" aria-labelledby="tab-s29" hidden>
+<p class="meta">Sesión 29 de 41 · viernes 29 de enero de 2027 · 2 horas</p>
+<h2>Validar dependencias e integración antes de desplegar</h2>
+<p class="chips"><span class="ce" title="Se han validado, con anterioridad al despliegue, las dependencias del código de librerías externas o integraciones, usando herramientas de comprobación para verificar la seguridad y funcionalidad e integración con el resto de los componentes del aplicativo.">CE 5g</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Identificar los riesgos de las dependencias externas y de la cadena de suministro del software.</li>
+<li>Fijar y actualizar dependencias de forma controlada con ficheros de bloqueo y Dependabot.</li>
+<li>Validar antes del despliegue la seguridad, la licencia y la funcionalidad de las dependencias y de las integraciones.</li>
+<li>Construir un pipeline que construye la imagen, la escanea, prueba su integración con el resto de componentes y solo entonces la publica.</li>
+</ul>
+
+<h3>1. El problema de las dependencias</h3>
+<p>Una aplicación moderna tiene muy poco código propio: la mayor parte son <b>dependencias</b>. Nuestra pequeña <code>cita-previa-app</code> declara dos (Flask y Gunicorn), pero al instalarlas se descargan también sus dependencias <b>transitivas</b> (Werkzeug, Jinja2, MarkupSafe, itsdangerous, click, blinker, packaging...), y la imagen de contenedor añade cientos de paquetes del sistema operativo. Cada una de ellas es código de terceros que se ejecuta con los permisos de nuestra aplicación.</p>
+<h4>Riesgos</h4>
+<ul>
+<li><b>Vulnerabilidades conocidas</b> (CVE) en versiones concretas.</li>
+<li><b>Paquetes maliciosos</b>: publicados con nombres parecidos a otros populares (<i>typosquatting</i>: <code>reqeusts</code> en lugar de <code>requests</code>), o legítimos cuya cuenta de publicación ha sido robada.</li>
+<li><b>Ataques a la cadena de suministro</b>: introducir código malicioso en un proyecto de confianza. Casos reales: <b>event-stream</b> (npm, 2018), el sistema de compilación de <b>SolarWinds</b> (2020) y la puerta trasera en <b>xz-utils</b> (2024), descubierta por casualidad poco antes de llegar a las versiones estables de muchas distribuciones Linux tras años de preparación por parte del atacante.</li>
+<li><b>Proyectos abandonados</b> que ya no reciben correcciones.</li>
+<li><b>Cambios incompatibles</b> al actualizar, que rompen la aplicación.</li>
+<li><b>Licencias</b> incompatibles con el uso que queremos hacer (por ejemplo, una licencia copyleft fuerte en un producto que no se quiere publicar).</li>
+</ul>
+
+<h3>2. Controlar las versiones</h3>
+<h4>Rangos, versiones fijadas y ficheros de bloqueo</h4>
+<p>El <b>versionado semántico</b> (<code>MAYOR.MENOR.PARCHE</code>) indica el tipo de cambio: parche, correcciones; menor, novedades compatibles; mayor, cambios incompatibles. En <code>requirements.txt</code> podemos declarar rangos (<code>flask==3.1.*</code>), pero entonces dos construcciones en días distintos pueden instalar versiones diferentes: las construcciones no son <b>reproducibles</b>.</p>
+<p>La solución es separar lo que <b>queremos</b> (dependencias directas con rangos, en <code>requirements.in</code>) de lo que <b>instalamos exactamente</b> (todas, incluidas las transitivas, con versión exacta y <b>hash</b>, en un fichero de bloqueo):</p>
+<pre><code>pip install pip-tools
+pip-compile --generate-hashes requirements.in -o requirements.txt
+pip install --require-hashes -r requirements.txt</code></pre>
+<p>Con los hashes, pip rechaza cualquier paquete cuyo contenido no coincida, aunque alguien lo sustituya en el repositorio de paquetes. Otros ecosistemas tienen su equivalente: <code>package-lock.json</code> (npm), <code>poetry.lock</code>, <code>uv.lock</code>, <code>go.sum</code>. En Docker, lo mismo se consigue fijando la imagen base por <b>digest</b> (<code>python:3.12-slim@sha256:...</code>).</p>
+<h4>Actualizar de forma controlada: Dependabot</h4>
+<p>Fijar versiones no significa no actualizar nunca: significa actualizar <b>de forma deliberada y probada</b>. <b>Dependabot</b> revisa periódicamente las dependencias y abre pull requests con las actualizaciones; cada PR pasa por todo el pipeline de calidad y seguridad antes de fusionarse. Tiene dos funciones:</p>
+<ul>
+<li><b>Actualizaciones de seguridad</b>: PR automático cuando hay una alerta de vulnerabilidad.</li>
+<li><b>Actualizaciones de versión</b>: PR periódicos para mantener todo al día, configurados en <code>.github/dependabot.yml</code>.</li>
+</ul>
 <p class="fichero">.github/dependabot.yml</p>
 <pre><code>version: 2
 updates:
   - package-ecosystem: pip
     directory: "/"
-    schedule: { interval: weekly }
-  - package-ecosystem: docker
+    schedule:
+      interval: weekly
+    groups:
+      menores-y-parches:
+        update-types: [minor, patch]
+  - package-ecosystem: docker          # imagen base del Dockerfile
     directory: "/"
-    schedule: { interval: weekly }
-  - package-ecosystem: github-actions
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions  # versiones de las acciones de los workflows
     directory: "/"
-    schedule: { interval: weekly }</code></pre>
-<p class="fichero">.github/workflows/predespliegue.yml</p>
-<pre><code>name: Predespliegue
-on: pull_request
-permissions:
-  contents: read
-jobs:
-  dependencias:
+    schedule:
+      interval: weekly</code></pre>
+<p><b>Renovate</b> es una alternativa libre con más opciones de configuración.</p>
+
+<h3>3. Validar las dependencias antes de desplegar</h3>
+<div class="tabla"><table>
+<tr><th>Qué se valida</th><th>Herramienta</th><th>Cuándo</th></tr>
+<tr><td>Nuevas dependencias o versiones introducidas por un PR: vulnerabilidades y licencias</td><td><code>actions/dependency-review-action</code></td><td>En cada pull request</td></tr>
+<tr><td>Vulnerabilidades en todas las dependencias de Python</td><td><code>pip-audit</code> (base de datos de PyPI/OSV)</td><td>En cada PR y periódicamente</td></tr>
+<tr><td>Vulnerabilidades en la imagen completa (SO + librerías)</td><td>Trivy <code>image</code></td><td>Al construir la imagen, antes de publicarla</td></tr>
+<tr><td>Configuración de la imagen (usuario root, secretos)</td><td>hadolint, Trivy <code>config</code></td><td>En cada PR</td></tr>
+<tr><td>Inventario de componentes</td><td>SBOM con Trivy o Syft</td><td>En cada publicación</td></tr>
+<tr><td>Funcionalidad e integración con el resto de componentes</td><td>Pruebas de integración con el contenedor real</td><td>Antes de publicar la imagen</td></tr>
+</table></div>
+<p class="fichero">Revisión de dependencias en el PR</p>
+<pre><code>  dependencias:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/dependency-review-action@v4
-        with: { fail-on-severity: high }
-      - run: pipx run pip-audit -r requirements.txt
-  imagen:
-    needs: dependencias
+        with:
+          fail-on-severity: moderate
+          deny-licenses: AGPL-3.0, GPL-3.0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pip-audit &amp;&amp; pip-audit -r requirements.txt</code></pre>
+
+<h3>4. Validar la integración antes de desplegar</h3>
+<p>Que cada pieza pase sus pruebas no garantiza que funcionen <b>juntas</b>. Las <b>pruebas de integración</b> comprueban la aplicación con sus componentes reales: la imagen de contenedor tal como se desplegará, su base de datos, su proxy, sus variables de entorno. En un pipeline de contenedores:</p>
+<ol>
+<li><b>Construir</b> la imagen una sola vez.</li>
+<li><b>Escanearla</b>: si tiene vulnerabilidades críticas corregibles, se para.</li>
+<li><b>Arrancarla</b> con la configuración de un entorno (y sus dependencias, con Docker Compose) y esperar a que el <i>healthcheck</i> diga que está sana.</li>
+<li><b>Pruebas de humo</b> (<i>smoke tests</i>) e integración contra el contenedor en marcha: responde en <code>/salud</code>, devuelve citas, devuelve 404 donde debe, las cabeceras son correctas, no se ejecuta como root.</li>
+<li>Solo si todo pasa, <b>publicar</b> la imagen en el registro con su versión y el hash del commit, junto con su SBOM.</li>
+</ol>
+<p>Para las <b>integraciones externas</b> (el proveedor de SMS, una API de otra Consejería) se usan <b>simulaciones</b> (<i>mocks</i> o servidores falsos como WireMock) con el mismo contrato que el servicio real, o los entornos de pruebas (<i>sandbox</i>) que ofrecen los proveedores. Las <b>pruebas de contrato</b> verifican que el formato de las peticiones y respuestas que esperamos sigue siendo el que el proveedor ofrece.</p>
+<p class="fichero">.github/workflows/imagen.yml</p>
+<pre><code>name: Imagen
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+permissions:
+  contents: read
+  packages: write
+env:
+  IMAGEN: ghcr.io/${{ github.repository }}
+jobs:
+  construir-probar-publicar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t cita-previa:${{ github.sha }} .
-      - name: Escaneo de la imagen
+      - name: Construir
+        run: docker build -t app:ci .
+      - name: Escanear la imagen
         run: |
-          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest             image --exit-code 1 --severity CRITICAL cita-previa:${{ github.sha }}
-      - name: Prueba de integración
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest \
+            image --severity CRITICAL,HIGH --ignore-unfixed --exit-code 1 app:ci
+      - name: Arrancar el contenedor
         run: |
-          docker run -d --name app -p 8000:8000 -e ENTORNO=ci cita-previa:${{ github.sha }}
-          sleep 5
-          curl --fail http://localhost:8000/salud
-          curl --fail http://localhost:8000/citas</code></pre>
+          docker run -d --name app -p 8000:8000 -e ENTORNO=ci app:ci
+          for i in $(seq 1 30); do
+            [ "$(docker inspect -f '{{.State.Health.Status}}' app)" = healthy ] &amp;&amp; exit 0
+            sleep 2
+          done
+          docker logs app; exit 1
+      - name: Pruebas de integración
+        run: |
+          curl -fsS localhost:8000/salud | grep -q '"entorno":"ci"'
+          curl -fsS localhost:8000/citas | jq -e 'length &gt;= 1'
+          test "$(curl -s -o /dev/null -w '%{http_code}' localhost:8000/no-existe)" = 404
+          test "$(docker exec app whoami)" != root
+      - name: SBOM
+        run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image --format cyclonedx app:ci &gt; sbom.json
+      - uses: actions/upload-artifact@v4
+        with: { name: sbom, path: sbom.json }
+      - name: Publicar (solo desde main o etiqueta)
+        if: github.event_name == 'push'
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          IMAGEN_MIN=$(echo "$IMAGEN" | tr '[:upper:]' '[:lower:]')
+          docker tag app:ci "$IMAGEN_MIN:sha-${GITHUB_SHA::7}"
+          docker push "$IMAGEN_MIN:sha-${GITHUB_SHA::7}"
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            docker tag app:ci "$IMAGEN_MIN:${GITHUB_REF_NAME#v}"
+            docker push "$IMAGEN_MIN:${GITHUB_REF_NAME#v}"
+          fi</code></pre>
+<p>Los marcos como <b>SLSA</b> (<i>Supply-chain Levels for Software Artifacts</i>) definen niveles de garantía para este proceso: construcción automatizada, procedencia firmada, entorno de construcción aislado.</p>
 
-<h3>Actividad</h3><div class="bloque actividad">
-<ol class="pasos">
-<li>(15′) Añadid <code>dependabot.yml</code> y el workflow de predespliegue. Marcad sus trabajos como checks obligatorios.</li>
-<li>(20′) En una rama, fijad una versión antigua y vulnerable (por ejemplo <code>flask==2.2.2</code> o <code>requests==2.25.0</code>) y abrid el PR. Observad qué herramientas lo bloquean y qué PR propone Dependabot.</li>
-<li>(15′) Romped a propósito la integración (cambiad el puerto en el Dockerfile) y comprobad que la prueba de integración falla antes de publicar nada.</li>
-<li>(25′) <b>Entrega:</b> repasad la lista de comprobación de la pestaña <a href="#recursos">Recursos</a> y completad el README con un apartado "Cómo se valida un cambio" que enlace a <code>ACCESOS.md</code>, <code>docs/validacion.md</code> y <code>docs/seguridad.md</code>.</li>
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Dependencias fijadas y Dependabot <span class="dur">15 min</span></h4>
+<ol>
+<li>Renombrad <code>requirements.txt</code> a <code>requirements.in</code>, generad el fichero de bloqueo con hashes (<code>pip-compile --generate-hashes</code>) y ajustad el Dockerfile para instalar con <code>--require-hashes</code>. ¿Cuántas dependencias transitivas han aparecido?</li>
+<li>Añadid <code>.github/dependabot.yml</code> y, en <i>Settings → Code security</i>, activad <i>Dependabot security updates</i>. En <i>Insights → Dependency graph → Dependabot</i>, forzad una comprobación y revisad los PR que abra.</li>
 </ol>
 </div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Recorrido completo de un PR por todos los checks. Revisión de la lista de comprobación por parejas cruzadas.</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Dependabot y workflow de predespliegue funcionando con pruebas documentadas (CE 5g). Revisión final del repositorio con la lista de comprobación (CE 5c a 5g, 70 % de la unidad).</p></div>
-</section>
-<section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden><h2>Recursos y glosario</h2>
+<div class="actividad">
+<h4>Actividad 2. Revisión de dependencias en cada PR <span class="dur">20 min</span></h4>
+<ol>
+<li>Añadid el trabajo <code>dependencias</code> del apartado 3 al workflow de calidad.</li>
+<li>Abrid un PR que añada una dependencia con vulnerabilidades conocidas (por ejemplo <code>requests==2.25.0</code>) y comprobad que el trabajo falla y muestra el resumen de vulnerabilidades y licencias.</li>
+<li>Cambiadla por la versión actual y comprobad que pasa. Cerrad el PR si la dependencia no se usa.</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 3. Construir, escanear, probar la integración y publicar <span class="dur">40 min</span></h4>
+<ol>
+<li>Añadid <code>.github/workflows/imagen.yml</code> en una rama y abrid el PR: la imagen se construye, se escanea y se prueba, pero no se publica.</li>
+<li>Provocad un fallo de integración: cambiad en el Dockerfile el puerto de Gunicorn a 9000. ¿En qué paso falla y por qué no lo habían detectado las pruebas unitarias? Deshaced el cambio.</li>
+<li>Añadid una prueba de integración más: que la cabecera <code>Content-Type</code> de <code>/citas</code> sea JSON.</li>
+<li>Fusionad en main y comprobad que la imagen aparece en <i>Packages</i> con la etiqueta <code>sha-XXXXXXX</code>. Cread la etiqueta <code>v1.0.0</code> y comprobad que se publica también como <code>1.0.0</code>.</li>
+<li>Descargad el SBOM de los artefactos y buscad en él la versión de Flask.</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 4. Revisión final de la unidad <span class="dur">10 min</span></h4>
+<p>Con la lista de comprobación de la pestaña Recursos, revisad con vuestra pareja que el repositorio cumple todos los puntos de la unidad (5c a 5g) y anotad en una issue lo que falte para completarlo.</p>
+<p class="entrega">Entrega: repositorio con dependencias bloqueadas, <code>dependabot.yml</code>, trabajo de revisión de dependencias, workflow <code>imagen.yml</code> con una imagen publicada y la issue de revisión.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué es una dependencia transitiva? ¿Por qué también hay que vigilarla?</li>
+<li>¿Qué problema resuelve un fichero de bloqueo con hashes?</li>
+<li>¿Qué hizo especialmente peligroso el caso de xz-utils?</li>
+<li>¿Por qué se ejecutan pruebas de integración contra el contenedor y no solo pruebas unitarias?</li>
+<li>¿Por qué la imagen solo se publica si se ha escaneado y probado, y solo desde main o desde una etiqueta?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden>
+<h2>Recursos y glosario</h2>
 <h3>Aplicación de ejemplo <code>cita-previa-app</code></h3>
 <p class="fichero">app.py</p>
 <pre><code>from flask import Flask, jsonify
@@ -390,7 +1107,7 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 <li>SonarQube Cloud: <a href="https://docs.sonarsource.com/sonarqube-cloud/">docs.sonarsource.com</a></li>
 <li>OWASP Top 10 y OWASP Dependency-Check: <a href="https://owasp.org/">owasp.org</a></li>
 <li>Paisaje de la CNCF: <a href="https://landscape.cncf.io/">landscape.cncf.io</a></li></ul>
-</section>
-</main>
-<footer class="pie">Módulo 5165 Metodología DevOps: preparación de entornos de despliegue. Curso de especialización en Despliegue de productos software en contenedores (RD 144/2026). Curso 2026-2027.</footer>
-<script src="assets/pestanas.js"></script></body></html>
+</section></main>
+<script src="assets/pestanas.js"></script>
+<footer class="pie">Módulo 5165. Metodología DevOps: preparación de entornos de despliegue. Curso de especialización en Despliegue de productos software en contenedores. IES Caminàs, curso 2026-2027.</footer>
+</body></html>

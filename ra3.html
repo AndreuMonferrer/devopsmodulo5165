@@ -2,195 +2,825 @@
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RA3. Modelos de despliegue de nube | Módulo 5165</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/estilos.css">
-</head><body style="--ra:var(--ra3)">
-
-<header class="cab"><div class="dentro"><div class="ruta"><a href="index.html">Módulo 5165</a> / <a href="calendario.html">Calendario</a></div><h1>Unidad 3. Modelos de despliegue de nube</h1><p>Nube pública, privada, híbrida y multinube: quién es dueño de los recursos, con quién se comparten y cómo elegir el modelo adecuado para cada organización.</p></div></header>
-<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Sesiones de la unidad 3"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación<small>RA y criterios</small></button><button role="tab" id="tab-s12" data-panel="s12">Sesión 12<small>16 nov</small></button><button role="tab" id="tab-s13" data-panel="s13">Sesión 13<small>20 nov</small></button><button role="tab" id="tab-s14" data-panel="s14">Sesión 14<small>23 nov</small></button><button role="tab" id="tab-s15" data-panel="s15">Sesión 15<small>27 nov</small></button><button role="tab" id="tab-s16" data-panel="s16">Sesión 16<small>30 nov</small></button><button role="tab" id="tab-s17" data-panel="s17">Sesión 17<small>4 dic</small></button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos<small>y glosario</small></button></div></nav>
-<main>
-<section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
-<p class="meta">Unidad 3 de 7, 6 sesiones, 12 horas</p>
+</head><body style="--ra:#3b7a57">
+<header class="cab"><div class="dentro"><nav class="menu" aria-label="Secciones"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="ra1.html">RA1</a><a href="ra2.html">RA2</a><a href="ra3.html" aria-current="page">RA3</a><a href="ra4.html">RA4</a><a href="ra5.html">RA5</a><a href="ra6.html">RA6</a><a href="ra7.html">RA7</a></nav>
+<h1>Unidad 3. Modelos de despliegue de nube</h1><p>Pública, privada, híbrida o multinube: quién es propietario de los recursos y con quién se comparten.</p></div></header>
+<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Sesiones de la unidad 3"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-s12" data-panel="s12">Sesión 12<small>16 nov</small></button><button role="tab" id="tab-s13" data-panel="s13">Sesión 13<small>20 nov</small></button><button role="tab" id="tab-s14" data-panel="s14">Sesión 14<small>23 nov</small></button><button role="tab" id="tab-s15" data-panel="s15">Sesión 15<small>27 nov</small></button><button role="tab" id="tab-s16" data-panel="s16">Sesión 16<small>30 nov</small></button><button role="tab" id="tab-s17" data-panel="s17">Sesión 17<small>4 dic</small></button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
+<main><section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
+<p class="meta">Unidad 3 de 7 · 6 sesiones · 12 horas · del 16 nov al 4 dic</p>
 <h2>Resultado de aprendizaje 3</h2>
-<p class="clave"><b>Selecciona el modelo de implementación o despliegue de infraestructura de nube más apropiado en función de las necesidades de funcionalidad, seguridad digital, escalabilidad o costes, valorando las opciones disponibles en el mercado.</b></p>
-
-<p>La unidad 2 distinguía entre tener la infraestructura en casa o en la nube. Pero "la nube" admite varios modelos de despliegue según quién es propietario de los recursos y con quién se comparten. En esta unidad los describimos, los esquematizamos y, sobre todo, aprendemos a elegir: un hospital, una startup y un ayuntamiento no necesitan lo mismo.</p>
-<p>Trabajaremos con casos, juego de rol de consultoría y el servidor Proxmox del centro como ejemplo de nube privada.</p>
-
-<h3>Criterios de evaluación y dónde se trabajan</h3>
-<div class="tabla"><table><tr><th>CE</th><th>Criterio (RD 144/2026)</th><th>Sesiones</th></tr><tr><td><b>3a)</b></td><td>Se ha descrito el modelo de nube pública, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.</td><td><a href="#s12">S12</a></td></tr><tr><td><b>3b)</b></td><td>Se ha descrito el modelo de nube privada, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.</td><td><a href="#s13">S13</a></td></tr><tr><td><b>3c)</b></td><td>Se ha descrito el modelo de nube híbrida, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.</td><td><a href="#s14">S14</a></td></tr><tr><td><b>3d)</b></td><td>Se ha diferenciado entre nubes públicas y privadas, valorando la configuración más adecuada en función de las necesidades de una organización.</td><td><a href="#s15">S15</a></td></tr><tr><td><b>3e)</b></td><td>Se ha diferenciado entre servicios de nube híbrida y entornos multinube, identificando requisitos y casos de uso específicos.</td><td><a href="#s16">S16</a></td></tr><tr><td><b>3f)</b></td><td>Se han analizado entornos híbridos y de multinube, identificando sus respectivas necesidades de administración y gobernanza.</td><td><a href="#s17">S17</a></td></tr></table></div>
+<p class="ra-texto">Selecciona el modelo de implementación o despliegue de infraestructura de nube más apropiado en función de las necesidades de funcionalidad, seguridad digital, escalabilidad o costes, valorando las opciones disponibles en el mercado.</p>
+<p>La unidad 2 distinguía entre tener la infraestructura en casa o en la nube. Pero "la nube" admite varios modelos de despliegue según quién es propietario de los recursos, quién los gestiona y con quién se comparten. En esta unidad los describimos, los dibujamos y, sobre todo, aprendemos a elegir: un hospital, una tienda online y un ayuntamiento no necesitan lo mismo.</p>
+<p>Trabajaremos con casos de empresas, un estudio de mercado de proveedores y el Proxmox del centro como ejemplo de nube privada.</p>
+<h3>Criterios de evaluación</h3>
+<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Sesiones</th></tr><tr><td><b>3a)</b></td><td>Se ha descrito el modelo de nube pública, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.</td><td><a href="#s12">S12</a></td></tr><tr><td><b>3b)</b></td><td>Se ha descrito el modelo de nube privada, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.</td><td><a href="#s13">S13</a></td></tr><tr><td><b>3c)</b></td><td>Se ha descrito el modelo de nube híbrida, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.</td><td><a href="#s14">S14</a></td></tr><tr><td><b>3d)</b></td><td>Se ha diferenciado entre nubes públicas y privadas, valorando la configuración más adecuada en función de las necesidades de una organización.</td><td><a href="#s15">S15</a></td></tr><tr><td><b>3e)</b></td><td>Se ha diferenciado entre servicios de nube híbrida y entornos multinube, identificando requisitos y casos de uso específicos.</td><td><a href="#s16">S16</a></td></tr><tr><td><b>3f)</b></td><td>Se han analizado entornos híbridos y de multinube, identificando sus respectivas necesidades de administración y gobernanza.</td><td><a href="#s17">S17</a></td></tr></table></div>
 <h3>Plan de sesiones</h3>
-<div class="tabla"><table><tr><th>Sesión</th><th>Fecha</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#s12">S12</a></td><td>16 nov</td><td>La nube pública</td><td>a</td></tr><tr><td><a href="#s13">S13</a></td><td>20 nov</td><td>La nube privada</td><td>b</td></tr><tr><td><a href="#s14">S14</a></td><td>23 nov</td><td>La nube híbrida</td><td>c</td></tr><tr><td><a href="#s15">S15</a></td><td>27 nov</td><td>Pública o privada: elegir según las necesidades</td><td>d</td></tr><tr><td><a href="#s16">S16</a></td><td>30 nov</td><td>Nube híbrida frente a multinube</td><td>e</td></tr><tr><td><a href="#s17">S17</a></td><td>4 dic</td><td>Administración y gobernanza en entornos híbridos y multinube. Prueba de la unidad</td><td>f</td></tr></table></div>
-<h3>Cómo se evalúa esta unidad</h3>
-<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>60 %</b> prueba escrita (sesión 17) y <b>40 %</b> trabajos de clase (esquemas de los modelos, estudio de mercado, diseño híbrido, informe de consultoría, comparativa híbrida/multinube y plan de gobernanza).</p>
-
-<h3>Relación con otros módulos</h3><p>Contenido exclusivo de este módulo. En 5166 se construye una nube privada con hipervisor y VPC.</p>
-</section>
-<section class="panel" role="tabpanel" id="p-s12" aria-labelledby="tab-s12" hidden>
-<p class="meta">Sesión 12 de 42, lunes 16 de noviembre de 2026, 2 horas</p>
+<div class="tabla"><table><tr><th>Sesión</th><th>Fecha</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#s12">S12</a></td><td>16 nov</td><td>La nube pública</td><td>a</td></tr><tr><td><a href="#s13">S13</a></td><td>20 nov</td><td>La nube privada</td><td>b</td></tr><tr><td><a href="#s14">S14</a></td><td>23 nov</td><td>La nube híbrida</td><td>c</td></tr><tr><td><a href="#s15">S15</a></td><td>27 nov</td><td>Nube pública o privada: elegir según las necesidades</td><td>d</td></tr><tr><td><a href="#s16">S16</a></td><td>30 nov</td><td>Nube híbrida y multinube</td><td>e</td></tr><tr><td><a href="#s17">S17</a></td><td>4 dic</td><td>Administración y gobernanza en entornos híbridos y multinube</td><td>f</td></tr></table></div>
+<h3>Evaluación</h3>
+<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>60 %</b> prueba escrita (fecha por confirmar) y <b>40 %</b> trabajos de clase (esquemas de los modelos, estudio de mercado, diseño híbrido, informe de consultoría, comparativa híbrida/multinube y plan de gobernanza).</p>
+</section><section class="panel" role="tabpanel" id="p-s12" aria-labelledby="tab-s12" hidden>
+<p class="meta">Sesión 12 de 41 · lunes 16 de noviembre de 2026 · 2 horas</p>
 <h2>La nube pública</h2>
-<p><a class="ce" href="#presentacion" title="Se ha descrito el modelo de nube pública, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.">CE 3a</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Describir y esquematizar la nube pública.</li><li>Relacionarla con la propiedad de los recursos y su uso compartido.</li><li>Conocer los principales proveedores del mercado.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Definición</h4>
-<p>En la nube pública la infraestructura es <b>propiedad del proveedor</b>, se ubica en sus CPD y se ofrece a <b>cualquier cliente</b> por Internet. Los recursos físicos se <b>comparten</b> entre miles de clientes (multi-tenancy), aislados mediante virtualización, redes virtuales y control de identidades.</p>
-<h4>Esquema</h4>
-<pre><code>  Cliente A ─┐                         ┌────────── Proveedor (propietario) ──────────┐
-  Cliente B ─┼── Internet / VPN ──►    │  Región ─ Zonas ─ Servidores compartidos     │
-  Cliente C ─┘                         │  VPC A │ VPC B │ VPC C   (aislamiento lógico) │
-                                       └─────────────────────────────────────────────┘</code></pre>
-<h4>Características</h4>
-<ul><li>Pago por uso, sin inversión inicial.</li><li>Capacidad prácticamente ilimitada y elasticidad inmediata.</li><li>Responsabilidad compartida: el proveedor protege la infraestructura; el cliente, lo que configura sobre ella.</li><li>Menor control sobre la ubicación física y el hardware.</li></ul>
-<h4>El mercado</h4>
-<p>Tres hiperescaladores concentran la mayor parte del mercado (AWS, Microsoft Azure y Google Cloud), seguidos de Alibaba, Oracle o IBM. En Europa hay proveedores relevantes como OVHcloud, Hetzner, Scaleway o IONOS, con peso creciente por la soberanía de los datos.</p>
+<p class="chips"><span class="ce" title="Se ha descrito el modelo de nube pública, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.">CE 3a</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Conocer los modelos de despliegue de nube definidos por el NIST y los criterios que los distinguen.</li>
+<li>Describir el modelo de nube pública: propiedad de los recursos, uso compartido y funcionamiento.</li>
+<li>Esquematizar una nube pública identificando quién posee, quién gestiona y quién usa cada parte.</li>
+<li>Valorar las principales opciones del mercado de nube pública, incluidas las europeas y los requisitos del sector público español.</li>
+</ul>
 
-<h3>Actividad</h3><div class="bloque actividad">
-<ol class="pasos">
-<li>(15′) Dibujad el esquema de la nube pública con vuestras palabras, marcando qué es del proveedor, qué es del cliente y qué se comparte.</li>
-<li>(50′) <b>Estudio de mercado.</b> Cada pareja analiza un proveedor (AWS, Azure, Google Cloud, OVHcloud, Hetzner) y rellena una ficha común: regiones en España o UE, servicios principales, certificaciones (ENS, ISO 27001), modelo de precios, precio de una VM de 2 vCPU y 4 GB, y un cliente conocido.</li>
-<li>(10′) Volcad las fichas en una tabla comparativa compartida.</li>
-</ol>
-</div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>¿Qué proveedor elegiríais para una administración pública española? ¿Y para un videojuego con jugadores en todo el mundo?</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Esquema y ficha de mercado (CE 3a).</p></div>
-</section>
-<section class="panel" role="tabpanel" id="p-s13" aria-labelledby="tab-s13" hidden>
-<p class="meta">Sesión 13 de 42, viernes 20 de noviembre de 2026, 2 horas</p>
-<h2>La nube privada</h2>
-<p><a class="ce" href="#presentacion" title="Se ha descrito el modelo de nube privada, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.">CE 3b</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Describir y esquematizar la nube privada.</li><li>Distinguir nube privada on premise y alojada.</li><li>Reconocer las plataformas que la hacen posible.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Definición</h4>
-<p>En la nube privada la infraestructura se dedica <b>en exclusiva a una organización</b>. Puede ser propiedad de la organización y estar en su CPD (<b>on premise</b>) o estar alojada y gestionada por un tercero pero dedicada solo a ella (<b>hosted private cloud</b>). No se comparte con otros clientes, pero sí entre los departamentos y proyectos de la organización, que la consumen en autoservicio.</p>
-<h4>Esquema</h4>
-<pre><code> Dpto. A ─┐                ┌────── Organización (propietaria y única usuaria) ──────┐
- Dpto. B ─┼── Red interna ►│ Portal/API de autoservicio ─ cuotas ─ medición        │
- Dpto. C ─┘                │ Hipervisores (Proxmox, OpenStack, VMware) + SDN + SDS │
-                           └────────────────────────────────────────────────────────┘</code></pre>
-<h4>Plataformas</h4>
-<p>OpenStack (código abierto, usado por operadoras y universidades), VMware Cloud Foundation, Microsoft Azure Stack HCI, Nutanix y, a menor escala, Proxmox VE con su API, pools y permisos. Lo que la convierte en nube, y no solo en virtualización, es el autoservicio, la API, las cuotas y la medición.</p>
-<p><b>Ventajas:</b> control total, datos en casa, rendimiento predecible, coste razonable con cargas estables. <b>Inconvenientes:</b> inversión inicial, capacidad limitada, personal especializado y responsabilidad total de la seguridad.</p>
-
-<h3>Actividad</h3><div class="bloque actividad">
-<ol class="pasos">
-<li>(30′) <b>Exploración del Proxmox del centro</b> (o de la demo oficial): localizad nodos, almacenamiento, redes (bridges), pools de recursos, usuarios, roles y la API (<code>/api2/json</code>). Anotad qué características NIST cumple y cuáles le faltan para ser nube privada.</li>
-<li>(30′) Investigad OpenStack: sus servicios principales (Nova, Neutron, Cinder, Swift, Keystone, Horizon) y a qué equivalen en AWS. Tabla de equivalencias.</li>
-<li>(15′) Dibujad el esquema de una nube privada para el propio instituto (departamentos como consumidores) y otro de nube privada alojada.</li>
-</ol>
-</div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>¿Qué le faltaría al Proxmox del centro para que cada departamento se creara sus máquinas sin pedir nada al coordinador TIC?</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Informe de exploración, tabla de equivalencias y esquemas (CE 3b).</p></div>
-<details class="docente"><summary>Notas para el docente</summary><p>Si el Proxmox aún no funciona, usar capturas de la documentación oficial o un vídeo de su interfaz. Es buen momento para ir preparando el usuario y token de API que se usarán en la unidad 6.</p></details>
-</section>
-<section class="panel" role="tabpanel" id="p-s14" aria-labelledby="tab-s14" hidden>
-<p class="meta">Sesión 14 de 42, lunes 23 de noviembre de 2026, 2 horas</p>
-<h2>La nube híbrida</h2>
-<p><a class="ce" href="#presentacion" title="Se ha descrito el modelo de nube híbrida, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.">CE 3c</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Describir y esquematizar la nube híbrida.</li><li>Identificar cómo se conectan las partes y quién es propietario de cada una.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Definición</h4>
-<p>La nube híbrida combina <b>al menos una nube privada (o infraestructura on premise) y una nube pública</b>, conectadas de forma que datos y aplicaciones pueden moverse o cooperar entre ambas. La propiedad es mixta: una parte es de la organización y otra del proveedor; solo la parte pública se comparte con otros clientes.</p>
-<h4>Esquema</h4>
-<pre><code> ┌─ Nube privada / CPD propio ─┐   VPN IPsec o enlace dedicado   ┌─ Nube pública ─────────┐
- │ Datos sensibles, ERP, BBDD  │◄═══════════════════════════════►│ Web, picos de carga,   │
- │ (propiedad de la org.)      │   identidad y gestión comunes   │ copias, analítica      │
- └─────────────────────────────┘                                 └────────────────────────┘</code></pre>
-<h4>Piezas que la hacen funcionar</h4>
-<ul><li><b>Conectividad:</b> VPN sitio a sitio o enlaces dedicados (AWS Direct Connect, Azure ExpressRoute).</li>
-<li><b>Identidad común:</b> un directorio único (Entra ID, Active Directory, Keycloak).</li>
-<li><b>Gestión unificada:</b> Azure Arc, AWS Outposts, Google Anthos, y herramientas agnósticas como Terraform, Ansible y Kubernetes.</li></ul>
-<h4>Casos de uso</h4>
-<p>Cloud bursting en picos (campañas, rebajas), copias de seguridad y recuperación ante desastres en la nube, datos regulados en casa y frontal web en la nube, migración progresiva.</p>
-
-<h3>Actividad</h3><div class="bloque actividad">
-<p><b>Diseño híbrido.</b> Cada grupo recibe un caso y diseña su nube híbrida:</p>
-<ul><li>Hospital comarcal: historia clínica en casa; portal del paciente y analítica en la nube.</li><li>Tienda online de Castellón con picos en Navidad y rebajas.</li><li>Ayuntamiento que quiere recuperación ante desastres sin construir un segundo CPD.</li></ul>
-<ol class="pasos"><li>(40′) Esquema con las dos partes, el enlace, la identidad y la gestión común. Para cada elemento indicad propietario y si se comparte.</li><li>(35′) Flujo de datos: qué dato vive dónde, qué cruza el enlace y con qué protección (cifrado, VPN).</li></ol>
-</div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Cada grupo presenta su diseño en 3 minutos.</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Esquema híbrido con propiedad y flujo de datos (CE 3c).</p></div>
-</section>
-<section class="panel" role="tabpanel" id="p-s15" aria-labelledby="tab-s15" hidden>
-<p class="meta">Sesión 15 de 42, viernes 27 de noviembre de 2026, 2 horas</p>
-<h2>Pública o privada: elegir según las necesidades</h2>
-<p><a class="ce" href="#presentacion" title="Se ha diferenciado entre nubes públicas y privadas, valorando la configuración más adecuada en función de las necesidades de una organización.">CE 3d</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Diferenciar nube pública y privada con criterios objetivos.</li><li>Recomendar la configuración más adecuada para una organización concreta.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Criterios de decisión</h4>
+<h3>1. Modelos de despliegue: de quién es la nube</h3>
+<p>En la unidad 2 vimos qué es la nube. Ahora nos preguntamos <b>dónde está, de quién es y con quién se comparte</b>. El NIST define cuatro <b>modelos de despliegue</b>:</p>
+<ul>
+<li><b>Nube pública</b>: la infraestructura se ofrece para uso abierto del público general. Es propiedad de un proveedor que la gestiona y la opera en sus instalaciones.</li>
+<li><b>Nube privada</b>: la infraestructura es para uso exclusivo de una única organización (sesión 13).</li>
+<li><b>Nube comunitaria</b>: para uso exclusivo de una comunidad de organizaciones con intereses comunes (por ejemplo, varias administraciones públicas o varios hospitales).</li>
+<li><b>Nube híbrida</b>: composición de dos o más nubes distintas que siguen siendo entidades separadas pero están unidas por tecnología que permite mover datos y aplicaciones (sesión 14).</li>
+</ul>
+<p>A estos se ha añadido en la práctica la <b>multinube</b>: el uso de varios proveedores de nube pública a la vez (sesión 16).</p>
+<p>Para diferenciar los modelos nos fijaremos siempre en cuatro preguntas:</p>
 <div class="tabla"><table>
-<tr><th>Criterio</th><th>Pública</th><th>Privada</th></tr>
-<tr><td>Funcionalidad</td><td>Catálogo enorme de servicios gestionados</td><td>Lo que el equipo sea capaz de montar</td></tr>
-<tr><td>Seguridad digital</td><td>Responsabilidad compartida; certificaciones del proveedor</td><td>Control total; toda la responsabilidad es propia</td></tr>
-<tr><td>Normativa</td><td>Cuidado con la ubicación de los datos (RGPD, ENS)</td><td>Datos en casa, más fácil demostrar cumplimiento</td></tr>
-<tr><td>Escalabilidad</td><td>Casi ilimitada, inmediata</td><td>Limitada al hardware comprado</td></tr>
-<tr><td>Costes</td><td>Variables; ideal para cargas cambiantes</td><td>Fijos; ideal para cargas estables y grandes</td></tr>
-<tr><td>Personal</td><td>Menos operación, más arquitectura y FinOps</td><td>Administradores de sistemas y virtualización</td></tr>
+<tr><th>Pregunta</th><th>Qué analiza</th></tr>
+<tr><td>¿De quién es el hardware?</td><td>Propiedad de los recursos</td></tr>
+<tr><td>¿Quién lo gestiona y opera?</td><td>Responsabilidad de la operación</td></tr>
+<tr><td>¿Dónde está físicamente?</td><td>Ubicación: instalaciones propias o del proveedor</td></tr>
+<tr><td>¿Quién más lo usa?</td><td>Uso compartido: un inquilino o muchos</td></tr>
 </table></div>
-<p>Una técnica útil es la <b>matriz de decisión ponderada</b>: se da un peso a cada criterio según la organización (por ejemplo, normativa 30 %, costes 25 %...) y se puntúa cada opción de 1 a 5.</p>
 
-<h3>Actividad</h3><div class="bloque actividad">
-<p><b>Juego de rol: consultoría.</b> Cada grupo es una consultora que recibe un cliente con sus necesidades (el profesor reparte las fichas): una startup de reparto a domicilio, una mutua de seguros, un laboratorio de investigación con cálculo intensivo y la propia Conselleria de Educación.</p>
-<ol class="pasos"><li>(40′) Matriz ponderada y recomendación (pública, privada o, si lo justificáis, híbrida).</li><li>(20′) Preparad una defensa de 4 minutos.</li><li>(15′) Presentación ante el "cliente" (el resto de la clase hace preguntas incómodas).</li></ol>
-</div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>¿Qué criterio ha decidido cada caso? Anotamos en la pizarra los factores que inclinan la balanza.</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Informe de consultoría con matriz ponderada y defensa oral (CE 3d).</p></div>
-</section>
-<section class="panel" role="tabpanel" id="p-s16" aria-labelledby="tab-s16" hidden>
-<p class="meta">Sesión 16 de 42, lunes 30 de noviembre de 2026, 2 horas</p>
-<h2>Nube híbrida frente a multinube</h2>
-<p><a class="ce" href="#presentacion" title="Se ha diferenciado entre servicios de nube híbrida y entornos multinube, identificando requisitos y casos de uso específicos.">CE 3e</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Diferenciar nube híbrida y multinube.</li><li>Identificar requisitos y casos de uso de cada una.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>No son lo mismo</h4>
-<p><b>Híbrida:</b> combina privada (o on premise) y pública, integradas para funcionar como un conjunto. <b>Multinube:</b> usa servicios de <b>varios proveedores de nube pública</b> (por ejemplo, AWS y Google Cloud), estén o no integrados. Pueden darse a la vez: una organización puede ser híbrida y multinube.</p>
-<div class="tabla"><table><tr><th></th><th>Híbrida</th><th>Multinube</th></tr>
-<tr><td>Motivo típico</td><td>Mantener datos o sistemas en casa y aprovechar la elasticidad pública</td><td>Evitar dependencia de un proveedor, usar lo mejor de cada uno, requisitos geográficos</td></tr>
-<tr><td>Requisitos</td><td>Enlace privado fiable, identidad común, compatibilidad de cargas</td><td>Herramientas agnósticas, competencias en varias plataformas, gestión de costes en varias facturas</td></tr>
-<tr><td>Casos de uso</td><td>Bursting, DR, migración gradual, datos regulados</td><td>IA en un proveedor y web en otro, resiliencia ante caída de un proveedor, fusiones de empresas</td></tr>
+<h3>2. La nube pública</h3>
+<h4>Definición</h4>
+<p>En una <b>nube pública</b>, un proveedor es propietario de toda la infraestructura (CPD, servidores, red, almacenamiento, software de gestión), la opera y la pone a disposición de <b>cualquier cliente</b> a través de Internet, normalmente con pago por uso. Los recursos físicos se <b>comparten</b> entre muchos clientes (multitenencia), aunque cada uno tiene sus recursos virtuales aislados de los demás.</p>
+<p>"Pública" no significa que los datos sean públicos ni que cualquiera pueda acceder a tus máquinas. Significa que <b>el servicio está abierto a cualquiera que quiera contratarlo</b>, igual que la red eléctrica o una línea de autobús.</p>
+<h4>Esquema</h4>
+<pre><code>        Cliente A          Cliente B          Cliente C
+       (Consejería)      (tienda online)      (startup)
+            │                  │                  │
+            └──────── Internet / conexión dedicada ┘
+                               │
+┌──────────────────── PROVEEDOR DE NUBE PÚBLICA ────────────────────┐
+│  Plano de control: consola, API, IAM, facturación                 │
+│  ┌──────────── Región (varias zonas de disponibilidad) ─────────┐ │
+│  │  VPC de A  │  VPC de B  │  VPC de C     ← aislamiento lógico  │ │
+│  │────────────────────────────────────────────────────────────── │ │
+│  │  Servidores, almacenamiento y red físicos COMPARTIDOS         │ │
+│  └───────────────────────────────────────────────────────────────┘ │
+│  Propiedad, ubicación y operación: el proveedor                   │
+└────────────────────────────────────────────────────────────────────┘</code></pre>
+<h4>Propiedad y uso compartido</h4>
+<div class="tabla"><table>
+<tr><th>Aspecto</th><th>Nube pública</th></tr>
+<tr><td>Propiedad del hardware y del CPD</td><td>Proveedor</td></tr>
+<tr><td>Operación de la infraestructura física y de la plataforma</td><td>Proveedor</td></tr>
+<tr><td>Ubicación</td><td>CPD del proveedor, en la región que elige el cliente</td></tr>
+<tr><td>Uso</td><td>Compartido entre muchos clientes (multitenencia) con aislamiento lógico</td></tr>
+<tr><td>Recursos virtuales, datos, configuración</td><td>Cliente (responsabilidad compartida)</td></tr>
+<tr><td>Modelo de pago</td><td>Por uso, sin inversión inicial</td></tr>
 </table></div>
-<p>Los contenedores y Kubernetes, junto con Terraform, son las herramientas que hacen viables ambos modelos: la misma imagen y el mismo código de infraestructura funcionan en distintas plataformas.</p>
+<p>Dentro de la nube pública hay grados de aislamiento para quien los necesite: instancias o servidores <b>dedicados</b> (hardware para un solo cliente), <b>regiones soberanas</b> operadas por personal local (por ejemplo, la <i>AWS European Sovereign Cloud</i> anunciada en Alemania) o regiones para gobiernos (AWS GovCloud, Azure Government). Siguen siendo nube pública del mismo proveedor, pero con restricciones sobre quién comparte el hardware o quién lo opera.</p>
 
-<h3>Actividad</h3><div class="bloque actividad">
-<ol class="pasos"><li>(35′) Investigad dos casos reales y documentados: uno de nube híbrida y otro de multinube (por ejemplo, en los casos de clientes de los proveedores o en charlas de KubeCon). Para cada uno: motivo, requisitos que tuvieron que resolver, herramientas y resultado.</li>
-<li>(25′) Clasificad 8 escenarios que proporciona el profesor como híbrido, multinube, ambos o ninguno, justificando la respuesta.</li>
-<li>(15′) Tabla comparativa final con vuestros propios ejemplos.</li></ol>
-</div>
-<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Corregimos juntos la clasificación de escenarios.</p></div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Análisis de casos, clasificación de escenarios y tabla comparativa (CE 3e).</p></div>
-<details class="docente"><summary>Notas para el docente</summary><p>Escenarios sugeridos: CPD propio + copias en S3; web en Azure + BigQuery en Google; todo en AWS en dos regiones (ninguno); Proxmox + OVH + Azure (ambos); SaaS de Google Workspace y CRM Salesforce (multinube de SaaS, discutible); Kubernetes en casa con bursting a GKE; dos cuentas de AWS (ninguno); empresa fusionada con una parte en AWS y otra en Azure.</p></details>
-</section>
-<section class="panel" role="tabpanel" id="p-s17" aria-labelledby="tab-s17" hidden>
-<p class="meta">Sesión 17 de 42, viernes 4 de diciembre de 2026, 2 horas</p>
-<h2>Administración y gobernanza en entornos híbridos y multinube. Prueba de la unidad</h2>
-<p><a class="ce" href="#presentacion" title="Se han analizado entornos híbridos y de multinube, identificando sus respectivas necesidades de administración y gobernanza.">CE 3f</a></p>
-<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:40" title="Actividad: 40 min"><i>Actividad</i>40′</span><span class="t-exa" style="flex:50" title="Prueba escrita: 50 min"><i>Prueba escrita</i>50′</span></div>
-<h3>Qué vas a saber hacer al terminar</h3><ul><li>Identificar las necesidades de administración y gobernanza de entornos híbridos y multinube.</li></ul>
-<h3>Introducción del tema</h3>
-<h4>Más entornos, más cosas que controlar</h4>
-<p>Cuantas más plataformas, más consolas, identidades, facturas y políticas. La <b>administración</b> es el día a día (desplegar, parchear, monitorizar); la <b>gobernanza</b> es el conjunto de reglas que asegura que todo eso cumple con seguridad, costes y normativa.</p>
-<div class="tabla"><table><tr><th>Área</th><th>Necesidad</th><th>Herramientas y prácticas</th></tr>
-<tr><td>Identidad y accesos</td><td>Un único origen de identidades, mínimo privilegio</td><td>SSO federado, Entra ID, Keycloak, roles por proyecto</td></tr>
-<tr><td>Políticas y cumplimiento</td><td>Reglas que se aplican solas (regiones permitidas, cifrado obligatorio)</td><td>AWS Organizations y SCP, Azure Policy, Open Policy Agent</td></tr>
-<tr><td>Costes (FinOps)</td><td>Visibilidad y reparto de gastos, presupuestos y alertas</td><td>Etiquetado obligatorio, presupuestos, informes por proyecto</td></tr>
-<tr><td>Despliegue coherente</td><td>Mismo proceso en todas las plataformas</td><td>Terraform, Ansible, Kubernetes, pipelines CI/CD</td></tr>
-<tr><td>Observabilidad</td><td>Ver todo en un único panel</td><td>Prometheus, Grafana, OpenTelemetry</td></tr>
-<tr><td>Seguridad y datos</td><td>Clasificación, cifrado, copias, respuesta a incidentes</td><td>ENS, RGPD, gestión centralizada de secretos</td></tr>
+<h3>3. Ventajas e inconvenientes</h3>
+<h4>Ventajas</h4>
+<ul>
+<li><b>Sin inversión inicial</b> y pago por uso (unidad 2).</li>
+<li><b>Escalabilidad prácticamente ilimitada</b> y elasticidad inmediata.</li>
+<li><b>Catálogo enorme</b> de servicios gestionados: los grandes proveedores ofrecen más de 200.</li>
+<li><b>Alcance global</b>: decenas de regiones en todo el mundo.</li>
+<li><b>Fiabilidad</b> gracias a varias zonas y regiones.</li>
+<li><b>Sin mantenimiento físico</b> para el cliente.</li>
+<li><b>Seguridad física y certificaciones</b> difíciles de alcanzar por una organización mediana.</li>
+</ul>
+<h4>Inconvenientes</h4>
+<ul>
+<li><b>Menor control</b> sobre el hardware, la ubicación exacta y los cambios del proveedor.</li>
+<li><b>Hardware compartido</b>: aunque el aislamiento es muy fuerte, algunas normativas o políticas internas no lo aceptan para ciertos datos.</li>
+<li><b>Soberanía de los datos</b>: la mayoría de los grandes proveedores son estadounidenses y están sujetos a leyes de su país.</li>
+<li><b>Costes variables</b> que pueden dispararse sin control, y caros para cargas muy grandes y estables.</li>
+<li><b>Dependencia del proveedor</b> y costes de salida de datos.</li>
+<li><b>Dependencia de Internet</b> y de la disponibilidad del proveedor: cuando una región grande tiene problemas, caen muchos servicios a la vez.</li>
+</ul>
+<h4>Casos de uso típicos</h4>
+<p>Aplicaciones web y móviles con demanda variable, startups, entornos de desarrollo y pruebas, análisis de datos e inteligencia artificial que necesitan mucha capacidad puntual, copias de seguridad y recuperación ante desastres, y cualquier servicio que deba llegar a usuarios de todo el mundo.</p>
+
+<h3>4. El mercado de la nube pública</h3>
+<h4>Los grandes proveedores</h4>
+<p>El mercado de infraestructura en la nube está muy concentrado. Según las estimaciones de firmas de análisis como Synergy Research o Canalys, en los últimos años <b>AWS</b> tiene en torno a un tercio del mercado, <b>Microsoft Azure</b> en torno a una cuarta parte y <b>Google Cloud</b> alrededor de un 10-13 %; entre los tres superan el 60 %. Les siguen Alibaba Cloud (fuerte en Asia), Oracle Cloud, IBM Cloud, Salesforce y otros. Las cifras cambian cada trimestre, pero el reparto general se mantiene.</p>
+<div class="tabla"><table>
+<tr><th>Proveedor</th><th>Puntos fuertes</th><th>Presencia en España</th></tr>
+<tr><td>AWS</td><td>El más veterano y con más servicios; gran ecosistema y comunidad</td><td>Región <code>eu-south-2</code> (Aragón), desde 2022</td></tr>
+<tr><td>Microsoft Azure</td><td>Integración con Microsoft 365, Active Directory (Entra ID) y Windows; fuerte en empresas</td><td>Región <i>Spain Central</i> (Madrid), desde 2024</td></tr>
+<tr><td>Google Cloud</td><td>Datos, analítica, IA, Kubernetes (lo creó Google)</td><td>Región <code>europe-southwest1</code> (Madrid), desde 2022</td></tr>
+<tr><td>Oracle Cloud</td><td>Bases de datos Oracle, precios de transferencia bajos</td><td>Región en Madrid</td></tr>
 </table></div>
-<p>En la híbrida pesa más la integración (red, identidad común, latencia); en la multinube pesan más la homogeneidad de herramientas, las competencias del equipo y la consolidación de costes.</p>
+<p>Los nombres y fechas de las regiones se pueden comprobar en la página de infraestructura global de cada proveedor, y conviene hacerlo porque cambian con frecuencia.</p>
+<h4>Proveedores europeos</h4>
+<p>Por motivos de soberanía y precio existen alternativas europeas: <b>OVHcloud</b> (Francia), <b>Hetzner</b> e <b>IONOS</b> (Alemania), <b>Scaleway</b> (Francia), <b>T-Systems/Open Telekom Cloud</b> (Alemania), y en España proveedores como <b>Arsys</b> o <b>Telefónica Tech</b>. Suelen tener menos servicios gestionados, pero precios muy competitivos en cómputo y transferencia, y están sujetos solo a leyes europeas. Iniciativas como <b>Gaia-X</b> y el futuro esquema europeo de certificación de nube (EUCS) buscan reforzar la soberanía digital europea.</p>
+<h4>Requisitos en el sector público español</h4>
+<p>Para un proyecto como Cita Previa no basta con elegir por precio:</p>
+<ul>
+<li><b>RGPD y LOPDGDD</b>: los datos de salud son categoría especial. Se exige un contrato de encargo del tratamiento con el proveedor y garantías si hay transferencias fuera del Espacio Económico Europeo.</li>
+<li><b>Esquema Nacional de Seguridad (ENS)</b>, Real Decreto 311/2022: los servicios en la nube que usa la Administración deben estar certificados en la categoría adecuada (básica, media o alta). El <b>CCN</b> (Centro Criptológico Nacional) publica el catálogo de productos y servicios certificados (CPSTIC) y guías de configuración segura específicas para los principales proveedores (serie CCN-STIC 880).</li>
+<li><b>Contratación pública</b>: la nube se contrata mediante procedimientos de la Ley de Contratos del Sector Público o acuerdos marco.</li>
+</ul>
+<h4>Criterios para comparar proveedores</h4>
+<p>Regiones y zonas disponibles (y su cercanía), servicios que necesitamos, precio de cómputo, almacenamiento y sobre todo transferencia, certificaciones (ISO 27001, ENS, SOC 2), SLA, soporte en español y niveles de soporte, herramientas de gestión y de IaC (¿tiene proveedor de Terraform?), facilidad de salida (formatos estándar, costes de egress), programas educativos y comunidad.</p>
 
-<h3>Actividad</h3><div class="bloque actividad">
-<p><b>Plan de gobernanza (40′).</b> Retomad el caso híbrido de la sesión 14 y supongamos que además se añade un segundo proveedor público. Redactad un plan de una página con: modelo de identidades, 5 políticas obligatorias, esquema de etiquetado para costes, herramientas comunes de despliegue y monitorización, y quién es responsable de qué.</p>
-<p><b>Prueba escrita (50′)</b> sobre los criterios a a f de la unidad.</p>
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Esquema de la nube pública <span class="dur">20 min</span></h4>
+<p>En parejas, dibujad en diagrams.net el esquema de una nube pública con tres clientes distintos (uno de ellos la Consejería con Cita Previa). Usad colores para distinguir: qué posee y opera el proveedor, qué recursos son compartidos, qué recursos virtuales son de cada cliente y cómo accede cada uno. Añadid una leyenda y una tabla de responsabilidades para una VM de Cita Previa (quién parchea el sistema operativo, quién protege el CPD, quién gestiona los datos).</p>
 </div>
-<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Plan de gobernanza (CE 3f). Prueba escrita (CE 3a a 3f, 60 % de la nota de la unidad).</p></div>
-</section>
-<section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden><h2>Recursos y glosario</h2>
+<div class="actividad">
+<h4>Actividad 2. Estudio de mercado para Cita Previa <span class="dur">45 min</span></h4>
+<p>En grupos de 3, comparad tres proveedores: dos de los grandes (AWS, Azure, Google) y uno europeo (OVHcloud, Hetzner, Scaleway o IONOS). Buscad la información en sus webs oficiales y en el catálogo del CCN, y completad una tabla con:</p>
+<ol>
+<li>Regiones en España y en la UE, y número de zonas de disponibilidad.</li>
+<li>Precio mensual de una VM de 2 vCPU y 4-8 GB con Linux en la región más cercana, bajo demanda.</li>
+<li>Precio de 1 TB al mes de transferencia de salida a Internet.</li>
+<li>Precio de 100 GB de almacenamiento de objetos al mes.</li>
+<li>¿Ofrece base de datos PostgreSQL gestionada? ¿Kubernetes gestionado? ¿Funciones serverless?</li>
+<li>Certificación ENS (categoría) e ISO 27001.</li>
+<li>¿Tiene proveedor oficial de Terraform?</li>
+<li>Sede y legislación a la que está sujeto.</li>
+</ol>
+<p>Terminad con una recomendación razonada de 10 líneas para Cita Previa, teniendo en cuenta que maneja datos de salud de una Administración pública.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 3. Puesta en común de precios <span class="dur">15 min</span></h4>
+<p>Cada grupo copia sus precios en una tabla común en la pizarra (o en una hoja compartida). Comprobamos si los grupos que analizaron el mismo proveedor obtuvieron los mismos datos y por qué no (región, tipo de instancia, impuestos, moneda). Sacamos conclusiones: ¿dónde está la mayor diferencia de precio entre proveedores?</p>
+<p class="entrega">Entrega en Aules: esquema de la actividad 1 y tabla comparativa con la recomendación.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué cuatro modelos de despliegue define el NIST?</li>
+<li>¿Qué significa exactamente "pública" en nube pública?</li>
+<li>En una nube pública, ¿qué es compartido y qué es exclusivo de cada cliente?</li>
+<li>¿Qué es el ENS y por qué es relevante al elegir proveedor para un proyecto de la Administración?</li>
+<li>Cita dos ventajas de un proveedor europeo frente a uno de hiperescala y dos inconvenientes.</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s13" aria-labelledby="tab-s13" hidden>
+<p class="meta">Sesión 13 de 41 · viernes 20 de noviembre de 2026 · 2 horas</p>
+<h2>La nube privada</h2>
+<p class="chips"><span class="ce" title="Se ha descrito el modelo de nube privada, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.">CE 3b</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Describir el modelo de nube privada: propiedad de los recursos, uso exclusivo y funcionamiento.</li>
+<li>Distinguir entre nube privada en instalaciones propias, nube privada alojada y gestionada, y una simple infraestructura virtualizada.</li>
+<li>Conocer las plataformas con las que se construye una nube privada (OpenStack, Proxmox VE, VMware, OpenNebula...).</li>
+<li>Usar el Proxmox del centro como nube privada: autoservicio por consola y por API con permisos limitados.</li>
+</ul>
+
+<h3>1. Qué es una nube privada</h3>
+<p>Según el NIST, en la <b>nube privada</b> la infraestructura se aprovisiona para <b>uso exclusivo de una sola organización</b>, que puede tener varios consumidores internos (departamentos, unidades de negocio, proyectos). Puede ser propiedad de la organización, de un tercero o de una combinación de ambos, y puede estar dentro o fuera de sus instalaciones.</p>
+<p>La clave es que <b>no se comparte con otras organizaciones</b>. Pero para que sea "nube" y no simplemente "servidores propios" debe mantener las cinco características esenciales: autoservicio, acceso por red, agrupación de recursos (compartidos entre los departamentos de la organización), elasticidad dentro de su capacidad y medición del uso.</p>
+<h4>Esquema</h4>
+<pre><code>   Departamento A      Departamento B      Proyecto C       ← consumidores internos
+   (Atención          (Sistemas           (Cita Previa)       de UNA organización
+    primaria)          centrales)
+        │                   │                   │
+        └──── portal de autoservicio / API / cuotas por proyecto ┘
+                            │
+┌──────────── NUBE PRIVADA DE LA CONSEJERÍA ────────────────────────┐
+│  Plano de control: OpenStack, Proxmox VE, VMware...               │
+│  Servidores, almacenamiento y red de USO EXCLUSIVO                │
+│  Ubicación: CPD propio (on premise) o CPD de un proveedor         │
+│  Operación: equipo propio o proveedor contratado                  │
+└────────────────────────────────────────────────────────────────────┘</code></pre>
+
+<h3>2. Variantes de nube privada</h3>
+<div class="tabla"><table>
+<tr><th>Variante</th><th>Propiedad del hardware</th><th>Ubicación</th><th>Operación</th><th>Ejemplo</th></tr>
+<tr><td><b>Nube privada en instalaciones propias</b> (<i>on premise private cloud</i>)</td><td>La organización</td><td>CPD propio</td><td>Equipo propio</td><td>Una universidad con OpenStack en su CPD</td></tr>
+<tr><td><b>Nube privada alojada</b> (<i>hosted</i>)</td><td>El proveedor o la organización</td><td>CPD del proveedor, hardware dedicado</td><td>Organización o proveedor</td><td>Servidores dedicados con VMware en un proveedor, solo para un cliente</td></tr>
+<tr><td><b>Nube privada gestionada</b> (<i>managed</i>)</td><td>Variable</td><td>Propia o del proveedor</td><td>El proveedor, bajo contrato</td><td>Un integrador opera la nube privada de un banco</td></tr>
+<tr><td><b>Extensiones de nube pública en casa</b></td><td>El proveedor de nube (alquilado)</td><td>CPD del cliente</td><td>El proveedor de nube</td><td>AWS Outposts, Azure Local, Google Distributed Cloud</td></tr>
+</table></div>
+<div class="aviso"><p><b>Cuidado con la VPC.</b> La "nube privada virtual" (VPC) de AWS o Google no es una nube privada: es una red aislada dentro de la <b>nube pública</b>, sobre hardware compartido con otros clientes. El nombre confunde a mucha gente.</p></div>
+<h4>Virtualización no es nube privada</h4>
+<p>Muchas organizaciones tienen servidores virtualizados con VMware o Proxmox y los llaman "nuestra nube privada". Si para conseguir una máquina hay que abrir una incidencia y esperar a que alguien la cree a mano, no hay autoservicio: es <b>infraestructura virtualizada</b>, no nube. Pasa a ser nube cuando se añade:</p>
+<ul>
+<li>Un <b>portal y una API de autoservicio</b> para que cada equipo cree sus recursos.</li>
+<li><b>Multitenencia interna</b>: proyectos o departamentos aislados, cada uno con sus redes y sus permisos.</li>
+<li><b>Cuotas</b>: límites de CPU, memoria y disco por proyecto.</li>
+<li><b>Catálogo</b> de imágenes y plantillas aprobadas.</li>
+<li><b>Medición y repercusión de costes</b> (<i>showback</i>: informar a cada departamento de lo que consume; <i>chargeback</i>: cobrárselo internamente).</li>
+<li><b>Automatización</b>: que las herramientas de IaC puedan crear recursos.</li>
+</ul>
+
+<h3>3. Plataformas para construir una nube privada</h3>
+<div class="tabla"><table>
+<tr><th>Plataforma</th><th>Licencia</th><th>Características</th></tr>
+<tr><td><b>OpenStack</b></td><td>Libre (Fundación OpenInfra)</td><td>La más completa: cómputo (Nova), red (Neutron), bloque (Cinder), objeto (Swift), imágenes (Glance), identidad (Keystone), portal (Horizon). Proyectos, cuotas y API compatible en parte con AWS. Compleja de instalar y mantener. La usan operadores de telecomunicaciones, universidades y centros de investigación (CERN).</td></tr>
+<tr><td><b>Proxmox VE</b></td><td>Libre (AGPL), soporte de pago</td><td>Virtualización KVM y contenedores LXC, clúster, Ceph, copias con Proxmox Backup Server, cortafuegos, SDN, API REST completa, usuarios, roles y pools. Sencilla. Sin portal de autoservicio con cuotas tan completo como OpenStack.</td></tr>
+<tr><td><b>VMware vSphere / Cloud Foundation</b></td><td>Propietaria (Broadcom)</td><td>Referencia en empresas durante 20 años. Tras la compra por Broadcom en 2023 cambió su modelo de licencias y subió precios, lo que ha llevado a muchas organizaciones a buscar alternativas como Proxmox.</td></tr>
+<tr><td><b>OpenNebula</b></td><td>Libre</td><td>Nacida en la Universidad Complutense de Madrid. Más ligera que OpenStack, con portal de autoservicio, cuotas y multitenencia.</td></tr>
+<tr><td><b>Apache CloudStack</b></td><td>Libre</td><td>Plataforma IaaS completa, usada por proveedores de alojamiento.</td></tr>
+<tr><td><b>Nutanix</b></td><td>Propietaria</td><td>Infraestructura hiperconvergente (cómputo y almacenamiento en los mismos nodos) con su hipervisor AHV.</td></tr>
+<tr><td><b>Kubernetes</b></td><td>Libre</td><td>Para cargas en contenedores, un clúster Kubernetes propio actúa como una "nube privada de contenedores". Con KubeVirt también ejecuta VM.</td></tr>
+</table></div>
+<p>La <b>infraestructura hiperconvergente</b> (HCI) es una tendencia importante: en lugar de servidores por un lado y cabina de almacenamiento por otro, cada nodo aporta CPU, memoria y discos, y el software los une en un clúster. Proxmox con Ceph es un ejemplo de HCI libre.</p>
+
+<h3>4. Propiedad y uso compartido</h3>
+<div class="tabla"><table>
+<tr><th>Aspecto</th><th>Nube pública</th><th>Nube privada</th></tr>
+<tr><td>Propiedad del hardware</td><td>Proveedor</td><td>La organización (o un tercero para ella en exclusiva)</td></tr>
+<tr><td>Uso compartido</td><td>Muchas organizaciones</td><td>Una organización; se comparte solo entre sus departamentos</td></tr>
+<tr><td>Ubicación</td><td>CPD del proveedor</td><td>CPD propio o dedicado en un proveedor</td></tr>
+<tr><td>Capacidad</td><td>Prácticamente ilimitada</td><td>Limitada al hardware comprado</td></tr>
+<tr><td>Coste</td><td>OpEx, pago por uso</td><td>Principalmente CapEx, más personal</td></tr>
+<tr><td>Control y personalización</td><td>Limitados a lo que ofrece el proveedor</td><td>Totales</td></tr>
+<tr><td>Cumplimiento normativo</td><td>Depende de las certificaciones del proveedor</td><td>La organización controla todo</td></tr>
+<tr><td>Catálogo de servicios</td><td>Enorme</td><td>El que la organización monte y mantenga</td></tr>
+</table></div>
+<h4>Ventajas de la nube privada</h4>
+<p>Control total sobre la ubicación de los datos, el hardware y la seguridad; cumplimiento de normativas exigentes; rendimiento previsible (no hay "vecinos ruidosos"); coste potencialmente menor para cargas grandes y estables; posibilidad de ejecutar sistemas heredados o hardware especial; autonomía respecto a proveedores extranjeros.</p>
+<h4>Inconvenientes</h4>
+<p>Inversión inicial alta; capacidad limitada (la elasticidad termina donde termina el hardware); la organización asume la operación completa y necesita personal muy cualificado; la renovación del hardware; catálogo de servicios mucho más reducido; y el riesgo de montar una plataforma compleja (OpenStack) sin poder mantenerla.</p>
+<h4>Casos de uso</h4>
+<p>Administraciones públicas con datos sensibles, hospitales, banca y seguros, defensa, organizaciones con grandes cargas estables, centros de investigación y centros educativos (como el nuestro), y entornos de desarrollo internos.</p>
+
+<h3>5. El Proxmox del centro como nube privada</h3>
+<p>Nuestro Proxmox cumple buena parte de los requisitos:</p>
+<ul>
+<li><b>Autoservicio</b>: cada pareja tiene un usuario con permiso para crear VM en su <b>pool</b> a partir de plantillas, sin pedírselo al profesor.</li>
+<li><b>API REST</b> en <code>https://IP_PROXMOX:8006/api2/json</code>, que usan la interfaz web, la orden <code>pvesh</code> y Terraform (unidad 6).</li>
+<li><b>Permisos por rol</b>: roles como <code>PVEVMUser</code> (usar VM), <code>PVEVMAdmin</code> (administrarlas) o <code>PVEDatastoreUser</code> (usar un almacenamiento), asignados a usuarios o grupos sobre una ruta (<code>/pool/pareja1</code>, <code>/storage/local-lvm</code>).</li>
+<li><b>Tokens de API</b>: credenciales para programas, con permisos iguales o menores que los del usuario y que se pueden revocar.</li>
+<li><b>Medición</b>: gráficas de uso de CPU, memoria, red y disco por VM.</li>
+</ul>
+<p>Lo que le falta respecto a OpenStack: cuotas por proyecto integradas, portal de catálogo y facturación interna. Es una "nube privada ligera", suficiente para un centro educativo o una pyme.</p>
+<p>Ejemplo de uso de la API con un token (el secreto no se escribe en la orden, se lee de una variable):</p>
+<pre><code>export PVE="https://IP_PROXMOX:8006/api2/json"
+read -s PVE_TOKEN     # formato: usuario@pve!nombre=secreto
+# Listar las VM visibles para el token
+curl -sk -H "Authorization: PVEAPIToken=$PVE_TOKEN" "$PVE/cluster/resources?type=vm" | jq '.data[] | {vmid,name,status,pool}'
+# Clonar la plantilla 9000 como VM 3101 en el pool de la pareja
+curl -sk -X POST -H "Authorization: PVEAPIToken=$PVE_TOKEN" \
+     --data "newid=3101&name=api-pareja1&pool=pareja1&full=1" "$PVE/nodes/pve/qemu/9000/clone"</code></pre>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Esquema comparativo pública/privada <span class="dur">20 min</span></h4>
+<p>En parejas, completad el esquema de la sesión 12 añadiendo al lado el de una nube privada de la Consejería de Sanidad con tres departamentos. Usad los mismos colores para propiedad, operación, uso compartido y recursos virtuales. Añadid una tercera columna para una nube privada alojada en un proveedor y señalad qué cambia.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 2. Autoservicio en la nube privada del centro <span class="dur">45 min</span></h4>
+<p>En parejas, con el usuario y el token de API que os ha dado el profesor (permisos solo sobre vuestro pool).</p>
+<ol>
+<li>En la interfaz web, en <i>Datacenter → Permissions</i>, averiguad qué rol tiene vuestro usuario, sobre qué ruta y qué privilegios incluye ese rol. ¿Qué no podéis hacer?</li>
+<li>Intentad crear una VM fuera de vuestro pool o borrar una de otra pareja. Anotad el error.</li>
+<li>Con la API: listad las VM visibles con vuestro token. Comparad con lo que veis en la web.</li>
+<li>Clonad la plantilla por la API con un identificador del rango asignado a vuestra pareja. Consultad el estado de la tarea (el <code>clone</code> devuelve un identificador <code>UPID</code>; consultadlo en <code>/nodes/pve/tasks/UPID/status</code>).</li>
+<li>Arrancad la VM por la API (<code>POST .../qemu/VMID/status/start</code>), consultad su estado y sus métricas (<code>GET .../qemu/VMID/rrddata?timeframe=hour</code>).</li>
+<li>Paradla y borradla por la API (<code>DELETE .../qemu/VMID</code>).</li>
+<li>Guardad todas las órdenes en un script <code>autoservicio.sh</code> que reciba el nombre de la VM como parámetro.</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 3. ¿Nube privada o no? <span class="dur">15 min</span></h4>
+<p>Evaluad con las características del NIST y los requisitos del apartado 2 si estas infraestructuras son nube privada, y qué les falta: (a) un ayuntamiento con tres servidores VMware en los que el técnico crea las VM cuando se las piden por correo; (b) nuestro Proxmox; (c) una universidad con OpenStack, proyectos por grupo de investigación y cuotas; (d) un banco que alquila a un proveedor 20 servidores dedicados con OpenNebula que gestiona su propio equipo; (e) una empresa con toda su infraestructura en una VPC de AWS.</p>
+<p class="entrega">Entrega en Aules: esquema, capturas y script de la actividad 2, y respuestas de la actividad 3.</p>
+</div>
+<details><summary>Preparación previa (profesor)</summary>
+<p>Por pareja: usuario <code>parejaN@pve</code>, pool <code>parejaN</code>, rol <code>PVEVMAdmin</code> sobre <code>/pool/parejaN</code>, <code>PVEDatastoreUser</code> sobre el almacenamiento de discos y <code>PVETemplateUser</code> sobre <code>/vms/9000</code> (la plantilla), y un token con separación de privilegios con esos mismos permisos. Asignar a cada pareja un rango de VMID (por ejemplo, 3100-3109 para la pareja 1). Comprobar que <code>jq</code> está instalado en los portátiles.</p>
+</details>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué diferencia una nube privada de una infraestructura virtualizada?</li>
+<li>¿Puede una nube privada estar fuera de las instalaciones de la organización? Explica cómo.</li>
+<li>¿Por qué una VPC no es una nube privada?</li>
+<li>¿Qué es la infraestructura hiperconvergente?</li>
+<li>¿Qué ventaja tiene un token de API frente a usar el usuario y la contraseña en un script?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s14" aria-labelledby="tab-s14" hidden>
+<p class="meta">Sesión 14 de 41 · lunes 23 de noviembre de 2026 · 2 horas</p>
+<h2>La nube híbrida</h2>
+<p class="chips"><span class="ce" title="Se ha descrito el modelo de nube híbrida, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.">CE 3c</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Describir el modelo de nube híbrida: propiedad de los recursos, uso compartido y cómo se integran las partes.</li>
+<li>Conocer los elementos que hacen funcionar una nube híbrida: conectividad, identidad, gestión y datos.</li>
+<li>Identificar los patrones de uso más habituales (desbordamiento, recuperación ante desastres, arquitectura por capas...).</li>
+<li>Conectar la nube privada del centro con la nube pública mediante un túnel VPN.</li>
+</ul>
+
+<h3>1. Qué es una nube híbrida</h3>
+<p>Según el NIST, una <b>nube híbrida</b> es la composición de dos o más infraestructuras de nube distintas (privada, comunitaria o pública) que <b>siguen siendo entidades independientes</b> pero están <b>unidas por tecnología estandarizada o propietaria</b> que permite la portabilidad de datos y aplicaciones.</p>
+<p>La definición tiene dos partes importantes:</p>
+<ul>
+<li>Las partes <b>siguen siendo independientes</b>: la nube privada de la Consejería sigue en su CPD, con su hardware; la parte pública sigue en el proveedor.</li>
+<li>Están <b>integradas</b>: hay conectividad privada entre ellas, la misma identidad de usuarios, herramientas de gestión comunes y la posibilidad de mover cargas y datos de un lado a otro. Si no hay integración, no es híbrida: es simplemente una organización que usa dos cosas por separado.</li>
+</ul>
+<p>En la práctica, el término se usa también para la combinación de <b>infraestructura on premise tradicional</b> (aunque no sea estrictamente nube privada) con una nube pública, que es la situación real de la mayoría de las organizaciones que llevan años funcionando.</p>
+
+<h4>Esquema</h4>
+<pre><code>┌──────── NUBE PRIVADA / ON PREMISE ────────┐          ┌──────── NUBE PÚBLICA ─────────────┐
+│ Propiedad: la organización                │          │ Propiedad: el proveedor           │
+│ Uso: exclusivo                            │          │ Uso: compartido (multitenencia)   │
+│                                           │  VPN o   │                                   │
+│  Historia clínica   Base de datos         │◄════════►│  Web de Cita Previa (autoescalado)│
+│  de pacientes       maestra de citas      │ conexión │  CDN, envío de SMS                │
+│                                           │ dedicada │  Copias de seguridad              │
+│  Red 10.10.0.0/16                         │          │  VPC 10.20.0.0/16                 │
+└───────────────────────────────────────────┘          └───────────────────────────────────┘
+                 ▲                                                   ▲
+                 └────── identidad común · gestión y monitorización unificadas · políticas comunes ──┘</code></pre>
+<h4>Propiedad y uso compartido</h4>
+<div class="tabla"><table>
+<tr><th>Parte</th><th>Propiedad</th><th>Uso</th><th>Operación</th></tr>
+<tr><td>Privada / on premise</td><td>Organización</td><td>Exclusivo</td><td>Organización</td></tr>
+<tr><td>Pública</td><td>Proveedor</td><td>Compartido con otros clientes</td><td>Proveedor (física) y organización (recursos virtuales)</td></tr>
+<tr><td>Conexión y capa de gestión</td><td>Mixta (enlaces del operador, software de gestión)</td><td>Exclusivo de la organización</td><td>Organización</td></tr>
+</table></div>
+<p>La nube híbrida permite decidir, <b>carga por carga</b>, dónde vive cada cosa: los datos más sensibles o las cargas estables en la parte privada; lo que necesita elasticidad o alcance global en la pública.</p>
+
+<h3>2. Los cuatro pilares técnicos de la nube híbrida</h3>
+<h4>Conectividad</h4>
+<ul>
+<li><b>VPN sitio a sitio</b> (IPsec o WireGuard) por Internet: barata y rápida de montar; ancho de banda y latencia dependen de Internet. Los proveedores ofrecen puertas de enlace VPN gestionadas (AWS Site-to-Site VPN, Azure VPN Gateway).</li>
+<li><b>Conexión dedicada</b> (AWS Direct Connect, Azure ExpressRoute, Google Cloud Interconnect): enlace privado a través de un operador hasta un punto de interconexión del proveedor. Latencia estable, gran ancho de banda y más seguridad; más cara y tarda semanas en contratarse.</li>
+<li><b>Planificación de direcciones</b>: los rangos IP de ambas partes no pueden solaparse (si on premise usa <code>10.0.0.0/16</code>, la VPC no puede usar el mismo). Es un error habitual que obliga a rehacer redes.</li>
+<li><b>DNS híbrido</b>: que los nombres se resuelvan igual a ambos lados.</li>
+</ul>
+<h4>Identidad y acceso</h4>
+<p>Los usuarios no deben tener una cuenta distinta en cada lado. Se usa un <b>proveedor de identidad</b> central (Active Directory, Microsoft Entra ID, Keycloak) y <b>federación</b> (SAML, OpenID Connect) para entrar en la consola de la nube con la misma cuenta corporativa y con los permisos derivados de sus grupos.</p>
+<h4>Gestión y operación unificadas</h4>
+<ul>
+<li>Herramientas que gestionan ambos lados: <b>Azure Arc</b> (gestiona servidores y Kubernetes de cualquier sitio desde Azure), <b>Google Distributed Cloud / GKE Enterprise</b>, <b>AWS Systems Manager</b> para servidores on premise, <b>VMware Cloud Foundation</b>.</li>
+<li><b>Infraestructura como código</b> con herramientas multiplataforma como Terraform, que tiene proveedores para Proxmox, VMware, OpenStack, AWS, Azure...</li>
+<li><b>Kubernetes</b> como capa común: la misma aplicación en contenedores se despliega igual en un clúster propio o en uno gestionado en la nube.</li>
+<li><b>Monitorización y registros centralizados</b> para ver todo en un único panel.</li>
+</ul>
+<h4>Datos</h4>
+<p>Mover datos entre ambos lados cuesta tiempo (latencia) y dinero (transferencia de salida). Hay que decidir qué datos se replican, cuáles se sincronizan y cuáles no salen nunca de la parte privada. Herramientas típicas: replicación de bases de datos, pasarelas de almacenamiento (AWS Storage Gateway, Azure File Sync), sincronización de copias.</p>
+
+<h3>3. Patrones de uso</h3>
+<div class="tabla"><table>
+<tr><th>Patrón</th><th>En qué consiste</th><th>Ejemplo con Cita Previa</th></tr>
+<tr><td><b>Desbordamiento a la nube</b> (<i>cloud bursting</i>)</td><td>La carga normal va en la parte privada; cuando se satura, el exceso se atiende en la pública</td><td>Campaña de vacunación: se levantan instancias extra en la nube durante dos meses</td></tr>
+<tr><td><b>Arquitectura por capas</b></td><td>El front end en la nube pública, los datos sensibles en la privada</td><td>La web y la CDN en la nube; la base de datos de pacientes en el CPD</td></tr>
+<tr><td><b>Recuperación ante desastres en la nube</b></td><td>Copias y un entorno de respaldo en la nube que se activa si cae el CPD</td><td>Réplica de la base de datos y plantillas de VM listas en la nube</td></tr>
+<tr><td><b>Copia y archivo</b></td><td>Copias de seguridad fuera del sitio en almacenamiento de objetos</td><td>Copias nocturnas cifradas a un bucket con bloqueo contra borrado</td></tr>
+<tr><td><b>Desarrollo en la nube, producción en casa</b></td><td>Entornos de pruebas efímeros en la nube; producción on premise</td><td>Cada pull request crea un entorno de revisión temporal en la nube</td></tr>
+<tr><td><b>Migración progresiva</b></td><td>Etapa intermedia mientras se trasladan aplicaciones a la nube</td><td>Primero la web, después la API y al final los datos</td></tr>
+<tr><td><b>Borde</b> (<i>edge</i>)</td><td>Procesamiento cerca del lugar donde se generan los datos, gestión desde la nube</td><td>Quioscos de los centros de salud que funcionan aunque se corte Internet</td></tr>
+</table></div>
+
+<h3>4. Ventajas y retos</h3>
+<h4>Ventajas</h4>
+<ul>
+<li><b>Flexibilidad</b>: cada carga en el sitio más adecuado.</li>
+<li><b>Cumplimiento</b>: los datos regulados se quedan bajo control propio.</li>
+<li><b>Aprovechar la inversión existente</b> en el CPD mientras se amortiza.</li>
+<li><b>Elasticidad</b> de la nube pública para los picos, sin dimensionar el CPD para ellos.</li>
+<li><b>Resiliencia</b>: la otra parte puede servir de respaldo.</li>
+</ul>
+<h4>Retos</h4>
+<ul>
+<li><b>Complejidad</b>: dos entornos distintos que operar, con herramientas y conocimientos diferentes.</li>
+<li><b>Seguridad coherente</b>: las mismas políticas a ambos lados; la conexión amplía la superficie de ataque.</li>
+<li><b>Latencia</b> entre componentes repartidos (una web en la nube que consulta una base de datos en el CPD en cada petición puede ser lenta).</li>
+<li><b>Costes de transferencia</b> de datos entre las partes.</li>
+<li><b>Visibilidad</b>: saber qué hay y cuánto cuesta en cada sitio.</li>
+</ul>
+<div class="nota"><p><b>Idea clave.</b> La nube híbrida no es "tener un poco de todo". Es un diseño deliberado en el que las partes están conectadas y gestionadas como un conjunto, y cada carga está donde tiene más sentido.</p></div>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Diseño híbrido de Cita Previa <span class="dur">25 min</span></h4>
+<p>En grupos de 3. La Consejería tiene un CPD con Proxmox y quiere mantener allí la historia clínica y la base de datos de citas. Necesita afrontar la campaña de vacunación (tráfico ×5 durante 8 semanas) y tener recuperación ante desastres. Dibujad el diseño híbrido: qué va en cada lado, cómo se conectan (y con qué rangos IP), cómo se autentican los usuarios, qué patrones de la tabla aplicáis y qué datos cruzan la conexión. Añadid tres riesgos y cómo los mitigáis.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 2. Túnel VPN entre la nube privada y la pública <span class="dur">45 min</span></h4>
+<p>En parejas vamos a unir una VM del Proxmox del centro con una VM de la nube pública mediante <b>WireGuard</b>, una VPN moderna y sencilla. Es un modelo reducido de una conexión sitio a sitio.</p>
+<ol>
+<li>Cread una VM Ubuntu en Proxmox (desde la plantilla, como en la sesión 10) y otra en el laboratorio de nube. En el grupo de seguridad de la de la nube, permitid SSH y el puerto <b>UDP 51820</b> desde la IP pública del centro.</li>
+<li>En ambas: <code>sudo apt install -y wireguard</code> y generad las claves: <code>wg genkey | tee priv.key | wg pubkey &gt; pub.key</code>.</li>
+<li>En la VM de la nube, <code>/etc/wireguard/wg0.conf</code>:
+<pre><code>[Interface]
+Address = 172.16.99.1/24
+ListenPort = 51820
+PrivateKey = CLAVE_PRIVADA_NUBE
+
+[Peer]
+PublicKey = CLAVE_PUBLICA_PROXMOX
+AllowedIPs = 172.16.99.2/32</code></pre></li>
+<li>En la VM de Proxmox:
+<pre><code>[Interface]
+Address = 172.16.99.2/24
+PrivateKey = CLAVE_PRIVADA_PROXMOX
+
+[Peer]
+PublicKey = CLAVE_PUBLICA_NUBE
+Endpoint = IP_PUBLICA_NUBE:51820
+AllowedIPs = 172.16.99.1/32
+PersistentKeepalive = 25</code></pre></li>
+<li>Levantad el túnel en las dos (<code>sudo wg-quick up wg0</code>), comprobad con <code>sudo wg show</code> y haced <code>ping 172.16.99.1</code> desde Proxmox.</li>
+<li>Instalad nginx en la VM de Proxmox y acceded a él desde la nube por la IP del túnel: <code>curl http://172.16.99.2</code>. Un servicio "privado" es accesible desde la nube sin exponerlo a Internet.</li>
+<li>Medid la latencia (<code>ping</code>) y el ancho de banda aproximado (<code>iperf3</code>, si da tiempo) por el túnel. ¿Qué implicaciones tiene para el patrón "web en la nube, base de datos en el CPD"?</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 3. Clasificar patrones <span class="dur">10 min</span></h4>
+<p>Asociad cada situación a un patrón híbrido: (a) un periódico que recibe diez veces más visitas la noche de elecciones; (b) un hospital que copia cada noche sus copias de seguridad cifradas a un bucket europeo; (c) una empresa que prueba cada versión en la nube antes de instalarla en su CPD; (d) una cadena de supermercados con servidores en cada tienda gestionados desde Azure Arc; (e) un banco que tiene su web en la nube pero las cuentas en su mainframe.</p>
+<p class="entrega">Entrega en Aules: diseño híbrido, capturas del túnel y de las pruebas, y clasificación. Apagad y borrad las dos VM al terminar.</p>
+</div>
+<details><summary>Preparación previa (profesor)</summary>
+<p>Comprobar que la red del centro permite tráfico UDP saliente al puerto 51820 (si no, usar otro puerto permitido, por ejemplo UDP 443, en <code>ListenPort</code> y <code>Endpoint</code>). La VM de Proxmox inicia la conexión, así que no hace falta abrir puertos en el centro.</p>
+</details>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué dos condiciones pone el NIST para que una combinación de nubes sea híbrida?</li>
+<li>¿Por qué no deben solaparse los rangos IP de la parte privada y la pública?</li>
+<li>Explica el patrón de desbordamiento a la nube y un requisito técnico para que funcione.</li>
+<li>¿Qué ventajas tiene una conexión dedicada frente a una VPN por Internet?</li>
+<li>¿Por qué puede ser mala idea poner la web en la nube y la base de datos en el CPD?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s15" aria-labelledby="tab-s15" hidden>
+<p class="meta">Sesión 15 de 41 · viernes 27 de noviembre de 2026 · 2 horas</p>
+<h2>Nube pública o privada: elegir según las necesidades</h2>
+<p class="chips"><span class="ce" title="Se ha diferenciado entre nubes públicas y privadas, valorando la configuración más adecuada en función de las necesidades de una organización.">CE 3d</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Diferenciar con precisión la nube pública y la privada en todos sus aspectos.</li>
+<li>Analizar las necesidades de una organización en funcionalidad, seguridad, escalabilidad y costes.</li>
+<li>Aplicar un método de decisión con una matriz ponderada para elegir el modelo de despliegue.</li>
+<li>Redactar una recomendación razonada como si fuerais una consultora.</li>
+</ul>
+
+<h3>1. Pública frente a privada: la comparación completa</h3>
+<div class="tabla"><table>
+<tr><th>Criterio</th><th>Nube pública</th><th>Nube privada</th></tr>
+<tr><td>Propiedad de los recursos</td><td>Proveedor</td><td>Organización (o un tercero en exclusiva)</td></tr>
+<tr><td>Uso compartido</td><td>Multitenencia entre organizaciones</td><td>Exclusiva de una organización</td></tr>
+<tr><td>Inversión inicial</td><td>Nula</td><td>Alta (hardware, CPD, licencias)</td></tr>
+<tr><td>Modelo de coste</td><td>Variable, por uso</td><td>Fijo, amortización y personal</td></tr>
+<tr><td>Escalabilidad</td><td>Prácticamente ilimitada, en minutos</td><td>Limitada a la capacidad comprada; ampliar tarda semanas</td></tr>
+<tr><td>Funcionalidad</td><td>Cientos de servicios gestionados</td><td>Lo que la organización monte y mantenga</td></tr>
+<tr><td>Control</td><td>Limitado a lo que expone el proveedor</td><td>Total</td></tr>
+<tr><td>Seguridad física y certificaciones</td><td>Del proveedor, muy alta</td><td>Depende de la inversión propia</td></tr>
+<tr><td>Ubicación y soberanía de los datos</td><td>Región elegible; sujeto a la ley del proveedor</td><td>Totalmente controlada</td></tr>
+<tr><td>Rendimiento</td><td>Bueno, con posible variabilidad</td><td>Previsible, sin vecinos</td></tr>
+<tr><td>Personal necesario</td><td>Perfiles de nube, IaC, FinOps</td><td>Perfiles de sistemas, redes, almacenamiento, hardware</td></tr>
+<tr><td>Tiempo hasta estar operativo</td><td>Horas</td><td>Meses</td></tr>
+<tr><td>Riesgo principal</td><td>Dependencia del proveedor, costes descontrolados, errores de configuración</td><td>Infradimensionar o sobredimensionar, obsolescencia, falta de personal</td></tr>
+</table></div>
+
+<h3>2. Las necesidades de la organización</h3>
+<p>El resultado de aprendizaje nos pide elegir el modelo "en función de las necesidades de funcionalidad, seguridad digital, escalabilidad o costes". Veamos qué preguntar en cada una.</p>
+<h4>Funcionalidad</h4>
+<ul>
+<li>¿Qué servicios necesita la aplicación? ¿Bases de datos gestionadas, colas, IA, analítica? Si son muchos y avanzados, la pública tiene ventaja.</li>
+<li>¿Hay software heredado que exige hardware, sistema operativo o licencias concretas?</li>
+<li>¿Qué latencia se necesita y dónde están los usuarios o las máquinas?</li>
+<li>¿Hace falta integración con sistemas que ya están en el CPD?</li>
+</ul>
+<h4>Seguridad digital y cumplimiento</h4>
+<p>El punto de partida es <b>clasificar los datos</b>. Una clasificación típica:</p>
+<div class="tabla"><table>
+<tr><th>Nivel</th><th>Ejemplos en Cita Previa</th><th>Implicaciones</th></tr>
+<tr><td>Público</td><td>Horarios de los centros, preguntas frecuentes</td><td>Cualquier modelo</td></tr>
+<tr><td>Interno</td><td>Estadísticas agregadas de citas</td><td>Cualquier modelo con control de acceso</td></tr>
+<tr><td>Confidencial</td><td>Nombre, DNI, teléfono y citas de pacientes</td><td>Cifrado, acceso restringido, proveedor certificado, datos en la UE</td></tr>
+<tr><td>Especialmente protegido</td><td>Motivo de la consulta, historia clínica</td><td>Categoría especial del RGPD; requisitos ENS de nivel alto; a menudo se prefiere control propio</td></tr>
+</table></div>
+<p>Otras preguntas: ¿qué exige la normativa (RGPD, ENS, normas sectoriales como PCI DSS para pagos)? ¿Se permite hardware compartido? ¿Quién debe poder auditar? ¿Qué nivel de disponibilidad necesita el servicio? Recordad que la nube pública bien configurada puede ser <b>más segura</b> que un CPD pequeño mal mantenido; la decisión no es "pública insegura, privada segura".</p>
+<h4>Escalabilidad</h4>
+<ul>
+<li>¿Cómo es la curva de demanda? ¿Estable, con picos predecibles (campañas), con picos imprevisibles (noticias) o creciente?</li>
+<li>¿Cuál es la diferencia entre la demanda media y la de pico? Si el pico es 10 veces la media, en privada habría que comprar 10 veces lo que se usa normalmente.</li>
+<li>¿Hace falta presencia en otras regiones o países?</li>
+</ul>
+<h4>Costes</h4>
+<ul>
+<li>¿Hay presupuesto de inversión o solo de gasto corriente?</li>
+<li>¿Existe ya un CPD amortizado y personal para operarlo?</li>
+<li>¿Qué dice el TCO a 3-5 años (sesión 8)?</li>
+<li>¿Qué volumen de datos sale hacia Internet? (La transferencia puede decidir el coste.)</li>
+</ul>
+
+<h3>3. Un método de decisión: la matriz ponderada</h3>
+<p>Para que la decisión no dependa de preferencias personales, se usa una <b>matriz de decisión ponderada</b>:</p>
+<ol>
+<li><b>Elegir los criterios</b> relevantes para el caso (6-10).</li>
+<li><b>Asignar un peso</b> a cada criterio según su importancia para esa organización, sumando 100 %. El mismo criterio pesa distinto en un hospital (seguridad) que en una startup (coste y velocidad).</li>
+<li><b>Puntuar cada opción</b> en cada criterio, por ejemplo de 1 a 5, justificando la nota.</li>
+<li><b>Multiplicar y sumar</b>: la opción con mayor puntuación ponderada es la candidata.</li>
+<li><b>Analizar la sensibilidad</b>: ¿cambia el resultado si se modifica un poco algún peso? Si cambia con facilidad, la decisión no es clara y quizá la respuesta es un modelo híbrido.</li>
+<li><b>Revisar los requisitos eliminatorios</b>: si la normativa prohíbe algo, esa opción queda fuera sea cual sea su puntuación.</li>
+</ol>
+<p>Ejemplo para una tienda online mediana:</p>
+<div class="tabla"><table>
+<tr><th>Criterio</th><th>Peso</th><th>Pública (1-5)</th><th>Ponderada</th><th>Privada (1-5)</th><th>Ponderada</th></tr>
+<tr><td>Escalabilidad ante picos</td><td>25 %</td><td>5</td><td>1,25</td><td>2</td><td>0,50</td></tr>
+<tr><td>Coste a 3 años</td><td>20 %</td><td>4</td><td>0,80</td><td>3</td><td>0,60</td></tr>
+<tr><td>Tiempo hasta estar operativo</td><td>15 %</td><td>5</td><td>0,75</td><td>2</td><td>0,30</td></tr>
+<tr><td>Seguridad y cumplimiento (PCI DSS)</td><td>20 %</td><td>4</td><td>0,80</td><td>4</td><td>0,80</td></tr>
+<tr><td>Control y personalización</td><td>5 %</td><td>3</td><td>0,15</td><td>5</td><td>0,25</td></tr>
+<tr><td>Personal disponible</td><td>15 %</td><td>4</td><td>0,60</td><td>2</td><td>0,30</td></tr>
+<tr><td><b>Total</b></td><td>100 %</td><td></td><td><b>4,35</b></td><td></td><td><b>2,75</b></td></tr>
+</table></div>
+
+<h3>4. Perfiles típicos</h3>
+<div class="tabla"><table>
+<tr><th>Organización</th><th>Tendencia</th><th>Por qué</th></tr>
+<tr><td>Startup</td><td>Pública</td><td>Sin capital, necesita velocidad, demanda incierta</td></tr>
+<tr><td>Comercio electrónico</td><td>Pública</td><td>Picos fuertes (rebajas, Black Friday), alcance</td></tr>
+<tr><td>Banco</td><td>Privada o híbrida</td><td>Regulación, sistemas heredados, cargas enormes y estables</td></tr>
+<tr><td>Hospital</td><td>Privada o híbrida</td><td>Datos de salud, sistemas de equipos médicos, latencia local</td></tr>
+<tr><td>Ayuntamiento pequeño</td><td>Pública (o comunitaria) con proveedor certificado ENS</td><td>Poco personal técnico, servicios estándar</td></tr>
+<tr><td>Centro de investigación</td><td>Privada con desbordamiento a pública</td><td>Cálculo intensivo continuo, picos puntuales</td></tr>
+<tr><td>Empresa de videojuegos</td><td>Pública</td><td>Lanzamientos con picos enormes y usuarios globales</td></tr>
+</table></div>
+<p><b>Nube comunitaria</b>: cuando varias organizaciones con necesidades comunes comparten una nube privada. En España, por ejemplo, la Administración General del Estado dispone de servicios compartidos de nube (como la nube SARA) para los organismos públicos. Combina el control de la privada con costes repartidos.</p>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Clasificar los datos de Cita Previa <span class="dur">15 min</span></h4>
+<p>En parejas, listad todos los datos que maneja Cita Previa (al menos 12: identificación del paciente, centro, médico, fecha y hora, motivo, teléfono, registros de acceso, estadísticas...) y clasificadlos en los cuatro niveles del apartado 2. Para cada nivel, indicad qué exigencias de seguridad supone y en qué modelo podría almacenarse.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 2. Consultora de nube: cuatro clientes <span class="dur">50 min</span></h4>
+<p>En grupos de 3, actuáis como consultora. Cada grupo recibe uno de estos clientes (dos grupos pueden compartir cliente para comparar):</p>
+<ul>
+<li><b>A. Clínica dental con 8 sedes</b>: agenda, historia clínica con radiografías (2 TB, crece 300 GB/año), 60 empleados, un único informático, presupuesto anual limitado, sin CPD.</li>
+<li><b>B. Tienda online de material deportivo</b>: 5.000 pedidos/día, 40.000 en Black Friday, pagos con tarjeta (PCI DSS), equipo de 6 desarrolladores, quiere lanzar en Portugal y Francia.</li>
+<li><b>C. Mutua de seguros</b>: CPD propio renovado hace 2 años, 25 técnicos de sistemas, aplicación principal en Java con Oracle, carga muy estable, regulación de la Dirección General de Seguros, quiere modernizar su web de clientes.</li>
+<li><b>D. Ayuntamiento de 15.000 habitantes</b>: sede electrónica, padrón, registro, web municipal; obligado al ENS; un técnico informático y una empresa de mantenimiento; servidores de hace 9 años.</li>
+</ul>
+<p>Pasos: (1) analizad las necesidades de funcionalidad, seguridad, escalabilidad y costes con las preguntas del apartado 2; (2) identificad requisitos eliminatorios; (3) construid la matriz ponderada en una hoja de cálculo con al menos 7 criterios, comparando pública, privada y comunitaria o híbrida; (4) haced un análisis de sensibilidad cambiando los dos pesos principales; (5) redactad una recomendación de una página con el modelo, los proveedores o plataformas candidatos, los riesgos y los siguientes pasos.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 3. Presentación al cliente <span class="dur">20 min</span></h4>
+<p>Cada grupo presenta su recomendación en 3 minutos como si hablara con la dirección del cliente (sin tecnicismos innecesarios). El resto de la clase hace de dirección y plantea una objeción ("¿y si el proveedor sube precios?", "¿y si se va el informático?"). Si dos grupos tenían el mismo cliente, comparamos sus matrices.</p>
+<p class="entrega">Entrega en Aules: clasificación de datos, matriz ponderada con el análisis de sensibilidad y el informe de recomendación.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué cuatro necesidades de una organización hay que analizar para elegir el modelo de nube?</li>
+<li>¿Por qué es útil clasificar los datos antes de decidir?</li>
+<li>¿Qué es un requisito eliminatorio en una matriz de decisión? Pon un ejemplo.</li>
+<li>¿Para qué sirve el análisis de sensibilidad?</li>
+<li>¿Qué es una nube comunitaria y cuándo tiene sentido?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s16" aria-labelledby="tab-s16" hidden>
+<p class="meta">Sesión 16 de 41 · lunes 30 de noviembre de 2026 · 2 horas</p>
+<h2>Nube híbrida y multinube</h2>
+<p class="chips"><span class="ce" title="Se ha diferenciado entre servicios de nube híbrida y entornos multinube, identificando requisitos y casos de uso específicos.">CE 3e</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Definir el entorno multinube y diferenciarlo de la nube híbrida.</li>
+<li>Identificar los requisitos técnicos y organizativos de cada modelo.</li>
+<li>Conocer los casos de uso específicos de la nube híbrida y de la multinube.</li>
+<li>Comprobar en la práctica la portabilidad: desplegar la misma aplicación en contenedor en dos plataformas distintas.</li>
+</ul>
+
+<h3>1. Qué es la multinube</h3>
+<p>Una estrategia <b>multinube</b> (<i>multicloud</i>) consiste en usar <b>servicios de dos o más proveedores de nube pública</b> distintos. Por ejemplo: la aplicación en AWS, el correo y la ofimática en Microsoft 365, la analítica de datos en Google BigQuery y las copias en un proveedor europeo.</p>
+<p>Según las encuestas del sector (como el informe anual de Flexera sobre el estado de la nube), la gran mayoría de las empresas medianas y grandes usan varias nubes públicas. En muchos casos no es una estrategia planificada sino algo que sucede: cada departamento contrata lo que le conviene, se compra una empresa que usaba otra nube, un servicio SaaS corre sobre otro proveedor... Por eso se distingue entre <b>multinube accidental</b> y <b>multinube estratégica</b>.</p>
+
+<h3>2. Híbrida frente a multinube</h3>
+<p>Los dos términos se confunden a menudo porque ambos combinan varios entornos. La diferencia está en <b>qué se combina</b> y <b>cómo</b>:</p>
+<div class="tabla"><table>
+<tr><th></th><th>Nube híbrida</th><th>Multinube</th></tr>
+<tr><td>Qué combina</td><td>Tipos distintos de nube: privada (u on premise) + pública</td><td>Varios proveedores de nube pública (puede incluir o no privada)</td></tr>
+<tr><td>Integración</td><td>Alta: las partes están conectadas y funcionan como un conjunto; datos y cargas se mueven entre ellas</td><td>Variable: a menudo cada proveedor ejecuta cargas distintas e independientes</td></tr>
+<tr><td>Motivación principal</td><td>Mantener control sobre ciertas cargas y datos y aprovechar la nube para el resto</td><td>Elegir lo mejor de cada proveedor, evitar la dependencia de uno, resiliencia, requisitos normativos o geográficos</td></tr>
+<tr><td>Infraestructura propia</td><td>Sí, siempre</td><td>No es necesaria</td></tr>
+<tr><td>Conectividad</td><td>Clave: VPN o enlace dedicado entre CPD y nube</td><td>Entre nubes solo si las cargas se comunican</td></tr>
+</table></div>
+<p>No son excluyentes: una organización con CPD propio, AWS y Azure es a la vez <b>híbrida y multinube</b>. Hay quien lo llama <i>hybrid multicloud</i>.</p>
+<pre><code>  HÍBRIDA                         MULTINUBE                       HÍBRIDA + MULTINUBE
+┌─────────┐   ┌─────────┐     ┌─────────┐   ┌─────────┐     ┌─────────┐  ┌─────┐  ┌───────┐
+│ Privada │◄═►│ Pública │     │ Pública │   │ Pública │     │ Privada │◄►│ AWS │  │ Azure │
+│  (CPD)  │   │  (AWS)  │     │  (AWS)  │   │ (Azure) │     │  (CPD)  │◄═════════►│       │
+└─────────┘   └─────────┘     └─────────┘   └─────────┘     └─────────┘  └─────┘  └───────┘
+ integradas                    cargas distintas o
+                               la misma carga en ambas</code></pre>
+
+<h3>3. Casos de uso específicos</h3>
+<h4>Cuándo tiene sentido la nube híbrida</h4>
+<ul>
+<li><b>Datos que no pueden salir</b> de la organización o del país, con el resto de la aplicación en la nube.</li>
+<li><b>CPD reciente</b> que hay que amortizar, con crecimiento hacia la nube.</li>
+<li><b>Picos temporales</b> (desbordamiento) sobre una base estable propia.</li>
+<li><b>Latencia local</b>: fábricas, hospitales, tiendas (borde).</li>
+<li><b>Recuperación ante desastres</b> sin construir un segundo CPD.</li>
+<li><b>Migración gradual</b> a la nube.</li>
+</ul>
+<h4>Cuándo tiene sentido la multinube</h4>
+<ul>
+<li><b>Lo mejor de cada proveedor</b> (<i>best of breed</i>): IA o analítica de uno, integración con Microsoft de otro.</li>
+<li><b>Evitar la dependencia</b> de un único proveedor y mejorar la posición al negociar precios.</li>
+<li><b>Resiliencia extrema</b>: que la caída de un proveedor completo no pare el servicio. Es cara y compleja; pocas organizaciones la necesitan realmente.</li>
+<li><b>Requisitos geográficos o normativos</b>: un proveedor no tiene región en cierto país o no tiene la certificación exigida.</li>
+<li><b>Fusiones y adquisiciones</b>: la empresa comprada usaba otra nube.</li>
+<li><b>Aplicaciones SaaS</b> que ya están en otra nube.</li>
+</ul>
+
+<h3>4. Requisitos de cada modelo</h3>
+<h4>Requisitos de la nube híbrida</h4>
+<ul>
+<li>Conectividad privada fiable y rangos IP planificados sin solapamiento.</li>
+<li>Identidad federada entre el directorio corporativo y la nube.</li>
+<li>Herramientas de gestión que abarquen ambos lados (Azure Arc, Terraform, Ansible, Kubernetes).</li>
+<li>Políticas de seguridad coherentes a ambos lados.</li>
+<li>Estrategia de datos: qué se replica y cómo.</li>
+<li>Personal que conozca la infraestructura propia y la nube.</li>
+</ul>
+<h4>Requisitos de la multinube</h4>
+<ul>
+<li><b>Portabilidad</b>: diseñar las cargas para que puedan moverse, usando tecnologías estándar o abiertas: <b>contenedores</b> (imágenes OCI), <b>Kubernetes</b> (servicios gestionados en todos los proveedores: EKS, AKS, GKE), bases de datos de código abierto (PostgreSQL, MySQL), almacenamiento con API compatible con S3.</li>
+<li><b>Infraestructura como código multiproveedor</b>: Terraform/OpenTofu o Pulumi, en lugar de herramientas específicas (CloudFormation solo sirve para AWS; Bicep solo para Azure).</li>
+<li><b>Abstracción de las diferencias</b>: cada proveedor llama distinto a las mismas cosas y tiene API distintas. Hay que decidir si se usa el "mínimo común denominador" (portable pero sin aprovechar servicios avanzados) o servicios propios de cada uno (más potentes pero menos portables).</li>
+<li><b>Identidad centralizada</b> con federación hacia cada proveedor.</li>
+<li><b>Gestión de costes</b> consolidada (herramientas FinOps multiproveedor).</li>
+<li><b>Monitorización y seguridad</b> unificadas: registros de todas las nubes en un único sistema (SIEM).</li>
+<li><b>Conocimientos</b> de varios proveedores en el equipo.</li>
+<li><b>Red entre nubes</b> si las cargas se comunican, teniendo en cuenta el coste de transferencia de salida de cada proveedor.</li>
+</ul>
+<h4>Costes ocultos de la multinube</h4>
+<p>Duplicar herramientas, formación y certificaciones; perder descuentos por volumen al repartir el gasto; transferencia de datos entre proveedores; mayor superficie de ataque; y la complejidad de diagnosticar problemas que atraviesan varias nubes. La multinube debe tener un motivo claro: "por si acaso" no suele justificar su coste.</p>
+
+<h3>5. La portabilidad en la práctica: contenedores</h3>
+<p>El contenedor es la herramienta de portabilidad más potente que tenemos: la misma imagen de <code>cita-previa-app</code> se puede ejecutar en un Docker del Proxmox del centro, en Amazon ECS, en Azure Container Apps, en Google Cloud Run o en cualquier Kubernetes. Lo que cambia entre plataformas es <b>cómo se despliega</b> (la definición del servicio, la red, los secretos), no la aplicación. Por eso los contenedores son el núcleo de este curso de especialización.</p>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. ¿Híbrida, multinube o ambas? <span class="dur">15 min</span></h4>
+<p>En parejas, clasificad y justificad: (a) una universidad con OpenStack propio y copias en Azure; (b) una startup con su app en Google Cloud y el correo en Microsoft 365; (c) un banco con CPD, AWS para la web y Azure para la analítica; (d) una empresa con la misma aplicación en AWS y en Azure detrás de un DNS que reparte el tráfico; (e) un ayuntamiento con servidores propios y la sede electrónica en un proveedor certificado ENS. Para cada una, indicad un requisito que deban cumplir y un riesgo.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 2. La misma imagen en dos plataformas <span class="dur">50 min</span></h4>
+<p>En parejas. Vamos a comprobar la portabilidad desplegando <code>cita-previa-app</code> (sesión 5) en una VM de la nube privada y en un servicio de contenedores de la nube pública.</p>
+<ol>
+<li>Publicad la imagen en un registro público: cread un token de GitHub con permiso <code>write:packages</code>, iniciad sesión (<code>echo $TOKEN | docker login ghcr.io -u USUARIO --password-stdin</code>), etiquetad y subid: <code>docker tag cita-previa-app:0.2 ghcr.io/USUARIO/cita-previa-app:0.2</code> y <code>docker push ...</code>. En GitHub, en el paquete, cambiad su visibilidad a pública.</li>
+<li><b>Nube privada</b>: en una VM del Proxmox con Docker, <code>docker run -d -p 80:8000 -e ENTORNO=privada ghcr.io/USUARIO/cita-previa-app:0.2</code> y probad <code>/salud</code>.</li>
+<li><b>Nube pública</b>: desplegad la misma imagen como servicio de contenedores gestionado. En AWS Academy: <i>ECS → Clusters → Create</i> (AWS Fargate), definición de tarea con la imagen, puerto 8000, variable <code>ENTORNO=publica</code>, rol <code>LabRole</code>, y un servicio con IP pública en una subred pública y un grupo de seguridad que abra el 8000 solo a vuestra IP. En Azure: <i>Container Apps</i> con la imagen e ingreso externo en el puerto 8000.</li>
+<li>Comprobad <code>/salud</code> en ambos sitios: la respuesta solo cambia en la variable de entorno.</li>
+<li>Anotad en una tabla qué fue igual y qué fue distinto en cada plataforma: cómo se indica la imagen, la red, las variables, los registros, cuánto tardó y qué habría que cambiar para migrar de una a otra.</li>
+<li>Borrad el servicio y el clúster de ECS (o la Container App) al terminar.</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 3. ¿Merece la pena la multinube para Cita Previa? <span class="dur">15 min</span></h4>
+<p>Con lo aprendido, escribid un párrafo argumentando si Cita Previa debería desplegarse en dos proveedores de nube pública a la vez. Tened en cuenta: disponibilidad que se gana, costes añadidos, personal, datos de salud y complejidad. Proponed una alternativa más sencilla si la respuesta es no.</p>
+<p class="entrega">Entrega en Aules: clasificación, capturas de los dos despliegues con la tabla comparativa, y la argumentación.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué diferencia hay entre nube híbrida y multinube? ¿Puede una organización tener ambas?</li>
+<li>¿Qué es la multinube accidental?</li>
+<li>¿Qué tecnologías favorecen la portabilidad entre proveedores?</li>
+<li>¿Qué significa diseñar con el "mínimo común denominador" y qué se pierde?</li>
+<li>Cita tres costes ocultos de una estrategia multinube.</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-s17" aria-labelledby="tab-s17" hidden>
+<p class="meta">Sesión 17 de 41 · viernes 4 de diciembre de 2026 · 2 horas</p>
+<h2>Administración y gobernanza en entornos híbridos y multinube</h2>
+<p class="chips"><span class="ce" title="Se han analizado entornos híbridos y de multinube, identificando sus respectivas necesidades de administración y gobernanza.">CE 3f</span></p>
+<h3>Objetivos de la sesión</h3>
+<ul>
+<li>Distinguir administración (operación) y gobernanza de la nube.</li>
+<li>Identificar las necesidades de administración de los entornos híbridos y multinube: inventario, identidad, monitorización, parches, copias, costes.</li>
+<li>Identificar las necesidades de gobernanza: políticas, etiquetado, cumplimiento, control de costes, responsabilidades.</li>
+<li>Conocer las herramientas y prácticas habituales: zonas de aterrizaje, políticas como código, etiquetado, FinOps, centro de excelencia.</li>
+<li>Elaborar un inventario automatizado con etiquetas y un plan de gobernanza para Cita Previa.</li>
+</ul>
+
+<h3>1. Administración y gobernanza</h3>
+<p>Cuando una organización tiene recursos en su CPD, en AWS y en Azure, aparecen dos tipos de preguntas:</p>
+<ul>
+<li><b>Administración</b> (gestión operativa): ¿cómo hacemos funcionar todo esto día a día? Crear y modificar recursos, vigilar su estado, aplicar parches, hacer copias, atender incidencias.</li>
+<li><b>Gobernanza</b>: ¿quién decide qué se puede hacer, con qué reglas, y cómo comprobamos que se cumplen? Es el conjunto de <b>políticas, procesos, responsabilidades y controles</b> que aseguran que el uso de la nube cumple los objetivos de la organización en seguridad, cumplimiento normativo, costes y calidad.</li>
+</ul>
+<p>La nube hace que crear recursos sea tan fácil que, sin gobernanza, aparecen problemas en pocos meses: cuentas creadas por cualquiera, máquinas que nadie sabe de quién son, datos en regiones no permitidas, buckets públicos, facturas imprevistas y ninguna forma de saber qué cuesta cada proyecto. Esto se conoce como <b>expansión descontrolada</b> (<i>cloud sprawl</i>) y como <b>TI en la sombra</b> (<i>shadow IT</i>) cuando los departamentos contratan servicios sin conocimiento del área de sistemas.</p>
+
+<h3>2. Necesidades de administración</h3>
+<div class="tabla"><table>
+<tr><th>Necesidad</th><th>Qué implica</th><th>En híbrida</th><th>En multinube</th></tr>
+<tr><td>Inventario y visibilidad</td><td>Saber qué recursos existen, dónde, de quién y en qué estado</td><td>Unir el inventario del CPD (CMDB) con el de la nube</td><td>Consolidar los inventarios de cada proveedor, con nombres distintos para lo mismo</td></tr>
+<tr><td>Aprovisionamiento</td><td>Crear recursos de forma estándar y repetible</td><td>IaC que cubra hipervisor propio y nube</td><td>IaC multiproveedor (Terraform) con módulos por proveedor</td></tr>
+<tr><td>Identidad y acceso</td><td>Quién entra, con qué permisos</td><td>Federar el directorio corporativo con la nube</td><td>Federar con cada proveedor y mantener roles equivalentes</td></tr>
+<tr><td>Monitorización</td><td>Métricas, registros, alertas</td><td>Un panel que vea CPD y nube</td><td>Recoger datos de cada proveedor en una herramienta común</td></tr>
+<tr><td>Parches y configuración</td><td>Sistemas actualizados y configurados igual</td><td>La misma herramienta (Ansible) en ambos lados</td><td>Ídem, con imágenes base equivalentes en cada nube</td></tr>
+<tr><td>Copias y recuperación</td><td>Poder restaurar datos y servicios</td><td>Copias cruzadas: del CPD a la nube y viceversa</td><td>Copias en otro proveedor para evitar dependencia</td></tr>
+<tr><td>Red</td><td>Conectividad, DNS, direcciones</td><td>VPN o enlace dedicado, rangos sin solapar</td><td>Interconexión entre nubes solo si hace falta</td></tr>
+<tr><td>Gestión de incidencias y cambios</td><td>Procesos (por ejemplo, según ITIL) para atender y cambiar</td><td>Responsables claros de cada lado</td><td>Saber a qué proveedor escalar y con qué contrato</td></tr>
+</table></div>
+<p>La diferencia de fondo: en la <b>nube híbrida</b> el reto es <b>integrar dos mundos muy distintos</b> (hardware propio y servicios de nube) que deben funcionar juntos; en la <b>multinube</b> el reto es <b>homogeneizar varios mundos parecidos pero incompatibles</b> (cada proveedor con sus API, sus nombres, sus permisos y su facturación).</p>
+
+<h3>3. Necesidades de gobernanza</h3>
+<h4>Políticas y controles (guardarraíles)</h4>
+<p>Las políticas se definen por escrito y, siempre que se pueda, se <b>imponen automáticamente</b> mediante <b>guardarraíles</b> (<i>guardrails</i>): controles que impiden o detectan lo que no está permitido. Dos tipos:</p>
+<ul>
+<li><b>Preventivos</b>: impiden la acción. Ejemplos: <b>Service Control Policies</b> de AWS Organizations (prohibir crear recursos fuera de las regiones de la UE), <b>Azure Policy</b> con efecto <i>deny</i> (prohibir IP públicas en las subredes de datos), permisos de Proxmox limitados a un pool.</li>
+<li><b>Detectivos</b>: detectan y avisan (o corrigen). Ejemplos: AWS Config, Azure Policy en modo <i>audit</i>, herramientas de <b>gestión de la postura de seguridad</b> (CSPM) que revisan continuamente la configuración frente a buenas prácticas (Prowler, Microsoft Defender for Cloud, AWS Security Hub).</li>
+</ul>
+<p><b>Políticas como código</b>: las políticas se escriben en ficheros versionados y se comprueban automáticamente, incluso antes de crear los recursos, analizando el código de Terraform con herramientas como <b>Checkov</b>, <b>tfsec/Trivy</b> u <b>Open Policy Agent</b>. Lo veremos en las unidades 5 y 6.</p>
+<h4>Estructura de cuentas y zonas de aterrizaje</h4>
+<p>Una <b>zona de aterrizaje</b> (<i>landing zone</i>) es el entorno base, preparado y gobernado, en el que los equipos despliegan sus cargas: estructura de cuentas o suscripciones (una por entorno y proyecto: <code>citaprevia-revision</code>, <code>citaprevia-produccion</code>), red base, identidad federada, registros centralizados de auditoría y guardarraíles ya aplicados. Los proveedores ofrecen herramientas para montarla (AWS Control Tower, Azure Landing Zones). Separar entornos en cuentas distintas limita el daño de un error: un script de pruebas nunca podrá borrar producción.</p>
+<h4>Etiquetado</h4>
+<p>Las <b>etiquetas</b> (<i>tags</i> en AWS y Azure, <i>labels</i> en Google, <i>tags</i> en Proxmox) son pares clave-valor asociados a cada recurso. Son la base de la gobernanza porque permiten saber de quién es cada cosa, cuánto cuesta cada proyecto y qué políticas aplicar. Una política de etiquetado define las etiquetas <b>obligatorias</b> y sus valores permitidos:</p>
+<div class="tabla"><table>
+<tr><th>Etiqueta</th><th>Valores</th><th>Para qué</th></tr>
+<tr><td><code>proyecto</code></td><td><code>citaprevia</code>, <code>portal-empleado</code>...</td><td>Repartir costes, inventario</td></tr>
+<tr><td><code>entorno</code></td><td><code>desarrollo</code>, <code>revision</code>, <code>produccion</code></td><td>Aplicar políticas distintas, apagar fuera de horario lo que no es producción</td></tr>
+<tr><td><code>propietario</code></td><td>correo del equipo responsable</td><td>Saber a quién avisar</td></tr>
+<tr><td><code>centro-coste</code></td><td>código contable</td><td>Repercutir costes</td></tr>
+<tr><td><code>clasificacion-datos</code></td><td><code>publico</code>, <code>interno</code>, <code>confidencial</code>, <code>especial</code></td><td>Aplicar cifrado y accesos</td></tr>
+<tr><td><code>gestionado-por</code></td><td><code>terraform</code>, <code>manual</code></td><td>Detectar recursos creados a mano</td></tr>
+</table></div>
+<h4>Costes (FinOps)</h4>
+<p>Presupuestos con alertas por proyecto y entorno, informes de costes por etiqueta, revisión periódica de recursos infrautilizados, compromisos de uso para lo estable y una visión consolidada en multinube. La <b>FinOps Foundation</b> describe el ciclo <i>informar → optimizar → operar</i>.</p>
+<h4>Cumplimiento y auditoría</h4>
+<p>Registros de auditoría de todas las acciones (AWS CloudTrail, Azure Activity Log, registro de tareas de Proxmox) centralizados y protegidos contra borrado; evidencias para auditorías del ENS o del RGPD; revisiones periódicas de permisos.</p>
+<h4>Datos</h4>
+<p>Dónde puede estar cada tipo de dato (regiones permitidas), cifrado obligatorio, retención y borrado, y quién puede acceder.</p>
+<h4>Personas y responsabilidades</h4>
+<p>Muchas organizaciones crean un <b>centro de excelencia de nube</b> (CCoE): un equipo transversal que define las políticas, prepara las zonas de aterrizaje, forma a los equipos y revisa el cumplimiento. Una matriz <b>RACI</b> (quién es Responsable, quién Aprueba, a quién se Consulta y a quién se Informa) deja claro quién hace qué en cada lado de una nube híbrida.</p>
+<h4>Marcos de referencia</h4>
+<p>Los <b>Cloud Adoption Framework</b> de AWS, Azure y Google dedican una parte a la gobernanza; en seguridad, el ENS, la ISO 27001 y los controles del <i>Center for Internet Security</i> (CIS Benchmarks) para cada proveedor.</p>
+
+<h3>4. Herramientas de gestión unificada</h3>
+<ul>
+<li><b>Infraestructura como código</b>: Terraform/OpenTofu para todos los proveedores y Proxmox.</li>
+<li><b>Gestión de configuración</b>: Ansible, con inventarios dinámicos que leen las máquinas de cada nube y de Proxmox.</li>
+<li><b>Plataformas de gestión híbrida</b>: Azure Arc, Google Distributed Cloud, Red Hat OpenShift, Rancher (para clústeres Kubernetes en cualquier sitio).</li>
+<li><b>Monitorización</b>: Prometheus y Grafana, Zabbix, Datadog, Elastic, que recogen datos de todos los entornos.</li>
+<li><b>Seguridad</b>: CSPM multinube (Prowler, Wiz, Defender for Cloud), SIEM (Wazuh, Microsoft Sentinel).</li>
+<li><b>Costes</b>: herramientas FinOps multiproveedor (OpenCost, Kubecost, CloudHealth).</li>
+</ul>
+
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 1. Inventario automatizado con etiquetas <span class="dur">40 min</span></h4>
+<p>En parejas. El objetivo es obtener un inventario conjunto de la nube privada (Proxmox) y la pública (AWS) y detectar recursos que incumplen la política de etiquetado.</p>
+<ol>
+<li>Cread dos VM en Proxmox desde la plantilla y dos instancias pequeñas en AWS. Etiquetad solo una de cada lado con <code>proyecto=citaprevia</code>, <code>entorno=revision</code> y <code>propietario=vuestro-correo</code> (en Proxmox las etiquetas son una lista: usad <code>citaprevia;revision</code>).</li>
+<li>Escribid un script <code>inventario.sh</code> que genere un CSV con columnas <code>plataforma,id,nombre,estado,etiquetas</code>:
+<pre><code>#!/usr/bin/env bash
+set -euo pipefail
+echo "plataforma,id,nombre,estado,etiquetas"
+# Proxmox: token en la variable PVE_TOKEN
+curl -sk -H "Authorization: PVEAPIToken=$PVE_TOKEN" "$PVE/cluster/resources?type=vm" |
+  jq -r '.data[] | ["proxmox", .vmid, .name, .status, (.tags // "")] | @csv'
+# AWS
+aws ec2 describe-instances --output json |
+  jq -r '.Reservations[].Instances[] |
+    ["aws", .InstanceId, ((.Tags // [])[] | select(.Key=="Name") | .Value) // "",
+     .State.Name, ((.Tags // []) | map(.Key+"="+.Value) | join(";"))] | @csv'</code></pre></li>
+<li>Ejecutadlo y abrid el CSV en la hoja de cálculo. Añadid una segunda parte al script que liste solo los recursos <b>sin</b> la etiqueta <code>proyecto</code> (pista: <code>grep -v</code> o un filtro <code>select</code> en jq).</li>
+<li>En AWS, buscad los recursos por etiqueta con <i>Resource Groups &amp; Tag Editor</i> y comparad con vuestro script.</li>
+<li>Borrad las cuatro máquinas.</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 2. Plan de gobernanza de Cita Previa <span class="dur">35 min</span></h4>
+<p>En grupos de 3. Cita Previa usará una nube privada (Proxmox de la Consejería) para los datos y AWS para la web, y Microsoft 365 para el correo del personal. Redactad un plan de gobernanza de 2 páginas con:</p>
+<ol>
+<li>Estructura de cuentas y entornos.</li>
+<li>Política de etiquetado (etiquetas obligatorias y valores).</li>
+<li>Cinco guardarraíles concretos, indicando si son preventivos o detectivos y con qué herramienta se aplicarían en cada plataforma (por ejemplo: "solo regiones de la UE", "prohibidos los buckets públicos", "todos los discos cifrados").</li>
+<li>Gestión de identidades: directorio, federación, doble factor y revisión de permisos.</li>
+<li>Control de costes: presupuestos, alertas y apagado de revisión fuera de horario.</li>
+<li>Registros de auditoría y cómo se protegen.</li>
+<li>Matriz RACI con cuatro roles (CCoE, equipo de Cita Previa, seguridad, proveedor) para: crear recursos, aprobar pasos a producción, aplicar parches, responder a incidentes y revisar costes.</li>
+</ol>
+</div>
+<div class="actividad">
+<h4>Actividad 3. ¿Qué falla aquí? <span class="dur">10 min</span></h4>
+<p>Este es un extracto del inventario de la Consejería. Localizad todos los incumplimientos del plan que acabáis de redactar y proponed una acción para cada uno.</p>
+<div class="tabla"><table>
+<tr><th>Recurso</th><th>Plataforma y región</th><th>Estado</th><th>Etiquetas</th><th>Observaciones</th></tr>
+<tr><td>vm web-pro-1</td><td>AWS eu-south-2</td><td>En ejecución</td><td>proyecto=citaprevia; entorno=produccion; propietario=equipo-cp</td><td>Disco cifrado</td></tr>
+<tr><td>vm web-rev-1</td><td>AWS eu-south-2</td><td>En ejecución 24 h</td><td>proyecto=citaprevia; entorno=revision</td><td>Uso medio de CPU 2 %</td></tr>
+<tr><td>vm prueba-juan</td><td>AWS us-east-1</td><td>Detenida hace 5 meses</td><td>(ninguna)</td><td>Disco de 200 GB sin cifrar</td></tr>
+<tr><td>bucket cp-documentos</td><td>AWS eu-south-2</td><td>-</td><td>proyecto=citaprevia; clasificacion-datos=especial</td><td>Acceso público de lectura activado</td></tr>
+<tr><td>bd citas</td><td>Proxmox CPD</td><td>En ejecución</td><td>citaprevia; produccion</td><td>Sin copia desde hace 12 días</td></tr>
+<tr><td>vm analitica</td><td>Azure West US</td><td>En ejecución</td><td>proyecto=citaprevia</td><td>Creada a mano con datos de citas exportados</td></tr>
+<tr><td>usuario admin-temporal</td><td>AWS IAM</td><td>Activo</td><td>-</td><td>Permisos de administrador, sin doble factor, último acceso hace 90 días</td></tr>
+<tr><td>snapshot antes-migracion</td><td>AWS eu-south-2</td><td>-</td><td>gestionado-por=manual</td><td>De hace 14 meses</td></tr>
+</table></div>
+<p class="entrega">Entrega en Aules: script de inventario con su CSV, y plan de gobernanza.</p>
+</div>
+
+<h3>Preguntas de repaso</h3>
+<ol>
+<li>¿Qué diferencia hay entre administración y gobernanza de la nube?</li>
+<li>¿Por qué la gobernanza en multinube se centra en homogeneizar y en híbrida en integrar?</li>
+<li>¿Qué es un guardarraíl preventivo? Pon un ejemplo.</li>
+<li>¿Qué problemas resuelve una buena política de etiquetado?</li>
+<li>¿Qué es una zona de aterrizaje y por qué se separan los entornos en cuentas distintas?</li>
+</ol>
+</section><section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden>
+<h2>Recursos y glosario</h2>
 <h3>Referencias</h3>
 <ul>
 <li>NIST SP 800-145, modelos de despliegue: <a href="https://csrc.nist.gov/pubs/sp/800/145/final">csrc.nist.gov</a></li>
@@ -207,7 +837,7 @@
 <tr><td>Gobernanza</td><td>Políticas, roles y controles que aseguran que el uso de la nube cumple con seguridad, costes y normativa.</td></tr>
 <tr><td>Landing zone</td><td>Entorno base preconfigurado (cuentas, red, identidades, políticas) sobre el que se despliegan los proyectos.</td></tr>
 </table></div>
-</section>
-</main>
-<footer class="pie">Módulo 5165 Metodología DevOps: preparación de entornos de despliegue. Curso de especialización en Despliegue de productos software en contenedores (RD 144/2026). Curso 2026-2027.</footer>
-<script src="assets/pestanas.js"></script></body></html>
+</section></main>
+<script src="assets/pestanas.js"></script>
+<footer class="pie">Módulo 5165. Metodología DevOps: preparación de entornos de despliegue. Curso de especialización en Despliegue de productos software en contenedores. IES Caminàs, curso 2026-2027.</footer>
+</body></html>
