@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RA1. Metodologías de desarrollo de software | Módulo 5165</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/estilos.css">
+</head><body style="--ra:var(--ra1)">
+
+<header class="cab"><div class="dentro"><div class="ruta"><a href="index.html">Módulo 5165</a> / <a href="calendario.html">Calendario</a></div><h1>Unidad 1. Metodologías de desarrollo de software</h1><p>De la cascada a DevOps: cómo se organiza el trabajo para entregar software, y por qué los contenedores y el CI/CD encajan en las metodologías ágiles.</p></div></header>
+<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Sesiones de la unidad 1"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación<small>RA y criterios</small></button><button role="tab" id="tab-s1" data-panel="s1">Sesión 1<small>2 oct</small></button><button role="tab" id="tab-s2" data-panel="s2">Sesión 2<small>5 oct</small></button><button role="tab" id="tab-s3" data-panel="s3">Sesión 3<small>16 oct</small></button><button role="tab" id="tab-s4" data-panel="s4">Sesión 4<small>19 oct</small></button><button role="tab" id="tab-s5" data-panel="s5">Sesión 5<small>23 oct</small></button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos<small>y glosario</small></button></div></nav>
+<main>
+<section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
+<p class="meta">Unidad 1 de 7, 5 sesiones, 10 horas</p>
+<h2>Resultado de aprendizaje 1</h2>
+<p class="clave"><b>Reconoce las metodologías de desarrollo de software, contraponiendo las metodologías tradicionales y las ágiles.</b></p>
+
+<p>Antes de preparar entornos de despliegue hay que entender <b>para qué</b> se preparan. Esta unidad recorre la evolución de la forma de trabajar en los equipos de software: la cascada, que planifica todo al principio; las metodologías ágiles, que entregan en ciclos cortos; y DevOps, que extiende la agilidad hasta la puesta en producción. Terminamos viendo cómo encaja el despliegue en contenedores dentro de un flujo CI/CD, que es el hilo conductor de todo el curso de especialización.</p>
+<p>Es una unidad conceptual: no instalamos infraestructura, pero sí usamos herramientas reales de gestión de proyectos (GitHub Projects, Trello, un diagrama de Gantt).</p>
+
+<h3>Criterios de evaluación y dónde se trabajan</h3>
+<div class="tabla"><table><tr><th>CE</th><th>Criterio (RD 144/2026)</th><th>Sesiones</th></tr><tr><td><b>1a)</b></td><td>Se ha identificado la metodología de desarrollo en cascada (Waterfall), describiendo su organización y fases.</td><td><a href="#s1">S1</a></td></tr><tr><td><b>1b)</b></td><td>Se han identificado las principales metodologías ágiles de desarrollo, describiendo su filosofía y organización, en contraposición a las metodologías tradicionales. <em>(evidencia parcial en la formación en empresa)</em></td><td><a href="#s2">S2</a>, <a href="#s3">S3</a></td></tr><tr><td><b>1c)</b></td><td>Se han descrito diferentes herramientas de gestión de proyectos de desarrollo, en aplicación de las metodologías tradicionales y ágiles. <em>(evidencia parcial en la formación en empresa)</em></td><td><a href="#s3">S3</a></td></tr><tr><td><b>1d)</b></td><td>Se ha reconocido el uso y aplicación de la integración y despliegue continuos propios de Devops como parte de las metodologías ágiles de desarrollo.</td><td><a href="#s4">S4</a></td></tr><tr><td><b>1e)</b></td><td>Se ha descrito el proceso de despliegue en contenedores de aplicaciones, explicando el desarrollo e integración continuas (CI/CD) como parte de una metodología.</td><td><a href="#s5">S5</a></td></tr></table></div>
+<h3>Plan de sesiones</h3>
+<div class="tabla"><table><tr><th>Sesión</th><th>Fecha</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#s1">S1</a></td><td>2 oct</td><td>Presentación del módulo y la metodología en cascada</td><td>a</td></tr><tr><td><a href="#s2">S2</a></td><td>5 oct</td><td>Las metodologías ágiles: manifiesto y familias</td><td>b</td></tr><tr><td><a href="#s3">S3</a></td><td>16 oct</td><td>Presentaciones ágiles y herramientas de gestión de proyectos</td><td>b, c</td></tr><tr><td><a href="#s4">S4</a></td><td>19 oct</td><td>DevOps: la agilidad llega hasta producción</td><td>d</td></tr><tr><td><a href="#s5">S5</a></td><td>23 oct</td><td>El despliegue en contenedores dentro de un flujo CI/CD. Prueba de la unidad</td><td>e</td></tr></table></div>
+<h3>Cómo se evalúa esta unidad</h3>
+<p>La unidad pesa un <b>10 %</b> de la nota del módulo. Siguiendo el criterio general del centro para la primera evaluación:</p>
+<ul><li><b>60 %</b> prueba escrita (sesión 5): preguntas cortas y un caso práctico sobre metodologías y CI/CD.</li>
+<li><b>40 %</b> trabajos de clase: diagrama de la cascada (S1), presentación de metodología ágil (S2-S3), tablero del proyecto (S3), mapa del flujo de valor (S4) y esquema del pipeline (S5).</li></ul>
+<p>Los criterios b y c se completan con un breve informe durante la formación en empresa: qué metodología y qué herramientas de gestión usa el equipo donde hacéis las prácticas.</p>
+
+<h3>Relación con otros módulos</h3><p>Los contenidos de esta unidad solo se trabajan en este módulo. El CI/CD que aquí se describe se construye de forma práctica en los módulos 5167 (integración continua) y 5168 (despliegue continuo).</p>
+</section>
+<section class="panel" role="tabpanel" id="p-s1" aria-labelledby="tab-s1" hidden>
+<p class="meta">Sesión 1 de 42, viernes 2 de octubre de 2026, 2 horas</p>
+<h2>Presentación del módulo y la metodología en cascada</h2>
+<p><a class="ce" href="#presentacion" title="Se ha identificado la metodología de desarrollo en cascada (Waterfall), describiendo su organización y fases.">CE 1a</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:30" title="Presentación e introducción: 30 min"><i>Presentación e introducción</i>30′</span><span class="t-act" style="flex:65" title="Actividad: 65 min"><i>Actividad</i>65′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Conocer la organización del módulo, el calendario y cómo se evalúa.</li><li>Describir las fases del modelo en cascada y cómo se organiza un proyecto que lo sigue.</li><li>Identificar en qué situaciones la cascada sigue siendo razonable y en cuáles falla.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>El módulo en cinco minutos</h4>
+<p>Este módulo prepara el terreno para todo el curso: metodologías (RA1), dónde vive la infraestructura (RA2-RA4) y la preparación práctica de repositorios, infraestructura como código y automatización (RA5-RA7). Revisad el <a href="calendario.html">calendario</a> y la portada.</p>
+<h4>El ciclo de vida del software</h4>
+<p>Todo software pasa por unas actividades: entender qué se necesita, diseñar, construir, probar, poner en producción y mantener. Una <b>metodología</b> decide en qué orden, con qué frecuencia y con qué documentos y roles se hacen esas actividades.</p>
+<h4>El modelo en cascada</h4>
+<p>Descrito por Winston Royce en 1970 (que, curiosamente, lo presentaba como un modelo arriesgado), la cascada organiza el proyecto en fases <b>secuenciales</b>. Cada fase produce un documento que se aprueba antes de pasar a la siguiente:</p>
+<ol class="pasos">
+<li><b>Requisitos:</b> documento de especificación de requisitos (ERS) acordado con el cliente.</li>
+<li><b>Análisis y diseño:</b> arquitectura, modelo de datos, diseño detallado.</li>
+<li><b>Implementación:</b> programación de los módulos según el diseño.</li>
+<li><b>Pruebas:</b> verificación de que el sistema cumple la especificación (unitarias, integración, sistema, aceptación).</li>
+<li><b>Despliegue:</b> instalación en producción, a menudo como un gran evento planificado.</li>
+<li><b>Mantenimiento:</b> corrección de errores y pequeñas mejoras.</li>
+</ol>
+<p><b>Organización:</b> equipos por especialidad (analistas, programadores, testers, sistemas), un jefe de proyecto que controla plazos y costes con un plan (Gantt) y cambios gestionados mediante un comité de control de cambios.</p>
+<div class="clave"><b>Idea clave.</b> La cascada funciona cuando los requisitos son estables y conocidos (software embarcado con certificación, obra pública, contratos cerrados). Falla cuando el cliente descubre lo que quiere al ver el producto: el error se detecta tarde y corregirlo cuesta mucho más.</div>
+<p>Variantes que intentan corregir sus problemas: <b>modelo en V</b> (asocia cada fase con su nivel de pruebas), <b>incremental</b> y <b>espiral</b> (Boehm, con análisis de riesgos por ciclo).</p>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<p><b>Caso: "Cita Previa Salud".</b> Una consejería encarga una aplicación de cita previa. El contrato fija el alcance, 12 meses de plazo y una entrega final. En parejas (5 parejas):</p>
+<ol class="pasos">
+<li>(20′) Dibujad en <a href="https://app.diagrams.net/">diagrams.net</a> las fases de la cascada aplicadas al caso. Para cada fase: entregable, rol responsable y duración estimada en meses.</li>
+<li>(20′) El mes 9, en pruebas, el cliente pide que la app permita citas por videollamada. Describid qué fases hay que repetir, qué documentos cambian y qué pasa con el plazo.</li>
+<li>(25′) Buscad un proyecto real que fracasara o se retrasara por problemas de planificación en cascada (por ejemplo, Healthcare.gov en EE. UU. o el sistema de nóminas Phoenix en Canadá). Resumid en 5 líneas qué pasó y qué fase falló.</li>
+</ol>
+<p>Guardad el diagrama y el texto en un documento compartido del grupo; los usaremos en la sesión 3.</p>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Cada pareja muestra su diagrama en 2 minutos. Construimos entre todos una lista de <b>ventajas</b> e <b>inconvenientes</b> de la cascada en la pizarra.</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Diagrama de fases con entregables y roles, y análisis del cambio tardío (CE 1a).</p></div>
+<details class="docente"><summary>Notas para el docente</summary><p>Aprovechar los primeros minutos para comprobar cuentas de GitHub y el acceso a Aules. Si alguien no tiene cuenta de GitHub, que la cree hoy: se usa desde la sesión 3.</p></details>
+</section>
+<section class="panel" role="tabpanel" id="p-s2" aria-labelledby="tab-s2" hidden>
+<p class="meta">Sesión 2 de 42, lunes 5 de octubre de 2026, 2 horas</p>
+<h2>Las metodologías ágiles: manifiesto y familias</h2>
+<p><a class="ce fe" href="#presentacion" title="Se han identificado las principales metodologías ágiles de desarrollo, describiendo su filosofía y organización, en contraposición a las metodologías tradicionales.">CE 1b</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Explicar los valores y principios del Manifiesto Ágil.</li><li>Contrastar la filosofía ágil con la tradicional.</li><li>Investigar una metodología ágil concreta y preparar su presentación.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>2001: el Manifiesto Ágil</h4>
+<p>Diecisiete desarrolladores, cansados de proyectos pesados en documentación, firmaron en Utah el Manifiesto por el Desarrollo Ágil. Valora:</p>
+<ul><li><b>Individuos e interacciones</b> sobre procesos y herramientas.</li>
+<li><b>Software funcionando</b> sobre documentación extensiva.</li>
+<li><b>Colaboración con el cliente</b> sobre negociación contractual.</li>
+<li><b>Respuesta ante el cambio</b> sobre seguir un plan.</li></ul>
+<p>No elimina lo de la derecha, lo prioriza menos. Se completa con 12 principios, entre ellos: entregar software funcional con frecuencia (de semanas a meses, mejor cuanto más corto), aceptar cambios de requisitos incluso tarde y medir el progreso con software que funciona.</p>
+<h4>Tradicional frente a ágil</h4>
+<div class="tabla"><table>
+<tr><th></th><th>Tradicional (cascada)</th><th>Ágil</th></tr>
+<tr><td>Planificación</td><td>Completa al inicio</td><td>Continua, por iteraciones</td></tr>
+<tr><td>Alcance</td><td>Fijo; plazo y coste se ajustan</td><td>Plazo y coste fijos; el alcance se prioriza</td></tr>
+<tr><td>Entregas</td><td>Una al final</td><td>Incrementos frecuentes</td></tr>
+<tr><td>Cliente</td><td>Al principio y al final</td><td>Participa durante todo el proyecto</td></tr>
+<tr><td>Cambios</td><td>Costosos, pasan por comité</td><td>Esperados, entran en el backlog</td></tr>
+<tr><td>Equipos</td><td>Por especialidad</td><td>Multidisciplinares y autoorganizados</td></tr>
+</table></div>
+<h4>Las familias ágiles que vamos a investigar</h4>
+<p>Scrum (marco de trabajo con roles, eventos y artefactos), Kanban (flujo continuo y límite de trabajo en curso), XP o Extreme Programming (prácticas técnicas: TDD, programación en parejas, integración continua), Lean software development (eliminar desperdicio) y los marcos de escalado como SAFe (ágil en organizaciones grandes).</p>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<p><b>Puzle de expertos.</b> Cada pareja investiga una metodología y se convierte en la experta del grupo:</p>
+<div class="tabla"><table><tr><th>Pareja</th><th>Metodología</th><th>Fuente de partida</th></tr>
+<tr><td>1</td><td>Scrum</td><td>Guía de Scrum 2020 (scrumguides.org)</td></tr>
+<tr><td>2</td><td>Kanban</td><td>Kanban Guide (kanban.university)</td></tr>
+<tr><td>3</td><td>Extreme Programming (XP)</td><td>extremeprogramming.org</td></tr>
+<tr><td>4</td><td>Lean software development</td><td>Mary y Tom Poppendieck, los 7 principios</td></tr>
+<tr><td>5</td><td>SAFe y ágil a escala</td><td>scaledagileframework.com</td></tr></table></div>
+<p>Preparad una presentación de <b>6 minutos</b> (máximo 6 diapositivas) que responda:</p>
+<ol class="pasos"><li>Filosofía: qué problema intenta resolver.</li><li>Organización: roles, eventos o ceremonias y artefactos.</li><li>Cómo se planifica y cómo se mide el progreso.</li><li>En qué se diferencia de la cascada (usad la tabla de la introducción).</li><li>Un ejemplo de empresa real que la use.</li></ol>
+<p>Tenéis toda la actividad para investigar y montar la presentación. Presentaremos al principio de la sesión 3.</p>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Cada pareja cuenta en una frase la idea más sorprendente que ha encontrado. Revisamos que todas las presentaciones están casi terminadas.</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Presentación de la metodología (se evalúa en la sesión 3 con la rúbrica de exposición) (CE 1b).</p></div>
+<details class="docente"><summary>Notas para el docente</summary><p>Rúbrica de exposición sugerida (sobre 10): contenido correcto 4, comparación con la cascada 2, claridad y ajuste al tiempo 2, ejemplo real 2.</p></details>
+</section>
+<section class="panel" role="tabpanel" id="p-s3" aria-labelledby="tab-s3" hidden>
+<p class="meta">Sesión 3 de 42, viernes 16 de octubre de 2026, 2 horas</p>
+<h2>Presentaciones ágiles y herramientas de gestión de proyectos</h2>
+<p><a class="ce fe" href="#presentacion" title="Se han identificado las principales metodologías ágiles de desarrollo, describiendo su filosofía y organización, en contraposición a las metodologías tradicionales.">CE 1b</a><a class="ce fe" href="#presentacion" title="Se han descrito diferentes herramientas de gestión de proyectos de desarrollo, en aplicación de las metodologías tradicionales y ágiles.">CE 1c</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-act" style="flex:35" title="Presentaciones: 35 min"><i>Presentaciones</i>35′</span><span class="t-int" style="flex:15" title="Introducción: 15 min"><i>Introducción</i>15′</span><span class="t-act" style="flex:45" title="Práctica: 45 min"><i>Práctica</i>45′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Exponer y comparar las metodologías ágiles.</li><li>Describir herramientas de gestión para proyectos tradicionales y ágiles.</li><li>Montar un tablero ágil y un diagrama de Gantt para el mismo proyecto.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>Herramientas según la metodología</h4>
+<p>La herramienta sigue a la metodología, no al revés. Cada familia necesita representar cosas distintas:</p>
+<div class="tabla"><table>
+<tr><th>Necesidad</th><th>Tradicional</th><th>Ágil</th></tr>
+<tr><td>Planificación</td><td>Diagrama de Gantt, camino crítico, hitos</td><td>Backlog priorizado, sprints, estimación en puntos</td></tr>
+<tr><td>Seguimiento</td><td>% completado por tarea, valor ganado</td><td>Tablero Kanban, burndown, velocidad</td></tr>
+<tr><td>Herramientas</td><td>MS Project, ProjectLibre, GanttProject</td><td>Jira, GitHub Projects, GitLab Boards, Trello, Azure Boards</td></tr>
+</table></div>
+<p>En DevOps interesa especialmente que la herramienta esté <b>conectada al código</b>: en GitHub Projects una tarea es una <em>issue</em>, se enlaza con la rama y el pull request que la resuelven y se cierra sola al fusionar. Así se traza cada cambio desde la petición hasta producción.</p>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<p><b>Parte 1 (35′). Presentaciones.</b> Cada pareja expone su metodología (6 min) y el resto anota en una tabla comparativa común: filosofía, roles, eventos, métricas y diferencias con la cascada.</p>
+<p><b>Parte 2 (45′). El mismo proyecto, dos herramientas.</b> Tomad el caso "Cita Previa Salud" de la sesión 1.</p>
+<ol class="pasos">
+<li>En <b>GitHub Projects</b>: cread un repositorio <code>cita-previa-gestion</code>, un proyecto de tipo <em>Board</em> con columnas Backlog, Sprint, En curso (límite WIP 3), Revisión y Hecho. Escribid 8 historias de usuario como issues ("Como paciente quiero... para...") con etiquetas y estimación.</li>
+<li>Añadid un campo <em>Iteration</em> de 2 semanas y asignad las historias a los dos primeros sprints.</li>
+<li>En <b>GanttProject</b> (instalable en Ubuntu) o en la vista <em>Roadmap</em> de GitHub Projects: representad las fases de la cascada del caso con dependencias y un hito final.</li>
+<li>Escribid en el README del repositorio 5 diferencias que habéis notado al planificar con una y con otra herramienta.</li>
+</ol>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Comparamos dos tableros. ¿Qué se ve mejor en un Gantt? ¿Qué se ve mejor en un tablero? ¿Cuál enseñaríais a un cliente?</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Presentación valorada con rúbrica (CE 1b). Repositorio con tablero, sprints, Gantt y README comparativo (CE 1c).</p></div>
+<details class="docente"><summary>Notas para el docente</summary><p>GanttProject: <code>sudo snap install ganttproject</code> o el .deb de ganttproject.biz. Si no se puede instalar, basta con la vista Roadmap de GitHub Projects.</p></details>
+</section>
+<section class="panel" role="tabpanel" id="p-s4" aria-labelledby="tab-s4" hidden>
+<p class="meta">Sesión 4 de 42, lunes 19 de octubre de 2026, 2 horas</p>
+<h2>DevOps: la agilidad llega hasta producción</h2>
+<p><a class="ce" href="#presentacion" title="Se ha reconocido el uso y aplicación de la integración y despliegue continuos propios de Devops como parte de las metodologías ágiles de desarrollo.">CE 1d</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Explicar qué es DevOps y por qué surge.</li><li>Reconocer la integración y el despliegue continuos como prácticas DevOps.</li><li>Analizar casos reales y las métricas DORA.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>El muro entre desarrollo y operaciones</h4>
+<p>Con Scrum los equipos de desarrollo entregaban cada dos semanas, pero el software seguía llegando a producción cada varios meses: sistemas (operaciones) recibía un paquete, un manual y mucho riesgo. Desarrollo quiere cambios; operaciones quiere estabilidad. En 2009 John Allspaw y Paul Hammond (Flickr) contaron cómo hacían más de 10 despliegues al día cooperando ambos equipos. Ese mismo año Patrick Debois organizó los primeros <em>DevOpsDays</em>.</p>
+<h4>Qué es DevOps</h4>
+<p>DevOps es una <b>cultura y un conjunto de prácticas</b> que unen desarrollo y operaciones para entregar cambios de forma rápida, frecuente y fiable. Se resume con el acrónimo <b>CALMS</b>: Cultura (responsabilidad compartida), Automatización, Lean (flujo, lotes pequeños), Medición y Compartir (Sharing).</p>
+<h4>Integración y despliegue continuos</h4>
+<ul>
+<li><b>Integración continua (CI):</b> cada cambio se integra en la rama principal a menudo; un servidor compila, pasa pruebas y análisis automáticamente. Nació en XP.</li>
+<li><b>Entrega continua:</b> cada cambio que supera el pipeline genera un artefacto listo para producción; el paso final es un botón.</li>
+<li><b>Despliegue continuo:</b> ese último paso también se automatiza.</li>
+</ul>
+<p>Son la aplicación técnica de los principios ágiles "entregar con frecuencia" y "software funcionando": sin automatización es imposible entregar varias veces al día sin romper nada.</p>
+<h4>Cómo se mide: las métricas DORA</h4>
+<p>Frecuencia de despliegue, tiempo de entrega de cambios (lead time), tasa de fallos en cambios y tiempo de recuperación. Los equipos de élite despliegan bajo demanda y recuperan en menos de una hora.</p>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<p><b>Parte 1 (40′). Casos DevOps.</b> Cada pareja investiga un caso y lo resume en una ficha (qué problema tenían, qué prácticas CI/CD adoptaron, qué herramientas, qué resultados medibles):</p>
+<ul><li>Flickr (2009) y Etsy (despliegue continuo y Deployinator)</li><li>Netflix (despliegues en la nube, Spinnaker, Chaos Monkey)</li><li>Amazon (equipos "two-pizza" y despliegues cada pocos segundos)</li><li>Un caso de administración pública (por ejemplo, GOV.UK)</li><li>Un caso español (buscad charlas en eventos como DevOps Barcelona o Commit Conf)</li></ul>
+<p><b>Parte 2 (35′). Mapa del flujo de valor.</b> Con el proyecto "Cita Previa Salud": dibujad todos los pasos desde que un programador termina un cambio hasta que el paciente lo ve en su móvil, primero en versión cascada (manual) y luego con CI/CD. Anotad tiempos estimados de espera y de trabajo en cada paso. Calculad el lead time total en ambos casos.</p>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Cada pareja muestra su caso en 2 minutos. Comparamos los lead times: ¿dónde está la espera? ¿Qué pasos se pueden automatizar?</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Ficha del caso y mapa del flujo de valor con lead time antes y después (CE 1d).</p></div>
+</section>
+<section class="panel" role="tabpanel" id="p-s5" aria-labelledby="tab-s5" hidden>
+<p class="meta">Sesión 5 de 42, viernes 23 de octubre de 2026, 2 horas</p>
+<h2>El despliegue en contenedores dentro de un flujo CI/CD. Prueba de la unidad</h2>
+<p><a class="ce" href="#presentacion" title="Se ha descrito el proceso de despliegue en contenedores de aplicaciones, explicando el desarrollo e integración continuas (CI/CD) como parte de una metodología.">CE 1e</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:40" title="Actividad: 40 min"><i>Actividad</i>40′</span><span class="t-exa" style="flex:50" title="Prueba escrita: 50 min"><i>Prueba escrita</i>50′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Describir qué es un contenedor y por qué facilita el despliegue.</li><li>Explicar las etapas de un pipeline CI/CD que termina en un despliegue de contenedores.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>El problema: "en mi máquina funciona"</h4>
+<p>Una aplicación depende de su sistema operativo, librerías y configuración. Si desarrollo, pruebas y producción son distintos, lo que funciona en uno falla en otro. El <b>contenedor</b> empaqueta la aplicación con todo lo que necesita en una <b>imagen</b> inmutable que se ejecuta igual en cualquier sitio con un motor de contenedores (Docker, Podman). A diferencia de una máquina virtual, comparte el núcleo del sistema anfitrión: arranca en segundos y ocupa megas, no gigas.</p>
+<h4>El proceso completo</h4>
+<ol class="pasos">
+<li><b>Código:</b> el desarrollador trabaja en una rama y abre un pull request (vinculado a una issue del tablero).</li>
+<li><b>Integración continua:</b> el pipeline compila, ejecuta pruebas unitarias, análisis de calidad y de seguridad.</li>
+<li><b>Construcción de la imagen:</b> a partir del <code>Dockerfile</code>, se construye la imagen y se etiqueta con la versión o el commit.</li>
+<li><b>Escaneo de la imagen</b> en busca de vulnerabilidades.</li>
+<li><b>Publicación</b> en un registro (GitHub Container Registry, Docker Hub, Harbor).</li>
+<li><b>Despliegue continuo:</b> se despliega la misma imagen en revisión (staging), se prueba y se promociona a producción, en un servidor con Docker o en un orquestador como Kubernetes.</li>
+<li><b>Monitorización</b> y retroalimentación al equipo, que genera nuevas issues.</li>
+</ol>
+<div class="clave"><b>Idea clave.</b> La misma imagen viaja por todos los entornos; lo único que cambia es la configuración (variables de entorno, secretos). Eso es lo que hace fiable al CD.</div>
+<pre><code># Ejemplo mínimo de Dockerfile para una app Python
+FROM python:3.12-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 8000
+CMD ["python", "app.py"]</code></pre>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<p><b>Esquema del pipeline (en parejas).</b> Para "Cita Previa Salud", dibujad el pipeline completo desde el commit hasta producción con contenedores. Para cada etapa indicad: qué se hace, qué herramienta se podría usar, qué artefacto produce y qué ocurre si falla. Relacionad cada etapa con la práctica ágil o DevOps que la justifica (por ejemplo, pruebas automáticas y XP).</p>
+<p>Subid el esquema al README del repositorio <code>cita-previa-gestion</code>.</p>
+<p><b>Prueba escrita (50′).</b> Preguntas cortas y un caso práctico sobre los criterios a, b, c, d y e de la unidad.</p>
+</div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Esquema del pipeline (CE 1e). Prueba escrita de la unidad (CE 1a a 1e, 60 % de la nota de la unidad).</p></div>
+<details class="docente"><summary>Notas para el docente</summary><p>Estructura sugerida de la prueba: 4 preguntas cortas (fases de la cascada, 4 valores del manifiesto, diferencia entre entrega y despliegue continuo, contenedor frente a VM) y un caso de 4 puntos: dado un equipo que despliega trimestralmente, proponer metodología, herramientas y pipeline.</p></details>
+</section>
+<section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden><h2>Recursos y glosario</h2>
+<h3>Lecturas de referencia</h3>
+<ul>
+<li>Manifiesto por el Desarrollo Ágil de Software: <a href="https://agilemanifesto.org/iso/es/manifesto.html">agilemanifesto.org</a></li>
+<li>La Guía de Scrum (en español): <a href="https://scrumguides.org/">scrumguides.org</a></li>
+<li>Informe State of DevOps y métricas DORA: <a href="https://dora.dev/">dora.dev</a></li>
+<li>Documentación de GitHub Projects: <a href="https://docs.github.com/es/issues/planning-and-tracking-with-projects">docs.github.com</a></li>
+</ul>
+<h3>Glosario</h3>
+<div class="tabla"><table>
+<tr><th>Término</th><th>Significado</th></tr>
+<tr><td>Cascada (Waterfall)</td><td>Modelo secuencial: cada fase empieza cuando termina la anterior.</td></tr>
+<tr><td>Iteración / sprint</td><td>Ciclo corto y de duración fija (1-4 semanas) que termina con un incremento de producto utilizable.</td></tr>
+<tr><td>Product backlog</td><td>Lista priorizada de todo lo que podría necesitar el producto.</td></tr>
+<tr><td>WIP (Work In Progress)</td><td>Trabajo empezado y no terminado. Kanban lo limita por columna.</td></tr>
+<tr><td>Integración continua (CI)</td><td>Integrar los cambios en la rama principal varias veces al día, con compilación y pruebas automáticas.</td></tr>
+<tr><td>Entrega continua / despliegue continuo (CD)</td><td>Tener siempre un artefacto listo para producción (entrega) o llevarlo a producción automáticamente (despliegue).</td></tr>
+<tr><td>Imagen de contenedor</td><td>Paquete inmutable con la aplicación y sus dependencias, a partir del cual se crean contenedores.</td></tr>
+<tr><td>Registro (registry)</td><td>Almacén de imágenes de contenedor: Docker Hub, GitHub Container Registry, Harbor.</td></tr>
+</table></div>
+</section>
+</main>
+<footer class="pie">Módulo 5165 Metodología DevOps: preparación de entornos de despliegue. Curso de especialización en Despliegue de productos software en contenedores (RD 144/2026). Curso 2026-2027.</footer>
+<script src="assets/pestanas.js"></script></body></html>

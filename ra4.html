@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RA4. Modelos de servicio en la nube | Módulo 5165</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/estilos.css">
+</head><body style="--ra:var(--ra4)">
+
+<header class="cab"><div class="dentro"><div class="ruta"><a href="index.html">Módulo 5165</a> / <a href="calendario.html">Calendario</a></div><h1>Unidad 4. Modelos de servicio en la nube</h1><p>SaaS, PaaS, IaaS y serverless: qué gestiona el proveedor y qué gestionas tú en cada modelo, y cuándo conviene cada uno.</p></div></header>
+<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Sesiones de la unidad 4"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación<small>RA y criterios</small></button><button role="tab" id="tab-s18" data-panel="s18">Sesión 18<small>7 dic</small></button><button role="tab" id="tab-s19" data-panel="s19">Sesión 19<small>11 dic</small></button><button role="tab" id="tab-s20" data-panel="s20">Sesión 20<small>14 dic</small></button><button role="tab" id="tab-s21" data-panel="s21">Sesión 21<small>18 dic</small></button><button role="tab" id="tab-s22" data-panel="s22">Sesión 22<small>21 dic</small></button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos<small>y glosario</small></button></div></nav>
+<main>
+<section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
+<p class="meta">Unidad 4 de 7, 5 sesiones, 10 horas</p>
+<h2>Resultado de aprendizaje 4</h2>
+<p class="clave"><b>Reconoce los principales modelos de servicio en la arquitectura de nube en función de los recursos requeridos para alcanzar objetivos y necesidades a cubrir.</b></p>
+
+<p>Los modelos de despliegue (unidad 3) dicen <b>dónde</b> y <b>de quién</b> es la nube. Los modelos de servicio dicen <b>qué parte de la pila</b> te da hecha el proveedor. Recorremos los cuatro modelos de arriba abajo, probamos al menos un servicio real de cada uno con el mismo proveedor (AWS o Azure) y terminamos con una comparativa que incluye los servicios de contenedores, que están a medio camino entre PaaS e IaaS.</p>
+<p>Para que la comparación sea justa, desplegaremos <b>la misma mini-aplicación</b> ("hola, cita previa") en PaaS, IaaS y serverless.</p>
+
+<h3>Criterios de evaluación y dónde se trabajan</h3>
+<div class="tabla"><table><tr><th>CE</th><th>Criterio (RD 144/2026)</th><th>Sesiones</th></tr><tr><td><b>4a)</b></td><td>Se ha descrito el software como servicio (SaaS), identificando su estructura y explicando su funcionamiento.</td><td><a href="#s18">S18</a></td></tr><tr><td><b>4b)</b></td><td>Se ha descrito la Plataforma como servicio (PaaS), identificando su estructura y explicando su funcionamiento.</td><td><a href="#s19">S19</a></td></tr><tr><td><b>4c)</b></td><td>Se ha descrito la Infraestructura como servicio (IaaS), identificando su estructura y explicando su funcionamiento.</td><td><a href="#s20">S20</a></td></tr><tr><td><b>4d)</b></td><td>Se ha descrito el servicio de arquitectura sin servidor (Serverless), identificando su estructura y explicando su funcionamiento.</td><td><a href="#s21">S21</a></td></tr><tr><td><b>4e)</b></td><td>Se han comparado los principales servicios en la arquitectura de nube, identificando el alcance de cada uno de ellos.</td><td><a href="#s22">S22</a></td></tr></table></div>
+<h3>Plan de sesiones</h3>
+<div class="tabla"><table><tr><th>Sesión</th><th>Fecha</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#s18">S18</a></td><td>7 dic</td><td>Software como servicio (SaaS)</td><td>a</td></tr><tr><td><a href="#s19">S19</a></td><td>11 dic</td><td>Plataforma como servicio (PaaS)</td><td>b</td></tr><tr><td><a href="#s20">S20</a></td><td>14 dic</td><td>Infraestructura como servicio (IaaS)</td><td>c</td></tr><tr><td><a href="#s21">S21</a></td><td>18 dic</td><td>Arquitectura sin servidor (serverless)</td><td>d</td></tr><tr><td><a href="#s22">S22</a></td><td>21 dic</td><td>Comparativa de modelos de servicio. Prueba de la unidad</td><td>e</td></tr></table></div>
+<h3>Cómo se evalúa esta unidad</h3>
+<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>60 %</b> prueba escrita (sesión 22) y <b>40 %</b> trabajos de clase (análisis SaaS, despliegues PaaS, IaaS y serverless con su registro, y tabla comparativa final).</p>
+
+<h3>Relación con otros módulos</h3><p>Contenido exclusivo de este módulo.</p>
+</section>
+<section class="panel" role="tabpanel" id="p-s18" aria-labelledby="tab-s18" hidden>
+<p class="meta">Sesión 18 de 42, lunes 7 de diciembre de 2026, 2 horas</p>
+<h2>Software como servicio (SaaS)</h2>
+<p><a class="ce" href="#presentacion" title="Se ha descrito el software como servicio (SaaS), identificando su estructura y explicando su funcionamiento.">CE 4a</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Identificar la estructura de un servicio SaaS y explicar su funcionamiento.</li><li>Analizar un SaaS real que usáis a diario.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>La pila y los modelos</h4>
+<pre><code>            On premise   IaaS        PaaS        FaaS        SaaS
+Aplicación     tú         tú          tú         tu código   proveedor
+Datos          tú         tú          tú          tú         tú (tus datos)
+Runtime        tú         tú        proveedor   proveedor    proveedor
+Sistema op.    tú         tú        proveedor   proveedor    proveedor
+Virtualización tú      proveedor    proveedor   proveedor    proveedor
+Hardware/red   tú      proveedor    proveedor   proveedor    proveedor</code></pre>
+<h4>SaaS</h4>
+<p>El proveedor ofrece una <b>aplicación completa</b> lista para usar, normalmente desde el navegador o una app, con suscripción por usuario o por uso. El cliente solo configura, da de alta usuarios y gestiona sus datos.</p>
+<p><b>Estructura típica:</b> un frontal web y API públicas; una capa de aplicación <b>multi-tenant</b> (una misma instancia sirve a todos los clientes, cada uno identificado por su tenant); almacenamiento con los datos separados por cliente; servicios de identidad (SSO, SAML/OIDC); y todo ello desplegado a su vez sobre IaaS o PaaS del propio proveedor o de un tercero.</p>
+<p><b>Funcionamiento:</b> el proveedor actualiza continuamente (despliegue continuo), sin que el cliente instale nada; la configuración se hace por tenant; la integración con otros sistemas, por API y webhooks.</p>
+<p>Ejemplos: GitHub, Microsoft 365, Google Workspace, Salesforce, Slack, Jira, y en educación, Aules (Moodle) si se ofrece como servicio.</p>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<p>En parejas, analizad un SaaS que usemos en el curso (GitHub, Google Workspace, Microsoft 365, Trello, Slack):</p>
+<ol class="pasos">
+<li>(20′) Estructura: qué partes veis (web, API, apps, integraciones), dónde se alojan (buscad su página de estado y sus subprocesadores o <em>trust center</em>).</li>
+<li>(20′) Funcionamiento: cómo se identifica el cliente (organización, tenant), qué configura el cliente, cada cuánto despliegan (buscad su changelog), cómo se integra por API. Probad una llamada: <code>curl https://api.github.com/users/TU_USUARIO</code>.</li>
+<li>(20′) Responsabilidad: qué pasa si borráis un repositorio por error o si el proveedor cae. ¿Quién es responsable de qué? Buscad su SLA.</li>
+<li>(15′) Esquema de la estructura en diagrams.net.</li>
+</ol>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Cada pareja presenta su esquema en 2 minutos. Buscamos lo común a todos los SaaS.</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Análisis y esquema de un SaaS (CE 4a).</p></div>
+</section>
+<section class="panel" role="tabpanel" id="p-s19" aria-labelledby="tab-s19" hidden>
+<p class="meta">Sesión 19 de 42, viernes 11 de diciembre de 2026, 2 horas</p>
+<h2>Plataforma como servicio (PaaS)</h2>
+<p><a class="ce" href="#presentacion" title="Se ha descrito la Plataforma como servicio (PaaS), identificando su estructura y explicando su funcionamiento.">CE 4b</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Identificar la estructura de un PaaS y explicar su funcionamiento.</li><li>Desplegar una aplicación en un PaaS sin gestionar servidores.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>PaaS</h4>
+<p>El proveedor ofrece una <b>plataforma para ejecutar tus aplicaciones</b>: sistema operativo, runtime (Python, Java, Node, .NET), servidor de aplicaciones, balanceo, escalado y parches. Tú subes el código (o una imagen de contenedor) y la configuración.</p>
+<p><b>Estructura:</b> un servicio de construcción que detecta el lenguaje y empaqueta la app (buildpacks), un conjunto de instancias gestionadas detrás de un balanceador, servicios añadidos (base de datos gestionada, caché, colas), variables de entorno para la configuración y registros y métricas integrados.</p>
+<p><b>Funcionamiento:</b> <code>git push</code> o subida de un zip, construcción automática, despliegue con cambio gradual de versión, escalado por número de instancias o automático. La filosofía de las <b>aplicaciones de doce factores</b> (config en variables de entorno, procesos sin estado, logs por salida estándar) nació en Heroku, uno de los primeros PaaS.</p>
+<p>Ejemplos: AWS Elastic Beanstalk, Azure App Service, Google App Engine, Heroku, Render, Railway.</p>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<ol class="pasos">
+<li>(10′) Cread un repositorio <code>hola-cita</code> con la mini-aplicación (pestaña <a href="#recursos">Recursos</a>).</li>
+<li>(45′) Desplegadla en el PaaS de vuestro proveedor:
+<ul><li><b>AWS Learner Lab:</b> Elastic Beanstalk, plataforma Python, subiendo un zip con <code>app.py</code>, <code>requirements.txt</code> y un <code>Procfile</code> con <code>web: gunicorn app:app</code>.</li>
+<li><b>Azure for Students:</b> App Service plan F1 (gratuito), despliegue desde GitHub o con <code>az webapp up --runtime PYTHON:3.12 --sku F1</code>.</li></ul></li>
+<li>(10′) Definid la variable de entorno <code>ENTORNO=paas</code> desde la consola y comprobad que la web cambia sin tocar el código.</li>
+<li>(10′) Localizad en la consola: registros, métricas, número de instancias y cómo escalar. Anotad qué no habéis tenido que hacer (instalar Python, nginx, parches...).</li>
+</ol>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>¿Cuántos minutos desde el código hasta la URL pública? ¿Qué pasa si subimos una versión con un error?</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>URL funcionando y registro del despliegue con la estructura identificada (CE 4b).</p></div>
+<details class="docente"><summary>Notas para el docente</summary><p>Alternativa si ninguna nube está disponible: Render o Railway con capa gratuita, desplegando desde GitHub. Eliminar los entornos al acabar para no gastar crédito.</p></details>
+</section>
+<section class="panel" role="tabpanel" id="p-s20" aria-labelledby="tab-s20" hidden>
+<p class="meta">Sesión 20 de 42, lunes 14 de diciembre de 2026, 2 horas</p>
+<h2>Infraestructura como servicio (IaaS)</h2>
+<p><a class="ce" href="#presentacion" title="Se ha descrito la Infraestructura como servicio (IaaS), identificando su estructura y explicando su funcionamiento.">CE 4c</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Identificar la estructura de un IaaS y explicar su funcionamiento.</li><li>Desplegar la misma aplicación sobre una máquina virtual y comparar el esfuerzo.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>IaaS</h4>
+<p>El proveedor ofrece <b>recursos de infraestructura virtualizados</b>: máquinas virtuales, redes, discos, balanceadores, IP públicas. Todo lo que va encima de la máquina (SO, parches, runtime, aplicación, seguridad del sistema) es responsabilidad del cliente. Es el modelo con más control y más trabajo, y el más cercano a tener servidores propios.</p>
+<p><b>Estructura:</b> servicio de cómputo (EC2, Azure VM), red virtual (VPC/VNet, subredes, grupos de seguridad), almacenamiento de bloque, imágenes, claves SSH y la API que lo gestiona todo.</p>
+<p><b>Funcionamiento:</b> se aprovisiona a demanda (consola, CLI, API o Terraform), se factura por segundos de uso y tamaño, y se escala añadiendo máquinas (horizontal) o cambiando el tamaño (vertical). Es lo que ya hicimos en la sesión 10; hoy desplegamos una aplicación completa encima.</p>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<ol class="pasos">
+<li>(15′) Lanzad una VM Ubuntu pequeña con los puertos 22 y 80 abiertos.</li>
+<li>(40′) Desplegad a mano la mini-aplicación: <code>sudo apt install python3-venv nginx</code>, clonad el repositorio, cread el entorno virtual, instalad dependencias, cread un servicio <code>systemd</code> con gunicorn y configurad nginx como proxy inverso al puerto 8000. Documentad cada comando en el README.</li>
+<li>(10′) Cread <code>ENTORNO=iaas</code> en la unidad systemd y reiniciad.</li>
+<li>(10′) Tabla: tareas que habéis hecho vosotros hoy y que en PaaS hacía el proveedor. Terminad la VM.</li>
+</ol>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Comparamos tiempo y número de comandos frente al PaaS. ¿Cuándo compensa este esfuerzo?</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>README con el procedimiento de despliegue en IaaS y tabla comparativa con PaaS (CE 4c).</p></div>
+<details class="docente"><summary>Notas para el docente</summary><p>Si se va justo de tiempo, facilitar el fichero de servicio systemd y la configuración de nginx para que se centren en entender las piezas. También se puede hacer en una VM del Proxmox.</p></details>
+</section>
+<section class="panel" role="tabpanel" id="p-s21" aria-labelledby="tab-s21" hidden>
+<p class="meta">Sesión 21 de 42, viernes 18 de diciembre de 2026, 2 horas</p>
+<h2>Arquitectura sin servidor (serverless)</h2>
+<p><a class="ce" href="#presentacion" title="Se ha descrito el servicio de arquitectura sin servidor (Serverless), identificando su estructura y explicando su funcionamiento.">CE 4d</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Identificar la estructura de un servicio serverless y explicar su funcionamiento.</li><li>Crear una función que responde a peticiones HTTP.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>Serverless</h4>
+<p>"Sin servidor" no significa que no haya servidores, sino que <b>no los ves ni los gestionas</b>, no pagas por tenerlos encendidos y escalan a cero. Engloba dos ideas:</p>
+<ul><li><b>FaaS</b> (Function as a Service): escribes funciones que se ejecutan en respuesta a <b>eventos</b> (una petición HTTP, un fichero subido, un mensaje en una cola, un cron). AWS Lambda, Azure Functions, Google Cloud Functions.</li>
+<li><b>Servicios gestionados serverless</b>: bases de datos, colas o almacenamiento que se consumen por petición (DynamoDB, S3, SQS).</li></ul>
+<p><b>Estructura:</b> origen del evento (API Gateway, S3, cola) → disparador → función (código + runtime + configuración de memoria y tiempo máximo) → servicios gestionados. <b>Funcionamiento:</b> la plataforma arranca un entorno aislado al llegar un evento, ejecuta la función y lo reutiliza o lo destruye; se factura por número de invocaciones y milisegundos × memoria. Limitaciones: tiempo máximo por ejecución, arranque en frío (<em>cold start</em>), funciones sin estado y mayor dependencia del proveedor.</p>
+<pre><code># AWS Lambda en Python
+def lambda_handler(event, context):
+    return {"statusCode": 200,
+            "headers": {"Content-Type": "text/plain"},
+            "body": "Hola, cita previa. Servido por Lambda"}</code></pre>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<ol class="pasos">
+<li>(30′) Cread la función:
+<ul><li><b>AWS:</b> Lambda, runtime Python 3.12, rol <code>LabRole</code> en el Learner Lab, activad <em>Function URL</em> sin autenticación y probadla en el navegador.</li>
+<li><b>Azure:</b> Function App en plan de consumo, función HTTP trigger en Python desde el portal.</li></ul></li>
+<li>(15′) Modificad la función para devolver en JSON la hora actual y el parámetro <code>?nombre=</code> que llegue en la URL.</li>
+<li>(15′) Medid el arranque en frío: esperad unos minutos, invocad con <code>curl -w "%{time_total}\n" URL</code> y repetid seguido. Consultad la duración facturada en los registros (CloudWatch o Application Insights).</li>
+<li>(15′) Calculad con la calculadora el coste de 1 millón de invocaciones de 200 ms con 128 MB y comparadlo con una VM encendida todo el mes.</li>
+</ol>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>¿Qué parte de «Cita Previa Salud» haríais serverless? (recordatorios por SMS, generación de justificantes en PDF...).</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Función desplegada, medida del cold start y estimación de coste (CE 4d).</p></div>
+</section>
+<section class="panel" role="tabpanel" id="p-s22" aria-labelledby="tab-s22" hidden>
+<p class="meta">Sesión 22 de 42, lunes 21 de diciembre de 2026, 2 horas</p>
+<h2>Comparativa de modelos de servicio. Prueba de la unidad</h2>
+<p><a class="ce" href="#presentacion" title="Se han comparado los principales servicios en la arquitectura de nube, identificando el alcance de cada uno de ellos.">CE 4e</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:15" title="Introducción: 15 min"><i>Introducción</i>15′</span><span class="t-act" style="flex:45" title="Actividad: 45 min"><i>Actividad</i>45′</span><span class="t-exa" style="flex:50" title="Prueba escrita: 50 min"><i>Prueba escrita</i>50′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Comparar el alcance de cada modelo de servicio.</li><li>Situar los servicios de contenedores entre los modelos.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>El alcance de cada modelo</h4>
+<p>La comparación útil no es "cuál es mejor", sino <b>qué gestiona cada parte</b> y qué necesidad cubre. Cuanto más arriba en la pila, menos control y menos trabajo; cuanto más abajo, más flexibilidad y más responsabilidad.</p>
+<h4>¿Dónde encajan los contenedores?</h4>
+<ul><li>Contenedores en tu VM (Docker en EC2 o Proxmox): IaaS.</li>
+<li>Kubernetes gestionado (EKS, AKS, GKE): el plano de control lo gestiona el proveedor; los nodos, a veces tú. Entre IaaS y PaaS.</li>
+<li>Contenedores sin servidores (AWS Fargate, Azure Container Apps, Google Cloud Run): CaaS, muy cerca de PaaS y serverless: das una imagen y escalan incluso a cero.</li></ul>
+<p>Por eso el curso de especialización se centra en la imagen de contenedor: es la unidad de despliegue que funciona en todos los modelos.</p>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<p><b>Tabla comparativa (45′).</b> Con vuestros tres despliegues de "hola-cita" (PaaS, IaaS y serverless) y el análisis SaaS, elaborad una tabla con: qué gestiona el proveedor, qué gestionáis vosotros, tiempo hasta tenerlo funcionando, cómo escala, cómo se factura, control y personalización, dependencia del proveedor y caso de uso ideal. Añadid una fila para CaaS. Terminad con una recomendación para cada componente de "Cita Previa Salud".</p>
+<p><b>Prueba escrita (50′)</b> sobre los criterios a a e de la unidad.</p>
+</div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Tabla comparativa y recomendación (CE 4e). Prueba escrita (CE 4a a 4e, 60 % de la nota de la unidad).</p></div>
+<details class="docente"><summary>Notas para el docente</summary><p>Última sesión antes de Navidad: recordar que se borren todos los recursos de la nube para no consumir crédito durante las vacaciones.</p></details>
+</section>
+<section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden><h2>Recursos y glosario</h2>
+<h3>Referencias</h3>
+<ul><li>Modelo de responsabilidad compartida de AWS: <a href="https://aws.amazon.com/compliance/shared-responsibility-model/">aws.amazon.com</a></li>
+<li>Azure App Service y Azure Functions: <a href="https://learn.microsoft.com/es-es/azure/">learn.microsoft.com</a></li>
+<li>AWS Elastic Beanstalk y AWS Lambda: <a href="https://docs.aws.amazon.com/">docs.aws.amazon.com</a></li></ul>
+<h3>La mini-aplicación de la unidad</h3>
+<p class="fichero">app.py</p>
+<pre><code>from flask import Flask
+import os, socket
+app = Flask(__name__)
+
+@app.route("/")
+def hola():
+    return f"Hola, cita previa. Servido por {socket.gethostname()} en {os.getenv('ENTORNO', 'local')}"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 8000)))</code></pre>
+<p class="fichero">requirements.txt</p>
+<pre><code>flask==3.1.*
+gunicorn==23.*</code></pre>
+<h3>Glosario</h3>
+<div class="tabla"><table><tr><th>Término</th><th>Significado</th></tr>
+<tr><td>Responsabilidad compartida</td><td>Reparto de tareas de seguridad y operación entre proveedor y cliente, distinto en cada modelo.</td></tr>
+<tr><td>Multi-tenant (SaaS)</td><td>Una única instancia de la aplicación atiende a muchos clientes con sus datos separados.</td></tr>
+<tr><td>FaaS</td><td>Function as a Service: ejecutar funciones en respuesta a eventos.</td></tr>
+<tr><td>Cold start</td><td>Retardo de la primera invocación de una función que no tenía instancias en marcha.</td></tr>
+<tr><td>CaaS</td><td>Containers as a Service: ejecutar contenedores sin gestionar los servidores (Fargate, Cloud Run, Azure Container Apps).</td></tr>
+</table></div>
+</section>
+</main>
+<footer class="pie">Módulo 5165 Metodología DevOps: preparación de entornos de despliegue. Curso de especialización en Despliegue de productos software en contenedores (RD 144/2026). Curso 2026-2027.</footer>
+<script src="assets/pestanas.js"></script></body></html>

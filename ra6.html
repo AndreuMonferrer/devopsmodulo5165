@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RA6. Entornos de revisión y producción con infraestructura como código | Módulo 5165</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/estilos.css">
+</head><body style="--ra:var(--ra6)">
+
+<header class="cab"><div class="dentro"><div class="ruta"><a href="index.html">Módulo 5165</a> / <a href="calendario.html">Calendario</a></div><h1>Unidad 6. Entornos de revisión y producción con infraestructura como código</h1><p>Describir la infraestructura en ficheros, desplegarla con credenciales controladas mediante flujos de trabajo y verificar que lo creado es lo que se pidió.</p></div></header>
+<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Sesiones de la unidad 6"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación<small>RA y criterios</small></button><button role="tab" id="tab-s30" data-panel="s30">Sesión 30<small>1 feb</small></button><button role="tab" id="tab-s31" data-panel="s31">Sesión 31<small>5 feb</small></button><button role="tab" id="tab-s32" data-panel="s32">Sesión 32<small>8 feb</small></button><button role="tab" id="tab-s33" data-panel="s33">Sesión 33<small>12 feb</small></button><button role="tab" id="tab-s34" data-panel="s34">Sesión 34<small>15 feb</small></button><button role="tab" id="tab-s35" data-panel="s35">Sesión 35<small>19 feb</small></button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos<small>y glosario</small></button></div></nav>
+<main>
+<section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
+<p class="meta">Unidad 6 de 7, 6 sesiones, 12 horas</p>
+<h2>Resultado de aprendizaje 6</h2>
+<p class="clave"><b>Crea o, en su caso, configura entornos de revisión y/o producción, mediante ficheros de parámetros y creando flujos de trabajo, siguiendo procedimientos, estándares y políticas de seguridad digital, para validar el despliegue.</b></p>
+
+<p>En la unidad 2 creamos máquinas a mano, con clics. Ahora las describimos en ficheros con <b>Terraform</b> y dejamos que un flujo de trabajo las cree, igual en revisión que en producción, con credenciales de mínimo privilegio. La plataforma de referencia es el <b>Proxmox del centro</b> (proveedor <code>telmate/proxmox</code>). Mientras no esté disponible, o para practicar en el portátil, trabajamos con el proveedor <code>kreuzwerker/docker</code>: el flujo, los ficheros de parámetros y las buenas prácticas son idénticos, solo cambia el recurso que se crea.</p>
+<p>Todo se guarda en una carpeta <code>infra/</code> del repositorio de la unidad 5, reutilizando sus entornos <code>revision</code> y <code>produccion</code>.</p>
+<pre><code>cita-previa-app/
+├── infra/
+│   ├── versions.tf        # Terraform y proveedores
+│   ├── variables.tf       # parámetros de entrada
+│   ├── main.tf            # recursos
+│   ├── outputs.tf         # datos de salida (IP, nombres)
+│   ├── revision.tfvars    # valores del entorno de revisión
+│   ├── produccion.tfvars  # valores del entorno de producción
+│   └── verificar.sh       # comprobaciones tras el despliegue
+├── .github/workflows/infraestructura.yml
+└── SEGURIDAD.md           # matriz de accesos por entorno</code></pre>
+
+<h3>Criterios de evaluación y dónde se trabajan</h3>
+<div class="tabla"><table><tr><th>CE</th><th>Criterio (RD 144/2026)</th><th>Sesiones</th></tr><tr><td><b>6a)</b></td><td>Se han creado ficheros de definición de infraestructura como código y SDH (Software Define Hardware), usando el lenguaje propio de la plataforma de despliegue.</td><td><a href="#s30">S30</a>, <a href="#s31">S31</a></td></tr><tr><td><b>6b)</b></td><td>Se han creado flujos de trabajo para el despliegue del entorno hardware, usando las credenciales proporcionadas y aplicando las configuraciones definidas.</td><td><a href="#s34">S34</a></td></tr><tr><td><b>6c)</b></td><td>Se han configurado unas definiciones técnicas de uso de control y de seguridad digital para cada entorno, especificando roles de acceso del usuario, roles de acceso del código, acceso al almacenamiento, acceso a las API, entre otros recursos.</td><td><a href="#s32">S32</a></td></tr><tr><td><b>6d)</b></td><td>Se ha creado la infraestructura definida en los ficheros al efecto dentro de la plataforma, usando las credenciales facilitadas, para su posterior integración en los flujos de trabajo.</td><td><a href="#s33">S33</a></td></tr><tr><td><b>6e)</b></td><td>Se ha verificado la infraestructura creada después del despliegue, comprobando que se obtiene acceso a todos los recursos de infraestructura.</td><td><a href="#s35">S35</a></td></tr></table></div>
+<h3>Plan de sesiones</h3>
+<div class="tabla"><table><tr><th>Sesión</th><th>Fecha</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#s30">S30</a></td><td>1 feb</td><td>Infraestructura como código: primeros ficheros con Terraform</td><td>a</td></tr><tr><td><a href="#s31">S31</a></td><td>5 feb</td><td>Ficheros de parámetros por entorno y definición de máquinas en Proxmox</td><td>a</td></tr><tr><td><a href="#s32">S32</a></td><td>8 feb</td><td>Seguridad por entorno: roles, tokens, almacenamiento y API</td><td>c</td></tr><tr><td><a href="#s33">S33</a></td><td>12 feb</td><td>Crear la infraestructura en la plataforma</td><td>d</td></tr><tr><td><a href="#s34">S34</a></td><td>15 feb</td><td>Flujo de trabajo para desplegar la infraestructura</td><td>b</td></tr><tr><td><a href="#s35">S35</a></td><td>19 feb</td><td>Verificar la infraestructura desplegada. Entrega de la unidad</td><td>e</td></tr></table></div>
+<h3>Cómo se evalúa esta unidad</h3>
+<p>La unidad pesa un <b>20 %</b> de la nota del módulo y se evalúa al <b>100 % con trabajo práctico</b> en el repositorio, sin examen:</p>
+<div class="tabla"><table class="rubrica"><tr><th>CE</th><th>Evidencia</th><th>Peso</th></tr>
+<tr><td>6a</td><td>Ficheros Terraform correctos, parametrizados, formateados y validados</td><td>25 %</td></tr>
+<tr><td>6b</td><td>Workflow con plan en PR y aplicación por entorno con credenciales como secretos</td><td>20 %</td></tr>
+<tr><td>6c</td><td><code>SEGURIDAD.md</code> y configuración real de roles, tokens y almacenamiento por entorno</td><td>20 %</td></tr>
+<tr><td>6d</td><td>Infraestructura creada en la plataforma con las credenciales facilitadas</td><td>15 %</td></tr>
+<tr><td>6e</td><td>Script y registro de verificación tras el despliegue</td><td>20 %</td></tr></table></div>
+
+<h3>Relación con otros módulos</h3><p>El módulo 5166 profundiza en la infraestructura como código: creación de VPC, hipervisor y despliegue del orquestador. Aquí se sientan las bases con una infraestructura sencilla.</p>
+</section>
+<section class="panel" role="tabpanel" id="p-s30" aria-labelledby="tab-s30" hidden>
+<p class="meta">Sesión 30 de 42, lunes 1 de febrero de 2027, 2 horas</p>
+<h2>Infraestructura como código: primeros ficheros con Terraform</h2>
+<p><a class="ce" href="#presentacion" title="Se han creado ficheros de definición de infraestructura como código y SDH (Software Define Hardware), usando el lenguaje propio de la plataforma de despliegue.">CE 6a</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Explicar qué es la infraestructura como código y el hardware definido por software.</li><li>Instalar Terraform y crear, modificar y destruir recursos desde ficheros.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>De los clics al código</h4>
+<p>Crear servidores a mano no es repetible, no deja rastro y no escala. Con la <b>infraestructura como código</b> la infraestructura se define en ficheros que se versionan en Git, se revisan en pull requests y se aplican de forma automática. Es posible porque el hardware actual está <b>definido por software</b> (SDH, SDDC): la CPU, la memoria, los discos y las redes de una VM o de un contenedor se configuran a través de una API.</p>
+<h4>Terraform en cuatro ideas</h4>
+<ol class="pasos">
+<li>Lenguaje <b>HCL</b>, declarativo: describes el estado final, no los pasos.</li>
+<li><b>Proveedores</b> (providers) que traducen HCL a llamadas a la API de cada plataforma: Proxmox, Docker, AWS, Azure...</li>
+<li><b>Estado</b> (<code>terraform.tfstate</code>): relación entre el código y los recursos reales. Contiene datos sensibles: nunca se sube a Git.</li>
+<li>Ciclo <code>init</code>, <code>plan</code>, <code>apply</code>, <code>destroy</code>.</li>
+</ol>
+<p class="fichero">infra/main.tf (primera versión, proveedor Docker)</p>
+<pre><code>terraform {
+  required_providers {
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "~&gt; 3.0"
+    }
+  }
+}
+
+provider "docker" {}
+
+resource "docker_image" "web" {
+  name = "nginx:1.27-alpine"
+}
+
+resource "docker_container" "web" {
+  name  = "web-prueba"
+  image = docker_image.web.image_id
+  ports {
+    internal = 80
+    external = 8080
+  }
+}</code></pre>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<ol class="pasos">
+<li>(15′) Instalad Terraform desde el repositorio oficial de HashiCorp:
+<pre><code>wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update &amp;&amp; sudo apt install terraform
+terraform -version</code></pre></li>
+<li>(10′) Cread la carpeta <code>infra/</code> en una rama nueva y un <code>.gitignore</code> con <code>.terraform/</code>, <code>*.tfstate*</code> y <code>*.tfplan</code>.</li>
+<li>(20′) Escribid el <code>main.tf</code> de arriba y ejecutad <code>terraform init</code>, <code>plan</code> y <code>apply</code>. Abrid <code>http://localhost:8080</code>. Abrid el fichero de estado y localizad el identificador del contenedor.</li>
+<li>(15′) Cambiad el puerto externo a 8081 y ejecutad <code>plan</code>. ¿Terraform modifica o reemplaza? Aplicad. Ejecutad <code>apply</code> otra vez: ¿cambia algo? (idempotencia).</li>
+<li>(10′) Borrad el contenedor a mano con <code>docker rm -f web-prueba</code> y ejecutad <code>plan</code>: Terraform detecta la desviación (drift). Aplicad para recuperarlo y terminad con <code>destroy</code>.</li>
+<li>(5′) Anotad en el README de <code>infra/</code> qué hace cada comando con vuestras palabras.</li>
+</ol>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Diferencias entre este enfoque y crear la VM a mano en la sesión 10: repetible, revisable, versionado, rápido de destruir.</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Primera configuración funcionando y README con el ciclo de Terraform (CE 6a).</p></div>
+<details class="docente"><summary>Notas para el docente</summary><p>Los portátiles necesitan Docker para el proveedor de respaldo: <code>sudo apt install docker.io docker-compose-v2</code> y <code>sudo usermod -aG docker $USER</code> (cerrar sesión). Conviene dejarlo instalado antes de la sesión porque se usa también en la unidad 7. Si el repositorio de HashiCorp no tiene paquetes para la versión de Ubuntu MATE instalada, usar OpenTofu (<code>snap install --classic opentofu</code>) o el binario oficial.</p></details>
+</section>
+<section class="panel" role="tabpanel" id="p-s31" aria-labelledby="tab-s31" hidden>
+<p class="meta">Sesión 31 de 42, viernes 5 de febrero de 2027, 2 horas</p>
+<h2>Ficheros de parámetros por entorno y definición de máquinas en Proxmox</h2>
+<p><a class="ce" href="#presentacion" title="Se han creado ficheros de definición de infraestructura como código y SDH (Software Define Hardware), usando el lenguaje propio de la plataforma de despliegue.">CE 6a</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Parametrizar la infraestructura con variables, salidas y ficheros .tfvars por entorno.</li><li>Escribir la definición de máquinas virtuales para Proxmox en el lenguaje del proveedor.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>Un código, varios entornos</h4>
+<p>Revisión y producción deben ser <b>iguales en forma y distintos en tamaño y datos</b>. Por eso el código no lleva valores fijos: usa <b>variables</b>, y cada entorno tiene su fichero de parámetros <code>.tfvars</code>. Las <b>salidas</b> (outputs) exponen lo que otros procesos necesitarán, como la IP.</p>
+<p class="fichero">infra/variables.tf</p>
+<pre><code>variable "entorno" {
+  type = string
+}
+variable "num_vms" {
+  type    = number
+  default = 1
+}
+variable "cores" {
+  type    = number
+  default = 1
+}
+variable "memoria" {
+  type    = number
+  default = 1024 # MB
+}
+variable "disco" {
+  type    = string
+  default = "10G"
+}
+variable "nodo" {
+  type = string
+}
+variable "plantilla" {
+  type = string # plantilla cloud-init de Ubuntu
+}
+variable "pool" {
+  type = string
+}
+variable "almacen" {
+  type    = string
+  default = "local-lvm"
+}
+variable "pm_api_url" {
+  type = string
+}
+variable "pm_token_id" {
+  type = string
+}
+variable "pm_token_secret" {
+  type      = string
+  sensitive = true # nunca se muestra en la salida
+}
+variable "clave_publica" {
+  type = string
+}</code></pre>
+<p class="fichero">infra/versions.tf y main.tf (Proxmox)</p>
+<pre><code>terraform {
+  required_version = "&gt;= 1.6"
+  required_providers {
+    proxmox = {
+      source  = "telmate/proxmox"
+      version = "3.0.1-rc9"   # fijad la versión que indique el profesor (Registry)
+    }
+  }
+  backend "local" {}         # la ruta del estado se pasa en init
+}
+
+provider "proxmox" {
+  pm_api_url          = var.pm_api_url
+  pm_api_token_id     = var.pm_token_id
+  pm_api_token_secret = var.pm_token_secret
+  pm_tls_insecure     = true   # certificado autofirmado del laboratorio
+}
+
+resource "proxmox_vm_qemu" "web" {
+  count       = var.num_vms
+  name        = "web-${var.entorno}-${count.index + 1}"
+  target_node = var.nodo
+  pool        = var.pool
+  clone       = var.plantilla
+  full_clone  = true
+  agent       = 1
+  os_type     = "cloud-init"
+  memory      = var.memoria
+  cpu {
+    cores = var.cores
+  }
+  scsihw = "virtio-scsi-single"
+  disks {
+    ide {
+      ide2 {
+        cloudinit { storage = var.almacen }
+      }
+    }
+    scsi {
+      scsi0 {
+        disk {
+          size    = var.disco
+          storage = var.almacen
+        }
+      }
+    }
+  }
+  network {
+    id     = 0
+    model  = "virtio"
+    bridge = "vmbr0"
+  }
+  ipconfig0 = "ip=dhcp"
+  ciuser    = "despliegue"
+  sshkeys   = var.clave_publica
+  tags      = "${var.entorno};terraform"
+}</code></pre>
+<p class="fichero">infra/outputs.tf y revision.tfvars</p>
+<pre><code>output "ips" {
+  value = proxmox_vm_qemu.web[*].default_ipv4_address
+}
+
+# revision.tfvars
+entorno   = "revision"
+num_vms   = 1
+cores     = 1
+memoria   = 1024
+nodo      = "pve"
+plantilla = "ubuntu-2404-cloudinit"
+pool      = "revision"
+pm_api_url  = "https://IP_PROXMOX:8006/api2/json"
+pm_token_id = "tf-revision@pve!terraform"
+clave_publica = "ssh-ed25519 AAAA... despliegue"</code></pre>
+<div class="clave"><b>Atención.</b> La sintaxis del recurso <code>proxmox_vm_qemu</code> ha cambiado entre versiones del proveedor. Si <code>terraform validate</code> da errores de atributos, consultad la documentación de <b>la versión exacta</b> que tengáis fijada. El secreto del token no va en el <code>.tfvars</code>: se pasa como variable de entorno <code>TF_VAR_pm_token_secret</code>.</div>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<ol class="pasos">
+<li>(25′) Parametrizad la configuración Docker de la sesión anterior: variables <code>entorno</code>, <code>puerto</code> e <code>imagen</code>; una red <code>docker_network</code> por entorno; y salidas con el nombre del contenedor y la URL. Cread <code>revision.tfvars</code> (puerto 8081) y <code>produccion.tfvars</code> (puerto 8082, 2 contenedores con <code>count</code>).</li>
+<li>(10′) Aplicad ambos entornos con estados separados: <code>terraform init -reconfigure -backend-config="path=$HOME/tfstate/revision.tfstate"</code>. Comprobad que conviven sin pisarse.</li>
+<li>(30′) En una segunda carpeta <code>infra-proxmox/</code>, escribid la definición para Proxmox con los ficheros de arriba y los dos <code>.tfvars</code> (producción con 2 VM de 2 cores y 2 GB). Ejecutad <code>terraform fmt</code> y <code>terraform validate</code>.</li>
+<li>(10′) Abrid un pull request con ambas carpetas.</li>
+</ol>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Leemos juntos un <code>terraform plan</code> de producción: ¿qué cambiaría si subimos <code>num_vms</code> a 3?</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Configuración parametrizada con ficheros por entorno y definición Proxmox validada (CE 6a).</p></div>
+<details class="docente"><summary>Notas para el docente</summary><p>Preparar en el Proxmox, antes de la sesión 33, una plantilla Ubuntu cloud-init con el agente QEMU (<code>qemu-guest-agent</code>) y los pools <code>revision</code> y <code>produccion</code>. Ajustar en los ejemplos el nombre del nodo, del almacenamiento y del bridge.</p></details>
+</section>
+<section class="panel" role="tabpanel" id="p-s32" aria-labelledby="tab-s32" hidden>
+<p class="meta">Sesión 32 de 42, lunes 8 de febrero de 2027, 2 horas</p>
+<h2>Seguridad por entorno: roles, tokens, almacenamiento y API</h2>
+<p><a class="ce" href="#presentacion" title="Se han configurado unas definiciones técnicas de uso de control y de seguridad digital para cada entorno, especificando roles de acceso del usuario, roles de acceso del código, acceso al almacenamiento, acceso a las API, entre otros recursos.">CE 6c</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Definir y configurar para cada entorno quién puede hacer qué: personas, código, almacenamiento y API.</li><li>Gestionar las credenciales sin exponerlas en el código ni en el estado.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>Cuatro tipos de acceso</h4>
+<div class="tabla"><table><tr><th>Acceso</th><th>Pregunta</th><th>En nuestro laboratorio</th></tr>
+<tr><td>Roles de acceso del usuario</td><td>¿Qué personas pueden desplegar en cada entorno?</td><td>Equipos de GitHub y revisores obligatorios del entorno <code>produccion</code>; usuarios de Proxmox</td></tr>
+<tr><td>Roles de acceso del código</td><td>¿Con qué identidad actúa el pipeline?</td><td>Un usuario técnico y un token de API por entorno, con un rol a medida y limitado a su pool</td></tr>
+<tr><td>Acceso al almacenamiento</td><td>¿En qué almacenes puede escribir?</td><td>Permiso <code>Datastore.AllocateSpace</code> solo en el almacén asignado; el estado de Terraform en una ruta protegida</td></tr>
+<tr><td>Acceso a las API</td><td>¿Cómo se autentica y desde dónde?</td><td>Token con separación de privilegios y caducidad, HTTPS, cortafuegos que solo permite el puerto 8006 desde la red del aula</td></tr>
+</table></div>
+<p class="fichero">Rol mínimo para Terraform en Proxmox (desde la shell del nodo)</p>
+<pre><code>pveum role add TerraformProv -privs "Datastore.AllocateSpace Datastore.Audit Pool.Audit   Sys.Audit VM.Allocate VM.Audit VM.Clone VM.Config.CDROM VM.Config.Cloudinit VM.Config.CPU   VM.Config.Disk VM.Config.HWType VM.Config.Memory VM.Config.Network VM.Config.Options   VM.PowerMgmt SDN.Use"
+pveum user add tf-revision@pve --comment "Terraform entorno revisión"
+pveum aclmod /pool/revision -user tf-revision@pve -role TerraformProv
+pveum aclmod /storage/local-lvm -user tf-revision@pve -role TerraformProv
+pveum aclmod /vms/9000 -user tf-revision@pve -role PVEVMUser      # leer la plantilla
+pveum user token add tf-revision@pve terraform --privsep 0 --expire $(date -d "+90 days" +%s)</code></pre>
+<p>El token solo tiene poder sobre el pool de su entorno. Si se filtra el de revisión, producción no corre peligro. Consultad en la documentación del proveedor la lista exacta de privilegios que necesita vuestra versión.</p>
+<h4>Dónde guardar cada credencial</h4>
+<ul><li><b>Nunca</b> en <code>.tf</code>, <code>.tfvars</code> subidos a Git ni en el README.</li>
+<li>En local: variable de entorno <code>TF_VAR_pm_token_secret</code> (o un gestor de contraseñas).</li>
+<li>En el pipeline: <b>secretos del entorno</b> de GitHub, distintos en <code>revision</code> y <code>produccion</code>.</li>
+<li>El estado puede contener datos sensibles: fuera del repositorio y con permisos restringidos.</li></ul>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<ol class="pasos">
+<li>(20′) Redactad <code>SEGURIDAD.md</code> con una matriz por entorno (revisión y producción) que especifique los cuatro tipos de acceso: personas y rol, identidad del pipeline y privilegios, almacenamiento permitido, forma de acceso a la API y caducidad de credenciales.</li>
+<li>(30′) Configuradlo en la plataforma:
+<ul><li><b>Proxmox:</b> con el profesor (o en vuestra VM de prácticas), crear rol, usuarios, permisos por pool y tokens de cada entorno como en el ejemplo.</li>
+<li><b>Laboratorio Docker:</b> el acceso a la API de Docker equivale a ser root. Documentad quién pertenece al grupo <code>docker</code>, cread un usuario <code>despliegue</code> sin sudo que solo pueda usar Docker y limitad los volúmenes a una carpeta <code>/srv/revision</code> o <code>/srv/produccion</code>.</li></ul></li>
+<li>(15′) Guardad los secretos en los entornos de GitHub (<code>PM_TOKEN_SECRET</code> en cada uno) y comprobad con <code>terraform plan</code> en local, usando la variable de entorno, que el token de revisión <b>no</b> puede crear máquinas en el pool de producción.</li>
+<li>(10′) Buscad en todo el repositorio que no hay secretos: <code>docker run --rm -v "$PWD":/repo zricethezav/gitleaks:latest detect --source=/repo</code>.</li>
+</ol>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Simulamos un incidente: «se ha filtrado el token de revisión». ¿Qué se puede hacer con él? ¿Cómo se revoca y rota?</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p><code>SEGURIDAD.md</code> y configuración de roles, tokens y secretos por entorno, con la prueba de aislamiento (CE 6c).</p></div>
+<details class="docente"><summary>Notas para el docente</summary><p>En Proxmox VE 9 algunos privilegios cambiaron de nombre respecto a la versión 8 (por ejemplo, <code>VM.Monitor</code> ya no existe). Si <code>pveum</code> da error con un privilegio, consultar <code>pveum role list</code> y la documentación de la versión instalada. Anotar el ID de la plantilla (9000 en el ejemplo).</p></details>
+</section>
+<section class="panel" role="tabpanel" id="p-s33" aria-labelledby="tab-s33" hidden>
+<p class="meta">Sesión 33 de 42, viernes 12 de febrero de 2027, 2 horas</p>
+<h2>Crear la infraestructura en la plataforma</h2>
+<p><a class="ce" href="#presentacion" title="Se ha creado la infraestructura definida en los ficheros al efecto dentro de la plataforma, usando las credenciales facilitadas, para su posterior integración en los flujos de trabajo.">CE 6d</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Desplegar la infraestructura definida en los ficheros usando las credenciales facilitadas.</li><li>Dejarla lista, con sus salidas, para integrarla en los flujos de trabajo.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>Del plan a la realidad</h4>
+<p>Hoy aplicamos la definición en la plataforma real con las credenciales del entorno de revisión. Pasos seguros:</p>
+<ol class="pasos">
+<li>Cargar la credencial sin escribirla en el historial de la terminal: <code>read -s TF_VAR_pm_token_secret; export TF_VAR_pm_token_secret</code>.</li>
+<li>Inicializar con el estado del entorno: <code>terraform init -backend-config="path=$HOME/tfstate/revision.tfstate"</code>.</li>
+<li>Guardar el plan y revisarlo antes de aplicar: <code>terraform plan -var-file=revision.tfvars -out=revision.tfplan</code>.</li>
+<li>Aplicar exactamente ese plan: <code>terraform apply revision.tfplan</code>.</li>
+<li>Consultar las salidas: <code>terraform output -json</code>.</li>
+</ol>
+<p>Las salidas (IP de las VM, nombres, URL) son el punto de unión con el resto del proceso: el flujo de trabajo y la unidad 7 (Ansible) las leerán para saber dónde actuar.</p>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<ol class="pasos">
+<li>(35′) <b>Proxmox:</b> aplicad la configuración de <code>infra-proxmox/</code> para revisión con vuestro token. Comprobad en la interfaz web que la VM aparece en el pool correcto, con la etiqueta, los recursos y la IP asignada por cloud-init. Si el Proxmox no está disponible, aplicad los dos entornos de la configuración Docker.</li>
+<li>(15′) Generad a partir de las salidas un inventario para la unidad 7:
+<pre><code>{ echo "[web]"; terraform output -json ips | jq -r '.[]'; } &gt; ../inventario-revision.ini</code></pre>
+o escribidlo a mano con las IP obtenidas.</li>
+<li>(15′) Cambiad un parámetro (memoria de 1024 a 2048), planificad y aplicad. Observad si la VM se modifica en caliente o se reinicia.</li>
+<li>(10′) Documentad en el README de <code>infra/</code> el procedimiento seguido, las salidas y capturas.</li>
+</ol>
+<p>No destruyáis la infraestructura de revisión: la usaremos en las próximas sesiones.</p>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Revisamos qué recursos tiene cada pareja en la plataforma y si los nombres, etiquetas y pools cumplen la convención.</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Infraestructura de revisión creada con sus credenciales, salidas documentadas e inventario generado (CE 6d).</p></div>
+<details class="docente"><summary>Notas para el docente</summary><p>Con 10 personas (5 parejas) y VM de 1 GB, el Proxmox necesita unos 5-10 GB de RAM libres para revisión. Producción puede desplegarse en la sesión 34 solo para 1-2 parejas si no hay recursos, y el resto con el laboratorio Docker.</p></details>
+</section>
+<section class="panel" role="tabpanel" id="p-s34" aria-labelledby="tab-s34" hidden>
+<p class="meta">Sesión 34 de 42, lunes 15 de febrero de 2027, 2 horas</p>
+<h2>Flujo de trabajo para desplegar la infraestructura</h2>
+<p><a class="ce" href="#presentacion" title="Se han creado flujos de trabajo para el despliegue del entorno hardware, usando las credenciales proporcionadas y aplicando las configuraciones definidas.">CE 6b</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Crear un flujo que valide y planifique en cada pull request y despliegue por entornos al fusionar.</li><li>Usar las credenciales de cada entorno y la aprobación obligatoria de producción.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>Por qué un runner autohospedado</h4>
+<p>Los runners de GitHub están en Internet y no ven el Proxmox del aula (ni el Docker de vuestro portátil). Instalamos un <b>runner autohospedado</b> en una máquina de la red del aula: ejecuta los trabajos de GitHub Actions localmente. Como es persistente, podemos guardar el estado de Terraform en una ruta fija de esa máquina (en un entorno profesional se usaría un backend remoto con bloqueo, como S3 o el de GitLab).</p>
+<p class="fichero">.github/workflows/infraestructura.yml</p>
+<pre><code>name: Infraestructura
+on:
+  pull_request:
+    paths: ["infra/**"]
+  push:
+    branches: [main]
+    paths: ["infra/**"]
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: infra
+
+jobs:
+  validar-y-planificar:
+    runs-on: [self-hosted, linux]
+    environment: revision
+    env:
+      TF_VAR_pm_token_secret: ${{ secrets.PM_TOKEN_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: terraform fmt -check -recursive
+      - run: terraform init -input=false -backend-config="path=$HOME/tfstate/revision.tfstate"
+      - run: terraform validate
+      - run: terraform plan -input=false -var-file=revision.tfvars
+
+  desplegar-revision:
+    if: github.ref == 'refs/heads/main'
+    needs: validar-y-planificar
+    runs-on: [self-hosted, linux]
+    environment: revision
+    env:
+      TF_VAR_pm_token_secret: ${{ secrets.PM_TOKEN_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: terraform init -input=false -backend-config="path=$HOME/tfstate/revision.tfstate"
+      - run: terraform apply -input=false -auto-approve -var-file=revision.tfvars
+      - run: ./verificar.sh revision
+
+  desplegar-produccion:
+    needs: desplegar-revision
+    runs-on: [self-hosted, linux]
+    environment: produccion          # espera la aprobación del equipo operaciones
+    env:
+      TF_VAR_pm_token_secret: ${{ secrets.PM_TOKEN_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: terraform init -input=false -reconfigure -backend-config="path=$HOME/tfstate/produccion.tfstate"
+      - run: terraform apply -input=false -auto-approve -var-file=produccion.tfvars
+      - run: ./verificar.sh produccion</code></pre>
+<p>Cada trabajo toma el secreto <b>de su entorno</b>: el mismo nombre, <code>PM_TOKEN_SECRET</code>, tiene un valor distinto en revisión y en producción. Si usáis el laboratorio Docker, los trabajos son iguales sin la variable del token.</p>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<ol class="pasos">
+<li>(20′) Instalad el runner en el portátil de la pareja (o en la VM que indique el profesor): <em>Settings, Actions, Runners, New self-hosted runner</em>, Linux x64, y seguid los comandos. Arrancadlo con <code>./run.sh</code> y comprobad que aparece como <em>Idle</em>. Instalad Terraform en esa máquina si no lo está.</li>
+<li>(25′) Añadid el workflow y un <code>verificar.sh</code> provisional que solo haga <code>terraform output</code> (lo completaremos en la sesión 35). Abrid un PR con un cambio en <code>infra/</code> y comprobad que se ejecuta el plan y aparece en el registro del trabajo.</li>
+<li>(15′) Fusionad: comprobad que se despliega revisión y que producción queda <b>esperando aprobación</b>. Aprobad desde la cuenta de operaciones.</li>
+<li>(15′) Probad los fallos: un error de sintaxis en el PR (¿se para en <code>fmt</code> o en <code>validate</code>?), y un secreto de producción incorrecto (¿qué error da y en qué paso?). Documentadlo en el README.</li>
+</ol>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Recorremos el flujo completo en el proyector, del PR a producción, y comentamos qué pasaría si dos personas fusionan a la vez.</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Workflow funcionando con plan en PR, despliegue por entornos, credenciales por entorno y aprobación de producción (CE 6b).</p></div>
+<details class="docente"><summary>Notas para el docente</summary><p>Un runner autohospedado en un repositorio <b>público</b> puede ejecutar código de PR de terceros: activar en la organización la opción de exigir aprobación para ejecutar workflows de colaboradores externos, o hacer privado el repositorio mientras dure la unidad. Explicarlo como parte de la seguridad del entorno.</p></details>
+</section>
+<section class="panel" role="tabpanel" id="p-s35" aria-labelledby="tab-s35" hidden>
+<p class="meta">Sesión 35 de 42, viernes 19 de febrero de 2027, 2 horas</p>
+<h2>Verificar la infraestructura desplegada. Entrega de la unidad</h2>
+<p><a class="ce" href="#presentacion" title="Se ha verificado la infraestructura creada después del despliegue, comprobando que se obtiene acceso a todos los recursos de infraestructura.">CE 6e</a></p>
+<div class="tiempos" aria-label="Distribución de los 120 minutos"><span class="t-arr" style="flex:10" title="Inicio: 10 min"><i>Inicio</i>10′</span><span class="t-int" style="flex:20" title="Introducción: 20 min"><i>Introducción</i>20′</span><span class="t-act" style="flex:75" title="Actividad: 75 min"><i>Actividad</i>75′</span><span class="t-cie" style="flex:15" title="Cierre: 15 min"><i>Cierre</i>15′</span></div>
+<h3>Qué vas a saber hacer al terminar</h3><ul><li>Comprobar tras cada despliegue que se accede a todos los recursos creados.</li><li>Incorporar la verificación al flujo de trabajo y dejar registro.</li></ul>
+<h3>Introducción del tema</h3>
+<h4>Desplegado no es lo mismo que funcionando</h4>
+<p>Que <code>terraform apply</code> termine bien solo significa que la API aceptó las peticiones. Hay que verificar que cada recurso existe, es accesible y tiene la configuración pedida:</p>
+<ul><li><b>Sin desviación:</b> <code>terraform plan -detailed-exitcode</code> devuelve 0 si no hay cambios pendientes y 2 si los hay.</li>
+<li><b>Cómputo:</b> la VM responde (<code>ping</code>) y acepta SSH con la clave de despliegue.</li>
+<li><b>Recursos:</b> CPU, memoria y disco dentro de la VM coinciden con los parámetros (<code>nproc</code>, <code>free -m</code>, <code>lsblk</code>).</li>
+<li><b>Red:</b> resolución de nombres y salida a Internet (necesaria para instalar paquetes en la unidad 7).</li>
+<li><b>Seguridad:</b> solo están abiertos los puertos esperados.</li></ul>
+<p class="fichero">infra/verificar.sh</p>
+<pre><code>#!/usr/bin/env bash
+set -euo pipefail
+ENTORNO=${1:?Uso: verificar.sh revision|produccion}
+fallos=0
+ok()  { echo "OK    $*"; }
+mal() { echo "FALLO $*"; fallos=$((fallos+1)); }
+
+terraform plan -input=false -detailed-exitcode -var-file="$ENTORNO.tfvars" &gt;/dev/null   &amp;&amp; ok "sin desviaciones respecto al código" || mal "hay cambios pendientes o error en plan"
+
+for ip in $(terraform output -json ips | jq -r '.[]'); do
+  ping -c1 -W2 "$ip" &gt;/dev/null &amp;&amp; ok "$ip responde a ping" || mal "$ip no responde"
+  if ssh -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=accept-new despliegue@"$ip"        'nproc; free -m | awk "/Mem/{print \$2}"; getent hosts github.com &gt;/dev/null' &gt; /tmp/v.txt; then
+    ok "$ip SSH, cores=$(sed -n 1p /tmp/v.txt), memoria=$(sed -n 2p /tmp/v.txt) MB, DNS correcto"
+  else
+    mal "$ip sin acceso SSH o sin DNS"
+  fi
+done
+echo "Verificación de $ENTORNO terminada con $fallos fallos"
+exit $fallos</code></pre>
+
+<h3>Actividad</h3><div class="bloque actividad">
+<ol class="pasos">
+<li>(30′) Completad <code>verificar.sh</code> para vuestra plataforma (en el laboratorio Docker: <code>docker inspect</code> del contenedor, <code>curl</code> a cada URL de las salidas y comprobación de la red). Añadid al menos una comprobación de seguridad (por ejemplo, <code>nc -z</code> a un puerto que debe estar cerrado).</li>
+<li>(15′) Hacedlo ejecutable, probadlo en local y subidlo. Comprobad que el workflow lo ejecuta tras cada despliegue y que un fallo detiene el paso a producción.</li>
+<li>(10′) Provocad una desviación (apagad una VM o parad un contenedor a mano) y comprobad que la verificación lo detecta.</li>
+<li>(20′) <b>Entrega:</b> README de <code>infra/</code> con arquitectura, ficheros, flujo y registro de una verificación completa de revisión y producción. Revisad la rúbrica de la pestaña Presentación.</li>
+</ol>
+<p>No destruyáis la infraestructura de revisión: la usamos en la unidad 7.</p>
+</div>
+<div class="bloque cierre"><span class="titulo">Puesta en común</span><p>Revisión cruzada de repositorios con la rúbrica.</p></div>
+<div class="bloque evidencia"><span class="titulo">Evidencia de evaluación</span><p>Script de verificación integrado en el flujo y registro de verificación (CE 6e). Revisión final de la unidad (CE 6a a 6e).</p></div>
+</section>
+<section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden><h2>Recursos y glosario</h2>
+<h3>Comandos de Terraform</h3>
+<div class="tabla"><table><tr><th>Comando</th><th>Para qué sirve</th></tr>
+<tr><td><code>terraform init</code></td><td>Descarga proveedores y prepara el backend del estado</td></tr>
+<tr><td><code>terraform fmt</code></td><td>Formatea los ficheros con el estilo estándar</td></tr>
+<tr><td><code>terraform validate</code></td><td>Comprueba la sintaxis y la coherencia</td></tr>
+<tr><td><code>terraform plan -var-file=revision.tfvars</code></td><td>Muestra qué va a crear, cambiar o destruir</td></tr>
+<tr><td><code>terraform apply</code></td><td>Aplica los cambios</td></tr>
+<tr><td><code>terraform output</code></td><td>Muestra los valores de salida</td></tr>
+<tr><td><code>terraform state list</code></td><td>Lista los recursos que Terraform gestiona</td></tr>
+<tr><td><code>terraform destroy</code></td><td>Elimina todo lo creado</td></tr></table></div>
+<h3>Referencias</h3>
+<ul><li>Documentación de Terraform: <a href="https://developer.hashicorp.com/terraform/docs">developer.hashicorp.com</a> (alternativa libre: <a href="https://opentofu.org/">OpenTofu</a>)</li>
+<li>Proveedor Proxmox de Telmate: <a href="https://registry.terraform.io/providers/Telmate/proxmox/latest/docs">registry.terraform.io</a>. Alternativa muy mantenida: <a href="https://registry.terraform.io/providers/bpg/proxmox/latest/docs">bpg/proxmox</a></li>
+<li>Proveedor Docker: <a href="https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs">registry.terraform.io</a></li>
+<li>Usuarios, roles y tokens de Proxmox: <a href="https://pve.proxmox.com/wiki/User_Management">pve.proxmox.com</a></li>
+<li>Runners autohospedados de GitHub: <a href="https://docs.github.com/es/actions/hosting-your-own-runners">docs.github.com</a></li></ul>
+<h3>Glosario</h3>
+<div class="tabla"><table><tr><th>Término</th><th>Significado</th></tr>
+<tr><td>IaC</td><td>Infraestructura como código: la infraestructura se define en ficheros versionados.</td></tr>
+<tr><td>SDH / SDDC</td><td>Hardware definido por software: cómputo, red y almacenamiento se configuran por software y API.</td></tr>
+<tr><td>Declarativo</td><td>Se describe el estado final deseado; la herramienta calcula los pasos.</td></tr>
+<tr><td>Estado (state)</td><td>Fichero donde Terraform recuerda qué recursos reales corresponden a cada bloque.</td></tr>
+<tr><td>Drift</td><td>Diferencia entre lo definido en código y lo que existe realmente porque alguien lo cambió a mano.</td></tr>
+<tr><td>Idempotencia</td><td>Aplicar dos veces produce el mismo resultado; el segundo <code>apply</code> no cambia nada.</td></tr>
+</table></div>
+</section>
+</main>
+<footer class="pie">Módulo 5165 Metodología DevOps: preparación de entornos de despliegue. Curso de especialización en Despliegue de productos software en contenedores (RD 144/2026). Curso 2026-2027.</footer>
+<script src="assets/pestanas.js"></script></body></html>
