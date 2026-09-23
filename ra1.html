@@ -18,7 +18,7 @@
 <h3>Plan de sesiones</h3>
 <div class="tabla"><table><tr><th>Sesión</th><th>Fecha</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#s1">S1</a></td><td>2 oct</td><td>Presentación del módulo. El ciclo de vida del software y la metodología en cascada</td><td>a</td></tr><tr><td><a href="#s2">S2</a></td><td>5 oct</td><td>El Manifiesto Ágil y Scrum</td><td>b</td></tr><tr><td><a href="#s3">S3</a></td><td>16 oct</td><td>Kanban, XP y Lean. Herramientas de gestión de proyectos</td><td>b, c</td></tr><tr><td><a href="#s4">S4</a></td><td>19 oct</td><td>DevOps: cultura, prácticas e integración y despliegue continuos</td><td>d</td></tr><tr><td><a href="#s5">S5</a></td><td>23 oct</td><td>El despliegue de aplicaciones en contenedores dentro de un flujo CI/CD</td><td>e</td></tr></table></div>
 <h3>Evaluación</h3>
-<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>60 %</b> prueba escrita (fecha por confirmar) y <b>40 %</b> trabajos de clase (plan en cascada, simulación Scrum, tablero del proyecto, mapa del flujo de valor y diseño del pipeline).</p>
+<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>60 %</b> prueba escrita (fecha por confirmar) y <b>40 %</b> trabajos de clase (plan en cascada, análisis de un caso real con Scrum, tablero del proyecto, mapa del flujo de valor y diseño del pipeline).</p>
 <p>Los criterios b y c se completan durante la formación en empresa con un breve informe: qué metodología y qué herramientas de gestión usa el equipo en el que hacéis las prácticas.</p>
 </section><section class="panel" role="tabpanel" id="p-s1" aria-labelledby="tab-s1" hidden>
 <p class="meta">Sesión 1 de 41 · viernes 2 de octubre de 2026 · 2 horas</p>
@@ -173,14 +173,16 @@
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 4. Un proyecto real <span class="dur">20 min</span></h4>
-<p>Cada pareja investiga uno de estos casos (sin repetir): Healthcare.gov, nóminas Phoenix de Canadá, el sistema de gestión de expedientes del FBI (Virtual Case File), el sistema de equipajes del aeropuerto de Denver, LexNET o el sistema de citas del SEPE durante la pandemia. Resumid en unas 10 líneas:</p>
+<h4>Actividad 4. Un proyecto real que fracasó <span class="dur">25 min</span></h4>
+<p>Cada pareja elige uno de estos casos (sin repetir): Healthcare.gov (EE. UU.), las nóminas Phoenix de Canadá, el sistema de gestión de expedientes del FBI (Virtual Case File), el sistema automático de equipajes del aeropuerto de Denver, LexNET o el sistema de citas del SEPE durante la pandemia. Buscad información en fuentes fiables (prensa, informes oficiales de auditoría, artículos técnicos) y tomad notas de:</p>
 <ul>
-<li>Qué se quería construir, cuánto costó y cuánto se retrasó.</li>
-<li>Qué fase o qué decisión falló.</li>
+<li>Qué se quería construir, para quién, cuánto costó y cuánto se retrasó.</li>
+<li>Cómo se organizó el proyecto: fases, contratos, quién decidía, cuándo vieron los usuarios el sistema por primera vez.</li>
+<li>Qué fase o qué decisión falló y qué consecuencias tuvo.</li>
 <li>Qué parte del problema tuvo que ver con la metodología y qué parte con otras causas (política, presupuesto, tecnología).</li>
 </ul>
-<p class="entrega">Últimos minutos: cada pareja cuenta su caso en 2 minutos. Anotamos en la pizarra las causas que se repiten.</p>
+<p>Guardad las notas y las fuentes en un documento compartido de la pareja. <b>No se presenta hoy</b>: en la sesión 2, después de ver las metodologías ágiles, terminaréis el análisis, prepararéis una presentación y la expondréis (actividad 3 de la sesión 2).</p>
+<p class="entrega">Entrega en Aules: el documento de notas con las fuentes (se completa en la sesión 2).</p>
 </div>
 
 <h3>Preguntas de repaso</h3>
@@ -200,7 +202,7 @@
 <li>Explicar el origen del movimiento ágil y los valores y principios del Manifiesto Ágil.</li>
 <li>Describir Scrum en profundidad: roles, eventos, artefactos y compromisos.</li>
 <li>Contraponer la forma de organizarse de Scrum con la de la cascada.</li>
-<li>Vivir un pequeño proyecto Scrum en el aula para entender cómo funciona un sprint.</li>
+<li>Analizar proyectos reales que fracasaron y argumentar qué habría cambiado con una metodología ágil.</li>
 </ul>
 
 <h3>1. De dónde sale lo "ágil"</h3>
@@ -318,21 +320,25 @@ Criterios de aceptación:
 <p>Con cartas de papel (1, 2, 3, 5, 8, 13, ?) estimad en puntos las 8 primeras historias del backlog. Cuando haya diferencias de más de dos valores, quien puso el más alto y el más bajo explican su razonamiento y se vuelve a votar. Anotad en cada historia la estimación final y las dudas que hayan salido.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Simulación de un sprint: la ciudad de papel <span class="dur">40 min</span></h4>
-<p>Vamos a vivir Scrum con un producto físico. El profesor hará de Product Owner (cliente) y pedirá una "ciudad" dibujada y recortada en papel (casas, hospital, parque, carreteras...) con un backlog de elementos priorizados y criterios de aceptación. Cada grupo elige un Scrum Master; el resto son developers.</p>
+<h4>Actividad 3. ¿Y si lo hubieran hecho con Scrum? <span class="dur">40 min</span></h4>
+<p>Retomamos, con las mismas parejas, el proyecto fracasado que empezasteis a investigar en la actividad 4 de la sesión 1. Ahora que conocéis el Manifiesto Ágil y Scrum, vais a analizar qué habría cambiado con otra forma de trabajar.</p>
 <ol>
-<li><b>Planning (5 min):</b> el grupo elige qué elementos se compromete a construir y define el objetivo del sprint.</li>
-<li><b>Sprint 1 (7 min):</b> se construye. A mitad, un Daily Scrum de 1 minuto.</li>
-<li><b>Review (3 min):</b> el Product Owner acepta o rechaza cada elemento según sus criterios. Lo rechazado vuelve al backlog.</li>
-<li><b>Retrospectiva (3 min):</b> ¿qué ha ido bien? ¿Qué cambiaremos en el siguiente sprint?</li>
-<li>Repetimos el ciclo dos veces más. En el sprint 2 el cliente cambiará una prioridad ("necesitamos un centro de salud urgentemente") y veremos cómo reacciona cada equipo.</li>
+<li><b>Preparar la presentación (20 min).</b> Terminad la investigación y preparad 4-5 diapositivas (LibreOffice Impress o Google Presentaciones) con esta estructura:
+ <ul>
+ <li><b>El proyecto:</b> qué se quería construir, coste previsto y real, retraso.</li>
+ <li><b>Qué falló:</b> la fase o decisión concreta, y qué parte fue culpa de la organización en cascada y qué parte no.</li>
+ <li><b>Cómo habría sido con Scrum:</b> quién habría sido el Product Owner, qué habría entregado el primer sprint y en qué momento se habría detectado el problema.</li>
+ <li><b>El Manifiesto Ágil:</b> qué valor o principio ágil se incumplió, con un ejemplo concreto del caso (por ejemplo, "respuesta ante el cambio frente a seguir un plan").</li>
+ <li><b>Conclusión en una frase:</b> ¿Scrum lo habría evitado del todo, en parte o no? Justificadlo: no todos los fracasos son culpa de la metodología.</li>
+ </ul></li>
+<li><b>Presentaciones (15 min).</b> Cada pareja expone en 3 minutos. Mientras, el resto anota en una tabla común de la pizarra el caso, la causa principal del fracaso y si Scrum lo habría evitado.</li>
+<li><b>Puesta en común (5 min).</b> Entre todos buscamos los patrones que se repiten en los casos: requisitos que cambian por el camino, usuarios que no ven nada hasta el final, integración tardía, un único despliegue sin vuelta atrás, decisiones tomadas lejos de quien usa el sistema.</li>
 </ol>
-<p>Cada grupo anota en cada sprint los puntos comprometidos y los aceptados para calcular su velocidad.</p>
 </div>
 <div class="actividad">
 <h4>Actividad 4. Reflexión escrita <span class="dur">10 min</span></h4>
-<p>Individualmente, en Aules, responded: (1) ¿Qué pasó con el cambio de prioridad del sprint 2 y cómo lo habría gestionado un equipo en cascada? (2) ¿Mejoró vuestra velocidad del sprint 1 al 3? ¿Por qué? (3) ¿Qué rol os resultó más difícil y por qué?</p>
-<p class="entrega">Entrega en Aules: backlog con historias, estimaciones y DoD (grupo) y reflexión (individual).</p>
+<p>Individualmente, en Aules, responded: (1) De todos los casos presentados, ¿cuál creéis que habría mejorado más con Scrum y por qué? (2) Elegid un caso en el que Scrum <b>no</b> habría bastado y explicad qué otra cosa habría hecho falta. (3) ¿Qué patrón de los que salieron en la puesta en común podría darse en un proyecto como Cita Previa y cómo lo evitaríais?</p>
+<p class="entrega">Entrega en Aules: backlog con historias, estimaciones y DoD (grupo), presentación del caso (pareja) y reflexión (individual).</p>
 </div>
 
 <h3>Preguntas de repaso</h3>
