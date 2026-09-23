@@ -14,7 +14,7 @@ img{max-width:100%}
 
 /* Cabecera */
 .cab{border-top:4px solid var(--ra);border-bottom:1px solid var(--linea)}
-.cab .dentro{max-width:960px;margin:0 auto;padding:.8rem 1rem 1.2rem}
+.cab .dentro{max-width:1240px;margin:0 auto;padding:.8rem 1rem 1.2rem}
 .menu{display:flex;flex-wrap:wrap;gap:.2rem .9rem;font-size:.92rem;margin-bottom:.9rem}
 .menu a{color:var(--suave);text-decoration:none}
 .menu a:hover{color:var(--enlace);text-decoration:underline}
@@ -24,7 +24,7 @@ img{max-width:100%}
 
 /* Pestañas de sesiones */
 .pestanas{position:sticky;top:0;z-index:5;background:var(--fondo);border-bottom:1px solid var(--linea)}
-.pestanas .dentro{max-width:960px;margin:0 auto;display:flex;overflow-x:auto;padding:0 1rem;scrollbar-width:thin}
+.pestanas .dentro{max-width:1240px;margin:0 auto;display:flex;overflow-x:auto;padding:0 1rem;scrollbar-width:thin}
 .pestanas button{flex:0 0 auto;border:0;border-bottom:3px solid transparent;background:none;font:inherit;font-size:.9rem;
   padding:.6rem .75rem .5rem;cursor:pointer;color:var(--suave);line-height:1.2;text-align:center}
 .pestanas button small{display:block;font-size:.75rem}
@@ -32,7 +32,7 @@ img{max-width:100%}
 .pestanas button[aria-selected="true"]{color:var(--texto);border-bottom-color:var(--ra);font-weight:600}
 
 /* Contenido */
-main{max-width:960px;margin:0 auto;padding:1.5rem 1rem 4rem}
+main{max-width:1240px;margin:0 auto;padding:1.5rem 1rem 4rem}
 .panel{max-width:74ch}
 .panel.ancho{max-width:none}
 .panel[hidden]{display:none}
@@ -98,11 +98,11 @@ table.cal{table-layout:fixed;font-size:.85rem}
 .cal td.clase a:hover{filter:brightness(1.15)}
 .cal td.inicio,.cal td.fin{box-shadow:inset 0 0 0 2px var(--texto);border-radius:4px}
 
-.pie{font-size:.85rem;color:var(--suave);border-top:1px solid var(--linea);max-width:960px;margin:0 auto;padding:1rem 1rem 2rem}
+.pie{font-size:.85rem;color:var(--suave);border-top:1px solid var(--linea);max-width:1240px;margin:0 auto;padding:1rem 1rem 2rem}
 
 @media (max-width:600px){body{font-size:1rem}.actividad > h4{flex-direction:column;gap:.1rem}}
 @media print{
-  .pestanas,.pie,.menu{display:none}.panel[hidden]{display:block!important}.panel{max-width:none;page-break-after:always}
+  .pestanas,.pie,.menu,.indice{display:none}.panel[hidden]{display:block!important}.panel{max-width:none;page-break-after:always}
   pre{white-space:pre-wrap}
 }
 
@@ -137,3 +137,27 @@ table.cal{table-layout:fixed;font-size:.85rem}
 .d-grupo-azul{fill:#f5f9ff;stroke:#93c5fd;stroke-dasharray:6 4}
 .d-grupo-verde{fill:#f3fcf6;stroke:#86efac;stroke-dasharray:6 4}
 .d-grupo-naranja{fill:#fff8f1;stroke:#fdba74;stroke-dasharray:6 4}
+
+/* Índice de la sesión */
+main.con-indice{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:2.5rem;align-items:start}
+.con-indice .contenido{grid-column:1;grid-row:1;min-width:0}
+.con-indice .panel{max-width:none}
+.con-indice .panel > :not(.diagrama):not(.tabla):not(pre):not(.actividad){max-width:74ch}
+.con-indice .actividad{max-width:80ch}
+.con-indice .diagrama{width:auto;max-width:900px}
+.panel h3,.panel h4{scroll-margin-top:72px}
+.indice{grid-column:2;grid-row:1;position:sticky;top:66px;max-height:calc(100vh - 84px);overflow:auto;background:none;border-left:1px solid var(--linea);border-radius:0;padding:.1rem 0 .1rem 1rem;margin:1.4rem 0 0;font-size:.86rem}
+.indice summary{list-style:none;font-weight:600;color:var(--suave);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;cursor:default}
+.indice summary::-webkit-details-marker{display:none}
+.indice ol{list-style:none;padding:0;margin:.5rem 0}
+.indice ol ol{padding-left:.75rem;margin:.1rem 0 .35rem;border-left:1px solid var(--linea)}
+.indice li{margin:.1rem 0}
+.indice a{display:block;color:var(--suave);text-decoration:none;line-height:1.35;padding:.12rem 0}
+.indice a:hover{color:var(--enlace)}
+.indice a.actual{color:var(--ra);font-weight:600}
+@media (max-width:1099px){
+  main.con-indice{display:block;max-width:960px}
+  .indice{position:static;max-height:none;border:1px solid var(--linea);border-radius:6px;background:var(--gris);padding:.55rem 1rem;margin:0 0 1.2rem;font-size:.92rem}
+  .indice summary{cursor:pointer;text-transform:none;letter-spacing:0;font-size:.95rem;color:var(--texto);list-style:revert}
+  .con-indice .diagrama{max-width:none;width:min(880px,calc(100vw - 2rem))}
+}
