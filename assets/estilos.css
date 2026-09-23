@@ -161,3 +161,27 @@ main.con-indice{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:2.5re
   .indice summary{cursor:pointer;text-transform:none;letter-spacing:0;font-size:.95rem;color:var(--texto);list-style:revert}
   .con-indice .diagrama{max-width:none;width:min(880px,calc(100vw - 2rem))}
 }
+
+/* Botón de tema */
+.menu{align-items:center}
+.boton-tema{margin-left:auto;font:inherit;font-size:.85rem;color:var(--suave);background:none;border:1px solid var(--linea);border-radius:999px;padding:.2rem .75rem;cursor:pointer}
+.boton-tema:hover{color:var(--texto);border-color:var(--suave)}
+
+/* Modo oscuro */
+:root[data-tema="oscuro"]{--texto:#e6edf3;--suave:#9ba5b0;--linea:#30363d;--fondo:#0d1117;--gris:#161b22;--enlace:#6cb6ff;color-scheme:dark}
+:root[data-tema="oscuro"] .ce{border-color:color-mix(in srgb,var(--ra) 50%,#fff);color:color-mix(in srgb,var(--ra) 45%,#fff)}
+:root[data-tema="oscuro"] .dur,
+:root[data-tema="oscuro"] .indice a.actual{color:color-mix(in srgb,var(--ra) 45%,#fff)}
+:root[data-tema="oscuro"] .nota{border-left-color:color-mix(in srgb,var(--ra) 60%,#fff)}
+:root[data-tema="oscuro"] .aviso{background:#2a2412;border-left-color:#b8901b}
+:root[data-tema="oscuro"] tr.sin td{background:#12161c}
+:root[data-tema="oscuro"] .unidades .n{color:color-mix(in srgb,var(--c) 45%,#fff)}
+:root[data-tema="oscuro"] .unidades a:hover{background:var(--gris)}
+:root[data-tema="oscuro"] .boton a:hover{color:#0d1117}
+:root[data-tema="oscuro"] .diagrama .lienzo{background:#f6f8fa;border-radius:8px;padding:6px}
+:root[data-tema="oscuro"] .l-festivo,:root[data-tema="oscuro"] .cal td.festivo{background:#2d333b}
+:root[data-tema="oscuro"] .l-vacaciones{background:repeating-linear-gradient(45deg,#2d333b 0 3px,#0d1117 3px 6px);border-color:#444c56}
+:root[data-tema="oscuro"] .cal td.vacaciones{background:repeating-linear-gradient(45deg,#1c2128 0 4px,#0d1117 4px 8px)}
+:root[data-tema="oscuro"] .l-magdalena,:root[data-tema="oscuro"] .cal td.magdalena{background:#1f3a24}
+:root[data-tema="oscuro"] .cal td.finde{color:#6e7681}
+:root[data-tema="oscuro"] .cal td.fuera{color:#484f58}
