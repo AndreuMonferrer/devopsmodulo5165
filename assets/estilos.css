@@ -105,3 +105,35 @@ table.cal{table-layout:fixed;font-size:.85rem}
   .pestanas,.pie,.menu{display:none}.panel[hidden]{display:block!important}.panel{max-width:none;page-break-after:always}
   pre{white-space:pre-wrap}
 }
+
+/* Diagramas */
+.diagrama{margin:1.6rem 0;width:min(880px,calc(100vw - 2rem))}
+.diagrama .lienzo{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.diagrama svg{display:block;width:100%;min-width:560px;height:auto;font-family:var(--fuente)}
+.diagrama figcaption{font-size:.88rem;color:var(--suave);margin-top:.45rem;text-align:center}
+.diagrama .t{font-size:13px;fill:#1f2328}
+.diagrama .tb{font-weight:600}
+.diagrama .ts{font-size:11.5px;fill:#59636e}
+.diagrama .te{font-size:11px;fill:#1f2328}
+.diagrama .tt{font-size:12px;font-weight:600;fill:#59636e}
+.diagrama .flecha{stroke:#57606a;stroke-width:1.6;fill:none}
+.diagrama .flecha.disc{stroke-dasharray:5 4}
+.diagrama .punta{fill:#57606a}
+.diagrama .fondo-etiqueta{fill:#fff;opacity:.92}
+.diagrama .eje{stroke:#8c959f;fill:none}
+.diagrama .serie{fill:none;stroke-width:2.6}
+.diagrama .serie.disc{stroke-dasharray:7 5}
+.diagrama .s-rojo{stroke:#dc2626}.diagrama .s-verde{stroke:#16a34a}.diagrama .s-azul{stroke:#2563eb}.diagrama .s-naranja{stroke:#ea580c}.diagrama .s-morado{stroke:#7c3aed}
+.diagrama .area-naranja{fill:#fed7aa;opacity:.55}
+.d-gris{fill:#f3f4f6;stroke:#9ca3af}
+.d-azul{fill:#dbeafe;stroke:#3b82f6}
+.d-verde{fill:#dcfce7;stroke:#22c55e}
+.d-naranja{fill:#ffedd5;stroke:#f97316}
+.d-rojo{fill:#fee2e2;stroke:#ef4444}
+.d-morado{fill:#ede9fe;stroke:#8b5cf6}
+.d-amarillo{fill:#fef9c3;stroke:#ca8a04}
+.d-blanco{fill:#fff;stroke:#9ca3af;stroke-dasharray:4 3}
+.d-grupo{fill:none;stroke:#9ca3af;stroke-dasharray:6 4}
+.d-grupo-azul{fill:#f5f9ff;stroke:#93c5fd;stroke-dasharray:6 4}
+.d-grupo-verde{fill:#f3fcf6;stroke:#86efac;stroke-dasharray:6 4}
+.d-grupo-naranja{fill:#fff8f1;stroke:#fdba74;stroke-dasharray:6 4}
