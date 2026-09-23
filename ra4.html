@@ -238,10 +238,10 @@ done &lt; historias.csv</code></pre></li>
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 1. Desplegar Cita Previa en un PaaS <span class="dur">40 min</span></h4>
-<p>En parejas, en AWS Academy con <b>Elastic Beanstalk</b> (en Azure for Students el equivalente es <b>App Service</b> con <code>az webapp up --runtime PYTHON:3.12 --sku F1</code>).</p>
+<p>En parejas, en AWS Academy (región <code>us-east-1</code>) con <b>Elastic Beanstalk</b>.</p>
 <ol>
 <li>Preparad el paquete con <code>app.py</code>, <code>requirements.txt</code> y un fichero <code>Procfile</code> con una línea: <code>web: gunicorn -b 0.0.0.0:8000 app:app</code>. Comprimidlo: <code>zip cita-previa-v1.zip app.py requirements.txt Procfile</code> (los ficheros en la raíz del ZIP, no dentro de una carpeta).</li>
-<li>En la consola: <i>Elastic Beanstalk → Create application</i>, plataforma <b>Python 3.12</b>, subid el ZIP, preset <i>Single instance</i>. En el acceso al servicio usad el rol de servicio existente <code>LabRole</code> y el perfil de instancia <code>LabInstanceProfile</code>.</li>
+<li>En la consola: <i>Elastic Beanstalk → Create application</i>, plataforma <b>Python 3.12</b>, subid el ZIP, preset <i>Single instance</i>. En el acceso al servicio usad el rol de servicio existente <code>LabRole</code>, el perfil de instancia <code>LabInstanceProfile</code> y el par de claves <code>vockey</code>. Tipo de instancia: <code>t3.micro</code> o <code>t3.small</code> (el laboratorio no admite tamaños mayores que <code>large</code>).</li>
 <li>Mientras se crea (5-8 minutos), abrid la pestaña <i>Events</i> y anotad todo lo que la plataforma crea por vosotros: grupo de seguridad, instancia EC2, grupo de autoescalado, alarmas...</li>
 <li>Abrid la URL del entorno y probad <code>/salud</code> y <code>/citas</code>.</li>
 </ol>
@@ -376,7 +376,7 @@ y activadlo: <code>sudo systemctl daemon-reload &amp;&amp; sudo systemctl enable
 <div class="actividad">
 <h4>Actividad 2. Operar la máquina <span class="dur">20 min</span></h4>
 <ol>
-<li><b>Escalado vertical</b>: detened la instancia, cambiad su tipo a uno mayor (<i>Actions → Instance settings → Change instance type</i>), arrancadla y comprobad con <code>nproc</code> y <code>free -h</code>. ¿Ha cambiado la IP pública? ¿Por qué?</li>
+<li><b>Escalado vertical</b>: detened la instancia, cambiad su tipo a uno mayor, como mucho de tamaño <code>large</code>, que es el límite del laboratorio (<i>Actions → Instance settings → Change instance type</i>), arrancadla y comprobad con <code>nproc</code> y <code>free -h</code>. ¿Ha cambiado la IP pública? ¿Por qué?</li>
 <li><b>Instantánea e imagen</b>: cread una imagen (AMI) de la instancia. Lanzad una segunda instancia desde esa imagen y comprobad que la aplicación ya funciona en ella sin instalar nada.</li>
 <li>Pensad qué haría falta para que las dos máquinas atendieran el tráfico juntas (balanceador, grupo de autoescalado) y escribidlo en el registro.</li>
 <li>Terminad las instancias y borrad la imagen y sus instantáneas.</li>
@@ -484,7 +484,7 @@ y activadlo: <code>sudo systemctl daemon-reload &amp;&amp; sudo systemctl enable
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 1. Una API de huecos libres con una función <span class="dur">35 min</span></h4>
-<p>En parejas, en AWS Academy (en Azure, el equivalente es una <i>Function App</i> con disparador HTTP).</p>
+<p>En parejas, en AWS Academy, región <code>us-east-1</code>.</p>
 <ol>
 <li><i>Lambda → Create function</i>, desde cero, nombre <code>huecos-libres</code>, entorno Python 3.12, rol existente <code>LabRole</code>.</li>
 <li>Sustituid el código por:
@@ -506,9 +506,10 @@ def lambda_handler(event, context):
             "body": json.dumps(cuerpo)}</code></pre>
 Pulsad <i>Deploy</i> y probadla con un evento de prueba.</li>
 <li>Añadid la variable de entorno <code>ENTORNO=serverless</code>.</li>
-<li>Cread una <i>Function URL</i> (autenticación <code>NONE</code>, solo para la práctica) y llamadla desde el navegador y con <code>curl "URL?centro=centro-2"</code>.</li>
+<li>Cread una <i>Function URL</i> (autenticación <code>NONE</code>, solo para la práctica) y llamadla desde el navegador y con <code>curl "URL?centro=centro-2"</code>. Si el laboratorio no permite crear la URL, invocadla desde el terminal del laboratorio:
+<pre><code>aws lambda invoke --function-name huecos-libres   --cli-binary-format raw-in-base64-out   --payload '{"queryStringParameters": {"centro": "centro-2"}}' salida.json &amp;&amp; cat salida.json</code></pre></li>
 <li>Medid el arranque en frío: en <i>Monitor → View CloudWatch logs</i>, comparad la línea <code>REPORT</code> de la primera invocación (con <code>Init Duration</code>) con la de las siguientes.</li>
-<li>Generad carga: <code>for i in $(seq 1 200); do curl -s "URL" &gt; /dev/null &amp; done; wait</code>. En las métricas, observad invocaciones y ejecuciones concurrentes.</li>
+<li>Generad carga: <code>for i in $(seq 1 200); do curl -s "URL" &gt; /dev/null &amp; done; wait</code> (sin URL, lanzad la orden <code>aws lambda invoke</code> en un bucle igual, con <code>&amp;</code> al final). En las métricas, observad invocaciones y ejecuciones concurrentes.</li>
 </ol>
 </div>
 <div class="actividad">

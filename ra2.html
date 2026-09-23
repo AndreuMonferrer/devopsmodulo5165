@@ -12,7 +12,7 @@
 <h2>Resultado de aprendizaje 2</h2>
 <p class="ra-texto">Evalúa la localización de la infraestructura física de tecnologías de la información (TI), diferenciando entre su ubicación en instalaciones propias (on premise) y en la nube (cloud).</p>
 <p>Cualquier entorno de despliegue se apoya en servidores, redes y discos que están en algún sitio. En esta unidad comparamos las dos grandes opciones: tener esa infraestructura en instalaciones propias, como el servidor Proxmox del centro, o alquilarla a un proveedor de nube como AWS, Azure o Google Cloud. Veremos cómo funciona la nube por dentro, por qué se paga por uso, cuándo sale a cuenta y cómo se traducen servidores, redes y almacenamiento en recursos virtuales que se crean en segundos.</p>
-<p>Trabajaremos con la consola de un proveedor (AWS Academy Learner Lab o Azure for Students), sus calculadoras de precios y el Proxmox del centro.</p>
+<p>Trabajaremos con la consola de un proveedor (AWS Academy Learner Lab), sus calculadoras de precios y el Proxmox del centro.</p>
 <h3>Criterios de evaluación</h3>
 <div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Sesiones</th></tr><tr><td><b>2a)</b></td><td>Se ha definido el concepto de infraestructura de nube, diferenciándolo del de infraestructura propia (on premise). <em>(se completa en la formación en empresa)</em></td><td><a href="#s6">S6</a></td></tr><tr><td><b>2b)</b></td><td>Se ha descrito el funcionamiento de la infraestructura de nube, vinculándolo con su modelo de negocio.</td><td><a href="#s7">S7</a></td></tr><tr><td><b>2c)</b></td><td>Se han analizado los beneficios de la infraestructura de nube con respecto a la infraestructura propia (on premise). <em>(se completa en la formación en empresa)</em></td><td><a href="#s8">S8</a></td></tr><tr><td><b>2d)</b></td><td>Se ha diferenciado entre la infraestructura de nube y la arquitectura de nube, relacionándolos con los recursos de computación y la ejecución de aplicaciones web.</td><td><a href="#s9">S9</a></td></tr><tr><td><b>2e)</b></td><td>Se ha determinado el conjunto de componentes hardware y software básico de la infraestructura en la nube, relacionándolo con el aprovisionamiento de recursos virtuales y la implementación de cargas de trabajo en la nube.</td><td><a href="#s10">S10</a></td></tr><tr><td><b>2f)</b></td><td>Se han caracterizado los componentes de la infraestructura de nube, especificando lo relativo a servidores, redes, almacenamiento y software.</td><td><a href="#s11">S11</a></td></tr></table></div>
 <h3>Plan de sesiones</h3>
@@ -121,9 +121,9 @@
 </div>
 <div class="actividad">
 <h4>Actividad 3. Primer contacto con la consola de nube <span class="dur">30 min</span></h4>
-<p>Individual. Entrad en el laboratorio que indique el profesor (AWS Academy Learner Lab o Azure for Students) y, <b>sin crear todavía ningún recurso</b>:</p>
+<p>Individual. Entrad en el laboratorio de AWS Academy (Learner Lab) y, <b>sin crear todavía ningún recurso</b>:</p>
 <ol>
-<li>Localizad el selector de región. Anotad qué regiones hay en Europa y si hay alguna en España.</li>
+<li>Localizad el selector de región. Anotad qué regiones hay en Europa y si hay alguna en España. (En el laboratorio solo se pueden usar <code>us-east-1</code> y <code>us-west-2</code>: si entráis en otra región veréis errores de acceso, es normal.)</li>
 <li>Recorred el catálogo de servicios y encontrad uno de cada tipo: máquinas virtuales, almacenamiento de objetos, bases de datos gestionadas, red virtual, contenedores y funciones serverless. Anotad su nombre en ese proveedor.</li>
 <li>Buscad en la documentación pública del proveedor cuántas zonas de disponibilidad tiene la región de España.</li>
 <li>Buscad la página de "infraestructura global" del proveedor y comparad con otro proveedor: número de regiones en el mundo.</li>
@@ -231,11 +231,19 @@ SDK Python  ─┘</code></pre>
 <p>Si una aplicación depende de varios servicios en serie, su disponibilidad es como mucho el <b>producto</b> de sus disponibilidades: una web sobre una VM al 99,5 % y una base de datos al 99,9 % tiene como máximo 0,995 × 0,999 ≈ 99,4 %.</p>
 
 <h3>Actividades</h3>
+<div class="aviso"><p><b>Condiciones del laboratorio de AWS Academy</b> (Learner Lab). Las usaremos en todas las prácticas de nube del curso:</p>
+<ul>
+<li>Solo se puede trabajar en las regiones <b><code>us-east-1</code></b> (Norte de Virginia) y <code>us-west-2</code> (Oregón). Usaremos siempre <code>us-east-1</code>, donde además existe el par de claves <code>vockey</code>, que se descarga desde <i>AWS Details</i>. Las regiones europeas se pueden consultar en la documentación y en la calculadora de precios, pero no usar.</li>
+<li>Instancias de tamaño <code>nano</code>, <code>micro</code>, <code>small</code>, <code>medium</code> o <code>large</code>; como máximo 9 instancias y 32 vCPU a la vez; discos de hasta 100 GB. Si se lanza algo mayor, se termina automáticamente.</li>
+<li>No se pueden crear usuarios, grupos ni roles de IAM: se usan el rol <code>LabRole</code> y el perfil de instancia <code>LabInstanceProfile</code>, que ya existen.</li>
+<li>Cada sesión del laboratorio dura unas horas; al terminar, las instancias en marcha se detienen y, al volver a arrancarlas, cambian de IP pública. Cada persona tiene un <b>presupuesto limitado</b> para todo el curso: parad o terminad siempre lo que no uséis.</li>
+<li>Los servicios disponibles y sus límites pueden cambiar: consultad el botón <i>Readme</i> del laboratorio.</li>
+</ul></div>
 <div class="actividad">
 <h4>Actividad 1. Crear una máquina por la consola y por la API <span class="dur">35 min</span></h4>
-<p>Individual, en el laboratorio de nube (AWS Academy Learner Lab. Si usáis Azure for Students, haced lo mismo con una VM B1s, el Azure Cloud Shell y la orden <code>az vm</code>).</p>
+<p>Individual, en el laboratorio de AWS Academy.</p>
 <ol>
-<li>Arrancad el laboratorio y entrad en la consola. Cread una instancia EC2 <code>t3.micro</code> con Ubuntu Server 24.04, etiqueta <code>Name=s7-vuestronombre</code>, un par de claves nuevo y un grupo de seguridad que solo permita SSH desde vuestra IP.</li>
+<li>Arrancad el laboratorio (<i>Start Lab</i>) y entrad en la consola, en la región <code>us-east-1</code>. Cread una instancia EC2 <code>t3.micro</code> con Ubuntu Server 24.04, etiqueta <code>Name=s7-vuestronombre</code>, el par de claves <code>vockey</code> (descargad <code>labsuser.pem</code> desde <i>AWS Details</i> y dadle permisos con <code>chmod 400</code>) y un grupo de seguridad que solo permita SSH desde vuestra IP.</li>
 <li>Cronometrad cuánto tarda desde que pulsáis "Lanzar" hasta que podéis entrar por SSH. Comparadlo con el tiempo que costaría tener un servidor físico nuevo en el centro.</li>
 <li>Dentro de la máquina, consultad sus metadatos: <code>TOKEN=$(curl -sX PUT http://169.254.169.254/latest/api/token -H "X-aws-ec2-metadata-token-ttl-seconds: 60")</code> y <code>curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/availability-zone</code>. ¿En qué zona de disponibilidad está?</li>
 <li>Desde el terminal del laboratorio (AWS CLI ya configurada), listad vuestras instancias: <code>aws ec2 describe-instances --query "Reservations[].Instances[].[InstanceId,State.Name,InstanceType]" --output table</code>.</li>
@@ -661,7 +669,7 @@ runcmd:
 </div>
 <div class="actividad">
 <h4>Actividad 3. La misma carga de trabajo en la nube <span class="dur">30 min</span></h4>
-<p>En el laboratorio de nube, lanzad una VM Ubuntu 24.04 pequeña pegando el fichero <code>user-data.yaml</code> del apartado 4 (con vuestra clave) en <i>Detalles avanzados → Datos de usuario</i>. Abrid el puerto 80 solo a vuestra IP. Cuando arranque, abrid su IP pública en el navegador. Comprobad que el servidor web funciona sin haber entrado por SSH, y después entrad y revisad los registros de cloud-init. Terminad la instancia al acabar.</p>
+<p>En el laboratorio de AWS Academy (región <code>us-east-1</code>), lanzad una VM Ubuntu 24.04 pequeña pegando el fichero <code>user-data.yaml</code> del apartado 4 (con vuestra clave) en <i>Detalles avanzados → Datos de usuario</i>. Abrid el puerto 80 solo a vuestra IP. Cuando arranque, abrid su IP pública en el navegador. Comprobad que el servidor web funciona sin haber entrado por SSH, y después entrad y revisad los registros de cloud-init. Terminad la instancia al acabar.</p>
 <p>Completad una tabla comparando Proxmox y nube: tiempo de aprovisionamiento, cómo se elige el tamaño, de dónde sale la imagen, cómo se pasa la configuración, cómo se accede y qué tuvisteis que hacer a mano.</p>
 <p class="entrega">Entrega en Aules: ficha del nodo, capturas y salidas de las actividades 2 y 3, y la tabla comparativa. Borrad la VM de Proxmox al terminar, salvo que el profesor indique lo contrario.</p>
 </div>
@@ -780,7 +788,7 @@ runcmd:
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 1. Red con subred pública y privada <span class="dur">45 min</span></h4>
-<p>En parejas, en el laboratorio de nube (AWS; en Azure el equivalente es una VNet con dos subredes y NSG). Etiquetad todo con <code>Proyecto=s11-vuestrosnombres</code>.</p>
+<p>En parejas, en AWS Academy, región <code>us-east-1</code>. Etiquetad todo con <code>Proyecto=s11-vuestrosnombres</code>.</p>
 <ol>
 <li>Cread una VPC <code>10.20.0.0/16</code> (opción "Solo VPC", para crear cada pieza a mano).</li>
 <li>Cread dos subredes en la misma zona: <code>10.20.1.0/24</code> (pública) y <code>10.20.2.0/24</code> (privada).</li>
