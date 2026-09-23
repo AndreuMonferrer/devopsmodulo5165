@@ -42,7 +42,7 @@
 <p>Las clases son los lunes y viernes de 19:00 a 21:00. En la pestaña <a href="calendario.html">Calendario</a> tenéis todas las sesiones con su fecha. Cada sesión de esta web tiene la teoría completa, pensada para que podáis leerla con calma, y las actividades que haremos en clase con el tiempo previsto para cada una.</p>
 
 <h4>El caso del curso: Cita Previa</h4>
-<p>Para que todo tenga un hilo conductor, trabajaremos sobre un proyecto ficticio: la <b>Consejería de Sanidad</b> encarga una aplicación web, <b>Cita Previa</b>, para que los pacientes pidan, consulten y anulen citas con su médico de familia. La aplicación tendrá una parte web para pacientes, una parte de gestión para el personal del centro de salud y una API que usarán otras aplicaciones (por ejemplo, la app móvil). En la unidad 1 la usaremos para comparar metodologías; en las unidades 2-4 para decidir dónde desplegarla; y en las unidades 5-7 desplegaremos de verdad una versión sencilla en contenedores (<code>cita-previa-app</code>).</p>
+<p>Para que todo tenga un hilo conductor, trabajaremos sobre un proyecto ficticio: la <b>Conselleria de Sanitat</b> encarga una aplicación web, <b>Cita Previa</b>, para que los pacientes pidan, consulten y anulen citas con su médico de familia. La aplicación tendrá una parte web para pacientes, una parte de gestión para el personal del centro de salud y una API que usarán otras aplicaciones (por ejemplo, la app móvil). En la unidad 1 la usaremos para comparar metodologías; en las unidades 2-4 para decidir dónde desplegarla; y en las unidades 5-7 desplegaremos de verdad una versión sencilla en contenedores (<code>cita-previa-app</code>).</p>
 
 <h3>2. El ciclo de vida del software</h3>
 <p>Todo programa, desde una calculadora hasta el sistema de nóminas de un país, pasa por las mismas actividades básicas. A este conjunto se le llama <b>ciclo de vida del desarrollo de software</b> (SDLC, <i>Software Development Life Cycle</i>):</p>
@@ -91,10 +91,10 @@
 <p>Marcos de gestión de proyectos como <b>PMBOK</b> (Project Management Institute) o <b>PRINCE2</b> describen en detalle esta forma de trabajar, aunque hoy también incluyen enfoques ágiles. En España, la metodología <b>Métrica v3</b> del Ministerio fue durante años la referencia para proyectos de la Administración.</p>
 
 <h4>Un ejemplo con Cita Previa</h4>
-<p>Imaginemos que la Consejería contrata Cita Previa en cascada con un plazo de 12 meses:</p>
+<p>Imaginemos que la Conselleria contrata Cita Previa en cascada con un plazo de 12 meses:</p>
 <div class="tabla"><table>
 <tr><th>Fase</th><th>Meses</th><th>Entregable</th><th>Responsable</th></tr>
-<tr><td>Requisitos</td><td>1-2</td><td>ERS firmada por la Consejería</td><td>Analista funcional</td></tr>
+<tr><td>Requisitos</td><td>1-2</td><td>ERS firmada por la Conselleria</td><td>Analista funcional</td></tr>
 <tr><td>Diseño</td><td>3-4</td><td>Documento de diseño: arquitectura, modelo de datos, pantallas</td><td>Arquitecto y analista técnico</td></tr>
 <tr><td>Implementación</td><td>5-8</td><td>Código de todos los módulos</td><td>Programadores</td></tr>
 <tr><td>Pruebas</td><td>9-10</td><td>Informe de pruebas y acta de aceptación</td><td>Equipo de QA y cliente</td></tr>
@@ -156,7 +156,7 @@
 </div>
 <div class="actividad">
 <h4>Actividad 2. Plan en cascada de Cita Previa <span class="dur">30 min</span></h4>
-<p>En parejas. La Consejería os contrata Cita Previa con un plazo de 12 meses y un equipo de 6 personas (1 jefe de proyecto, 1 analista, 3 programadores, 1 tester).</p>
+<p>En parejas. La Conselleria os contrata Cita Previa con un plazo de 12 meses y un equipo de 6 personas (1 jefe de proyecto, 1 analista, 3 programadores, 1 tester).</p>
 <ol>
 <li>Escribid 8 requisitos funcionales y 4 no funcionales como aparecerían en la ERS. Los no funcionales deben ser medibles (por ejemplo, "la página de pedir cita carga en menos de 2 segundos con 500 usuarios simultáneos").</li>
 <li>Construid en una hoja de cálculo (o en <a href="https://app.diagrams.net/">diagrams.net</a>) un diagrama de Gantt con las seis fases, al menos dos tareas por fase, sus dependencias y tres hitos (ERS firmada, aceptación, puesta en producción).</li>
@@ -166,7 +166,7 @@
 </div>
 <div class="actividad">
 <h4>Actividad 3. El cambio del mes 9 <span class="dur">15 min</span></h4>
-<p>En el mes 9, durante las pruebas, la Consejería pide que las citas puedan ser también por videollamada y que el paciente reciba un recordatorio por SMS. Sobre vuestro plan:</p>
+<p>En el mes 9, durante las pruebas, la Conselleria pide que las citas puedan ser también por videollamada y que el paciente reciba un recordatorio por SMS. Sobre vuestro plan:</p>
 <ol>
 <li>¿Qué fases hay que repetir y qué documentos cambian?</li>
 <li>Estimad el retraso y el sobrecoste. ¿Qué haríais: aceptar el cambio, rechazarlo o dejarlo para una segunda fase? Justificadlo.</li>
@@ -257,7 +257,7 @@
 <h4>Los roles (responsabilidades)</h4>
 <p>Un equipo Scrum es pequeño, normalmente <b>10 personas o menos</b>, y tiene tres responsabilidades:</p>
 <ul>
-<li><b>Product Owner</b> (propietario del producto). Una sola persona responsable de maximizar el valor del producto. Gestiona el <i>Product Backlog</i>: decide qué se hace y en qué orden, y explica cada elemento. Habla con los usuarios y con quien paga. En Cita Previa sería, por ejemplo, una persona de la Consejería que conoce bien cómo funcionan los centros de salud.</li>
+<li><b>Product Owner</b> (propietario del producto). Una sola persona responsable de maximizar el valor del producto. Gestiona el <i>Product Backlog</i>: decide qué se hace y en qué orden, y explica cada elemento. Habla con los usuarios y con quien paga. En Cita Previa sería, por ejemplo, una persona de la Conselleria que conoce bien cómo funcionan los centros de salud.</li>
 <li><b>Developers</b> (desarrolladores). Todas las personas que construyen el incremento: programadores, pero también testers, diseñadores, personal de sistemas... Deciden <b>cómo</b> hacer el trabajo y cuánto pueden asumir en cada sprint. El equipo es <b>multifuncional</b> (tiene todas las habilidades necesarias) y <b>autogestionado</b>.</li>
 <li><b>Scrum Master</b>. Ayuda a que todos entiendan y apliquen Scrum, elimina impedimentos que bloquean al equipo, facilita los eventos y protege al equipo de interrupciones. No es un jefe de proyecto: no reparte tareas ni manda.</li>
 </ul>
@@ -295,7 +295,7 @@ Criterios de aceptación:
 <p>Muestra cuánto trabajo queda en el sprint (eje vertical) frente a los días (eje horizontal). Si la línea real queda por encima de la ideal, el equipo va con retraso y debe adaptar el plan, por ejemplo hablando con el Product Owner para sacar algo del sprint.</p>
 
 <h3>4. Scrum y la cascada aplicados a Cita Previa</h3>
-<p>Con Scrum, en lugar de 12 meses de fases, la Consejería tendría a los 15 días una primera versión muy pequeña pero real: por ejemplo, pedir cita para un único centro de salud piloto. En la <i>Sprint Review</i> la verían pacientes y personal del centro, que dirían qué falta o qué sobra. Si aparece la videoconsulta, el Product Owner la añade al backlog y decide en qué posición va; no hace falta renegociar el contrato completo. El riesgo cambia: en vez de descubrir los problemas en el mes 9, se descubren en la semana 2.</p>
+<p>Con Scrum, en lugar de 12 meses de fases, la Conselleria tendría a los 15 días una primera versión muy pequeña pero real: por ejemplo, pedir cita para un único centro de salud piloto. En la <i>Sprint Review</i> la verían pacientes y personal del centro, que dirían qué falta o qué sobra. Si aparece la videoconsulta, el Product Owner la añade al backlog y decide en qué posición va; no hace falta renegociar el contrato completo. El riesgo cambia: en vez de descubrir los problemas en el mes 9, se descubren en la semana 2.</p>
 <div class="aviso"><p><b>Límites de Scrum.</b> Scrum no dice nada de cómo programar ni de cómo desplegar. Un equipo puede hacer Scrum "de libro" y tardar tres semanas en poner en producción cada incremento porque el despliegue es manual y lo hace otro departamento. Por eso Scrum suele combinarse con prácticas técnicas (XP, sesión 3) y con DevOps (sesión 4).</p></div>
 
 <h3>5. Escalar Scrum</h3>
@@ -638,7 +638,7 @@ Despliegue continuo:    ... → pruebas de integración → entorno de revisión
 </div>
 <div class="actividad">
 <h4>Actividad 2. ¿Entrega o despliegue continuo? <span class="dur">20 min</span></h4>
-<p>Para cada organización, decidid si recomendaríais integración continua, entrega continua o despliegue continuo, y justificadlo en 3-4 líneas: (a) una tienda online con 30 desarrolladores; (b) el software de un marcapasos; (c) Cita Previa de la Consejería, con un comité que debe aprobar los cambios que afectan a datos de salud; (d) una startup con 3 personas; (e) una app bancaria que publica en las tiendas de Android e iOS; (f) el portal web de un ayuntamiento pequeño.</p>
+<p>Para cada organización, decidid si recomendaríais integración continua, entrega continua o despliegue continuo, y justificadlo en 3-4 líneas: (a) una tienda online con 30 desarrolladores; (b) el software de un marcapasos; (c) Cita Previa de la Conselleria, con un comité que debe aprobar los cambios que afectan a datos de salud; (d) una startup con 3 personas; (e) una app bancaria que publica en las tiendas de Android e iOS; (f) el portal web de un ayuntamiento pequeño.</p>
 </div>
 <div class="actividad">
 <h4>Actividad 3. Métricas DORA de un caso <span class="dur">20 min</span></h4>

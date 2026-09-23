@@ -55,7 +55,7 @@
 <p>"Pública" no significa que los datos sean públicos ni que cualquiera pueda acceder a tus máquinas. Significa que <b>el servicio está abierto a cualquiera que quiera contratarlo</b>, igual que la red eléctrica o una línea de autobús.</p>
 <h4>Esquema</h4>
 <pre><code>        Cliente A          Cliente B          Cliente C
-       (Consejería)      (tienda online)      (startup)
+      (Conselleria)      (tienda online)      (startup)
             │                  │                  │
             └──────── Internet / conexión dedicada ┘
                                │
@@ -129,7 +129,7 @@
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 1. Esquema de la nube pública <span class="dur">20 min</span></h4>
-<p>En parejas, dibujad en diagrams.net el esquema de una nube pública con tres clientes distintos (uno de ellos la Consejería con Cita Previa). Usad colores para distinguir: qué posee y opera el proveedor, qué recursos son compartidos, qué recursos virtuales son de cada cliente y cómo accede cada uno. Añadid una leyenda y una tabla de responsabilidades para una VM de Cita Previa (quién parchea el sistema operativo, quién protege el CPD, quién gestiona los datos).</p>
+<p>En parejas, dibujad en diagrams.net el esquema de una nube pública con tres clientes distintos (uno de ellos la Conselleria con Cita Previa). Usad colores para distinguir: qué posee y opera el proveedor, qué recursos son compartidos, qué recursos virtuales son de cada cliente y cómo accede cada uno. Añadid una leyenda y una tabla de responsabilidades para una VM de Cita Previa (quién parchea el sistema operativo, quién protege el CPD, quién gestiona los datos).</p>
 </div>
 <div class="actividad">
 <h4>Actividad 2. Estudio de mercado para Cita Previa <span class="dur">45 min</span></h4>
@@ -263,7 +263,7 @@ curl -sk -X POST -H "Authorization: PVEAPIToken=$PVE_TOKEN" \
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 1. Esquema comparativo pública/privada <span class="dur">20 min</span></h4>
-<p>En parejas, completad el esquema de la sesión 12 añadiendo al lado el de una nube privada de la Consejería de Sanidad con tres departamentos. Usad los mismos colores para propiedad, operación, uso compartido y recursos virtuales. Añadid una tercera columna para una nube privada alojada en un proveedor y señalad qué cambia.</p>
+<p>En parejas, completad el esquema de la sesión 12 añadiendo al lado el de una nube privada de la Conselleria de Sanitat con tres departamentos. Usad los mismos colores para propiedad, operación, uso compartido y recursos virtuales. Añadid una tercera columna para una nube privada alojada en un proveedor y señalad qué cambia.</p>
 </div>
 <div class="actividad">
 <h4>Actividad 2. Autoservicio en la nube privada del centro <span class="dur">45 min</span></h4>
@@ -311,7 +311,7 @@ curl -sk -X POST -H "Authorization: PVEAPIToken=$PVE_TOKEN" \
 <p>Según el NIST, una <b>nube híbrida</b> es la composición de dos o más infraestructuras de nube distintas (privada, comunitaria o pública) que <b>siguen siendo entidades independientes</b> pero están <b>unidas por tecnología estandarizada o propietaria</b> que permite la portabilidad de datos y aplicaciones.</p>
 <p>La definición tiene dos partes importantes:</p>
 <ul>
-<li>Las partes <b>siguen siendo independientes</b>: la nube privada de la Consejería sigue en su CPD, con su hardware; la parte pública sigue en el proveedor.</li>
+<li>Las partes <b>siguen siendo independientes</b>: la nube privada de la Conselleria sigue en su CPD, con su hardware; la parte pública sigue en el proveedor.</li>
 <li>Están <b>integradas</b>: hay conectividad privada entre ellas, la misma identidad de usuarios, herramientas de gestión comunes y la posibilidad de mover cargas y datos de un lado a otro. Si no hay integración, no es híbrida: es simplemente una organización que usa dos cosas por separado.</li>
 </ul>
 <p>En la práctica, el término se usa también para la combinación de <b>infraestructura on premise tradicional</b> (aunque no sea estrictamente nube privada) con una nube pública, que es la situación real de la mayoría de las organizaciones que llevan años funcionando.</p>
@@ -391,7 +391,7 @@ curl -sk -X POST -H "Authorization: PVEAPIToken=$PVE_TOKEN" \
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 1. Diseño híbrido de Cita Previa <span class="dur">25 min</span></h4>
-<p>En grupos de 3. La Consejería tiene un CPD con Proxmox y quiere mantener allí la historia clínica y la base de datos de citas. Necesita afrontar la campaña de vacunación (tráfico ×5 durante 8 semanas) y tener recuperación ante desastres. Dibujad el diseño híbrido: qué va en cada lado, cómo se conectan (y con qué rangos IP), cómo se autentican los usuarios, qué patrones de la tabla aplicáis y qué datos cruzan la conexión. Añadid tres riesgos y cómo los mitigáis.</p>
+<p>En grupos de 3. La Conselleria tiene un CPD con Proxmox y quiere mantener allí la historia clínica y la base de datos de citas. Necesita afrontar la campaña de vacunación (tráfico ×5 durante 8 semanas) y tener recuperación ante desastres. Dibujad el diseño híbrido: qué va en cada lado, cómo se conectan (y con qué rangos IP), cómo se autentican los usuarios, qué patrones de la tabla aplicáis y qué datos cruzan la conexión. Añadid tres riesgos y cómo los mitigáis.</p>
 </div>
 <div class="actividad">
 <h4>Actividad 2. Túnel VPN entre la nube privada y la pública <span class="dur">45 min</span></h4>
@@ -783,7 +783,7 @@ aws ec2 describe-instances --output json |
 </div>
 <div class="actividad">
 <h4>Actividad 2. Plan de gobernanza de Cita Previa <span class="dur">35 min</span></h4>
-<p>En grupos de 3. Cita Previa usará una nube privada (Proxmox de la Consejería) para los datos y AWS para la web, y Microsoft 365 para el correo del personal. Redactad un plan de gobernanza de 2 páginas con:</p>
+<p>En grupos de 3. Cita Previa usará una nube privada (Proxmox de la Conselleria) para los datos y AWS para la web, y Microsoft 365 para el correo del personal. Redactad un plan de gobernanza de 2 páginas con:</p>
 <ol>
 <li>Estructura de cuentas y entornos.</li>
 <li>Política de etiquetado (etiquetas obligatorias y valores).</li>
@@ -796,7 +796,7 @@ aws ec2 describe-instances --output json |
 </div>
 <div class="actividad">
 <h4>Actividad 3. ¿Qué falla aquí? <span class="dur">10 min</span></h4>
-<p>Este es un extracto del inventario de la Consejería. Localizad todos los incumplimientos del plan que acabáis de redactar y proponed una acción para cada uno.</p>
+<p>Este es un extracto del inventario de la Conselleria. Localizad todos los incumplimientos del plan que acabáis de redactar y proponed una acción para cada uno.</p>
 <div class="tabla"><table>
 <tr><th>Recurso</th><th>Plataforma y región</th><th>Estado</th><th>Etiquetas</th><th>Observaciones</th></tr>
 <tr><td>vm web-pro-1</td><td>AWS eu-south-2</td><td>En ejecución</td><td>proyecto=citaprevia; entorno=produccion; propietario=equipo-cp</td><td>Disco cifrado</td></tr>

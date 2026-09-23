@@ -948,7 +948,7 @@ updates:
 <li><b>Pruebas de humo</b> (<i>smoke tests</i>) e integración contra el contenedor en marcha: responde en <code>/salud</code>, devuelve citas, devuelve 404 donde debe, las cabeceras son correctas, no se ejecuta como root.</li>
 <li>Solo si todo pasa, <b>publicar</b> la imagen en el registro con su versión y el hash del commit, junto con su SBOM.</li>
 </ol>
-<p>Para las <b>integraciones externas</b> (el proveedor de SMS, una API de otra Consejería) se usan <b>simulaciones</b> (<i>mocks</i> o servidores falsos como WireMock) con el mismo contrato que el servicio real, o los entornos de pruebas (<i>sandbox</i>) que ofrecen los proveedores. Las <b>pruebas de contrato</b> verifican que el formato de las peticiones y respuestas que esperamos sigue siendo el que el proveedor ofrece.</p>
+<p>Para las <b>integraciones externas</b> (el proveedor de SMS, una API de otra Conselleria) se usan <b>simulaciones</b> (<i>mocks</i> o servidores falsos como WireMock) con el mismo contrato que el servicio real, o los entornos de pruebas (<i>sandbox</i>) que ofrecen los proveedores. Las <b>pruebas de contrato</b> verifican que el formato de las peticiones y respuestas que esperamos sigue siendo el que el proveedor ofrece.</p>
 <p class="fichero">.github/workflows/imagen.yml</p>
 <pre><code>name: Imagen
 on:
