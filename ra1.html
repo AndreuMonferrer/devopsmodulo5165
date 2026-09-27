@@ -2,7 +2,7 @@
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RA1. Metodologías de desarrollo de software | Módulo 5165</title>
-<link rel="stylesheet" href="assets/estilos.css?v=5">
+<link rel="stylesheet" href="assets/estilos.css?v=6">
 <script src="assets/tema.js?v=5"></script>
 </head><body style="--ra:#2f5d8a">
 <header class="cab"><div class="dentro"><nav class="menu" aria-label="Secciones"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="ra1.html" aria-current="page">RA1</a><a href="ra2.html">RA2</a><a href="ra3.html">RA3</a><a href="ra4.html">RA4</a><a href="ra5.html">RA5</a><a href="ra6.html">RA6</a><a href="ra7.html">RA7</a><button type="button" class="boton-tema" id="cambiar-tema">☾ Modo oscuro</button></nav>
@@ -19,7 +19,7 @@
 <h3>Plan de sesiones</h3>
 <div class="tabla"><table><tr><th>Sesión</th><th>Fecha</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#s1">S1</a></td><td>2 oct</td><td>Presentación del módulo. El ciclo de vida del software y la metodología en cascada</td><td>a</td></tr><tr><td><a href="#s2">S2</a></td><td>5 oct</td><td>El Manifiesto Ágil y Scrum</td><td>b</td></tr><tr><td><a href="#s3">S3</a></td><td>16 oct</td><td>Kanban, XP y Lean. Herramientas de gestión de proyectos</td><td>b, c</td></tr><tr><td><a href="#s4">S4</a></td><td>19 oct</td><td>DevOps: cultura, prácticas e integración y despliegue continuos</td><td>d</td></tr><tr><td><a href="#s5">S5</a></td><td>23 oct</td><td>El despliegue de aplicaciones en contenedores dentro de un flujo CI/CD</td><td>e</td></tr></table></div>
 <h3>Evaluación</h3>
-<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>60 %</b> prueba escrita (fecha por confirmar) y <b>40 %</b> trabajos de clase (plan en cascada, análisis de un caso real con Scrum, tablero del proyecto, mapa del flujo de valor y diseño del pipeline).</p>
+<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>50 %</b> prueba escrita (fecha por confirmar), <b>10 %</b> cuestionario de la unidad (sesión 5) y <b>40 %</b> trabajos de clase (plan en cascada, análisis de un caso real con Scrum, tablero del proyecto, mapa del flujo de valor y diseño del pipeline).</p>
 <p>Los criterios b y c se completan durante la formación en empresa con un breve informe: qué metodología y qué herramientas de gestión usa el equipo en el que hacéis las prácticas.</p>
 </section><section class="panel" role="tabpanel" id="p-s1" aria-labelledby="tab-s1" hidden>
 <p class="meta">Sesión 1 de 41 · viernes 2 de octubre de 2026 · 2 horas</p>
@@ -33,19 +33,20 @@
 <li>Reconocer en qué situaciones la cascada funciona y en cuáles fracasa, y conocer las variantes que intentaron corregirla.</li>
 </ul>
 
-<h3>1. El módulo en pocas palabras</h3>
+<h3>Introducción al módulo</h3>
 <p>Este curso de especialización forma a profesionales capaces de llevar una aplicación desde el código hasta un entorno de producción basado en contenedores. Este módulo, <b>Metodología DevOps: preparación de entornos de despliegue</b>, es la base sobre la que se apoyan los demás. Tiene tres partes:</p>
 <ol>
 <li><b>Cómo se trabaja (unidad 1).</b> Metodologías de desarrollo: cascada, ágil y DevOps. Sin entender por qué se automatiza, las herramientas no tienen sentido.</li>
 <li><b>Dónde se despliega (unidades 2, 3 y 4).</b> Infraestructura propia y en la nube, modelos de despliegue (pública, privada, híbrida, multinube) y modelos de servicio (SaaS, PaaS, IaaS, serverless).</li>
 <li><b>Cómo se prepara el entorno (unidades 5, 6 y 7).</b> Repositorios con control de acceso y validaciones automáticas, infraestructura como código con Terraform y automatización de la configuración y el despliegue con Ansible.</li>
 </ol>
-<p>Las clases son los lunes y viernes de 19:00 a 21:00. En la pestaña <a href="calendario.html">Calendario</a> tenéis todas las sesiones con su fecha. Cada sesión de esta web tiene la teoría completa, pensada para que podáis leerla con calma, y las actividades que haremos en clase con el tiempo previsto para cada una.</p>
+<p>En la pestaña <a href="calendario.html">Calendario</a> tenéis todas las sesiones con su fecha. Cada sesión de esta web tiene la teoría completa, pensada para que podáis leerla con calma, y las actividades que haremos en clase con el tiempo previsto para cada una.</p>
 
 <h4>El caso del curso: Cita Previa</h4>
 <p>Para que todo tenga un hilo conductor, trabajaremos sobre un proyecto ficticio: la <b>Conselleria de Sanitat</b> encarga una aplicación web, <b>Cita Previa</b>, para que los pacientes pidan, consulten y anulen citas con su médico de familia. La aplicación tendrá una parte web para pacientes, una parte de gestión para el personal del centro de salud y una API que usarán otras aplicaciones (por ejemplo, la app móvil). En la unidad 1 la usaremos para comparar metodologías; en las unidades 2-4 para decidir dónde desplegarla; y en las unidades 5-7 desplegaremos de verdad una versión sencilla en contenedores (<code>cita-previa-app</code>).</p>
 
-<h3>2. El ciclo de vida del software</h3>
+<div class="inicio-tema"><span>Empieza el tema</span>Unidad 1 · Metodologías de desarrollo de software</div>
+<h3>1. El ciclo de vida del software</h3>
 <p>Todo programa, desde una calculadora hasta el sistema de nóminas de un país, pasa por las mismas actividades básicas. A este conjunto se le llama <b>ciclo de vida del desarrollo de software</b> (SDLC, <i>Software Development Life Cycle</i>):</p>
 <div class="tabla"><table>
 <tr><th>Actividad</th><th>Pregunta que responde</th><th>Resultado típico</th></tr>
@@ -68,7 +69,7 @@
 </ul>
 <p>Una <b>metodología de desarrollo</b> es, por tanto, un conjunto de reglas, prácticas, roles y artefactos que decide cómo se organizan esas actividades. Las metodologías se suelen dividir en dos grandes familias: las <b>tradicionales</b> o predictivas (la cascada y sus variantes), que intentan planificar todo al principio, y las <b>ágiles</b> o adaptativas (Scrum, Kanban, XP), que asumen que el plan cambiará y trabajan en ciclos cortos. DevOps, que veremos en la sesión 4, extiende las ideas ágiles hasta la operación del sistema.</p>
 
-<h3>3. El modelo en cascada (Waterfall)</h3>
+<h3>2. El modelo en cascada (Waterfall)</h3>
 <h4>Origen</h4>
 <p>La cascada se asocia a un artículo de <b>Winston W. Royce</b> de 1970, <i>Managing the Development of Large Software Systems</i>. Curiosamente, Royce presentaba el modelo secuencial puro como <b>arriesgado</b> y proponía mejoras (repetir el proceso, prototipos, implicar al cliente). Sin embargo, el diagrama sencillo de fases en escalera fue el que se popularizó. En los años 70 y 80 se convirtió en estándar en grandes proyectos militares y de administraciones públicas (por ejemplo, la norma DOD-STD-2167 del Departamento de Defensa de EE. UU. en 1985), porque encajaba bien con los contratos cerrados y con la forma de gestionar la ingeniería civil: primero se diseña el puente y después se construye.</p>
 
@@ -106,7 +107,7 @@
 </table></div>
 <p>Fijaos en un detalle: <b>el paciente no ve nada funcionando hasta el mes 11</b>. Si en el mes 9 alguien descubre que los centros de salud necesitan citas por videollamada, o que la ERS olvidó a los pacientes que no tienen tarjeta sanitaria, el cambio afecta a requisitos, diseño, código y pruebas ya "cerrados".</p>
 
-<h3>4. Ventajas e inconvenientes de la cascada</h3>
+<h3>3. Ventajas e inconvenientes de la cascada</h3>
 <h4>Cuándo funciona</h4>
 <ul>
 <li><b>Requisitos estables y bien conocidos</b>: el problema ya está resuelto otras veces y el cliente sabe exactamente lo que quiere.</li>
@@ -131,7 +132,7 @@
 <p><b>Sistema de nóminas Phoenix (Canadá, 2016).</b> Se puso en producción de golpe para cientos de miles de empleados públicos, con funcionalidades recortadas y pruebas incompletas para cumplir el plazo. Miles de personas cobraron de menos, de más o no cobraron, y el coste de arreglarlo superó con mucho el del proyecto.</p>
 <p>En ambos casos se repite un patrón: mucho tiempo sin enseñar nada funcionando, integración tardía y un gran despliegue final sin posibilidad de marcha atrás.</p>
 
-<h3>5. Variantes de la cascada</h3>
+<h3>4. Variantes de la cascada</h3>
 <h4>Modelo en V</h4>
 <p>Asocia cada fase de desarrollo con un nivel de pruebas. Se dibuja como una V: la rama izquierda baja de lo general a lo concreto (requisitos, diseño de sistema, diseño de módulos, código) y la derecha sube verificando cada nivel (pruebas unitarias, de integración, de sistema, de aceptación). Su aportación es que <b>las pruebas se diseñan al mismo tiempo que la fase correspondiente</b>: al escribir los requisitos ya se escriben las pruebas de aceptación. Se usa mucho en la industria del automóvil y en sistemas críticos.</p>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 276" role="img" aria-label="Modelo en V" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-modelo_v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12.0" y="16.0" width="168.0" height="40.0" rx="6" class="d-azul"/><text x="96.0" y="36.0" class="t" text-anchor="middle" dominant-baseline="middle">Requisitos</text><rect x="62.0" y="84.0" width="168.0" height="40.0" rx="6" class="d-azul"/><text x="146.0" y="104.0" class="t" text-anchor="middle" dominant-baseline="middle">Diseño del sistema</text><rect x="112.0" y="152.0" width="168.0" height="40.0" rx="6" class="d-azul"/><text x="196.0" y="172.0" class="t" text-anchor="middle" dominant-baseline="middle">Diseño de módulos</text><rect x="276.0" y="220.0" width="168.0" height="44.0" rx="6" class="d-morado"/><text x="360.0" y="234.0" class="t" text-anchor="middle" dominant-baseline="middle">Implementación y</text><text x="360.0" y="250.0" class="t" text-anchor="middle" dominant-baseline="middle">pruebas unitarias</text><rect x="440.0" y="152.0" width="168.0" height="40.0" rx="6" class="d-verde"/><text x="524.0" y="172.0" class="t" text-anchor="middle" dominant-baseline="middle">Pruebas de integración</text><rect x="490.0" y="84.0" width="168.0" height="40.0" rx="6" class="d-verde"/><text x="574.0" y="104.0" class="t" text-anchor="middle" dominant-baseline="middle">Pruebas de sistema</text><rect x="540.0" y="16.0" width="168.0" height="40.0" rx="6" class="d-verde"/><text x="624.0" y="36.0" class="t" text-anchor="middle" dominant-baseline="middle">Pruebas de aceptación</text><path d="M121.0,58.0 L121.0,82.0" class="flecha " marker-end="url(#fl-modelo_v)"/><path d="M171.0,126.0 L171.0,150.0" class="flecha " marker-end="url(#fl-modelo_v)"/><path d="M196.0,194.0 L196.0,206.0 L360.0,206.0 L360.0,218.0" class="flecha " marker-end="url(#fl-modelo_v)"/><path d="M360.0,218.0 L360.0,206.0 L524.0,206.0 L524.0,194.0" class="flecha " marker-end="url(#fl-modelo_v)"/><path d="M549.0,150.0 L549.0,126.0" class="flecha " marker-end="url(#fl-modelo_v)"/><path d="M599.0,82.0 L599.0,58.0" class="flecha " marker-end="url(#fl-modelo_v)"/><path d="M182.0,36.0 L538.0,36.0" class="flecha disc " marker-end="url(#fl-modelo_v)"/><rect x="301.4" y="27.0" width="117.1" height="18" rx="3" class="fondo-etiqueta"/><text x="360.0" y="36.0" class="te" text-anchor="middle" dominant-baseline="middle">se diseñan juntas</text><path d="M232.0,104.0 L488.0,104.0" class="flecha disc " marker-end="url(#fl-modelo_v)"/><path d="M282.0,172.0 L438.0,172.0" class="flecha disc " marker-end="url(#fl-modelo_v)"/></svg></div><figcaption>El modelo en V: cada fase de diseño (izquierda) tiene su nivel de pruebas (derecha), que se prepara al mismo tiempo.</figcaption></figure>
@@ -142,20 +143,12 @@
 <h4>Prototipado y RUP</h4>
 <p>El <b>prototipado</b> construye versiones rápidas y desechables para descubrir requisitos con el cliente. El <b>Proceso Unificado de Rational</b> (RUP, finales de los 90) organiza el trabajo en fases (inicio, elaboración, construcción, transición) pero dentro de cada fase trabaja en iteraciones. Todos estos modelos son pasos hacia lo que en 2001 se llamaría desarrollo ágil: <b>iterar, entregar antes y aprender del cliente</b>.</p>
 
-<h3>6. Qué tiene que ver todo esto con los contenedores</h3>
+<h3>5. Qué tiene que ver todo esto con los contenedores</h3>
 <p>En la cascada el despliegue es una fase que ocurre una vez, al final, y la hace un equipo distinto del que programó. El programador entrega un paquete y un manual de instalación; el equipo de sistemas lo instala en servidores que no se parecen a los de desarrollo, y aparece el famoso <i>"en mi máquina funciona"</i>. Los contenedores, la integración continua y la infraestructura como código que veremos en el curso existen precisamente para que desplegar deje de ser un evento arriesgado y se convierta en algo <b>frecuente, repetible y automático</b>. Para llegar ahí, antes tuvo que cambiar la forma de organizar el trabajo: eso es lo que veremos en las próximas sesiones.</p>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Puesta en marcha <span class="dur">15 min</span></h4>
-<ol>
-<li>Comprobad que podéis entrar en el portátil del aula, en Aules y en esta web.</li>
-<li>Si no tenéis cuenta de GitHub, creadla ahora con vuestro correo (preferiblemente el del centro). Activad la verificación en dos pasos. La usaremos desde la sesión 3.</li>
-<li>Rellenad el formulario inicial de Aules: experiencia previa con Linux, Git, Docker y nube, y qué esperáis del curso.</li>
-</ol>
-</div>
-<div class="actividad">
-<h4>Actividad 2. Plan en cascada de Cita Previa <span class="dur">30 min</span></h4>
+<h4>Actividad 1. Plan en cascada de Cita Previa <span class="dur">30 min</span></h4>
 <p>En parejas. La Conselleria os contrata Cita Previa con un plazo de 12 meses y un equipo de 6 personas (1 jefe de proyecto, 1 analista, 3 programadores, 1 tester).</p>
 <ol>
 <li>Escribid 8 requisitos funcionales y 4 no funcionales como aparecerían en la ERS. Los no funcionales deben ser medibles (por ejemplo, "la página de pedir cita carga en menos de 2 segundos con 500 usuarios simultáneos").</li>
@@ -165,7 +158,7 @@
 <p class="entrega">Entrega en Aules: el Gantt (imagen o fichero) y la lista de requisitos.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 3. El cambio del mes 9 <span class="dur">15 min</span></h4>
+<h4>Actividad 2. El cambio del mes 9 <span class="dur">15 min</span></h4>
 <p>En el mes 9, durante las pruebas, la Conselleria pide que las citas puedan ser también por videollamada y que el paciente reciba un recordatorio por SMS. Sobre vuestro plan:</p>
 <ol>
 <li>¿Qué fases hay que repetir y qué documentos cambian?</li>
@@ -174,7 +167,7 @@
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 4. Un proyecto real que fracasó <span class="dur">25 min</span></h4>
+<h4>Actividad 3. Un proyecto real que fracasó <span class="dur">30 min</span></h4>
 <p>Cada pareja elige uno de estos casos (sin repetir): Healthcare.gov (EE. UU.), las nóminas Phoenix de Canadá, el sistema de gestión de expedientes del FBI (Virtual Case File), el sistema automático de equipajes del aeropuerto de Denver, LexNET o el sistema de citas del SEPE durante la pandemia. Buscad información en fuentes fiables (prensa, informes oficiales de auditoría, artículos técnicos) y tomad notas de:</p>
 <ul>
 <li>Qué se quería construir, para quién, cuánto costó y cuánto se retrasó.</li>
@@ -322,7 +315,7 @@ Criterios de aceptación:
 </div>
 <div class="actividad">
 <h4>Actividad 3. ¿Y si lo hubieran hecho con Scrum? <span class="dur">40 min</span></h4>
-<p>Retomamos, con las mismas parejas, el proyecto fracasado que empezasteis a investigar en la actividad 4 de la sesión 1. Ahora que conocéis el Manifiesto Ágil y Scrum, vais a analizar qué habría cambiado con otra forma de trabajar.</p>
+<p>Retomamos, con las mismas parejas, el proyecto fracasado que empezasteis a investigar en la actividad 3 de la sesión 1. Ahora que conocéis el Manifiesto Ágil y Scrum, vais a analizar qué habría cambiado con otra forma de trabajar.</p>
 <ol>
 <li><b>Preparar la presentación (20 min).</b> Terminad la investigación y preparad 4-5 diapositivas (LibreOffice Impress o Google Presentaciones) con esta estructura:
  <ul>
@@ -469,19 +462,29 @@ Criterios de aceptación:
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. El juego de las monedas: el efecto del WIP <span class="dur">15 min</span></h4>
-<p>En grupos de 5. Cuatro personas son "estaciones de trabajo" y una cronometra. Hay que pasar 20 monedas (o tapones) por las cuatro estaciones; cada estación debe darles la vuelta una a una antes de pasarlas.</p>
+<h4>Actividad 1. Medir el flujo de un tablero Kanban <span class="dur">15 min</span></h4>
+<p>En parejas. Este es el tablero del equipo de mantenimiento de Cita Previa, que todavía no usa límites WIP:</p>
+<div class="tabla"><table>
+<tr><th>Columna</th><th>Pendiente</th><th>Análisis</th><th>En desarrollo</th><th>En revisión</th><th>En pruebas</th><th>Hecho (esta semana)</th></tr>
+<tr><td>Tarjetas</td><td>14</td><td>2</td><td>7</td><td>5</td><td>2</td><td>4</td></tr>
+<tr><td>Personas</td><td>-</td><td>1 analista</td><td>4 programadores</td><td>1 revisora</td><td>1 tester</td><td>-</td></tr>
+</table></div>
+<p>En las últimas cuatro semanas el equipo ha terminado 4, 5, 3 y 4 tarjetas.</p>
 <ol>
-<li>Ronda 1: cada estación pasa el lote completo de 20 cuando ha girado las 20. Se cronometra cuándo sale la primera moneda del sistema y cuándo la última.</li>
-<li>Ronda 2: lotes de 5.</li>
-<li>Ronda 3: de una en una.</li>
+<li>Calculad el <b>rendimiento</b> medio (tarjetas terminadas por semana) y el <b>trabajo en curso</b> actual (tarjetas empezadas y no terminadas: de Análisis a En pruebas).</li>
+<li>Con la <b>ley de Little</b>, calculad el <b>tiempo de ciclo</b> medio: ¿cuántas semanas tarda de media una tarjeta desde que se empieza hasta que se termina?</li>
+<li>¿Dónde está el <b>cuello de botella</b>? Justificadlo con los números del tablero.</li>
+<li>Proponed un <b>límite WIP</b> para cada columna. Si con esos límites el trabajo en curso total baja a 8 tarjetas y el equipo sigue terminando las mismas por semana, ¿cuál sería el nuevo tiempo de ciclo?</li>
+<li>Con el límite puesto, ¿qué debería hacer un programador que termina su tarea y ve la columna "En revisión" llena?</li>
 </ol>
-<p>Anotad los tiempos en una tabla y relacionadlos con el WIP, el lead time y la ley de Little. ¿Qué equivale a "lote de 20" en el desarrollo de software?</p>
-</div>
+<details><summary>Solución (para el profesor)</summary>
+<p>Rendimiento medio: (4 + 5 + 3 + 4) / 4 = 4 tarjetas por semana. Trabajo en curso: 2 + 7 + 5 + 2 = 16. Tiempo de ciclo: 16 / 4 = 4 semanas. Cuello de botella: "En revisión", con 5 tarjetas esperando a una sola revisora mientras 4 programadores siguen produciendo. Con 8 tarjetas en curso: 8 / 4 = 2 semanas, la mitad sin trabajar más. El programador no empieza nada nuevo: ayuda a revisar o a probar hasta que se libera sitio ("deja de empezar, empieza a terminar").</p>
+</details>
 <div class="actividad">
 <h4>Actividad 2. Tablero de Cita Previa en GitHub Projects <span class="dur">45 min</span></h4>
 <p>En los grupos de la sesión 2, usando el backlog que creasteis:</p>
 <ol>
+<li>Quien no tenga cuenta de GitHub, que la cree ahora (preferiblemente con el correo del centro) y active la verificación en dos pasos.</li>
 <li>Una persona crea un repositorio <code>cita-previa-gestion</code> y un proyecto (<i>Projects</i> → <i>New project</i> → plantilla <i>Board</i>). Invitad al resto del grupo y al profesor.</li>
 <li>Configurad las columnas: <i>Backlog</i>, <i>Listo para empezar</i>, <i>En curso</i>, <i>En revisión</i>, <i>Hecho</i>. Poned un límite WIP de 3 en "En curso" y de 2 en "En revisión" (en la configuración de cada columna).</li>
 <li>Cread cada historia de usuario como una <i>issue</i> con sus criterios de aceptación como lista de tareas en Markdown (<code>- [ ] criterio</code>) y etiquetas (<code>historia</code>, <code>error</code>, <code>infraestructura</code>).</li>
@@ -642,8 +645,18 @@ Criterios de aceptación:
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. ¿Entrega o despliegue continuo? <span class="dur">20 min</span></h4>
-<p>Para cada organización, decidid si recomendaríais integración continua, entrega continua o despliegue continuo, y justificadlo en 3-4 líneas: (a) una tienda online con 30 desarrolladores; (b) el software de un marcapasos; (c) Cita Previa de la Conselleria, con un comité que debe aprobar los cambios que afectan a datos de salud; (d) una startup con 3 personas; (e) una app bancaria que publica en las tiendas de Android e iOS; (f) el portal web de un ayuntamiento pequeño.</p>
+<h4>Actividad 2. ¿Qué prácticas de CI/CD recomendaríais? <span class="dur">25 min</span></h4>
+<p>Para cada organización, indicad qué prácticas de CI/CD recomendaríais: <b>integración continua, entrega continua y/o despliegue continuo</b>. Justificad vuestra decisión en 3-4 líneas. Tened en cuenta que las prácticas son acumulativas: la entrega continua parte de la integración continua, y el despliegue continuo añade la automatización del paso a producción.</p>
+<ol type="a">
+<li>Una plataforma de comercio electrónico con 40 desarrolladores que realiza varias decenas de cambios al día. Dispone de una buena batería de pruebas automáticas y puede revertir rápidamente una versión si se detecta un problema.</li>
+<li>El software de control de un marcapasos que se desarrolla durante varios años y cuyos cambios deben superar pruebas exhaustivas, certificaciones y revisiones antes de poder incorporarse al dispositivo.</li>
+<li>El sistema de Cita Previa de una Conselleria. Los cambios relacionados con datos de salud deben ser aprobados por un comité antes de llegar a producción, aunque las pruebas y la preparación de las versiones pueden automatizarse.</li>
+<li>Una startup de 3 personas que desarrolla una aplicación web nueva. El producto se encuentra en una fase de evolución muy rápida, los cambios son pequeños y el equipo dispone de pruebas automáticas y monitorización.</li>
+<li>Una aplicación bancaria desarrollada por un equipo de 50 personas. Cada cambio debe pasar pruebas automáticas, análisis de seguridad y controles internos. Una vez aprobada una versión, su publicación en Android e iOS se realiza siguiendo el proceso establecido por las tiendas.</li>
+<li>El portal web de un pequeño ayuntamiento, mantenido por un equipo externo. Se realizan pocos cambios al mes, pero cada cambio debe pasar una revisión antes de publicarse porque puede afectar a servicios utilizados por los ciudadanos.</li>
+<li>Una plataforma de vídeo en streaming con cientos de desarrolladores, despliegues frecuentes, pruebas automatizadas, monitorización en tiempo real y mecanismos de <i>rollback</i>. Los cambios pequeños pueden llegar a producción automáticamente.</li>
+<li>Una empresa que desarrolla software para maquinaria industrial. Los desarrolladores integran código varias veces al día y todas las modificaciones se someten automáticamente a pruebas, pero las nuevas versiones solo pueden instalarse en las máquinas después de una validación y autorización del cliente.</li>
+</ol>
 </div>
 <div class="actividad">
 <h4>Actividad 3. Métricas DORA de un caso <span class="dur">20 min</span></h4>
@@ -800,7 +813,7 @@ docker image history nginx:1.27</code></pre>
 <p>Contestad: ¿qué sistema operativo dice tener el contenedor? ¿Cuántos procesos veis dentro y cuántos ve <code>ps aux</code> fuera? ¿Cuántas capas tiene la imagen de nginx? Relacionadlo con namespaces y capas.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Construir la imagen de Cita Previa <span class="dur">30 min</span></h4>
+<h4>Actividad 2. Construir la imagen de Cita Previa <span class="dur">25 min</span></h4>
 <ol>
 <li>Cread una carpeta <code>cita-previa-app</code> con los ficheros <code>app.py</code>, <code>requirements.txt</code> y <code>Dockerfile</code> de la pestaña <a href="ra5.html#recursos">Recursos de la unidad 5</a>.</li>
 <li>Construid la imagen: <code>docker build -t cita-previa-app:0.1 .</code> y medid el tiempo.</li>
@@ -813,9 +826,14 @@ curl localhost:8001/salud ; curl localhost:8002/salud</code></pre></li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Diseño del pipeline de Cita Previa <span class="dur">25 min</span></h4>
+<h4>Actividad 3. Diseño del pipeline de Cita Previa <span class="dur">20 min</span></h4>
 <p>En los grupos habituales, dibujad en diagrams.net el pipeline completo de Cita Previa desde el commit hasta producción. Debe incluir: cada etapa con su herramienta, qué la dispara (pull request, fusión en main, etiqueta de versión), los entornos, dónde se construye la imagen y cuántas veces, dónde hay aprobación manual, qué estrategia de despliegue usaríais y cómo se volvería atrás. Añadid una nota explicando si es entrega o despliegue continuo y por qué, teniendo en cuenta que maneja datos de salud.</p>
 <p class="entrega">Entrega en Aules: respuestas de la actividad 1, capturas de la actividad 2 y diagrama del pipeline. Este diagrama lo retomaremos al empezar la unidad 5.</p>
+</div>
+<div class="actividad">
+<h4>Actividad 4. Cuestionario de la unidad 1 <span class="dur">20 min</span></h4>
+<p>Individual, en Aules y sin apuntes. Unas 20 preguntas de toda la unidad: tipo test, verdadero o falso y algún cálculo sencillo (ley de Little, eficiencia del flujo). Entran las cinco sesiones: cascada y sus variantes, Manifiesto Ágil y Scrum, Kanban, XP y Lean, DevOps y CI/CD, y contenedores.</p>
+<p>El cuestionario cuenta en la nota de la unidad. Además, sirve de preparación: <b>las preguntas de la prueba escrita serán de este mismo estilo</b>. Para estudiar, repasad las preguntas de repaso del final de cada sesión y los diagramas.</p>
 </div>
 
 <h3>Preguntas de repaso</h3>

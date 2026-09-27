@@ -185,3 +185,11 @@ main.con-indice{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:2.5re
 :root[data-tema="oscuro"] .l-magdalena,:root[data-tema="oscuro"] .cal td.magdalena{background:#1f3a24}
 :root[data-tema="oscuro"] .cal td.finde{color:#6e7681}
 :root[data-tema="oscuro"] .cal td.fuera{color:#484f58}
+
+/* Texto justificado */
+.panel p,.panel li{text-align:justify;-webkit-hyphens:auto;hyphens:auto}
+.panel .tabla p,.panel .tabla li,.panel .meta,.panel .chips,.unidades li{text-align:left;hyphens:manual}
+
+/* Inicio del tema dentro de una sesión */
+.inicio-tema{margin:2.8rem 0 -.6rem;padding:.7rem 1rem;background:var(--gris);border-left:6px solid var(--ra);font-weight:600;font-size:1.05rem}
+.inicio-tema span{display:block;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--suave)}
