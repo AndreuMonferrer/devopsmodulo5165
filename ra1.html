@@ -631,14 +631,24 @@ Criterios de aceptación:
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 10. Mapa del flujo de valor de Cita Previa <span class="dur">35 min</span></h4>
-<p>En grupos de 3-4. Partid de la tabla del apartado 5 (situación actual).</p>
+<p>En grupos de 3-4. Partid de la tabla del apartado 5 (situación actual). Los datos del caso son ficticios, pero iguales para todos los grupos.</p>
 <ol>
-<li>Dibujad el mapa en <a href="https://app.diagrams.net/">diagrams.net</a>: una caja por paso con su tiempo de proceso y su tiempo total, flechas entre pasos y una línea de tiempos debajo.</li>
-<li>Calculad la eficiencia del flujo.</li>
+<li>Dibujad el <b>mapa actual</b> en <a href="https://app.diagrams.net/">diagrams.net</a>: una caja por paso, flechas entre pasos y una línea de tiempos debajo (escalón alto: tiempo total del paso; escalón bajo: tiempo de proceso).</li>
+<li>Calculad la eficiencia del flujo: tiempo de proceso entre tiempo total, con las dos cifras en horas. Contad cada día como una jornada laboral de 8 horas.</li>
 <li>Marcad con un símbolo de alerta los tres mayores desperdicios (esperas, traspasos, retrabajo).</li>
-<li>Dibujad el <b>mapa futuro</b>: aplicad prácticas DevOps (CI, pruebas automáticas, despliegue automático, revisión en el mismo día, infraestructura como código). Estimad los nuevos tiempos y la nueva eficiencia.</li>
-<li>Para cada mejora, indicad qué práctica o herramienta la hace posible.</li>
+<li>Este trimestre el equipo solo puede implantar <b>tres mejoras</b>. Elegid del catálogo de abajo las tres que más reducen el tiempo total y justificad la elección.</li>
+<li>Dibujad el <b>mapa futuro</b> aplicando esas tres mejoras con los datos del catálogo (los pasos que no mejoran se quedan igual). Calculad el nuevo tiempo total y la nueva eficiencia, y comparadlos con los actuales.</li>
 </ol>
+<p><b>Catálogo de mejoras</b></p>
+<div class="tabla"><table>
+<tr><th>Mejora</th><th>Paso que cambia</th><th>Tiempo de proceso</th><th>Tiempo total</th></tr>
+<tr><td>A. El Product Owner prioriza cada semana, sin comité</td><td>Petición registrada y priorizada</td><td>1 h (igual)</td><td>10 días → 2 días</td></tr>
+<tr><td>B. Revisión de código el mismo día, con linter automático</td><td>Revisión de código</td><td>30 min (igual)</td><td>3 días → 4 h</td></tr>
+<tr><td>C. Pruebas automáticas en el pipeline de integración continua</td><td>Pruebas</td><td>4 h → 30 min</td><td>5 días → 2 h</td></tr>
+<tr><td>D. Cambio estándar preaprobado: el pipeline en verde hace de control</td><td>Aprobación del despliegue</td><td>30 min → 0</td><td>7 días → 30 min</td></tr>
+<tr><td>E. Despliegue continuo con contenedores</td><td>Despliegue</td><td>3 h → 15 min</td><td>14 días → 30 min</td></tr>
+<tr><td>F. Contratar un segundo tester</td><td>Pruebas</td><td>4 h → 2 h</td><td>5 días → 4 días</td></tr>
+</table></div>
 </div>
 <div class="actividad">
 <h4>Actividad 11. ¿Qué prácticas de CI/CD recomendaríais? <span class="dur">25 min</span></h4>
