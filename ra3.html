@@ -13,7 +13,7 @@
 <h2>Resultado de aprendizaje 3</h2>
 <p class="ra-texto">Selecciona el modelo de implementación o despliegue de infraestructura de nube más apropiado en función de las necesidades de funcionalidad, seguridad digital, escalabilidad o costes, valorando las opciones disponibles en el mercado.</p>
 <p>La unidad 2 distinguía entre tener la infraestructura en casa o en la nube. Pero "la nube" admite varios modelos de despliegue según quién es propietario de los recursos, quién los gestiona y con quién se comparten. En esta unidad los describimos, los dibujamos y, sobre todo, aprendemos a elegir: un hospital, una tienda online y un ayuntamiento no necesitan lo mismo.</p>
-<p>Trabajaremos con casos de empresas, un estudio de mercado de proveedores y el Proxmox del centro como ejemplo de nube privada.</p>
+<p>Trabajaremos con casos de empresas, un estudio de mercado de proveedores y la API de Docker de nuestros portátiles para practicar el autoservicio.</p>
 <h3>Criterios de evaluación</h3>
 <div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Sesiones</th></tr><tr><td><b>3a)</b></td><td>Se ha descrito el modelo de nube pública, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.</td><td><a href="#s12">S12</a></td></tr><tr><td><b>3b)</b></td><td>Se ha descrito el modelo de nube privada, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.</td><td><a href="#s13">S13</a></td></tr><tr><td><b>3c)</b></td><td>Se ha descrito el modelo de nube híbrida, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.</td><td><a href="#s14">S14</a></td></tr><tr><td><b>3d)</b></td><td>Se ha diferenciado entre nubes públicas y privadas, valorando la configuración más adecuada en función de las necesidades de una organización.</td><td><a href="#s15">S15</a></td></tr><tr><td><b>3e)</b></td><td>Se ha diferenciado entre servicios de nube híbrida y entornos multinube, identificando requisitos y casos de uso específicos.</td><td><a href="#s16">S16</a></td></tr><tr><td><b>3f)</b></td><td>Se han analizado entornos híbridos y de multinube, identificando sus respectivas necesidades de administración y gobernanza.</td><td><a href="#s17">S17</a></td></tr></table></div>
 <h3>Plan de sesiones</h3>
@@ -157,7 +157,7 @@
 <li>Describir el modelo de nube privada: propiedad de los recursos, uso exclusivo y funcionamiento.</li>
 <li>Distinguir entre nube privada en instalaciones propias, nube privada alojada y gestionada, y una simple infraestructura virtualizada.</li>
 <li>Conocer las plataformas con las que se construye una nube privada (OpenStack, Proxmox VE, VMware, OpenNebula...).</li>
-<li>Usar el Proxmox del centro como nube privada: autoservicio por consola y por API con permisos limitados.</li>
+<li>Practicar el autoservicio por API sobre una plataforma local (la API de Docker) y analizar quién puede usarla.</li>
 </ul>
 
 <h3>1. Qué es una nube privada</h3>
@@ -218,24 +218,19 @@
 <h4>Casos de uso</h4>
 <p>Administraciones públicas con datos sensibles, hospitales, banca y seguros, defensa, organizaciones con grandes cargas estables, centros de investigación y centros educativos (como el nuestro), y entornos de desarrollo internos.</p>
 
-<h3>5. El Proxmox del centro como nube privada</h3>
-<p>Nuestro Proxmox cumple buena parte de los requisitos:</p>
+<h3>5. Un ejemplo de nube privada ligera: Proxmox VE</h3>
+<p>Proxmox VE, muy usado en pymes y centros educativos, cumple buena parte de los requisitos:</p>
 <ul>
-<li><b>Autoservicio</b>: cada pareja tiene un usuario con permiso para crear VM en su <b>pool</b> a partir de plantillas, sin pedírselo al profesor.</li>
-<li><b>API REST</b> en <code>https://IP_PROXMOX:8006/api2/json</code>, que usan la interfaz web, la orden <code>pvesh</code> y Terraform (unidad 6).</li>
-<li><b>Permisos por rol</b>: roles como <code>PVEVMUser</code> (usar VM), <code>PVEVMAdmin</code> (administrarlas) o <code>PVEDatastoreUser</code> (usar un almacenamiento), asignados a usuarios o grupos sobre una ruta (<code>/pool/pareja1</code>, <code>/storage/local-lvm</code>).</li>
+<li><b>Autoservicio</b>: se pueden dar a cada equipo un usuario y un <b>pool</b> en el que crea sus propias VM a partir de plantillas, sin pedírselo a nadie.</li>
+<li><b>API REST</b>, que usan la interfaz web, la orden <code>pvesh</code> y herramientas como Terraform.</li>
+<li><b>Permisos por rol</b>: roles como <code>PVEVMUser</code> (usar VM) o <code>PVEVMAdmin</code> (administrarlas), asignados a usuarios o grupos sobre una ruta (por ejemplo, un pool).</li>
 <li><b>Tokens de API</b>: credenciales para programas, con permisos iguales o menores que los del usuario y que se pueden revocar.</li>
 <li><b>Medición</b>: gráficas de uso de CPU, memoria, red y disco por VM.</li>
 </ul>
 <p>Lo que le falta respecto a OpenStack: cuotas por proyecto integradas, portal de catálogo y facturación interna. Es una "nube privada ligera", suficiente para un centro educativo o una pyme.</p>
-<p>Ejemplo de uso de la API con un token (el secreto no se escribe en la orden, se lee de una variable):</p>
-<pre><code>export PVE="https://IP_PROXMOX:8006/api2/json"
-read -s PVE_TOKEN     # formato: usuario@pve!nombre=secreto
-# Listar las VM visibles para el token
-curl -sk -H "Authorization: PVEAPIToken=$PVE_TOKEN" "$PVE/cluster/resources?type=vm" | jq '.data[] | {vmid,name,status,pool}'
-# Clonar la plantilla 9000 como VM 3101 en el pool de la pareja
-curl -sk -X POST -H "Authorization: PVEAPIToken=$PVE_TOKEN" \
-     --data "newid=3101&name=api-pareja1&pool=pareja1&full=1" "$PVE/nodes/pve/qemu/9000/clone"</code></pre>
+<p>La idea clave es que <b>todo lo que se hace con clics se puede hacer por API</b>, y eso es lo que permite automatizar. En la actividad 2 lo practicaremos con una plataforma que ya tenemos en el portátil: <b>Docker también expone una API REST</b> (en el socket <code>/var/run/docker.sock</code>), que es la que usa por debajo la orden <code>docker</code>:</p>
+<pre><code># La orden docker ps, hecha directamente contra la API
+curl -s --unix-socket /var/run/docker.sock http://localhost/containers/json | jq '.[] | {Names, Image, State}'</code></pre>
 
 <h3>Actividades</h3>
 <div class="actividad">
@@ -243,25 +238,26 @@ curl -sk -X POST -H "Authorization: PVEAPIToken=$PVE_TOKEN" \
 <p>En parejas, completad el esquema de la sesión 12 añadiendo al lado el de una nube privada de la Conselleria de Sanitat con tres departamentos. Usad los mismos colores para propiedad, operación, uso compartido y recursos virtuales. Añadid una tercera columna para una nube privada alojada en un proveedor y señalad qué cambia.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Autoservicio en la nube privada del centro <span class="dur">45 min</span></h4>
-<p>En parejas, con el usuario y el token de API que os ha dado el profesor (permisos solo sobre vuestro pool).</p>
+<h4>Actividad 2. Autoservicio por API en una plataforma local <span class="dur">45 min</span></h4>
+<p>En parejas, en un portátil. Vamos a gestionar el ciclo de vida completo de un servidor web sin usar la orden <code>docker</code>, solo con la API, como haría un portal de autoservicio o Terraform. Todas las peticiones van al socket de Docker; para no repetirlo, definid primero <code>S=/var/run/docker.sock</code> y <code>U=http://localhost</code>.</p>
 <ol>
-<li>En la interfaz web, en <i>Datacenter → Permissions</i>, averiguad qué rol tiene vuestro usuario, sobre qué ruta y qué privilegios incluye ese rol. ¿Qué no podéis hacer?</li>
-<li>Intentad crear una VM fuera de vuestro pool o borrar una de otra pareja. Anotad el error.</li>
-<li>Con la API: listad las VM visibles con vuestro token. Comparad con lo que veis en la web.</li>
-<li>Clonad la plantilla por la API con un identificador del rango asignado a vuestra pareja. Consultad el estado de la tarea (el <code>clone</code> devuelve un identificador <code>UPID</code>; consultadlo en <code>/nodes/pve/tasks/UPID/status</code>).</li>
-<li>Arrancad la VM por la API (<code>POST .../qemu/VMID/status/start</code>), consultad su estado y sus métricas (<code>GET .../qemu/VMID/rrddata?timeframe=hour</code>).</li>
-<li>Paradla y borradla por la API (<code>DELETE .../qemu/VMID</code>).</li>
-<li>Guardad todas las órdenes en un script <code>autoservicio.sh</code> que reciba el nombre de la VM como parámetro.</li>
+<li><b>¿Quién puede usar la API?</b> Ejecutad <code>ls -l /var/run/docker.sock</code> e <code>id</code>. ¿Qué permisos tiene el socket y por qué vuestro usuario puede usarlo? Buscad en la documentación oficial de Docker (<i>Linux post-installation steps</i>) qué advierte sobre el grupo <code>docker</code>.</li>
+<li>Listad los contenedores por la API (<code>curl -s --unix-socket $S "$U/containers/json?all=true" | jq</code>) y comparad con <code>docker ps -a</code>.</li>
+<li>Descargad la imagen: <code>curl -s --unix-socket $S -X POST "$U/images/create?fromImage=nginx&amp;tag=stable"</code>.</li>
+<li>Cread el contenedor: <code>curl -s --unix-socket $S -X POST -H "Content-Type: application/json" -d '{"Image":"nginx:stable","HostConfig":{"PortBindings":{"80/tcp":[{"HostPort":"8081"}]}}}' "$U/containers/create?name=api-web"</code>. ¿Qué devuelve?</li>
+<li>Arrancadlo (<code>curl -s --unix-socket $S -X POST "$U/containers/api-web/start"</code>), abrid <code>http://localhost:8081</code> y consultad su estado (<code>curl -s --unix-socket $S "$U/containers/api-web/json" | jq .State</code>) y sus métricas (<code>curl -s --unix-socket $S "$U/containers/api-web/stats?stream=false" | jq .memory_stats.usage</code>): ¿cuánta memoria usa?</li>
+<li>Paradlo (<code>curl -s --unix-socket $S -X POST "$U/containers/api-web/stop"</code>) y borradlo (<code>curl -s --unix-socket $S -X DELETE "$U/containers/api-web"</code>).</li>
+<li>Guardad todas las órdenes en un script <code>autoservicio.sh</code> que reciba el nombre del contenedor y el puerto como parámetros.</li>
 </ol>
+<p>Para terminar, completad una tabla comparando el control de acceso de la API de Docker con el de Proxmox VE y AWS (apartado 5 y sesión 12): ¿hay usuarios, roles, tokens revocables y permisos limitados a un grupo de recursos? ¿Qué le falta a Docker para ser una nube privada?</p>
 </div>
 <div class="actividad">
 <h4>Actividad 3. ¿Nube privada o no? <span class="dur">15 min</span></h4>
-<p>Evaluad con las características del NIST y los requisitos del apartado 2 si estas infraestructuras son nube privada, y qué les falta: (a) un ayuntamiento con tres servidores VMware en los que el técnico crea las VM cuando se las piden por correo; (b) nuestro Proxmox; (c) una universidad con OpenStack, proyectos por grupo de investigación y cuotas; (d) un banco que alquila a un proveedor 20 servidores dedicados con OpenNebula que gestiona su propio equipo; (e) una empresa con toda su infraestructura en una VPC de AWS.</p>
+<p>Evaluad con las características del NIST y los requisitos del apartado 2 si estas infraestructuras son nube privada, y qué les falta: (a) un ayuntamiento con tres servidores VMware en los que el técnico crea las VM cuando se las piden por correo; (b) una pyme con Proxmox VE en la que cada departamento tiene un usuario y un pool para crear sus VM desde plantillas, con API y tokens, pero sin cuotas ni facturación; (c) una universidad con OpenStack, proyectos por grupo de investigación y cuotas; (d) un banco que alquila a un proveedor 20 servidores dedicados con OpenNebula que gestiona su propio equipo; (e) una empresa con toda su infraestructura en una VPC de AWS.</p>
 <p class="entrega">Entrega en Aules: esquema, capturas y script de la actividad 2, y respuestas de la actividad 3.</p>
 </div>
 <details><summary>Preparación previa (profesor)</summary>
-<p>Por pareja: usuario <code>parejaN@pve</code>, pool <code>parejaN</code>, rol <code>PVEVMAdmin</code> sobre <code>/pool/parejaN</code>, <code>PVEDatastoreUser</code> sobre el almacenamiento de discos y <code>PVETemplateUser</code> sobre <code>/vms/9000</code> (la plantilla), y un token con separación de privilegios con esos mismos permisos. Asignar a cada pareja un rango de VMID (por ejemplo, 3100-3109 para la pareja 1). Comprobar que <code>jq</code> está instalado en los portátiles.</p>
+<p>Comprobar que <code>curl</code> y <code>jq</code> están instalados en los portátiles (<code>sudo apt install -y curl jq</code>) y que Docker funciona sin <code>sudo</code> (instalado en la unidad 1).</p>
 </details>
 
 <h3>Preguntas de repaso</h3>
@@ -281,7 +277,7 @@ curl -sk -X POST -H "Authorization: PVEAPIToken=$PVE_TOKEN" \
 <li>Describir el modelo de nube híbrida: propiedad de los recursos, uso compartido y cómo se integran las partes.</li>
 <li>Conocer los elementos que hacen funcionar una nube híbrida: conectividad, identidad, gestión y datos.</li>
 <li>Identificar los patrones de uso más habituales (desbordamiento, recuperación ante desastres, arquitectura por capas...).</li>
-<li>Conectar la nube privada del centro con la nube pública mediante un túnel VPN.</li>
+<li>Conectar una infraestructura propia (el portátil) con la nube pública mediante un túnel VPN.</li>
 </ul>
 
 <h3>1. Qué es una nube híbrida</h3>
@@ -361,11 +357,11 @@ curl -sk -X POST -H "Authorization: PVEAPIToken=$PVE_TOKEN" \
 <p>En grupos de 3. La Conselleria tiene un CPD con Proxmox y quiere mantener allí la historia clínica y la base de datos de citas. Necesita afrontar la campaña de vacunación (tráfico ×5 durante 8 semanas) y tener recuperación ante desastres. Dibujad el diseño híbrido: qué va en cada lado, cómo se conectan (y con qué rangos IP), cómo se autentican los usuarios, qué patrones de la tabla aplicáis y qué datos cruzan la conexión. Añadid tres riesgos y cómo los mitigáis.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Túnel VPN entre la nube privada y la pública <span class="dur">45 min</span></h4>
-<p>En parejas vamos a unir una VM del Proxmox del centro con una VM de la nube pública mediante <b>WireGuard</b>, una VPN moderna y sencilla. Es un modelo reducido de una conexión sitio a sitio.</p>
+<h4>Actividad 2. Túnel VPN entre "nuestro CPD" y la nube pública <span class="dur">45 min</span></h4>
+<p>En parejas vamos a unir un portátil de la pareja, que hará de "CPD propio", con una VM de la nube pública mediante <b>WireGuard</b>, una VPN moderna y sencilla. Es un modelo reducido de una conexión sitio a sitio.</p>
 <ol>
-<li>Cread una VM Ubuntu en Proxmox (desde la plantilla, como en la sesión 10) y otra en el laboratorio de nube. En el grupo de seguridad de la de la nube, permitid SSH y el puerto <b>UDP 51820</b> desde la IP pública del centro.</li>
-<li>En ambas: <code>sudo apt install -y wireguard</code> y generad las claves: <code>wg genkey | tee priv.key | wg pubkey &gt; pub.key</code>.</li>
+<li>Cread una VM Ubuntu en el laboratorio de nube (como en la sesión 10). En su grupo de seguridad, permitid SSH y el puerto <b>UDP 51820</b> desde la IP pública del centro (podéis consultarla desde el portátil con <code>curl -s https://ifconfig.me</code>).</li>
+<li>En la VM y en el portátil: <code>sudo apt install -y wireguard</code> y generad las claves: <code>wg genkey | tee priv.key | wg pubkey &gt; pub.key</code>.</li>
 <li>En la VM de la nube, <code>/etc/wireguard/wg0.conf</code>:
 <pre><code>[Interface]
 Address = 172.16.99.1/24
@@ -373,30 +369,30 @@ ListenPort = 51820
 PrivateKey = CLAVE_PRIVADA_NUBE
 
 [Peer]
-PublicKey = CLAVE_PUBLICA_PROXMOX
+PublicKey = CLAVE_PUBLICA_PORTATIL
 AllowedIPs = 172.16.99.2/32</code></pre></li>
-<li>En la VM de Proxmox:
+<li>En el portátil, también en <code>/etc/wireguard/wg0.conf</code>:
 <pre><code>[Interface]
 Address = 172.16.99.2/24
-PrivateKey = CLAVE_PRIVADA_PROXMOX
+PrivateKey = CLAVE_PRIVADA_PORTATIL
 
 [Peer]
 PublicKey = CLAVE_PUBLICA_NUBE
 Endpoint = IP_PUBLICA_NUBE:51820
 AllowedIPs = 172.16.99.1/32
 PersistentKeepalive = 25</code></pre></li>
-<li>Levantad el túnel en las dos (<code>sudo wg-quick up wg0</code>), comprobad con <code>sudo wg show</code> y haced <code>ping 172.16.99.1</code> desde Proxmox.</li>
-<li>Instalad nginx en la VM de Proxmox y acceded a él desde la nube por la IP del túnel: <code>curl http://172.16.99.2</code>. Un servicio "privado" es accesible desde la nube sin exponerlo a Internet.</li>
+<li>Levantad el túnel en las dos (<code>sudo wg-quick up wg0</code>), comprobad con <code>sudo wg show</code> y haced <code>ping 172.16.99.1</code> desde el portátil.</li>
+<li>Levantad un servidor web en el portátil (<code>docker run -d --name s14-web -p 8080:80 nginx:stable</code>) y acceded a él desde la VM de la nube por la IP del túnel: <code>curl http://172.16.99.2:8080</code>. Un servicio "privado" es accesible desde la nube sin exponerlo a Internet.</li>
 <li>Medid la latencia (<code>ping</code>) y el ancho de banda aproximado (<code>iperf3</code>, si da tiempo) por el túnel. ¿Qué implicaciones tiene para el patrón "web en la nube, base de datos en el CPD"?</li>
 </ol>
 </div>
 <div class="actividad">
 <h4>Actividad 3. Clasificar patrones <span class="dur">10 min</span></h4>
 <p>Asociad cada situación a un patrón híbrido: (a) un periódico que recibe diez veces más visitas la noche de elecciones; (b) un hospital que copia cada noche sus copias de seguridad cifradas a un bucket europeo; (c) una empresa que prueba cada versión en la nube antes de instalarla en su CPD; (d) una cadena de supermercados con servidores en cada tienda gestionados desde Azure Arc; (e) un banco que tiene su web en la nube pero las cuentas en su mainframe.</p>
-<p class="entrega">Entrega en Aules: diseño híbrido, capturas del túnel y de las pruebas, y clasificación. Apagad y borrad las dos VM al terminar.</p>
+<p class="entrega">Entrega en Aules: diseño híbrido, capturas del túnel y de las pruebas, y clasificación. Al terminar: <code>sudo wg-quick down wg0</code> en el portátil, <code>docker rm -f s14-web</code> y terminad la instancia de la nube.</p>
 </div>
 <details><summary>Preparación previa (profesor)</summary>
-<p>Comprobar que la red del centro permite tráfico UDP saliente al puerto 51820 (si no, usar otro puerto permitido, por ejemplo UDP 443, en <code>ListenPort</code> y <code>Endpoint</code>). La VM de Proxmox inicia la conexión, así que no hace falta abrir puertos en el centro.</p>
+<p>Comprobar que la red del centro permite tráfico UDP saliente al puerto 51820 (si no, usar otro puerto permitido, por ejemplo UDP 443, en <code>ListenPort</code> y <code>Endpoint</code>). El portátil inicia la conexión, así que no hace falta abrir puertos en el centro. Los portátiles necesitan permiso de <code>sudo</code> para instalar WireGuard.</p>
 </details>
 
 <h3>Preguntas de repaso</h3>
@@ -610,7 +606,7 @@ PersistentKeepalive = 25</code></pre></li>
 <p>Duplicar herramientas, formación y certificaciones; perder descuentos por volumen al repartir el gasto; transferencia de datos entre proveedores; mayor superficie de ataque; y la complejidad de diagnosticar problemas que atraviesan varias nubes. La multinube debe tener un motivo claro: "por si acaso" no suele justificar su coste.</p>
 
 <h3>5. La portabilidad en la práctica: contenedores</h3>
-<p>El contenedor es la herramienta de portabilidad más potente que tenemos: la misma imagen de <code>cita-previa-app</code> se puede ejecutar en un Docker del Proxmox del centro, en Amazon ECS, en Azure Container Apps, en Google Cloud Run o en cualquier Kubernetes. Lo que cambia entre plataformas es <b>cómo se despliega</b> (la definición del servicio, la red, los secretos), no la aplicación. Por eso los contenedores son el núcleo de este curso de especialización.</p>
+<p>El contenedor es la herramienta de portabilidad más potente que tenemos: la misma imagen de <code>cita-previa-app</code> se puede ejecutar en el Docker de nuestro portátil, en Amazon ECS, en Azure Container Apps, en Google Cloud Run o en cualquier Kubernetes. Lo que cambia entre plataformas es <b>cómo se despliega</b> (la definición del servicio, la red, los secretos), no la aplicación. Por eso los contenedores son el núcleo de este curso de especialización.</p>
 
 <h3>Actividades</h3>
 <div class="actividad">
@@ -619,10 +615,10 @@ PersistentKeepalive = 25</code></pre></li>
 </div>
 <div class="actividad">
 <h4>Actividad 2. La misma imagen en dos plataformas <span class="dur">50 min</span></h4>
-<p>En parejas. Vamos a comprobar la portabilidad desplegando <code>cita-previa-app</code> (sesión 5) en una VM de la nube privada y en un servicio de contenedores de la nube pública.</p>
+<p>En parejas. Vamos a comprobar la portabilidad desplegando <code>cita-previa-app</code> (sesión 5) en infraestructura propia (vuestro portátil) y en un servicio de contenedores de la nube pública.</p>
 <ol>
 <li>Publicad la imagen en un registro público: cread un token de GitHub con permiso <code>write:packages</code>, iniciad sesión (<code>echo $TOKEN | docker login ghcr.io -u USUARIO --password-stdin</code>), etiquetad y subid: <code>docker tag cita-previa-app:0.2 ghcr.io/USUARIO/cita-previa-app:0.2</code> y <code>docker push ...</code>. En GitHub, en el paquete, cambiad su visibilidad a pública.</li>
-<li><b>Nube privada</b>: en una VM del Proxmox con Docker, <code>docker run -d -p 80:8000 -e ENTORNO=privada ghcr.io/USUARIO/cita-previa-app:0.2</code> y probad <code>/salud</code>.</li>
+<li><b>Infraestructura propia</b>: en el portátil de vuestra pareja (así comprobáis que se descarga del registro y no de la caché local), <code>docker run -d -p 8000:8000 -e ENTORNO=privada ghcr.io/USUARIO/cita-previa-app:0.2</code> y probad <code>http://localhost:8000/salud</code>.</li>
 <li><b>Nube pública</b>: desplegad la misma imagen como servicio de contenedores gestionado. En AWS Academy (región <code>us-east-1</code>): <i>ECS → Clusters → Create</i> (AWS Fargate), definición de tarea con la imagen, puerto 8000, variable <code>ENTORNO=publica</code>, <code>LabRole</code> como rol de tarea y de ejecución, y un servicio con IP pública en una subred pública y un grupo de seguridad que abra el 8000 solo a vuestra IP. Si el laboratorio no permite usar ECS, desplegad la imagen en una instancia EC2 con Docker instalado mediante datos de usuario (sesión 10) y anotad en la tabla la diferencia de trabajo entre ambas opciones.</li>
 <li>Comprobad <code>/salud</code> en ambos sitios: la respuesta solo cambia en la variable de entorno.</li>
 <li>Anotad en una tabla qué fue igual y qué fue distinto en cada plataforma: cómo se indica la imagen, la red, las variables, los registros, cuánto tardó y qué habría que cambiar para migrar de una a otra.</li>
@@ -724,24 +720,26 @@ PersistentKeepalive = 25</code></pre></li>
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 1. Inventario automatizado con etiquetas <span class="dur">40 min</span></h4>
-<p>En parejas. El objetivo es obtener un inventario conjunto de la nube privada (Proxmox) y la pública (AWS) y detectar recursos que incumplen la política de etiquetado.</p>
+<p>En parejas. El objetivo es obtener un inventario conjunto de la infraestructura propia (Docker en el portátil) y de la nube pública (AWS) y detectar recursos que incumplen la política de etiquetado. En Docker, las etiquetas se llaman <i>labels</i>.</p>
 <ol>
-<li>Cread dos VM en Proxmox desde la plantilla y dos instancias pequeñas en AWS. Etiquetad solo una de cada lado con <code>proyecto=citaprevia</code>, <code>entorno=revision</code> y <code>propietario=vuestro-correo</code> (en Proxmox las etiquetas son una lista: usad <code>citaprevia;revision</code>).</li>
+<li>Configurad el AWS CLI en el portátil: si no está, <code>sudo snap install aws-cli --classic</code>. En el Learner Lab, en <i>AWS Details → AWS CLI → Show</i>, copiad las credenciales en <code>~/.aws/credentials</code> y cread <code>~/.aws/config</code> con <code>[default]</code> y <code>region = us-east-1</code>. Comprobad con <code>aws sts get-caller-identity</code>.</li>
+<li>Cread dos instancias pequeñas en AWS y dos contenedores en el portátil. Etiquetad solo uno de cada lado con <code>proyecto=citaprevia</code>, <code>entorno=revision</code> y <code>propietario=vuestro-correo</code>. En Docker: <code>docker run -d --name cp-rev-1 --label proyecto=citaprevia --label entorno=revision --label propietario=vuestro-correo nginx:stable</code> y <code>docker run -d --name prueba-sin-etiquetar nginx:stable</code>.</li>
 <li>Escribid un script <code>inventario.sh</code> que genere un CSV con columnas <code>plataforma,id,nombre,estado,etiquetas</code>:
 <pre><code>#!/usr/bin/env bash
 set -euo pipefail
 echo "plataforma,id,nombre,estado,etiquetas"
-# Proxmox: token en la variable PVE_TOKEN
-curl -sk -H "Authorization: PVEAPIToken=$PVE_TOKEN" "$PVE/cluster/resources?type=vm" |
-  jq -r '.data[] | ["proxmox", .vmid, .name, .status, (.tags // "")] | @csv'
+# Docker (infraestructura propia)
+docker ps -aq | xargs -r docker inspect |
+jq -r '.[] | ["docker", .Id[0:12], (.Name | ltrimstr("/")), .State.Status,
+((.Config.Labels // {}) | to_entries | map(.key+"="+.value) | join(";"))] | @csv'
 # AWS
 aws ec2 describe-instances --output json |
-  jq -r '.Reservations[].Instances[] |
-    ["aws", .InstanceId, ((.Tags // [])[] | select(.Key=="Name") | .Value) // "",
-     .State.Name, ((.Tags // []) | map(.Key+"="+.Value) | join(";"))] | @csv'</code></pre></li>
-<li>Ejecutadlo y abrid el CSV en la hoja de cálculo. Añadid una segunda parte al script que liste solo los recursos <b>sin</b> la etiqueta <code>proyecto</code> (pista: <code>grep -v</code> o un filtro <code>select</code> en jq).</li>
+jq -r '.Reservations[].Instances[] |
+["aws", .InstanceId, ((.Tags // [])[] | select(.Key=="Name") | .Value) // "",
+.State.Name, ((.Tags // []) | map(.Key+"="+.Value) | join(";"))] | @csv'</code></pre></li>
+<li>Ejecutadlo y abrid el CSV en la hoja de cálculo. ¿Por qué el contenedor "sin etiquetar" tiene alguna etiqueta? (Pista: las imágenes también llevan <i>labels</i>.) Añadid una segunda parte al script que liste solo los recursos <b>sin</b> la etiqueta <code>proyecto</code> (pista: <code>grep -v</code> o un filtro <code>select</code> en jq).</li>
 <li>En AWS, buscad los recursos por etiqueta con <i>Resource Groups &amp; Tag Editor</i> y comparad con vuestro script.</li>
-<li>Borrad las cuatro máquinas.</li>
+<li>Limpiad: <code>docker rm -f cp-rev-1 prueba-sin-etiquetar</code>, terminad las dos instancias y borrad <code>~/.aws/credentials</code> del portátil.</li>
 </ol>
 </div>
 <div class="actividad">
