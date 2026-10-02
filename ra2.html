@@ -12,8 +12,8 @@
 <p class="meta">Unidad 2 de 7 · 6 sesiones · 12 horas · del 26 oct al 13 nov</p>
 <h2>Resultado de aprendizaje 2</h2>
 <p class="ra-texto">Evalúa la localización de la infraestructura física de tecnologías de la información (TI), diferenciando entre su ubicación en instalaciones propias (on premise) y en la nube (cloud).</p>
-<p>Cualquier entorno de despliegue se apoya en servidores, redes y discos que están en algún sitio. En esta unidad comparamos las dos grandes opciones: tener esa infraestructura en instalaciones propias, como el servidor Proxmox del centro, o alquilarla a un proveedor de nube como AWS, Azure o Google Cloud. Veremos cómo funciona la nube por dentro, por qué se paga por uso, cuándo sale a cuenta y cómo se traducen servidores, redes y almacenamiento en recursos virtuales que se crean en segundos.</p>
-<p>Trabajaremos con la consola de un proveedor (AWS Academy Learner Lab), sus calculadoras de precios y el Proxmox del centro.</p>
+<p>Cualquier entorno de despliegue se apoya en servidores, redes y discos que están en algún sitio. En esta unidad comparamos las dos grandes opciones: tener esa infraestructura en instalaciones propias, como la sala de servidores de una empresa, o alquilarla a un proveedor de nube como AWS, Azure o Google Cloud. Veremos cómo funciona la nube por dentro, por qué se paga por uso, cuándo sale a cuenta y cómo se traducen servidores, redes y almacenamiento en recursos virtuales que se crean en segundos.</p>
+<p>Trabajaremos con la consola de un proveedor (AWS Academy Learner Lab), sus calculadoras de precios, un caso práctico de infraestructura propia y nuestros propios portátiles.</p>
 <h3>Criterios de evaluación</h3>
 <div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Sesiones</th></tr><tr><td><b>2a)</b></td><td>Se ha definido el concepto de infraestructura de nube, diferenciándolo del de infraestructura propia (on premise). <em>(se completa en la formación en empresa)</em></td><td><a href="#s6">S6</a></td></tr><tr><td><b>2b)</b></td><td>Se ha descrito el funcionamiento de la infraestructura de nube, vinculándolo con su modelo de negocio.</td><td><a href="#s7">S7</a></td></tr><tr><td><b>2c)</b></td><td>Se han analizado los beneficios de la infraestructura de nube con respecto a la infraestructura propia (on premise). <em>(se completa en la formación en empresa)</em></td><td><a href="#s8">S8</a></td></tr><tr><td><b>2d)</b></td><td>Se ha diferenciado entre la infraestructura de nube y la arquitectura de nube, relacionándolos con los recursos de computación y la ejecución de aplicaciones web.</td><td><a href="#s9">S9</a></td></tr><tr><td><b>2e)</b></td><td>Se ha determinado el conjunto de componentes hardware y software básico de la infraestructura en la nube, relacionándolo con el aprovisionamiento de recursos virtuales y la implementación de cargas de trabajo en la nube.</td><td><a href="#s10">S10</a></td></tr><tr><td><b>2f)</b></td><td>Se han caracterizado los componentes de la infraestructura de nube, especificando lo relativo a servidores, redes, almacenamiento y software.</td><td><a href="#s11">S11</a></td></tr></table></div>
 <h3>Plan de sesiones</h3>
@@ -31,7 +31,7 @@
 <li>Explicar qué significa tener la infraestructura en instalaciones propias (on premise) y qué responsabilidades implica.</li>
 <li>Definir la infraestructura de nube según el NIST y sus cinco características esenciales.</li>
 <li>Diferenciar on premise, alojamiento tradicional, colocation y nube.</li>
-<li>Explorar la consola de un proveedor de nube y el servidor Proxmox del centro.</li>
+<li>Explorar la consola de un proveedor de nube y analizar el inventario de una infraestructura propia real.</li>
 </ul>
 
 <h3>1. Qué es la infraestructura de TI</h3>
@@ -48,7 +48,7 @@
 <p>Sobre esta infraestructura se ejecutan las <b>cargas de trabajo</b> (<i>workloads</i>): las aplicaciones y servicios que usa la organización, como la web de Cita Previa, el correo o el ERP.</p>
 
 <h3>2. Infraestructura propia: on premise</h3>
-<p><b>On premise</b> ("en las instalaciones", a menudo abreviado <i>on-prem</i>) significa que la organización <b>compra, instala, aloja y gestiona</b> su propia infraestructura en sus propias instalaciones. El ejemplo más cercano es el servidor Proxmox del centro: está en una sala del instituto, se compró con presupuesto del centro y lo administra el profesorado.</p>
+<p><b>On premise</b> ("en las instalaciones", a menudo abreviado <i>on-prem</i>) significa que la organización <b>compra, instala, aloja y gestiona</b> su propia infraestructura en sus propias instalaciones. Un ejemplo típico es la sala de servidores de una pyme: los equipos se compran con presupuesto propio, están en un cuarto del edificio y los administra personal de la empresa o un servicio técnico contratado.</p>
 <h4>El centro de proceso de datos (CPD)</h4>
 <p>Una organización mediana o grande tiene uno o varios <b>CPD</b> (centro de proceso de datos, <i>data center</i>). Diseñar y mantener un CPD exige cuidar aspectos que a menudo se olvidan:</p>
 <ul>
@@ -115,8 +115,24 @@
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 210" role="img" aria-label="Regiones y zonas" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-region_az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="10" width="540" height="190" rx="8" class="d-grupo-azul"/><text x="22" y="25" class="tt">Región (por ejemplo, Madrid)</text><rect x="28" y="40" width="160" height="146" rx="8" class="d-grupo"/><text x="38" y="55" class="tt">Zona de disponibilidad a</text><rect x="202" y="40" width="160" height="146" rx="8" class="d-grupo"/><text x="212" y="55" class="tt">Zona de disponibilidad b</text><rect x="376" y="40" width="160" height="146" rx="8" class="d-grupo"/><text x="386" y="55" class="tt">Zona de disponibilidad c</text><path d="M44,78 A64.0,8 0 0 1 172,78 L172,102 A64.0,8 0 0 1 44,102 z" class="d-gris"/><path d="M44,78 A64.0,8 0 0 0 172,78" class="d-gris" fill="none"/><text x="108.0" y="90.0" class="t" text-anchor="middle" dominant-baseline="middle">CPD</text><rect x="44.0" y="126.0" width="128.0" height="40.0" rx="6" class="d-azul"/><text x="108.0" y="138.0" class="t" text-anchor="middle" dominant-baseline="middle">Réplica de la</text><text x="108.0" y="154.0" class="t" text-anchor="middle" dominant-baseline="middle">app</text><path d="M218,78 A64.0,8 0 0 1 346,78 L346,102 A64.0,8 0 0 1 218,102 z" class="d-gris"/><path d="M218,78 A64.0,8 0 0 0 346,78" class="d-gris" fill="none"/><text x="282.0" y="90.0" class="t" text-anchor="middle" dominant-baseline="middle">CPD</text><rect x="218.0" y="126.0" width="128.0" height="40.0" rx="6" class="d-azul"/><text x="282.0" y="138.0" class="t" text-anchor="middle" dominant-baseline="middle">Réplica de la</text><text x="282.0" y="154.0" class="t" text-anchor="middle" dominant-baseline="middle">app</text><path d="M392,78 A64.0,8 0 0 1 520,78 L520,102 A64.0,8 0 0 1 392,102 z" class="d-gris"/><path d="M392,78 A64.0,8 0 0 0 520,78" class="d-gris" fill="none"/><text x="456.0" y="90.0" class="t" text-anchor="middle" dominant-baseline="middle">CPD</text><rect x="392.0" y="126.0" width="128.0" height="40.0" rx="6" class="d-azul"/><text x="456.0" y="138.0" class="t" text-anchor="middle" dominant-baseline="middle">Réplica de la</text><text x="456.0" y="154.0" class="t" text-anchor="middle" dominant-baseline="middle">app</text><rect x="576.0" y="50.0" width="132.0" height="66.0" rx="6" class="d-verde"/><text x="642.0" y="60.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Ubicaciones</text><text x="642.0" y="76.0" class="t tb" text-anchor="middle" dominant-baseline="middle">perimetrales</text><text x="642.0" y="92.0" class="ts" text-anchor="middle" dominant-baseline="middle">CDN cerca de los</text><text x="642.0" y="108.0" class="ts" text-anchor="middle" dominant-baseline="middle">usuarios</text><rect x="576.0" y="140.0" width="132.0" height="44.0" rx="6" class="d-gris"/><text x="642.0" y="162.0" class="t" text-anchor="middle" dominant-baseline="middle">Usuarios</text><path d="M642.0,138.0 L642.0,118.0" class="flecha " marker-end="url(#fl-region_az)"/><path d="M174.0,90.0 L216.0,90.0" class="flecha " marker-end="url(#fl-region_az)" marker-start="url(#fl-region_az)"/><rect x="149.1" y="81.0" width="91.9" height="18" rx="3" class="fondo-etiqueta"/><text x="195.0" y="90.0" class="te" text-anchor="middle" dominant-baseline="middle">baja latencia</text><path d="M348.0,90.0 L390.0,90.0" class="flecha " marker-end="url(#fl-region_az)" marker-start="url(#fl-region_az)"/></svg></div><figcaption>Una región de nube tiene varias zonas de disponibilidad, cada una con CPD independientes. Repartir la aplicación entre zonas la protege del fallo de un CPD.</figcaption></figure>
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Inventario de la infraestructura del centro <span class="dur">25 min</span></h4>
-<p>En parejas. El profesor enseñará el servidor Proxmox del centro (interfaz web) y, si es posible, la sala donde está. Completad una ficha con: hardware (modelo, CPU, núcleos, RAM, discos), hipervisor y versión, red (a qué red está conectado, IP de gestión), almacenamiento (tipos de almacenamiento definidos en Proxmox), energía (¿tiene SAI?), refrigeración, copias de seguridad y quién lo administra. Después, clasificad cada elemento en las capas del apartado 1 y escribid tres riesgos de este servidor (qué pasaría si falla un disco, si se va la luz un fin de semana o si se necesita el triple de máquinas).</p>
+<h4>Actividad 1. Inventario de una infraestructura propia <span class="dur">25 min</span></h4>
+<p>En parejas. Una gestoría de Castellón con 40 empleados tiene toda su informática en un cuarto de su oficina. Este es su inventario:</p>
+<div class="tabla"><table>
+<tr><th>Elemento</th><th>Datos</th></tr>
+<tr><td>Servidor 1 (2023)</td><td>Dell PowerEdge R650xs, 2 procesadores Intel Xeon Silver 4310 (12 núcleos y 24 hilos cada uno), 128 GB de RAM, 4 SSD de 960 GB en RAID 10. Hipervisor Microsoft Hyper-V (Windows Server 2022) con 8 máquinas virtuales: controlador de dominio, ficheros, programa de gestión (ERP), base de datos, correo, web interna, escritorio remoto y pruebas.</td></tr>
+<tr><td>Servidor 2 (2018)</td><td>HPE ProLiant DL360 Gen10, 1 procesador Xeon Silver 4110 (8 núcleos y 16 hilos), 64 GB de RAM, 2 discos duros de 2 TB en RAID 1. Sin uso fijo: se guarda "por si acaso".</td></tr>
+<tr><td>Copias de seguridad</td><td>NAS Synology DS920+ con 4 discos de 4 TB, en el mismo cuarto. Copia cada noche de las 8 VM. No hay copia fuera de la oficina.</td></tr>
+<tr><td>Red</td><td>Un conmutador de 24 puertos a 1 Gb/s y un router de fibra de 600 Mb/s simétricos. Una única línea de un solo operador.</td></tr>
+<tr><td>Energía</td><td>Un SAI APC de 1500 VA que da unos 12 minutos de autonomía a los dos servidores.</td></tr>
+<tr><td>Refrigeración</td><td>Un aire acondicionado doméstico (split) en el cuarto, que se apaga si se va la luz.</td></tr>
+<tr><td>Administración</td><td>Una empresa de mantenimiento externa, con dos visitas al mes y atención telefónica en horario de oficina.</td></tr>
+</table></div>
+<ol>
+<li>Clasificad cada elemento en las capas del apartado 1.</li>
+<li>Marcad los <b>puntos únicos de fallo</b>: elementos que, si fallan, paran toda la empresa.</li>
+<li>Escribid qué pasaría en tres situaciones: (a) falla un SSD del servidor 1; (b) se va la luz un viernes a las 18:00 y no vuelve hasta el lunes; (c) la gestoría absorbe a otra y necesita el triple de máquinas virtuales en un mes.</li>
+<li>Para cada situación, indicad si la nube la resolvería mejor o peor y por qué.</li>
+</ol>
 </div>
 <div class="actividad">
 <h4>Actividad 2. ¿Es nube o no? <span class="dur">20 min</span></h4>
@@ -131,7 +147,7 @@
 <li>Buscad en la documentación pública del proveedor cuántas zonas de disponibilidad tiene la región de España.</li>
 <li>Buscad la página de "infraestructura global" del proveedor y comparad con otro proveedor: número de regiones en el mundo.</li>
 </ol>
-<p class="entrega">Entrega en Aules: ficha del inventario, tabla de casos y respuestas del recorrido por la consola. En la puesta en común (5 min) comparamos el Proxmox del centro con lo que ofrece una región de nube.</p>
+<p class="entrega">Entrega en Aules: ficha del inventario, tabla de casos y respuestas del recorrido por la consola. En la puesta en común (5 min) comparamos el cuarto de servidores de la gestoría con lo que ofrece una región de nube.</p>
 </div>
 
 <h3>Preguntas de repaso</h3>
@@ -541,7 +557,7 @@
 <li>Identificar los componentes software: hipervisor, sistema operativo anfitrión, plano de control, imágenes y agentes.</li>
 <li>Explicar la virtualización y cómo convierte recursos físicos en recursos virtuales.</li>
 <li>Describir el proceso de aprovisionamiento de una máquina virtual y cómo se implementa una carga de trabajo con cloud-init.</li>
-<li>Aprovisionar máquinas en Proxmox y en la nube a partir de plantillas, sin instalación manual.</li>
+<li>Aprovisionar una máquina en la nube a partir de una imagen, sin instalación manual, y compararla con un contenedor local.</li>
 </ul>
 
 <h3>1. Componentes hardware</h3>
@@ -648,30 +664,51 @@ runcmd:
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Del hardware físico al virtual en Proxmox <span class="dur">15 min</span></h4>
-<p>En la interfaz web del Proxmox del centro, con vuestro usuario, anotad: CPU del nodo (modelo, sockets, núcleos, hilos), memoria total y usada, almacenamientos definidos y su tipo, puentes de red (<code>vmbr0</code>...). Calculad la proporción de vCPU asignadas a todas las VM frente a hilos físicos. ¿Hay sobresuscripción?</p>
+<h4>Actividad 1. Del hardware físico al virtual <span class="dur">15 min</span></h4>
+<p>Individual, en vuestro portátil (Ubuntu MATE). Ejecutad <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code> e <code>ip a</code> y anotad: modelo de CPU, núcleos y hilos, memoria total, discos y tarjetas de red.</p>
+<p>Después, con los datos del servidor 1 de la gestoría de la sesión 6 (2 procesadores de 12 núcleos y 24 hilos, 128 GB de RAM), completad el cálculo. Sus máquinas virtuales tienen asignado:</p>
+<div class="tabla"><table>
+<tr><th>VM</th><th>vCPU</th><th>RAM</th></tr>
+<tr><td>Controlador de dominio</td><td>2</td><td>8 GB</td></tr>
+<tr><td>Ficheros</td><td>4</td><td>16 GB</td></tr>
+<tr><td>ERP</td><td>8</td><td>32 GB</td></tr>
+<tr><td>Base de datos</td><td>8</td><td>32 GB</td></tr>
+<tr><td>Correo</td><td>4</td><td>16 GB</td></tr>
+<tr><td>Web interna</td><td>2</td><td>4 GB</td></tr>
+<tr><td>Escritorio remoto</td><td>16</td><td>24 GB</td></tr>
+<tr><td>Pruebas</td><td>8</td><td>8 GB</td></tr>
+</table></div>
+<p>Calculad la proporción de vCPU frente a hilos físicos y frente a núcleos físicos, y la de RAM asignada frente a RAM física. ¿Hay sobresuscripción de CPU? ¿Y de memoria? ¿Cuál de las dos es más peligrosa y por qué?</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Aprovisionar desde plantilla con cloud-init en Proxmox <span class="dur">35 min</span></h4>
-<p>En parejas. El profesor ha preparado la plantilla <code>ubuntu-2404-cloudinit</code>.</p>
+<h4>Actividad 2. Aprovisionar desde una imagen con cloud-init en la nube <span class="dur">35 min</span></h4>
+<p>En parejas, en el laboratorio de AWS Academy (región <code>us-east-1</code>).</p>
 <ol>
-<li>Clonad la plantilla (clon completo) con el nombre <code>s10-apellido1-apellido2</code> en vuestro pool.</li>
-<li>En la pestaña <i>Cloud-Init</i>: usuario <code>despliegue</code>, vuestra clave pública SSH (generadla con <code>ssh-keygen -t ed25519</code> si no la tenéis), IP por DHCP. Ajustad a 1 vCPU y 1 GB.</li>
-<li>Arrancad y cronometrad hasta que podéis entrar por SSH.</li>
-<li>Dentro: <code>cloud-init status --long</code>, <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code>, <code>ip a</code>. Comparad lo que ve la VM con lo que tiene el nodo físico. ¿Qué modelo de CPU y qué tipo de disco y de tarjeta de red ve?</li>
-<li>Consultad los registros <code>/var/log/cloud-init.log</code> y <code>/var/log/cloud-init-output.log</code>: ¿qué hizo cloud-init?</li>
+<li>Si no tenéis clave SSH, generadla en el portátil con <code>ssh-keygen -t ed25519</code> y copiad la pública (<code>cat ~/.ssh/id_ed25519.pub</code>) en el fichero <code>user-data.yaml</code> del apartado 4.</li>
+<li>Lanzad una instancia Ubuntu 24.04 pequeña llamada <code>s10-apellido1-apellido2</code>, pegando ese fichero en <i>Detalles avanzados → Datos de usuario</i>. En <i>Par de claves</i> elegid continuar sin par de claves (la clave va en el <code>user-data.yaml</code>). En el grupo de seguridad, abrid los puertos 22 y 80 solo a vuestra IP.</li>
+<li>Cronometrad desde que pulsáis <i>Lanzar</i> hasta que la página web responde en su IP pública. Comprobad que el servidor web funciona sin haber entrado por SSH.</li>
+<li>Entrad por SSH (<code>ssh despliegue@IP_PUBLICA</code>) y ejecutad <code>cloud-init status --long</code>, <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code> e <code>ip a</code>. Comparad lo que ve la VM con lo que visteis en vuestro portátil: ¿qué modelo de CPU, qué tipo de disco y qué tarjeta de red ve?</li>
+<li>Consultad <code>/var/log/cloud-init.log</code> y <code>/var/log/cloud-init-output.log</code>: ¿qué hizo cloud-init y en qué orden?</li>
+<li><b>Terminad la instancia</b> al acabar.</li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. La misma carga de trabajo en la nube <span class="dur">30 min</span></h4>
-<p>En el laboratorio de AWS Academy (región <code>us-east-1</code>), lanzad una VM Ubuntu 24.04 pequeña pegando el fichero <code>user-data.yaml</code> del apartado 4 (con vuestra clave) en <i>Detalles avanzados → Datos de usuario</i>. Abrid el puerto 80 solo a vuestra IP. Cuando arranque, abrid su IP pública en el navegador. Comprobad que el servidor web funciona sin haber entrado por SSH, y después entrad y revisad los registros de cloud-init. Terminad la instancia al acabar.</p>
-<p>Completad una tabla comparando Proxmox y nube: tiempo de aprovisionamiento, cómo se elige el tamaño, de dónde sale la imagen, cómo se pasa la configuración, cómo se accede y qué tuvisteis que hacer a mano.</p>
-<p class="entrega">Entrega en Aules: ficha del nodo, capturas y salidas de las actividades 2 y 3, y la tabla comparativa. Borrad la VM de Proxmox al terminar, salvo que el profesor indique lo contrario.</p>
+<h4>Actividad 3. La misma carga de trabajo en un contenedor local <span class="dur">30 min</span></h4>
+<p>Individual, en vuestro portátil (Docker ya está instalado desde la unidad 1). Vamos a levantar el mismo tipo de servicio, un servidor web, pero en un contenedor:</p>
+<ol>
+<li>Preparad la página: <code>mkdir -p ~/s10-web</code> y <code>echo "&lt;h1&gt;Cita Previa en un contenedor&lt;/h1&gt;" &gt; ~/s10-web/index.html</code></li>
+<li>Arrancad el contenedor midiendo el tiempo: <code>time docker run -d --name s10-web -p 8080:80 -v ~/s10-web:/usr/share/nginx/html:ro nginx:stable</code>. Abrid <code>http://localhost:8080</code>.</li>
+<li>Borradlo (<code>docker rm -f s10-web</code>) y repetid el paso 2. ¿Por qué la segunda vez es mucho más rápido?</li>
+<li>Comparad el núcleo del sistema: <code>uname -r</code> en el portátil y <code>docker exec s10-web uname -r</code> en el contenedor. Haced lo mismo con <code>nproc</code>. ¿Qué os dice esto sobre la diferencia entre una VM y un contenedor?</li>
+<li>Limpiad con <code>docker rm -f s10-web</code>.</li>
+</ol>
+<p>Completad una tabla comparando la VM en la nube y el contenedor local: tiempo de aprovisionamiento, cómo se elige el tamaño, de dónde sale la imagen, cómo se pasa la configuración, cómo se accede, qué núcleo de sistema usa y qué tuvisteis que hacer a mano.</p>
+<p class="entrega">Entrega en Aules: datos del portátil y cálculo de sobresuscripción, capturas y salidas de las actividades 2 y 3, y la tabla comparativa.</p>
 </div>
 
 <h3>Preguntas de repaso</h3>
 <ol>
-<li>¿Qué diferencia hay entre un hipervisor de tipo 1 y uno de tipo 2? ¿Cuál usa Proxmox?</li>
+<li>¿Qué diferencia hay entre un hipervisor de tipo 1 y uno de tipo 2? ¿De qué tipo son KVM y VirtualBox?</li>
 <li>¿Qué es una vCPU y qué relación tiene con los núcleos físicos?</li>
 <li>¿Qué pasos sigue el plano de control para aprovisionar una VM?</li>
 <li>¿Para qué sirve cloud-init? ¿Qué información recibe?</li>
@@ -770,9 +807,9 @@ runcmd:
 <li><b>Licencias</b>: incluidas en la tarifa por hora, traídas por el cliente (BYOL) o del marketplace.</li>
 </ul>
 
-<h3>5. La misma infraestructura en Proxmox</h3>
+<h3>5. La misma infraestructura on premise (ejemplo: Proxmox VE)</h3>
 <div class="tabla"><table>
-<tr><th>Nube pública</th><th>Proxmox (nube privada del centro)</th></tr>
+<tr><th>Nube pública</th><th>Proxmox VE (plataforma de virtualización on premise)</th></tr>
 <tr><td>Instancia / VM</td><td>VM KVM o contenedor LXC</td></tr>
 <tr><td>Imagen / AMI</td><td>Plantilla</td></tr>
 <tr><td>VPC y subredes</td><td>Puentes Linux (<code>vmbr</code>), VLAN, zonas y VNets SDN</td></tr>
