@@ -90,7 +90,7 @@
 <h3>4. Cómo encajan en nuestro proyecto</h3>
 <pre><code>Git/GitHub ──► GitHub Actions ──► pruebas + SonarQube + CodeQL + Trivy ──► imagen en ghcr.io
                                                                               │
-Terraform ──► VM en Proxmox (revisión y producción) ◄── Ansible instala Docker y despliega la imagen
+Terraform ──► red, volúmenes y contenedores Docker (revisión y producción) ◄── Ansible despliega y mantiene
                                                                               │
                                               Prometheus + Grafana vigilan los contenedores</code></pre>
 
@@ -339,7 +339,7 @@ docker build -t insegura . &amp;&amp; docker run --rm -v /var/run/docker.sock:/v
 <tr><td>Ámbito</td><td>Organización, repositorio, entorno</td><td>Ruta: <code>/</code>, <code>/pool/produccion</code>, <code>/vms/101</code>, <code>/storage/x</code></td><td>Cuenta, recurso (ARN) / grupo de recursos, suscripción</td></tr>
 <tr><td>Identidad de máquina</td><td>GITHUB_TOKEN, claves de despliegue, apps</td><td>Token de API</td><td>Roles asumibles, identidades administradas</td></tr>
 </table></div>
-<p>En la unidad 6 crearemos en Proxmox un usuario y un token para cada entorno, con permisos solo sobre su pool.</p>
+<p>En la unidad 6 aplicaremos estas ideas a nuestros entornos: un usuario técnico para el runner, un token del registro de imágenes de solo lectura para cada entorno y la aprobación obligatoria para producción.</p>
 
 <h3>4. La matriz de accesos</h3>
 <p>Antes de configurar nada, se diseña una <b>matriz de accesos</b>: filas con los perfiles, columnas con las acciones, y en cada celda si está permitido. Para Cita Previa:</p>
@@ -355,7 +355,7 @@ docker build -t insegura . &amp;&amp; docker run --rm -v /var/run/docker.sock:/v
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 1. Matriz de accesos de vuestro proyecto <span class="dur">15 min</span></h4>
-<p>En parejas, partiendo de la matriz del apartado 4, adaptadla a vuestra pareja y al profesor (que actuará como auditoría): quién de vosotros estará en cada equipo, y añadid una columna para el acceso a Proxmox (unidad 6). Guardadla como <code>ACCESOS.md</code>.</p>
+<p>En parejas, partiendo de la matriz del apartado 4, adaptadla a vuestra pareja y al profesor (que actuará como auditoría): quién de vosotros estará en cada equipo, y añadid una columna para el acceso a la plataforma donde se ejecutan los contenedores (unidad 6). Guardadla como <code>ACCESOS.md</code>.</p>
 </div>
 <div class="actividad">
 <h4>Actividad 2. Organización, equipos, repositorio y entornos <span class="dur">50 min</span></h4>
