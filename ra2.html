@@ -268,6 +268,7 @@
 <li>Parad la instancia con la CLI (<code>aws ec2 stop-instances --instance-ids ...</code>). ¿Qué recursos siguen existiendo y facturando aunque esté parada? Buscadlos en la consola (volumen EBS, IP...).</li>
 <li>Terminad la instancia y comprobad que el disco se ha borrado.</li>
 </ol>
+<div class="aviso"><p><b>Plan B si la red del centro bloquea el SSH (puerto 22).</b> Comprobadlo con <code>ssh -o ConnectTimeout=10 -i labsuser.pem ubuntu@IP_PUBLICA</code>: si da <i>Connection timed out</i>, conectad desde el navegador con <b>EC2 Instance Connect</b> (en la consola: seleccionad la instancia → <i>Conectar</i> → <i>EC2 Instance Connect</i>), que funciona por HTTPS. Para ello, el grupo de seguridad debe permitir el SSH también desde el servicio: añadid una regla de entrada al puerto 22 con origen en la lista de prefijos administrada <code>com.amazonaws.us-east-1.ec2-instance-connect</code> (si no aparece, consultad en la documentación de AWS el rango de direcciones de EC2 Instance Connect para <code>us-east-1</code>). El resto de pasos son iguales.</p></div>
 </div>
 <div class="actividad">
 <h4>Actividad 2. ¿Cuánto cuesta Cita Previa en la nube? <span class="dur">30 min</span></h4>
@@ -691,6 +692,7 @@ runcmd:
 <li>Consultad <code>/var/log/cloud-init.log</code> y <code>/var/log/cloud-init-output.log</code>: ¿qué hizo cloud-init y en qué orden?</li>
 <li><b>Terminad la instancia</b> al acabar.</li>
 </ol>
+<div class="aviso"><p><b>Si el puerto 22 está bloqueado</b>, usad EC2 Instance Connect como en la sesión 7, escribiendo <code>despliegue</code> como usuario: así comprobáis además que cloud-init creó el usuario. El resto de la actividad no cambia.</p></div>
 </div>
 <div class="actividad">
 <h4>Actividad 3. La misma carga de trabajo en un contenedor local <span class="dur">30 min</span></h4>
@@ -832,6 +834,7 @@ runcmd:
 <li>Entrad al bastión y, desde él, a la privada: <code>ssh -J ubuntu@IP_PUBLICA ubuntu@10.20.2.X</code> (con el agente SSH cargado con vuestra clave).</li>
 <li>Desde la privada, intentad <code>curl -I https://ubuntu.com</code>. ¿Por qué falla? ¿Qué haría falta? (No creéis la NAT: es de pago por hora.)</li>
 </ol>
+<div class="aviso"><p><b>Si el puerto 22 está bloqueado</b>, conectad al bastión con EC2 Instance Connect (sesión 7) y, desde él, comprobad que la privada es alcanzable solo desde el bastión: <code>nc -zv 10.20.2.X 22</code> debe responder, porque <code>sg-privada</code> admite el tráfico desde <code>sg-bastion</code>. No copiéis vuestra clave privada al bastión para entrar en la privada: es justo lo que <code>ssh -J</code> evita. En ese caso, el salto con <code>ssh -J</code> y el paso 7 se explican en clase.</p></div>
 </div>
 <div class="actividad">
 <h4>Actividad 2. Almacenamiento de bloque y de objeto <span class="dur">20 min</span></h4>
