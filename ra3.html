@@ -386,6 +386,32 @@ PersistentKeepalive = 25</code></pre></li>
 <li>Medid la latencia (<code>ping</code>) y el ancho de banda aproximado (<code>iperf3</code>, si da tiempo) por el túnel. ¿Qué implicaciones tiene para el patrón "web en la nube, base de datos en el CPD"?</li>
 </ol>
 </div>
+<div class="aviso"><p><b>Plan B si la red del centro bloquea el tráfico.</b> Si al cabo de un minuto <code>sudo wg show</code> en el portátil no muestra ninguna línea <i>latest handshake</i>, lo más probable es que el centro no deje salir el UDP 51820. En ese caso no perdáis más tiempo: desmontad lo creado (<code>sudo wg-quick down wg0</code>, terminad la instancia) y haced la actividad sobre el esquema siguiente: explicad por escrito qué hace cada extremo, qué clave va en cada fichero, por qué el portátil no necesita abrir puertos, qué regla del grupo de seguridad hace falta y qué recorrido hace la petición <code>curl</code>. Si tampoco funciona el SSH hacia la VM, usad EC2 Instance Connect (unidad 2, sesión 7).</p></div>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 680 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Túnel WireGuard entre el portátil y una VM de la nube" font-family="inherit" font-size="13" fill="currentColor">
+<rect x="10" y="40" width="190" height="170" rx="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="105" y="65" text-anchor="middle" font-weight="bold">Portátil («CPD propio»)</text>
+<text x="105" y="95" text-anchor="middle">wg0: 172.16.99.2</text>
+<text x="105" y="120" text-anchor="middle">nginx en :8080</text>
+<text x="105" y="150" text-anchor="middle" font-size="12">Inicia la conexión</text>
+<text x="105" y="168" text-anchor="middle" font-size="12">(no abre puertos)</text>
+<rect x="245" y="25" width="190" height="200" rx="10" fill="none" stroke="currentColor" stroke-dasharray="6 4"/>
+<text x="340" y="48" text-anchor="middle" font-weight="bold">Red del instituto</text>
+<text x="340" y="66" text-anchor="middle" font-size="12">NAT y cortafuegos</text>
+<text x="340" y="205" text-anchor="middle" font-size="12">Debe dejar salir UDP 51820</text>
+<rect x="480" y="40" width="190" height="170" rx="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="575" y="65" text-anchor="middle" font-weight="bold">VM en AWS</text>
+<text x="575" y="95" text-anchor="middle">wg0: 172.16.99.1</text>
+<text x="575" y="120" text-anchor="middle">IP pública</text>
+<text x="575" y="150" text-anchor="middle" font-size="12">Grupo de seguridad:</text>
+<text x="575" y="168" text-anchor="middle" font-size="12">UDP 51820 desde el centro</text>
+<line x1="200" y1="110" x2="472" y2="110" stroke="currentColor" stroke-width="2.5"/>
+<polygon points="480,110 468,104 468,116"/>
+<text x="340" y="100" text-anchor="middle" font-size="12">Túnel cifrado (UDP 51820)</text>
+<line x1="472" y1="140" x2="208" y2="140" stroke="currentColor" stroke-dasharray="5 4"/>
+<polygon points="200,140 212,134 212,146"/>
+<text x="340" y="160" text-anchor="middle" font-size="12">curl http://172.16.99.2:8080</text>
+<text x="340" y="176" text-anchor="middle" font-size="12">viaja dentro del túnel</text>
+</svg></div><figcaption>Conexión sitio a sitio con WireGuard: el portátil inicia el túnel hacia la nube; después, la VM llega al servicio privado del portátil por la IP del túnel, sin exponerlo a Internet.</figcaption></figure>
 <div class="actividad">
 <h4>Actividad 3. Clasificar patrones <span class="dur">10 min</span></h4>
 <p>Asociad cada situación a un patrón híbrido: (a) un periódico que recibe diez veces más visitas la noche de elecciones; (b) un hospital que copia cada noche sus copias de seguridad cifradas a un bucket europeo; (c) una empresa que prueba cada versión en la nube antes de instalarla en su CPD; (d) una cadena de supermercados con servidores en cada tienda gestionados desde Azure Arc; (e) un banco que tiene su web en la nube pero las cuentas en su mainframe.</p>
