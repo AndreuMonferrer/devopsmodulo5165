@@ -721,7 +721,7 @@ Criterios de aceptación:
 <tr><td>Aislamiento</td><td>Fuerte (kernel separado)</td><td>Menor (kernel compartido); se refuerza con configuración</td></tr>
 <tr><td>Sistemas operativos</td><td>Cualquiera (Windows sobre Linux, etc.)</td><td>Mismo tipo de kernel que el anfitrión (contenedores Linux en Linux)</td></tr>
 </table></div>
-<p>No son excluyentes: lo más habitual en la nube es ejecutar contenedores <b>dentro</b> de máquinas virtuales. Es justo lo que haremos en las unidades 6 y 7: Terraform crea VM en Proxmox y Ansible despliega contenedores en ellas.</p>
+<p>No son excluyentes: lo más habitual en la nube es ejecutar contenedores <b>dentro</b> de máquinas virtuales. En las unidades 6 y 7 trabajaremos directamente con contenedores en el portátil: Terraform creará las redes, los volúmenes y los contenedores de cada entorno, y Ansible automatizará su despliegue y mantenimiento.</p>
 
 <h3>3. Imágenes, Dockerfile y registros</h3>
 <h4>Imagen</h4>
