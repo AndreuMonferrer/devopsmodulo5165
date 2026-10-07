@@ -301,13 +301,29 @@ Criterios de aceptación:
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 4. Del documento al backlog <span class="dur">25 min</span></h4>
-<p>En los mismos grupos de la sesión 1 (cambiamos a grupos de 3-4 personas). Tomad los requisitos que escribisteis para la ERS de Cita Previa:</p>
+<p>En los mismos grupos de la sesión 1 (cambiamos a grupos de 3-4 personas). Tomad los requisitos de Cita Previa que escribisteis en la actividad 1:</p>
 <ol>
 <li>Convertid cada requisito funcional en una o varias historias de usuario con el formato "Como... quiero... para..." y al menos dos criterios de aceptación en formato "Dado... cuando... entonces...".</li>
 <li>Comprobad cada historia con INVEST. Si una es demasiado grande (una <i>épica</i>), divididla.</li>
 <li>Ordenad el Product Backlog por valor: ¿qué es lo mínimo que permitiría a un centro de salud piloto empezar a usar la aplicación?</li>
 <li>Escribid una Definición de Terminado de 5-6 puntos para el equipo.</li>
 </ol>
+<div class="nota"><p><b>Ejemplo resuelto con un requisito.</b> Así se trabaja uno de los requisitos de la actividad 1; vosotros haréis lo mismo con todos los vuestros.</p>
+<p><b>Requisito de partida:</b> "El sistema permitirá al paciente pedir cita con su médico de familia".</p>
+<pre><code>Como paciente del centro de salud
+quiero pedir cita con mi médico de familia desde el móvil
+para no tener que llamar por teléfono ni ir al centro
+
+Criterios de aceptación:
+- Dado que me he identificado con mi tarjeta sanitaria y hay huecos libres,
+  cuando elijo día y hora y pulso Confirmar,
+  entonces la cita queda reservada y veo un resumen con fecha, hora y consulta.
+- Dado que el hueco que he elegido lo acaba de ocupar otro paciente,
+  cuando pulso Confirmar,
+  entonces el sistema me avisa y me propone los tres huecos libres más próximos.</code></pre>
+<p><b>Comprobación INVEST:</b> es valiosa (el paciente ahorra una llamada), estimable y comprobable (los criterios se pueden probar uno a uno) y cabe en un sprint. En cambio, un requisito como "el paciente podrá gestionar sus citas" sería una <i>épica</i>: habría que dividirlo en pedir cita, consultar mis citas, cambiar una cita y anular una cita.</p>
+<p><b>Orden por valor (principio del backlog):</b> 1) pedir cita, 2) consultar mis citas, 3) anular una cita… Con las dos primeras un centro piloto ya puede empezar a funcionar; anular o cambiar se puede hacer por teléfono mientras tanto.</p>
+<p><b>Definición de Terminado (primeros puntos):</b> código revisado por otra persona del equipo; todos los criterios de aceptación comprobados; …</p></div>
 </div>
 <div class="actividad">
 <h4>Actividad 5. ¿Y si lo hubieran hecho con Scrum? <span class="dur">40 min</span></h4>
@@ -324,11 +340,7 @@ Criterios de aceptación:
 <li><b>Presentaciones (15 min).</b> Cada pareja expone en 3 minutos. Mientras, el resto anota en una tabla común de la pizarra el caso, la causa principal del fracaso y si Scrum lo habría evitado.</li>
 <li><b>Puesta en común (5 min).</b> Entre todos buscamos los patrones que se repiten en los casos: requisitos que cambian por el camino, usuarios que no ven nada hasta el final, integración tardía, un único despliegue sin vuelta atrás, decisiones tomadas lejos de quien usa el sistema.</li>
 </ol>
-</div>
-<div class="actividad">
-<h4>Actividad 6. Reflexión escrita <span class="dur">10 min</span></h4>
-<p>Individualmente, en Aules, responded: (1) De todos los casos presentados, ¿cuál creéis que habría mejorado más con Scrum y por qué? (2) Elegid un caso en el que Scrum <b>no</b> habría bastado y explicad qué otra cosa habría hecho falta. (3) ¿Qué patrón de los que salieron en la puesta en común podría darse en un proyecto como Cita Previa y cómo lo evitaríais?</p>
-<p class="entrega">Entrega en Aules: backlog con historias y DoD (grupo), presentación del caso (pareja) y reflexión (individual).</p>
+<p class="entrega">Entrega en Aules: backlog con historias y DoD (grupo) y presentación del caso (pareja).</p>
 </div>
 
 <h3>Preguntas de repaso</h3>
@@ -458,7 +470,7 @@ Criterios de aceptación:
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 7. Medir el flujo de un tablero Kanban <span class="dur">15 min</span></h4>
+<h4>Actividad 6. Medir el flujo de un tablero Kanban <span class="dur">15 min</span></h4>
 <p>En parejas. Este es el tablero del equipo de mantenimiento de Cita Previa, que todavía no usa límites WIP:</p>
 <div class="tabla"><table>
 <tr><th>Columna</th><th>Pendiente</th><th>Análisis</th><th>En desarrollo</th><th>En revisión</th><th>En pruebas</th><th>Hecho (esta semana)</th></tr>
@@ -477,7 +489,7 @@ Criterios de aceptación:
 <p>Rendimiento medio: (4 + 5 + 3 + 4) / 4 = 4 tarjetas por semana. Trabajo en curso: 2 + 7 + 5 + 2 = 16. Tiempo de ciclo: 16 / 4 = 4 semanas. Cuello de botella: "En revisión", con 5 tarjetas esperando a una sola revisora mientras 4 programadores siguen produciendo. Con 8 tarjetas en curso: 8 / 4 = 2 semanas, la mitad sin trabajar más. El programador no empieza nada nuevo: ayuda a revisar o a probar hasta que se libera sitio ("deja de empezar, empieza a terminar").</p>
 </details>
 <div class="actividad">
-<h4>Actividad 8. Tablero de Cita Previa en GitHub Projects <span class="dur">45 min</span></h4>
+<h4>Actividad 7. Tablero de Cita Previa en GitHub Projects <span class="dur">45 min</span></h4>
 <p>En los grupos de la sesión 2, usando el backlog que creasteis:</p>
 <ol>
 <li>Quien no tenga cuenta de GitHub, que la cree ahora (preferiblemente con el correo del centro) y active la verificación en dos pasos.</li>
@@ -491,7 +503,7 @@ Criterios de aceptación:
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 9. Comparativa de herramientas <span class="dur">20 min</span></h4>
+<h4>Actividad 8. Comparativa de herramientas <span class="dur">20 min</span></h4>
 <p>Por parejas, cada una con dos herramientas asignadas (una tradicional y una ágil): Microsoft Project / Jira, GanttProject / Trello, OpenProject / Taiga, Redmine / GitLab Boards, ProjectLibre / Azure Boards. Completad una tabla con: tipo de metodología que soporta, vistas disponibles, integración con repositorios de código, licencia y coste, alojamiento (nube o propio) y un caso en el que la recomendaríais. Si la herramienta tiene versión web gratuita o demo, probadla.</p>
 <p class="entrega">Entrega en Aules: enlace al proyecto de GitHub y tabla comparativa. En la puesta en común final (5 min) juntamos las tablas en una sola.</p>
 </div>
@@ -630,7 +642,7 @@ Criterios de aceptación:
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 10. Mapa del flujo de valor de Cita Previa <span class="dur">35 min</span></h4>
+<h4>Actividad 9. Mapa del flujo de valor de Cita Previa <span class="dur">35 min</span></h4>
 <p>En grupos de 3-4. Partid de la tabla del apartado 5 (situación actual). Los datos del caso son ficticios, pero iguales para todos los grupos.</p>
 <ol>
 <li>Dibujad el <b>mapa actual</b> en <a href="https://app.diagrams.net/">diagrams.net</a>: una caja por paso, flechas entre pasos y una línea de tiempos debajo (escalón alto: tiempo total del paso; escalón bajo: tiempo de proceso).</li>
@@ -651,7 +663,7 @@ Criterios de aceptación:
 </table></div>
 </div>
 <div class="actividad">
-<h4>Actividad 11. ¿Qué prácticas de CI/CD recomendaríais? <span class="dur">25 min</span></h4>
+<h4>Actividad 10. ¿Qué prácticas de CI/CD recomendaríais? <span class="dur">25 min</span></h4>
 <p>Para cada organización, indicad qué prácticas de CI/CD recomendaríais: <b>integración continua, entrega continua y/o despliegue continuo</b>. Justificad vuestra decisión en 3-4 líneas. Tened en cuenta que las prácticas son acumulativas: la entrega continua parte de la integración continua, y el despliegue continuo añade la automatización del paso a producción.</p>
 <ol type="a">
 <li>Una plataforma de comercio electrónico con 40 desarrolladores que realiza varias decenas de cambios al día. Dispone de una buena batería de pruebas automáticas y puede revertir rápidamente una versión si se detecta un problema.</li>
@@ -665,7 +677,7 @@ Criterios de aceptación:
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 12. Métricas DORA de un caso <span class="dur">20 min</span></h4>
+<h4>Actividad 11. Métricas DORA de un caso <span class="dur">20 min</span></h4>
 <p>Este es el historial (ficticio) de despliegues de dos meses del equipo de Cita Previa. Calculad las cuatro métricas DORA, clasificad al equipo según la tabla del apartado 4 y proponed dos acciones para mejorar la métrica más débil.</p>
 <div class="tabla"><table>
 <tr><th>Despliegue</th><th>Commit más antiguo incluido</th><th>Fecha de despliegue</th><th>¿Provocó incidencia?</th><th>Servicio restaurado</th></tr>
@@ -805,7 +817,7 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 13. Primeros contenedores <span class="dur">25 min</span></h4>
+<h4>Actividad 12. Primeros contenedores <span class="dur">25 min</span></h4>
 <p>Individual, en el portátil del aula (Ubuntu MATE). Si Docker no está instalado, instaladlo con <code>sudo apt install docker.io docker-compose-v2</code> y añadid vuestro usuario al grupo con <code>sudo usermod -aG docker $USER</code> (cerrad sesión y volved a entrar).</p>
 <pre><code>docker run hello-world
 docker run -d --name web -p 8080:80 nginx:1.27     # abrid http://localhost:8080
@@ -819,7 +831,7 @@ docker image history nginx:1.27</code></pre>
 <p>Contestad: ¿qué sistema operativo dice tener el contenedor? ¿Cuántos procesos veis dentro y cuántos ve <code>ps aux</code> fuera? ¿Cuántas capas tiene la imagen de nginx? Relacionadlo con namespaces y capas.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 14. Construir la imagen de Cita Previa <span class="dur">25 min</span></h4>
+<h4>Actividad 13. Construir la imagen de Cita Previa <span class="dur">25 min</span></h4>
 <ol>
 <li>Cread una carpeta <code>cita-previa-app</code> con los ficheros <code>app.py</code>, <code>requirements.txt</code> y <code>Dockerfile</code> de la pestaña <a href="ra5.html#recursos">Recursos de la unidad 5</a>.</li>
 <li>Construid la imagen: <code>docker build -t cita-previa-app:0.1 .</code> y medid el tiempo.</li>
@@ -832,12 +844,12 @@ curl localhost:8001/salud ; curl localhost:8002/salud</code></pre></li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 15. Diseño del pipeline de Cita Previa <span class="dur">20 min</span></h4>
+<h4>Actividad 14. Diseño del pipeline de Cita Previa <span class="dur">20 min</span></h4>
 <p>En los grupos habituales, dibujad en diagrams.net el pipeline completo de Cita Previa desde el commit hasta producción. Debe incluir: cada etapa con su herramienta, qué la dispara (pull request, fusión en main, etiqueta de versión), los entornos, dónde se construye la imagen y cuántas veces, dónde hay aprobación manual, qué estrategia de despliegue usaríais y cómo se volvería atrás. Añadid una nota explicando si es entrega o despliegue continuo y por qué, teniendo en cuenta que maneja datos de salud.</p>
-<p class="entrega">Entrega en Aules: respuestas de la actividad 13, capturas de la actividad 14 y diagrama del pipeline. Este diagrama lo retomaremos al empezar la unidad 5.</p>
+<p class="entrega">Entrega en Aules: respuestas de la actividad 12, capturas de la actividad 13 y diagrama del pipeline. Este diagrama lo retomaremos al empezar la unidad 5.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 16. Cuestionario de la unidad 1 <span class="dur">20 min</span></h4>
+<h4>Actividad 15. Cuestionario de la unidad 1 <span class="dur">20 min</span></h4>
 <p>Individual, en Aules y sin apuntes. Unas 20 preguntas de toda la unidad: tipo test, verdadero o falso y algún cálculo sencillo (ley de Little, eficiencia del flujo). Entran las cinco sesiones: cascada y sus variantes, Manifiesto Ágil y Scrum, Kanban, XP y Lean, DevOps y CI/CD, y contenedores.</p>
 <p>El cuestionario cuenta en la nota de la unidad. Además, sirve de preparación: <b>las preguntas de la prueba escrita serán de este mismo estilo</b>. Para estudiar, repasad las preguntas de repaso del final de cada sesión y los diagramas.</p>
 </div>
