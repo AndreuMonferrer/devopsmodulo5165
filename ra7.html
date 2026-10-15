@@ -204,7 +204,7 @@ ansible --version</code></pre>
 <h4>Actividad 4. Playbook de instalación <span class="dur">30 min</span></h4>
 <ol>
 <li>Escribid <code>instalar.yml</code>. Comprobad la sintaxis con <code>ansible-playbook instalar.yml --syntax-check</code>.</li>
-<li>Ejecutadlo: <code>ansible-playbook -K instalar.yml</code>. Leed el resumen final. Como Docker ya estaba instalado desde la unidad 1, fijaos en qué tareas devuelven <code>ok</code> (el estado ya era el deseado) y cuáles <code>changed</code>.</li>
+<li>Ejecutadlo: <code>ansible-playbook -K instalar.yml</code>. Leed el resumen final. Como Docker ya estaba instalado desde la unidad 5, fijaos en qué tareas devuelven <code>ok</code> (el estado ya era el deseado) y cuáles <code>changed</code>.</li>
 <li>Ejecutadlo otra vez. ¿Cuántas tareas marcan <code>changed</code> ahora? Si alguna sigue cambiando, averiguad por qué.</li>
 <li>Comprobad: <code>docker version</code>, <code>docker compose version</code> y <code>docker run --rm hello-world</code>, con vuestro usuario y sin <code>sudo</code>.</li>
 </ol>

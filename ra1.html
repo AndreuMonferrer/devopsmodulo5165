@@ -525,7 +525,7 @@ Criterios de aceptación:
 <li>Describir la cultura y los principios de DevOps (CALMS y las tres vías).</li>
 <li>Diferenciar integración continua, entrega continua y despliegue continuo.</li>
 <li>Conocer las métricas DORA para medir el rendimiento de un equipo.</li>
-<li>Aplicar un mapa del flujo de valor para detectar esperas y cuellos de botella.</li>
+<li>Conocer el mapa del flujo de valor y para qué sirve detectar esperas y cuellos de botella.</li>
 </ul>
 
 <h3>1. El muro entre desarrollo y operaciones</h3>
@@ -641,28 +641,7 @@ Criterios de aceptación:
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 9. Mapa del flujo de valor de Cita Previa <span class="dur">35 min</span></h4>
-<p>En grupos de 3-4. Partid de la tabla del apartado 5 (situación actual). Los datos del caso son ficticios, pero iguales para todos los grupos.</p>
-<ol>
-<li>Dibujad el <b>mapa actual</b> en <a href="https://app.diagrams.net/">diagrams.net</a>: una caja por paso, flechas entre pasos y una línea de tiempos debajo (escalón alto: tiempo total del paso; escalón bajo: tiempo de proceso).</li>
-<li>Calculad la eficiencia del flujo: tiempo de proceso entre tiempo total, con las dos cifras en horas. Contad cada día como una jornada laboral de 8 horas.</li>
-<li>Marcad con un símbolo de alerta los tres mayores desperdicios (esperas, traspasos, retrabajo).</li>
-<li>Este trimestre el equipo solo puede implantar <b>tres mejoras</b>. Elegid del catálogo de abajo las tres que más reducen el tiempo total y justificad la elección.</li>
-<li>Dibujad el <b>mapa futuro</b> aplicando esas tres mejoras con los datos del catálogo (los pasos que no mejoran se quedan igual). Calculad el nuevo tiempo total y la nueva eficiencia, y comparadlos con los actuales.</li>
-</ol>
-<p><b>Catálogo de mejoras</b></p>
-<div class="tabla"><table>
-<tr><th>Mejora</th><th>Paso que cambia</th><th>Tiempo de proceso</th><th>Tiempo total</th></tr>
-<tr><td>A. El Product Owner prioriza cada semana, sin comité</td><td>Petición registrada y priorizada</td><td>1 h (igual)</td><td>10 días → 2 días</td></tr>
-<tr><td>B. Revisión de código el mismo día, con linter automático</td><td>Revisión de código</td><td>30 min (igual)</td><td>3 días → 4 h</td></tr>
-<tr><td>C. Pruebas automáticas en el pipeline de integración continua</td><td>Pruebas</td><td>4 h → 30 min</td><td>5 días → 2 h</td></tr>
-<tr><td>D. Cambio estándar preaprobado: el pipeline en verde hace de control</td><td>Aprobación del despliegue</td><td>30 min → 0</td><td>7 días → 30 min</td></tr>
-<tr><td>E. Despliegue continuo con contenedores</td><td>Despliegue</td><td>3 h → 15 min</td><td>14 días → 30 min</td></tr>
-<tr><td>F. Contratar un segundo tester</td><td>Pruebas</td><td>4 h → 2 h</td><td>5 días → 4 días</td></tr>
-</table></div>
-</div>
-<div class="actividad">
-<h4>Actividad 10. ¿Qué prácticas de CI/CD recomendaríais? <span class="dur">25 min</span></h4>
+<h4>Actividad 9. ¿Qué prácticas de CI/CD recomendaríais? <span class="dur">25 min</span></h4>
 <p>Para cada organización, indicad qué prácticas de CI/CD recomendaríais: <b>integración continua, entrega continua y/o despliegue continuo</b>. Justificad vuestra decisión en 3-4 líneas. Tened en cuenta que las prácticas son acumulativas: la entrega continua parte de la integración continua, y el despliegue continuo añade la automatización del paso a producción.</p>
 <ol type="a">
 <li>Una plataforma de comercio electrónico con 40 desarrolladores que realiza varias decenas de cambios al día. Dispone de una buena batería de pruebas automáticas y puede revertir rápidamente una versión si se detecta un problema.</li>
@@ -674,20 +653,7 @@ Criterios de aceptación:
 <li>Una plataforma de vídeo en streaming con cientos de desarrolladores, despliegues frecuentes, pruebas automatizadas, monitorización en tiempo real y mecanismos de <i>rollback</i>. Los cambios pequeños pueden llegar a producción automáticamente.</li>
 <li>Una empresa que desarrolla software para maquinaria industrial. Los desarrolladores integran código varias veces al día y todas las modificaciones se someten automáticamente a pruebas, pero las nuevas versiones solo pueden instalarse en las máquinas después de una validación y autorización del cliente.</li>
 </ol>
-</div>
-<div class="actividad">
-<h4>Actividad 11. Métricas DORA de un caso <span class="dur">20 min</span></h4>
-<p>Este es el historial (ficticio) de despliegues de dos meses del equipo de Cita Previa. Calculad las cuatro métricas DORA, clasificad al equipo según la tabla del apartado 4 y proponed dos acciones para mejorar la métrica más débil.</p>
-<div class="tabla"><table>
-<tr><th>Despliegue</th><th>Commit más antiguo incluido</th><th>Fecha de despliegue</th><th>¿Provocó incidencia?</th><th>Servicio restaurado</th></tr>
-<tr><td>v1.4</td><td>2 feb, 10:00</td><td>12 feb, 22:00</td><td>No</td><td>-</td></tr>
-<tr><td>v1.5</td><td>13 feb, 09:00</td><td>26 feb, 22:00</td><td>Sí, 26 feb 23:10</td><td>1 mar, 12:00</td></tr>
-<tr><td>v1.5.1</td><td>27 feb, 11:00</td><td>1 mar, 11:30</td><td>No</td><td>-</td></tr>
-<tr><td>v1.6</td><td>2 mar, 09:00</td><td>12 mar, 22:00</td><td>No</td><td>-</td></tr>
-<tr><td>v1.7</td><td>15 mar, 10:00</td><td>26 mar, 22:00</td><td>Sí, 27 mar 08:00</td><td>27 mar, 14:00</td></tr>
-</table></div>
-<p>Pistas: la frecuencia es el número de despliegues entre los días del periodo; el tiempo de espera, la media entre commit y despliegue; la tasa de fallos, los despliegues con incidencia entre el total; el tiempo de recuperación, la media entre incidencia y restauración.</p>
-<p class="entrega">Entrega en Aules: mapa actual y futuro, respuestas del caso de entrega y cálculo de métricas. En los últimos 5 minutos, dos grupos presentan su mapa futuro.</p>
+<p class="entrega">Entrega en Aules: las respuestas de cada caso.</p>
 </div>
 
 <h3>Preguntas de repaso</h3>
@@ -708,7 +674,7 @@ Criterios de aceptación:
 <li>Conocer los elementos del ecosistema: imagen, Dockerfile, capas, registro, etiquetas, orquestador.</li>
 <li>Describir las etapas de un pipeline CI/CD que termina en el despliegue de un contenedor.</li>
 <li>Conocer las estrategias de despliegue (recreate, rolling, blue/green, canary) y la gestión de entornos.</li>
-<li>Construir y ejecutar la imagen de <code>cita-previa-app</code> y diseñar su pipeline completo.</li>
+<li>Diseñar el pipeline completo de <code>cita-previa-app</code>.</li>
 </ul>
 
 <h3>1. El problema: "en mi máquina funciona"</h3>
@@ -816,39 +782,12 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 12. Primeros contenedores <span class="dur">25 min</span></h4>
-<p>Individual, en el portátil del aula (Ubuntu MATE). Si Docker no está instalado, instaladlo con <code>sudo apt install docker.io docker-compose-v2</code> y añadid vuestro usuario al grupo con <code>sudo usermod -aG docker $USER</code> (cerrad sesión y volved a entrar).</p>
-<pre><code>docker run hello-world
-docker run -d --name web -p 8080:80 nginx:1.27     # abrid http://localhost:8080
-docker ps
-docker logs web
-docker exec -it web sh -c "cat /etc/os-release; ps aux"
-docker stats --no-stream
-docker stop web && docker rm web
-docker images
-docker image history nginx:1.27</code></pre>
-<p>Contestad: ¿qué sistema operativo dice tener el contenedor? ¿Cuántos procesos veis dentro y cuántos ve <code>ps aux</code> fuera? ¿Cuántas capas tiene la imagen de nginx? Relacionadlo con namespaces y capas.</p>
-</div>
-<div class="actividad">
-<h4>Actividad 13. Construir la imagen de Cita Previa <span class="dur">25 min</span></h4>
-<ol>
-<li>Cread una carpeta <code>cita-previa-app</code> con los ficheros <code>app.py</code>, <code>requirements.txt</code> y <code>Dockerfile</code> de la pestaña <a href="ra5.html#recursos">Recursos de la unidad 5</a>.</li>
-<li>Construid la imagen: <code>docker build -t cita-previa-app:0.1 .</code> y medid el tiempo.</li>
-<li>Ejecutadla dos veces con configuración distinta:
-<pre><code>docker run -d --name cp-rev -p 8001:8000 -e ENTORNO=revision cita-previa-app:0.1
-docker run -d --name cp-pro -p 8002:8000 -e ENTORNO=produccion cita-previa-app:0.1
-curl localhost:8001/salud ; curl localhost:8002/salud</code></pre></li>
-<li>Cambiad una línea de <code>app.py</code> (por ejemplo, añadid una cita más) y reconstruid como <code>0.2</code>. ¿Qué capas se reutilizan de la caché? ¿Cuánto tarda ahora?</li>
-<li>Comprobad con <code>docker inspect --format '{{.State.Health.Status}}' cp-rev</code> el estado del healthcheck y con <code>docker exec cp-rev whoami</code> con qué usuario se ejecuta.</li>
-</ol>
-</div>
-<div class="actividad">
-<h4>Actividad 14. Diseño del pipeline de Cita Previa <span class="dur">20 min</span></h4>
+<h4>Actividad 10. Diseño del pipeline de Cita Previa <span class="dur">20 min</span></h4>
 <p>En los grupos habituales, dibujad en diagrams.net el pipeline completo de Cita Previa desde el commit hasta producción. Debe incluir: cada etapa con su herramienta, qué la dispara (pull request, fusión en main, etiqueta de versión), los entornos, dónde se construye la imagen y cuántas veces, dónde hay aprobación manual, qué estrategia de despliegue usaríais y cómo se volvería atrás. Añadid una nota explicando si es entrega o despliegue continuo y por qué, teniendo en cuenta que maneja datos de salud.</p>
-<p class="entrega">Entrega en Aules: respuestas de la actividad 12, capturas de la actividad 13 y diagrama del pipeline. Este diagrama lo retomaremos al empezar la unidad 5.</p>
+<p class="entrega">Entrega en Aules: diagrama del pipeline. Este diagrama lo retomaremos al empezar la unidad 5.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 15. Cuestionario de la unidad 1 <span class="dur">20 min</span></h4>
+<h4>Actividad 11. Cuestionario de la unidad 1 <span class="dur">20 min</span></h4>
 <p>Individual, en Aules y sin apuntes. Unas 20 preguntas de toda la unidad: tipo test, verdadero o falso y algún cálculo sencillo (ley de Little, eficiencia del flujo). Entran las cinco sesiones: cascada y sus variantes, Manifiesto Ágil y Scrum, Kanban, XP y Lean, DevOps y CI/CD, y contenedores.</p>
 <p>El cuestionario cuenta en la nota de la unidad. Además, sirve de preparación: <b>las preguntas de la prueba escrita serán de este mismo estilo</b>. Para estudiar, repasad las preguntas de repaso del final de cada sesión y los diagramas.</p>
 </div>

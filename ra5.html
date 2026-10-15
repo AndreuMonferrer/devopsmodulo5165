@@ -109,8 +109,13 @@ Terraform ──► red, volúmenes y contenedores Docker (revisión y producci�
 <p>Subid el trabajo en una rama y abrid un pull request (así practicamos el flujo que automatizaremos en las próximas sesiones).</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Docker frente a Podman <span class="dur">15 min</span></h4>
-<p>En parejas. Instalad Podman (<code>sudo apt install -y podman</code>) y ejecutad la misma imagen de <code>cita-previa-app</code> con Docker y con Podman. Comparad: ¿qué proceso es el padre del contenedor en cada caso (<code>ps -ef --forest</code>)? ¿Con qué usuario del anfitrión se ejecuta (<code>ps -o user,pid,cmd</code>)? ¿Hace falta sudo o pertenecer a un grupo? ¿Qué implicaciones de seguridad tiene?</p>
+<h4>Actividad 2. Docker frente a Podman <span class="dur">30 min</span></h4>
+<p>Primero, preparad Docker y la imagen de la aplicación en el portátil:</p>
+<ol>
+<li>Si Docker no está instalado, instaladlo con <code>sudo apt install docker.io docker-compose-v2</code> y añadid vuestro usuario al grupo con <code>sudo usermod -aG docker $USER</code> (cerrad sesión y volved a entrar). Comprobadlo con <code>docker run hello-world</code>.</li>
+<li>Cread una carpeta <code>cita-previa-app</code> con los ficheros <code>app.py</code>, <code>requirements.txt</code> y <code>Dockerfile</code> de la pestaña <a href="#recursos">Recursos</a> y construid la imagen: <code>docker build -t cita-previa-app:0.1 .</code></li>
+</ol>
+<p>Después, en parejas. Instalad Podman (<code>sudo apt install -y podman</code>) y ejecutad la misma imagen de <code>cita-previa-app</code> con Docker y con Podman. Comparad: ¿qué proceso es el padre del contenedor en cada caso (<code>ps -ef --forest</code>)? ¿Con qué usuario del anfitrión se ejecuta (<code>ps -o user,pid,cmd</code>)? ¿Hace falta sudo o pertenecer a un grupo? ¿Qué implicaciones de seguridad tiene?</p>
 </div>
 <div class="actividad">
 <h4>Actividad 3. Presentaciones relámpago <span class="dur">25 min</span></h4>
