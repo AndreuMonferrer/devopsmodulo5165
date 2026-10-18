@@ -130,13 +130,26 @@
 <ol>
 <li>Clasificad cada elemento en las capas del apartado 1.</li>
 <li>Marcad los <b>puntos únicos de fallo</b>: elementos que, si fallan, paran toda la empresa.</li>
-<li>Escribid qué pasaría en tres situaciones: (a) falla un SSD del servidor 1; (b) se va la luz un viernes a las 18:00 y no vuelve hasta el lunes; (c) la gestoría absorbe a otra y necesita el triple de máquinas virtuales en un mes.</li>
+<li>Escribid qué pasaría en tres situaciones:<ol class="casos">
+<li>Falla un SSD del servidor 1.</li>
+<li>Se va la luz un viernes a las 18:00 y no vuelve hasta el lunes.</li>
+<li>La gestoría absorbe a otra y necesita el triple de máquinas virtuales en un mes.</li>
+</ol></li>
 <li>Para cada situación, indicad si la nube la resolvería mejor o peor y por qué.</li>
 </ol>
 </div>
 <div class="actividad">
 <h4>Actividad 2. ¿Es nube o no? <span class="dur">20 min</span></h4>
-<p>Para cada caso, decidid si es on premise, colocation, hosting tradicional o nube, y comprobad cuáles de las cinco características del NIST cumple: (a) la Conselleria tiene sus servidores en un CPD propio en Valencia; (b) una empresa alquila un VPS por 5 € al mes con contrato anual y lo pide por correo; (c) una startup crea y destruye decenas de máquinas al día con Terraform en AWS; (d) un hospital lleva sus servidores al CPD de un proveedor en Madrid y los administra él mismo; (e) una universidad monta OpenStack y permite a sus grupos de investigación crear máquinas desde un portal pagando por horas; (f) usáis Google Drive para los apuntes. Justificad cada respuesta.</p>
+<p>Para cada caso, decidid si es on premise, colocation, hosting tradicional o nube, y comprobad cuáles de las cinco características del NIST cumple:</p>
+<ol class="casos">
+<li>La Conselleria tiene sus servidores en un CPD propio en Valencia.</li>
+<li>Una empresa alquila un VPS por 5 € al mes con contrato anual y lo pide por correo.</li>
+<li>Una startup crea y destruye decenas de máquinas al día con Terraform en AWS.</li>
+<li>Un hospital lleva sus servidores al CPD de un proveedor en Madrid y los administra él mismo.</li>
+<li>Una universidad monta OpenStack y permite a sus grupos de investigación crear máquinas desde un portal pagando por horas.</li>
+<li>Usáis Google Drive para los apuntes.</li>
+</ol>
+<p>Justificad cada respuesta.</p>
 </div>
 <div class="actividad">
 <h4>Actividad 3. Primer contacto con la consola de nube <span class="dur">30 min</span></h4>
@@ -285,7 +298,13 @@
 <div class="actividad">
 <h4>Actividad 3. Responsabilidad y disponibilidad <span class="dur">15 min</span></h4>
 <ol>
-<li>Para cada incidente, indicad quién es responsable según el modelo de responsabilidad compartida: (a) falla la refrigeración del CPD de la región; (b) un servidor de Cita Previa en una VM no tenía instalados los parches del sistema operativo; (c) un empleado deja su contraseña de la consola en un repositorio público; (d) se estropea un disco físico; (e) un bucket con documentos de pacientes se configura como público.</li>
+<li>Para cada incidente, indicad quién es responsable según el modelo de responsabilidad compartida:<ol class="casos">
+<li>Falla la refrigeración del CPD de la región.</li>
+<li>Un servidor de Cita Previa en una VM no tenía instalados los parches del sistema operativo.</li>
+<li>Un empleado deja su contraseña de la consola en un repositorio público.</li>
+<li>Se estropea un disco físico.</li>
+<li>Un bucket con documentos de pacientes se configura como público.</li>
+</ol></li>
 <li>Cita Previa usa una VM (SLA 99,5 %), una base de datos gestionada (99,95 %) y un balanceador (99,99 %). Calculad la disponibilidad máxima esperada y cuántas horas al año podría estar caída. ¿Qué haríais para mejorarla?</li>
 </ol>
 <p class="entrega">Entrega en Aules: capturas y respuestas de la actividad 1, hoja de estimación de la actividad 2 y respuestas de la 3. Comprobad antes de salir que no os queda ningún recurso creado.</p>
@@ -523,7 +542,17 @@
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 1. ¿Infraestructura o arquitectura? <span class="dur">15 min</span></h4>
-<p>En parejas, clasificad cada afirmación como infraestructura o arquitectura y explicad por qué: (a) la región de Madrid tiene tres zonas de disponibilidad; (b) las instancias de la aplicación no tienen IP pública y solo aceptan tráfico del balanceador; (c) una VM <code>t3.medium</code> tiene 2 vCPU y 4 GB; (d) las sesiones se guardan en Redis para poder escalar horizontalmente; (e) el disco de la base de datos es SSD de 100 GB; (f) los recordatorios se envían mediante una cola para no bloquear la web; (g) el proveedor usa el hipervisor Nitro; (h) la base de datos tiene una réplica en otra zona.</p>
+<p>En parejas, clasificad cada afirmación como infraestructura o arquitectura y explicad por qué:</p>
+<ol class="casos">
+<li>La región de Madrid tiene tres zonas de disponibilidad.</li>
+<li>Las instancias de la aplicación no tienen IP pública y solo aceptan tráfico del balanceador.</li>
+<li>Una VM <code>t3.medium</code> tiene 2 vCPU y 4 GB.</li>
+<li>Las sesiones se guardan en Redis para poder escalar horizontalmente.</li>
+<li>El disco de la base de datos es SSD de 100 GB.</li>
+<li>Los recordatorios se envían mediante una cola para no bloquear la web.</li>
+<li>El proveedor usa el hipervisor Nitro.</li>
+<li>La base de datos tiene una réplica en otra zona.</li>
+</ol>
 </div>
 <div class="actividad">
 <h4>Actividad 2. Diagrama de arquitectura de Cita Previa <span class="dur">45 min</span></h4>

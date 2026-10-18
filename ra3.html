@@ -253,7 +253,14 @@ curl -s --unix-socket /var/run/docker.sock http://localhost/containers/json | jq
 </div>
 <div class="actividad">
 <h4>Actividad 3. ¿Nube privada o no? <span class="dur">15 min</span></h4>
-<p>Evaluad con las características del NIST y los requisitos del apartado 2 si estas infraestructuras son nube privada, y qué les falta: (a) un ayuntamiento con tres servidores VMware en los que el técnico crea las VM cuando se las piden por correo; (b) una pyme con Proxmox VE en la que cada departamento tiene un usuario y un pool para crear sus VM desde plantillas, con API y tokens, pero sin cuotas ni facturación; (c) una universidad con OpenStack, proyectos por grupo de investigación y cuotas; (d) un banco que alquila a un proveedor 20 servidores dedicados con OpenNebula que gestiona su propio equipo; (e) una empresa con toda su infraestructura en una VPC de AWS.</p>
+<p>Evaluad con las características del NIST y los requisitos del apartado 2 si estas infraestructuras son nube privada, y qué les falta:</p>
+<ol class="casos">
+<li>Un ayuntamiento con tres servidores VMware en los que el técnico crea las VM cuando se las piden por correo.</li>
+<li>Una pyme con Proxmox VE en la que cada departamento tiene un usuario y un pool para crear sus VM desde plantillas, con API y tokens, pero sin cuotas ni facturación.</li>
+<li>Una universidad con OpenStack, proyectos por grupo de investigación y cuotas.</li>
+<li>Un banco que alquila a un proveedor 20 servidores dedicados con OpenNebula que gestiona su propio equipo.</li>
+<li>Una empresa con toda su infraestructura en una VPC de AWS.</li>
+</ol>
 <p class="entrega">Entrega en Aules: esquema, capturas y script de la actividad 2, y respuestas de la actividad 3.</p>
 </div>
 <details><summary>Preparación previa (profesor)</summary>
@@ -414,7 +421,14 @@ PersistentKeepalive = 25</code></pre></li>
 </svg></div><figcaption>Conexión sitio a sitio con WireGuard: el portátil inicia el túnel hacia la nube; después, la VM llega al servicio privado del portátil por la IP del túnel, sin exponerlo a Internet.</figcaption></figure>
 <div class="actividad">
 <h4>Actividad 3. Clasificar patrones <span class="dur">10 min</span></h4>
-<p>Asociad cada situación a un patrón híbrido: (a) un periódico que recibe diez veces más visitas la noche de elecciones; (b) un hospital que copia cada noche sus copias de seguridad cifradas a un bucket europeo; (c) una empresa que prueba cada versión en la nube antes de instalarla en su CPD; (d) una cadena de supermercados con servidores en cada tienda gestionados desde Azure Arc; (e) un banco que tiene su web en la nube pero las cuentas en su mainframe.</p>
+<p>Asociad cada situación a un patrón híbrido:</p>
+<ol class="casos">
+<li>Un periódico que recibe diez veces más visitas la noche de elecciones.</li>
+<li>Un hospital que copia cada noche sus copias de seguridad cifradas a un bucket europeo.</li>
+<li>Una empresa que prueba cada versión en la nube antes de instalarla en su CPD.</li>
+<li>Una cadena de supermercados con servidores en cada tienda gestionados desde Azure Arc.</li>
+<li>Un banco que tiene su web en la nube pero las cuentas en su mainframe.</li>
+</ol>
 <p class="entrega">Entrega en Aules: diseño híbrido, capturas del túnel y de las pruebas, y clasificación. Al terminar: <code>sudo wg-quick down wg0</code> en el portátil, <code>docker rm -f s14-web</code> y terminad la instancia de la nube.</p>
 </div>
 <details><summary>Preparación previa (profesor)</summary>
@@ -542,7 +556,14 @@ PersistentKeepalive = 25</code></pre></li>
 <li><b>C. Mutua de seguros</b>: CPD propio renovado hace 2 años, 25 técnicos de sistemas, aplicación principal en Java con Oracle, carga muy estable, regulación de la Dirección General de Seguros, quiere modernizar su web de clientes.</li>
 <li><b>D. Ayuntamiento de 15.000 habitantes</b>: sede electrónica, padrón, registro, web municipal; obligado al ENS; un técnico informático y una empresa de mantenimiento; servidores de hace 9 años.</li>
 </ul>
-<p>Pasos: (1) analizad las necesidades de funcionalidad, seguridad, escalabilidad y costes con las preguntas del apartado 2; (2) identificad requisitos eliminatorios; (3) construid la matriz ponderada en una hoja de cálculo con al menos 7 criterios, comparando pública, privada y comunitaria o híbrida; (4) haced un análisis de sensibilidad cambiando los dos pesos principales; (5) redactad una recomendación de una página con el modelo, los proveedores o plataformas candidatos, los riesgos y los siguientes pasos.</p>
+<p>Pasos:</p>
+<ol class="pasos">
+<li>Analizad las necesidades de funcionalidad, seguridad, escalabilidad y costes con las preguntas del apartado 2.</li>
+<li>Identificad requisitos eliminatorios.</li>
+<li>Construid la matriz ponderada en una hoja de cálculo con al menos 7 criterios, comparando pública, privada y comunitaria o híbrida.</li>
+<li>Haced un análisis de sensibilidad cambiando los dos pesos principales.</li>
+<li>Redactad una recomendación de una página con el modelo, los proveedores o plataformas candidatos, los riesgos y los siguientes pasos.</li>
+</ol>
 </div>
 <div class="actividad">
 <h4>Actividad 3. Presentación al cliente <span class="dur">20 min</span></h4>
@@ -637,7 +658,15 @@ PersistentKeepalive = 25</code></pre></li>
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 1. ¿Híbrida, multinube o ambas? <span class="dur">15 min</span></h4>
-<p>En parejas, clasificad y justificad: (a) una universidad con OpenStack propio y copias en Azure; (b) una startup con su app en Google Cloud y el correo en Microsoft 365; (c) un banco con CPD, AWS para la web y Azure para la analítica; (d) una empresa con la misma aplicación en AWS y en Azure detrás de un DNS que reparte el tráfico; (e) un ayuntamiento con servidores propios y la sede electrónica en un proveedor certificado ENS. Para cada una, indicad un requisito que deban cumplir y un riesgo.</p>
+<p>En parejas, clasificad y justificad:</p>
+<ol class="casos">
+<li>Una universidad con OpenStack propio y copias en Azure.</li>
+<li>Una startup con su app en Google Cloud y el correo en Microsoft 365.</li>
+<li>Un banco con CPD, AWS para la web y Azure para la analítica.</li>
+<li>Una empresa con la misma aplicación en AWS y en Azure detrás de un DNS que reparte el tráfico.</li>
+<li>Un ayuntamiento con servidores propios y la sede electrónica en un proveedor certificado ENS.</li>
+</ol>
+<p>Para cada una, indicad un requisito que deban cumplir y un riesgo.</p>
 </div>
 <div class="actividad">
 <h4>Actividad 2. La misma imagen en dos plataformas <span class="dur">50 min</span></h4>
