@@ -59,6 +59,12 @@ ol.casos>li::before,ol.pasos>li::before{position:absolute;left:.7rem;top:.45rem;
 ol.casos>li::before{content:counter(caso,lower-alpha)}
 ol.pasos>li::before{content:counter(caso)}
 li>ol.casos{margin:.5rem 0 .3rem}
+/* Fórmulas destacadas */
+.formula{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.6rem 1rem;background:var(--gris);border:1px solid var(--linea);border-left:4px solid var(--ra);border-radius:6px;padding:1rem 1.2rem;margin:1rem 0;font-weight:600;text-align:center}
+.formula .igual{font-size:1.2rem;color:var(--ra)}
+.formula .fraccion{display:inline-flex;flex-direction:column;align-items:stretch}
+.formula .fraccion > span{padding:.15rem .5rem}
+.formula .fraccion > span:first-child{border-bottom:2px solid var(--texto)}
 .entrega{font-size:.95rem;color:var(--suave);border-top:1px dashed var(--linea);padding-top:.5rem;margin-bottom:0}
 details{background:var(--gris);border-radius:6px;padding:.5rem 1rem;margin:1rem 0}
 details summary{cursor:pointer;font-weight:600}
