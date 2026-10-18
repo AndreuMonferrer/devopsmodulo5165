@@ -417,22 +417,18 @@ Criterios de aceptación:
 <p>Una herramienta Lean fundamental para DevOps es el <b>mapa del flujo de valor</b> (<i>Value Stream Map</i>): dibujar todos los pasos desde que se pide algo hasta que llega al cliente, con el tiempo de trabajo real y el tiempo de espera de cada paso. Casi siempre se descubre que el trabajo real es una pequeña parte del tiempo total. Lo usaremos en el punto 4. Otra idea derivada de Lean es el <b>Producto Mínimo Viable</b> (MVP, del libro <i>Lean Startup</i> de Eric Ries): la versión más pequeña del producto que permite aprender de usuarios reales.</p>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 200" role="img" aria-label="Ciclo construir, medir, aprender" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-mvp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="285" y="16" width="150" height="48" rx="8" class="d-azul"/><text x="360" y="32" class="t tb" text-anchor="middle" dominant-baseline="middle">Construir</text><text x="360" y="50" class="te" text-anchor="middle" dominant-baseline="middle">el MVP</text><rect x="495" y="136" width="150" height="48" rx="8" class="d-verde"/><text x="570" y="152" class="t tb" text-anchor="middle" dominant-baseline="middle">Medir</text><text x="570" y="170" class="te" text-anchor="middle" dominant-baseline="middle">cómo lo usan</text><rect x="75" y="136" width="150" height="48" rx="8" class="d-naranja"/><text x="150" y="152" class="t tb" text-anchor="middle" dominant-baseline="middle">Aprender</text><text x="150" y="170" class="te" text-anchor="middle" dominant-baseline="middle">¿seguir o cambiar?</text><path d="M440,52 Q520,70 560,132" class="flecha" marker-end="url(#fl-mvp)"/><text x="530" y="78" class="ts" text-anchor="start" dominant-baseline="middle">Producto</text><path d="M492,172 L230,172" class="flecha" marker-end="url(#fl-mvp)"/><text x="360" y="186" class="ts" text-anchor="middle" dominant-baseline="middle">Datos de usuarios reales</text><path d="M160,132 Q200,70 280,52" class="flecha" marker-end="url(#fl-mvp)"/><text x="190" y="78" class="ts" text-anchor="end" dominant-baseline="middle">Ideas</text><text x="360" y="120" class="ts" text-anchor="middle" dominant-baseline="middle">Cuanto más rápida</text><text x="360" y="136" class="ts" text-anchor="middle" dominant-baseline="middle">es cada vuelta, antes se aprende</text></svg></div><figcaption>El ciclo construir-medir-aprender de Lean Startup: se lanza la versión más pequeña útil (MVP), se mide con usuarios reales y se decide si seguir por ese camino o cambiar.</figcaption></figure>
 
-<h3>4. Otras metodologías y cómo elegir</h3>
-<ul>
-<li><b>Crystal</b>: familia de metodologías que se adaptan al tamaño del equipo y a lo crítico del sistema.</li>
-<li><b>DSDM</b> y <b>FDD</b>: métodos ágiles con más estructura, orientados respectivamente a proyectos con plazo fijo y a funcionalidades.</li>
-<li><b>Design Thinking</b>: no es de desarrollo, pero se usa antes para entender el problema del usuario.</li>
-</ul>
+<h3>4. Cómo elegir</h3>
+<p>Esta tabla resume en qué se diferencian las cuatro metodologías del punto (Scrum se vio en el punto 2):</p>
 <div class="tabla"><table>
-<tr><th></th><th>Scrum</th><th>Kanban</th><th>XP</th></tr>
-<tr><td>Se centra en</td><td>Organizar el trabajo en ciclos</td><td>El flujo continuo del trabajo</td><td>Las prácticas de programación</td></tr>
-<tr><td>Ciclos</td><td>Sprints de duración fija</td><td>Flujo continuo, sin iteraciones obligatorias</td><td>Iteraciones de 1-2 semanas</td></tr>
-<tr><td>Roles</td><td>Product Owner, Scrum Master, Developers</td><td>No prescribe roles</td><td>Cliente, programadores, coach</td></tr>
-<tr><td>Cambios</td><td>Entre sprints (dentro se protege el objetivo)</td><td>En cualquier momento</td><td>Entre iteraciones</td></tr>
-<tr><td>Limita el trabajo</td><td>Por sprint</td><td>Por columna (WIP)</td><td>Por iteración</td></tr>
-<tr><td>Ideal para</td><td>Desarrollo de producto</td><td>Soporte, operaciones, mantenimiento</td><td>Equipos que quieren calidad técnica alta</td></tr>
+<tr><th></th><th>Scrum</th><th>Kanban</th><th>XP</th><th>Lean</th></tr>
+<tr><td>Se centra en</td><td>Organizar el trabajo en ciclos</td><td>El flujo continuo del trabajo</td><td>Las prácticas de programación</td><td>Eliminar el desperdicio en todo el proceso</td></tr>
+<tr><td>Ciclos</td><td>Sprints de duración fija</td><td>Flujo continuo, sin iteraciones obligatorias</td><td>Iteraciones de 1-2 semanas</td><td>No prescribe ciclos: mejora continua</td></tr>
+<tr><td>Roles</td><td>Product Owner, Scrum Master, Developers</td><td>No prescribe roles</td><td>Cliente, programadores, coach</td><td>No prescribe roles</td></tr>
+<tr><td>Cambios</td><td>Entre sprints (dentro se protege el objetivo)</td><td>En cualquier momento</td><td>Entre iteraciones</td><td>Lo más tarde posible, cuando hay información</td></tr>
+<tr><td>Limita el trabajo</td><td>Por sprint</td><td>Por columna (WIP)</td><td>Por iteración</td><td>Reduciendo el trabajo a medio hacer</td></tr>
+<tr><td>Ideal para</td><td>Desarrollo de producto</td><td>Soporte, operaciones, mantenimiento</td><td>Equipos que quieren calidad técnica alta</td><td>Mejorar el proceso de toda la organización</td></tr>
 </table></div>
-<p>En la práctica, la mayoría de las empresas usan una <b>mezcla</b>: Scrum para organizarse, prácticas de XP para programar y un tablero Kanban para visualizarlo todo. Según las encuestas del sector (como el <i>State of Agile Report</i>), Scrum y los híbridos Scrum/Kanban son con diferencia los más habituales.</p>
+<p>No son excluyentes: Lean es más una filosofía que un método con reglas, y Scrum, Kanban y XP aplican sus ideas. En la práctica, la mayoría de las empresas usan una <b>mezcla</b>: Scrum para organizarse, prácticas de XP para programar, un tablero Kanban para visualizarlo todo y la mirada Lean para encontrar dónde se pierde el tiempo. Según las encuestas del sector (como el <i>State of Agile Report</i>), Scrum y los híbridos Scrum/Kanban son con diferencia los más habituales.</p>
 
 <h3>5. Herramientas de gestión de proyectos</h3>
 <p>Una herramienta de gestión de proyectos ayuda a planificar, repartir, seguir y comunicar el trabajo. Las funciones típicas son:</p>
