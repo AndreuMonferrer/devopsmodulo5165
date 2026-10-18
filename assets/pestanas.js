@@ -1,4 +1,4 @@
-// Pestañas accesibles e índice de la sesión. Enlazar a una sesión concreta con ra3.html#s14
+// Pestañas accesibles e índice del punto. Enlazar a un punto concreto con ra3.html#p3
 (function () {
   const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
   if (!tabs.length) return;
@@ -25,7 +25,7 @@
         if (h.tagName !== 'H2') { sub = document.createElement('ol'); li.appendChild(sub); } else { sub = null; }
       }
     });
-    // Actividades de la sesión, como una sola entrada con sus actividades debajo
+    // Actividades del punto, como una sola entrada con sus actividades debajo
     const acts = Array.from(panel.querySelectorAll('.actividad > h4'));
     const cab = titulos.find(h => h.textContent.trim() === 'Actividades');
     if (cab && acts.length) {

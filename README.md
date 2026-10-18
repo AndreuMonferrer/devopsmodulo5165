@@ -5,8 +5,8 @@ Apuntes y actividades del módulo 5165 del curso de especialización en Desplieg
 Sitio publicado: https://andreumonferrer.github.io/devopsmodulo5165/
 
 - `index.html`: portada con las 7 unidades.
-- `calendario.html`: calendario del curso por meses (festivos, vacaciones y Magdalena) y lista de las 41 sesiones.
-- `ra1.html` … `ra7.html`: una unidad por resultado de aprendizaje, una pestaña por sesión con la teoría, las actividades (con su duración) y preguntas de repaso.
+- `calendario.html`: calendario del curso por meses (festivos, vacaciones y Magdalena) y fecha de cada punto.
+- `ra1.html` … `ra7.html`: una unidad por resultado de aprendizaje, una pestaña por punto con la teoría, las actividades (con su duración) y preguntas de repaso.
 - `assets/`: estilos y script de pestañas compartidos.
 
-Enlace directo a una sesión: `ra3.html#s14`. Para incrustar una unidad en Aules, usar un iframe con la URL de la unidad.
+Enlace directo a un punto: `ra3.html#p3` (unidad 3, punto 3). Para incrustar una unidad en Aules, usar un iframe con la URL de la unidad.

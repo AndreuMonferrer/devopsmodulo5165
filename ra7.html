@@ -7,9 +7,9 @@
 </head><body style="--ra:#7b3b5e">
 <header class="cab"><div class="dentro"><nav class="menu" aria-label="Secciones"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="ra1.html">RA1</a><a href="ra2.html">RA2</a><a href="ra3.html">RA3</a><a href="ra4.html">RA4</a><a href="ra5.html">RA5</a><a href="ra6.html">RA6</a><a href="ra7.html" aria-current="page">RA7</a><button type="button" class="boton-tema" id="cambiar-tema">☾ Modo oscuro</button></nav>
 <h1>Unidad 7. Automatización, mantenimiento y despliegue de contenedores</h1><p>Ansible para instalar, mantener y desplegar; monitorización y reacción ante errores.</p></div></header>
-<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Sesiones de la unidad 7"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-s36" data-panel="s36">Sesión 36<small>22 feb</small></button><button role="tab" id="tab-s37" data-panel="s37">Sesión 37<small>26 feb</small></button><button role="tab" id="tab-s38" data-panel="s38">Sesión 38<small>8 mar</small></button><button role="tab" id="tab-s39" data-panel="s39">Sesión 39<small>12 mar</small></button><button role="tab" id="tab-s40" data-panel="s40">Sesión 40<small>15 mar</small></button><button role="tab" id="tab-s41" data-panel="s41">Sesión 41<small>22 mar</small></button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
-<main class="con-indice"><details class="indice" id="indice" open><summary>Índice de la sesión</summary><ol></ol></details><div class="contenido"><section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
-<p class="meta">Unidad 7 de 7 · 6 sesiones · 12 horas · del 22 feb al 22 mar</p>
+<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Puntos de la unidad 7"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-p1" data-panel="p1">Punto 1</button><button role="tab" id="tab-p2" data-panel="p2">Punto 2</button><button role="tab" id="tab-p3" data-panel="p3">Punto 3</button><button role="tab" id="tab-p4" data-panel="p4">Punto 4</button><button role="tab" id="tab-p5" data-panel="p5">Punto 5</button><button role="tab" id="tab-p6" data-panel="p6">Punto 6</button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
+<main class="con-indice"><details class="indice" id="indice" open><summary>Índice del punto</summary><ol></ol></details><div class="contenido"><section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
+<p class="meta">Unidad 7 de 7 · 6 puntos · 12 horas · del 22 feb al 22 mar</p>
 <h2>Resultado de aprendizaje 7</h2>
 <p class="ra-texto">Instala en su caso el software de automatización y gestión de paquetes y dependencias, y de administración de la configuración del software, creando flujos de mantenimiento y despliegue sobre las plataformas.</p>
 <p>Terraform creó la plataforma de cada entorno (red, volumen y Redis); ahora hay que preparar el equipo que la aloja, desplegar la aplicación y mantenerlo todo. En esta unidad usamos Ansible para instalar Docker y el resto de dependencias, crear flujos de mantenimiento repetibles y desplegar <code>cita-previa-app</code> como contenedor con límites de seguridad y consumo. Después la monitorizamos con Prometheus y Grafana, automatizamos las reacciones ante errores y documentamos cómo se despliega y cómo se usa la imagen.</p>
@@ -24,9 +24,9 @@
 │   └── roles/ (base, docker, app, monitor)
 └── docs/ (despliegue.md, imagen.md, capacity-plan.md)</code></pre>
 <h3>Criterios de evaluación</h3>
-<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Sesiones</th></tr><tr><td><b>7a)</b></td><td>Se han instalado herramientas de automatización y gestión de paquetes y dependencias en la infraestructura seleccionada.</td><td><a href="#s36">S36</a></td></tr><tr><td><b>7b)</b></td><td>Se han creado los flujos para mantenimiento, usando las herramientas para la automatización de la administración de la configuración del software y servicios de los sistemas desarrollados.</td><td><a href="#s37">S37</a></td></tr><tr><td><b>7c)</b></td><td>Se han verificado los flujos para mantenimiento, probando que las acciones automatizadas generan los resultados esperados.</td><td><a href="#s38">S38</a></td></tr><tr><td><b>7d)</b></td><td>Se han aplicado reglas de seguridad digital, niveles de servicio y consumo definidas en el proyecto, como configuraciones dentro de las herramientas de despliegue, para parametrizar la ejecución de los contenedores.</td><td><a href="#s39">S39</a></td></tr><tr><td><b>7e)</b></td><td>Se han recogido en las herramientas de monitorización las métricas para elaborar informes de rendimiento y planificación (capacity plan), anticipar el crecimiento y facilitar la gestión de los recursos.</td><td><a href="#s40">S40</a></td></tr><tr><td><b>7f)</b></td><td>Se ha redactado documentación sobre el uso de los despliegues de código e imágenes de contenedores, almacenándola en los repositorios de código.</td><td><a href="#s41">S41</a></td></tr><tr><td><b>7g)</b></td><td>Se han incorporado en las herramientas desplegadas acciones automáticas basadas en eventos disparados por errores tales como fallos de trabajo y acceso y estado de finalización.</td><td><a href="#s41">S41</a></td></tr></table></div>
-<h3>Plan de sesiones</h3>
-<div class="tabla"><table><tr><th>Sesión</th><th>Fecha</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#s36">S36</a></td><td>22 feb</td><td>Ansible: instalar herramientas y dependencias en la infraestructura</td><td>a</td></tr><tr><td><a href="#s37">S37</a></td><td>26 feb</td><td>Flujos de mantenimiento y despliegue con roles</td><td>b</td></tr><tr><td><a href="#s38">S38</a></td><td>8 mar</td><td>Verificar que la automatización hace lo que debe</td><td>c</td></tr><tr><td><a href="#s39">S39</a></td><td>12 mar</td><td>Parametrizar los contenedores: seguridad, nivel de servicio y consumo</td><td>d</td></tr><tr><td><a href="#s40">S40</a></td><td>15 mar</td><td>Monitorización y capacity plan</td><td>e</td></tr><tr><td><a href="#s41">S41</a></td><td>22 mar</td><td>Acciones automáticas ante errores y documentación del despliegue</td><td>g, f</td></tr></table></div>
+<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Puntos</th></tr><tr><td><b>7a)</b></td><td>Se han instalado herramientas de automatización y gestión de paquetes y dependencias en la infraestructura seleccionada.</td><td><a href="#p1">P1</a></td></tr><tr><td><b>7b)</b></td><td>Se han creado los flujos para mantenimiento, usando las herramientas para la automatización de la administración de la configuración del software y servicios de los sistemas desarrollados.</td><td><a href="#p2">P2</a></td></tr><tr><td><b>7c)</b></td><td>Se han verificado los flujos para mantenimiento, probando que las acciones automatizadas generan los resultados esperados.</td><td><a href="#p3">P3</a></td></tr><tr><td><b>7d)</b></td><td>Se han aplicado reglas de seguridad digital, niveles de servicio y consumo definidas en el proyecto, como configuraciones dentro de las herramientas de despliegue, para parametrizar la ejecución de los contenedores.</td><td><a href="#p4">P4</a></td></tr><tr><td><b>7e)</b></td><td>Se han recogido en las herramientas de monitorización las métricas para elaborar informes de rendimiento y planificación (capacity plan), anticipar el crecimiento y facilitar la gestión de los recursos.</td><td><a href="#p5">P5</a></td></tr><tr><td><b>7f)</b></td><td>Se ha redactado documentación sobre el uso de los despliegues de código e imágenes de contenedores, almacenándola en los repositorios de código.</td><td><a href="#p6">P6</a></td></tr><tr><td><b>7g)</b></td><td>Se han incorporado en las herramientas desplegadas acciones automáticas basadas en eventos disparados por errores tales como fallos de trabajo y acceso y estado de finalización.</td><td><a href="#p6">P6</a></td></tr></table></div>
+<h3>Puntos de la unidad</h3>
+<div class="tabla"><table><tr><th>Punto</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#p1">P1</a></td><td>Ansible: instalar herramientas y dependencias en la infraestructura</td><td>a</td></tr><tr><td><a href="#p2">P2</a></td><td>Flujos de mantenimiento y despliegue con roles</td><td>b</td></tr><tr><td><a href="#p3">P3</a></td><td>Verificar que la automatización hace lo que debe</td><td>c</td></tr><tr><td><a href="#p4">P4</a></td><td>Parametrizar los contenedores: seguridad, nivel de servicio y consumo</td><td>d</td></tr><tr><td><a href="#p5">P5</a></td><td>Monitorización y capacity plan</td><td>e</td></tr><tr><td><a href="#p6">P6</a></td><td>Acciones automáticas ante errores y documentación del despliegue</td><td>g, f</td></tr></table></div>
 <h3>Evaluación</h3>
 <p>La unidad pesa un <b>20 %</b> de la nota del módulo y se evalúa al <b>100 % con trabajo práctico</b>:</p>
 <div class="tabla"><table><tr><th>CE</th><th>Evidencia</th><th>Peso</th></tr>
@@ -37,11 +37,11 @@
 <tr><td>7e</td><td>Monitorización funcionando e informe de capacity plan</td><td>15 %</td></tr>
 <tr><td>7f</td><td>Documentación del despliegue y de la imagen en el repositorio</td><td>10 %</td></tr>
 <tr><td>7g</td><td>Acciones automáticas ante fallos de trabajo, de acceso y estado de finalización</td><td>10 %</td></tr></table></div>
-</section><section class="panel" role="tabpanel" id="p-s36" aria-labelledby="tab-s36" hidden>
-<p class="meta">Sesión 36 de 41 · lunes 22 de febrero de 2027 · 2 horas</p>
+</section><section class="panel" role="tabpanel" id="p-p1" aria-labelledby="tab-p1" hidden>
+<p class="meta">Unidad 7 · Punto 1 · 2 horas</p>
 <h2>Ansible: instalar herramientas y dependencias en la infraestructura</h2>
 <p class="chips"><span class="ce" title="Se han instalado herramientas de automatización y gestión de paquetes y dependencias en la infraestructura seleccionada.">CE 7a</span></p>
-<h3>Objetivos de la sesión</h3>
+<h3>Objetivos del punto</h3>
 <ul>
 <li>Explicar qué es la gestión de la configuración y en qué se diferencia del aprovisionamiento.</li>
 <li>Conocer la arquitectura de Ansible: nodo de control, nodos gestionados, inventario, módulos, tareas, playbooks y hechos.</li>
@@ -102,7 +102,7 @@ variable: "{{ otra }}"       # plantillas Jinja2: siempre entre comillas</code><
 </table></div>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 218" role="img" aria-label="Niveles de paquetes" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-niveles_paquetes" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="154.0" y="57.0" class="ts" text-anchor="end" dominant-baseline="middle">ansible-galaxy</text><text x="154.0" y="99.0" class="ts" text-anchor="end" dominant-baseline="middle">Docker / registro</text><text x="154.0" y="141.0" class="ts" text-anchor="end" dominant-baseline="middle">pip / pipx</text><text x="154.0" y="183.0" class="ts" text-anchor="end" dominant-baseline="middle">apt</text><text x="435.0" y="21.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Qué se instala</text><rect x="162.0" y="38.0" width="546.0" height="38.0" rx="6" class="d-morado"/><text x="435.0" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">Colecciones de Ansible (en el nodo de control)</text><rect x="162.0" y="80.0" width="546.0" height="38.0" rx="6" class="d-azul"/><text x="435.0" y="99.0" class="t" text-anchor="middle" dominant-baseline="middle">Imagen de la aplicación con todas sus librerías</text><rect x="162.0" y="122.0" width="546.0" height="38.0" rx="6" class="d-verde"/><text x="435.0" y="141.0" class="t" text-anchor="middle" dominant-baseline="middle">Herramientas de Python y SDK de Docker</text><rect x="162.0" y="164.0" width="546.0" height="38.0" rx="6" class="d-naranja"/><text x="435.0" y="183.0" class="t" text-anchor="middle" dominant-baseline="middle">Docker Engine, utilidades y bibliotecas del sistema</text></svg></div><figcaption>Los niveles de paquetes y dependencias de un servidor de Cita Previa, cada uno con su gestor.</figcaption></figure>
 <p>Un detalle importante: los módulos de <code>community.docker</code> se ejecutan en el nodo gestionado con Python y necesitan allí la librería <b>Docker SDK para Python</b> (paquete <code>python3-docker</code>). Es una dependencia de la automatización que también hay que instalar.</p>
-<p>Igual que en la sesión 29, las versiones se fijan: la del repositorio de Docker, las de las colecciones en <code>requirements.yml</code> y las de las imágenes (nunca <code>latest</code>).</p>
+<p>Igual que en el punto 7 de la unidad 5, las versiones se fijan: la del repositorio de Docker, las de las colecciones en <code>requirements.yml</code> y las de las imágenes (nunca <code>latest</code>).</p>
 
 <h3>4. El proyecto Ansible</h3>
 <p class="fichero">ansible/ansible.cfg</p>
@@ -213,7 +213,7 @@ ansible --version</code></pre>
 <h4>Actividad 5. Dependencias de la aplicación <span class="dur">15 min</span></h4>
 <p>Añadid al playbook un segundo play o nuevas tareas que:</p>
 <ol>
-<li>Descarguen la imagen de la aplicación publicada en la sesión 29, con una versión fija: <code>community.docker.docker_image</code> con <code>name: ghcr.io/ORGANIZACION/cita-previa-app</code>, <code>tag: "1.0.0"</code>, <code>source: pull</code>.</li>
+<li>Descarguen la imagen de la aplicación publicada en el punto 7 de la unidad 5, con una versión fija: <code>community.docker.docker_image</code> con <code>name: ghcr.io/ORGANIZACION/cita-previa-app</code>, <code>tag: "1.0.0"</code>, <code>source: pull</code>.</li>
 <li>Creen un entorno virtual de Python en <code>/opt/herramientas</code> e instalen en él <code>httpie</code> con <code>ansible.builtin.pip</code> (<code>virtualenv: /opt/herramientas</code>, <code>virtualenv_command: python3 -m venv</code>) para tener una herramienta de pruebas HTTP en el servidor.</li>
 </ol>
 <p>Ejecutad y comprobad (<code>docker images</code>, <code>/opt/herramientas/bin/http --version</code>). En <code>ansible/README.md</code>, documentad qué se instala en cada nivel de la tabla del apartado 3 y con qué gestor.</p>
@@ -232,11 +232,11 @@ ansible --version</code></pre>
 <li>¿Por qué hay que instalar <code>python3-docker</code> en los nodos gestionados?</li>
 <li>¿Para qué sirve <code>requirements.yml</code>? ¿Qué gestor lo usa?</li>
 </ol>
-</section><section class="panel" role="tabpanel" id="p-s37" aria-labelledby="tab-s37" hidden>
-<p class="meta">Sesión 37 de 41 · viernes 26 de febrero de 2027 · 2 horas</p>
+</section><section class="panel" role="tabpanel" id="p-p2" aria-labelledby="tab-p2" hidden>
+<p class="meta">Unidad 7 · Punto 2 · 2 horas</p>
 <h2>Flujos de mantenimiento y despliegue con roles</h2>
 <p class="chips"><span class="ce" title="Se han creado los flujos para mantenimiento, usando las herramientas para la automatización de la administración de la configuración del software y servicios de los sistemas desarrollados.">CE 7b</span></p>
-<h3>Objetivos de la sesión</h3>
+<h3>Objetivos del punto</h3>
 <ul>
 <li>Organizar la automatización en roles reutilizables con su estructura estándar.</li>
 <li>Usar variables, plantillas Jinja2 y handlers, y conocer la precedencia de variables por grupo y entorno.</li>
@@ -365,13 +365,13 @@ puertos_abiertos: []          # puertos de entrada permitidos por UFW</code></pr
     msg: "Hay que reiniciar el equipo para completar las actualizaciones"
   when: reinicio.stat.exists</code></pre>
 <p>En YAML, un texto que contiene "dos puntos y espacio" debe ir entre comillas; por eso algunos nombres de tarea están entrecomillados. En un servidor, la última tarea sería un <code>ansible.builtin.reboot</code> controlado por una variable; en vuestro portátil nos limitamos a avisar.</p>
-<div class="aviso"><p><b>Docker y el cortafuegos.</b> Docker añade sus propias reglas de iptables para los puertos publicados con <code>-p</code>, y esas reglas se aplican antes que las de UFW: un puerto publicado por un contenedor queda accesible aunque UFW no lo permita. Por eso, en la sesión 39, los servicios que no deben ser públicos se publicarán solo en <code>127.0.0.1</code> o no se publicarán.</p></div>
+<div class="aviso"><p><b>Docker y el cortafuegos.</b> Docker añade sus propias reglas de iptables para los puertos publicados con <code>-p</code>, y esas reglas se aplican antes que las de UFW: un puerto publicado por un contenedor queda accesible aunque UFW no lo permita. Por eso, en el punto 4, los servicios que no deben ser públicos se publicarán solo en <code>127.0.0.1</code> o no se publicarán.</p></div>
 <p class="fichero">roles/docker/defaults/main.yml</p>
 <pre><code>docker_log_tamano: 10m
 docker_log_ficheros: "3"
 docker_registro_espejo: ""     # p. ej., un espejo de Docker Hub del centro, si lo hubiera</code></pre>
 <p class="fichero">roles/docker/tasks/main.yml</p>
-<pre><code># Las tareas de instalar.yml de la sesión 36, más:
+<pre><code># Las tareas de instalar.yml del punto 1, más:
 - name: Configuración del demonio de Docker
   ansible.builtin.template:
     src: daemon.json.j2
@@ -387,7 +387,7 @@ docker_registro_espejo: ""     # p. ej., un espejo de Docker Hub del centro, si 
     hour: "4"
     minute: "0"
     job: "docker image prune -af --filter until=168h"</code></pre>
-<p class="fichero">roles/app/tasks/main.yml (primera versión; en la sesión 39 añadiremos seguridad y límites)</p>
+<p class="fichero">roles/app/tasks/main.yml (primera versión; en el punto 4 añadiremos seguridad y límites)</p>
 <p>A partir de ahora repartimos el trabajo: <b>Terraform gestiona la plataforma</b> de cada entorno (red, volumen y Redis) y <b>Ansible despliega la aplicación</b>, conectándola a la red que creó Terraform. Por eso, en la actividad 3, retiraremos de <code>infra/</code> los contenedores de la aplicación: si los dos gestionaran el mismo contenedor, cada uno desharía los cambios del otro.</p>
 <pre><code>- name: Contenedor de la aplicación
   community.docker.docker_container:
@@ -420,7 +420,7 @@ app_puerto: 8080</code></pre>
   roles: [app]</code></pre>
 
 <h3>5. Ejecutar los flujos de forma periódica</h3>
-<p>Un flujo de mantenimiento sirve de poco si hay que acordarse de lanzarlo. Se programa en GitHub Actions en el runner autoalojado de la sesión 34, que se ejecuta en el mismo portátil con el usuario <code>runner-cp</code>:</p>
+<p>Un flujo de mantenimiento sirve de poco si hay que acordarse de lanzarlo. Se programa en GitHub Actions en el runner autoalojado del punto 5 de la unidad 6, que se ejecuta en el mismo portátil con el usuario <code>runner-cp</code>:</p>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 164" role="img" aria-label="Mantenimiento programado" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-mantenimiento" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12.0" y="12.0" width="209.3" height="50.0" rx="6" class="d-amarillo"/><text x="116.7" y="30.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Programación</text><text x="116.7" y="46.0" class="ts" text-anchor="middle" dominant-baseline="middle">martes 05:00 UTC</text><rect x="255.3" y="12.0" width="209.3" height="50.0" rx="6" class="d-gris"/><text x="360.0" y="37.0" class="t" text-anchor="middle" dominant-baseline="middle">Runner del aula</text><rect x="498.7" y="12.0" width="209.3" height="50.0" rx="6" class="d-morado"/><text x="603.3" y="29.0" class="t" text-anchor="middle" dominant-baseline="middle">ansible-playbook</text><text x="603.3" y="45.0" class="t" text-anchor="middle" dominant-baseline="middle">mantenimiento.yml</text><rect x="12.0" y="102.0" width="209.3" height="50.0" rx="6" class="d-azul"/><text x="116.7" y="120.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Roles base y docker</text><text x="116.7" y="136.0" class="ts" text-anchor="middle" dominant-baseline="middle">parches, hora, cortafuegos</text><rect x="255.3" y="102.0" width="209.3" height="50.0" rx="6" class="d-verde"/><text x="360.0" y="120.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Servidores</text><text x="360.0" y="136.0" class="ts" text-anchor="middle" dominant-baseline="middle">iguales y al día</text><rect x="498.7" y="102.0" width="209.3" height="50.0" rx="6" class="d-rojo"/><text x="603.3" y="120.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Aviso</text><text x="603.3" y="136.0" class="ts" text-anchor="middle" dominant-baseline="middle">resultado de la ejecución</text><path d="M223.3,37.0 L253.3,37.0" class="flecha " marker-end="url(#fl-mantenimiento)"/><path d="M466.7,37.0 L496.7,37.0" class="flecha " marker-end="url(#fl-mantenimiento)"/><path d="M603.3,64.0 L603.3,82.0 L116.7,82.0 L116.7,100.0" class="flecha " marker-end="url(#fl-mantenimiento)"/><path d="M223.3,127.0 L253.3,127.0" class="flecha " marker-end="url(#fl-mantenimiento)"/><path d="M466.7,127.0 L496.7,127.0" class="flecha " marker-end="url(#fl-mantenimiento)"/></svg></div><figcaption>El flujo de mantenimiento programado: cada martes, GitHub lanza el workflow en el runner autoalojado, que aplica los roles y avisa del resultado.</figcaption></figure>
 <p class="fichero">.github/workflows/mantenimiento.yml</p>
 <pre><code>name: Mantenimiento
@@ -447,7 +447,7 @@ jobs:
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 1. Crear los roles <span class="dur">15 min</span></h4>
-<p>Cread los roles <code>base</code>, <code>docker</code> y <code>app</code> con <code>ansible-galaxy role init</code>. Pasad al rol <code>docker</code> las tareas de <code>instalar.yml</code> de la sesión 36 (y dejad <code>instalar.yml</code> como un playbook que solo llama al rol). Añadid <code>community.general</code> a <code>requirements.yml</code> si no estaba.</p>
+<p>Cread los roles <code>base</code>, <code>docker</code> y <code>app</code> con <code>ansible-galaxy role init</code>. Pasad al rol <code>docker</code> las tareas de <code>instalar.yml</code> del punto 1 (y dejad <code>instalar.yml</code> como un playbook que solo llama al rol). Añadid <code>community.general</code> a <code>requirements.yml</code> si no estaba.</p>
 </div>
 <div class="actividad">
 <h4>Actividad 2. Rol base de mantenimiento <span class="dur">25 min</span></h4>
@@ -462,14 +462,14 @@ jobs:
 <h4>Actividad 3. Rol de despliegue <span class="dur">20 min</span></h4>
 <ol>
 <li><b>Reparto de responsabilidades</b>: en una rama, quitad de <code>infra/</code> el recurso <code>docker_container.app</code>, el recurso <code>docker_image.app</code> y las salidas <code>urls</code> y <code>contenedores</code>; en <code>verificar.sh</code>, quitad las comprobaciones de las réplicas (bloques 2 a 4, salvo la de Redis). Abrid el pull request: el plan debe mostrar que se destruyen los contenedores de la aplicación y nada más. Fusionad y aprobad producción.</li>
-<li>Completad el rol <code>app</code> y <code>group_vars/revision.yml</code> con vuestra imagen de GHCR. Como la imagen es privada (sesión 32), iniciad sesión una vez con el token de solo lectura: <code>docker login ghcr.io</code>.</li>
+<li>Completad el rol <code>app</code> y <code>group_vars/revision.yml</code> con vuestra imagen de GHCR. Como la imagen es privada (unidad 6, punto 3), iniciad sesión una vez con el token de solo lectura: <code>docker login ghcr.io</code>.</li>
 <li>Ejecutad <code>ansible-playbook desplegar.yml</code> y comprobad: <code>curl http://localhost:8080/salud</code> y <code>docker network inspect cp-revision-red</code> (¿está conectado el contenedor?).</li>
-<li>Simulad una nueva versión: publicad la etiqueta <code>v1.0.1</code> (el workflow de la sesión 29 publica la imagen), cambiad <code>app_version</code> y volved a desplegar. ¿Qué hace el módulo con el contenedor antiguo? Volved a la versión 1.0.0 cambiando solo la variable: esa es vuestra vuelta atrás.</li>
+<li>Simulad una nueva versión: publicad la etiqueta <code>v1.0.1</code> (el workflow del punto 7 de la unidad 5 publica la imagen), cambiad <code>app_version</code> y volved a desplegar. ¿Qué hace el módulo con el contenedor antiguo? Volved a la versión 1.0.0 cambiando solo la variable: esa es vuestra vuelta atrás.</li>
 </ol>
 </div>
 <div class="actividad">
 <h4>Actividad 4. Programar el mantenimiento <span class="dur">15 min</span></h4>
-<p>Añadid <code>.github/workflows/mantenimiento.yml</code>. El runner necesita Ansible (instaladlo con pipx como usuario <code>runner-cp</code>: <code>sudo -iu runner-cp pipx install --include-deps ansible</code>), haber iniciado sesión en GHCR (<code>docker login</code> como <code>runner-cp</code>) y, para el mantenimiento, poder usar <code>sudo</code> sin contraseña (<code>/etc/sudoers.d/runner-cp</code> con <code>runner-cp ALL=(ALL) NOPASSWD: ALL</code>, editado con <code>sudo visudo -f</code>). Como <code>runner-cp</code> ya está en el grupo <code>docker</code>, esto no amplía su poder real (sesión 32), pero documentadlo en <code>SEGURIDAD.md</code>. Lanzadlo a mano y comprobad en el registro que se ejecuta contra revisión. Añadid otro workflow, <code>desplegar.yml</code>, que se lance a mano con un parámetro <code>version</code> (<code>workflow_dispatch</code> con <code>inputs</code>) y ejecute <code>ansible-playbook desplegar.yml -e app_version=...</code>.</p>
+<p>Añadid <code>.github/workflows/mantenimiento.yml</code>. El runner necesita Ansible (instaladlo con pipx como usuario <code>runner-cp</code>: <code>sudo -iu runner-cp pipx install --include-deps ansible</code>), haber iniciado sesión en GHCR (<code>docker login</code> como <code>runner-cp</code>) y, para el mantenimiento, poder usar <code>sudo</code> sin contraseña (<code>/etc/sudoers.d/runner-cp</code> con <code>runner-cp ALL=(ALL) NOPASSWD: ALL</code>, editado con <code>sudo visudo -f</code>). Como <code>runner-cp</code> ya está en el grupo <code>docker</code>, esto no amplía su poder real (unidad 6, punto 3), pero documentadlo en <code>SEGURIDAD.md</code>. Lanzadlo a mano y comprobad en el registro que se ejecuta contra revisión. Añadid otro workflow, <code>desplegar.yml</code>, que se lance a mano con un parámetro <code>version</code> (<code>workflow_dispatch</code> con <code>inputs</code>) y ejecute <code>ansible-playbook desplegar.yml -e app_version=...</code>.</p>
 <p class="entrega">Entrega: roles <code>base</code>, <code>docker</code> y <code>app</code>, <code>group_vars</code>, playbooks de mantenimiento y despliegue, y los dos workflows con al menos una ejecución correcta.</p>
 </div>
 
@@ -481,11 +481,11 @@ jobs:
 <li>Enumera cinco tareas de mantenimiento que automatizarías en un servidor.</li>
 <li>¿Qué hace el parámetro <code>validate</code> del módulo <code>template</code> en la tarea de <code>daemon.json</code>?</li>
 </ol>
-</section><section class="panel" role="tabpanel" id="p-s38" aria-labelledby="tab-s38" hidden>
-<p class="meta">Sesión 38 de 41 · lunes 8 de marzo de 2027 · 2 horas</p>
+</section><section class="panel" role="tabpanel" id="p-p3" aria-labelledby="tab-p3" hidden>
+<p class="meta">Unidad 7 · Punto 3 · 2 horas</p>
 <h2>Verificar que la automatización hace lo que debe</h2>
 <p class="chips"><span class="ce" title="Se han verificado los flujos para mantenimiento, probando que las acciones automatizadas generan los resultados esperados.">CE 7c</span></p>
-<h3>Objetivos de la sesión</h3>
+<h3>Objetivos del punto</h3>
 <ul>
 <li>Conocer los niveles de verificación de la automatización: estática, simulación, idempotencia y resultado.</li>
 <li>Usar <code>--syntax-check</code>, <code>ansible-lint</code>, <code>--check --diff</code> y comprobar la idempotencia.</li>
@@ -697,11 +697,11 @@ jobs:
 <li>¿Para qué sirven <code>register</code>, <code>changed_when</code> y <code>failed_when</code>?</li>
 <li>¿Qué fases ejecuta <code>molecule test</code>?</li>
 </ol>
-</section><section class="panel" role="tabpanel" id="p-s39" aria-labelledby="tab-s39" hidden>
-<p class="meta">Sesión 39 de 41 · viernes 12 de marzo de 2027 · 2 horas</p>
+</section><section class="panel" role="tabpanel" id="p-p4" aria-labelledby="tab-p4" hidden>
+<p class="meta">Unidad 7 · Punto 4 · 2 horas</p>
 <h2>Parametrizar los contenedores: seguridad, nivel de servicio y consumo</h2>
 <p class="chips"><span class="ce" title="Se han aplicado reglas de seguridad digital, niveles de servicio y consumo definidas en el proyecto, como configuraciones dentro de las herramientas de despliegue, para parametrizar la ejecución de los contenedores.">CE 7d</span></p>
-<h3>Objetivos de la sesión</h3>
+<h3>Objetivos del punto</h3>
 <ul>
 <li>Traducir reglas de seguridad digital, niveles de servicio y consumo de un proyecto en parámetros de ejecución de los contenedores.</li>
 <li>Conocer los mecanismos de seguridad de un contenedor: usuario, sistema de ficheros de solo lectura, capacidades, <code>no-new-privileges</code>, perfiles del kernel, redes.</li>
@@ -728,17 +728,17 @@ jobs:
 </table></div>
 
 <h3>2. Seguridad del contenedor</h3>
-<p>Un contenedor comparte el kernel con el anfitrión (sesión 5). Si un atacante toma el control de la aplicación, las opciones de ejecución deciden cuánto daño puede hacer. El objetivo es la <b>defensa en profundidad</b>: varias capas, de modo que si una falla, las demás siguen protegiendo.</p>
+<p>Un contenedor comparte el kernel con el anfitrión (unidad 1, punto 5). Si un atacante toma el control de la aplicación, las opciones de ejecución deciden cuánto daño puede hacer. El objetivo es la <b>defensa en profundidad</b>: varias capas, de modo que si una falla, las demás siguen protegiendo.</p>
 <ul>
 <li><b>Usuario sin privilegios</b>. Por defecto, los procesos de un contenedor se ejecutan como root (UID 0), y ese root es el mismo UID que el root del anfitrión: si escapa del contenedor, es root en el servidor. Nuestro Dockerfile ya usa <code>USER app</code>; <code>user</code> en el despliegue lo garantiza aunque la imagen no lo haga. (Más allá: el modo <b>rootless</b> de Docker o Podman, y los <i>user namespaces</i>, hacen que incluso el root del contenedor sea un usuario sin privilegios fuera.)</li>
 <li><b>Sistema de ficheros de solo lectura</b>: impide que un atacante modifique el código o deje herramientas. Las carpetas que la aplicación necesita escribir (<code>/tmp</code>) se montan como <code>tmpfs</code> en memoria.</li>
 <li><b>Capacidades de Linux</b>: el poder de root está dividido en unas 40 capacidades (<code>CAP_NET_ADMIN</code>, <code>CAP_SYS_ADMIN</code>, <code>CAP_CHOWN</code>, <code>CAP_NET_BIND_SERVICE</code>...). Docker concede por defecto unas 14. Una aplicación web no necesita ninguna: <code>capabilities_drop: [ALL]</code>. Si alguna hace falta (por ejemplo, escuchar en el puerto 80 dentro del contenedor), se añade solo esa.</li>
 <li><b><code>no-new-privileges</code></b>: impide que un proceso gane privilegios con binarios setuid (como <code>sudo</code>).</li>
 <li><b>Perfiles del kernel</b>: <b>seccomp</b> filtra las llamadas al sistema permitidas (Docker aplica un perfil por defecto que bloquea unas 40 peligrosas) y <b>AppArmor</b>/<b>SELinux</b> limitan a qué ficheros y recursos accede el proceso. Nunca se deben desactivar ni usar <code>--privileged</code>.</li>
-<li><b>Red</b>: redes de Docker propias por aplicación y entorno; publicar solo los puertos necesarios y, si detrás hay un proxy, solo en <code>127.0.0.1</code>. Recordad (sesión 37) que los puertos publicados por Docker se saltan UFW.</li>
+<li><b>Red</b>: redes de Docker propias por aplicación y entorno; publicar solo los puertos necesarios y, si detrás hay un proxy, solo en <code>127.0.0.1</code>. Recordad (punto 2) que los puertos publicados por Docker se saltan UFW.</li>
 <li><b>Nada de montar el socket de Docker</b> (<code>/var/run/docker.sock</code>) en contenedores de aplicación: equivale a darles root en el anfitrión.</li>
 <li><b>Secretos</b>: mejor como ficheros montados de solo lectura o con un gestor de secretos que como variables de entorno, que aparecen en <code>docker inspect</code>.</li>
-<li><b>Imagen</b>: mínima (<code>slim</code>, <code>distroless</code>), escaneada (sesión 29) y fijada por versión o digest.</li>
+<li><b>Imagen</b>: mínima (<code>slim</code>, <code>distroless</code>), escaneada (unidad 5, punto 7) y fijada por versión o digest.</li>
 </ul>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 248" role="img" aria-label="Defensa en profundidad" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-defensa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="10" width="696" height="230" rx="8" class="d-grupo-naranja"/><text x="22" y="25" class="tt">Equipo: UFW, fail2ban, parches</text><rect x="40" y="40" width="640" height="186" rx="8" class="d-grupo-azul"/><text x="50" y="55" class="tt">Docker: seccomp, AppArmor, red propia, sin socket montado</text><rect x="70" y="70" width="580" height="142" rx="8" class="d-grupo-verde"/><text x="80" y="85" class="tt">Contenedor: sin root, sin capacidades, no-new-privileges, solo lectura, límites</text><rect x="250.0" y="110.0" width="220.0" height="60.0" rx="6" class="d-morado"/><text x="360.0" y="133.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Aplicación</text><text x="360.0" y="149.0" class="ts" text-anchor="middle" dominant-baseline="middle">imagen mínima y escaneada</text></svg></div><figcaption>Defensa en profundidad del contenedor de Cita Previa: si una capa falla, las demás siguen protegiendo.</figcaption></figure>
 <p>Estas reglas coinciden con las del <b>CIS Docker Benchmark</b>, que se puede comprobar automáticamente con <code>docker-bench-security</code>.</p>
@@ -754,13 +754,13 @@ jobs:
 <p>Mecanismos de despliegue que ayudan a cumplir el nivel de servicio:</p>
 <ul>
 <li><b>Política de reinicio</b>: <code>no</code>, <code>on-failure[:N]</code> (reinicia si termina con error, hasta N veces), <code>always</code>, <code>unless-stopped</code> (siempre, salvo que se haya parado a mano). En producción, <code>unless-stopped</code>.</li>
-<li><b>Comprobación de salud</b> (<i>healthcheck</i>): Docker ejecuta periódicamente una orden dentro del contenedor y lo marca como <code>healthy</code> o <code>unhealthy</code>. Parámetros: <code>interval</code>, <code>timeout</code>, <code>retries</code> y <code>start_period</code> (margen de arranque). Sin orquestador, Docker no reinicia un contenedor <code>unhealthy</code>; lo trataremos en la sesión 41.</li>
+<li><b>Comprobación de salud</b> (<i>healthcheck</i>): Docker ejecuta periódicamente una orden dentro del contenedor y lo marca como <code>healthy</code> o <code>unhealthy</code>. Parámetros: <code>interval</code>, <code>timeout</code>, <code>retries</code> y <code>start_period</code> (margen de arranque). Sin orquestador, Docker no reinicia un contenedor <code>unhealthy</code>; lo trataremos en el punto 6.</li>
 <li><b>Parada ordenada</b>: al parar, Docker envía SIGTERM y espera <code>stop_timeout</code> segundos antes de SIGKILL. Gunicorn termina las peticiones en curso si le damos tiempo.</li>
 <li><b>Réplicas</b> detrás de un proxy o balanceador para tolerar la caída de una instancia (lo trabajaréis a fondo con orquestadores en el módulo 5166).</li>
 </ul>
 
 <h3>4. Consumo de recursos</h3>
-<p>Los límites se implementan con los <b>cgroups</b> del kernel (sesión 5). Sin límites, un contenedor con un error (una fuga de memoria, un bucle) puede dejar sin recursos al servidor y a todos los demás contenedores.</p>
+<p>Los límites se implementan con los <b>cgroups</b> del kernel (unidad 1, punto 5). Sin límites, un contenedor con un error (una fuga de memoria, un bucle) puede dejar sin recursos al servidor y a todos los demás contenedores.</p>
 <div class="tabla"><table>
 <tr><th>Recurso</th><th>Parámetro</th><th>Qué ocurre al superarlo</th></tr>
 <tr><td>CPU</td><td><code>cpus: 0.5</code> (medio núcleo); <code>cpu_shares</code> (peso relativo)</td><td>El proceso se ralentiza (<i>throttling</i>), no muere</td></tr>
@@ -770,7 +770,7 @@ jobs:
 <tr><td>Registros</td><td><code>log_options: {max-size: 10m, max-file: "3"}</code></td><td>Se rotan; como máximo 30 MB por contenedor</td></tr>
 </table></div>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 290" role="img" aria-label="Límite de memoria" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-oom" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><path d="M58,14 L58,220 L696,220" class="eje"/><text x="58.0" y="234.0" class="ts" text-anchor="middle" dominant-baseline="middle">0 min</text><text x="164.3" y="234.0" class="ts" text-anchor="middle" dominant-baseline="middle">2 min</text><text x="270.7" y="234.0" class="ts" text-anchor="middle" dominant-baseline="middle">4 min</text><text x="377.0" y="234.0" class="ts" text-anchor="middle" dominant-baseline="middle">6 min</text><text x="483.3" y="234.0" class="ts" text-anchor="middle" dominant-baseline="middle">8 min</text><text x="589.7" y="234.0" class="ts" text-anchor="middle" dominant-baseline="middle">10 min</text><text x="696.0" y="234.0" class="ts" text-anchor="middle" dominant-baseline="middle">12 min</text><text x="16" y="117.0" class="ts" text-anchor="middle" transform="rotate(-90 16 117.0)">memoria (MB)</text><path d="M58.0,44.2 L111.2,44.2 L164.3,44.2 L217.5,44.2 L270.7,44.2 L323.8,44.2 L377.0,44.2 L430.2,44.2 L483.3,44.2 L536.5,44.2 L589.7,44.2 L642.8,44.2 L696.0,44.2" class="serie s-rojo disc"/><path d="M58.0,171.9 L111.2,154.8 L164.3,137.6 L217.5,117.0 L270.7,96.4 L323.8,72.4 L377.0,48.3 L430.2,220.0 L483.3,171.9 L536.5,154.8 L589.7,134.2 L642.8,117.0 L696.0,99.8" class="serie s-azul"/><line x1="14" y1="274" x2="36" y2="274" class="serie s-rojo"/><text x="42" y="274" class="ts" dominant-baseline="middle">límite memory: 256m</text><line x1="177.7" y1="274" x2="199.7" y2="274" class="serie s-azul"/><text x="205.7" y="274" class="ts" dominant-baseline="middle">memoria del contenedor</text></svg></div><figcaption>Un contenedor con límite de 256 MB y una fuga de memoria: al superar el límite, el kernel lo mata (OOM) y la política de reinicio lo vuelve a arrancar.</figcaption></figure>
-<p>Los valores no se inventan: se parte de lo que mide la monitorización (sesión 40) con un margen. Un límite demasiado bajo provoca caídas; uno demasiado alto no protege.</p>
+<p>Los valores no se inventan: se parte de lo que mide la monitorización (punto 5) con un margen. Un límite demasiado bajo provoca caídas; uno demasiado alto no protege.</p>
 
 <h3>5. Parametrizado por entorno</h3>
 <p class="fichero">group_vars/revision.yml y group_vars/produccion.yml</p>
@@ -869,7 +869,7 @@ docker stats --no-stream $C</code></pre>
 <li><b>Memoria</b>: provocad un consumo excesivo dentro del contenedor: <code>docker exec $C python -c "x = bytearray(400*1024*1024)"</code>. ¿Qué ocurre? Mirad <code>sudo dmesg | tail</code> y <code>docker inspect $C --format '{{.State.OOMKilled}}'</code>.</li>
 <li><b>CPU</b>: <code>docker exec -d $C python -c "while True: pass"</code> y observad con <code>docker stats</code> que no pasa del 50 %. Mientras, medid el tiempo de respuesta de <code>/salud</code> con <code>curl -w '%{time_total}\n' -o /dev/null -s http://localhost:8080/salud</code>.</li>
 <li><b>Recuperación</b>: matad el proceso principal (<code>docker kill --signal=KILL $C</code>) y comprobad si la política de reinicio lo levanta. ¿Y si lo paráis con <code>docker stop</code>?</li>
-<li>Anotad los resultados y si vuestros límites son razonables. Los ajustaremos con datos en la sesión 40.</li>
+<li>Anotad los resultados y si vuestros límites son razonables. Los ajustaremos con datos en el punto 5.</li>
 </ol>
 <p class="entrega">Entrega: <code>docs/reglas.md</code> con reglas, parámetros por entorno y evidencias; rol <code>app</code> y <code>group_vars</code> actualizados; resultados de las pruebas de límites.</p>
 </div>
@@ -882,11 +882,11 @@ docker stats --no-stream $C</code></pre>
 <li>¿Qué ocurre cuando un contenedor supera su límite de CPU? ¿Y de memoria?</li>
 <li>¿Por qué montar el socket de Docker en un contenedor equivale a darle root?</li>
 </ol>
-</section><section class="panel" role="tabpanel" id="p-s40" aria-labelledby="tab-s40" hidden>
-<p class="meta">Sesión 40 de 41 · lunes 15 de marzo de 2027 · 2 horas</p>
+</section><section class="panel" role="tabpanel" id="p-p5" aria-labelledby="tab-p5" hidden>
+<p class="meta">Unidad 7 · Punto 5 · 2 horas</p>
 <h2>Monitorización y capacity plan</h2>
 <p class="chips"><span class="ce" title="Se han recogido en las herramientas de monitorización las métricas para elaborar informes de rendimiento y planificación (capacity plan), anticipar el crecimiento y facilitar la gestión de los recursos.">CE 7e</span></p>
-<h3>Objetivos de la sesión</h3>
+<h3>Objetivos del punto</h3>
 <ul>
 <li>Diferenciar monitorización y observabilidad, y conocer sus tres pilares: métricas, registros y trazas.</li>
 <li>Saber qué medir: las cuatro señales doradas y los métodos USE y RED.</li>
@@ -928,7 +928,7 @@ docker stats --no-stream $C</code></pre>
 <li><b>Exportadores</b>: programas que exponen métricas de algo que no las expone por sí mismo. <b>node-exporter</b> (CPU, memoria, disco, red del servidor), <b>cAdvisor</b> (consumo de cada contenedor), <b>blackbox-exporter</b> (sondea URL desde fuera: disponibilidad y tiempo de respuesta, justo nuestros SLI).</li>
 <li><b>Series temporales</b>: cada métrica tiene un nombre y <b>etiquetas</b> (<code>container_memory_working_set_bytes{name="cp-revision-app"}</code>). Tipos: <i>counter</i> (solo crece: peticiones totales), <i>gauge</i> (sube y baja: memoria), <i>histogram</i> (distribución: latencias).</li>
 <li><b>PromQL</b>: el lenguaje de consultas. <code>rate()</code> calcula la velocidad de un contador; <code>avg_over_time()</code>, <code>max_over_time()</code> y <code>quantile_over_time()</code> resumen periodos; <code>predict_linear()</code> proyecta tendencias.</li>
-<li><b>Reglas de alerta</b>: condiciones PromQL que, si se cumplen durante un tiempo, generan una alerta que <b>Alertmanager</b> agrupa y envía (sesión 41).</li>
+<li><b>Reglas de alerta</b>: condiciones PromQL que, si se cumplen durante un tiempo, generan una alerta que <b>Alertmanager</b> agrupa y envía (punto 6).</li>
 <li><b>Grafana</b>: visualización. Se conecta a Prometheus como fuente de datos y dibuja paneles; hay miles de paneles públicos en grafana.com.</li>
 </ul>
 <h4>Consultas útiles</h4>
@@ -1063,7 +1063,7 @@ scrape_configs:
 <pre><code>ab -t 60 -c 10  http://localhost:8080/citas
 ab -t 60 -c 50  http://localhost:8080/citas
 ab -t 60 -c 100 http://localhost:8080/citas</code></pre>
-<p>Para cada una, anotad en una tabla: peticiones por segundo, tiempo medio, percentil 95 (lo da <code>ab</code>), peticiones fallidas, y de Grafana el máximo de CPU y de memoria del contenedor y del servidor. ¿Cuál es el cuello de botella? ¿Se alcanza el límite de CPU que pusisteis en la sesión 39?</p>
+<p>Para cada una, anotad en una tabla: peticiones por segundo, tiempo medio, percentil 95 (lo da <code>ab</code>), peticiones fallidas, y de Grafana el máximo de CPU y de memoria del contenedor y del servidor. ¿Cuál es el cuello de botella? ¿Se alcanza el límite de CPU que pusisteis en el punto 4?</p>
 </div>
 <div class="actividad">
 <h4>Actividad 4. Informe y capacity plan <span class="dur">25 min</span></h4>
@@ -1079,11 +1079,11 @@ ab -t 60 -c 100 http://localhost:8080/citas</code></pre>
 <li>¿Para qué sirve el blackbox-exporter en nuestro proyecto?</li>
 <li>¿Qué pasos sigue la elaboración de un plan de capacidad?</li>
 </ol>
-</section><section class="panel" role="tabpanel" id="p-s41" aria-labelledby="tab-s41" hidden>
-<p class="meta">Sesión 41 de 41 · lunes 22 de marzo de 2027 · 2 horas</p>
+</section><section class="panel" role="tabpanel" id="p-p6" aria-labelledby="tab-p6" hidden>
+<p class="meta">Unidad 7 · Punto 6 · 2 horas</p>
 <h2>Acciones automáticas ante errores y documentación del despliegue</h2>
 <p class="chips"><span class="ce" title="Se han incorporado en las herramientas desplegadas acciones automáticas basadas en eventos disparados por errores tales como fallos de trabajo y acceso y estado de finalización.">CE 7g</span><span class="ce" title="Se ha redactado documentación sobre el uso de los despliegues de código e imágenes de contenedores, almacenándola en los repositorios de código.">CE 7f</span></p>
-<h3>Objetivos de la sesión</h3>
+<h3>Objetivos del punto</h3>
 <ul>
 <li>Incorporar acciones automáticas basadas en eventos disparados por errores: fallos de trabajo, fallos de acceso y estado de finalización.</li>
 <li>Conocer los mecanismos disponibles en cada herramienta: <code>block</code>/<code>rescue</code>/<code>always</code> de Ansible, políticas de reinicio y salud de Docker, reglas de alerta de Prometheus, fail2ban y condiciones de GitHub Actions.</li>
@@ -1122,7 +1122,7 @@ ab -t 60 -c 100 http://localhost:8080/citas</code></pre>
       community.docker.docker_container:
         name: "cp-{{ entorno }}-app"
         image: "{{ app_imagen }}:{{ app_version }}"
-        # ... todos los parámetros de seguridad, servicio y consumo de la sesión 39
+        # ... todos los parámetros de seguridad, servicio y consumo del punto 4
 
     - name: Esperar a que la nueva versión responda
       ansible.builtin.uri:
@@ -1162,7 +1162,7 @@ ab -t 60 -c 100 http://localhost:8080/citas</code></pre>
 
 <h3>3. Fallos de trabajo en tiempo de ejecución: Docker y Prometheus</h3>
 <ul>
-<li><b>Política de reinicio</b> (sesión 39): si el proceso principal termina con error, Docker lo vuelve a arrancar.</li>
+<li><b>Política de reinicio</b> (punto 4): si el proceso principal termina con error, Docker lo vuelve a arrancar.</li>
 <li><b>Contenedor no sano</b>: Docker marca <code>unhealthy</code> un contenedor cuyo healthcheck falla, pero <b>no lo reinicia</b> (los orquestadores sí). Se puede añadir el contenedor <code>willfarrell/autoheal</code>, que reinicia los contenedores no sanos que tengan la etiqueta <code>autoheal=true</code> (necesita acceso al socket de Docker, así que es un componente de infraestructura, nunca de aplicación).</li>
 <li><b>Reglas de alerta de Prometheus</b>: detectan el fallo desde fuera y avisan a través de <b>Alertmanager</b>:
 <pre><code># alertas.yml (se referencia en prometheus.yml con rule_files)
@@ -1252,7 +1252,7 @@ LABEL org.opencontainers.image.title="cita-previa-app" \
       org.opencontainers.image.source="https://github.com/ORGANIZACION/cita-previa-app" \
       org.opencontainers.image.documentation="https://github.com/ORGANIZACION/cita-previa-app/blob/main/docs/imagen.md" \
       org.opencontainers.image.licenses="MIT"</code></pre>
-<p>En el workflow de la sesión 29, se pasan al construir: <code>docker build --build-arg VERSION=${GITHUB_REF_NAME#v} --build-arg REVISION=$GITHUB_SHA ...</code>. La etiqueta <code>source</code> además enlaza el paquete de GHCR con el repositorio.</p>
+<p>En el workflow del punto 7 de la unidad 5, se pasan al construir: <code>docker build --build-arg VERSION=${GITHUB_REF_NAME#v} --build-arg REVISION=$GITHUB_SHA ...</code>. La etiqueta <code>source</code> además enlaza el paquete de GHCR con el repositorio.</p>
 
 <h3>Actividades</h3>
 <div class="actividad">

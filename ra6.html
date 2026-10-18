@@ -7,9 +7,9 @@
 </head><body style="--ra:#a8502a">
 <header class="cab"><div class="dentro"><nav class="menu" aria-label="Secciones"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="ra1.html">RA1</a><a href="ra2.html">RA2</a><a href="ra3.html">RA3</a><a href="ra4.html">RA4</a><a href="ra5.html">RA5</a><a href="ra6.html" aria-current="page">RA6</a><a href="ra7.html">RA7</a><button type="button" class="boton-tema" id="cambiar-tema">☾ Modo oscuro</button></nav>
 <h1>Unidad 6. Entornos de revisión y producción con infraestructura como código</h1><p>Describir la infraestructura en ficheros y dejar que un flujo de trabajo la cree.</p></div></header>
-<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Sesiones de la unidad 6"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-s30" data-panel="s30">Sesión 30<small>1 feb</small></button><button role="tab" id="tab-s31" data-panel="s31">Sesión 31<small>5 feb</small></button><button role="tab" id="tab-s32" data-panel="s32">Sesión 32<small>8 feb</small></button><button role="tab" id="tab-s33" data-panel="s33">Sesión 33<small>12 feb</small></button><button role="tab" id="tab-s34" data-panel="s34">Sesión 34<small>15 feb</small></button><button role="tab" id="tab-s35" data-panel="s35">Sesión 35<small>19 feb</small></button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
-<main class="con-indice"><details class="indice" id="indice" open><summary>Índice de la sesión</summary><ol></ol></details><div class="contenido"><section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
-<p class="meta">Unidad 6 de 7 · 6 sesiones · 12 horas · del 1 feb al 19 feb</p>
+<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Puntos de la unidad 6"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-p1" data-panel="p1">Punto 1</button><button role="tab" id="tab-p2" data-panel="p2">Punto 2</button><button role="tab" id="tab-p3" data-panel="p3">Punto 3</button><button role="tab" id="tab-p4" data-panel="p4">Punto 4</button><button role="tab" id="tab-p5" data-panel="p5">Punto 5</button><button role="tab" id="tab-p6" data-panel="p6">Punto 6</button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
+<main class="con-indice"><details class="indice" id="indice" open><summary>Índice del punto</summary><ol></ol></details><div class="contenido"><section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
+<p class="meta">Unidad 6 de 7 · 6 puntos · 12 horas · del 1 feb al 19 feb</p>
 <h2>Resultado de aprendizaje 6</h2>
 <p class="ra-texto">Crea o, en su caso, configura entornos de revisión y/o producción, mediante ficheros de parámetros y creando flujos de trabajo, siguiendo procedimientos, estándares y políticas de seguridad digital, para validar el despliegue.</p>
 <p>En la unidad 2 creamos máquinas a mano, con clics. Ahora describimos la infraestructura en ficheros con Terraform y dejamos que un flujo de trabajo la cree, igual en revisión que en producción, con credenciales de mínimo privilegio. La plataforma es el Docker de vuestro portátil, gestionado con el proveedor <code>kreuzwerker/docker</code>: cada entorno tendrá su red, su volumen y sus contenedores. Con una nube o una plataforma de virtualización como Proxmox, el flujo, los ficheros de parámetros y las buenas prácticas serían los mismos; solo cambia el recurso que se crea.</p>
@@ -26,9 +26,9 @@
 ├── .github/workflows/infraestructura.yml
 └── SEGURIDAD.md           # matriz de accesos por entorno</code></pre>
 <h3>Criterios de evaluación</h3>
-<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Sesiones</th></tr><tr><td><b>6a)</b></td><td>Se han creado ficheros de definición de infraestructura como código y SDH (Software Define Hardware), usando el lenguaje propio de la plataforma de despliegue.</td><td><a href="#s30">S30</a>, <a href="#s31">S31</a></td></tr><tr><td><b>6b)</b></td><td>Se han creado flujos de trabajo para el despliegue del entorno hardware, usando las credenciales proporcionadas y aplicando las configuraciones definidas.</td><td><a href="#s34">S34</a></td></tr><tr><td><b>6c)</b></td><td>Se han configurado unas definiciones técnicas de uso de control y de seguridad digital para cada entorno, especificando roles de acceso del usuario, roles de acceso del código, acceso al almacenamiento, acceso a las API, entre otros recursos.</td><td><a href="#s32">S32</a></td></tr><tr><td><b>6d)</b></td><td>Se ha creado la infraestructura definida en los ficheros al efecto dentro de la plataforma, usando las credenciales facilitadas, para su posterior integración en los flujos de trabajo.</td><td><a href="#s33">S33</a></td></tr><tr><td><b>6e)</b></td><td>Se ha verificado la infraestructura creada después del despliegue, comprobando que se obtiene acceso a todos los recursos de infraestructura.</td><td><a href="#s35">S35</a></td></tr></table></div>
-<h3>Plan de sesiones</h3>
-<div class="tabla"><table><tr><th>Sesión</th><th>Fecha</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#s30">S30</a></td><td>1 feb</td><td>Infraestructura como código: primeros ficheros con Terraform</td><td>a</td></tr><tr><td><a href="#s31">S31</a></td><td>5 feb</td><td>Ficheros de parámetros por entorno y definición de la infraestructura</td><td>a</td></tr><tr><td><a href="#s32">S32</a></td><td>8 feb</td><td>Seguridad por entorno: roles, tokens, almacenamiento y API</td><td>c</td></tr><tr><td><a href="#s33">S33</a></td><td>12 feb</td><td>Crear la infraestructura en la plataforma</td><td>d</td></tr><tr><td><a href="#s34">S34</a></td><td>15 feb</td><td>Flujo de trabajo para desplegar la infraestructura</td><td>b</td></tr><tr><td><a href="#s35">S35</a></td><td>19 feb</td><td>Verificar la infraestructura desplegada</td><td>e</td></tr></table></div>
+<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Puntos</th></tr><tr><td><b>6a)</b></td><td>Se han creado ficheros de definición de infraestructura como código y SDH (Software Define Hardware), usando el lenguaje propio de la plataforma de despliegue.</td><td><a href="#p1">P1</a>, <a href="#p2">P2</a></td></tr><tr><td><b>6b)</b></td><td>Se han creado flujos de trabajo para el despliegue del entorno hardware, usando las credenciales proporcionadas y aplicando las configuraciones definidas.</td><td><a href="#p5">P5</a></td></tr><tr><td><b>6c)</b></td><td>Se han configurado unas definiciones técnicas de uso de control y de seguridad digital para cada entorno, especificando roles de acceso del usuario, roles de acceso del código, acceso al almacenamiento, acceso a las API, entre otros recursos.</td><td><a href="#p3">P3</a></td></tr><tr><td><b>6d)</b></td><td>Se ha creado la infraestructura definida en los ficheros al efecto dentro de la plataforma, usando las credenciales facilitadas, para su posterior integración en los flujos de trabajo.</td><td><a href="#p4">P4</a></td></tr><tr><td><b>6e)</b></td><td>Se ha verificado la infraestructura creada después del despliegue, comprobando que se obtiene acceso a todos los recursos de infraestructura.</td><td><a href="#p6">P6</a></td></tr></table></div>
+<h3>Puntos de la unidad</h3>
+<div class="tabla"><table><tr><th>Punto</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#p1">P1</a></td><td>Infraestructura como código: primeros ficheros con Terraform</td><td>a</td></tr><tr><td><a href="#p2">P2</a></td><td>Ficheros de parámetros por entorno y definición de la infraestructura</td><td>a</td></tr><tr><td><a href="#p3">P3</a></td><td>Seguridad por entorno: roles, tokens, almacenamiento y API</td><td>c</td></tr><tr><td><a href="#p4">P4</a></td><td>Crear la infraestructura en la plataforma</td><td>d</td></tr><tr><td><a href="#p5">P5</a></td><td>Flujo de trabajo para desplegar la infraestructura</td><td>b</td></tr><tr><td><a href="#p6">P6</a></td><td>Verificar la infraestructura desplegada</td><td>e</td></tr></table></div>
 <h3>Evaluación</h3>
 <p>La unidad pesa un <b>20 %</b> de la nota del módulo y se evalúa al <b>100 % con trabajo práctico</b> en el repositorio:</p>
 <div class="tabla"><table><tr><th>CE</th><th>Evidencia</th><th>Peso</th></tr>
@@ -37,11 +37,11 @@
 <tr><td>6c</td><td><code>SEGURIDAD.md</code> y configuración real de roles, tokens y almacenamiento por entorno</td><td>20 %</td></tr>
 <tr><td>6d</td><td>Infraestructura creada en la plataforma con las credenciales facilitadas</td><td>15 %</td></tr>
 <tr><td>6e</td><td>Script y registro de verificación tras el despliegue</td><td>20 %</td></tr></table></div>
-</section><section class="panel" role="tabpanel" id="p-s30" aria-labelledby="tab-s30" hidden>
-<p class="meta">Sesión 30 de 41 · lunes 1 de febrero de 2027 · 2 horas</p>
+</section><section class="panel" role="tabpanel" id="p-p1" aria-labelledby="tab-p1" hidden>
+<p class="meta">Unidad 6 · Punto 1 · 2 horas</p>
 <h2>Infraestructura como código: primeros ficheros con Terraform</h2>
 <p class="chips"><span class="ce" title="Se han creado ficheros de definición de infraestructura como código y SDH (Software Define Hardware), usando el lenguaje propio de la plataforma de despliegue.">CE 6a</span></p>
-<h3>Objetivos de la sesión</h3>
+<h3>Objetivos del punto</h3>
 <ul>
 <li>Explicar qué es la infraestructura como código (IaC) y el hardware definido por software (SDH), y qué problemas resuelven.</li>
 <li>Conocer la arquitectura de Terraform/OpenTofu: núcleo, proveedores, registro y estado.</li>
@@ -70,7 +70,7 @@
 <li><b>Recuperación ante desastres</b>: reconstruir desde el código.</li>
 </ul>
 <h4>Hardware definido por software (SDH)</h4>
-<p>La IaC es posible porque el hardware actual está <b>definido por software</b>: la CPU, la memoria, los discos y las tarjetas de red de una máquina virtual no son piezas físicas que haya que instalar, sino parámetros que se configuran a través de una API. Lo mismo ocurre con las redes (SDN, redes definidas por software) y el almacenamiento (SDS). Cuando todo el CPD se gestiona así se habla de <b>centro de datos definido por software</b> (SDDC). El criterio de evaluación lo menciona expresamente: los ficheros de Terraform que escribiremos para Proxmox (sesión 31) son la <b>definición del hardware</b> de nuestras máquinas en el lenguaje de la plataforma.</p>
+<p>La IaC es posible porque el hardware actual está <b>definido por software</b>: la CPU, la memoria, los discos y las tarjetas de red de una máquina virtual no son piezas físicas que haya que instalar, sino parámetros que se configuran a través de una API. Lo mismo ocurre con las redes (SDN, redes definidas por software) y el almacenamiento (SDS). Cuando todo el CPD se gestiona así se habla de <b>centro de datos definido por software</b> (SDDC). El criterio de evaluación lo menciona expresamente: los ficheros de Terraform que escribiremos para Proxmox (punto 2) son la <b>definición del hardware</b> de nuestras máquinas en el lenguaje de la plataforma.</p>
 <h4>Enfoques de IaC</h4>
 <ul>
 <li><b>Declarativo</b> (Terraform, CloudFormation, Bicep): se describe el estado final deseado y la herramienta calcula las acciones.</li>
@@ -170,7 +170,7 @@ resource "docker_network" "red" {
 }
 
 resource "docker_image" "app" {
-  name         = "ghcr.io/ORGANIZACION/cita-previa-app:1.0.0"   # la imagen publicada en la sesión 29
+  name         = "ghcr.io/ORGANIZACION/cita-previa-app:1.0.0"   # la imagen publicada en el punto 7 de la unidad 5
   keep_locally = true
 }
 
@@ -225,7 +225,7 @@ terraform -version</code></pre>
 <ol>
 <li>Ejecutad <code>terraform apply</code> otra vez sin cambiar nada. ¿Qué pasa? Explicad la idempotencia con este ejemplo.</li>
 <li>Cambiad la memoria a 512 y ejecutad <code>plan</code>: ¿modifica o reemplaza? Cambiad después el puerto externo: ¿y ahora? Aplicad.</li>
-<li>Aplicad con otro entorno sin tocar el código: <code>terraform apply -var entorno=produccion -var puerto=8090</code>. ¿Qué pasa con el contenedor de revisión? ¿Por qué? (Una misma configuración con un solo estado gestiona <b>una</b> instancia de la infraestructura; en la sesión 31 veremos cómo tener varios entornos.)</li>
+<li>Aplicad con otro entorno sin tocar el código: <code>terraform apply -var entorno=produccion -var puerto=8090</code>. ¿Qué pasa con el contenedor de revisión? ¿Por qué? (Una misma configuración con un solo estado gestiona <b>una</b> instancia de la infraestructura; en el punto 2 veremos cómo tener varios entornos.)</li>
 <li><b>Desviación</b>: borrad el contenedor a mano (<code>docker rm -f cita-previa-produccion</code>) y ejecutad <code>plan</code>. Aplicad para recuperarlo. Después cambiadle a mano la memoria (<code>docker update --memory 128m --memory-swap 128m cita-previa-produccion</code>) y ejecutad <code>plan</code> de nuevo. ¿Detecta el cambio? Aplicad para volver al estado del código.</li>
 </ol>
 </div>
@@ -247,11 +247,11 @@ terraform -version</code></pre>
 <li>¿Qué diferencia hay entre modificar un recurso y reemplazarlo? ¿Cómo lo sabes antes de aplicar?</li>
 <li>¿Qué es la desviación (drift) y cómo la detecta Terraform?</li>
 </ol>
-</section><section class="panel" role="tabpanel" id="p-s31" aria-labelledby="tab-s31" hidden>
-<p class="meta">Sesión 31 de 41 · viernes 5 de febrero de 2027 · 2 horas</p>
+</section><section class="panel" role="tabpanel" id="p-p2" aria-labelledby="tab-p2" hidden>
+<p class="meta">Unidad 6 · Punto 2 · 2 horas</p>
 <h2>Ficheros de parámetros por entorno y definición de la infraestructura</h2>
 <p class="chips"><span class="ce" title="Se han creado ficheros de definición de infraestructura como código y SDH (Software Define Hardware), usando el lenguaje propio de la plataforma de despliegue.">CE 6a</span></p>
-<h3>Objetivos de la sesión</h3>
+<h3>Objetivos del punto</h3>
 <ul>
 <li>Parametrizar la infraestructura con variables tipadas y validadas, locales y salidas.</li>
 <li>Crear ficheros de parámetros (<code>.tfvars</code>) por entorno y separar el estado de cada entorno.</li>
@@ -309,10 +309,10 @@ output "contenedores" {
   description = "Nombres de los contenedores de la aplicación, para Ansible"
   value       = docker_container.app[*].name
 }</code></pre>
-<p>Las <b>salidas</b> son el punto de unión con el resto del proceso: el workflow (sesión 34), el script de verificación (sesión 35) y Ansible (unidad 7) las leerán con <code>terraform output -json</code>.</p>
+<p>Las <b>salidas</b> son el punto de unión con el resto del proceso: el workflow (punto 5), el script de verificación (punto 6) y Ansible (unidad 7) las leerán con <code>terraform output -json</code>.</p>
 
 <h3>3. Un estado por entorno</h3>
-<p>Si revisión y producción comparten el fichero de estado, aplicar uno destruye el otro (lo visteis en la sesión 30). Cada entorno necesita <b>su propio estado</b>. Opciones:</p>
+<p>Si revisión y producción comparten el fichero de estado, aplicar uno destruye el otro (lo visteis en el punto 1). Cada entorno necesita <b>su propio estado</b>. Opciones:</p>
 <div class="tabla"><table>
 <tr><th>Opción</th><th>Cómo</th><th>Valoración</th></tr>
 <tr><td>Ruta de estado por entorno</td><td><code>backend "local" {}</code> y <code>terraform init -reconfigure -backend-config="path=$HOME/tfstate/revision.tfstate"</code></td><td>Sencillo y explícito. Lo usaremos.</td></tr>
@@ -322,7 +322,7 @@ output "contenedores" {
 </table></div>
 
 <h3>4. La definición de Cita Previa por entorno</h3>
-<p>Ahora sí, escribimos la infraestructura completa de Cita Previa en la carpeta <code>infra/</code>, que usaremos hasta el final de la unidad. La plataforma es el Docker del portátil, gestionado con el proveedor <code>kreuzwerker/docker</code> (sesión 30). Cada entorno tendrá su <b>red</b> virtual, un <b>volumen</b> para los datos, un contenedor de Redis y N réplicas de la aplicación con la memoria limitada.</p>
+<p>Ahora sí, escribimos la infraestructura completa de Cita Previa en la carpeta <code>infra/</code>, que usaremos hasta el final de la unidad. La plataforma es el Docker del portátil, gestionado con el proveedor <code>kreuzwerker/docker</code> (punto 1). Cada entorno tendrá su <b>red</b> virtual, un <b>volumen</b> para los datos, un contenedor de Redis y N réplicas de la aplicación con la memoria limitada.</p>
 <p class="fichero">infra/versions.tf</p>
 <pre><code>terraform {
   required_version = "&gt;= 1.6"
@@ -461,10 +461,10 @@ replicas       = 2
 memoria        = 512
 puerto_base    = 9080
 version_imagen = "1.0.0"</code></pre>
-<div class="aviso"><p><b>Nunca</b> pongáis un secreto (contraseñas, tokens) en un <code>.tfvars</code> que se sube al repositorio: se pasa como variable de entorno <code>TF_VAR_nombre</code>. En la sesión 32 añadiremos así la credencial del registro de imágenes.</p></div>
+<div class="aviso"><p><b>Nunca</b> pongáis un secreto (contraseñas, tokens) en un <code>.tfvars</code> que se sube al repositorio: se pasa como variable de entorno <code>TF_VAR_nombre</code>. En el punto 3 añadiremos así la credencial del registro de imágenes.</p></div>
 
 <h3>5. Módulos (introducción)</h3>
-<p>Un <b>módulo</b> es una carpeta de ficheros <code>.tf</code> que se reutiliza con parámetros, como una función. Cuando el código crece, se extraen módulos (<code>modulos/vm-web</code>, <code>modulos/red</code>) y cada entorno los llama con sus valores. Hay módulos públicos en el Registry para casi todo, aunque conviene revisarlos antes de usarlos igual que cualquier dependencia (sesión 29).</p>
+<p>Un <b>módulo</b> es una carpeta de ficheros <code>.tf</code> que se reutiliza con parámetros, como una función. Cuando el código crece, se extraen módulos (<code>modulos/vm-web</code>, <code>modulos/red</code>) y cada entorno los llama con sus valores. Hay módulos públicos en el Registry para casi todo, aunque conviene revisarlos antes de usarlos igual que cualquier dependencia (unidad 5, punto 7).</p>
 
 <h3>Actividades</h3>
 <div class="actividad">
@@ -488,7 +488,7 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 <li>Cread la carpeta <code>infra/</code> con los ficheros del apartado 4 (poned vuestra organización en la variable <code>imagen</code>) y los dos <code>.tfvars</code>.</li>
 <li>Añadid validaciones: <code>memoria</code> entre 128 y 2048, <code>replicas</code> entre 1 y 4, <code>puerto_base</code> entre 1024 y 65000, y <code>version_imagen</code> con formato de versión semántica (pista: <code>can(regex("^[0-9]+[.][0-9]+[.][0-9]+$", var.version_imagen))</code>).</li>
 <li><code>terraform init -backend-config="path=$HOME/tfstate/revision.tfstate"</code>, <code>terraform fmt -check</code> y <code>terraform validate</code>.</li>
-<li><code>terraform plan -var-file=revision.tfvars</code>. ¿Cuántos recursos va a crear? <b>No apliquéis todavía</b>: en la sesión 32 prepararemos la seguridad de cada entorno y en la 33 crearemos la infraestructura.</li>
+<li><code>terraform plan -var-file=revision.tfvars</code>. ¿Cuántos recursos va a crear? <b>No apliquéis todavía</b>: en el punto 3 prepararemos la seguridad de cada entorno y en el 4 crearemos la infraestructura.</li>
 <li>Cambiad al estado de producción (<code>terraform init -reconfigure -backend-config="path=$HOME/tfstate/produccion.tfstate"</code>) y comparad el plan de producción con el de revisión: ¿qué cambia? Comprobad que la validación rechaza <code>-var memoria=4096</code>.</li>
 </ol>
 </div>
@@ -506,11 +506,11 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 <li>¿Por qué cada entorno necesita su propio estado?</li>
 <li>¿Qué bloques de <code>infra/main.tf</code> definen "hardware" por software y qué pieza física sustituye cada uno?</li>
 </ol>
-</section><section class="panel" role="tabpanel" id="p-s32" aria-labelledby="tab-s32" hidden>
-<p class="meta">Sesión 32 de 41 · lunes 8 de febrero de 2027 · 2 horas</p>
+</section><section class="panel" role="tabpanel" id="p-p3" aria-labelledby="tab-p3" hidden>
+<p class="meta">Unidad 6 · Punto 3 · 2 horas</p>
 <h2>Seguridad por entorno: roles, tokens, almacenamiento y API</h2>
 <p class="chips"><span class="ce" title="Se han configurado unas definiciones técnicas de uso de control y de seguridad digital para cada entorno, especificando roles de acceso del usuario, roles de acceso del código, acceso al almacenamiento, acceso a las API, entre otros recursos.">CE 6c</span></p>
-<h3>Objetivos de la sesión</h3>
+<h3>Objetivos del punto</h3>
 <ul>
 <li>Definir para cada entorno los controles de uso y de seguridad: roles de acceso del usuario, roles de acceso del código, acceso al almacenamiento y acceso a las API.</li>
 <li>Conocer el modelo de seguridad de Docker y sus límites (el socket equivale a ser administrador) y cómo se endurecen los contenedores desde Terraform.</li>
@@ -527,7 +527,7 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 <tr><td><b>Acceso al almacenamiento</b></td><td>¿Qué datos puede tocar cada entorno? ¿Dónde se guarda el estado y quién lo lee?</td><td>Un volumen por entorno, que solo monta su propio Redis; estado fuera del repositorio con permisos 600</td></tr>
 <tr><td><b>Acceso a las API</b></td><td>¿Cómo se autentica, desde dónde y durante cuánto tiempo?</td><td>API de Docker solo por el socket local; registro de imágenes con un token de solo lectura y con caducidad por entorno</td></tr>
 </table></div>
-<p>Los principios son los de la sesión 25: <b>mínimo privilegio</b>, <b>separación por entorno</b> (si se compromete revisión, producción no corre peligro), <b>identidades de máquina propias</b> y <b>auditoría</b>.</p>
+<p>Los principios son los del punto 3 de la unidad 5: <b>mínimo privilegio</b>, <b>separación por entorno</b> (si se compromete revisión, producción no corre peligro), <b>identidades de máquina propias</b> y <b>auditoría</b>.</p>
 
 <h3>2. El modelo de seguridad de Docker</h3>
 <h4>El socket es la llave maestra</h4>
@@ -537,7 +537,7 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 <li>La API <b>nunca</b> se expone por red sin TLS (el puerto 2375 sin cifrar es una puerta abierta). Para gestionar un Docker remoto se usa SSH (<code>docker context create remoto --docker "host=ssh://usuario@servidor"</code>) o TLS con certificados de cliente.</li>
 <li>Existe el <b>modo rootless</b>, en el que el motor corre sin privilegios de administrador, que reduce el impacto de un compromiso.</li>
 </ul>
-<p>Plataformas como Proxmox, Kubernetes o las nubes sí tienen usuarios, roles, rutas y tokens (sesión 25 y unidad 3). Con Docker en un solo equipo, la separación por entorno la conseguimos con las piezas siguientes.</p>
+<p>Plataformas como Proxmox, Kubernetes o las nubes sí tienen usuarios, roles, rutas y tokens (unidad 5, punto 3 y unidad 3). Con Docker en un solo equipo, la separación por entorno la conseguimos con las piezas siguientes.</p>
 <h4>Separación por entorno</h4>
 <ul>
 <li><b>Red</b>: cada entorno tiene su red (<code>cp-revision-red</code>, <code>cp-produccion-red</code>). Los contenedores de redes definidas por el usuario distintas no pueden comunicarse entre sí ni resolver sus nombres.</li>
@@ -621,7 +621,7 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 <div class="actividad">
 <h4>Actividad 2. Configurar la seguridad de la plataforma <span class="dur">30 min</span></h4>
 <ol>
-<li><b>Usuario técnico</b>: cread el usuario que usará el runner en la sesión 34 y dadle acceso a Docker, solo a él: <code>sudo adduser --disabled-password --gecos "" runner-cp</code> y <code>sudo usermod -aG docker runner-cp</code>. Comprobad quién está en el grupo con <code>getent group docker</code>.</li>
+<li><b>Usuario técnico</b>: cread el usuario que usará el runner en el punto 5 y dadle acceso a Docker, solo a él: <code>sudo adduser --disabled-password --gecos "" runner-cp</code> y <code>sudo usermod -aG docker runner-cp</code>. Comprobad quién está en el grupo con <code>getent group docker</code>.</li>
 <li><b>Contenedores endurecidos</b>: antes de tocar el código, comprobad que la aplicación arranca con las restricciones: <code>docker run --rm -d --name prueba-seg -p 8099:8000 --cap-drop ALL --security-opt no-new-privileges:true ghcr.io/ORGANIZACION/cita-previa-app:1.0.0</code> y <code>curl http://localhost:8099/salud</code>. Después borradlo (<code>docker rm -f prueba-seg</code>) y añadid los bloques del apartado 2 a <code>docker_container.app</code>.</li>
 <li><b>Imagen privada</b>: en GitHub, en el paquete <code>cita-previa-app</code>, cambiad la visibilidad a privada. Cread dos tokens clásicos (<i>Settings → Developer settings → Personal access tokens → Tokens (classic)</i>) con solo <code>read:packages</code>: uno de 90 días para revisión y otro de 30 para producción.</li>
 <li>Añadid al código el bloque <code>registry_auth</code> y las variables <code>registro_usuario</code> y <code>registro_token</code> (sensible). Cargad el token sin que quede en el historial (<code>read -s TF_VAR_registro_token; export TF_VAR_registro_token</code>) y ejecutad <code>terraform validate</code> y <code>terraform plan -var-file=revision.tfvars</code>.</li>
@@ -632,7 +632,7 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 <ol>
 <li>Guardad cada token como secreto <code>REGISTRO_TOKEN</code> en el entorno de GitHub correspondiente (<code>revision</code> y <code>produccion</code>).</li>
 <li>Comprobad el alcance del token de revisión: iniciad sesión con él (<code>echo "$TF_VAR_registro_token" | docker login ghcr.io -u USUARIO --password-stdin</code>), descargad la imagen (<code>docker pull</code>) y después intentad publicarla con otra etiqueta (<code>docker tag</code> y <code>docker push</code>). ¿Qué error da? Documentadlo en <code>SEGURIDAD.md</code>. Cerrad la sesión con <code>docker logout ghcr.io</code>.</li>
-<li>Comprobad los permisos de los ficheros de estado: <code>ls -l ~/tfstate</code> y <code>chmod 600 ~/tfstate/*.tfstate</code> (si aún no existen, anotadlo para la sesión 33).</li>
+<li>Comprobad los permisos de los ficheros de estado: <code>ls -l ~/tfstate</code> y <code>chmod 600 ~/tfstate/*.tfstate</code> (si aún no existen, anotadlo para el punto 4).</li>
 </ol>
 </div>
 <div class="actividad">
@@ -649,11 +649,11 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 <li>¿Por qué el estado de Terraform debe protegerse aunque no se haya escrito ningún secreto en el código?</li>
 <li>¿Qué pasos hay que dar si se filtra una credencial?</li>
 </ol>
-</section><section class="panel" role="tabpanel" id="p-s33" aria-labelledby="tab-s33" hidden>
-<p class="meta">Sesión 33 de 41 · viernes 12 de febrero de 2027 · 2 horas</p>
+</section><section class="panel" role="tabpanel" id="p-p4" aria-labelledby="tab-p4" hidden>
+<p class="meta">Unidad 6 · Punto 4 · 2 horas</p>
 <h2>Crear la infraestructura en la plataforma</h2>
 <p class="chips"><span class="ce" title="Se ha creado la infraestructura definida en los ficheros al efecto dentro de la plataforma, usando las credenciales facilitadas, para su posterior integración en los flujos de trabajo.">CE 6d</span></p>
-<h3>Objetivos de la sesión</h3>
+<h3>Objetivos del punto</h3>
 <ul>
 <li>Crear en la plataforma la infraestructura definida en los ficheros, usando las credenciales facilitadas y un procedimiento seguro.</li>
 <li>Entender qué ocurre durante <code>apply</code>: grafo de dependencias, paralelismo y llamadas a la API de Docker.</li>
@@ -676,7 +676,7 @@ read -s TF_VAR_registro_token; export TF_VAR_registro_token</code></pre></li>
 <li><b>Revisar el plan</b>: número de recursos a crear, modificar y destruir. Si aparece algún <code>destroy</code> o <code>forces replacement</code> inesperado, <b>parar</b>.</li>
 <li><b>Aplicar exactamente ese plan</b>: <code>terraform apply revision.tfplan</code>. Si el estado ha cambiado desde que se calculó, Terraform lo rechaza.</li>
 <li><b>Consultar las salidas</b>: <code>terraform output</code> y <code>terraform output -json</code>.</li>
-<li><b>Verificar</b> (sesión 35) y <b>documentar</b>.</li>
+<li><b>Verificar</b> (punto 6) y <b>documentar</b>.</li>
 </ol>
 
 <h3>2. Qué ocurre durante <code>apply</code></h3>
@@ -692,7 +692,7 @@ read -s TF_VAR_registro_token; export TF_VAR_registro_token</code></pre></li>
 <tr><th>Situación</th><th>Qué ha pasado</th><th>Qué hacer</th></tr>
 <tr><td>Error a mitad de <code>apply</code></td><td>Algunos recursos se crearon y están en el estado; otros no</td><td>Corregir la causa y volver a ejecutar <code>plan</code>/<code>apply</code>: Terraform continúa desde donde se quedó</td></tr>
 <tr><td>Recurso marcado como <i>tainted</i></td><td>Se creó pero falló después; Terraform lo reemplazará en el próximo <code>apply</code></td><td>Revisar el plan; o forzar el reemplazo de uno concreto con <code>terraform apply -replace=RECURSO</code></td></tr>
-<tr><td>Error de autenticación al descargar la imagen</td><td>Token del registro incorrecto, caducado o sin <code>read:packages</code> (sesión 32)</td><td>Comprobar el token y su caducidad; probarlo con <code>docker login ghcr.io</code></td></tr>
+<tr><td>Error de autenticación al descargar la imagen</td><td>Token del registro incorrecto, caducado o sin <code>read:packages</code> (punto 3)</td><td>Comprobar el token y su caducidad; probarlo con <code>docker login ghcr.io</code></td></tr>
 <tr><td><code>permission denied</code> en el socket</td><td>El usuario que ejecuta Terraform no está en el grupo <code>docker</code></td><td>Comprobar con <code>id</code>; volver a iniciar sesión tras añadirlo al grupo</td></tr>
 <tr><td>Puerto ya en uso</td><td>Otro contenedor o programa ocupa el puerto del host</td><td>Liberarlo o cambiar <code>puerto_base</code> en el <code>.tfvars</code></td></tr>
 <tr><td>El estado está bloqueado</td><td>Otro proceso lo está usando (o uno anterior se interrumpió)</td><td>Esperar; solo si se está seguro, <code>terraform force-unlock ID</code></td></tr>
@@ -731,7 +731,7 @@ resource "docker_container" "app" {
 </ul>
 
 <h3>6. Las salidas como unión con el resto del proceso</h3>
-<p>Las salidas son la <b>interfaz</b> de la infraestructura: nombres de los contenedores, URL, red... El flujo de trabajo (sesión 34), la verificación (sesión 35) y Ansible (unidad 7) las leerán con <code>terraform output -json</code>. Por ejemplo, para comprobar todas las URL de un entorno:</p>
+<p>Las salidas son la <b>interfaz</b> de la infraestructura: nombres de los contenedores, URL, red... El flujo de trabajo (punto 5), la verificación (punto 6) y Ansible (unidad 7) las leerán con <code>terraform output -json</code>. Por ejemplo, para comprobar todas las URL de un entorno:</p>
 <pre><code>terraform output -json urls | jq -r '.[]' | while read -r url; do
   curl -s -o /dev/null -w "%{http_code} $url\n" "$url"
 done</code></pre>
@@ -770,10 +770,10 @@ done</code></pre>
 <div class="actividad">
 <h4>Actividad 5. Documentar <span class="dur">10 min</span></h4>
 <p>Completad el <code>infra/README.md</code> con el procedimiento de despliegue paso a paso, las salidas obtenidas, capturas de <code>docker ps</code> y <code>docker events</code>, y los incidentes que hayáis tenido y cómo los resolvisteis. Subidlo en un pull request.</p>
-<p class="entrega">Entrega: infraestructura de revisión creada con vuestras credenciales, registro del plan y del apply, salidas y README. <b>No destruyáis la infraestructura de revisión</b>: la usaremos en las próximas sesiones.</p>
+<p class="entrega">Entrega: infraestructura de revisión creada con vuestras credenciales, registro del plan y del apply, salidas y README. <b>No destruyáis la infraestructura de revisión</b>: la usaremos en los próximos puntos.</p>
 </div>
 <details><summary>Preparación previa (profesor)</summary>
-<p>Con los límites del <code>.tfvars</code>, los dos entornos suman como máximo unos 1,5 GB de RAM por portátil (revisión: 256 + 128 MB; producción: 2 × 512 + 128 MB); el consumo real es menor. Comprobar que la imagen de <code>cita-previa-app</code> de cada pareja está publicada y que tienen el token del registro de la sesión 32.</p>
+<p>Con los límites del <code>.tfvars</code>, los dos entornos suman como máximo unos 1,5 GB de RAM por portátil (revisión: 256 + 128 MB; producción: 2 × 512 + 128 MB); el consumo real es menor. Comprobar que la imagen de <code>cita-previa-app</code> de cada pareja está publicada y que tienen el token del registro del punto 3.</p>
 </details>
 
 <h3>Preguntas de repaso</h3>
@@ -784,11 +784,11 @@ done</code></pre>
 <li>¿Para qué sirve importar un recurso? ¿Qué debe mostrar el plan después?</li>
 <li>¿Qué hace <code>prevent_destroy</code> y en qué recursos lo usarías?</li>
 </ol>
-</section><section class="panel" role="tabpanel" id="p-s34" aria-labelledby="tab-s34" hidden>
-<p class="meta">Sesión 34 de 41 · lunes 15 de febrero de 2027 · 2 horas</p>
+</section><section class="panel" role="tabpanel" id="p-p5" aria-labelledby="tab-p5" hidden>
+<p class="meta">Unidad 6 · Punto 5 · 2 horas</p>
 <h2>Flujo de trabajo para desplegar la infraestructura</h2>
 <p class="chips"><span class="ce" title="Se han creado flujos de trabajo para el despliegue del entorno hardware, usando las credenciales proporcionadas y aplicando las configuraciones definidas.">CE 6b</span></p>
-<h3>Objetivos de la sesión</h3>
+<h3>Objetivos del punto</h3>
 <ul>
 <li>Diseñar un flujo de trabajo de CI/CD para infraestructura: validar y planificar en cada pull request, aplicar por entornos al fusionar.</li>
 <li>Elegir entre runners de GitHub y runners autoalojados, y conocer los riesgos de seguridad de estos últimos.</li>
@@ -798,7 +798,7 @@ done</code></pre>
 </ul>
 
 <h3>1. Por qué un flujo de trabajo para la infraestructura</h3>
-<p>En la sesión 33 aplicamos Terraform desde el portátil. Funciona, pero depende de quién lo ejecuta, con qué versión, con qué credenciales y si revisó el plan. Llevarlo a un <b>flujo de trabajo automatizado</b> aporta lo mismo que la CI/CD al código de la aplicación:</p>
+<p>En el punto 4 aplicamos Terraform desde el portátil. Funciona, pero depende de quién lo ejecuta, con qué versión, con qué credenciales y si revisó el plan. Llevarlo a un <b>flujo de trabajo automatizado</b> aporta lo mismo que la CI/CD al código de la aplicación:</p>
 <ul>
 <li>Todo cambio de infraestructura pasa por <b>pull request</b>, con su <b>plan</b> visible para quien revisa.</li>
 <li>Se aplica siempre <b>igual</b>, desde un entorno controlado, con las <b>credenciales del entorno</b> y nunca con las de una persona.</li>
@@ -817,12 +817,12 @@ done</code></pre>
 <tr><td>Mantenimiento</td><td>Ninguno</td><td>Actualizarlo, instalar herramientas, protegerlo</td></tr>
 <tr><td>Coste</td><td>Minutos gratuitos (ilimitados en repositorios públicos)</td><td>La máquina propia</td></tr>
 </table></div>
-<p>Nuestra plataforma es el Docker del portátil, que no es accesible desde Internet (ni debe serlo, sesión 32), así que necesitamos un <b>runner autoalojado</b> en el propio portátil. El runner es un programa que se conecta a GitHub (conexión saliente, no hay que abrir puertos), espera trabajos etiquetados para él y los ejecuta en esa máquina.</p>
+<p>Nuestra plataforma es el Docker del portátil, que no es accesible desde Internet (ni debe serlo, punto 3), así que necesitamos un <b>runner autoalojado</b> en el propio portátil. El runner es un programa que se conecta a GitHub (conexión saliente, no hay que abrir puertos), espera trabajos etiquetados para él y los ejecuta en esa máquina.</p>
 <div class="aviso"><p><b>Riesgo de seguridad.</b> En un repositorio público, cualquiera puede abrir un pull request desde un fork; si el workflow se ejecuta en vuestro runner, ejecutaría código ajeno en vuestro portátil, con acceso a Docker. Medidas: en <i>Settings → Actions → General</i>, exigir aprobación para ejecutar workflows de colaboradores externos; no usar el runner autoalojado en trabajos que se disparen desde forks; ejecutarlo con un usuario sin privilegios; y, si es posible, hacer el repositorio privado mientras dura la unidad. En entornos profesionales se usan runners efímeros (una máquina nueva por trabajo).</p></div>
 
 <h3>3. Credenciales, estado y concurrencia</h3>
 <ul>
-<li><b>Credenciales</b>: cada trabajo declara <code>environment: revision</code> o <code>environment: produccion</code> y recibe <code>secrets.REGISTRO_TOKEN</code> de ese entorno. El mismo nombre de secreto tiene valores distintos según el entorno (sesión 32). Se pasa a Terraform como variable de entorno <code>TF_VAR_registro_token</code>. El usuario del registro no es secreto: se guarda como variable de entorno de GitHub (<code>vars.REGISTRO_USUARIO</code>).</li>
+<li><b>Credenciales</b>: cada trabajo declara <code>environment: revision</code> o <code>environment: produccion</code> y recibe <code>secrets.REGISTRO_TOKEN</code> de ese entorno. El mismo nombre de secreto tiene valores distintos según el entorno (punto 3). Se pasa a Terraform como variable de entorno <code>TF_VAR_registro_token</code>. El usuario del registro no es secreto: se guarda como variable de entorno de GitHub (<code>vars.REGISTRO_USUARIO</code>).</li>
 <li><b>Estado</b>: al ser el runner persistente, el estado vive en <code>$HOME/tfstate/</code> de esa máquina, con permisos 600. En un entorno profesional se usaría un backend remoto con bloqueo (S3 con bloqueo, GitLab, Terraform Cloud) y cifrado.</li>
 <li><b>Concurrencia</b>: si dos personas fusionan a la vez, dos <code>apply</code> podrían ejecutarse sobre el mismo estado. <code>concurrency</code> los pone en cola:
 <pre><code>concurrency:
@@ -931,21 +931,21 @@ jobs:
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 1. Instalar el runner autoalojado <span class="dur">20 min</span></h4>
-<p>En el portátil de la pareja que aloja los entornos. <b>Importante</b>: el runner, los estados y los contenedores viven en ese portátil, así que la pareja debe usar el mismo equipo en las sesiones 34 y 35 (pedídselo al profesor).</p>
+<p>En el portátil de la pareja que aloja los entornos. <b>Importante</b>: el runner, los estados y los contenedores viven en ese portátil, así que la pareja debe usar el mismo equipo en los puntos 5 y 6 (pedídselo al profesor).</p>
 <ol>
-<li>Usad el usuario técnico <code>runner-cp</code> de la sesión 32, que ya está en el grupo <code>docker</code>. Comprobad que Terraform y <code>jq</code> están instalados para todos los usuarios (<code>which terraform jq</code>).</li>
+<li>Usad el usuario técnico <code>runner-cp</code> del punto 3, que ya está en el grupo <code>docker</code>. Comprobad que Terraform y <code>jq</code> están instalados para todos los usuarios (<code>which terraform jq</code>).</li>
 <li>En <i>Settings → Actions → Runners → New self-hosted runner</i> (Linux x64), seguid las órdenes como <code>runner-cp</code> (abrid su sesión con <code>sudo -iu runner-cp</code>). En la configuración, añadid la etiqueta <code>aula</code>.</li>
 <li>Salid de esa sesión (<code>exit</code>) e instaladlo como servicio para que arranque solo, desde la carpeta del runner: <code>sudo ./svc.sh install runner-cp &amp;&amp; sudo ./svc.sh start</code>. Comprobad en GitHub que aparece como <i>Idle</i>.</li>
 <li>En <i>Settings → Actions → General</i>, exigid aprobación para ejecutar workflows de colaboradores externos.</li>
-<li>Copiad los estados de la sesión 33 a <code>/home/runner-cp/tfstate/</code>, con propietario <code>runner-cp</code> y permisos 600 (<code>sudo install -o runner-cp -m 600 ...</code>). En cada entorno de GitHub, cread la variable <code>REGISTRO_USUARIO</code> con vuestro usuario.</li>
+<li>Copiad los estados del punto 4 a <code>/home/runner-cp/tfstate/</code>, con propietario <code>runner-cp</code> y permisos 600 (<code>sudo install -o runner-cp -m 600 ...</code>). En cada entorno de GitHub, cread la variable <code>REGISTRO_USUARIO</code> con vuestro usuario.</li>
 </ol>
 </div>
 <div class="actividad">
 <h4>Actividad 2. El workflow <span class="dur">25 min</span></h4>
 <ol>
-<li>Cread <code>infra/verificar.sh</code> provisional (lo completaremos en la sesión 35) que solo haga <code>terraform output</code>, y dadle permiso de ejecución (<code>git update-index --chmod=+x infra/verificar.sh</code>).</li>
+<li>Cread <code>infra/verificar.sh</code> provisional (lo completaremos en el punto 6) que solo haga <code>terraform output</code>, y dadle permiso de ejecución (<code>git update-index --chmod=+x infra/verificar.sh</code>).</li>
 <li>Añadid <code>.github/workflows/infraestructura.yml</code>. Añadid <code>/.github/</code> e <code>/infra/</code> a CODEOWNERS de operaciones si no lo estaban.</li>
-<li>El trabajo <code>plan-revision</code> se ejecuta en los pull request, es decir, desde ramas distintas de <code>main</code>. En la sesión 25 limitamos el entorno <code>revision</code> a <code>main</code>: cambiad esa regla para permitir todas las ramas (la protección fuerte está en <code>produccion</code>, que sigue limitado a <code>main</code> y con aprobación).</li>
+<li>El trabajo <code>plan-revision</code> se ejecuta en los pull request, es decir, desde ramas distintas de <code>main</code>. En el punto 3 de la unidad 5 limitamos el entorno <code>revision</code> a <code>main</code>: cambiad esa regla para permitir todas las ramas (la protección fuerte está en <code>produccion</code>, que sigue limitado a <code>main</code> y con aprobación).</li>
 <li>Abrid un pull request con un cambio pequeño en <code>infra/</code> (por ejemplo, una etiqueta nueva en <code>labels</code> del contenedor). Comprobad que se ejecutan <code>validar</code> y <code>plan-revision</code> y que el plan aparece en el resumen de la ejecución.</li>
 <li>Si Trivy encuentra problemas de configuración, leedlos y decidid si corregirlos o justificar su exclusión.</li>
 </ol>
@@ -980,11 +980,11 @@ jobs:
 <li>¿Para qué sirve <code>concurrency</code> en este workflow y por qué <code>cancel-in-progress</code> es <code>false</code>?</li>
 <li>¿Qué significa el código de salida 2 de <code>terraform plan -detailed-exitcode</code>?</li>
 </ol>
-</section><section class="panel" role="tabpanel" id="p-s35" aria-labelledby="tab-s35" hidden>
-<p class="meta">Sesión 35 de 41 · viernes 19 de febrero de 2027 · 2 horas</p>
+</section><section class="panel" role="tabpanel" id="p-p6" aria-labelledby="tab-p6" hidden>
+<p class="meta">Unidad 6 · Punto 6 · 2 horas</p>
 <h2>Verificar la infraestructura desplegada</h2>
 <p class="chips"><span class="ce" title="Se ha verificado la infraestructura creada después del despliegue, comprobando que se obtiene acceso a todos los recursos de infraestructura.">CE 6e</span></p>
-<h3>Objetivos de la sesión</h3>
+<h3>Objetivos del punto</h3>
 <ul>
 <li>Explicar por qué "desplegado" no significa "funcionando" y qué niveles de verificación existen.</li>
 <li>Comprobar tras cada despliegue que se obtiene acceso a todos los recursos creados: cómputo, red, almacenamiento, credenciales y API.</li>
@@ -1119,7 +1119,7 @@ exit $(( fallos &gt; 0 ))</code></pre>
 <ol>
 <li>Sustituid el <code>verificar.sh</code> provisional por el del apartado 4 y leedlo con calma: para cada bloque, anotad qué nivel de la tabla del apartado 2 comprueba.</li>
 <li>Añadid dos comprobaciones más: que el contador de reinicios de cada réplica es 0 (<code>docker inspect -f '{{.RestartCount}}'</code>) y que cada réplica publica <b>solo</b> el puerto esperado (<code>docker port</code>).</li>
-<li>Probadlo primero en local contra revisión, con vuestra copia del estado de la sesión 33 (si el flujo ha cambiado algo desde entonces, el bloque 1 os avisará de la desviación). Revisad cada línea y corregid lo que falle en la infraestructura, no en el script.</li>
+<li>Probadlo primero en local contra revisión, con vuestra copia del estado del punto 4 (si el flujo ha cambiado algo desde entonces, el bloque 1 os avisará de la desviación). Revisad cada línea y corregid lo que falle en la infraestructura, no en el script.</li>
 <li>Añadid el bloque <code>check</code> del apartado 3 a <code>infra/</code> y comprobad qué muestra <code>terraform plan</code>.</li>
 </ol>
 </div>

@@ -22,7 +22,7 @@ img{max-width:100%}
 .cab h1{font-size:clamp(1.45rem,3.2vw,2rem);line-height:1.2;margin:0 0 .3rem}
 .cab p{margin:0;color:var(--suave);max-width:70ch}
 
-/* Pestañas de sesiones */
+/* Pestañas de puntos */
 .pestanas{position:sticky;top:0;z-index:5;background:var(--fondo);border-bottom:1px solid var(--linea)}
 .pestanas .dentro{max-width:1240px;margin:0 auto;display:flex;overflow-x:auto;padding:0 1rem;scrollbar-width:thin}
 .pestanas button{flex:0 0 auto;border:0;border-bottom:3px solid transparent;background:none;font:inherit;font-size:.9rem;
