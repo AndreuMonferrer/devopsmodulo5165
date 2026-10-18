@@ -65,6 +65,12 @@ li>ol.casos{margin:.5rem 0 .3rem}
 .formula .fraccion{display:inline-flex;flex-direction:column;align-items:stretch}
 .formula .fraccion > span{padding:.15rem .5rem}
 .formula .fraccion > span:first-child{border-bottom:2px solid var(--texto)}
+/* Tarjetas numeradas (principios, ideas clave) */
+ol.tarjetas{list-style:none;counter-reset:tj;padding:0;margin:1rem 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.7rem}
+ol.tarjetas>li{counter-increment:tj;margin:0;background:var(--gris);border:1px solid var(--linea);border-top:4px solid var(--ra);border-radius:6px;padding:.6rem .8rem .7rem;display:flex;flex-direction:column;gap:.25rem;font-size:.95rem;line-height:1.45;text-align:left}
+ol.tarjetas>li::before{content:counter(tj);font-weight:700;font-size:1.3rem;color:var(--ra);line-height:1}
+ol.tarjetas>li:first-child{grid-column:1/-1}
+.con-indice .panel > ol.tarjetas{max-width:none}
 .entrega{font-size:.95rem;color:var(--suave);border-top:1px dashed var(--linea);padding-top:.5rem;margin-bottom:0}
 details{background:var(--gris);border-radius:6px;padding:.5rem 1rem;margin:1rem 0}
 details summary{cursor:pointer;font-weight:600}
