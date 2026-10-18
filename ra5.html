@@ -7,7 +7,7 @@
 </head><body style="--ra:#9a6a0b">
 <header class="cab"><div class="dentro"><nav class="menu" aria-label="Secciones"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="ra1.html">RA1</a><a href="ra2.html">RA2</a><a href="ra3.html">RA3</a><a href="ra4.html">RA4</a><a href="ra5.html" aria-current="page">RA5</a><a href="ra6.html">RA6</a><a href="ra7.html">RA7</a><button type="button" class="boton-tema" id="cambiar-tema">☾ Modo oscuro</button></nav>
 <h1>Unidad 5. Repositorios de código, calidad y seguridad</h1><p>Controlar quién toca el código y validar cada cambio antes de desplegarlo.</p></div></header>
-<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Puntos de la unidad 5"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-p1" data-panel="p1">Punto 1</button><button role="tab" id="tab-p2" data-panel="p2">Punto 2</button><button role="tab" id="tab-p3" data-panel="p3">Punto 3</button><button role="tab" id="tab-p4" data-panel="p4">Punto 4</button><button role="tab" id="tab-p5" data-panel="p5">Punto 5</button><button role="tab" id="tab-p6" data-panel="p6">Punto 6</button><button role="tab" id="tab-p7" data-panel="p7">Punto 7</button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
+<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Puntos de la unidad 5"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-p1" data-panel="p1">1. Herramientas</button><button role="tab" id="tab-p2" data-panel="p2">2. Calidad</button><button role="tab" id="tab-p3" data-panel="p3">3. Mínimo privilegio</button><button role="tab" id="tab-p4" data-panel="p4">4. Acceso seguro</button><button role="tab" id="tab-p5" data-panel="p5">5. Validar cambios</button><button role="tab" id="tab-p6" data-panel="p6">6. Seguridad periódica</button><button role="tab" id="tab-p7" data-panel="p7">7. Dependencias</button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
 <main class="con-indice"><details class="indice" id="indice" open><summary>Índice del punto</summary><ol></ol></details><div class="contenido"><section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
 <p class="meta">Unidad 5 de 7 · 7 puntos · 14 horas · del 8 ene al 29 ene</p>
 <h2>Resultado de aprendizaje 5</h2>
@@ -15,13 +15,13 @@
 <p>Empieza la parte técnica del módulo. Antes de desplegar nada hay que tener bajo control el código: quién puede leerlo y cambiarlo, qué cambios se aceptan y con qué comprobaciones. En esta unidad montamos, por parejas, una organización de GitHub con equipos y permisos, un repositorio protegido con la aplicación <code>cita-previa-app</code> (pestaña Recursos) y un conjunto de flujos de GitHub Actions que validan la calidad (pruebas, linter, SonarQube Cloud), la seguridad (CodeQL, detección de secretos) y las dependencias (Dependabot, pip-audit, escaneo de la imagen con Trivy).</p>
 <p>Lo que construyáis aquí se reutiliza en las unidades 6 y 7. Los repositorios serán públicos (así CodeQL y SonarQube Cloud son gratuitos): no subáis nunca contraseñas ni datos reales.</p>
 <h3>Criterios de evaluación</h3>
-<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Puntos</th></tr><tr><td><b>5a)</b></td><td>Se han enumerado herramientas relacionadas con el despliegue en contenedores, describiendo sus objetivos, características y funcionamiento.</td><td><a href="#p1">P1</a></td></tr><tr><td><b>5b)</b></td><td>Se han clasificado las herramientas de validación de calidad y seguridad del código y dependencias de librerías externas o integraciones, describiendo sus características y aplicaciones.</td><td><a href="#p2">P2</a></td></tr><tr><td><b>5c)</b></td><td>Se ha habilitado el acceso a los recursos y herramientas para desplegar y/o gestionar los entornos de producción definidos en la arquitectura, definiendo personas usuarias y perfiles que permitan y limiten.</td><td><a href="#p3">P3</a></td></tr><tr><td><b>5d)</b></td><td>Se ha configurado el acceso a un código fuente para ser gestionado a través de herramientas, identificando los parámetros de seguridad y políticas de acceso, a través de las personas usuarias y/o grupos asignados.</td><td><a href="#p4">P4</a></td></tr><tr><td><b>5e)</b></td><td>Se han validado unas modificaciones del código fuente, ejecutando pruebas de calidad mediante herramientas específicas y documentándolas.</td><td><a href="#p5">P5</a></td></tr><tr><td><b>5f)</b></td><td>Se han ejecutado comprobaciones de parámetros de seguridad del código, mediante herramientas específicas y de forma periódica.</td><td><a href="#p6">P6</a></td></tr><tr><td><b>5g)</b></td><td>Se han validado, con anterioridad al despliegue, las dependencias del código de librerías externas o integraciones, usando herramientas de comprobación para verificar la seguridad y funcionalidad e integración con el resto de los componentes del aplicativo.</td><td><a href="#p7">P7</a></td></tr></table></div>
+<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Puntos</th></tr><tr><td><b>5a)</b></td><td>Se han enumerado herramientas relacionadas con el despliegue en contenedores, describiendo sus objetivos, características y funcionamiento.</td><td><a href="#p1">1</a></td></tr><tr><td><b>5b)</b></td><td>Se han clasificado las herramientas de validación de calidad y seguridad del código y dependencias de librerías externas o integraciones, describiendo sus características y aplicaciones.</td><td><a href="#p2">2</a></td></tr><tr><td><b>5c)</b></td><td>Se ha habilitado el acceso a los recursos y herramientas para desplegar y/o gestionar los entornos de producción definidos en la arquitectura, definiendo personas usuarias y perfiles que permitan y limiten.</td><td><a href="#p3">3</a></td></tr><tr><td><b>5d)</b></td><td>Se ha configurado el acceso a un código fuente para ser gestionado a través de herramientas, identificando los parámetros de seguridad y políticas de acceso, a través de las personas usuarias y/o grupos asignados.</td><td><a href="#p4">4</a></td></tr><tr><td><b>5e)</b></td><td>Se han validado unas modificaciones del código fuente, ejecutando pruebas de calidad mediante herramientas específicas y documentándolas.</td><td><a href="#p5">5</a></td></tr><tr><td><b>5f)</b></td><td>Se han ejecutado comprobaciones de parámetros de seguridad del código, mediante herramientas específicas y de forma periódica.</td><td><a href="#p6">6</a></td></tr><tr><td><b>5g)</b></td><td>Se han validado, con anterioridad al despliegue, las dependencias del código de librerías externas o integraciones, usando herramientas de comprobación para verificar la seguridad y funcionalidad e integración con el resto de los componentes del aplicativo.</td><td><a href="#p7">7</a></td></tr></table></div>
 <h3>Puntos de la unidad</h3>
-<div class="tabla"><table><tr><th>Punto</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#p1">P1</a></td><td>El ecosistema de herramientas del despliegue en contenedores</td><td>a</td></tr><tr><td><a href="#p2">P2</a></td><td>Herramientas de validación de calidad y seguridad del código</td><td>b</td></tr><tr><td><a href="#p3">P3</a></td><td>Usuarios, perfiles y entornos: el principio de mínimo privilegio</td><td>c</td></tr><tr><td><a href="#p4">P4</a></td><td>Acceso seguro al código fuente: autenticación, políticas y protección de ramas</td><td>d</td></tr><tr><td><a href="#p5">P5</a></td><td>Validar cada cambio: pruebas y análisis de calidad automáticos</td><td>e</td></tr><tr><td><a href="#p6">P6</a></td><td>Comprobaciones de seguridad periódicas</td><td>f</td></tr><tr><td><a href="#p7">P7</a></td><td>Validar dependencias e integración antes de desplegar</td><td>g</td></tr></table></div>
+<div class="tabla"><table><tr><th>Nº</th><th>Punto</th><th>CE</th></tr><tr><td><a href="#p1">1</a></td><td>El ecosistema de herramientas del despliegue en contenedores</td><td>a</td></tr><tr><td><a href="#p2">2</a></td><td>Herramientas de validación de calidad y seguridad del código</td><td>b</td></tr><tr><td><a href="#p3">3</a></td><td>Usuarios, perfiles y entornos: el principio de mínimo privilegio</td><td>c</td></tr><tr><td><a href="#p4">4</a></td><td>Acceso seguro al código fuente: autenticación, políticas y protección de ramas</td><td>d</td></tr><tr><td><a href="#p5">5</a></td><td>Validar cada cambio: pruebas y análisis de calidad automáticos</td><td>e</td></tr><tr><td><a href="#p6">6</a></td><td>Comprobaciones de seguridad periódicas</td><td>f</td></tr><tr><td><a href="#p7">7</a></td><td>Validar dependencias e integración antes de desplegar</td><td>g</td></tr></table></div>
 <h3>Evaluación</h3>
 <p>La unidad pesa un <b>20 %</b> de la nota del módulo: <b>30 %</b> prueba escrita sobre los criterios a y b (fecha por confirmar) y <b>70 %</b> prácticas: organización y repositorio configurados (c, d) y flujos de validación funcionando y documentados (e, f, g), revisados con la lista de comprobación de la pestaña Recursos.</p>
 </section><section class="panel" role="tabpanel" id="p-p1" aria-labelledby="tab-p1" hidden>
-<p class="meta">Unidad 5 · Punto 1 · 2 horas</p>
+<p class="meta">Unidad 5 · 1. Herramientas · 2 horas</p>
 <h2>El ecosistema de herramientas del despliegue en contenedores</h2>
 <p class="chips"><span class="ce" title="Se han enumerado herramientas relacionadas con el despliegue en contenedores, describiendo sus objetivos, características y funcionamiento.">CE 5a</span></p>
 <h3>Objetivos del punto</h3>
@@ -132,7 +132,7 @@ Terraform ──► red, volúmenes y contenedores Docker (revisión y producci�
 <li>¿Por qué se creó OpenTofu?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p2" aria-labelledby="tab-p2" hidden>
-<p class="meta">Unidad 5 · Punto 2 · 2 horas</p>
+<p class="meta">Unidad 5 · 2. Calidad · 2 horas</p>
 <h2>Herramientas de validación de calidad y seguridad del código</h2>
 <p class="chips"><span class="ce" title="Se han clasificado las herramientas de validación de calidad y seguridad del código y dependencias de librerías externas o integraciones, describiendo sus características y aplicaciones.">CE 5b</span></p>
 <h3>Objetivos del punto</h3>
@@ -268,7 +268,7 @@ docker build -t insegura . &amp;&amp; docker run --rm -v /var/run/docker.sock:/v
 <li>¿Por qué hay que ejecutar análisis de seguridad periódicos aunque el código no cambie?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p3" aria-labelledby="tab-p3" hidden>
-<p class="meta">Unidad 5 · Punto 3 · 2 horas</p>
+<p class="meta">Unidad 5 · 3. Mínimo privilegio · 2 horas</p>
 <h2>Usuarios, perfiles y entornos: el principio de mínimo privilegio</h2>
 <p class="chips"><span class="ce" title="Se ha habilitado el acceso a los recursos y herramientas para desplegar y/o gestionar los entornos de producción definidos en la arquitectura, definiendo personas usuarias y perfiles que permitan y limiten.">CE 5c</span></p>
 <h3>Objetivos del punto</h3>
@@ -392,7 +392,7 @@ docker build -t insegura . &amp;&amp; docker run --rm -v /var/run/docker.sock:/v
 <li>¿Qué es una identidad de máquina y por qué no se deben usar credenciales personales en un pipeline?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p4" aria-labelledby="tab-p4" hidden>
-<p class="meta">Unidad 5 · Punto 4 · 2 horas</p>
+<p class="meta">Unidad 5 · 4. Acceso seguro · 2 horas</p>
 <h2>Acceso seguro al código fuente: autenticación, políticas y protección de ramas</h2>
 <p class="chips"><span class="ce" title="Se ha configurado el acceso a un código fuente para ser gestionado a través de herramientas, identificando los parámetros de seguridad y políticas de acceso, a través de las personas usuarias y/o grupos asignados.">CE 5d</span></p>
 <h3>Objetivos del punto</h3>
@@ -520,7 +520,7 @@ Dockerfile         @citaprevia-NOMBRES/operaciones
 <li>¿Qué problema resuelve CODEOWNERS en un repositorio con código de aplicación y de infraestructura?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p5" aria-labelledby="tab-p5" hidden>
-<p class="meta">Unidad 5 · Punto 5 · 2 horas</p>
+<p class="meta">Unidad 5 · 5. Validar cambios · 2 horas</p>
 <h2>Validar cada cambio: pruebas y análisis de calidad automáticos</h2>
 <p class="chips"><span class="ce" title="Se han validado unas modificaciones del código fuente, ejecutando pruebas de calidad mediante herramientas específicas y documentándolas.">CE 5e</span></p>
 <h3>Objetivos del punto</h3>
@@ -709,7 +709,7 @@ jobs:
 <li>¿Qué debe incluir la documentación de la validación de un cambio?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p6" aria-labelledby="tab-p6" hidden>
-<p class="meta">Unidad 5 · Punto 6 · 2 horas</p>
+<p class="meta">Unidad 5 · 6. Seguridad periódica · 2 horas</p>
 <h2>Comprobaciones de seguridad periódicas</h2>
 <p class="chips"><span class="ce" title="Se han ejecutado comprobaciones de parámetros de seguridad del código, mediante herramientas específicas y de forma periódica.">CE 5f</span></p>
 <h3>Objetivos del punto</h3>
@@ -872,7 +872,7 @@ jobs:
 <li>¿Qué significa <code>0 4 * * *</code> en un <code>schedule</code>?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p7" aria-labelledby="tab-p7" hidden>
-<p class="meta">Unidad 5 · Punto 7 · 2 horas</p>
+<p class="meta">Unidad 5 · 7. Dependencias · 2 horas</p>
 <h2>Validar dependencias e integración antes de desplegar</h2>
 <p class="chips"><span class="ce" title="Se han validado, con anterioridad al despliegue, las dependencias del código de librerías externas o integraciones, usando herramientas de comprobación para verificar la seguridad y funcionalidad e integración con el resto de los componentes del aplicativo.">CE 5g</span></p>
 <h3>Objetivos del punto</h3>

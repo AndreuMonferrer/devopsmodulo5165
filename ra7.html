@@ -7,7 +7,7 @@
 </head><body style="--ra:#7b3b5e">
 <header class="cab"><div class="dentro"><nav class="menu" aria-label="Secciones"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="ra1.html">RA1</a><a href="ra2.html">RA2</a><a href="ra3.html">RA3</a><a href="ra4.html">RA4</a><a href="ra5.html">RA5</a><a href="ra6.html">RA6</a><a href="ra7.html" aria-current="page">RA7</a><button type="button" class="boton-tema" id="cambiar-tema">☾ Modo oscuro</button></nav>
 <h1>Unidad 7. Automatización, mantenimiento y despliegue de contenedores</h1><p>Ansible para instalar, mantener y desplegar; monitorización y reacción ante errores.</p></div></header>
-<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Puntos de la unidad 7"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-p1" data-panel="p1">Punto 1</button><button role="tab" id="tab-p2" data-panel="p2">Punto 2</button><button role="tab" id="tab-p3" data-panel="p3">Punto 3</button><button role="tab" id="tab-p4" data-panel="p4">Punto 4</button><button role="tab" id="tab-p5" data-panel="p5">Punto 5</button><button role="tab" id="tab-p6" data-panel="p6">Punto 6</button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
+<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Puntos de la unidad 7"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-p1" data-panel="p1">1. Ansible</button><button role="tab" id="tab-p2" data-panel="p2">2. Roles y mantenimiento</button><button role="tab" id="tab-p3" data-panel="p3">3. Verificación</button><button role="tab" id="tab-p4" data-panel="p4">4. Parametrizar</button><button role="tab" id="tab-p5" data-panel="p5">5. Monitorización</button><button role="tab" id="tab-p6" data-panel="p6">6. Automatismos</button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
 <main class="con-indice"><details class="indice" id="indice" open><summary>Índice del punto</summary><ol></ol></details><div class="contenido"><section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
 <p class="meta">Unidad 7 de 7 · 6 puntos · 12 horas · del 22 feb al 22 mar</p>
 <h2>Resultado de aprendizaje 7</h2>
@@ -24,9 +24,9 @@
 │   └── roles/ (base, docker, app, monitor)
 └── docs/ (despliegue.md, imagen.md, capacity-plan.md)</code></pre>
 <h3>Criterios de evaluación</h3>
-<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Puntos</th></tr><tr><td><b>7a)</b></td><td>Se han instalado herramientas de automatización y gestión de paquetes y dependencias en la infraestructura seleccionada.</td><td><a href="#p1">P1</a></td></tr><tr><td><b>7b)</b></td><td>Se han creado los flujos para mantenimiento, usando las herramientas para la automatización de la administración de la configuración del software y servicios de los sistemas desarrollados.</td><td><a href="#p2">P2</a></td></tr><tr><td><b>7c)</b></td><td>Se han verificado los flujos para mantenimiento, probando que las acciones automatizadas generan los resultados esperados.</td><td><a href="#p3">P3</a></td></tr><tr><td><b>7d)</b></td><td>Se han aplicado reglas de seguridad digital, niveles de servicio y consumo definidas en el proyecto, como configuraciones dentro de las herramientas de despliegue, para parametrizar la ejecución de los contenedores.</td><td><a href="#p4">P4</a></td></tr><tr><td><b>7e)</b></td><td>Se han recogido en las herramientas de monitorización las métricas para elaborar informes de rendimiento y planificación (capacity plan), anticipar el crecimiento y facilitar la gestión de los recursos.</td><td><a href="#p5">P5</a></td></tr><tr><td><b>7f)</b></td><td>Se ha redactado documentación sobre el uso de los despliegues de código e imágenes de contenedores, almacenándola en los repositorios de código.</td><td><a href="#p6">P6</a></td></tr><tr><td><b>7g)</b></td><td>Se han incorporado en las herramientas desplegadas acciones automáticas basadas en eventos disparados por errores tales como fallos de trabajo y acceso y estado de finalización.</td><td><a href="#p6">P6</a></td></tr></table></div>
+<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Puntos</th></tr><tr><td><b>7a)</b></td><td>Se han instalado herramientas de automatización y gestión de paquetes y dependencias en la infraestructura seleccionada.</td><td><a href="#p1">1</a></td></tr><tr><td><b>7b)</b></td><td>Se han creado los flujos para mantenimiento, usando las herramientas para la automatización de la administración de la configuración del software y servicios de los sistemas desarrollados.</td><td><a href="#p2">2</a></td></tr><tr><td><b>7c)</b></td><td>Se han verificado los flujos para mantenimiento, probando que las acciones automatizadas generan los resultados esperados.</td><td><a href="#p3">3</a></td></tr><tr><td><b>7d)</b></td><td>Se han aplicado reglas de seguridad digital, niveles de servicio y consumo definidas en el proyecto, como configuraciones dentro de las herramientas de despliegue, para parametrizar la ejecución de los contenedores.</td><td><a href="#p4">4</a></td></tr><tr><td><b>7e)</b></td><td>Se han recogido en las herramientas de monitorización las métricas para elaborar informes de rendimiento y planificación (capacity plan), anticipar el crecimiento y facilitar la gestión de los recursos.</td><td><a href="#p5">5</a></td></tr><tr><td><b>7f)</b></td><td>Se ha redactado documentación sobre el uso de los despliegues de código e imágenes de contenedores, almacenándola en los repositorios de código.</td><td><a href="#p6">6</a></td></tr><tr><td><b>7g)</b></td><td>Se han incorporado en las herramientas desplegadas acciones automáticas basadas en eventos disparados por errores tales como fallos de trabajo y acceso y estado de finalización.</td><td><a href="#p6">6</a></td></tr></table></div>
 <h3>Puntos de la unidad</h3>
-<div class="tabla"><table><tr><th>Punto</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#p1">P1</a></td><td>Ansible: instalar herramientas y dependencias en la infraestructura</td><td>a</td></tr><tr><td><a href="#p2">P2</a></td><td>Flujos de mantenimiento y despliegue con roles</td><td>b</td></tr><tr><td><a href="#p3">P3</a></td><td>Verificar que la automatización hace lo que debe</td><td>c</td></tr><tr><td><a href="#p4">P4</a></td><td>Parametrizar los contenedores: seguridad, nivel de servicio y consumo</td><td>d</td></tr><tr><td><a href="#p5">P5</a></td><td>Monitorización y capacity plan</td><td>e</td></tr><tr><td><a href="#p6">P6</a></td><td>Acciones automáticas ante errores y documentación del despliegue</td><td>g, f</td></tr></table></div>
+<div class="tabla"><table><tr><th>Nº</th><th>Punto</th><th>CE</th></tr><tr><td><a href="#p1">1</a></td><td>Ansible: instalar herramientas y dependencias en la infraestructura</td><td>a</td></tr><tr><td><a href="#p2">2</a></td><td>Flujos de mantenimiento y despliegue con roles</td><td>b</td></tr><tr><td><a href="#p3">3</a></td><td>Verificar que la automatización hace lo que debe</td><td>c</td></tr><tr><td><a href="#p4">4</a></td><td>Parametrizar los contenedores: seguridad, nivel de servicio y consumo</td><td>d</td></tr><tr><td><a href="#p5">5</a></td><td>Monitorización y capacity plan</td><td>e</td></tr><tr><td><a href="#p6">6</a></td><td>Acciones automáticas ante errores y documentación del despliegue</td><td>g, f</td></tr></table></div>
 <h3>Evaluación</h3>
 <p>La unidad pesa un <b>20 %</b> de la nota del módulo y se evalúa al <b>100 % con trabajo práctico</b>:</p>
 <div class="tabla"><table><tr><th>CE</th><th>Evidencia</th><th>Peso</th></tr>
@@ -38,7 +38,7 @@
 <tr><td>7f</td><td>Documentación del despliegue y de la imagen en el repositorio</td><td>10 %</td></tr>
 <tr><td>7g</td><td>Acciones automáticas ante fallos de trabajo, de acceso y estado de finalización</td><td>10 %</td></tr></table></div>
 </section><section class="panel" role="tabpanel" id="p-p1" aria-labelledby="tab-p1" hidden>
-<p class="meta">Unidad 7 · Punto 1 · 2 horas</p>
+<p class="meta">Unidad 7 · 1. Ansible · 2 horas</p>
 <h2>Ansible: instalar herramientas y dependencias en la infraestructura</h2>
 <p class="chips"><span class="ce" title="Se han instalado herramientas de automatización y gestión de paquetes y dependencias en la infraestructura seleccionada.">CE 7a</span></p>
 <h3>Objetivos del punto</h3>
@@ -233,7 +233,7 @@ ansible --version</code></pre>
 <li>¿Para qué sirve <code>requirements.yml</code>? ¿Qué gestor lo usa?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p2" aria-labelledby="tab-p2" hidden>
-<p class="meta">Unidad 7 · Punto 2 · 2 horas</p>
+<p class="meta">Unidad 7 · 2. Roles y mantenimiento · 2 horas</p>
 <h2>Flujos de mantenimiento y despliegue con roles</h2>
 <p class="chips"><span class="ce" title="Se han creado los flujos para mantenimiento, usando las herramientas para la automatización de la administración de la configuración del software y servicios de los sistemas desarrollados.">CE 7b</span></p>
 <h3>Objetivos del punto</h3>
@@ -482,7 +482,7 @@ jobs:
 <li>¿Qué hace el parámetro <code>validate</code> del módulo <code>template</code> en la tarea de <code>daemon.json</code>?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p3" aria-labelledby="tab-p3" hidden>
-<p class="meta">Unidad 7 · Punto 3 · 2 horas</p>
+<p class="meta">Unidad 7 · 3. Verificación · 2 horas</p>
 <h2>Verificar que la automatización hace lo que debe</h2>
 <p class="chips"><span class="ce" title="Se han verificado los flujos para mantenimiento, probando que las acciones automatizadas generan los resultados esperados.">CE 7c</span></p>
 <h3>Objetivos del punto</h3>
@@ -698,7 +698,7 @@ jobs:
 <li>¿Qué fases ejecuta <code>molecule test</code>?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p4" aria-labelledby="tab-p4" hidden>
-<p class="meta">Unidad 7 · Punto 4 · 2 horas</p>
+<p class="meta">Unidad 7 · 4. Parametrizar · 2 horas</p>
 <h2>Parametrizar los contenedores: seguridad, nivel de servicio y consumo</h2>
 <p class="chips"><span class="ce" title="Se han aplicado reglas de seguridad digital, niveles de servicio y consumo definidas en el proyecto, como configuraciones dentro de las herramientas de despliegue, para parametrizar la ejecución de los contenedores.">CE 7d</span></p>
 <h3>Objetivos del punto</h3>
@@ -883,7 +883,7 @@ docker stats --no-stream $C</code></pre>
 <li>¿Por qué montar el socket de Docker en un contenedor equivale a darle root?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p5" aria-labelledby="tab-p5" hidden>
-<p class="meta">Unidad 7 · Punto 5 · 2 horas</p>
+<p class="meta">Unidad 7 · 5. Monitorización · 2 horas</p>
 <h2>Monitorización y capacity plan</h2>
 <p class="chips"><span class="ce" title="Se han recogido en las herramientas de monitorización las métricas para elaborar informes de rendimiento y planificación (capacity plan), anticipar el crecimiento y facilitar la gestión de los recursos.">CE 7e</span></p>
 <h3>Objetivos del punto</h3>
@@ -1080,7 +1080,7 @@ ab -t 60 -c 100 http://localhost:8080/citas</code></pre>
 <li>¿Qué pasos sigue la elaboración de un plan de capacidad?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p6" aria-labelledby="tab-p6" hidden>
-<p class="meta">Unidad 7 · Punto 6 · 2 horas</p>
+<p class="meta">Unidad 7 · 6. Automatismos · 2 horas</p>
 <h2>Acciones automáticas ante errores y documentación del despliegue</h2>
 <p class="chips"><span class="ce" title="Se han incorporado en las herramientas desplegadas acciones automáticas basadas en eventos disparados por errores tales como fallos de trabajo y acceso y estado de finalización.">CE 7g</span><span class="ce" title="Se ha redactado documentación sobre el uso de los despliegues de código e imágenes de contenedores, almacenándola en los repositorios de código.">CE 7f</span></p>
 <h3>Objetivos del punto</h3>

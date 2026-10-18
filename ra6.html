@@ -7,7 +7,7 @@
 </head><body style="--ra:#a8502a">
 <header class="cab"><div class="dentro"><nav class="menu" aria-label="Secciones"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="ra1.html">RA1</a><a href="ra2.html">RA2</a><a href="ra3.html">RA3</a><a href="ra4.html">RA4</a><a href="ra5.html">RA5</a><a href="ra6.html" aria-current="page">RA6</a><a href="ra7.html">RA7</a><button type="button" class="boton-tema" id="cambiar-tema">☾ Modo oscuro</button></nav>
 <h1>Unidad 6. Entornos de revisión y producción con infraestructura como código</h1><p>Describir la infraestructura en ficheros y dejar que un flujo de trabajo la cree.</p></div></header>
-<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Puntos de la unidad 6"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-p1" data-panel="p1">Punto 1</button><button role="tab" id="tab-p2" data-panel="p2">Punto 2</button><button role="tab" id="tab-p3" data-panel="p3">Punto 3</button><button role="tab" id="tab-p4" data-panel="p4">Punto 4</button><button role="tab" id="tab-p5" data-panel="p5">Punto 5</button><button role="tab" id="tab-p6" data-panel="p6">Punto 6</button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
+<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Puntos de la unidad 6"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-p1" data-panel="p1">1. Terraform</button><button role="tab" id="tab-p2" data-panel="p2">2. Parámetros por entorno</button><button role="tab" id="tab-p3" data-panel="p3">3. Seguridad por entorno</button><button role="tab" id="tab-p4" data-panel="p4">4. Crear entornos</button><button role="tab" id="tab-p5" data-panel="p5">5. Flujo CI/CD</button><button role="tab" id="tab-p6" data-panel="p6">6. Verificación</button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
 <main class="con-indice"><details class="indice" id="indice" open><summary>Índice del punto</summary><ol></ol></details><div class="contenido"><section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
 <p class="meta">Unidad 6 de 7 · 6 puntos · 12 horas · del 1 feb al 19 feb</p>
 <h2>Resultado de aprendizaje 6</h2>
@@ -26,9 +26,9 @@
 ├── .github/workflows/infraestructura.yml
 └── SEGURIDAD.md           # matriz de accesos por entorno</code></pre>
 <h3>Criterios de evaluación</h3>
-<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Puntos</th></tr><tr><td><b>6a)</b></td><td>Se han creado ficheros de definición de infraestructura como código y SDH (Software Define Hardware), usando el lenguaje propio de la plataforma de despliegue.</td><td><a href="#p1">P1</a>, <a href="#p2">P2</a></td></tr><tr><td><b>6b)</b></td><td>Se han creado flujos de trabajo para el despliegue del entorno hardware, usando las credenciales proporcionadas y aplicando las configuraciones definidas.</td><td><a href="#p5">P5</a></td></tr><tr><td><b>6c)</b></td><td>Se han configurado unas definiciones técnicas de uso de control y de seguridad digital para cada entorno, especificando roles de acceso del usuario, roles de acceso del código, acceso al almacenamiento, acceso a las API, entre otros recursos.</td><td><a href="#p3">P3</a></td></tr><tr><td><b>6d)</b></td><td>Se ha creado la infraestructura definida en los ficheros al efecto dentro de la plataforma, usando las credenciales facilitadas, para su posterior integración en los flujos de trabajo.</td><td><a href="#p4">P4</a></td></tr><tr><td><b>6e)</b></td><td>Se ha verificado la infraestructura creada después del despliegue, comprobando que se obtiene acceso a todos los recursos de infraestructura.</td><td><a href="#p6">P6</a></td></tr></table></div>
+<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Puntos</th></tr><tr><td><b>6a)</b></td><td>Se han creado ficheros de definición de infraestructura como código y SDH (Software Define Hardware), usando el lenguaje propio de la plataforma de despliegue.</td><td><a href="#p1">1</a>, <a href="#p2">2</a></td></tr><tr><td><b>6b)</b></td><td>Se han creado flujos de trabajo para el despliegue del entorno hardware, usando las credenciales proporcionadas y aplicando las configuraciones definidas.</td><td><a href="#p5">5</a></td></tr><tr><td><b>6c)</b></td><td>Se han configurado unas definiciones técnicas de uso de control y de seguridad digital para cada entorno, especificando roles de acceso del usuario, roles de acceso del código, acceso al almacenamiento, acceso a las API, entre otros recursos.</td><td><a href="#p3">3</a></td></tr><tr><td><b>6d)</b></td><td>Se ha creado la infraestructura definida en los ficheros al efecto dentro de la plataforma, usando las credenciales facilitadas, para su posterior integración en los flujos de trabajo.</td><td><a href="#p4">4</a></td></tr><tr><td><b>6e)</b></td><td>Se ha verificado la infraestructura creada después del despliegue, comprobando que se obtiene acceso a todos los recursos de infraestructura.</td><td><a href="#p6">6</a></td></tr></table></div>
 <h3>Puntos de la unidad</h3>
-<div class="tabla"><table><tr><th>Punto</th><th>Tema</th><th>CE</th></tr><tr><td><a href="#p1">P1</a></td><td>Infraestructura como código: primeros ficheros con Terraform</td><td>a</td></tr><tr><td><a href="#p2">P2</a></td><td>Ficheros de parámetros por entorno y definición de la infraestructura</td><td>a</td></tr><tr><td><a href="#p3">P3</a></td><td>Seguridad por entorno: roles, tokens, almacenamiento y API</td><td>c</td></tr><tr><td><a href="#p4">P4</a></td><td>Crear la infraestructura en la plataforma</td><td>d</td></tr><tr><td><a href="#p5">P5</a></td><td>Flujo de trabajo para desplegar la infraestructura</td><td>b</td></tr><tr><td><a href="#p6">P6</a></td><td>Verificar la infraestructura desplegada</td><td>e</td></tr></table></div>
+<div class="tabla"><table><tr><th>Nº</th><th>Punto</th><th>CE</th></tr><tr><td><a href="#p1">1</a></td><td>Infraestructura como código: primeros ficheros con Terraform</td><td>a</td></tr><tr><td><a href="#p2">2</a></td><td>Ficheros de parámetros por entorno y definición de la infraestructura</td><td>a</td></tr><tr><td><a href="#p3">3</a></td><td>Seguridad por entorno: roles, tokens, almacenamiento y API</td><td>c</td></tr><tr><td><a href="#p4">4</a></td><td>Crear la infraestructura en la plataforma</td><td>d</td></tr><tr><td><a href="#p5">5</a></td><td>Flujo de trabajo para desplegar la infraestructura</td><td>b</td></tr><tr><td><a href="#p6">6</a></td><td>Verificar la infraestructura desplegada</td><td>e</td></tr></table></div>
 <h3>Evaluación</h3>
 <p>La unidad pesa un <b>20 %</b> de la nota del módulo y se evalúa al <b>100 % con trabajo práctico</b> en el repositorio:</p>
 <div class="tabla"><table><tr><th>CE</th><th>Evidencia</th><th>Peso</th></tr>
@@ -38,7 +38,7 @@
 <tr><td>6d</td><td>Infraestructura creada en la plataforma con las credenciales facilitadas</td><td>15 %</td></tr>
 <tr><td>6e</td><td>Script y registro de verificación tras el despliegue</td><td>20 %</td></tr></table></div>
 </section><section class="panel" role="tabpanel" id="p-p1" aria-labelledby="tab-p1" hidden>
-<p class="meta">Unidad 6 · Punto 1 · 2 horas</p>
+<p class="meta">Unidad 6 · 1. Terraform · 2 horas</p>
 <h2>Infraestructura como código: primeros ficheros con Terraform</h2>
 <p class="chips"><span class="ce" title="Se han creado ficheros de definición de infraestructura como código y SDH (Software Define Hardware), usando el lenguaje propio de la plataforma de despliegue.">CE 6a</span></p>
 <h3>Objetivos del punto</h3>
@@ -248,7 +248,7 @@ terraform -version</code></pre>
 <li>¿Qué es la desviación (drift) y cómo la detecta Terraform?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p2" aria-labelledby="tab-p2" hidden>
-<p class="meta">Unidad 6 · Punto 2 · 2 horas</p>
+<p class="meta">Unidad 6 · 2. Parámetros por entorno · 2 horas</p>
 <h2>Ficheros de parámetros por entorno y definición de la infraestructura</h2>
 <p class="chips"><span class="ce" title="Se han creado ficheros de definición de infraestructura como código y SDH (Software Define Hardware), usando el lenguaje propio de la plataforma de despliegue.">CE 6a</span></p>
 <h3>Objetivos del punto</h3>
@@ -507,7 +507,7 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 <li>¿Qué bloques de <code>infra/main.tf</code> definen "hardware" por software y qué pieza física sustituye cada uno?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p3" aria-labelledby="tab-p3" hidden>
-<p class="meta">Unidad 6 · Punto 3 · 2 horas</p>
+<p class="meta">Unidad 6 · 3. Seguridad por entorno · 2 horas</p>
 <h2>Seguridad por entorno: roles, tokens, almacenamiento y API</h2>
 <p class="chips"><span class="ce" title="Se han configurado unas definiciones técnicas de uso de control y de seguridad digital para cada entorno, especificando roles de acceso del usuario, roles de acceso del código, acceso al almacenamiento, acceso a las API, entre otros recursos.">CE 6c</span></p>
 <h3>Objetivos del punto</h3>
@@ -650,7 +650,7 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 <li>¿Qué pasos hay que dar si se filtra una credencial?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p4" aria-labelledby="tab-p4" hidden>
-<p class="meta">Unidad 6 · Punto 4 · 2 horas</p>
+<p class="meta">Unidad 6 · 4. Crear entornos · 2 horas</p>
 <h2>Crear la infraestructura en la plataforma</h2>
 <p class="chips"><span class="ce" title="Se ha creado la infraestructura definida en los ficheros al efecto dentro de la plataforma, usando las credenciales facilitadas, para su posterior integración en los flujos de trabajo.">CE 6d</span></p>
 <h3>Objetivos del punto</h3>
@@ -785,7 +785,7 @@ done</code></pre>
 <li>¿Qué hace <code>prevent_destroy</code> y en qué recursos lo usarías?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p5" aria-labelledby="tab-p5" hidden>
-<p class="meta">Unidad 6 · Punto 5 · 2 horas</p>
+<p class="meta">Unidad 6 · 5. Flujo CI/CD · 2 horas</p>
 <h2>Flujo de trabajo para desplegar la infraestructura</h2>
 <p class="chips"><span class="ce" title="Se han creado flujos de trabajo para el despliegue del entorno hardware, usando las credenciales proporcionadas y aplicando las configuraciones definidas.">CE 6b</span></p>
 <h3>Objetivos del punto</h3>
@@ -981,7 +981,7 @@ jobs:
 <li>¿Qué significa el código de salida 2 de <code>terraform plan -detailed-exitcode</code>?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p6" aria-labelledby="tab-p6" hidden>
-<p class="meta">Unidad 6 · Punto 6 · 2 horas</p>
+<p class="meta">Unidad 6 · 6. Verificación · 2 horas</p>
 <h2>Verificar la infraestructura desplegada</h2>
 <p class="chips"><span class="ce" title="Se ha verificado la infraestructura creada después del despliegue, comprobando que se obtiene acceso a todos los recursos de infraestructura.">CE 6e</span></p>
 <h3>Objetivos del punto</h3>
