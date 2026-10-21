@@ -522,6 +522,7 @@ Criterios de aceptación:
 <p class="chips"><span class="ce" title="Se ha reconocido el uso y aplicación de la integración y despliegue continuos propios de Devops como parte de las metodologías ágiles de desarrollo.">CE 1d</span></p>
 <h3>Objetivos del punto</h3>
 <ul>
+<li>Describir de qué se encargan los equipos de desarrollo y de operaciones y qué dificultades surgen entre ellos.</li>
 <li>Explicar qué problema resuelve DevOps y por qué es la continuación natural de las metodologías ágiles.</li>
 <li>Describir la cultura y los principios de DevOps (CALMS y las tres vías).</li>
 <li>Usar el mapa del flujo de valor para detectar esperas y cuellos de botella antes de automatizar.</li>
@@ -529,19 +530,41 @@ Criterios de aceptación:
 <li>Conocer las métricas DORA para medir el rendimiento de un equipo.</li>
 </ul>
 
-<h3>1. El muro entre desarrollo y operaciones</h3>
+<div class="nota"><p><b>Para empezar.</b> En la empresa que mantiene Cita Previa, un cambio pequeño, de unas 15 horas de trabajo, tarda <b>41 días</b> en llegar a los usuarios. ¿Dónde creéis que se van esos días? Apuntad vuestra respuesta: la comprobaremos en el apartado 4.</p></div>
+
+<h3>1. Cómo se organizaba el trabajo: desarrollo y operaciones</h3>
+<p>En una empresa o una administración tradicional, el software pasa por <b>dos departamentos distintos</b>, cada uno con su jefe, su presupuesto y sus objetivos.</p>
+<div class="tabla"><table>
+<tr><th></th><th>Desarrollo (Dev)</th><th>Operaciones (Ops), también llamado Sistemas</th></tr>
+<tr><td>De qué se encarga</td><td>Crear y cambiar el software: analizar lo que se pide, programar funcionalidades nuevas, corregir errores, hacer pruebas y preparar cada versión.</td><td>Que el software funcione para los usuarios: instalar y mantener servidores, redes y bases de datos, instalar las versiones en producción, hacer copias de seguridad, aplicar parches de seguridad y vigilar el servicio, con guardias si hace falta.</td></tr>
+<tr><td>Perfiles típicos</td><td>Programadores, analistas, testers (QA), jefe de proyecto.</td><td>Administradores de sistemas, de redes y de bases de datos, técnicos de soporte.</td></tr>
+<tr><td>Cómo se le mide</td><td>Por las funcionalidades que entrega y por cumplir los plazos.</td><td>Por la disponibilidad del servicio y por tener pocas incidencias.</td></tr>
+<tr><td>Qué conoce bien</td><td>El código: qué hace y cómo está construido.</td><td>Los servidores: cómo están configurados y qué carga soportan.</td></tr>
+</table></div>
+<p>El trabajo pasaba de uno a otro con un <b>traspaso</b>: Desarrollo terminaba una versión, la empaquetaba junto con un manual de instalación y abría una petición (un <i>ticket</i>) a Operaciones. Operaciones la instalaba en producción cuando tenía hueco. A partir de ahí, si algo fallaba, quien recibía la alerta, muchas veces de madrugada, era Operaciones.</p>
+<p>En Cita Previa, por ejemplo, el equipo de desarrollo de la empresa que programa la aplicación es uno, y el servicio de informática que gestiona los servidores donde funciona es otro.</p>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 330" role="img" aria-label="Desarrollo y operaciones" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-dev_ops" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="10" width="270" height="270" rx="8" class="d-grupo-azul"/><rect x="438" y="10" width="270" height="270" rx="8" class="d-grupo-verde"/><text x="147" y="32" class="t tb" text-anchor="middle" dominant-baseline="middle">Desarrollo (Dev)</text><text x="573" y="32" class="t tb" text-anchor="middle" dominant-baseline="middle">Operaciones (Ops)</text><rect x="32" y="52" width="230" height="30" rx="6" class="d-azul"/><text x="147.0" y="67.0" class="t" text-anchor="middle" dominant-baseline="middle">Analizar requisitos</text><rect x="458" y="52" width="230" height="30" rx="6" class="d-verde"/><text x="573.0" y="67.0" class="t" text-anchor="middle" dominant-baseline="middle">Servidores, redes y BD</text><rect x="32" y="90" width="230" height="30" rx="6" class="d-azul"/><text x="147.0" y="105.0" class="t" text-anchor="middle" dominant-baseline="middle">Programar funcionalidades</text><rect x="458" y="90" width="230" height="30" rx="6" class="d-verde"/><text x="573.0" y="105.0" class="t" text-anchor="middle" dominant-baseline="middle">Instalar las versiones</text><rect x="32" y="128" width="230" height="30" rx="6" class="d-azul"/><text x="147.0" y="143.0" class="t" text-anchor="middle" dominant-baseline="middle">Corregir errores</text><rect x="458" y="128" width="230" height="30" rx="6" class="d-verde"/><text x="573.0" y="143.0" class="t" text-anchor="middle" dominant-baseline="middle">Copias de seguridad</text><rect x="32" y="166" width="230" height="30" rx="6" class="d-azul"/><text x="147.0" y="181.0" class="t" text-anchor="middle" dominant-baseline="middle">Probar el código</text><rect x="458" y="166" width="230" height="30" rx="6" class="d-verde"/><text x="573.0" y="181.0" class="t" text-anchor="middle" dominant-baseline="middle">Vigilar el servicio 24/7</text><rect x="32" y="204" width="230" height="30" rx="6" class="d-azul"/><text x="147.0" y="219.0" class="t" text-anchor="middle" dominant-baseline="middle">Preparar cada versión</text><rect x="458" y="204" width="230" height="30" rx="6" class="d-verde"/><text x="573.0" y="219.0" class="t" text-anchor="middle" dominant-baseline="middle">Seguridad y parches</text><text x="147" y="258" class="ts" text-anchor="middle" dominant-baseline="middle">Se le mide por: funcionalidades nuevas</text><text x="573" y="258" class="ts" text-anchor="middle" dominant-baseline="middle">Se le mide por: estabilidad</text><rect x="350" y="10" width="20" height="270" rx="3" class="d-rojo"/><text x="360" y="300" class="t tb" text-anchor="middle" dominant-baseline="middle">El muro</text><path d="M284,90 C320,40 400,40 436,90" class="flecha" marker-end="url(#fl-dev_ops)"/><rect x="300" y="36" width="120" height="18" rx="3" class="fondo-etiqueta"/><text x="360" y="45" class="te" text-anchor="middle" dominant-baseline="middle">código + manual</text><path d="M436,200 C400,250 320,250 284,200" class="flecha disc" marker-end="url(#fl-dev_ops)"/><rect x="295" y="226" width="130" height="18" rx="3" class="fondo-etiqueta"/><text x="360" y="235" class="te" text-anchor="middle" dominant-baseline="middle">incidencias y culpas</text></svg></div><figcaption>En la organización tradicional, desarrollo y operaciones son departamentos separados, con tareas y objetivos distintos. Lo único que cruza el muro es el código (con su manual de instalación) en un sentido, y las incidencias en el otro.</figcaption></figure>
+
+<h3>2. Las dificultades: el muro entre desarrollo y operaciones</h3>
 <p>Con Scrum o XP, un equipo puede terminar un incremento cada dos semanas. Pero en muchas organizaciones ese incremento se quedaba parado: había que entregarlo a otro departamento, <b>Operaciones</b> (sistemas), que lo instalaba en producción cuando podía, con procedimientos manuales y ventanas de mantenimiento mensuales o trimestrales.</p>
-<p>Los dos departamentos tenían <b>objetivos contrapuestos</b>:</p>
+<p>Con esta organización, los choques entre los dos equipos eran constantes:</p>
 <ul>
-<li><b>Desarrollo</b> se medía por la cantidad de funcionalidades nuevas: su incentivo era cambiar cosas.</li>
-<li><b>Operaciones</b> se medía por la estabilidad: cada cambio es un riesgo, así que su incentivo era cambiar lo menos posible.</li>
+<li><b>Objetivos contrapuestos</b>: Desarrollo se medía por las novedades, así que su incentivo era cambiar cosas; Operaciones se medía por la estabilidad, y cada cambio es un riesgo, así que su incentivo era cambiar lo menos posible.</li>
+<li><b>Entornos distintos</b>: el programador probaba en su portátil o en un servidor de pruebas con unas versiones; producción tenía otras. Lo que funcionaba en un sitio fallaba en el otro.</li>
+<li><b>Conocimiento separado</b>: Desarrollo no sabía cómo era producción, y Operaciones no sabía qué hacía el código ni cómo había que configurarlo. El manual de instalación nunca lo explicaba todo.</li>
+<li><b>Traspasos y colas</b>: cada despliegue era una petición que esperaba turno, a veces semanas.</li>
+<li><b>Despliegues grandes y poco frecuentes</b>: como desplegar costaba tanto, se juntaban muchos cambios en una ventana mensual o trimestral. Si algo fallaba, era difícil saber cuál de todos los cambios era el culpable.</li>
+<li><b>Responsabilidad desigual</b>: Desarrollo entregaba y pasaba a otra cosa; Operaciones cargaba con los fallos y con las guardias.</li>
 </ul>
 <p>Entre ambos había un "muro de la confusión": desarrollo "lanzaba" el código por encima del muro con un manual de instalación, operaciones se lo encontraba en servidores distintos de los de desarrollo, fallaba, y empezaba el cruce de culpas (<i>"en mi máquina funciona"</i> frente a <i>"tu código rompe el servidor"</i>). Resultado: despliegues poco frecuentes, grandes y arriesgados, y el valor que el equipo ágil creaba cada dos semanas tardaba meses en llegar al usuario.</p>
+<p>De este choque nace DevOps. La pregunta que se hicieron algunos profesionales fue: <b>¿y si los dos equipos trabajaran juntos, con un objetivo común, en lugar de pasarse el trabajo por encima de un muro?</b></p>
 
-<h3>2. Qué es DevOps</h3>
-<p>El término nace en 2009. Ese año, John Allspaw y Paul Hammond (Flickr) dieron la charla <i>"10+ deploys per day: Dev and Ops cooperation at Flickr"</i>, y Patrick Debois organizó en Gante las primeras <b>DevOpsDays</b>. La palabra une <b>Dev</b>elopment y <b>Op</b>eration<b>s</b>.</p>
+<h3>3. Qué es DevOps</h3>
+<p>El término nace en 2009. Ese año, John Allspaw y Paul Hammond (Flickr) dieron la charla <i>"10+ deploys per day: Dev and Ops cooperation at Flickr"</i>, y Patrick Debois, un consultor belga que había trabajado a la vez con equipos de desarrollo y de sistemas y había vivido ese choque, organizó en Gante las primeras <b>DevOpsDays</b>. La palabra une <b>Dev</b>elopment y <b>Op</b>eration<b>s</b>.</p>
 <p>DevOps es <b>una cultura y un conjunto de prácticas</b> que une a las personas de desarrollo y de operaciones (y de calidad y seguridad) en un objetivo común: <b>entregar valor al usuario de forma rápida, frecuente y fiable</b>. No es una herramienta, ni un puesto de trabajo concreto, ni un departamento nuevo, aunque en el mercado laboral se hable de "ingenieros DevOps" para referirse a perfiles que automatizan la infraestructura y los despliegues.</p>
 <p>Relación con ágil: <b>el ágil acercó al cliente y a los desarrolladores; DevOps acerca a los desarrolladores y a los operadores</b>. Extiende los principios ágiles (entregas frecuentes, retroalimentación, mejora continua) hasta que el software está funcionando en producción y más allá, a su operación diaria.</p>
+<div class="nota"><p><b>Vídeo recomendado.</b> <a href="https://www.youtube.com/watch?v=xm1psJEFFIY">¿Qué es DevOps y CI/CD?</a> (Fazt Code, unos 7 min, en castellano). Resume en pocos minutos lo que es DevOps y lo que veremos en el apartado 5.</p></div>
+
 
 <h4>El modelo CALMS</h4>
 <p>Una forma habitual de resumir DevOps es el acrónimo <b>CALMS</b>. En 2010 John Willis y Damon Edwards propusieron <b>CAMS</b> (cultura, automatización, medición y compartir), y poco después Jez Humble añadió la <b>L</b> de Lean:</p>
@@ -567,7 +590,7 @@ Criterios de aceptación:
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 432" role="img" aria-label="Ciclo DevOps" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-devops_bucle" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><path d="M411.5,44.6 A253.8,175.0 0 0 1 499.3,69.7" class="flecha" marker-end="url(#fl-devops_bucle)"/><path d="M572.1,119.9 A253.8,175.0 0 0 1 608.5,180.5" class="flecha" marker-end="url(#fl-devops_bucle)"/><path d="M608.5,251.5 A253.8,175.0 0 0 1 572.1,312.1" class="flecha" marker-end="url(#fl-devops_bucle)"/><path d="M499.3,362.3 A253.8,175.0 0 0 1 411.5,387.4" class="flecha" marker-end="url(#fl-devops_bucle)"/><path d="M308.5,387.4 A253.8,175.0 0 0 1 220.7,362.3" class="flecha" marker-end="url(#fl-devops_bucle)"/><path d="M147.9,312.1 A253.8,175.0 0 0 1 111.5,251.5" class="flecha" marker-end="url(#fl-devops_bucle)"/><path d="M111.5,180.5 A253.8,175.0 0 0 1 147.9,119.9" class="flecha" marker-end="url(#fl-devops_bucle)"/><path d="M220.7,69.7 A253.8,175.0 0 0 1 308.5,44.6" class="flecha" marker-end="url(#fl-devops_bucle)"/><rect x="300.0" y="20.0" width="120.0" height="42.0" rx="6" class="d-azul"/><text x="360.0" y="41.0" class="t" text-anchor="middle" dominant-baseline="middle">Planificar</text><rect x="479.4" y="71.3" width="120.0" height="42.0" rx="6" class="d-azul"/><text x="539.4" y="92.3" class="t" text-anchor="middle" dominant-baseline="middle">Codificar</text><rect x="553.8" y="195.0" width="120.0" height="42.0" rx="6" class="d-azul"/><text x="613.8" y="216.0" class="t" text-anchor="middle" dominant-baseline="middle">Construir</text><rect x="479.4" y="318.7" width="120.0" height="42.0" rx="6" class="d-azul"/><text x="539.4" y="339.7" class="t" text-anchor="middle" dominant-baseline="middle">Probar</text><rect x="300.0" y="370.0" width="120.0" height="42.0" rx="6" class="d-verde"/><text x="360.0" y="391.0" class="t" text-anchor="middle" dominant-baseline="middle">Publicar</text><rect x="120.6" y="318.7" width="120.0" height="42.0" rx="6" class="d-verde"/><text x="180.6" y="339.7" class="t" text-anchor="middle" dominant-baseline="middle">Desplegar</text><rect x="46.2" y="195.0" width="120.0" height="42.0" rx="6" class="d-verde"/><text x="106.2" y="216.0" class="t" text-anchor="middle" dominant-baseline="middle">Operar</text><rect x="120.6" y="71.3" width="120.0" height="42.0" rx="6" class="d-verde"/><text x="180.6" y="92.3" class="t" text-anchor="middle" dominant-baseline="middle">Monitorizar</text><text x="360.0" y="208.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Mejora continua</text><text x="360.0" y="224.0" class="t tb" text-anchor="middle" dominant-baseline="middle">(retroalimentación)</text></svg></div><figcaption>El ciclo DevOps: las etapas de desarrollo (azul) y de operaciones (verde) se repiten sin fin, y lo que se aprende en producción vuelve a la planificación.</figcaption></figure>
 <p>Cada etapa tiene sus herramientas: GitHub Projects o Jira (planificar), Git (codificar), Docker (construir), pytest o SonarQube Cloud (probar), GitHub Container Registry (publicar), Ansible (desplegar y operar), Prometheus y Grafana (monitorizar). Las iremos viendo en las unidades 5, 6 y 7. Kubernetes, el orquestador más usado para desplegar y operar contenedores, lo veréis en el módulo 5166.</p>
 
-<h3>3. Dónde se pierde el tiempo: el mapa del flujo de valor</h3>
+<h3>4. Dónde se pierde el tiempo: el mapa del flujo de valor</h3>
 <p>Antes de automatizar hay que saber qué automatizar. El mapa del flujo de valor, que vimos con Lean en el punto 3 de la unidad, aplicado a la entrega de software dibuja todos los pasos que sigue un cambio, desde que se pide hasta que está en producción. Para cada paso se anotan:</p>
 <ul>
 <li><b>Tiempo de proceso</b> (PT): el tiempo de trabajo real.</li>
@@ -577,7 +600,7 @@ Criterios de aceptación:
 <p>La <b>eficiencia del flujo</b> mide qué parte del tiempo total se dedica a trabajar de verdad:</p>
 <div class="formula" role="math" aria-label="Eficiencia del flujo igual a tiempo de proceso dividido entre tiempo total, por cien"><span>Eficiencia del flujo</span><span class="igual">=</span><span class="fraccion"><span>Suma de los tiempos de proceso</span><span>Tiempo total</span></span><span class="igual">× 100</span></div>
 <p>En muchas organizaciones tradicionales es inferior al 10 %: un cambio que requiere 8 horas de trabajo tarda 6 semanas en llegar al usuario porque pasa la mayor parte del tiempo esperando (revisiones, aprobaciones, comités de cambio, ventanas de despliegue, peticiones al equipo de sistemas).</p>
-<p>Ejemplo de la situación actual de un equipo que mantiene Cita Previa:</p>
+<p>Volvamos a la pregunta del principio. Esta es la situación actual del equipo que mantiene Cita Previa:</p>
 <div class="tabla"><table>
 <tr><th>Paso</th><th>Tiempo de proceso</th><th>Tiempo total</th></tr>
 <tr><td>Petición registrada y priorizada por el comité</td><td>1 h</td><td>10 días</td></tr>
@@ -591,7 +614,7 @@ Criterios de aceptación:
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 100" role="img" aria-label="Eficiencia del flujo" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-vsm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="194.0" y="25.0" class="t" text-anchor="end" dominant-baseline="middle">Tiempo de trabajo real</text><rect x="202.0" y="12" width="5.9" height="26" rx="3" class="d-verde"/><text x="213.9" y="25.0" class="t tb" text-anchor="start" dominant-baseline="middle">15 h</text><text x="194.0" y="63.0" class="t" text-anchor="end" dominant-baseline="middle">Tiempo total hasta producción</text><rect x="202.0" y="50" width="389.3" height="26" rx="3" class="d-rojo"/><text x="597.3" y="63.0" class="t tb" text-anchor="start" dominant-baseline="middle">984 h</text></svg></div><figcaption>Mapa del flujo de valor de un cambio en Cita Previa: 15 horas de trabajo real repartidas en 41 días. Más del 98 % del tiempo el cambio está esperando.</figcaption></figure>
 <p>Eficiencia: 15 horas de trabajo en 41 días (unas 984 horas), menos de un 2 %. El mapa muestra dónde actuar: pruebas automáticas en lugar de manuales, revisión de código en el mismo día, despliegue automatizado sin ventana mensual. Eso es exactamente lo que hacen las prácticas del siguiente apartado.</p>
 
-<h3>4. Integración continua, entrega continua y despliegue continuo</h3>
+<h3>5. Integración continua, entrega continua y despliegue continuo</h3>
 <p>El núcleo técnico de DevOps es la automatización del camino que recorre un cambio desde el portátil del programador hasta producción. Ese camino automatizado se llama <b>pipeline</b> (tubería) de CI/CD.</p>
 <h4>Integración continua (CI)</h4>
 <p>Práctica que Kent Beck desarrolló dentro de XP en los años noventa. Martin Fowler la describió en un artículo de 2000, que revisó en 2006 y de nuevo a fondo en 2024: todos los desarrolladores <b>integran sus cambios en la rama principal con frecuencia, al menos una vez al día</b>, y cada integración se verifica automáticamente con una compilación y un conjunto de pruebas. Sus reglas básicas:</p>
@@ -622,7 +645,7 @@ Criterios de aceptación:
 <li><b>GitOps</b>: el estado deseado de todo el sistema está en Git y un agente lo aplica automáticamente.</li>
 </ul>
 
-<h3>5. Medir DevOps: las métricas DORA</h3>
+<h3>6. Medir DevOps: las métricas DORA</h3>
 <p>Una vez automatizado, ¿cómo sabemos si hemos mejorado? El programa de investigación <b>DORA</b> (DevOps Research and Assessment, hoy en Google Cloud) lleva desde 2014 estudiando a miles de organizaciones. Su conclusión principal, publicada en el libro <i>Accelerate</i> (Forsgren, Humble y Kim, 2018), es que la velocidad y la estabilidad <b>no se oponen</b>: los equipos que despliegan con más frecuencia también tienen menos fallos y se recuperan antes. El libro propone cuatro métricas clave:</p>
 <div class="tabla"><table>
 <tr><th>Métrica</th><th>Qué mide</th><th>Equipos de alto rendimiento</th><th>Equipos de bajo rendimiento</th></tr>
@@ -634,7 +657,7 @@ Criterios de aceptación:
 <p>En el modelo de <i>Accelerate</i>, las dos primeras miden la <b>velocidad</b> y las dos últimas la <b>estabilidad</b>. Los valores exactos de cada categoría cambian en cada informe; lo importante es el orden de magnitud: horas frente a meses.</p>
 <div class="nota"><p><b>Para saber más.</b> DORA ha ido ajustando sus métricas. En 2023 la última pasó a llamarse <i>tiempo de recuperación tras un despliegue fallido</i>, y en 2024 añadió una quinta, la <b>tasa de retrabajo</b> (porcentaje de despliegues no planificados que se hacen para corregir un fallo en producción). Hoy las agrupa en <i>rendimiento</i> e <i>inestabilidad</i> (dora.dev). En este curso trabajamos las cuatro clásicas.</p></div>
 
-<h3>6. Obstáculos habituales</h3>
+<h3>7. Obstáculos habituales</h3>
 <ul>
 <li>Pensar que DevOps es comprar una herramienta o renombrar el departamento de sistemas.</li>
 <li>Crear un "equipo DevOps" que se convierte en un nuevo silo entre desarrollo y operaciones.</li>
@@ -662,7 +685,8 @@ Criterios de aceptación:
 
 <h3>Preguntas de repaso</h3>
 <ol>
-<li>¿Por qué los objetivos de desarrollo y de operaciones chocaban en una organización tradicional?</li>
+<li>¿De qué se encarga el equipo de desarrollo? ¿Y el de operaciones?</li>
+<li>¿Por qué los objetivos de desarrollo y de operaciones chocaban en una organización tradicional? Cita otras dos dificultades entre ambos equipos.</li>
 <li>¿Qué relación hay entre DevOps y las metodologías ágiles?</li>
 <li>Explica la diferencia entre entrega continua y despliegue continuo con un ejemplo.</li>
 <li>¿Qué cuatro métricas propone DORA en <i>Accelerate</i>? ¿Cuáles miden velocidad y cuáles estabilidad?</li>
@@ -705,6 +729,8 @@ Criterios de aceptación:
 </table></div>
 <p>¿Y en Windows o en un Mac? Docker Desktop (o Docker dentro de WSL en Windows) arranca por debajo una pequeña máquina virtual Linux, y los contenedores se ejecutan dentro de ella. Por eso parece que funcionan "directamente" en Windows, aunque en realidad comparten el kernel de esa máquina virtual.</p>
 <p>No son excluyentes: lo más habitual en la nube es ejecutar contenedores <b>dentro</b> de máquinas virtuales. En las unidades 6 y 7 trabajaremos directamente con contenedores en el portátil: Terraform creará las redes, los volúmenes y los contenedores de cada entorno, y Ansible automatizará su despliegue y mantenimiento.</p>
+<div class="nota"><p><b>Vídeo recomendado.</b> <a href="https://www.youtube.com/watch?v=VMECP5X9mTs">¿Virtualización vs contenedores?</a> (Jean Reyes, unos 7 min, en castellano). Explica con dibujos la diferencia entre máquinas virtuales y contenedores.</p></div>
+
 
 <h3>3. Imágenes, Dockerfile y registros</h3>
 <h4>Imagen</h4>
@@ -817,6 +843,13 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 <li>La Guía de Scrum (en español): <a href="https://scrumguides.org/">scrumguides.org</a></li>
 <li>Informe State of DevOps y métricas DORA: <a href="https://dora.dev/">dora.dev</a></li>
 <li>Documentación de GitHub Projects: <a href="https://docs.github.com/es/issues/planning-and-tracking-with-projects">docs.github.com</a></li>
+</ul>
+<h3>Vídeos</h3>
+<ul>
+<li>¿Qué es DevOps y CI/CD? (Fazt Code, castellano, 7 min): <a href="https://www.youtube.com/watch?v=xm1psJEFFIY">youtube.com</a></li>
+<li>¿Qué es y qué no es DevOps? (EDteam, castellano, 16 min): <a href="https://www.youtube.com/watch?v=MtDFK-evWw4">youtube.com</a></li>
+<li>DevOps CI/CD Explained in 100 Seconds (Fireship, inglés, menos de 2 min): <a href="https://www.youtube.com/watch?v=scEDHsr3APg">youtube.com</a></li>
+<li>¿Virtualización vs contenedores? (Jean Reyes, castellano, 7 min): <a href="https://www.youtube.com/watch?v=VMECP5X9mTs">youtube.com</a></li>
 </ul>
 <h3>Glosario</h3>
 <div class="tabla"><table>
