@@ -383,9 +383,7 @@ Criterios de aceptación:
 <li><b>Throughput</b> (rendimiento): cuántas tarjetas se terminan por semana.</li>
 <li><b>Diagrama de flujo acumulado</b> (CFD): bandas de colores con el número de tarjetas en cada columna a lo largo del tiempo. Si una banda se ensancha, ahí hay un cuello de botella.</li>
 </ul>
-<p>La <b>ley de Little</b> relaciona estas métricas:</p>
-<div class="formula" role="math" aria-label="Tiempo de ciclo medio igual a trabajo en curso medio dividido entre rendimiento medio"><span>Tiempo de ciclo medio</span><span class="igual">=</span><span class="fraccion"><span>Trabajo en curso (WIP) medio</span><span>Rendimiento medio</span></span></div>
-<p><b>Ejemplo:</b> si un equipo termina 5 tarjetas por semana y tiene 20 empezadas, cada tarjeta tardará de media 20 / 5 = <b>4 semanas</b>. Si reduce el WIP a 10, el tiempo medio baja a 10 / 5 = <b>2 semanas</b> sin trabajar más: por eso limitar el WIP acelera las entregas.</p>
+<p>Estas métricas muestran por qué limitar el trabajo en curso funciona: cuantas más tareas hay empezadas a la vez, más se reparte la atención del equipo y más tarda cada una en terminarse. Con menos tareas a la vez, cada una llega antes al final <b>sin trabajar más</b>.</p>
 <h4>Cuándo encaja Kanban</h4>
 <p>En equipos cuyo trabajo llega de forma continua e impredecible: soporte, mantenimiento, operaciones, equipos de sistemas. Muchos equipos combinan Scrum y Kanban (<b>Scrumban</b>): sprints y retrospectivas de Scrum con tablero y límites WIP de Kanban.</p>
 <div class="nota"><p><b>Ejemplo de proyecto: el servicio de soporte informático de una empresa</b></p><p>Cada día llegan peticiones de los empleados (un ordenador que no arranca, un permiso para una carpeta, una impresora atascada) sin que se puedan prever. No tiene sentido planificar un sprint de dos semanas: lo urgente no puede esperar a la siguiente planificación.</p><p>El equipo usa un tablero con columnas <i>Nueva</i>, <i>En curso</i>, <i>Esperando al usuario</i> y <i>Resuelta</i>, con un límite de 2 peticiones en curso por técnico y una fila aparte para las urgentes. Así se ve de un vistazo dónde se acumula el trabajo y nadie empieza diez cosas a la vez.</p></div>
@@ -511,7 +509,7 @@ Criterios de aceptación:
 <h3>Preguntas de repaso</h3>
 <ol>
 <li>¿Por qué limitar el trabajo en curso hace que las tareas se terminen antes?</li>
-<li>Un equipo termina 10 tarjetas por semana y tiene 30 en curso. ¿Cuál es su tiempo de ciclo medio? ¿Cómo podría reducirlo?</li>
+<li>¿Qué diferencia hay entre el <i>lead time</i> y el <i>cycle time</i>?</li>
 <li>¿Qué práctica de XP es la base de la integración continua? ¿Qué problema resuelve?</li>
 <li>Pon tres ejemplos de desperdicio (<i>muda</i>) en un proyecto de software.</li>
 <li>¿Qué herramienta recomendarías a un equipo de sistemas que atiende incidencias y por qué?</li>
@@ -832,7 +830,7 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 </div>
 <div class="actividad">
 <h4>Actividad 10. Cuestionario de la unidad 1 <span class="dur">20 min</span></h4>
-<p>Individual, en Aules y sin apuntes. Unas 20 preguntas de toda la unidad: tipo test, verdadero o falso y algún cálculo sencillo (ley de Little, eficiencia del flujo). Entran los cinco puntos: cascada y sus variantes, Manifiesto Ágil y Scrum, Kanban, XP y Lean, DevOps y CI/CD, y contenedores.</p>
+<p>Individual, en Aules y sin apuntes. Unas 20 preguntas de toda la unidad: tipo test, verdadero o falso y algún cálculo sencillo (eficiencia del flujo). Entran los cinco puntos: cascada y sus variantes, Manifiesto Ágil y Scrum, Kanban, XP y Lean, DevOps y CI/CD, y contenedores.</p>
 <p>El cuestionario cuenta en la nota de la unidad. Además, sirve de preparación: <b>las preguntas de la prueba escrita serán de este mismo estilo</b>. Para estudiar, repasad las preguntas de repaso del final de cada punto y los diagramas.</p>
 </div>
 
