@@ -680,7 +680,7 @@ Criterios de aceptación:
 
 <h4>Entrega continua (Continuous Delivery)</h4>
 <p>Con la integración continua, el código de <code>main</code> está probado, pero <b>todavía no está instalado en ningún servidor</b>: los usuarios no lo ven. Falta empaquetarlo, desplegarlo en un entorno de revisión, probarlo allí y prepararlo para producción. Si esos pasos son manuales, vuelven las esperas del mapa del flujo de valor del apartado 4: la aprobación del despliegue y la ventana mensual.</p>
-<p>La entrega continua, descrita por Jez Humble y David Farley en su libro de 2010, automatiza también ese tramo. Su objetivo es que <b>el software esté siempre en un estado desplegable</b>: que en cualquier momento se pueda llevar a producción la última versión con seguridad. Cada cambio que supera la integración continua:</p>
+<p>La entrega continua, descrita por Jez Humble y David Farley en su libro de 2010, automatiza también ese tramo. Su objetivo es que <b>la última versión esté siempre lista para producción</b> (Humble y Farley lo llaman tener el software siempre en un estado desplegable): ya empaquetada y probada en un entorno como el de producción, de modo que desplegarla no exige trabajo extra, solo decidir cuándo. Desplegar deja de ser un proyecto con semanas de preparación y pasa a ser una decisión. Cada cambio que supera la integración continua:</p>
 <ol>
 <li>se empaqueta en un artefacto (por ejemplo, una imagen de contenedor) con su número de versión;</li>
 <li>se despliega automáticamente en un entorno de revisión, igual que producción pero sin usuarios reales;</li>
