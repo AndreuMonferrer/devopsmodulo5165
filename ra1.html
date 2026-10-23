@@ -679,7 +679,7 @@ Criterios de aceptación:
 <div class="nota"><p><b>Ojo.</b> Tener un servidor de integración no es hacer integración continua. Si el equipo junta su trabajo una vez al mes, aunque use GitHub Actions, no hace CI: la práctica es <b>integrar a menudo</b>; la herramienta solo la automatiza.</p></div>
 
 <h4>Entrega continua (Continuous Delivery)</h4>
-<p>La integración continua garantiza que el código de <code>main</code> funciona, pero <b>no lo pone en manos de nadie</b>. Todavía falta empaquetarlo, instalarlo en un entorno de revisión, probarlo allí y prepararlo para producción. Si todo eso se hace a mano, volvemos al ticket a Sistemas y a la ventana mensual del apartado 4.</p>
+<p>Con la integración continua, el código de <code>main</code> está probado, pero <b>todavía no está instalado en ningún servidor</b>: los usuarios no lo ven. Falta empaquetarlo, desplegarlo en un entorno de revisión, probarlo allí y prepararlo para producción. Si esos pasos son manuales, vuelven las esperas del mapa del flujo de valor del apartado 4: la aprobación del despliegue y la ventana mensual.</p>
 <p>La entrega continua, descrita por Jez Humble y David Farley en su libro de 2010, automatiza también ese tramo. Su objetivo es que <b>el software esté siempre en un estado desplegable</b>: que en cualquier momento se pueda llevar a producción la última versión con seguridad. Cada cambio que supera la integración continua:</p>
 <ol>
 <li>se empaqueta en un artefacto (por ejemplo, una imagen de contenedor) con su número de versión;</li>
