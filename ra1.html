@@ -624,28 +624,28 @@ Criterios de aceptación:
 <p>La <b>eficiencia del flujo</b> mide qué parte del tiempo total se dedica a trabajar de verdad:</p>
 <div class="formula" role="math" aria-label="Eficiencia del flujo igual a tiempo de proceso dividido entre tiempo total, por cien"><span>Eficiencia del flujo</span><span class="igual">=</span><span class="fraccion"><span>Suma de los tiempos de proceso</span><span>Tiempo total</span></span><span class="igual">× 100</span></div>
 <p>En las organizaciones tradicionales es habitual que un cambio pase la mayor parte de su recorrido <b>esperando</b>, no trabajando: esperando una reunión, una revisión, una aprobación, a otro departamento o a la siguiente ventana de despliegue. Cada espera por separado parece razonable; sumadas, convierten unas horas de trabajo en semanas.</p>
-<p>Volvamos a la pregunta del principio. Seguimos un cambio pequeño de Cita Previa desde que alguien lo pide hasta que llega a los pacientes:</p>
+<p>Volvamos a la pregunta del principio. Este es el recorrido de un cambio pequeño de Cita Previa, desde la petición hasta producción:</p>
 <div class="nota"><p><b>Ejemplo ilustrativo.</b> Los tiempos de esta tabla no son de una empresa real ni de un estudio: están pensados para el caso de Cita Previa. Lo que sí es real es el tipo de esperas que aparecen y que la espera pesa mucho más que el trabajo.</p></div>
 <div class="tabla"><table>
-<tr><th>Paso</th><th>Trabajo real</th><th>Tiempo total</th><th>Por qué se tarda tanto</th></tr>
-<tr><td>1. Deciden si se hace</td><td>1 h</td><td>10 días</td><td>Un grupo de responsables (el comité) decide qué cambios se hacen, pero solo se reúne cada dos semanas. Hasta la reunión, la petición espera.</td></tr>
-<tr><td>2. Programar el cambio</td><td>6 h</td><td>2 días</td><td>El programador lleva varias tareas a la vez y le interrumpen: seis horas de trabajo se reparten en dos días.</td></tr>
-<tr><td>3. Un compañero revisa el código</td><td>30 min</td><td>3 días</td><td>El compañero termina primero lo suyo; las revisiones se acumulan y hay idas y vueltas con los comentarios.</td></tr>
-<tr><td>4. Probarlo a mano</td><td>4 h</td><td>5 días</td><td>El equipo de pruebas junta varios cambios y los prueba a la vez, preparándolo todo a mano. Si encuentra un error, el cambio vuelve al programador.</td></tr>
-<tr><td>5. Pedir permiso para subirlo</td><td>30 min</td><td>7 días</td><td>Hay que pedir a Sistemas que lo instale y esperar a que lo apruebe un comité que se reúne una vez por semana.</td></tr>
-<tr><td>6. Subirlo a producción</td><td>3 h</td><td>14 días</td><td>Solo se sube una vez al mes, de madrugada, para no cortar el servicio. De media, el cambio espera medio mes.</td></tr>
+<tr><th>Paso</th><th>Tiempo de proceso</th><th>Tiempo total</th><th>Por qué se tarda tanto</th></tr>
+<tr><td>1. Priorización de la petición</td><td>1 h</td><td>10 días</td><td>El comité que decide qué cambios se hacen se reúne cada dos semanas; hasta entonces, la petición espera en cola.</td></tr>
+<tr><td>2. Desarrollo del cambio</td><td>6 h</td><td>2 días</td><td>El programador tiene varias tareas abiertas a la vez y sufre interrupciones: seis horas de trabajo se reparten en dos días.</td></tr>
+<tr><td>3. Revisión de código</td><td>30 min</td><td>3 días</td><td>El revisor termina primero su propio trabajo; las revisiones se acumulan y hay idas y vueltas con los comentarios.</td></tr>
+<tr><td>4. Pruebas manuales</td><td>4 h</td><td>5 días</td><td>El equipo de QA prueba varios cambios en lote y prepara el entorno a mano; si encuentra un error, el cambio vuelve a desarrollo.</td></tr>
+<tr><td>5. Aprobación del despliegue</td><td>30 min</td><td>7 días</td><td>Hay que abrir una petición a Sistemas y esperar a que el comité de cambios la apruebe en su reunión semanal.</td></tr>
+<tr><td>6. Despliegue en producción</td><td>3 h</td><td>14 días</td><td>Solo se despliega en una ventana mensual, de madrugada, para no cortar el servicio: de media, el cambio espera medio mes.</td></tr>
 <tr><td><b>Total</b></td><td><b>15 h</b></td><td><b>41 días</b></td><td></td></tr>
 </table></div>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 100" role="img" aria-label="Eficiencia del flujo" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-vsm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="194.0" y="25.0" class="t" text-anchor="end" dominant-baseline="middle">Tiempo de trabajo real</text><rect x="202.0" y="12" width="5.9" height="26" rx="3" class="d-verde"/><text x="213.9" y="25.0" class="t tb" text-anchor="start" dominant-baseline="middle">15 h</text><text x="194.0" y="63.0" class="t" text-anchor="end" dominant-baseline="middle">Tiempo total hasta producción</text><rect x="202.0" y="50" width="389.3" height="26" rx="3" class="d-rojo"/><text x="597.3" y="63.0" class="t tb" text-anchor="start" dominant-baseline="middle">984 h</text></svg></div><figcaption>Mapa del flujo de valor de un cambio en Cita Previa: 15 horas de trabajo real repartidas en 41 días. Más del 98 % del tiempo el cambio está esperando.</figcaption></figure>
 <p>Eficiencia: 15 horas de trabajo en 41 días (unas 984 horas), menos de un 2 %. Fijaos en que <b>nadie está trabajando mal</b>: el tiempo se pierde entre un paso y el siguiente. El mapa muestra dónde actuar:</p>
 <div class="tabla"><table>
 <tr><th>Espera</th><th>Cómo se reduce</th><th>Dónde lo vemos</th></tr>
-<tr><td>Esperar a que el comité decida (cada dos semanas)</td><td>Decidir sobre la marcha, con un tablero</td><td>Kanban (punto 3)</td></tr>
-<tr><td>Llevar varias tareas a la vez</td><td>Menos tareas a la vez (limitar el WIP)</td><td>Kanban (punto 3)</td></tr>
+<tr><td>Comité de priorización cada dos semanas</td><td>Priorizar de forma continua en un tablero</td><td>Kanban (punto 3)</td></tr>
+<tr><td>Varias tareas abiertas a la vez</td><td>Limitar el trabajo en curso (WIP)</td><td>Kanban (punto 3)</td></tr>
 <tr><td>Revisiones que se acumulan</td><td>Cambios pequeños, revisados el mismo día</td><td>Integración continua (apartado 5)</td></tr>
-<tr><td>Probar a mano muchos cambios juntos</td><td>Pruebas automáticas en cada cambio</td><td>Integración continua (apartado 5)</td></tr>
-<tr><td>Pedir permiso y esperar la reunión semanal</td><td>La versión queda lista sola; aprobar es pulsar un botón</td><td>Entrega continua (apartado 5)</td></tr>
-<tr><td>Subir a producción solo una vez al mes</td><td>Subirlo de forma automática y sin cortar el servicio</td><td>Despliegue continuo (apartado 5) y estrategias de despliegue (punto 5)</td></tr>
+<tr><td>Pruebas manuales por lotes</td><td>Pruebas automáticas en cada cambio</td><td>Integración continua (apartado 5)</td></tr>
+<tr><td>Aprobación semanal del comité de cambios</td><td>El pipeline deja la versión lista; aprobar es pulsar un botón</td><td>Entrega continua (apartado 5)</td></tr>
+<tr><td>Ventana de despliegue mensual</td><td>Despliegue automatizado y sin corte de servicio</td><td>Despliegue continuo (apartado 5) y estrategias de despliegue (punto 5)</td></tr>
 </table></div>
 
 <h3>5. Integración continua, entrega continua y despliegue continuo</h3>
