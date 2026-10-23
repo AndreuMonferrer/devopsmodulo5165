@@ -717,15 +717,16 @@ Criterios de aceptación:
 <div class="nota"><p><b>Idea clave.</b> La sigla "CD" es ambigua: puede significar entrega continua o despliegue continuo. La diferencia es si el último paso hacia producción es manual (entrega) o automático (despliegue).</p></div>
 
 <h4>Otras prácticas DevOps</h4>
-<ul>
-<li><b>Infraestructura como código</b> (IaC): los servidores, redes y discos se definen en ficheros versionados y se crean automáticamente (Terraform, unidad 6).</li>
-<li><b>Gestión de la configuración</b>: el software de los servidores se instala y se configura con herramientas automáticas (Ansible, unidad 7).</li>
-<li><b>Contenedores</b>: la aplicación viaja con todas sus dependencias, igual en todos los entornos (punto 5).</li>
-<li><b>Monitorización y observabilidad</b>: métricas, registros y trazas para saber qué pasa en producción.</li>
-<li><b>DevSecOps</b>: la seguridad integrada en cada etapa del pipeline, no al final ("desplazar la seguridad a la izquierda", <i>shift left</i>). Lo trabajaremos en la unidad 5.</li>
-<li><b>SRE</b> (<i>Site Reliability Engineering</i>): la forma en que Google aplica ideas similares, con objetivos de nivel de servicio (SLO) y presupuestos de error.</li>
-<li><b>GitOps</b>: el estado deseado de todo el sistema está en Git y un agente lo aplica automáticamente.</li>
-</ul>
+<p>La CI/CD automatiza el camino del <b>código</b>. Pero una aplicación también necesita servidores, configuración, seguridad y vigilancia, y si todo eso se sigue haciendo a mano vuelven las esperas y los errores. Estas prácticas automatizan el resto, y cada una tiene su unidad en el curso:</p>
+<div class="tabla"><table>
+<tr><th>Práctica</th><th>Sin ella</th><th>Con ella</th><th>En el curso</th></tr>
+<tr><td><b>Infraestructura como código</b> (IaC)</td><td>Los servidores se crean a mano, cada uno distinto, y nadie sabe exactamente cómo está configurado.</td><td>Servidores, redes y discos se describen en ficheros versionados y se crean automáticamente con un comando, siempre iguales.</td><td>Terraform, unidad 6</td></tr>
+<tr><td><b>Gestión de la configuración</b></td><td>El software se instala y se actualiza servidor a servidor, siguiendo un manual.</td><td>Se describe el estado deseado (paquetes, usuarios, servicios) y la herramienta lo aplica en todos los servidores.</td><td>Ansible, unidad 7</td></tr>
+<tr><td><b>Contenedores</b></td><td>"En mi máquina funciona": cada entorno tiene versiones distintas.</td><td>La aplicación viaja con todas sus dependencias y se ejecuta igual en todos los entornos.</td><td>Docker, punto 5</td></tr>
+<tr><td><b>Monitorización y observabilidad</b></td><td>Los fallos se descubren cuando un usuario se queja.</td><td>Métricas, registros, trazas y alertas muestran qué pasa en producción y avisan al equipo.</td><td>Prometheus y Grafana, unidad 7</td></tr>
+<tr><td><b>DevSecOps</b></td><td>La seguridad se revisa al final, cuando corregir es caro.</td><td>Análisis de seguridad automáticos en cada etapa del pipeline: "desplazar la seguridad a la izquierda" (<i>shift left</i>), es decir, hacia el principio.</td><td>CodeQL y Trivy, unidad 5</td></tr>
+</table></div>
+<p><b>Para saber más:</b> <b>SRE</b> (<i>Site Reliability Engineering</i>) es la forma en que Google aplica ideas similares, con objetivos de nivel de servicio (SLO) y presupuestos de error. En <b>GitOps</b>, el estado deseado de todo el sistema está en Git y un agente lo aplica automáticamente.</p>
 
 <h3>6. Medir DevOps: las métricas DORA</h3>
 <p>Una vez automatizado, ¿cómo sabemos si hemos mejorado? El programa de investigación <b>DORA</b> (DevOps Research and Assessment, hoy en Google Cloud) lleva desde 2014 estudiando a miles de organizaciones. Su conclusión principal, publicada en el libro <i>Accelerate</i> (Forsgren, Humble y Kim, 2018), es que la velocidad y la estabilidad <b>no se oponen</b>: los equipos que despliegan con más frecuencia también tienen menos fallos y se recuperan antes. El libro propone cuatro métricas clave:</p>
