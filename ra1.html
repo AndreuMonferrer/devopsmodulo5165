@@ -666,14 +666,13 @@ Criterios de aceptación:
 <li>En unos minutos Laura ve el resultado. En verde: tras la revisión de un compañero, el cambio se fusiona en <code>main</code>. En rojo: sabe qué ha roto mientras aún tiene el cambio fresco, y lo arregla.</li>
 <li>Al día siguiente vuelve a empezar con otro cambio pequeño. El código de <code>main</code> siempre funciona.</li>
 </ol>
-<p>Sus reglas básicas:</p>
+<p>Sus reglas básicas, y por qué existe cada una:</p>
 <ul>
-<li>Un único repositorio con todo lo necesario para construir el sistema.</li>
-<li>Construcción automática y que se prueba a sí misma.</li>
-<li>Cada cambio en la rama principal dispara la construcción y las pruebas en un servidor de integración.</li>
-<li>Si la construcción se rompe, arreglarla es la prioridad de todo el equipo.</li>
-<li>La construcción debe ser rápida (idealmente menos de 10 minutos).</li>
-<li>Ramas de vida corta: nada de ramas que viven semanas y luego no hay quien las integre.</li>
+<li><b>Integrar al menos una vez al día, con ramas de vida corta</b> (horas, no semanas). Cuanto más tiempo pasa sin integrar, más cuesta integrar.</li>
+<li><b>Cada integración se construye y se prueba sola</b> en un servidor de integración (Fowler lo llama una construcción que se prueba a sí misma). Sin pruebas automáticas, integrar a menudo sería integrar errores a menudo.</li>
+<li><b>El resultado llega rápido</b>, idealmente en menos de 10 minutos. Si tarda una hora, nadie espera la respuesta y se sigue trabajando encima de un error.</li>
+<li><b>Si la construcción se rompe, arreglarla es la prioridad de todo el equipo.</b> Mientras <code>main</code> está rota (el último cambio no compila o no pasa las pruebas), nadie puede integrar con seguridad, y si se sigue integrando encima ya no se sabe qué cambio provocó el fallo.</li>
+<li><b>Un único repositorio</b> con todo lo necesario para construir el sistema: código, pruebas, configuración y scripts.</li>
 </ul>
 <p><b>Beneficio:</b> los conflictos y errores se detectan cuando el cambio es pequeño y la persona aún lo recuerda. Se acabó la integración <i>big bang</i>.</p>
 <p><b>Resultado:</b> código integrado y probado en <code>main</code>. Pero ese código todavía no está funcionando en ningún servidor.</p>
