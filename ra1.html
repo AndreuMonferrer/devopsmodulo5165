@@ -789,7 +789,7 @@ Criterios de aceptación:
 <ul>
 <li>Explicar qué problema resuelven los contenedores, qué son y en qué se diferencian de una máquina virtual.</li>
 <li>Conocer los elementos del ecosistema: imagen, Dockerfile, capas, registro, etiquetas, motor de contenedores y orquestador.</li>
-<li>Describir qué aporta el contenedor a un pipeline CI/CD: construir la imagen una vez, escanearla, publicarla y desplegar la misma imagen en cada entorno.</li>
+<li>Describir el proceso de despliegue de una aplicación en contenedores y relacionar cada paso con la integración continua, la entrega continua y el despliegue continuos.</li>
 <li>Conocer las estrategias de despliegue (recreate, rolling, blue/green, canary).</li>
 </ul>
 
@@ -862,14 +862,22 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 <li><b>Orquestadores</b>: Kubernetes, Docker Swarm, Nomad, y servicios gestionados como Amazon ECS, Google Cloud Run o Azure Container Apps. Gestionan contenedores en muchas máquinas: los reparten, los reinician si fallan, los escalan según la carga, balancean el tráfico y hacen actualizaciones sin corte. Los veréis en el módulo 5166.</li>
 </ul>
 
-<h3>5. Qué aporta el contenedor al pipeline CI/CD</h3>
-<p>El pipeline que visteis en el punto 4 (integración, entrega y despliegue continuos) no cambia. Lo que cambia es <b>lo que recorre</b>: en lugar de un paquete con su manual de instalación, una <b>imagen</b>. Eso añade unos pasos concretos entre la integración continua y el despliegue:</p>
+<h3>5. El proceso de despliegue en contenedores</h3>
+<p>El pipeline que visteis en el punto 4 (integración, entrega y despliegue continuos) no cambia. Lo que cambia es <b>lo que recorre</b>: en lugar de un paquete con su manual de instalación, una <b>imagen</b>. El proceso de despliegue de una aplicación en contenedores sigue estos pasos:</p>
 <ol>
 <li><b>Construir la imagen una sola vez.</b> Cuando el cambio supera la integración continua y se fusiona en <code>main</code>, el pipeline ejecuta <code>docker build</code> y etiqueta la imagen con la versión y con el commit. No se vuelve a construir en ningún paso posterior.</li>
 <li><b>Escanear y firmar.</b> Antes de publicarla, se analiza en busca de vulnerabilidades conocidas en el sistema base y en las librerías (por ejemplo, con Trivy) y se firma, para que los entornos puedan comprobar que es la imagen que construyó el pipeline y que nadie la ha modificado.</li>
 <li><b>Publicar en el registro.</b> La imagen queda guardada con su etiqueta y su digest. Es la versión lista para desplegar de la entrega continua.</li>
 <li><b>Desplegar la misma imagen en cada entorno.</b> El entorno de revisión y, después, producción descargan exactamente el mismo digest; solo cambia la configuración que recibe cada uno. Lo que se probó en revisión es lo que llega a producción.</li>
 </ol>
+<p>Cada práctica del punto 4 se encarga de un tramo de este proceso:</p>
+<div class="tabla"><table>
+<tr><th>Práctica (punto 4)</th><th>Qué hace con la imagen</th><th>Dónde termina</th></tr>
+<tr><td><b>Integración continua</b></td><td>Prueba cada cambio y, al fusionarlo en <code>main</code>, construye la imagen.</td><td>Imagen construida y etiquetada.</td></tr>
+<tr><td><b>Entrega continua</b></td><td>Escanea, firma y publica la imagen; la despliega en revisión y la prueba allí.</td><td>Imagen en el registro, lista para producción; una persona decide cuándo.</td></tr>
+<tr><td><b>Despliegue continuo</b></td><td>Lleva esa misma imagen a producción sin intervención humana.</td><td>Contenedores de la nueva imagen sirviendo a los usuarios.</td></tr>
+</table></div>
+<p>Por eso los contenedores encajan tan bien en una metodología DevOps: el pipeline de CI/CD automatiza el camino, y la imagen es lo que recorre ese camino sin cambiar.</p>
 <p>Además, <b>volver atrás</b> es sencillo: la imagen anterior sigue en el registro, así que basta con desplegarla otra vez, sin reconstruir nada. Y el despliegue deja de ser "instalar la aplicación en el servidor" para pasar a ser "arrancar contenedores de una imagen nueva", lo que permite las estrategias del apartado siguiente.</p>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 222" role="img" aria-label="La imagen en el pipeline" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-imagen-pipeline" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs>
 <rect x="12" y="12" width="130" height="70" rx="6" class="d-gris"/><text x="77" y="39" class="t tb" text-anchor="middle" dominant-baseline="middle">Fusión en main</text><text x="77" y="57" class="ts" text-anchor="middle" dominant-baseline="middle">(CI en verde)</text>
@@ -896,9 +904,9 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 9. Cuestionario de la unidad 1 <span class="dur">20 min</span></h4>
-<p>Individual, en Aules y sin apuntes. Unas 20 preguntas de toda la unidad: tipo test, verdadero o falso y algún cálculo sencillo (eficiencia del flujo). Entran los cinco puntos: cascada y sus variantes, Manifiesto Ágil y Scrum, Kanban, XP y Lean, DevOps y CI/CD, y contenedores.</p>
-<p>El cuestionario cuenta en la nota de la unidad. Además, sirve de preparación: <b>las preguntas de la prueba escrita serán de este mismo estilo</b>. Para estudiar, repasad las preguntas de repaso del final de cada punto y los diagramas.</p>
+<h4>Actividad 9. Cuestionario de práctica de la unidad 1 <span class="dur">40 min</span></h4>
+<p>Individual, en Aules. Cada intento saca <b>30 preguntas al azar</b> del banco de la unidad, repartidas entre los cinco puntos: cascada y sus variantes, Manifiesto Ágil y Scrum, Kanban, XP y Lean, DevOps y CI/CD, y contenedores. Son de tipo test, verdadero o falso y algún cálculo sencillo de eficiencia del flujo.</p>
+<p>Podéis hacerlo <b>tantas veces como queráis</b>: es para estudiar. Después de cada intento, buscad en los apuntes las preguntas que habéis fallado antes de volver a empezar. Las preguntas de la prueba escrita saldrán de este mismo banco.</p>
 </div>
 
 <h3>Preguntas de repaso</h3>
@@ -908,7 +916,8 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 <li>¿Por qué en el Dockerfile se copia <code>requirements.txt</code> antes que el código?</li>
 <li>¿Por qué no se debe desplegar la etiqueta <code>latest</code> en producción?</li>
 <li>Explica el principio "construir una vez, desplegar en todas partes" y su relación con la configuración por entorno.</li>
-<li>¿Qué pasos añade un pipeline CI/CD cuando lo que despliega es una imagen? ¿Cómo se vuelve a la versión anterior?</li>
+<li>Describe el proceso de despliegue de una aplicación en contenedores. ¿Qué tramo corresponde a la integración continua, a la entrega continua y al despliegue continuo?</li>
+<li>¿Cómo se vuelve a la versión anterior de una aplicación en contenedores?</li>
 <li>¿Qué estrategia de despliegue permite volver atrás más rápido? ¿Qué coste tiene?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden>
