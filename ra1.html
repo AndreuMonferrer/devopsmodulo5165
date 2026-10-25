@@ -866,7 +866,15 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 </table></div>
 <p>Con <code>docker build -t cita-previa-app:1.4.2 .</code>, Docker lee este fichero y produce la imagen con ese nombre.</p>
 <h4>Imagen frente a contenedor: las capas</h4>
-<p>Una imagen <b>no es un único bloque</b>. Al construirla, Docker guarda por separado el resultado de cada paso del Dockerfile que cambia ficheros: cada uno es una <b>capa</b>, y la imagen es la pila de todas. Guardarla así tiene tres ventajas:</p>
+<p>Una imagen <b>no es un único bloque</b>. Al construirla, Docker guarda por separado el resultado de cada paso del Dockerfile que cambia ficheros: cada uno es una <b>capa</b>, y la imagen es la pila de todas. Cada capa guarda solo lo que añade ese paso: la base trae Debian y Python; otra capa, las librerías; otra, el código. Por eso unas capas pesan mucho y otras casi nada.</p>
+<p><b>¿Para qué sirve?</b> Una imagen pesa (solo la base con Debian y Python ya ocupa del orden de cien megas), pero lo que cambia casi siempre es el código, unos pocos kilobytes. Y en DevOps el pipeline construye, sube al registro y despliega la imagen en cada cambio. Si Laura corrige una línea de <code>app.py</code>:</p>
+<div class="tabla"><table>
+<tr><th></th><th>Sin capas</th><th>Con capas</th></tr>
+<tr><td><b>Construir</b></td><td>Reinstalar todas las librerías: minutos.</td><td>Solo se rehace la capa del código; el resto sale de la caché: segundos.</td></tr>
+<tr><td><b>Subir al registro</b></td><td>La imagen entera.</td><td>Solo esa capa.</td></tr>
+<tr><td><b>Desplegar</b></td><td>Cada servidor descarga la imagen entera.</td><td>Cada servidor solo descarga esa capa; el resto ya lo tiene.</td></tr>
+</table></div>
+<p>Es lo que hace viable construir y mover imágenes en cada cambio, como pide la integración continua del punto 4. Es la misma idea que Git, que en cada commit no vuelve a guardar los ficheros que no han cambiado. En resumen, guardar la imagen por capas tiene tres ventajas:</p>
 <ul>
 <li><b>Las capas se comparten</b>: si diez imágenes parten de <code>python:3.12-slim</code>, esa capa base se guarda y se descarga una sola vez.</li>
 <li><b>Viajan por partes</b>: al subir una imagen al registro o descargarla, solo se transfieren las capas que el otro lado aún no tiene.</li>
