@@ -902,7 +902,7 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 </ul>
 <p><b>Por qué nunca <code>latest</code> en producción.</b> <code>latest</code> es una etiqueta que apunta a la última imagen publicada. El lunes <code>latest</code> es la 1.4.2; el miércoles se publica la 1.5.0 y <code>latest</code> pasa a ser esa. Un servidor nuevo que se añade el jueves descarga <code>latest</code> y obtiene la 1.5.0 aunque nadie la haya aprobado, mientras los demás siguen con la 1.4.2: dos versiones distintas con el mismo nombre, y nadie sabe cuál está en marcha. La buena práctica es etiquetar con la versión y con el commit, y desplegar siempre una versión concreta.</p>
 <h4>Principio clave: construir una vez, desplegar en todas partes</h4>
-<p>Sin contenedores, la aplicación se instala por separado en cada entorno, y lo que se probó en revisión no es exactamente lo que llega a producción: basta con que se instale una versión distinta de una librería. Con contenedores, la imagen se construye <b>una sola vez</b>, y la misma imagen, con el mismo digest, pasa por todos los entornos: las pruebas de integración continua, el entorno de revisión y producción. Así, lo que se probó es exactamente lo que se despliega.</p>
+<p>Sin contenedores, la aplicación se instala por separado en cada entorno, y lo que se probó en revisión no es exactamente lo que llega a producción: basta con que se instale una versión distinta de una librería. Con contenedores, la imagen se construye <b>una sola vez</b>, y exactamente la misma imagen, sin volver a construirla, pasa por todos los entornos: las pruebas de integración continua, el entorno de revisión y producción. Así, lo que se probó es exactamente lo que se despliega.</p>
 <p>Lo único que cambia entre entornos es la <b>configuración</b>, que se le pasa al contenedor al arrancarlo (variables de entorno y secretos), no la imagen:</p>
 <div class="tabla"><table>
 <tr><th>Configuración</th><th>Revisión</th><th>Producción</th></tr>
@@ -934,8 +934,8 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 <ol>
 <li><b>Construir la imagen una sola vez.</b> Cuando el cambio supera la integración continua y se fusiona en <code>main</code>, el pipeline ejecuta <code>docker build</code> y etiqueta la imagen con la versión y con el commit. No se vuelve a construir en ningún paso posterior.</li>
 <li><b>Escanear y firmar.</b> Antes de publicarla, se analiza en busca de vulnerabilidades conocidas en el sistema base y en las librerías (por ejemplo, con Trivy) y se firma, para que los entornos puedan comprobar que es la imagen que construyó el pipeline y que nadie la ha modificado.</li>
-<li><b>Publicar en el registro.</b> La imagen queda guardada con su etiqueta y su digest. Es la versión lista para desplegar de la entrega continua.</li>
-<li><b>Desplegar la misma imagen en cada entorno.</b> El entorno de revisión y, después, producción descargan exactamente el mismo digest; solo cambia la configuración que recibe cada uno. Lo que se probó en revisión es lo que llega a producción.</li>
+<li><b>Publicar en el registro.</b> La imagen queda guardada con su etiqueta de versión. Es la versión lista para desplegar de la entrega continua.</li>
+<li><b>Desplegar la misma imagen en cada entorno.</b> El entorno de revisión y, después, producción descargan exactamente la misma imagen; solo cambia la configuración que recibe cada uno. Lo que se probó en revisión es lo que llega a producción.</li>
 </ol>
 <p>Cada práctica del punto 4 se encarga de un tramo de este proceso:</p>
 <div class="tabla"><table>
