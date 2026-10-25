@@ -850,15 +850,19 @@ EXPOSE 8000
 # Docker comprueba periódicamente que la aplicación responde
 HEALTHCHECK CMD python -c "import urllib.request;urllib.request.urlopen('http://localhost:8000/salud')"
 CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
-<p>En un Dockerfile los comentarios van siempre en su propia línea, empezando por <code>#</code>. Cada instrucción empieza por una palabra clave en mayúsculas; Docker lee el fichero de arriba abajo y ejecuta cada paso. Bloque a bloque:</p>
+<p>En un Dockerfile los comentarios van siempre en su propia línea, empezando por <code>#</code>. Cada instrucción empieza por una palabra clave en mayúsculas; Docker lee el fichero de arriba abajo y ejecuta cada paso. Línea a línea:</p>
 <div class="tabla"><table>
-<tr><th>Bloque</th><th>Instrucciones</th><th>Qué hace</th></tr>
-<tr><td>1</td><td><code>FROM python:3.12-slim</code></td><td><b>FROM</b>: la imagen base de la que se parte; no se empieza de cero. Se elige según lo que necesite la aplicación: <code>python</code>, <code>node</code>, <code>eclipse-temurin</code> (Java), <code>nginx</code>… Cita Previa está en Python, así que parte de Python 3.12 sobre un Debian reducido (<code>slim</code>).</td></tr>
-<tr><td>2</td><td><code>RUN useradd …</code><br><code>WORKDIR /home/app</code></td><td><b>RUN</b>: ejecuta un comando mientras se construye la imagen. <b>WORKDIR</b>: fija la carpeta de trabajo. Aquí, crear el usuario <code>app</code> y trabajar en su carpeta.</td></tr>
-<tr><td>3</td><td><code>COPY requirements.txt .</code><br><code>RUN pip install …</code></td><td><b>COPY</b>: copia ficheros del proyecto a la imagen. Aquí, la lista de librerías (Flask, gunicorn…), que se instalan con <code>pip</code>; en Java sería Maven y en Node, <code>npm</code>.</td></tr>
-<tr><td>4</td><td><code>COPY app.py .</code></td><td>Copia el código de la aplicación (aquí, <code>app.py</code>).</td></tr>
-<tr><td>5</td><td><code>USER app</code><br><code>EXPOSE 8000</code></td><td><b>USER</b>: con qué usuario se ejecuta la aplicación (<code>app</code>, no root, por seguridad). <b>EXPOSE</b>: en qué puerto escucha (aquí, el 8000).</td></tr>
-<tr><td>6</td><td><code>HEALTHCHECK …</code><br><code>CMD […]</code></td><td><b>HEALTHCHECK</b>: cómo comprobar que la aplicación responde (aquí, pide <code>/salud</code>). <b>CMD</b>: qué se ejecuta al arrancar el contenedor (aquí, el servidor web gunicorn con la aplicación).</td></tr>
+<tr><th>Nº</th><th>Línea</th><th>Qué hace</th></tr>
+<tr><td>1</td><td><code>FROM python:3.12-slim</code></td><td><b>FROM</b>: la imagen base de la que se parte; no se empieza de cero. Se elige según lo que necesite la aplicación: <code>python</code>, <code>node</code>, <code>eclipse-temurin</code> (Java), <code>nginx</code>… Aquí, una imagen oficial con Python 3.12 sobre un Debian reducido (<code>slim</code>).</td></tr>
+<tr><td>2</td><td><code>RUN useradd --create-home app</code></td><td><b>RUN</b>: ejecuta un comando de Linux mientras se construye la imagen. <code>useradd --create-home app</code> crea un usuario llamado <code>app</code> con su carpeta personal, <code>/home/app</code>.</td></tr>
+<tr><td>3</td><td><code>WORKDIR /home/app</code></td><td><b>WORKDIR</b>: fija la carpeta de trabajo. Desde aquí, todo se hace dentro de <code>/home/app</code> (como hacer <code>cd</code>).</td></tr>
+<tr><td>4</td><td><code>COPY requirements.txt .</code></td><td><b>COPY</b>: copia un fichero del proyecto a la imagen. Copia <code>requirements.txt</code>, la lista de librerías que necesita la aplicación (Flask, gunicorn…), a la carpeta actual: el punto significa «aquí».</td></tr>
+<tr><td>5</td><td><code>RUN pip install --no-cache-dir -r requirements.txt</code></td><td><b>RUN</b> otra vez: <code>pip</code>, el instalador de paquetes de Python, instala todas las librerías de esa lista (<code>-r</code>: leerlas del fichero; <code>--no-cache-dir</code>: no guardar copias de las descargas, para que la imagen ocupe menos). En Java se usaría Maven; en Node, <code>npm</code>.</td></tr>
+<tr><td>6</td><td><code>COPY app.py .</code></td><td><b>COPY</b>: copia el código de la aplicación, <code>app.py</code>, a <code>/home/app</code>.</td></tr>
+<tr><td>7</td><td><code>USER app</code></td><td><b>USER</b>: desde aquí, y al arrancar el contenedor, todo se ejecuta como el usuario <code>app</code>, no como root. Si alguien ataca la aplicación, no tiene permisos de administrador.</td></tr>
+<tr><td>8</td><td><code>EXPOSE 8000</code></td><td><b>EXPOSE</b>: documenta que la aplicación escucha en el puerto 8000. No abre el puerto: es información para quien arranque el contenedor.</td></tr>
+<tr><td>9</td><td><code>HEALTHCHECK CMD python -c "…"</code></td><td><b>HEALTHCHECK</b>: cada cierto tiempo (por defecto, cada 30 segundos), Docker ejecuta este comando, un pequeño programa en Python que pide la página <code>/salud</code> de la aplicación. Si no responde, marca el contenedor como no saludable (<i>unhealthy</i>).</td></tr>
+<tr><td>10</td><td><code>CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></td><td><b>CMD</b>: el comando que se ejecuta al arrancar el contenedor. Lanza gunicorn, un servidor web para Python, escuchando en el puerto 8000 en todas las interfaces de red (<code>-b 0.0.0.0:8000</code>), con la aplicación <code>app</code> del fichero <code>app.py</code> (<code>app:app</code>).</td></tr>
 </table></div>
 <p>Con <code>docker build -t cita-previa-app:1.4.2 .</code>, Docker lee este fichero y produce la imagen con ese nombre.</p>
 <h4>Imagen frente a contenedor: las capas</h4>
