@@ -19,7 +19,7 @@
 <h3>Puntos de la unidad</h3>
 <div class="tabla"><table><tr><th>Nº</th><th>Punto</th><th>CE</th></tr><tr><td><a href="#p1">1</a></td><td>Presentación del módulo. El ciclo de vida del software y la metodología en cascada</td><td>a</td></tr><tr><td><a href="#p2">2</a></td><td>El Manifiesto Ágil y Scrum</td><td>b</td></tr><tr><td><a href="#p3">3</a></td><td>Kanban, XP y Lean. Herramientas de gestión de proyectos</td><td>b, c</td></tr><tr><td><a href="#p4">4</a></td><td>DevOps: cultura, prácticas e integración y despliegue continuos</td><td>d</td></tr><tr><td><a href="#p5">5</a></td><td>El despliegue de aplicaciones en contenedores dentro de un flujo CI/CD</td><td>e</td></tr></table></div>
 <h3>Evaluación</h3>
-<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>50 %</b> prueba escrita (fecha por confirmar), <b>10 %</b> cuestionario de la unidad (punto 5) y <b>40 %</b> trabajos de clase (plan en cascada, análisis de un caso real con Scrum, tablero del proyecto, prácticas de CI/CD recomendadas y diseño del pipeline).</p>
+<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>50 %</b> prueba escrita (fecha por confirmar), <b>10 %</b> cuestionario de la unidad (punto 5) y <b>40 %</b> trabajos de clase (plan en cascada, análisis de un caso real con Scrum, tablero del proyecto y prácticas de CI/CD recomendadas).</p>
 <p>Los criterios b y c se completan durante la formación en empresa con un breve informe: qué metodología y qué herramientas de gestión usa el equipo en el que hacéis las prácticas.</p>
 </section><section class="panel" role="tabpanel" id="p-p1" aria-labelledby="tab-p1" hidden>
 <p class="meta">Unidad 1 · 1. Ciclo de vida y cascada · 2 horas</p>
@@ -787,15 +787,15 @@ Criterios de aceptación:
 <p class="chips"><span class="ce" title="Se ha descrito el proceso de despliegue en contenedores de aplicaciones, explicando el desarrollo e integración continuas (CI/CD) como parte de una metodología.">CE 1e</span></p>
 <h3>Objetivos del punto</h3>
 <ul>
-<li>Explicar qué es un contenedor, en qué se diferencia de una máquina virtual y qué problema resuelve.</li>
-<li>Conocer los elementos del ecosistema: imagen, Dockerfile, capas, registro, etiquetas, orquestador.</li>
-<li>Describir las etapas de un pipeline CI/CD que termina en el despliegue de un contenedor.</li>
-<li>Conocer las estrategias de despliegue (recreate, rolling, blue/green, canary) y la gestión de entornos.</li>
-<li>Diseñar el pipeline completo de <code>cita-previa-app</code>.</li>
+<li>Explicar qué problema resuelven los contenedores, qué son y en qué se diferencian de una máquina virtual.</li>
+<li>Conocer los elementos del ecosistema: imagen, Dockerfile, capas, registro, etiquetas, motor de contenedores y orquestador.</li>
+<li>Describir qué aporta el contenedor a un pipeline CI/CD: construir la imagen una vez, escanearla, publicarla y desplegar la misma imagen en cada entorno.</li>
+<li>Conocer las estrategias de despliegue (recreate, rolling, blue/green, canary).</li>
 </ul>
 
 <h3>1. El problema: "en mi máquina funciona"</h3>
-<p>Una aplicación no es solo su código. Para funcionar necesita un intérprete o entorno de ejecución (Python 3.12, Java 21, Node 22), librerías en versiones concretas, paquetes del sistema operativo, variables de entorno, ficheros de configuración... Si el portátil del desarrollador tiene Python 3.12 y Flask 3.1, y el servidor de producción tiene Python 3.10 y Flask 2.3, la aplicación puede fallar de formas difíciles de diagnosticar. Durante años se intentó resolver con manuales de instalación, scripts y máquinas virtuales. Los <b>contenedores</b> ofrecen una solución más ligera: <b>empaquetar la aplicación junto con todo lo que necesita</b> y ejecutarla igual en cualquier máquina que tenga un motor de contenedores.</p>
+<p>En el punto 4 visteis que una de las dificultades entre desarrollo y operaciones eran los <b>entornos distintos</b>: lo que funcionaba en el portátil del programador fallaba en producción. La causa es que una aplicación no es solo su código. Para funcionar necesita un intérprete o entorno de ejecución (Python 3.12, Java 21, Node 22), librerías en versiones concretas, paquetes del sistema operativo, variables de entorno y ficheros de configuración. Si el portátil tiene Python 3.12 y Flask 3.1, y el servidor de producción tiene Python 3.10 y Flask 2.3, la aplicación puede fallar de formas difíciles de diagnosticar.</p>
+<p>Durante años se intentó resolver con manuales de instalación, scripts y máquinas virtuales. Los <b>contenedores</b> ofrecen una solución más ligera: empaquetar la aplicación junto con todo lo que necesita y ejecutarla igual en cualquier máquina que tenga un motor de contenedores.</p>
 
 <h3>2. Qué es un contenedor</h3>
 <p>Un contenedor es un <b>proceso (o grupo de procesos) aislado</b> que se ejecuta sobre el núcleo (kernel) del sistema operativo anfitrión, pero que ve su propio sistema de ficheros, su propia red y sus propios procesos, y tiene limitados los recursos que puede usar. En Linux se construye con dos mecanismos del kernel:</p>
@@ -854,44 +854,37 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 └─registro─┘└── espacio ──┘└─ repositorio ─┘└etiqueta┘</code></pre>
 <p>Las <b>etiquetas</b> (tags) identifican versiones. Buenas prácticas: etiquetar con la versión semántica (<code>1.4.2</code>) y con el hash corto del commit (<code>sha-3f9c2a1</code>) para saber exactamente qué código contiene; no desplegar nunca <code>latest</code> en producción, porque no dice qué versión es y puede cambiar sin avisar. Además de la etiqueta, cada imagen tiene un <b>digest</b> (<code>sha256:...</code>) que identifica su contenido de forma inmutable.</p>
 <h4>Principio clave: construir una vez, desplegar en todas partes</h4>
-<p>La misma imagen, con el mismo digest, pasa por revisión y por producción. Lo que cambia entre entornos es la <b>configuración</b> (variables de entorno, secretos, recursos), no la imagen. Así, lo que se probó es exactamente lo que se despliega. Es uno de los principios de las aplicaciones de <b>doce factores</b> (<i>The Twelve-Factor App</i>): la configuración se guarda en el entorno, no en el código.</p>
+<p>La misma imagen, con el mismo digest, pasa por todos los entornos: las pruebas de integración continua, el entorno de revisión y producción. Lo que cambia entre entornos es la <b>configuración</b> (variables de entorno, secretos, recursos), no la imagen. Así, lo que se probó es exactamente lo que se despliega. Es uno de los principios de las aplicaciones de <b>doce factores</b> (<i>The Twelve-Factor App</i>): la configuración se guarda en el entorno, no en el código.</p>
 
 <h3>4. Ejecución y orquestación</h3>
 <ul>
 <li><b>Motor de contenedores</b>: Docker Engine, Podman, containerd. Ejecutan contenedores en una máquina.</li>
-<li><b>Docker Compose</b>: define en un fichero YAML varios contenedores que trabajan juntos (aplicación, base de datos, proxy) en una sola máquina.</li>
+<li><b>Docker Compose</b>: define en un fichero YAML varios contenedores que trabajan juntos (aplicación, base de datos, proxy) en una sola máquina. Es lo habitual en el portátil del desarrollador para levantar la aplicación completa con un solo comando.</li>
 <li><b>Orquestadores</b>: Kubernetes, Docker Swarm, Nomad, y servicios gestionados como Amazon ECS, Google Cloud Run o Azure Container Apps. Gestionan contenedores en muchas máquinas: los reparten, los reinician si fallan, los escalan según la carga, balancean el tráfico y hacen actualizaciones sin corte. Los veréis en el módulo 5166.</li>
 </ul>
 
-<h3>5. Los entornos</h3>
-<p>Antes de ver el recorrido completo, conviene tener claros los entornos por los que pasa la aplicación. Recordad el principio anterior: la imagen es la misma en todos ellos; lo que cambia es la configuración.</p>
-<div class="tabla"><table>
-<tr><th>Entorno</th><th>Para qué</th><th>Quién accede</th></tr>
-<tr><td>Local / desarrollo</td><td>Programar y probar en el portátil (a menudo con Docker Compose)</td><td>Cada desarrollador</td></tr>
-<tr><td>Integración / CI</td><td>Ejecutar pruebas automáticas en máquinas efímeras</td><td>El sistema de CI</td></tr>
-<tr><td>Revisión (staging, preproducción)</td><td>Probar la versión candidata en condiciones similares a producción</td><td>Equipo, testers, cliente</td></tr>
-<tr><td>Producción</td><td>Servir a los usuarios reales</td><td>Usuarios; muy pocas personas del equipo, y con aprobación</td></tr>
-</table></div>
-<h3>6. El pipeline CI/CD de una aplicación en contenedores</h3>
-<p>Juntando lo visto en el punto 4 y en este, este es el recorrido completo de un cambio en Cita Previa:</p>
+<h3>5. Qué aporta el contenedor al pipeline CI/CD</h3>
+<p>El pipeline que visteis en el punto 4 (integración, entrega y despliegue continuos) no cambia. Lo que cambia es <b>lo que recorre</b>: en lugar de un paquete con su manual de instalación, una <b>imagen</b>. Eso añade unos pasos concretos entre la integración continua y el despliegue:</p>
 <ol>
-<li><b>Planificar</b>: la historia está en el tablero (punto 3).</li>
-<li><b>Codificar</b>: el desarrollador crea una rama, programa el cambio y sus pruebas, y abre un <b>pull request</b>.</li>
-<li><b>Integración continua</b> (en cada pull request):
- <ul><li>Linter y pruebas unitarias.</li>
- <li>Análisis de calidad (SonarQube Cloud, antes llamado SonarCloud) y de seguridad del código (CodeQL) y de las dependencias.</li>
- <li>Otra persona revisa el código. Solo se puede fusionar si todo está en verde.</li></ul></li>
-<li><b>Construir la imagen</b> (al fusionar en <code>main</code>): <code>docker build</code>, etiquetar con versión y commit.</li>
-<li><b>Escanear la imagen</b> en busca de vulnerabilidades (Trivy) y firmarla.</li>
-<li><b>Publicar</b> la imagen en el registro.</li>
-<li><b>Desplegar en revisión</b> (staging): un entorno igual a producción pero sin usuarios reales. La infraestructura se ha creado con IaC y la configuración con Ansible.</li>
-<li><b>Pruebas de integración y de aceptación</b> contra el entorno de revisión.</li>
-<li><b>Desplegar en producción</b>: con aprobación manual (entrega continua) o automáticamente (despliegue continuo).</li>
-<li><b>Monitorizar</b>: métricas, registros y alertas. Si algo va mal, volver a la imagen anterior.</li>
+<li><b>Construir la imagen una sola vez.</b> Cuando el cambio supera la integración continua y se fusiona en <code>main</code>, el pipeline ejecuta <code>docker build</code> y etiqueta la imagen con la versión y con el commit. No se vuelve a construir en ningún paso posterior.</li>
+<li><b>Escanear y firmar.</b> Antes de publicarla, se analiza en busca de vulnerabilidades conocidas en el sistema base y en las librerías (por ejemplo, con Trivy) y se firma, para que los entornos puedan comprobar que es la imagen que construyó el pipeline y que nadie la ha modificado.</li>
+<li><b>Publicar en el registro.</b> La imagen queda guardada con su etiqueta y su digest. Es la versión lista para desplegar de la entrega continua.</li>
+<li><b>Desplegar la misma imagen en cada entorno.</b> El entorno de revisión y, después, producción descargan exactamente el mismo digest; solo cambia la configuración que recibe cada uno. Lo que se probó en revisión es lo que llega a producción.</li>
 </ol>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 230" role="img" aria-label="Pipeline de Cita Previa" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-pipeline" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12.0" y="12.0" width="112.0" height="66.0" rx="6" class="d-gris"/><text x="68.0" y="37.0" class="t" text-anchor="middle" dominant-baseline="middle">Issue en el</text><text x="68.0" y="53.0" class="t" text-anchor="middle" dominant-baseline="middle">tablero</text><rect x="158.0" y="12.0" width="112.0" height="66.0" rx="6" class="d-naranja"/><text x="214.0" y="37.0" class="t" text-anchor="middle" dominant-baseline="middle">Rama y pull</text><text x="214.0" y="53.0" class="t" text-anchor="middle" dominant-baseline="middle">request</text><rect x="304.0" y="12.0" width="112.0" height="66.0" rx="6" class="d-naranja"/><text x="360.0" y="29.0" class="t" text-anchor="middle" dominant-baseline="middle">Pruebas,</text><text x="360.0" y="45.0" class="t" text-anchor="middle" dominant-baseline="middle">calidad y</text><text x="360.0" y="61.0" class="t" text-anchor="middle" dominant-baseline="middle">seguridad</text><rect x="450.0" y="12.0" width="112.0" height="66.0" rx="6" class="d-naranja"/><text x="506.0" y="37.0" class="t" text-anchor="middle" dominant-baseline="middle">Revisión y</text><text x="506.0" y="53.0" class="t" text-anchor="middle" dominant-baseline="middle">fusión en main</text><rect x="596.0" y="12.0" width="112.0" height="66.0" rx="6" class="d-naranja"/><text x="652.0" y="37.0" class="t" text-anchor="middle" dominant-baseline="middle">Construir la</text><text x="652.0" y="53.0" class="t" text-anchor="middle" dominant-baseline="middle">imagen</text><rect x="12.0" y="118.0" width="112.0" height="66.0" rx="6" class="d-naranja"/><text x="68.0" y="143.0" class="t" text-anchor="middle" dominant-baseline="middle">Escanear y</text><text x="68.0" y="159.0" class="t" text-anchor="middle" dominant-baseline="middle">publicar</text><rect x="158.0" y="118.0" width="112.0" height="66.0" rx="6" class="d-rojo"/><text x="214.0" y="143.0" class="t" text-anchor="middle" dominant-baseline="middle">Infraestructura</text><text x="214.0" y="159.0" class="t" text-anchor="middle" dominant-baseline="middle">(Terraform)</text><rect x="304.0" y="118.0" width="112.0" height="66.0" rx="6" class="d-morado"/><text x="360.0" y="135.0" class="t" text-anchor="middle" dominant-baseline="middle">Desplegar en</text><text x="360.0" y="151.0" class="t" text-anchor="middle" dominant-baseline="middle">revisión</text><text x="360.0" y="167.0" class="t" text-anchor="middle" dominant-baseline="middle">(Ansible)</text><rect x="450.0" y="118.0" width="112.0" height="66.0" rx="6" class="d-morado"/><text x="506.0" y="135.0" class="t" text-anchor="middle" dominant-baseline="middle">Aprobar y</text><text x="506.0" y="151.0" class="t" text-anchor="middle" dominant-baseline="middle">desplegar en</text><text x="506.0" y="167.0" class="t" text-anchor="middle" dominant-baseline="middle">producción</text><rect x="596.0" y="118.0" width="112.0" height="66.0" rx="6" class="d-morado"/><text x="652.0" y="143.0" class="t" text-anchor="middle" dominant-baseline="middle">Monitorizar y</text><text x="652.0" y="159.0" class="t" text-anchor="middle" dominant-baseline="middle">reaccionar</text><path d="M126.0,45.0 L156.0,45.0" class="flecha " marker-end="url(#fl-pipeline)"/><path d="M272.0,45.0 L302.0,45.0" class="flecha " marker-end="url(#fl-pipeline)"/><path d="M418.0,45.0 L448.0,45.0" class="flecha " marker-end="url(#fl-pipeline)"/><path d="M564.0,45.0 L594.0,45.0" class="flecha " marker-end="url(#fl-pipeline)"/><path d="M652.0,80.0 L652.0,98.0 L68.0,98.0 L68.0,116.0" class="flecha " marker-end="url(#fl-pipeline)"/><path d="M126.0,151.0 L156.0,151.0" class="flecha " marker-end="url(#fl-pipeline)"/><path d="M272.0,151.0 L302.0,151.0" class="flecha " marker-end="url(#fl-pipeline)"/><path d="M418.0,151.0 L448.0,151.0" class="flecha " marker-end="url(#fl-pipeline)"/><path d="M564.0,151.0 L594.0,151.0" class="flecha " marker-end="url(#fl-pipeline)"/><rect x="14" y="201" width="14" height="14" rx="3" class="d-naranja"/><text x="34" y="208" class="ts" dominant-baseline="middle">Unidad 5</text><rect x="98.4" y="201" width="14" height="14" rx="3" class="d-rojo"/><text x="118.4" y="208" class="ts" dominant-baseline="middle">Unidad 6</text><rect x="182.8" y="201" width="14" height="14" rx="3" class="d-morado"/><text x="202.8" y="208" class="ts" dominant-baseline="middle">Unidad 7</text></svg></div><figcaption>El recorrido completo de un cambio en Cita Previa. Cada unidad técnica del módulo construye una parte: la 5 (naranja), la 6 (rojo) y la 7 (morado).</figcaption></figure>
-<p>Cada unidad técnica del módulo construye una parte de este pipeline: la <b>unidad 5</b> los pasos 2-6, la <b>unidad 6</b> la infraestructura de los entornos y la <b>unidad 7</b> los pasos 7-10.</p>
-<h3>7. Estrategias de despliegue</h3>
+<p>Además, <b>volver atrás</b> es sencillo: la imagen anterior sigue en el registro, así que basta con desplegarla otra vez, sin reconstruir nada. Y el despliegue deja de ser "instalar la aplicación en el servidor" para pasar a ser "arrancar contenedores de una imagen nueva", lo que permite las estrategias del apartado siguiente.</p>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 222" role="img" aria-label="La imagen en el pipeline" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-imagen-pipeline" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs>
+<rect x="12" y="12" width="130" height="70" rx="6" class="d-gris"/><text x="77" y="39" class="t tb" text-anchor="middle" dominant-baseline="middle">Fusión en main</text><text x="77" y="57" class="ts" text-anchor="middle" dominant-baseline="middle">(CI en verde)</text>
+<rect x="172" y="12" width="130" height="70" rx="6" class="d-azul"/><text x="237" y="39" class="t tb" text-anchor="middle" dominant-baseline="middle">Construir</text><text x="237" y="57" class="ts" text-anchor="middle" dominant-baseline="middle">la imagen, una vez</text>
+<rect x="332" y="12" width="130" height="70" rx="6" class="d-azul"/><text x="397" y="39" class="t tb" text-anchor="middle" dominant-baseline="middle">Escanear y firmar</text><text x="397" y="57" class="ts" text-anchor="middle" dominant-baseline="middle">(Trivy)</text>
+<rect x="492" y="12" width="216" height="70" rx="6" class="d-amarillo"/><text x="600" y="30" class="t tb" text-anchor="middle" dominant-baseline="middle">Registro</text><text x="600" y="48" class="te" text-anchor="middle" dominant-baseline="middle">cita-previa-app:1.5.0 (nueva)</text><text x="600" y="64" class="te" text-anchor="middle" dominant-baseline="middle">cita-previa-app:1.4.2 (anterior)</text>
+<rect x="360" y="140" width="150" height="70" rx="6" class="d-naranja"/><text x="435" y="158" class="t tb" text-anchor="middle" dominant-baseline="middle">Revisión</text><text x="435" y="176" class="ts" text-anchor="middle" dominant-baseline="middle">misma imagen</text><text x="435" y="193" class="ts" text-anchor="middle" dominant-baseline="middle">+ config. de revisión</text>
+<rect x="558" y="140" width="150" height="70" rx="6" class="d-verde"/><text x="633" y="158" class="t tb" text-anchor="middle" dominant-baseline="middle">Producción</text><text x="633" y="176" class="ts" text-anchor="middle" dominant-baseline="middle">misma imagen</text><text x="633" y="193" class="ts" text-anchor="middle" dominant-baseline="middle">+ config. de producción</text>
+<rect x="12" y="140" width="300" height="70" rx="6" class="d-blanco"/><text x="162" y="164" class="t tb" text-anchor="middle" dominant-baseline="middle">Volver atrás</text><text x="162" y="186" class="ts" text-anchor="middle" dominant-baseline="middle">desplegar otra vez la 1.4.2, que sigue en el registro</text>
+<path d="M144,47 L170,47" class="flecha" marker-end="url(#fl-imagen-pipeline)"/><path d="M304,47 L330,47" class="flecha" marker-end="url(#fl-imagen-pipeline)"/><path d="M464,47 L490,47" class="flecha" marker-end="url(#fl-imagen-pipeline)"/>
+<path d="M560,84 L560,112 L435,112 L435,138" class="flecha" marker-end="url(#fl-imagen-pipeline)"/>
+<path d="M512,175 L556,175" class="flecha" marker-end="url(#fl-imagen-pipeline)"/><text x="534" y="164" class="ts" text-anchor="middle" dominant-baseline="middle">aprobar</text>
+</svg></div><figcaption>La imagen se construye una sola vez, se escanea, se firma y se publica en el registro; después pasa sin cambios por revisión y producción, y solo cambia la configuración.</figcaption></figure>
+<h3>6. Estrategias de despliegue</h3>
 <p>El último paso del pipeline sustituye la versión que está en producción por la nueva. Hay varias formas de hacerlo:</p>
 <ul>
 <li><b>Recreate</b>: se paran los contenedores viejos y se arrancan los nuevos. Sencillo, pero con corte de servicio.</li>
@@ -904,12 +897,7 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 9. Diseño del pipeline de Cita Previa <span class="dur">20 min</span></h4>
-<p>En los grupos habituales, dibujad en diagrams.net el pipeline completo de Cita Previa desde el commit hasta producción. Debe incluir: cada etapa con su herramienta, qué la dispara (pull request, fusión en main, etiqueta de versión), los entornos, dónde se construye la imagen y cuántas veces, dónde hay aprobación manual, qué estrategia de despliegue usaríais y cómo se volvería atrás. Añadid una nota explicando si es entrega o despliegue continuo y por qué, teniendo en cuenta que maneja datos de salud.</p>
-<p class="entrega">Entrega en Aules: diagrama del pipeline. Este diagrama lo retomaremos al empezar la unidad 5.</p>
-</div>
-<div class="actividad">
-<h4>Actividad 10. Cuestionario de la unidad 1 <span class="dur">20 min</span></h4>
+<h4>Actividad 9. Cuestionario de la unidad 1 <span class="dur">20 min</span></h4>
 <p>Individual, en Aules y sin apuntes. Unas 20 preguntas de toda la unidad: tipo test, verdadero o falso y algún cálculo sencillo (eficiencia del flujo). Entran los cinco puntos: cascada y sus variantes, Manifiesto Ágil y Scrum, Kanban, XP y Lean, DevOps y CI/CD, y contenedores.</p>
 <p>El cuestionario cuenta en la nota de la unidad. Además, sirve de preparación: <b>las preguntas de la prueba escrita serán de este mismo estilo</b>. Para estudiar, repasad las preguntas de repaso del final de cada punto y los diagramas.</p>
 </div>
@@ -921,6 +909,7 @@ CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 <li>¿Por qué en el Dockerfile se copia <code>requirements.txt</code> antes que el código?</li>
 <li>¿Por qué no se debe desplegar la etiqueta <code>latest</code> en producción?</li>
 <li>Explica el principio "construir una vez, desplegar en todas partes" y su relación con la configuración por entorno.</li>
+<li>¿Qué pasos añade un pipeline CI/CD cuando lo que despliega es una imagen? ¿Cómo se vuelve a la versión anterior?</li>
 <li>¿Qué estrategia de despliegue permite volver atrás más rápido? ¿Qué coste tiene?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden>
