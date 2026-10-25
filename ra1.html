@@ -850,15 +850,15 @@ EXPOSE 8000
 # Docker comprueba periódicamente que la aplicación responde
 HEALTHCHECK CMD python -c "import urllib.request;urllib.request.urlopen('http://localhost:8000/salud')"
 CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
-<p>En un Dockerfile los comentarios van siempre en su propia línea, empezando por <code>#</code>. Docker lo lee de arriba abajo y ejecuta cada paso. Bloque a bloque:</p>
+<p>En un Dockerfile los comentarios van siempre en su propia línea, empezando por <code>#</code>. Cada instrucción empieza por una palabra clave en mayúsculas; Docker lee el fichero de arriba abajo y ejecuta cada paso. Bloque a bloque:</p>
 <div class="tabla"><table>
 <tr><th>Bloque</th><th>Instrucciones</th><th>Qué hace</th></tr>
-<tr><td>1</td><td><code>FROM python:3.12-slim</code></td><td>Parte de una imagen que ya existe: un Debian mínimo con Python 3.12 instalado. No se empieza de cero.</td></tr>
-<tr><td>2</td><td><code>RUN useradd …</code><br><code>WORKDIR /home/app</code></td><td>Crea el usuario <code>app</code> y trabaja en su carpeta. <code>RUN</code> ejecuta un comando mientras se construye la imagen.</td></tr>
-<tr><td>3</td><td><code>COPY requirements.txt .</code><br><code>RUN pip install …</code></td><td>Copia la lista de librerías (Flask, gunicorn…) y las instala dentro de la imagen.</td></tr>
-<tr><td>4</td><td><code>COPY app.py .</code></td><td>Copia el código de la aplicación.</td></tr>
-<tr><td>5</td><td><code>USER app</code><br><code>EXPOSE 8000</code></td><td>La aplicación se ejecutará como <code>app</code>, no como root, y escucha en el puerto 8000.</td></tr>
-<tr><td>6</td><td><code>HEALTHCHECK …</code><br><code>CMD […]</code></td><td>Al arrancar el contenedor: cómo comprobar que la aplicación responde (pide <code>/salud</code>) y qué comando se ejecuta (el servidor web gunicorn con la aplicación).</td></tr>
+<tr><td>1</td><td><code>FROM python:3.12-slim</code></td><td><b>FROM</b>: la imagen base de la que se parte; no se empieza de cero. Se elige según lo que necesite la aplicación: <code>python</code>, <code>node</code>, <code>eclipse-temurin</code> (Java), <code>nginx</code>… Cita Previa está en Python, así que parte de Python 3.12 sobre un Debian reducido (<code>slim</code>).</td></tr>
+<tr><td>2</td><td><code>RUN useradd …</code><br><code>WORKDIR /home/app</code></td><td><b>RUN</b>: ejecuta un comando mientras se construye la imagen. <b>WORKDIR</b>: fija la carpeta de trabajo. Aquí, crear el usuario <code>app</code> y trabajar en su carpeta.</td></tr>
+<tr><td>3</td><td><code>COPY requirements.txt .</code><br><code>RUN pip install …</code></td><td><b>COPY</b>: copia ficheros del proyecto a la imagen. Aquí, la lista de librerías (Flask, gunicorn…), que se instalan con <code>pip</code>; en Java sería Maven y en Node, <code>npm</code>.</td></tr>
+<tr><td>4</td><td><code>COPY app.py .</code></td><td>Copia el código de la aplicación (aquí, <code>app.py</code>).</td></tr>
+<tr><td>5</td><td><code>USER app</code><br><code>EXPOSE 8000</code></td><td><b>USER</b>: con qué usuario se ejecuta la aplicación (<code>app</code>, no root, por seguridad). <b>EXPOSE</b>: en qué puerto escucha (aquí, el 8000).</td></tr>
+<tr><td>6</td><td><code>HEALTHCHECK …</code><br><code>CMD […]</code></td><td><b>HEALTHCHECK</b>: cómo comprobar que la aplicación responde (aquí, pide <code>/salud</code>). <b>CMD</b>: qué se ejecuta al arrancar el contenedor (aquí, el servidor web gunicorn con la aplicación).</td></tr>
 </table></div>
 <p>Con <code>docker build -t cita-previa-app:1.4.2 .</code>, Docker lee este fichero y produce la imagen con ese nombre.</p>
 <h4>Imagen frente a contenedor: las capas</h4>
