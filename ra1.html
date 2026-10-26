@@ -913,12 +913,13 @@ docker run -e BD=citas-produccion -e ENVIAR_SMS=si cita-previa-app:1.4.2</code><
 <p> Es uno de los principios de las aplicaciones de <b>doce factores</b> (<i>The Twelve-Factor App</i>): la configuración se guarda en el entorno, no en el código.</p>
 
 <h3>4. Ejecución y orquestación</h3>
-<p>La imagen ya está en el registro. Ahora alguien tiene que <b>ponerla en marcha</b>, y según el tamaño del problema se usan herramientas distintas:</p>
+<p>La imagen ya está en el registro. ¿Quién la descarga y arranca los contenedores? Depende de lo grande que sea el problema:</p>
 <ul>
-<li><b>Motor de contenedores</b> (una máquina, un contenedor): Docker Engine, Podman, containerd. Descarga la imagen y arranca, para o borra contenedores en una máquina. En Cita Previa: arrancar la aplicación en el portátil con <code>docker run</code>.</li>
-<li><b>Docker Compose</b> (una máquina, varios contenedores): describe en un fichero YAML los contenedores que trabajan juntos y los arranca a la vez. En Cita Previa: la aplicación, la base de datos y el proxy web, con un solo comando. Es lo habitual en el portátil del desarrollador.</li>
-<li><b>Orquestadores</b> (muchas máquinas): Kubernetes, Docker Swarm, Nomad, y servicios gestionados como Amazon ECS, Google Cloud Run o Azure Container Apps. Deciden en qué máquina va cada contenedor, lo reinician si cae, añaden más según la carga, balancean el tráfico y actualizan sin cortar el servicio. En Cita Previa: el lunes a las 8:00 pasa de 3 a 6 contenedores, y si cae un servidor mueve sus contenedores a otro. Los veréis en el módulo 5166.</li>
+<li><b>Arrancar la aplicación: el motor de contenedores</b> (Docker Engine, Podman, containerd). Descarga la imagen y arranca, para o borra contenedores en una máquina, con <code>docker run</code>.</li>
+<li><b>La aplicación necesita otros contenedores: Docker Compose.</b> Una aplicación real no suele ser un solo contenedor: necesita, por ejemplo, una base de datos y un proxy web delante. Compose los describe en un fichero YAML (<code>compose.yaml</code>), con cómo se conectan entre sí, y los arranca a la vez con <code>docker compose up</code>. Funciona en una sola máquina.</li>
+<li><b>Mucha carga, varios servidores: un orquestador</b> (Kubernetes, Docker Swarm, Nomad, y servicios gestionados como Amazon ECS, Google Cloud Run o Azure Container Apps). Decide en qué servidor va cada contenedor, añade más cuando hay carga, balancea el tráfico, los reinicia si fallan y, si un servidor cae, los arranca en otro. Los veréis en el módulo 5166.</li>
 </ul>
+<p>Quien ejecuta los contenedores es siempre el motor; Compose y el orquestador le dicen qué arrancar y dónde.</p>
 
 <h3>5. El proceso de despliegue en contenedores</h3>
 <p>El pipeline que visteis en el punto 4 (integración, entrega y despliegue continuos) no cambia. <b>Lo único que cambia es lo que viaja por él</b>: en lugar del código con su manual de instalación, una <b>imagen</b>. Y eso lo cambia todo en el despliegue:</p>
