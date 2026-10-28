@@ -60,21 +60,13 @@
 </ul>
 <h4>Responsabilidades del modelo on premise</h4>
 <p>En on premise, la organización es responsable de <b>todo</b>: elegir y comprar el hardware (con plazos de entrega de semanas o meses), instalarlo, mantener el firmware, sustituir discos que fallan, renovar los equipos cada 4-6 años, pagar la electricidad, asegurar el edificio, hacer copias de seguridad, tener personal disponible 24 horas si el servicio lo requiere, y planificar la capacidad con años de antelación: si Cita Previa necesita el doble de servidores en campaña de vacunación, hay que haberlos comprado antes.</p>
-<h4>Ventajas del on premise</h4>
-<ul>
-<li><b>Control total</b> sobre el hardware, la ubicación de los datos y la configuración.</li>
-<li><b>Cumplimiento normativo</b> más sencillo de demostrar en ciertos sectores (defensa, algunos datos sanitarios o bancarios), aunque la nube también ofrece certificaciones.</li>
-<li><b>Coste predecible</b> y, para cargas estables y muy grandes, a menudo más barato a largo plazo.</li>
-<li><b>Latencia</b> baja para sistemas que deben estar cerca de las máquinas o de los usuarios (una fábrica, un hospital).</li>
-<li>No depender de la conexión a Internet ni de un proveedor externo.</li>
-</ul>
-
 <h3>3. Entre ambos mundos: alojamiento y colocation</h3>
 <ul>
 <li><b>Colocation (housing)</b>: la organización compra sus servidores, pero los instala en el CPD de un proveedor, que ofrece el espacio, la energía, la climatización, la seguridad física y la conectividad. La organización sigue gestionando sus máquinas.</li>
 <li><b>Hosting tradicional</b> (alojamiento dedicado o compartido): el proveedor alquila servidores o espacio en ellos, normalmente con contratos mensuales o anuales y aprovisionamiento manual (se pide un servidor y te lo entregan en horas o días).</li>
 <li><b>Servidor privado virtual (VPS)</b>: una máquina virtual alquilada a un proveedor de alojamiento. Se parece a la nube, pero suele carecer de autoservicio completo, elasticidad y pago por uso fino.</li>
 </ul>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 300" role="img" aria-label="De on premise a la nube" xmlns="http://www.w3.org/2000/svg"><text x="232.0" y="18" class="t tb" text-anchor="middle" dominant-baseline="middle">On premise</text><text x="370.0" y="18" class="t tb" text-anchor="middle" dominant-baseline="middle">Colocation</text><text x="508.0" y="18" class="t tb" text-anchor="middle" dominant-baseline="middle">Hosting / VPS</text><text x="646.0" y="18" class="t tb" text-anchor="middle" dominant-baseline="middle">Nube</text><text x="158" y="51.0" class="ts" text-anchor="end" dominant-baseline="middle">Edificio, energía, clima</text><rect x="168" y="34" width="128" height="34" rx="6" class="d-naranja"/><text x="232.0" y="51.0" class="t" text-anchor="middle" dominant-baseline="middle">Organización</text><rect x="306" y="34" width="128" height="34" rx="6" class="d-azul"/><text x="370.0" y="51.0" class="t" text-anchor="middle" dominant-baseline="middle">Proveedor</text><rect x="444" y="34" width="128" height="34" rx="6" class="d-azul"/><text x="508.0" y="51.0" class="t" text-anchor="middle" dominant-baseline="middle">Proveedor</text><rect x="582" y="34" width="128" height="34" rx="6" class="d-azul"/><text x="646.0" y="51.0" class="t" text-anchor="middle" dominant-baseline="middle">Proveedor</text><text x="158" y="91.0" class="ts" text-anchor="end" dominant-baseline="middle">Servidores y red física</text><rect x="168" y="74" width="128" height="34" rx="6" class="d-naranja"/><text x="232.0" y="91.0" class="t" text-anchor="middle" dominant-baseline="middle">Organización</text><rect x="306" y="74" width="128" height="34" rx="6" class="d-naranja"/><text x="370.0" y="91.0" class="t" text-anchor="middle" dominant-baseline="middle">Organización</text><rect x="444" y="74" width="128" height="34" rx="6" class="d-azul"/><text x="508.0" y="91.0" class="t" text-anchor="middle" dominant-baseline="middle">Proveedor</text><rect x="582" y="74" width="128" height="34" rx="6" class="d-azul"/><text x="646.0" y="91.0" class="t" text-anchor="middle" dominant-baseline="middle">Proveedor</text><text x="158" y="131.0" class="ts" text-anchor="end" dominant-baseline="middle">Virtualización</text><rect x="168" y="114" width="128" height="34" rx="6" class="d-naranja"/><text x="232.0" y="131.0" class="t" text-anchor="middle" dominant-baseline="middle">Organización</text><rect x="306" y="114" width="128" height="34" rx="6" class="d-naranja"/><text x="370.0" y="131.0" class="t" text-anchor="middle" dominant-baseline="middle">Organización</text><rect x="444" y="114" width="128" height="34" rx="6" class="d-azul"/><text x="508.0" y="131.0" class="t" text-anchor="middle" dominant-baseline="middle">Proveedor</text><rect x="582" y="114" width="128" height="34" rx="6" class="d-azul"/><text x="646.0" y="131.0" class="t" text-anchor="middle" dominant-baseline="middle">Proveedor</text><text x="158" y="171.0" class="ts" text-anchor="end" dominant-baseline="middle">Sistema y aplicación</text><rect x="168" y="154" width="128" height="34" rx="6" class="d-naranja"/><text x="232.0" y="171.0" class="t" text-anchor="middle" dominant-baseline="middle">Organización</text><rect x="306" y="154" width="128" height="34" rx="6" class="d-naranja"/><text x="370.0" y="171.0" class="t" text-anchor="middle" dominant-baseline="middle">Organización</text><rect x="444" y="154" width="128" height="34" rx="6" class="d-naranja"/><text x="508.0" y="171.0" class="t" text-anchor="middle" dominant-baseline="middle">Organización</text><rect x="582" y="154" width="128" height="34" rx="6" class="d-naranja"/><text x="646.0" y="171.0" class="t" text-anchor="middle" dominant-baseline="middle">Organización</text><text x="158" y="224" class="ts" text-anchor="end" dominant-baseline="middle">Cómo se consigue</text><text x="158" y="240" class="ts" text-anchor="end" dominant-baseline="middle">un servidor nuevo</text><rect x="168" y="202" width="128" height="56" rx="6" class="d-gris"/><text x="232.0" y="222.0" class="t" text-anchor="middle" dominant-baseline="middle">Comprarlo</text><text x="232.0" y="239.0" class="ts" text-anchor="middle" dominant-baseline="middle">semanas o meses</text><rect x="306" y="202" width="128" height="56" rx="6" class="d-gris"/><text x="370.0" y="222.0" class="t" text-anchor="middle" dominant-baseline="middle">Comprarlo</text><text x="370.0" y="239.0" class="ts" text-anchor="middle" dominant-baseline="middle">semanas o meses</text><rect x="444" y="202" width="128" height="56" rx="6" class="d-gris"/><text x="508.0" y="222.0" class="t" text-anchor="middle" dominant-baseline="middle">Pedirlo por contrato</text><text x="508.0" y="239.0" class="ts" text-anchor="middle" dominant-baseline="middle">horas o días</text><rect x="582" y="202" width="128" height="56" rx="6" class="d-verde"/><text x="646.0" y="222.0" class="t" text-anchor="middle" dominant-baseline="middle">Autoservicio</text><text x="646.0" y="239.0" class="ts" text-anchor="middle" dominant-baseline="middle">minutos, pago por uso</text><rect x="168" y="274" width="14" height="14" rx="3" class="d-naranja"/><text x="188" y="281" class="ts" dominant-baseline="middle">Lo gestiona la organización</text><rect x="390" y="274" width="14" height="14" rx="3" class="d-azul"/><text x="410" y="281" class="ts" dominant-baseline="middle">Lo gestiona el proveedor</text></svg></div><figcaption>De on premise a la nube: cada opción deja más capas en manos del proveedor. Entre el hosting y la nube no cambia quién gestiona qué, sino cómo se consigue y se paga un servidor: autoservicio, elasticidad y pago por uso.</figcaption></figure>
 
 <h3>4. La infraestructura de nube</h3>
 <h4>La definición del NIST</h4>
@@ -169,7 +161,7 @@
 <li>¿Qué diferencia hay entre colocation y nube?</li>
 <li>¿Qué es el PUE y por qué los grandes proveedores tienen valores mejores que un CPD pequeño?</li>
 <li>¿Qué es una zona de disponibilidad y para qué sirve repartir una aplicación entre varias?</li>
-<li>Cita dos situaciones en las que on premise es preferible a la nube.</li>
+<li>¿Qué diferencia un servidor privado virtual (VPS) de una máquina virtual en la nube, si en los dos casos el proveedor gestiona el hardware?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p2" aria-labelledby="tab-p2" hidden>
 <p class="meta">Unidad 2 · 2. Modelo de negocio · 2 horas</p>
@@ -231,13 +223,14 @@
 <li><b>Bajo demanda</b> (<i>on demand</i>): el precio de lista por hora o segundo, sin compromiso. El más flexible y el más caro.</li>
 <li><b>Instancias reservadas</b> y <b>planes de ahorro</b> (<i>savings plans</i>): el cliente se compromete a un uso durante 1 o 3 años a cambio de descuentos que pueden superar el 50-60 %. Para cargas estables y previsibles.</li>
 <li><b>Instancias spot</b> (<i>preemptible</i>, <i>spot VMs</i>): capacidad sobrante del proveedor con descuentos de hasta el 90 %, pero el proveedor puede quitarla con un aviso de minutos. Para trabajos que se pueden interrumpir: procesamiento por lotes, pruebas, CI.</li>
-<li><b>Capa gratuita</b> (<i>free tier</i>): cantidades limitadas de ciertos servicios gratis durante 12 meses o de forma permanente, pensadas para aprender y probar.</li>
+<li><b>Capa gratuita</b> (<i>free tier</i>): cantidades limitadas de ciertos servicios gratis, o créditos iniciales para cuentas nuevas, pensados para aprender y probar. Las condiciones cambian a menudo: AWS, por ejemplo, sustituyó en julio de 2025 su capa gratuita de 12 meses por un plan con créditos de hasta 200 dólares durante 6 meses.</li>
 </ul>
 <h4>Controlar el gasto: FinOps</h4>
 <p>Como cualquiera con permisos puede crear recursos, el gasto puede dispararse. La disciplina <b>FinOps</b> se ocupa de gestionarlo: presupuestos con alertas, etiquetas en cada recurso para saber a qué proyecto o entorno pertenece, informes de costes, apagado automático de entornos de pruebas fuera de horario y ajuste del tamaño de las máquinas a su uso real (<i>rightsizing</i>).</p>
 
 <h3>4. Responsabilidad compartida</h3>
 <p>En la nube, la seguridad es una <b>responsabilidad compartida</b> entre el proveedor y el cliente. La frase que usa AWS lo resume bien: el proveedor es responsable de la seguridad <b>de</b> la nube; el cliente, de la seguridad <b>en</b> la nube.</p>
+<p>Dónde está la frontera depende de cuánto gestione el proveedor. La tabla usa tres modelos de servicio que estudiaremos en la unidad 4: <b>IaaS</b> (se alquilan máquinas virtuales y el cliente lo instala todo encima), <b>PaaS</b> (el proveedor da una plataforma lista, como una base de datos gestionada, y el cliente solo pone su aplicación o sus datos) y <b>SaaS</b> (se usa una aplicación terminada, como el correo de Gmail o Microsoft 365).</p>
 <div class="tabla"><table>
 <tr><th>Responsabilidad</th><th>On premise</th><th>IaaS (VM en la nube)</th><th>PaaS</th><th>SaaS</th></tr>
 <tr><td>Datos y cuentas de usuario</td><td>Cliente</td><td>Cliente</td><td>Cliente</td><td>Cliente</td></tr>
@@ -387,10 +380,10 @@
 <div class="nota"><p><b>Idea clave.</b> El TCO on premise casi siempre es mayor de lo que parece porque se olvidan la energía, el personal y la renovación. El coste de la nube casi siempre es mayor de lo que parece porque se olvidan la transferencia de datos, los recursos olvidados encendidos y el soporte. Un buen análisis incluye ambos lados completos.</p></div>
 
 <h3>3. Beneficios de la nube frente al on premise</h3>
-<p>Los proveedores (y documentos como el <i>AWS Cloud Adoption Framework</i> o la certificación <i>Cloud Practitioner</i>) suelen resumir los beneficios así:</p>
+<p>AWS los resume en seis beneficios (en su documento <i>Overview of Amazon Web Services</i> y en la certificación <i>Cloud Practitioner</i>), y el resto de proveedores usa ideas muy parecidas:</p>
 <ol>
 <li><b>Cambiar gasto de capital por gasto variable.</b> No hay que invertir antes de saber cuánto se usará.</li>
-<li><b>Beneficiarse de economías de escala</b>: el proveedor compra y opera más barato que cualquier organización.</li>
+<li><b>Beneficiarse de economías de escala</b> (punto 2): el proveedor compra y opera más barato que cualquier organización.</li>
 <li><b>Dejar de adivinar la capacidad.</b> On premise se compra para el pico previsto: si se sobreestima, se tira dinero; si se subestima, el servicio se cae. En la nube la capacidad se ajusta a la demanda real (<b>elasticidad</b>).</li>
 <li><b>Velocidad y agilidad.</b> Un recurso tarda minutos en estar disponible, no semanas. Se puede experimentar barato: probar una idea cuesta unas horas de máquina.</li>
 <li><b>Dejar de gastar en mantener CPD</b> y dedicar el personal a lo que aporta valor al negocio.</li>
@@ -405,7 +398,7 @@
 <li><b>Sostenibilidad</b>: CPD más eficientes y mayor uso de energía renovable, aunque el consumo total de los CPD está creciendo mucho.</li>
 </ul>
 
-<h3>4. Inconvenientes y riesgos de la nube</h3>
+<h3>4. Inconvenientes de la nube y ventajas del on premise</h3>
 <ul>
 <li><b>Coste a largo plazo</b> para cargas grandes y estables. Algunas empresas han vuelto parcialmente a infraestructura propia (<b>repatriación</b>) tras comprobar que les salía más barato; un caso muy comentado fue el de la empresa 37signals en 2022-2023.</li>
 <li><b>Factura impredecible</b> si no se controla (FinOps).</li>
@@ -415,6 +408,16 @@
 <li><b>Menor control</b>: no se elige el hardware, ni cuándo el proveedor hace mantenimientos, y las caídas del proveedor afectan a muchos clientes a la vez.</li>
 <li><b>Nuevas competencias</b>: el equipo debe aprender seguridad en la nube, IaC, gestión de costes.</li>
 </ul>
+<h4>Lo que sigue aportando el on premise</h4>
+<p>Los inconvenientes de la nube son, en buena parte, las ventajas del on premise:</p>
+<ul>
+<li><b>Control total</b> sobre el hardware, la ubicación de los datos y la configuración.</li>
+<li><b>Cumplimiento normativo</b> más sencillo de demostrar en ciertos sectores (defensa, algunos datos sanitarios o bancarios), aunque la nube también ofrece certificaciones.</li>
+<li><b>Coste predecible</b> y, para cargas estables y muy grandes, a menudo más barato a largo plazo.</li>
+<li><b>Latencia</b> baja para sistemas que deben estar cerca de las máquinas o de los usuarios (una fábrica, un hospital).</li>
+<li>No depender de la conexión a Internet ni de un proveedor externo.</li>
+</ul>
+
 
 <h3>5. Cómo decidir</h3>
 <p>No hay una respuesta universal. Estas preguntas ayudan a decidir:</p>
@@ -457,6 +460,7 @@
 <li>¿Qué costes del on premise se suelen olvidar al calcular el TCO?</li>
 <li>¿Qué significa "dejar de adivinar la capacidad"?</li>
 <li>¿Qué es la repatriación a on premise y por qué la hacen algunas empresas?</li>
+<li>Cita dos situaciones en las que el on premise es preferible a la nube.</li>
 <li>¿Por qué los datos de Cita Previa exigen especial cuidado al elegir proveedor de nube?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p4" aria-labelledby="tab-p4" hidden>
@@ -492,7 +496,7 @@
 <li><b>Red</b>: redes virtuales, subredes, tablas de rutas, puertas de enlace a Internet, balanceadores, DNS, CDN.</li>
 <li><b>Bases de datos y otros servicios</b>: bases de datos gestionadas, cachés, colas de mensajes.</li>
 </ul>
-<p>La nube también divide la arquitectura conceptual en dos partes: el <b>front end</b> (lo que usa el cliente para acceder: navegador, app, consola) y el <b>back end</b> (los recursos del proveedor: cómputo, almacenamiento, red, seguridad, gestión), unidos por la red.</p>
+<p>En muchos textos la arquitectura de nube se describe con tres elementos: el <b>front end</b> (lo que usa el cliente para acceder: navegador, aplicación, consola), el <b>back end</b> (los recursos del proveedor: cómputo, almacenamiento, red, seguridad y gestión) y la <b>red</b> que los une. Ojo: aquí front end y back end se refieren al cliente y al proveedor de la nube, no a las dos partes de una aplicación web.</p>
 
 <h3>3. Cómo se ejecuta una aplicación web en la nube</h3>
 <p>Sigamos el camino de una petición de un paciente que abre <code>https://citaprevia.example.es</code>:</p>
@@ -527,7 +531,7 @@
 <p>Werner Vogels, director técnico de Amazon, lo resume así: <i>"todo falla, todo el tiempo"</i>. En la nube un servidor puede desaparecer en cualquier momento, así que la arquitectura debe asumirlo: varias instancias en varias zonas, comprobaciones de salud, reintentos, copias de seguridad automáticas y recuperación automática. Se habla de tratar los servidores como <b>ganado y no como mascotas</b> (<i>cattle, not pets</i>): no se cuida con cariño cada servidor; si uno enferma, se sustituye por otro idéntico creado automáticamente.</p>
 
 <h3>5. Pilares de una buena arquitectura</h3>
-<p>Los grandes proveedores publican marcos de buenas prácticas para revisar una arquitectura: <b>AWS Well-Architected Framework</b>, <b>Azure Well-Architected Framework</b> y el <b>Google Cloud Architecture Framework</b>. Coinciden en estos pilares:</p>
+<p>Los grandes proveedores publican marcos de buenas prácticas para revisar una arquitectura: el <b>AWS Well-Architected Framework</b>, el <b>Azure Well-Architected Framework</b> y el <b>Google Cloud Well-Architected Framework</b>. AWS y Google organizan el suyo en estos seis pilares (con nombres ligeramente distintos); Azure usa los cinco primeros y trata la sostenibilidad como una guía aparte:</p>
 <div class="tabla"><table>
 <tr><th>Pilar</th><th>Pregunta clave</th><th>Prácticas típicas</th></tr>
 <tr><td>Excelencia operativa</td><td>¿Podemos operar, cambiar y mejorar el sistema con seguridad?</td><td>Infraestructura como código, despliegues pequeños y frecuentes, monitorización, procedimientos documentados</td></tr>
@@ -599,7 +603,7 @@
 <li><b>Sockets, núcleos e hilos</b>: un servidor puede tener 1 o 2 sockets (procesadores físicos), cada uno con decenas de núcleos (hasta más de 100 en los modelos actuales), y cada núcleo puede ejecutar 2 hilos con SMT (Hyper-Threading).</li>
 <li><b>Arquitecturas</b>: x86-64 (Intel Xeon, AMD EPYC) y, cada vez más, ARM (AWS Graviton, Ampere), que ofrecen mejor rendimiento por vatio.</li>
 <li><b>Extensiones de virtualización</b>: Intel VT-x y AMD-V permiten que el hipervisor ejecute máquinas virtuales de forma eficiente. Sin ellas, la virtualización sería mucho más lenta.</li>
-<li>En la nube, la unidad que se vende es la <b>vCPU</b>, que normalmente corresponde a un hilo de un núcleo físico.</li>
+<li>En la nube, la unidad que se vende es la <b>vCPU</b>, que en procesadores x86 corresponde a un hilo de un núcleo físico. En los procesadores ARM sin SMT, como AWS Graviton, cada vCPU es un núcleo físico completo.</li>
 </ul>
 <h4>Memoria</h4>
 <p>RAM con corrección de errores (<b>ECC</b>), en cantidades de cientos de GB o varios TB por servidor. En servidores con varios sockets, cada procesador accede más rápido a su memoria cercana (<b>NUMA</b>), algo que el hipervisor tiene en cuenta al colocar las VM.</p>
@@ -690,7 +694,7 @@ runcmd:
   - systemctl enable --now nginx</code></pre>
 <p>Con esto, la máquina arranca ya con el usuario, la clave SSH, los paquetes y el servicio web funcionando: la <b>carga de trabajo queda implementada</b> sin que nadie entre a configurarla. Es el primer paso hacia la automatización completa que haremos con Terraform (unidad 6) y Ansible (unidad 7).</p>
 <h4>Cargas de trabajo en la nube</h4>
-<p>Una <b>carga de trabajo</b> es una aplicación o proceso con sus recursos asociados. Al llevarla a la nube hay que decidir qué recursos necesita (cómputo, memoria, almacenamiento, red), cómo se instalará (imagen, cloud-init, contenedor) y cómo crecerá (vertical, horizontal). Las estrategias de migración se suelen resumir en las "R": <b>rehost</b> (llevar la VM tal cual, <i>lift and shift</i>), <b>replatform</b> (pequeños cambios, por ejemplo usar una base de datos gestionada), <b>refactor</b> (rediseñarla para la nube, por ejemplo en contenedores), <b>repurchase</b> (sustituirla por un SaaS), <b>retain</b> (dejarla on premise) y <b>retire</b> (eliminarla).</p>
+<p>Una <b>carga de trabajo</b> es una aplicación o proceso con sus recursos asociados. Al llevarla a la nube hay que decidir qué recursos necesita (cómputo, memoria, almacenamiento, red), cómo se instalará (imagen, cloud-init, contenedor) y cómo crecerá (vertical, horizontal). Las estrategias de migración se resumen en las "R" (AWS habla de siete): <b>rehost</b> (llevar la VM tal cual, <i>lift and shift</i>), <b>relocate</b> (trasladar la plataforma de virtualización entera, por ejemplo un entorno VMware, a la nube), <b>replatform</b> (pequeños cambios, por ejemplo usar una base de datos gestionada), <b>refactor</b> (rediseñarla para la nube, por ejemplo en contenedores), <b>repurchase</b> (sustituirla por un SaaS), <b>retain</b> (dejarla on premise) y <b>retire</b> (eliminarla).</p>
 
 <h3>Actividades</h3>
 <div class="actividad">
@@ -744,6 +748,7 @@ runcmd:
 <li>¿Qué pasos sigue el plano de control para aprovisionar una VM?</li>
 <li>¿Para qué sirve cloud-init? ¿Qué información recibe?</li>
 <li>¿Qué diferencia hay entre rehost y refactor al migrar una carga de trabajo?</li>
+<li>¿A qué corresponde una vCPU en un procesador x86? ¿Y en uno ARM como Graviton?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p6" aria-labelledby="tab-p6" hidden>
 <p class="meta">Unidad 2 · 6. Componentes · 2 horas</p>
@@ -769,9 +774,7 @@ runcmd:
 <li><b>Datos de usuario</b> para cloud-init.</li>
 </ul>
 <h4>Ciclo de vida</h4>
-<pre><code>pendiente → en ejecución ⇄ detenida → terminada (borrada)
-                  │
-                  └→ reinicio</code></pre>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 210" role="img" aria-label="Ciclo de vida de una instancia" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-ciclo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="70" width="120" height="44" rx="22" class="d-gris"/><text x="72.0" y="92" class="t tb" text-anchor="middle" dominant-baseline="middle">Pendiente</text><rect x="200" y="70" width="150" height="44" rx="22" class="d-verde"/><text x="275.0" y="92" class="t tb" text-anchor="middle" dominant-baseline="middle">En ejecución</text><rect x="430" y="70" width="120" height="44" rx="22" class="d-amarillo"/><text x="490.0" y="92" class="t tb" text-anchor="middle" dominant-baseline="middle">Detenida</text><rect x="590" y="150" width="120" height="44" rx="22" class="d-rojo"/><text x="650.0" y="172" class="t tb" text-anchor="middle" dominant-baseline="middle">Terminada</text><path d="M134,92 L198,92" class="flecha" marker-end="url(#fl-ciclo)"/><path d="M352,84 L428,84" class="flecha" marker-end="url(#fl-ciclo)"/><text x="390" y="72" class="ts" text-anchor="middle" dominant-baseline="middle">detener</text><path d="M428,100 L352,100" class="flecha" marker-end="url(#fl-ciclo)"/><text x="390" y="114" class="ts" text-anchor="middle" dominant-baseline="middle">arrancar</text><path d="M275,68 C255,20 295,20 285,66" class="flecha" marker-end="url(#fl-ciclo)"/><text x="275" y="14" class="ts" text-anchor="middle" dominant-baseline="middle">reiniciar</text><path d="M275,116 L275,172 L588,172" class="flecha" marker-end="url(#fl-ciclo)"/><text x="430" y="162" class="ts" text-anchor="middle" dominant-baseline="middle">terminar</text><path d="M552,92 L650,92 L650,148" class="flecha" marker-end="url(#fl-ciclo)"/><text x="490" y="134" class="ts" text-anchor="middle" dominant-baseline="middle">paga discos, no cómputo</text><text x="200" y="134" class="ts" text-anchor="middle" dominant-baseline="middle">paga cómputo y discos</text></svg></div><figcaption>Ciclo de vida de una máquina virtual en la nube. Detenerla no es borrarla: los discos se siguen pagando.</figcaption></figure>
 <p>Detenida: no se paga el cómputo, pero sí los discos. Terminada: se borra la máquina y, por defecto, su disco raíz. Una máquina en la nube es <b>efímera</b>: puede desaparecer, así que los datos importantes no deben estar solo en ella.</p>
 <h4>Otras formas de cómputo</h4>
 <p>Además de VM: <b>servidores físicos dedicados</b> (<i>bare metal</i>) para cargas que no admiten virtualización o necesitan licencias por núcleo físico; <b>grupos de autoescalado</b> que mantienen un número de VM idénticas; <b>contenedores gestionados</b> y <b>funciones serverless</b> (unidad 4).</p>
@@ -838,18 +841,6 @@ runcmd:
 <li><b>Licencias</b>: incluidas en la tarifa por hora, traídas por el cliente (BYOL) o del marketplace.</li>
 </ul>
 
-<h3>5. La misma infraestructura on premise (ejemplo: Proxmox VE)</h3>
-<div class="tabla"><table>
-<tr><th>Nube pública</th><th>Proxmox VE (plataforma de virtualización on premise)</th></tr>
-<tr><td>Instancia / VM</td><td>VM KVM o contenedor LXC</td></tr>
-<tr><td>Imagen / AMI</td><td>Plantilla</td></tr>
-<tr><td>VPC y subredes</td><td>Puentes Linux (<code>vmbr</code>), VLAN, zonas y VNets SDN</td></tr>
-<tr><td>Grupo de seguridad</td><td>Cortafuegos de Proxmox por VM</td></tr>
-<tr><td>Disco EBS</td><td>Disco en almacenamiento LVM-thin, ZFS o Ceph</td></tr>
-<tr><td>Almacenamiento de objetos</td><td>No incluido (se puede montar MinIO o Ceph RGW)</td></tr>
-<tr><td>IAM</td><td>Usuarios, grupos, roles y permisos por pool</td></tr>
-</table></div>
-
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 1. Red con subred pública y privada <span class="dur">45 min</span></h4>
@@ -893,7 +884,6 @@ runcmd:
 <li>Definición NIST de computación en la nube (SP 800-145): <a href="https://csrc.nist.gov/pubs/sp/800/145/final">csrc.nist.gov</a></li>
 <li>Calculadora de precios de AWS: <a href="https://calculator.aws/">calculator.aws</a> y de Azure: <a href="https://azure.microsoft.com/es-es/pricing/calculator/">azure.microsoft.com</a></li>
 <li>AWS Well-Architected Framework: <a href="https://aws.amazon.com/architecture/well-architected/">aws.amazon.com</a></li>
-<li>Documentación de Proxmox VE: <a href="https://pve.proxmox.com/pve-docs/">pve.proxmox.com</a></li>
 </ul>
 <h3>Glosario</h3>
 <div class="tabla"><table><tr><th>Término</th><th>Significado</th></tr>
@@ -905,6 +895,19 @@ runcmd:
 <tr><td>Hipervisor</td><td>Software que crea y ejecuta máquinas virtuales (KVM, ESXi, Hyper-V, Xen).</td></tr>
 <tr><td>VPC</td><td>Red privada virtual aislada dentro de la nube pública.</td></tr>
 <tr><td>Almacenamiento de bloque, archivo y objeto</td><td>Disco virtual (EBS), carpeta compartida (EFS/NFS) y almacén de objetos por HTTP (S3).</td></tr>
+<tr><td>Colocation</td><td>Servidores propios instalados en el CPD de un proveedor, que pone el espacio, la energía y la conectividad.</td></tr>
+<tr><td>Características de la nube (NIST)</td><td>Autoservicio bajo demanda, acceso amplio por red, agrupación de recursos, elasticidad rápida y servicio medido.</td></tr>
+<tr><td>Multitenencia</td><td>Varios clientes comparten la misma infraestructura física, aislados entre sí.</td></tr>
+<tr><td>Plano de control</td><td>Software del proveedor que recibe las peticiones, coloca los recursos, configura la red y mide el consumo.</td></tr>
+<tr><td>Responsabilidad compartida</td><td>El proveedor responde de la seguridad de la nube; el cliente, de la seguridad en la nube.</td></tr>
+<tr><td>SLA</td><td>Acuerdo de nivel de servicio: disponibilidad comprometida por el proveedor y compensación si no la cumple.</td></tr>
+<tr><td>FinOps</td><td>Disciplina que controla y optimiza el gasto en la nube.</td></tr>
+<tr><td>Dependencia del proveedor (lock-in)</td><td>Dificultad y coste de cambiar de proveedor por usar sus servicios propios.</td></tr>
+<tr><td>Escalado vertical / horizontal</td><td>Usar una máquina más grande / añadir más máquinas iguales.</td></tr>
+<tr><td>vCPU</td><td>Unidad de CPU que vende el proveedor: un hilo de un núcleo físico (x86) o un núcleo completo (ARM sin SMT).</td></tr>
+<tr><td>cloud-init</td><td>Herramienta que configura una máquina virtual en su primer arranque a partir de los datos de usuario.</td></tr>
+<tr><td>Subred pública / privada</td><td>Subred con ruta a Internet / subred sin ruta directa desde Internet.</td></tr>
+<tr><td>Grupo de seguridad</td><td>Cortafuegos con estado que se aplica a la interfaz de una máquina virtual.</td></tr>
 </table></div>
 </section></div></main>
 <script src="assets/pestanas.js?v=5"></script>
