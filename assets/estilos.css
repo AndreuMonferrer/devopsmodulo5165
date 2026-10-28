@@ -49,8 +49,8 @@ li{margin:.25rem 0}
 .nota{background:var(--gris);border-left:4px solid var(--ra);padding:.7rem 1rem;margin:1.2rem 0}
 .nota > :first-child{margin-top:0}.nota > :last-child{margin-bottom:0}
 .aviso{background:#fff8e1;border-left:4px solid #d4a017;padding:.7rem 1rem;margin:1.2rem 0}
-.actividad{border:1px solid var(--linea);border-radius:6px;padding:.2rem 1.1rem .8rem;margin:1.2rem 0}
-.actividad > h4{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin:.8rem 0 .5rem}
+.actividad,.ficha{border:1px solid var(--linea);border-radius:6px;padding:.2rem 1.1rem .8rem;margin:1.2rem 0}
+.actividad > h4,.ficha > h4{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin:.8rem 0 .5rem}
 .dur{flex:0 0 auto;font-size:.85rem;font-weight:600;color:var(--ra);white-space:nowrap}
 /* Casos y pasos de las actividades: lista con distintivo de letra o número */
 ol.casos,ol.pasos{list-style:none;counter-reset:caso;padding-left:0;margin:.7rem 0}
@@ -161,8 +161,8 @@ table.cal{table-layout:fixed;font-size:.85rem}
 main.con-indice{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:2.5rem;align-items:start}
 .con-indice .contenido{grid-column:1;grid-row:1;min-width:0}
 .con-indice .panel{max-width:none}
-.con-indice .panel > :not(.diagrama):not(.tabla):not(pre):not(.actividad){max-width:74ch}
-.con-indice .actividad{max-width:80ch}
+.con-indice .panel > :not(.diagrama):not(.tabla):not(pre):not(.actividad):not(.ficha){max-width:74ch}
+.con-indice .actividad,.con-indice .ficha{max-width:80ch}
 .con-indice .diagrama{width:auto;max-width:900px}
 .panel h3,.panel h4{scroll-margin-top:72px}
 .indice{grid-column:2;grid-row:1;position:sticky;top:66px;max-height:calc(100vh - 84px);overflow:auto;background:none;border-left:1px solid var(--linea);border-radius:0;padding:.1rem 0 .1rem 1rem;margin:1.4rem 0 0;font-size:.86rem}

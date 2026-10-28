@@ -2,7 +2,7 @@
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RA2. Infraestructura propia y en la nube | Módulo 5165</title>
-<link rel="stylesheet" href="assets/estilos.css?v=6">
+<link rel="stylesheet" href="assets/estilos.css?v=7">
 <script src="assets/tema.js?v=5"></script>
 </head><body style="--ra:#2a7a8c">
 <header class="cab"><div class="dentro"><nav class="menu" aria-label="Secciones"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="ra1.html">RA1</a><a href="ra2.html" aria-current="page">RA2</a><a href="ra3.html">RA3</a><a href="ra4.html">RA4</a><a href="ra5.html">RA5</a><a href="ra6.html">RA6</a><a href="ra7.html">RA7</a><button type="button" class="boton-tema" id="cambiar-tema">☾ Modo oscuro</button></nav>
@@ -136,25 +136,25 @@
 <tr><td>Explicaciones, en el orden de los apartados: alumno A, alumno B, pareja y alumno C</td><td>Unos 8 min cada uno; la pareja, unos 12</td></tr>
 </table></div>
 <h4>Fichas de cada grupo</h4>
-<div class="actividad">
+<div class="ficha">
 <h4>Alumno A: apartados 1 y 3</h4>
 <p><b>Caso:</b> En la madrugada del 10 de marzo de 2021 un incendio destruyó el CPD SBG2 de OVHcloud en Estrasburgo y parte del SBG1. OVH vendía, entre otras cosas, alojamiento web, VPS y servidores dedicados. Algunos clientes perdieron todos sus datos.</p>
 <p><b>Fuentes:</b></p><ul><li><a href="https://www.eldiario.es/tecnologia/incendio-destruye-parte-centro-datos-ovh-estrasburgo-importantes-europa_1_7293797.html">Un incendio destruye parte del centro de datos de OVH en Estrasburgo (eldiario.es)</a></li><li><a href="https://www.datacenterdynamics.com/es/opinion/aprendiendo-del-incendio-del-centro-de-datos-de-ovhcloud/">Aprendiendo del incendio del centro de datos de OVHcloud (DCD)</a></li></ul>
 <p><b>Vuestra explicación debe responder:</b></p><ol class="casos"><li>¿Qué pasó y a quién afectó?</li><li>Con un servidor dedicado o un VPS de OVH, ¿qué capas de la infraestructura gestionaba OVH y cuáles el cliente? Usad el esquema "De on premise a la nube".</li><li>¿Por qué hubo clientes que lo perdieron todo? ¿A quién le tocaba tener las copias de seguridad, y dónde deberían haber estado?</li><li>Si esos clientes hubieran usado colocation en lugar de hosting, ¿qué habría cambiado en las responsabilidades?</li></ol>
 </div>
-<div class="actividad">
+<div class="ficha">
 <h4>Alumno B: apartado 2</h4>
 <p><b>Caso:</b> El 28 de abril de 2025 un apagón dejó sin electricidad a casi toda la península durante muchas horas. Un CPD profesional de Madrid siguió funcionando. ¿Qué le habría pasado a la gestoría de la actividad 1, con todo en un cuarto de su oficina?</p>
 <p><b>Fuentes:</b></p><ul><li><a href="https://www.idealista.com/news/node/843004">Dentro del apagón: cómo un centro de datos en Madrid siguió funcionando (idealista)</a></li><li>El inventario de la gestoría: enunciado de la actividad 1, justo debajo de esta dinámica.</li></ul>
 <p><b>Vuestra explicación debe responder:</b></p><ol class="casos"><li>¿Cómo consiguió el CPD de Madrid seguir funcionando? Relacionadlo con la teoría: acometidas, SAI y generadores.</li><li>¿Qué le habría pasado a la gestoría? Fijaos en su SAI (12 minutos), su refrigeración y su conexión a Internet. ¿En qué momento se habría parado todo?</li><li>¿Qué nivel de redundancia (Tier) tendría el cuarto de la gestoría? ¿Qué le faltaría para subir de nivel?</li><li>El artículo del CPD de Madrid está escrito con datos de la propia empresa. ¿Qué datos echáis en falta para fiaros del todo?</li></ol>
 </div>
-<div class="actividad">
+<div class="ficha">
 <h4>Pareja: apartado 4</h4>
 <p><b>Caso:</b> Dos organizaciones que usan la nube de formas opuestas. Netflix: en agosto de 2008 un fallo de su base de datos le impidió enviar DVD durante tres días; decidió pasar a la nube pública de AWS y tardó siete años en cerrar su último CPD. El CERN: el laboratorio de física de partículas de Ginebra tiene en su propio CPD una nube privada con OpenStack de unos 10.000 servidores.</p>
 <p><b>Fuentes:</b></p><ul><li><a href="https://about.netflix.com/es/news/completing-the-netflix-cloud-migration">Noticia oficial de Netflix sobre el final de su migración a la nube (Netflix)</a></li><li><a href="https://www.cio.com/comunicaciones/tras-diez-anos-netflix-termina-su-migracion-a-la-nube-con-aws">Tras diez años, Netflix termina su migración a la nube con AWS (CIO)</a></li><li><a href="https://home.cern/node/5733">El centro de datos del CERN y su nube OpenStack (CERN, en inglés)</a></li></ul>
 <p><b>Vuestra explicación debe responder:</b></p><ol class="casos"><li>¿Qué le pasó a Netflix en 2008 y por qué decidió irse a la nube? ¿Qué buscaba sobre todo: ahorrar o fiabilidad?</li><li>¿Qué características esenciales de la nube (NIST) aprovechó Netflix? Poned un ejemplo de cada una.</li><li>Colocad el caso de Netflix en la tabla "On premise frente a nube": ¿qué cambió para ellos en cada fila?</li><li>El CERN tiene la nube en su propio CPD. ¿Es on premise, es nube o las dos cosas? Justificadlo con las cinco características y con la idea de que la nube no es un lugar.</li></ol>
 </div>
-<div class="actividad">
+<div class="ficha">
 <h4>Alumno C: apartado 5</h4>
 <p><b>Caso:</b> El 20 de octubre de 2025, un fallo en la región us-east-1 de AWS (en Virginia, Estados Unidos) dejó sin servicio durante horas a Snapchat, Fortnite, Roblox, Amazon y muchas otras aplicaciones, también para usuarios de España. us-east-1 es la región más antigua de AWS: la de 2006.</p>
 <p><b>Fuentes:</b></p><ul><li><a href="https://www.incibe.es/index.php/en/incibe-cert/publications/cybersecurity-highlights/amazon-web-services-supera-un-incidente-global-y-refuerza-su-infraestructura">Amazon Web Services supera un incidente global y refuerza su infraestructura (INCIBE)</a></li><li><a href="https://builder.aws.com/content/34TzjGmCIBLhnT1b5tn6bgttlI1/por-que-fallo-dynamodb-en-octubre-de-2025">Para profundizar: por qué falló DynamoDB en octubre de 2025 (AWS, técnico)</a></li></ul>
