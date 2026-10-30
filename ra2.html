@@ -13,13 +13,13 @@
 <h2>Resultado de aprendizaje 2</h2>
 <p class="ra-texto">Evalúa la localización de la infraestructura física de tecnologías de la información (TI), diferenciando entre su ubicación en instalaciones propias (on premise) y en la nube (cloud).</p>
 <p>Cualquier entorno de despliegue se apoya en servidores, redes y discos que están en algún sitio. En esta unidad comparamos las dos grandes opciones: tener esa infraestructura en instalaciones propias, como la sala de servidores de una empresa, o alquilarla a un proveedor de nube como AWS, Azure o Google Cloud. Veremos cómo funciona la nube por dentro, por qué se paga por uso, cuándo sale a cuenta y cómo se traducen servidores, redes y almacenamiento en recursos virtuales que se crean en segundos.</p>
-<p>Trabajaremos con la consola de un proveedor (AWS Academy Learner Lab), sus calculadoras de precios, un caso práctico de infraestructura propia y nuestros propios portátiles.</p>
+<p>Trabajaremos con casos prácticos de infraestructura propia y de nube, con datos reales de los proveedores (calculadoras de precios, documentación pública, registros y configuraciones) y con nuestros propios portátiles.</p>
 <h3>Criterios de evaluación</h3>
 <div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Puntos</th></tr><tr><td><b>2a)</b></td><td>Se ha definido el concepto de infraestructura de nube, diferenciándolo del de infraestructura propia (on premise). <em>(se completa en la formación en empresa)</em></td><td><a href="#p1">1</a></td></tr><tr><td><b>2b)</b></td><td>Se ha descrito el funcionamiento de la infraestructura de nube, vinculándolo con su modelo de negocio.</td><td><a href="#p2">2</a></td></tr><tr><td><b>2c)</b></td><td>Se han analizado los beneficios de la infraestructura de nube con respecto a la infraestructura propia (on premise). <em>(se completa en la formación en empresa)</em></td><td><a href="#p3">3</a></td></tr><tr><td><b>2d)</b></td><td>Se ha diferenciado entre la infraestructura de nube y la arquitectura de nube, relacionándolos con los recursos de computación y la ejecución de aplicaciones web.</td><td><a href="#p4">4</a></td></tr><tr><td><b>2e)</b></td><td>Se ha determinado el conjunto de componentes hardware y software básico de la infraestructura en la nube, relacionándolo con el aprovisionamiento de recursos virtuales y la implementación de cargas de trabajo en la nube.</td><td><a href="#p5">5</a></td></tr><tr><td><b>2f)</b></td><td>Se han caracterizado los componentes de la infraestructura de nube, especificando lo relativo a servidores, redes, almacenamiento y software.</td><td><a href="#p6">6</a></td></tr></table></div>
 <h3>Puntos de la unidad</h3>
 <div class="tabla"><table><tr><th>Nº</th><th>Punto</th><th>CE</th></tr><tr><td><a href="#p1">1</a></td><td>On premise y nube: qué es la infraestructura de nube</td><td>a</td></tr><tr><td><a href="#p2">2</a></td><td>Cómo funciona la nube y cuál es su modelo de negocio</td><td>b</td></tr><tr><td><a href="#p3">3</a></td><td>Beneficios de la nube frente a on premise: CapEx, OpEx y TCO</td><td>c</td></tr><tr><td><a href="#p4">4</a></td><td>Infraestructura de nube y arquitectura de nube</td><td>d</td></tr><tr><td><a href="#p5">5</a></td><td>Componentes y aprovisionamiento: de la máquina física a la máquina virtual</td><td>e</td></tr><tr><td><a href="#p6">6</a></td><td>Servidores, redes, almacenamiento y software en la nube</td><td>f</td></tr></table></div>
 <h3>Evaluación</h3>
-<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>60 %</b> prueba escrita (fecha por confirmar) y <b>40 %</b> trabajos de clase (inventario on premise, estimación de costes, estudio TCO, diagrama de arquitectura, práctica de aprovisionamiento y ficha técnica de componentes).</p>
+<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>60 %</b> prueba escrita (fecha por confirmar) y <b>40 %</b> trabajos de clase (inventario on premise, estimación de costes, estudio TCO, diagrama de arquitectura, análisis del aprovisionamiento y de las cargas de trabajo, y ficha técnica de componentes).</p>
 <p>Los criterios a y c se completan en la formación en empresa: qué infraestructura usa la empresa (propia, nube o mixta) y por qué.</p>
 </section><section class="panel" role="tabpanel" id="p-p1" aria-labelledby="tab-p1" hidden>
 <p class="meta">Unidad 2 · 1. On premise y nube · 2 horas</p>
@@ -195,15 +195,15 @@
 <p>Justificad cada respuesta.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Primer contacto con la consola de nube <span class="dur">30 min</span></h4>
-<p>Individual. Entrad en el laboratorio de AWS Academy (Learner Lab) y, <b>sin crear todavía ningún recurso</b>:</p>
+<h4>Actividad 3. Primer contacto con un proveedor de nube <span class="dur">30 min</span></h4>
+<p>Individual, con la web pública de los proveedores:</p>
 <ol>
-<li>Localizad el selector de región. Anotad qué regiones hay en Europa y si hay alguna en España. (En el laboratorio solo se pueden usar <code>us-east-1</code> y <code>us-west-2</code>: si entráis en otra región veréis errores de acceso, es normal.)</li>
-<li>Recorred el catálogo de servicios y encontrad uno de cada tipo: máquinas virtuales, almacenamiento de objetos, bases de datos gestionadas, red virtual, contenedores y funciones serverless. Anotad su nombre en ese proveedor.</li>
-<li>Buscad en la documentación pública del proveedor cuántas zonas de disponibilidad tiene la región de España.</li>
-<li>Buscad la página de "infraestructura global" del proveedor y comparad con otro proveedor: número de regiones en el mundo.</li>
+<li>En la página de infraestructura global de AWS (<a href="https://aws.amazon.com/es/about-aws/global-infrastructure/">aws.amazon.com/es/about-aws/global-infrastructure</a>), anotad qué regiones hay en Europa, si hay alguna en España y cuántas zonas de disponibilidad tiene.</li>
+<li>En el catálogo de productos de AWS (<a href="https://aws.amazon.com/es/products/">aws.amazon.com/es/products</a>), encontrad uno de cada tipo: máquinas virtuales, almacenamiento de objetos, bases de datos gestionadas, red virtual, contenedores y funciones serverless. Anotad su nombre.</li>
+<li>Haced lo mismo con Azure (<a href="https://azure.microsoft.com/es-es/explore/global-infrastructure/">infraestructura global</a> y <a href="https://azure.microsoft.com/es-es/products/">productos</a>) y completad una tabla de equivalencias: tipo de servicio, nombre en AWS, nombre en Azure.</li>
+<li>Comparad los dos proveedores: número de regiones en el mundo y región más cercana a Castellón.</li>
 </ol>
-<p class="entrega">Entrega en Aules: ficha del inventario, tabla de casos y respuestas del recorrido por la consola. En la puesta en común (5 min) comparamos el cuarto de servidores de la gestoría con lo que ofrece una región de nube.</p>
+<p class="entrega">Entrega en Aules: ficha del inventario, tabla de casos y tabla de equivalencias entre proveedores. En la puesta en común (5 min) comparamos el cuarto de servidores de la gestoría con lo que ofrece una región de nube.</p>
 </div>
 
 <h3>Preguntas de repaso</h3>
@@ -224,7 +224,7 @@
 <li>Explicar el modelo de negocio de la nube: economías de escala y pago por uso.</li>
 <li>Conocer las modalidades de precio (bajo demanda, reservas, planes de ahorro, instancias spot, capa gratuita) y qué se factura.</li>
 <li>Entender el modelo de responsabilidad compartida y los acuerdos de nivel de servicio (SLA).</li>
-<li>Crear una máquina virtual por la consola y por la API, y estimar el coste de Cita Previa con una calculadora de precios.</li>
+<li>Interpretar el ciclo de vida y la factura de una máquina virtual, y estimar el coste de Cita Previa con una calculadora de precios.</li>
 </ul>
 
 <h3>1. Cómo funciona la nube por dentro</h3>
@@ -309,26 +309,37 @@
 <p>Si una aplicación depende de varios servicios en serie, su disponibilidad es como mucho el <b>producto</b> de sus disponibilidades: una web sobre una VM al 99,5 % y una base de datos al 99,9 % tiene como máximo 0,995 × 0,999 ≈ 99,4 %.</p>
 
 <h3>Actividades</h3>
-<div class="aviso"><p><b>Condiciones del laboratorio de AWS Academy</b> (Learner Lab). Las usaremos en todas las prácticas de nube del curso:</p>
-<ul>
-<li>Solo se puede trabajar en las regiones <b><code>us-east-1</code></b> (Norte de Virginia) y <code>us-west-2</code> (Oregón). Usaremos siempre <code>us-east-1</code>, donde además existe el par de claves <code>vockey</code>, que se descarga desde <i>AWS Details</i>. Las regiones europeas se pueden consultar en la documentación y en la calculadora de precios, pero no usar.</li>
-<li>Instancias de tamaño <code>nano</code>, <code>micro</code>, <code>small</code>, <code>medium</code> o <code>large</code>; como máximo 9 instancias y 32 vCPU a la vez; discos de hasta 100 GB. Si se lanza algo mayor, se termina automáticamente.</li>
-<li>No se pueden crear usuarios, grupos ni roles de IAM: se usan el rol <code>LabRole</code> y el perfil de instancia <code>LabInstanceProfile</code>, que ya existen.</li>
-<li>Cada sesión del laboratorio dura unas horas; al terminar, las instancias en marcha se detienen y, al volver a arrancarlas, cambian de IP pública. Cada persona tiene un <b>presupuesto limitado</b> para todo el curso: parad o terminad siempre lo que no uséis.</li>
-<li>Los servicios disponibles y sus límites pueden cambiar: consultad el botón <i>Readme</i> del laboratorio.</li>
-</ul></div>
 <div class="actividad">
-<h4>Actividad 1. Crear una máquina por la consola y por la API <span class="dur">35 min</span></h4>
-<p>Individual, en el laboratorio de AWS Academy.</p>
+<h4>Actividad 1. Una máquina, de principio a fin: qué hace el proveedor y qué cobra <span class="dur">35 min</span></h4>
+<p>En parejas. Una desarrolladora de Cita Previa necesita una máquina de pruebas durante una semana. Este es el registro de su cuenta de AWS en un mes de 30 días (720 horas), tal como lo guarda el servicio de auditoría:</p>
+<div class="tabla"><table>
+<tr><th>Momento</th><th>Llamada a la API</th><th>Origen</th><th>Detalle</th></tr>
+<tr><td>Día 1, 09:00</td><td><code>RunInstances</code></td><td>Consola web</td><td>Una <code>t3.medium</code> (2 vCPU, 4 GB) con Ubuntu 24.04, disco SSD <code>gp3</code> de 30 GB e IP pública dinámica</td></tr>
+<tr><td>Día 1, 18:00</td><td><code>StopInstances</code></td><td>Consola web</td><td>La detiene al acabar la jornada</td></tr>
+<tr><td>Días 2 a 5, 09:00</td><td><code>StartInstances</code></td><td>Script con AWS CLI</td><td>Un script programado la arranca cada mañana</td></tr>
+<tr><td>Día 3, 12:00</td><td><code>CreateSnapshot</code></td><td>Consola web</td><td>Instantánea del disco: ocupa 8 GB</td></tr>
+<tr><td>Días 2 a 5, 18:00</td><td><code>StopInstances</code></td><td>Script con AWS CLI</td><td>El script la detiene cada tarde</td></tr>
+<tr><td>Días 6 a 30</td><td>(ninguna)</td><td></td><td>Termina las pruebas y se olvida de ella: queda detenida, con su disco y su instantánea</td></tr>
+</table></div>
+<p>Precios de lista de AWS en <code>us-east-1</code>, en dólares (redondeados; cambian con el tiempo y son algo distintos en las regiones europeas):</p>
+<div class="tabla"><table>
+<tr><th>Recurso</th><th>Precio</th><th>Cuándo se cobra</th></tr>
+<tr><td>Instancia <code>t3.medium</code> bajo demanda</td><td>0,0416 $/hora</td><td>Solo mientras está en ejecución</td></tr>
+<tr><td>IPv4 pública</td><td>0,005 $/hora</td><td>Mientras existe. La dinámica se libera al detener la máquina; la elástica se mantiene reservada</td></tr>
+<tr><td>Disco <code>gp3</code></td><td>0,08 $/GB al mes</td><td>Mientras existe, encendida o no la máquina (se prorratea por horas)</td></tr>
+<tr><td>Instantánea</td><td>0,05 $/GB al mes</td><td>Mientras existe (se prorratea por horas)</td></tr>
+</table></div>
 <ol>
-<li>Arrancad el laboratorio (<i>Start Lab</i>) y entrad en la consola, en la región <code>us-east-1</code>. Cread una instancia EC2 <code>t3.micro</code> con Ubuntu Server 24.04, etiqueta <code>Name=s7-vuestronombre</code>, el par de claves <code>vockey</code> (descargad <code>labsuser.pem</code> desde <i>AWS Details</i> y dadle permisos con <code>chmod 400</code>) y un grupo de seguridad que solo permita SSH desde vuestra IP.</li>
-<li>Cronometrad cuánto tarda desde que pulsáis "Lanzar" hasta que podéis entrar por SSH. Comparadlo con el tiempo que costaría tener un servidor físico nuevo en el centro.</li>
-<li>Dentro de la máquina, consultad sus metadatos: <code>TOKEN=$(curl -sX PUT http://169.254.169.254/latest/api/token -H "X-aws-ec2-metadata-token-ttl-seconds: 60")</code> y <code>curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/availability-zone</code>. ¿En qué zona de disponibilidad está?</li>
-<li>Desde el terminal del laboratorio (AWS CLI ya configurada), listad vuestras instancias: <code>aws ec2 describe-instances --query "Reservations[].Instances[].[InstanceId,State.Name,InstanceType]" --output table</code>.</li>
-<li>Parad la instancia con la CLI (<code>aws ec2 stop-instances --instance-ids ...</code>). ¿Qué recursos siguen existiendo y facturando aunque esté parada? Buscadlos en la consola (volumen EBS, IP...).</li>
-<li>Terminad la instancia y comprobad que el disco se ha borrado.</li>
+<li>En el registro hay llamadas hechas desde la consola y otras desde un script, pero se guardan igual. ¿Por qué? Relacionadlo con el esquema de la consola, la CLI y la API del apartado 1. ¿Qué parte del proveedor recibe y ejecuta esas llamadas?</li>
+<li>Dibujad una línea temporal del mes con los estados de la máquina (en ejecución o detenida) y calculad cuántas horas ha estado en ejecución.</li>
+<li>Calculad la factura del mes, partida por partida (para simplificar, contad el disco y la instantánea como si hubieran existido el mes entero). ¿Qué parte de la factura se paga con la máquina detenida? Relacionadlo con los "costes que sorprenden" del apartado 3.</li>
+<li>Calculad la factura en tres casos alternativos:<ol class="casos">
+<li>El día 1 se olvida de detenerla y queda encendida todo el mes.</li>
+<li>Le asigna una IP elástica en lugar de una dinámica, para que no cambie cada mañana.</li>
+<li>El día 5 a las 18:00, en lugar de detenerla, la termina y borra la instantánea (aquí sí, prorratead el disco y la instantánea por las horas que existieron).</li>
+</ol></li>
+<li>Con lo que habéis calculado, explicad con vuestras palabras qué significa "pago por uso" y por qué en la nube apagar no siempre es borrar.</li>
 </ol>
-<div class="aviso"><p><b>Plan B si la red del centro bloquea el SSH (puerto 22).</b> Comprobadlo con <code>ssh -o ConnectTimeout=10 -i labsuser.pem ubuntu@IP_PUBLICA</code>: si da <i>Connection timed out</i>, conectad desde el navegador con <b>EC2 Instance Connect</b> (en la consola: seleccionad la instancia → <i>Conectar</i> → <i>EC2 Instance Connect</i>), que funciona por HTTPS. Para ello, el grupo de seguridad debe permitir el SSH también desde el servicio: añadid una regla de entrada al puerto 22 con origen en la lista de prefijos administrada <code>com.amazonaws.us-east-1.ec2-instance-connect</code> (si no aparece, consultad en la documentación de AWS el rango de direcciones de EC2 Instance Connect para <code>us-east-1</code>). El resto de pasos son iguales.</p></div>
 </div>
 <div class="actividad">
 <h4>Actividad 2. ¿Cuánto cuesta Cita Previa en la nube? <span class="dur">30 min</span></h4>
@@ -354,7 +365,7 @@
 </ol></li>
 <li>Cita Previa usa una VM (SLA 99,5 %), una base de datos gestionada (99,95 %) y un balanceador (99,99 %). Calculad la disponibilidad máxima esperada y cuántas horas al año podría estar caída. ¿Qué haríais para mejorarla?</li>
 </ol>
-<p class="entrega">Entrega en Aules: capturas y respuestas de la actividad 1, hoja de estimación de la actividad 2 y respuestas de la 3. Comprobad antes de salir que no os queda ningún recurso creado.</p>
+<p class="entrega">Entrega en Aules: línea temporal, cálculos y respuestas de la actividad 1, hoja de estimación de la actividad 2 y respuestas de la 3.</p>
 </div>
 
 <h3>Preguntas de repaso</h3>
@@ -648,7 +659,7 @@
 <li>Identificar los componentes software: hipervisor, sistema operativo anfitrión, plano de control, imágenes y agentes.</li>
 <li>Explicar la virtualización y cómo convierte recursos físicos en recursos virtuales.</li>
 <li>Describir el proceso de aprovisionamiento de una máquina virtual y cómo se implementa una carga de trabajo con cloud-init.</li>
-<li>Aprovisionar una máquina en la nube a partir de una imagen, sin instalación manual, y compararla con un contenedor local.</li>
+<li>Interpretar el aprovisionamiento de una máquina con cloud-init y decidir cómo llevar cargas de trabajo reales a la nube.</li>
 </ul>
 
 <h3>1. Componentes hardware</h3>
@@ -785,30 +796,82 @@ runcmd:
 <p>Calculad la proporción de vCPU frente a hilos físicos y frente a núcleos físicos, y la de RAM asignada frente a RAM física. ¿Hay sobresuscripción de CPU? ¿Y de memoria? ¿Cuál de las dos es más peligrosa y por qué?</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Aprovisionar desde una imagen con cloud-init en la nube <span class="dur">35 min</span></h4>
-<p>En parejas, en el laboratorio de AWS Academy (región <code>us-east-1</code>).</p>
+<h4>Actividad 2. Leer un aprovisionamiento con cloud-init <span class="dur">35 min</span></h4>
+<p>En parejas. Un compañero ha lanzado en AWS una instancia Ubuntu 24.04 con el fichero <code>user-data.yaml</code> del apartado 4 como datos de usuario. Esto es lo que muestra la consola:</p>
+<div class="tabla"><table>
+<tr><th>Hora</th><th>Evento en la consola</th></tr>
+<tr><td>10:02:05</td><td>Pulsa <i>Lanzar instancia</i>: petición aceptada, identificador <code>i-0a1b2c3d4e5f60718</code></td></tr>
+<tr><td>10:02:11</td><td>Estado <i>pending</i>, zona <code>us-east-1a</code>, IP privada <code>172.31.20.15</code>, IP pública <code>3.85.10.24</code></td></tr>
+<tr><td>10:02:19</td><td>Estado <i>running</i></td></tr>
+<tr><td>10:03:00</td><td><code>http://3.85.10.24</code> responde con la página de Cita Previa</td></tr>
+</table></div>
+<p>Y este es un extracto simplificado del fichero <code>/var/log/cloud-init-output.log</code> de la máquina:</p>
+<p class="fichero">/var/log/cloud-init-output.log (extracto)</p>
+<pre><code>Cloud-init v. 25.1.4-0ubuntu0~24.04.1 running 'init' at Mon, 02 Nov 2026 10:02:24 +0000. Up 6.12 seconds.
+ci-info: | ens5 | True | 172.31.20.15 | 255.255.240.0 | global | 0e:a1:b2:c3:d4:e5 |
+Generating public/private ed25519 key pair.
+Cloud-init v. 25.1.4-0ubuntu0~24.04.1 running 'modules:config' at Mon, 02 Nov 2026 10:02:29 +0000. Up 11.40 seconds.
+Cloud-init v. 25.1.4-0ubuntu0~24.04.1 running 'modules:final' at Mon, 02 Nov 2026 10:02:31 +0000. Up 13.02 seconds.
+Hit:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble InRelease
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Reading package lists...
+The following NEW packages will be installed:
+  nginx nginx-common
+Setting up nginx (1.24.0-2ubuntu7) ...
+Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:02:58 +0000. Datasource DataSourceEc2Local.  Up 40.31 seconds</code></pre>
 <ol>
-<li>Si no tenéis clave SSH, generadla en el portátil con <code>ssh-keygen -t ed25519</code> y copiad la pública (<code>cat ~/.ssh/id_ed25519.pub</code>) en el fichero <code>user-data.yaml</code> del apartado 4.</li>
-<li>Lanzad una instancia Ubuntu 24.04 pequeña llamada <code>s10-apellido1-apellido2</code>, pegando ese fichero en <i>Detalles avanzados → Datos de usuario</i>. En <i>Par de claves</i> elegid continuar sin par de claves (la clave va en el <code>user-data.yaml</code>). En el grupo de seguridad, abrid los puertos 22 y 80 solo a vuestra IP.</li>
-<li>Cronometrad desde que pulsáis <i>Lanzar</i> hasta que la página web responde en su IP pública. Comprobad que el servidor web funciona sin haber entrado por SSH.</li>
-<li>Entrad por SSH (<code>ssh despliegue@IP_PUBLICA</code>) y ejecutad <code>cloud-init status --long</code>, <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code> e <code>ip a</code>. Comparad lo que ve la VM con lo que visteis en vuestro portátil: ¿qué modelo de CPU, qué tipo de disco y qué tarjeta de red ve?</li>
-<li>Consultad <code>/var/log/cloud-init.log</code> y <code>/var/log/cloud-init-output.log</code>: ¿qué hizo cloud-init y en qué orden?</li>
-<li><b>Terminad la instancia</b> al acabar.</li>
+<li>Asignad cada evento de la consola y cada bloque del registro a uno de los siete pasos del aprovisionamiento del apartado 4. ¿Qué pasos ocurren fuera de la máquina (en el plano de control) y cuáles dentro?</li>
+<li>Para cada sección del <code>user-data.yaml</code> (<code>hostname</code>, <code>users</code>, <code>package_update</code> y <code>packages</code>, <code>write_files</code>, <code>runcmd</code>), indicad qué evidencia del registro o de la consola demuestra que se ha ejecutado, o cómo lo comprobaríais si no aparece.</li>
+<li>Calculad cuánto tarda el plano de control en tener la máquina en ejecución y cuánto tarda después cloud-init en dejar la web funcionando. ¿Qué parte es la más lenta y por qué? ¿Cómo la acortaría una imagen de oro (apartado 4)?</li>
+<li>Otro compañero lanza la misma máquina, pero la web no responde. Su máquina muestra esto:
+<pre><code>$ cloud-init status --long
+status: error
+extended_status: error - done
+detail: DataSourceEc2Local
+errors:
+	- (package_update_upgrade_install) failed
+
+$ tail -n 3 /var/log/cloud-init-output.log
+E: Unable to locate package ngnix
+Failed to install packages: ['ngnix']
+Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +0000. Datasource DataSourceEc2Local.  Up 31.87 seconds</code></pre>
+¿Qué ha fallado y en qué sección del <code>user-data.yaml</code>? ¿Se habrá creado el usuario <code>despliegue</code>? ¿Por qué lo correcto en la nube es terminar esta máquina y lanzar otra con el fichero corregido, en lugar de entrar a arreglarla a mano?</li>
+<li>Para los picos de los lunes hacen falta 10 servidores web iguales. ¿Qué cambiaríais en el <code>user-data.yaml</code> para que sirva para los 10?</li>
 </ol>
-<div class="aviso"><p><b>Si el puerto 22 está bloqueado</b>, usad EC2 Instance Connect como en el punto 2, escribiendo <code>despliegue</code> como usuario: así comprobáis además que cloud-init creó el usuario. El resto de la actividad no cambia.</p></div>
 </div>
 <div class="actividad">
-<h4>Actividad 3. La misma carga de trabajo en un contenedor local <span class="dur">30 min</span></h4>
-<p>Individual, en vuestro portátil (Docker ya está instalado desde la unidad 1). Vamos a levantar el mismo tipo de servicio, un servidor web, pero en un contenedor:</p>
+<h4>Actividad 3. Llevar las cargas de trabajo de la gestoría a la nube <span class="dur">30 min</span></h4>
+<p>En parejas. La gestoría del punto 1 quiere llevar a la nube las ocho máquinas virtuales de la actividad 1. El mantenimiento externo ha medido su uso durante tres meses:</p>
+<div class="tabla"><table>
+<tr><th>VM</th><th>Asignado</th><th>CPU media / pico</th><th>RAM usada</th><th>Observaciones</th></tr>
+<tr><td>Controlador de dominio</td><td>2 vCPU, 8 GB</td><td>5 % / 20 %</td><td>3 GB</td><td>Uso constante todo el día</td></tr>
+<tr><td>Ficheros</td><td>4 vCPU, 16 GB</td><td>10 % / 30 %</td><td>6 GB</td><td>1,5 TB de documentos de clientes</td></tr>
+<tr><td>ERP</td><td>8 vCPU, 32 GB</td><td>35 % / 85 %</td><td>24 GB</td><td>Picos al cierre de cada trimestre. El fabricante solo lo soporta sobre Windows Server</td></tr>
+<tr><td>Base de datos</td><td>8 vCPU, 32 GB</td><td>30 % / 70 %</td><td>28 GB</td><td>SQL Server del ERP. Usa casi toda la memoria como caché</td></tr>
+<tr><td>Correo</td><td>4 vCPU, 16 GB</td><td>15 % / 40 %</td><td>10 GB</td><td>Servidor de correo propio; su licencia caduca en marzo</td></tr>
+<tr><td>Web interna</td><td>2 vCPU, 4 GB</td><td>1 % / 3 %</td><td>1 GB</td><td>La última visita registrada es de hace 14 meses</td></tr>
+<tr><td>Escritorio remoto</td><td>16 vCPU, 24 GB</td><td>40 % / 75 %</td><td>20 GB</td><td>30 usuarios, solo de 8 a 15 h, de lunes a viernes</td></tr>
+<tr><td>Pruebas</td><td>8 vCPU, 8 GB</td><td>0 % / 90 %</td><td>2 GB</td><td>Solo se usa unos 2 días al mes, para probar actualizaciones</td></tr>
+</table></div>
+<p>Tipos de instancia disponibles (especificaciones reales de AWS):</p>
+<div class="tabla"><table>
+<tr><th>Tipo</th><th>Familia</th><th>vCPU</th><th>RAM</th></tr>
+<tr><td><code>t3.medium</code></td><td>Ráfagas</td><td>2</td><td>4 GB</td></tr>
+<tr><td><code>t3.large</code></td><td>Ráfagas</td><td>2</td><td>8 GB</td></tr>
+<tr><td><code>m7i.large</code></td><td>Propósito general</td><td>2</td><td>8 GB</td></tr>
+<tr><td><code>m7i.xlarge</code></td><td>Propósito general</td><td>4</td><td>16 GB</td></tr>
+<tr><td><code>c7i.xlarge</code></td><td>Optimizada para cómputo</td><td>4</td><td>8 GB</td></tr>
+<tr><td><code>r7i.large</code></td><td>Optimizada para memoria</td><td>2</td><td>16 GB</td></tr>
+<tr><td><code>r7i.xlarge</code></td><td>Optimizada para memoria</td><td>4</td><td>32 GB</td></tr>
+</table></div>
+<p>Además del cómputo, la gestoría puede contratar una base de datos gestionada, correo como SaaS (Microsoft 365) y escritorios virtuales gestionados (Amazon WorkSpaces).</p>
 <ol>
-<li>Preparad la página: <code>mkdir -p ~/s10-web</code> y <code>echo "&lt;h1&gt;Cita Previa en un contenedor&lt;/h1&gt;" &gt; ~/s10-web/index.html</code></li>
-<li>Arrancad el contenedor midiendo el tiempo: <code>time docker run -d --name s10-web -p 8080:80 -v ~/s10-web:/usr/share/nginx/html:ro nginx:stable</code>. Abrid <code>http://localhost:8080</code>.</li>
-<li>Borradlo (<code>docker rm -f s10-web</code>) y repetid el paso 2. ¿Por qué la segunda vez es mucho más rápido?</li>
-<li>Comparad el núcleo del sistema: <code>uname -r</code> en el portátil y <code>docker exec s10-web uname -r</code> en el contenedor. Haced lo mismo con <code>nproc</code>. ¿Qué os dice esto sobre la diferencia entre una VM y un contenedor?</li>
-<li>Limpiad con <code>docker rm -f s10-web</code>.</li>
+<li>Para cada VM, elegid una estrategia de migración (las "R" del apartado 4) y justificadla con los datos de la tabla.</li>
+<li>Para las que sigan siendo máquinas virtuales, elegid tipo de instancia y familia. Comparad lo que pedís con lo que tienen asignado ahora: ¿estaban bien dimensionadas?</li>
+<li>Para cada una, indicad cómo se implementaría la carga de trabajo en la nube: imagen del sistema, configuración con cloud-init, servicio gestionado o SaaS.</li>
+<li>¿Qué máquinas no necesitan estar encendidas todo el día? ¿Qué ahorro supone eso en la nube y por qué en el cuarto de la gestoría no ahorraba nada?</li>
 </ol>
-<p>Completad una tabla comparando la VM en la nube y el contenedor local: tiempo de aprovisionamiento, cómo se elige el tamaño, de dónde sale la imagen, cómo se pasa la configuración, cómo se accede, qué núcleo de sistema usa y qué tuvisteis que hacer a mano.</p>
-<p class="entrega">Entrega en Aules: datos del portátil y cálculo de sobresuscripción, capturas y salidas de las actividades 2 y 3, y la tabla comparativa.</p>
+<p class="entrega">Entrega en Aules: datos del portátil y cálculo de sobresuscripción, respuestas de la actividad 2 y tabla de migración de la actividad 3.</p>
 </div>
 
 <h3>Preguntas de repaso</h3>
@@ -830,7 +893,7 @@ runcmd:
 <li>Caracterizar las redes en la nube: red privada virtual, subredes, rutas, puertas de enlace, grupos de seguridad, IP y DNS.</li>
 <li>Caracterizar los tipos de almacenamiento: bloque, fichero y objeto, y sus clases.</li>
 <li>Caracterizar el software de la infraestructura: sistemas operativos, servicios gestionados y software de gestión.</li>
-<li>Construir una pequeña infraestructura de red con una máquina pública y otra privada, y documentarla en una ficha técnica.</li>
+<li>Analizar una infraestructura de red con subredes públicas y privadas, elegir el almacenamiento adecuado y documentarlo todo en una ficha técnica.</li>
 </ul>
 
 <h3>1. Servidores (cómputo)</h3>
@@ -858,7 +921,7 @@ runcmd:
 <li><b>Subred pública</b>: su tabla de rutas envía el tráfico de Internet (<code>0.0.0.0/0</code>) a una <b>puerta de enlace de Internet</b> (<i>Internet Gateway</i>). Las máquinas con IP pública son alcanzables desde Internet. Aquí van los balanceadores y, como mucho, un bastión.</li>
 <li><b>Subred privada</b>: sin ruta directa desde Internet. Si sus máquinas necesitan salir (por ejemplo, a descargar actualizaciones), lo hacen a través de una <b>puerta de enlace NAT</b> situada en la subred pública, que permite salir pero no entrar. Aquí van la aplicación y la base de datos.</li>
 </ul>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 250" role="img" aria-label="VPC con subred pública y privada" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-vpc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="170" y="10" width="538" height="230" rx="8" class="d-grupo-azul"/><text x="180" y="25" class="tt">VPC 10.20.0.0/16</text><rect x="186" y="40" width="240" height="186" rx="8" class="d-grupo-verde"/><text x="196" y="55" class="tt">Subred pública 10.20.1.0/24</text><rect x="450" y="40" width="244" height="186" rx="8" class="d-grupo"/><text x="460" y="55" class="tt">Subred privada 10.20.2.0/24</text><rect x="12.0" y="60.0" width="120.0" height="44.0" rx="6" class="d-gris"/><text x="72.0" y="74.0" class="t" text-anchor="middle" dominant-baseline="middle">Vuestro</text><text x="72.0" y="90.0" class="t" text-anchor="middle" dominant-baseline="middle">portátil</text><rect x="12.0" y="140.0" width="120.0" height="62.0" rx="6" class="d-morado"/><text x="72.0" y="155.0" class="t" text-anchor="middle" dominant-baseline="middle">Puerta de</text><text x="72.0" y="171.0" class="t" text-anchor="middle" dominant-baseline="middle">enlace de</text><text x="72.0" y="187.0" class="t" text-anchor="middle" dominant-baseline="middle">Internet</text><rect x="214.0" y="64.0" width="184.0" height="56.0" rx="6" class="d-verde"/><text x="306.0" y="85.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Bastión</text><text x="306.0" y="101.0" class="ts" text-anchor="middle" dominant-baseline="middle">IP pública · sg-bastion</text><rect x="214.0" y="160.0" width="184.0" height="44.0" rx="6" class="d-blanco"/><text x="306.0" y="182.0" class="t" text-anchor="middle" dominant-baseline="middle">NAT (no la creamos)</text><rect x="482.0" y="64.0" width="184.0" height="56.0" rx="6" class="d-azul"/><text x="574.0" y="77.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VM privada</text><text x="574.0" y="93.0" class="ts" text-anchor="middle" dominant-baseline="middle">sin IP pública ·</text><text x="574.0" y="109.0" class="ts" text-anchor="middle" dominant-baseline="middle">sg-privada</text><path d="M72.0,106.0 L72.0,138.0" class="flecha " marker-end="url(#fl-vpc)"/><rect x="57.5" y="113.0" width="28.9" height="18" rx="3" class="fondo-etiqueta"/><text x="72.0" y="122.0" class="te" text-anchor="middle" dominant-baseline="middle">SSH</text><path d="M134.0,171.0 L173.0,171.0 L173.0,92.0 L212.0,92.0" class="flecha " marker-end="url(#fl-vpc)"/><path d="M400.0,92.0 L480.0,92.0" class="flecha " marker-end="url(#fl-vpc)"/><rect x="416.1" y="83.0" width="47.8" height="18" rx="3" class="fondo-etiqueta"/><text x="440.0" y="92.0" class="te" text-anchor="middle" dominant-baseline="middle">ssh -J</text><path d="M574.0,122.0 L574.0,140.0 L306.0,140.0 L306.0,158.0" class="flecha disc " marker-end="url(#fl-vpc)"/><rect x="416.1" y="131.0" width="47.8" height="18" rx="3" class="fondo-etiqueta"/><text x="440.0" y="140.0" class="te" text-anchor="middle" dominant-baseline="middle">salida</text></svg></div><figcaption>La red de la actividad: una VPC con una subred pública (bastión) y otra privada. Solo se entra a la máquina privada pasando por el bastión.</figcaption></figure>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 250" role="img" aria-label="VPC con subred pública y privada" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-vpc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="170" y="10" width="538" height="230" rx="8" class="d-grupo-azul"/><text x="180" y="25" class="tt">VPC 10.20.0.0/16</text><rect x="186" y="40" width="240" height="186" rx="8" class="d-grupo-verde"/><text x="196" y="55" class="tt">Subred pública 10.20.1.0/24</text><rect x="450" y="40" width="244" height="186" rx="8" class="d-grupo"/><text x="460" y="55" class="tt">Subred privada 10.20.2.0/24</text><rect x="12.0" y="60.0" width="120.0" height="44.0" rx="6" class="d-gris"/><text x="72.0" y="74.0" class="t" text-anchor="middle" dominant-baseline="middle">Vuestro</text><text x="72.0" y="90.0" class="t" text-anchor="middle" dominant-baseline="middle">portátil</text><rect x="12.0" y="140.0" width="120.0" height="62.0" rx="6" class="d-morado"/><text x="72.0" y="155.0" class="t" text-anchor="middle" dominant-baseline="middle">Puerta de</text><text x="72.0" y="171.0" class="t" text-anchor="middle" dominant-baseline="middle">enlace de</text><text x="72.0" y="187.0" class="t" text-anchor="middle" dominant-baseline="middle">Internet</text><rect x="214.0" y="64.0" width="184.0" height="56.0" rx="6" class="d-verde"/><text x="306.0" y="85.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Bastión</text><text x="306.0" y="101.0" class="ts" text-anchor="middle" dominant-baseline="middle">IP pública · sg-bastion</text><rect x="214.0" y="160.0" width="184.0" height="44.0" rx="6" class="d-blanco"/><text x="306.0" y="182.0" class="t" text-anchor="middle" dominant-baseline="middle">NAT (no la creamos)</text><rect x="482.0" y="64.0" width="184.0" height="56.0" rx="6" class="d-azul"/><text x="574.0" y="77.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VM privada</text><text x="574.0" y="93.0" class="ts" text-anchor="middle" dominant-baseline="middle">sin IP pública ·</text><text x="574.0" y="109.0" class="ts" text-anchor="middle" dominant-baseline="middle">sg-privada</text><path d="M72.0,106.0 L72.0,138.0" class="flecha " marker-end="url(#fl-vpc)"/><rect x="57.5" y="113.0" width="28.9" height="18" rx="3" class="fondo-etiqueta"/><text x="72.0" y="122.0" class="te" text-anchor="middle" dominant-baseline="middle">SSH</text><path d="M134.0,171.0 L173.0,171.0 L173.0,92.0 L212.0,92.0" class="flecha " marker-end="url(#fl-vpc)"/><path d="M400.0,92.0 L480.0,92.0" class="flecha " marker-end="url(#fl-vpc)"/><rect x="416.1" y="83.0" width="47.8" height="18" rx="3" class="fondo-etiqueta"/><text x="440.0" y="92.0" class="te" text-anchor="middle" dominant-baseline="middle">ssh -J</text><path d="M574.0,122.0 L574.0,140.0 L306.0,140.0 L306.0,158.0" class="flecha disc " marker-end="url(#fl-vpc)"/><rect x="416.1" y="131.0" width="47.8" height="18" rx="3" class="fondo-etiqueta"/><text x="440.0" y="140.0" class="te" text-anchor="middle" dominant-baseline="middle">salida</text></svg></div><figcaption>Ejemplo: una VPC con una subred pública (bastión) y otra privada. Solo se entra a la máquina privada pasando por el bastión.</figcaption></figure>
 <h4>Tablas de rutas, direcciones IP y DNS</h4>
 <ul>
 <li><b>Tabla de rutas</b>: decide adónde va el tráfico según su destino. Todas incluyen una ruta local para la comunicación dentro de la VPC.</li>
@@ -916,30 +979,75 @@ runcmd:
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Red con subred pública y privada <span class="dur">45 min</span></h4>
-<p>En parejas, en AWS Academy, región <code>us-east-1</code>. Etiquetad todo con <code>Proyecto=s11-vuestrosnombres</code>.</p>
+<h4>Actividad 1. Analizar la red de Cita Previa <span class="dur">45 min</span></h4>
+<p>En parejas. Esta es la configuración del entorno de revisión de Cita Previa en AWS, en la región de España (<code>eu-south-2</code>):</p>
+<p><b>Red y subredes.</b> VPC <code>vpc-citaprevia-rev</code> con el rango <code>10.30.0.0/16</code>.</p>
+<div class="tabla"><table>
+<tr><th>Subred</th><th>Rango</th><th>Zona</th><th>Tabla de rutas</th></tr>
+<tr><td><code>pub-a</code></td><td><code>10.30.1.0/24</code></td><td><code>eu-south-2a</code></td><td><code>rt-publica</code></td></tr>
+<tr><td><code>app-a</code></td><td><code>10.30.11.0/24</code></td><td><code>eu-south-2a</code></td><td><code>rt-privada</code></td></tr>
+<tr><td><code>app-b</code></td><td><code>10.30.12.0/24</code></td><td><code>eu-south-2b</code></td><td><code>rt-privada</code></td></tr>
+<tr><td><code>datos-a</code></td><td><code>10.30.21.0/24</code></td><td><code>eu-south-2a</code></td><td><code>rt-datos</code></td></tr>
+</table></div>
+<p><b>Tablas de rutas y puertas de enlace.</b> Hay una puerta de enlace de Internet <code>igw-cita</code> asociada a la VPC y una puerta de enlace NAT <code>nat-a</code> situada en <code>pub-a</code>.</p>
+<div class="tabla"><table>
+<tr><th>Tabla</th><th>Destino</th><th>Siguiente salto</th></tr>
+<tr><td rowspan="2"><code>rt-publica</code></td><td><code>10.30.0.0/16</code></td><td><code>local</code></td></tr>
+<tr><td><code>0.0.0.0/0</code></td><td><code>igw-cita</code></td></tr>
+<tr><td rowspan="2"><code>rt-privada</code></td><td><code>10.30.0.0/16</code></td><td><code>local</code></td></tr>
+<tr><td><code>0.0.0.0/0</code></td><td><code>nat-a</code></td></tr>
+<tr><td><code>rt-datos</code></td><td><code>10.30.0.0/16</code></td><td><code>local</code></td></tr>
+</table></div>
+<p><b>Máquinas.</b></p>
+<div class="tabla"><table>
+<tr><th>Máquina</th><th>Subred</th><th>IP privada</th><th>IP pública</th><th>Grupo de seguridad</th></tr>
+<tr><td><code>bastion</code></td><td><code>pub-a</code></td><td><code>10.30.1.10</code></td><td><code>203.0.113.25</code></td><td><code>sg-bastion</code></td></tr>
+<tr><td><code>app-1</code></td><td><code>app-a</code></td><td><code>10.30.11.21</code></td><td>no</td><td><code>sg-app</code></td></tr>
+<tr><td><code>app-2</code></td><td><code>app-b</code></td><td><code>10.30.12.34</code></td><td>no</td><td><code>sg-app</code></td></tr>
+<tr><td><code>bd</code> (PostgreSQL)</td><td><code>datos-a</code></td><td><code>10.30.21.5</code></td><td>no</td><td><code>sg-bd</code></td></tr>
+</table></div>
+<p><b>Grupos de seguridad</b> (reglas de entrada; la salida está permitida en todos):</p>
+<div class="tabla"><table>
+<tr><th>Grupo</th><th>Protocolo y puerto</th><th>Origen</th></tr>
+<tr><td><code>sg-bastion</code></td><td>TCP 22 (SSH)</td><td><code>0.0.0.0/0</code></td></tr>
+<tr><td rowspan="2"><code>sg-app</code></td><td>TCP 22 (SSH)</td><td><code>sg-bastion</code></td></tr>
+<tr><td>TCP 8080 (aplicación)</td><td><code>10.30.1.0/24</code></td></tr>
+<tr><td><code>sg-bd</code></td><td>TCP 5432 (PostgreSQL)</td><td><code>0.0.0.0/0</code></td></tr>
+</table></div>
 <ol>
-<li>Cread una VPC <code>10.20.0.0/16</code> (opción "Solo VPC", para crear cada pieza a mano).</li>
-<li>Cread dos subredes en la misma zona: <code>10.20.1.0/24</code> (pública) y <code>10.20.2.0/24</code> (privada).</li>
-<li>Cread una puerta de enlace de Internet, asociadla a la VPC y cread una tabla de rutas para la subred pública con la ruta <code>0.0.0.0/0</code> hacia ella.</li>
-<li>Grupos de seguridad: <code>sg-bastion</code> (SSH solo desde vuestra IP) y <code>sg-privada</code> (SSH solo desde <code>sg-bastion</code>).</li>
-<li>Lanzad una VM pequeña en la subred pública con IP pública (bastión) y otra en la privada sin IP pública.</li>
-<li>Entrad al bastión y, desde él, a la privada: <code>ssh -J ubuntu@IP_PUBLICA ubuntu@10.20.2.X</code> (con el agente SSH cargado con vuestra clave).</li>
-<li>Desde la privada, intentad <code>curl -I https://ubuntu.com</code>. ¿Por qué falla? ¿Qué haría falta? (No creéis la NAT: es de pago por hora.)</li>
+<li>Dibujad el esquema de la red en diagrams.net o en papel: VPC, zonas, subredes, puertas de enlace, máquinas y salida a Internet de cada subred.</li>
+<li>Clasificad cada subred como pública o privada y explicad qué dato de la configuración lo decide. Sabiendo que AWS reserva 5 direcciones en cada subred, ¿cuántas máquinas caben en cada una?</li>
+<li>Para cada intento de conexión, decidid si funciona y qué elemento lo permite o lo bloquea (tabla de rutas, puerta de enlace, IP pública o grupo de seguridad):<ol class="casos">
+<li>Desde casa, SSH a <code>203.0.113.25</code>.</li>
+<li>Desde casa, SSH a <code>10.30.11.21</code>.</li>
+<li>Desde <code>bastion</code>, SSH a <code>app-1</code>.</li>
+<li>Desde <code>app-1</code>, descargar actualizaciones de Internet.</li>
+<li>Desde <code>bd</code>, descargar actualizaciones de Internet.</li>
+<li>Desde <code>app-2</code>, conectar con <code>bd</code> por el puerto 5432.</li>
+<li>Desde <code>bastion</code>, conectar con <code>bd</code> por el puerto 5432.</li>
+<li>Desde <code>app-1</code>, conectar con <code>app-2</code> por el puerto 8080.</li>
+</ol></li>
+<li>Encontrad al menos tres problemas de seguridad o de disponibilidad en esta configuración y proponed cómo corregir cada uno. Pista: pensad qué pasa si cae la zona <code>eu-south-2a</code>.</li>
 </ol>
-<div class="aviso"><p><b>Si el puerto 22 está bloqueado</b>, conectad al bastión con EC2 Instance Connect (punto 2) y, desde él, comprobad que la privada es alcanzable solo desde el bastión: <code>nc -zv 10.20.2.X 22</code> debe responder, porque <code>sg-privada</code> admite el tráfico desde <code>sg-bastion</code>. No copiéis vuestra clave privada al bastión para entrar en la privada: es justo lo que <code>ssh -J</code> evita. En ese caso, el salto con <code>ssh -J</code> y el paso 7 se explican en clase.</p></div>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Almacenamiento de bloque y de objeto <span class="dur">20 min</span></h4>
-<ol>
-<li>Cread un volumen de 1 GB en la misma zona, conectadlo a la VM pública, formateadlo (<code>sudo mkfs.ext4 /dev/nvme1n1</code>; comprobad el nombre con <code>lsblk</code>), montadlo y escribid un fichero. Haced una instantánea.</li>
-<li>Cread un bucket con un nombre único, subid un fichero desde la consola y otro desde el terminal del laboratorio (<code>aws s3 cp</code>). Intentad abrir la URL del objeto en el navegador: ¿qué ocurre y por qué es lo correcto?</li>
+<h4>Actividad 2. Elegir el almacenamiento <span class="dur">20 min</span></h4>
+<p>En parejas. Para cada necesidad de Cita Previa, elegid el tipo de almacenamiento (bloque, fichero u objeto) y la opción concreta (tipo de disco, clase de almacenamiento, instantáneas, ciclo de vida, bloqueo contra borrado...). Indicad también qué le pasa a ese dato si se termina la máquina virtual.</p>
+<ol class="casos">
+<li>El disco del sistema de cada servidor de aplicación.</li>
+<li>Los datos de una base de datos PostgreSQL instalada en una máquina virtual, que necesita muchas operaciones por segundo garantizadas.</li>
+<li>Las plantillas de los correos de recordatorio, que <code>app-1</code> y <code>app-2</code> deben leer y modificar a la vez.</li>
+<li>Los justificantes en PDF que descargan los pacientes: unos 2 TB, y crecen cada mes.</li>
+<li>Los justificantes de más de un año, que hay que conservar cinco años y casi nunca se consultan.</li>
+<li>Ficheros temporales para generar un informe nocturno, que se pueden perder sin problema.</li>
+<li>Una copia diaria del disco de la base de datos de la necesidad 2.</li>
+<li>Los registros de auditoría, que nadie puede borrar ni modificar durante dos años.</li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Ficha técnica y limpieza <span class="dur">15 min</span></h4>
-<p>Redactad una ficha técnica de la infraestructura creada con una tabla por tipo de componente (servidores, red, almacenamiento, software): identificador, características, ubicación, coste aproximado por hora o mes y función. Añadid un esquema de red. Después <b>borrad todo</b> en orden (instancias, volúmenes e instantáneas, bucket, grupos de seguridad, subredes, puerta de enlace, VPC) y comprobadlo filtrando por la etiqueta.</p>
-<p class="entrega">Entrega en Aules: capturas de la actividad 1 y 2 (incluida la conexión a la VM privada) y la ficha técnica con el esquema.</p>
+<h4>Actividad 3. Ficha técnica <span class="dur">15 min</span></h4>
+<p>Redactad la ficha técnica del entorno de revisión de Cita Previa, ya con las correcciones de la actividad 1 y el almacenamiento de la actividad 2. Haced una tabla por tipo de componente (servidores, red, almacenamiento y software) con estas columnas: identificador, características, ubicación (zona y subred) y función. En el software, incluid el sistema operativo, el software de base de cada máquina y el software de gestión que usaríais (identidades, monitorización, auditoría). Añadid el esquema de red corregido.</p>
+<p class="entrega">Entrega en Aules: esquema y respuestas de la actividad 1, tabla de almacenamiento de la actividad 2 y ficha técnica con el esquema corregido.</p>
 </div>
 
 <h3>Preguntas de repaso</h3>
