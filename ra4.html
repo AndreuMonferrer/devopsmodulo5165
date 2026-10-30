@@ -273,7 +273,7 @@ done &lt; historias.csv</code></pre></li>
 
 <h3>1. Qué es el IaaS</h3>
 <p>En la <b>infraestructura como servicio</b>, el proveedor ofrece los <b>recursos de computación fundamentales</b>: capacidad de proceso, almacenamiento, redes y otros recursos, sobre los que el cliente puede desplegar y ejecutar cualquier software, incluidos sistemas operativos y aplicaciones. El cliente no gestiona la infraestructura física ni la virtualización, pero <b>controla el sistema operativo, el almacenamiento y las aplicaciones</b>, y tiene un control limitado de algunos componentes de red, como los cortafuegos (definición del NIST).</p>
-<p>Es el modelo que más se parece a tener servidores propios, pero sin comprar hardware: por eso es el camino habitual para migrar aplicaciones existentes a la nube (<i>lift and shift</i>). En la unidad 2 (puntos 2, 5 y 6) ya habéis usado IaaS: las instancias EC2, las VPC, los volúmenes EBS y los buckets S3 son servicios IaaS.</p>
+<p>Es el modelo que más se parece a tener servidores propios, pero sin comprar hardware: por eso es el camino habitual para migrar aplicaciones existentes a la nube (<i>lift and shift</i>). En la unidad 2 (puntos 2 y 4) ya habéis trabajado con IaaS: las instancias EC2, las VPC, los volúmenes EBS y los buckets S3 son servicios IaaS.</p>
 
 <h3>2. Estructura del IaaS</h3>
 <div class="tabla"><table>
@@ -284,7 +284,7 @@ done &lt; historias.csv</code></pre></li>
 <tr><td>Identidad y seguridad</td><td>Usuarios, roles, claves, cortafuegos</td><td>IAM, grupos de seguridad, KMS</td><td>Entra ID, NSG, Key Vault</td><td>IAM, reglas de firewall, Cloud KMS</td></tr>
 <tr><td>Gestión</td><td>Consola, API, CLI, monitorización</td><td>CloudWatch, CloudFormation</td><td>Azure Monitor, ARM/Bicep</td><td>Cloud Monitoring, Deployment Manager</td></tr>
 </table></div>
-<p>En IaaS, el cliente <b>ensambla</b> estos bloques para construir su arquitectura (unidad 2, punto 4): decide cuántas máquinas, de qué tamaño, en qué subredes, con qué discos y con qué reglas de red.</p>
+<p>En IaaS, el cliente <b>ensambla</b> estos bloques para construir su arquitectura (unidad 2, punto 3): decide cuántas máquinas, de qué tamaño, en qué subredes, con qué discos y con qué reglas de red.</p>
 
 <h3>3. Qué hace el cliente en IaaS</h3>
 <p>Todo lo que el PaaS nos daba hecho, en IaaS lo hacemos nosotros:</p>

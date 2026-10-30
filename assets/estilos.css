@@ -49,6 +49,9 @@ li{margin:.25rem 0}
 .nota{background:var(--gris);border-left:4px solid var(--ra);padding:.7rem 1rem;margin:1.2rem 0}
 .nota > :first-child{margin-top:0}.nota > :last-child{margin-bottom:0}
 .aviso{background:#fff8e1;border-left:4px solid #d4a017;padding:.7rem 1rem;margin:1.2rem 0}
+.pausa{border:2px solid var(--ra);border-radius:6px;padding:.1rem 1rem .2rem;margin:2rem 0 1rem;background:color-mix(in srgb,var(--ra) 8%,#fff)}
+.pausa > h4{margin:.6rem 0 .3rem;color:var(--ra)}
+.pausa > p{margin:.3rem 0 .6rem}
 .actividad,.ficha{border:1px solid var(--linea);border-radius:6px;padding:.2rem 1.1rem .8rem;margin:1.2rem 0}
 .actividad > h4,.ficha > h4{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin:.8rem 0 .5rem}
 .dur{flex:0 0 auto;font-size:.85rem;font-weight:600;color:var(--ra);white-space:nowrap}
@@ -193,6 +196,8 @@ main.con-indice{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:2.5re
 :root[data-tema="oscuro"] .indice a.actual{color:color-mix(in srgb,var(--ra) 45%,#fff)}
 :root[data-tema="oscuro"] .nota{border-left-color:color-mix(in srgb,var(--ra) 60%,#fff)}
 :root[data-tema="oscuro"] .aviso{background:#2a2412;border-left-color:#b8901b}
+:root[data-tema="oscuro"] .pausa{background:color-mix(in srgb,var(--ra) 14%,#0d1117)}
+:root[data-tema="oscuro"] .pausa > h4{color:color-mix(in srgb,var(--ra) 60%,#fff)}
 :root[data-tema="oscuro"] tr.sin td{background:#12161c}
 :root[data-tema="oscuro"] .unidades .n{color:color-mix(in srgb,var(--c) 45%,#fff)}
 :root[data-tema="oscuro"] .unidades a:hover{background:var(--gris)}

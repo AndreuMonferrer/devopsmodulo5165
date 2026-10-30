@@ -2,12 +2,12 @@
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RA2. Infraestructura propia y en la nube | Módulo 5165</title>
-<link rel="stylesheet" href="assets/estilos.css?v=7">
+<link rel="stylesheet" href="assets/estilos.css?v=8">
 <script src="assets/tema.js?v=5"></script>
 </head><body style="--ra:#2a7a8c">
 <header class="cab"><div class="dentro"><nav class="menu" aria-label="Secciones"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="ra1.html">RA1</a><a href="ra2.html" aria-current="page">RA2</a><a href="ra3.html">RA3</a><a href="ra4.html">RA4</a><a href="ra5.html">RA5</a><a href="ra6.html">RA6</a><a href="ra7.html">RA7</a><button type="button" class="boton-tema" id="cambiar-tema">☾ Modo oscuro</button></nav>
 <h1>Unidad 2. Infraestructura propia y en la nube</h1><p>Dónde viven las máquinas: en nuestras instalaciones (on premise) o en un proveedor de nube.</p></div></header>
-<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Puntos de la unidad 2"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-p1" data-panel="p1">1. On premise y nube</button><button role="tab" id="tab-p2" data-panel="p2">2. Modelo de negocio</button><button role="tab" id="tab-p3" data-panel="p3">3. CapEx, OpEx y TCO</button><button role="tab" id="tab-p4" data-panel="p4">4. Arquitectura</button><button role="tab" id="tab-p5" data-panel="p5">5. Aprovisionamiento</button><button role="tab" id="tab-p6" data-panel="p6">6. Componentes</button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
+<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Puntos de la unidad 2"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-p1" data-panel="p1">1. On premise y nube</button><button role="tab" id="tab-p2" data-panel="p2">2. Funcionamiento y costes</button><button role="tab" id="tab-p3" data-panel="p3">3. Arquitectura</button><button role="tab" id="tab-p4" data-panel="p4">4. Componentes</button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
 <main class="con-indice"><details class="indice" id="indice" open><summary>Índice del punto</summary><ol></ol></details><div class="contenido"><section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
 <p class="meta">Unidad 2 de 7 · 6 puntos · 12 horas · del 26 oct al 13 nov</p>
 <h2>Resultado de aprendizaje 2</h2>
@@ -15,9 +15,9 @@
 <p>Cualquier entorno de despliegue se apoya en servidores, redes y discos que están en algún sitio. En esta unidad comparamos las dos grandes opciones: tener esa infraestructura en instalaciones propias, como la sala de servidores de una empresa, o alquilarla a un proveedor de nube como AWS, Azure o Google Cloud. Veremos cómo funciona la nube por dentro, por qué se paga por uso, cuándo sale a cuenta y cómo se traducen servidores, redes y almacenamiento en recursos virtuales que se crean en segundos.</p>
 <p>Trabajaremos con casos prácticos de infraestructura propia y de nube, con datos reales de los proveedores (calculadoras de precios, documentación pública, registros y configuraciones) y con nuestros propios portátiles.</p>
 <h3>Criterios de evaluación</h3>
-<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Puntos</th></tr><tr><td><b>2a)</b></td><td>Se ha definido el concepto de infraestructura de nube, diferenciándolo del de infraestructura propia (on premise). <em>(se completa en la formación en empresa)</em></td><td><a href="#p1">1</a></td></tr><tr><td><b>2b)</b></td><td>Se ha descrito el funcionamiento de la infraestructura de nube, vinculándolo con su modelo de negocio.</td><td><a href="#p2">2</a></td></tr><tr><td><b>2c)</b></td><td>Se han analizado los beneficios de la infraestructura de nube con respecto a la infraestructura propia (on premise). <em>(se completa en la formación en empresa)</em></td><td><a href="#p3">3</a></td></tr><tr><td><b>2d)</b></td><td>Se ha diferenciado entre la infraestructura de nube y la arquitectura de nube, relacionándolos con los recursos de computación y la ejecución de aplicaciones web.</td><td><a href="#p4">4</a></td></tr><tr><td><b>2e)</b></td><td>Se ha determinado el conjunto de componentes hardware y software básico de la infraestructura en la nube, relacionándolo con el aprovisionamiento de recursos virtuales y la implementación de cargas de trabajo en la nube.</td><td><a href="#p5">5</a></td></tr><tr><td><b>2f)</b></td><td>Se han caracterizado los componentes de la infraestructura de nube, especificando lo relativo a servidores, redes, almacenamiento y software.</td><td><a href="#p6">6</a></td></tr></table></div>
+<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Puntos</th></tr><tr><td><b>2a)</b></td><td>Se ha definido el concepto de infraestructura de nube, diferenciándolo del de infraestructura propia (on premise). <em>(se completa en la formación en empresa)</em></td><td><a href="#p1">1</a></td></tr><tr><td><b>2b)</b></td><td>Se ha descrito el funcionamiento de la infraestructura de nube, vinculándolo con su modelo de negocio.</td><td><a href="#p2">2</a></td></tr><tr><td><b>2c)</b></td><td>Se han analizado los beneficios de la infraestructura de nube con respecto a la infraestructura propia (on premise). <em>(se completa en la formación en empresa)</em></td><td><a href="#p2">2</a></td></tr><tr><td><b>2d)</b></td><td>Se ha diferenciado entre la infraestructura de nube y la arquitectura de nube, relacionándolos con los recursos de computación y la ejecución de aplicaciones web.</td><td><a href="#p3">3</a></td></tr><tr><td><b>2e)</b></td><td>Se ha determinado el conjunto de componentes hardware y software básico de la infraestructura en la nube, relacionándolo con el aprovisionamiento de recursos virtuales y la implementación de cargas de trabajo en la nube.</td><td><a href="#p4">4</a></td></tr><tr><td><b>2f)</b></td><td>Se han caracterizado los componentes de la infraestructura de nube, especificando lo relativo a servidores, redes, almacenamiento y software.</td><td><a href="#p4">4</a></td></tr></table></div>
 <h3>Puntos de la unidad</h3>
-<div class="tabla"><table><tr><th>Nº</th><th>Punto</th><th>CE</th></tr><tr><td><a href="#p1">1</a></td><td>On premise y nube: qué es la infraestructura de nube</td><td>a</td></tr><tr><td><a href="#p2">2</a></td><td>Cómo funciona la nube y cuál es su modelo de negocio</td><td>b</td></tr><tr><td><a href="#p3">3</a></td><td>Beneficios de la nube frente a on premise: CapEx, OpEx y TCO</td><td>c</td></tr><tr><td><a href="#p4">4</a></td><td>Infraestructura de nube y arquitectura de nube</td><td>d</td></tr><tr><td><a href="#p5">5</a></td><td>Componentes y aprovisionamiento: de la máquina física a la máquina virtual</td><td>e</td></tr><tr><td><a href="#p6">6</a></td><td>Servidores, redes, almacenamiento y software en la nube</td><td>f</td></tr></table></div>
+<div class="tabla"><table><tr><th>Nº</th><th>Punto</th><th>CE</th></tr><tr><td><a href="#p1">1</a></td><td>On premise y nube: qué es la infraestructura de nube</td><td>a</td></tr><tr><td><a href="#p2">2</a></td><td>Cómo funciona la nube, cuánto cuesta y cuándo compensa</td><td>b, c</td></tr><tr><td><a href="#p3">3</a></td><td>Infraestructura de nube y arquitectura de nube</td><td>d</td></tr><tr><td><a href="#p4">4</a></td><td>Componentes de la nube: del servidor físico a la máquina virtual, la red y el almacenamiento</td><td>e, f</td></tr></table></div>
 <h3>Evaluación</h3>
 <p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>60 %</b> prueba escrita (fecha por confirmar) y <b>40 %</b> trabajos de clase (inventario on premise, estimación de costes, estudio TCO, diagrama de arquitectura, análisis del aprovisionamiento y de las cargas de trabajo, y ficha técnica de componentes).</p>
 <p>Los criterios a y c se completan en la formación en empresa: qué infraestructura usa la empresa (propia, nube o mixta) y por qué.</p>
@@ -350,9 +350,9 @@
 <li>¿Qué recursos de la nube son de zona, cuáles de región y cuáles globales? ¿Qué fallo afecta a cada uno?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p2" aria-labelledby="tab-p2" hidden>
-<p class="meta">Unidad 2 · 2. Modelo de negocio · 2 horas</p>
-<h2>Cómo funciona la nube y cuál es su modelo de negocio</h2>
-<p class="chips"><span class="ce" title="Se ha descrito el funcionamiento de la infraestructura de nube, vinculándolo con su modelo de negocio.">CE 2b</span></p>
+<p class="meta">Unidad 2 · 2. Funcionamiento y costes · 4 horas</p>
+<h2>Cómo funciona la nube, cuánto cuesta y cuándo compensa</h2>
+<p class="chips"><span class="ce" title="Se ha descrito el funcionamiento de la infraestructura de nube, vinculándolo con su modelo de negocio.">CE 2b</span> <span class="ce" title="Se han analizado los beneficios de la infraestructura de nube con respecto a la infraestructura propia (on premise).">CE 2c</span></p>
 <h3>Objetivos del punto</h3>
 <ul>
 <li>Describir cómo funciona por dentro un proveedor de nube: virtualización, plano de control, API y multitenencia.</li>
@@ -360,14 +360,17 @@
 <li>Conocer las modalidades de precio (bajo demanda, reservas, planes de ahorro, instancias spot, capa gratuita) y qué se factura.</li>
 <li>Entender el modelo de responsabilidad compartida y los acuerdos de nivel de servicio (SLA).</li>
 <li>Interpretar el ciclo de vida y la factura de una máquina virtual, y estimar el coste de Cita Previa con una calculadora de precios.</li>
+<li>Distinguir gasto de capital (CapEx) y gasto operativo (OpEx) y su impacto en una organización.</li>
+<li>Calcular el coste total de propiedad (TCO) de una infraestructura on premise y compararlo con la nube.</li>
+<li>Analizar los beneficios de la nube (agilidad, elasticidad, alcance global, fiabilidad, seguridad) y sus inconvenientes.</li>
+<li>Argumentar cuándo compensa la nube, cuándo el on premise y cuándo una mezcla.</li>
 </ul>
-
 <h3>1. Cómo funciona la nube por dentro</h3>
 <p>Desde fuera, la nube parece magia: pulsas un botón y en un minuto tienes un servidor. Por dentro es una enorme infraestructura física automatizada al máximo.</p>
 <h4>Capa física</h4>
-<p>Cada región tiene varios CPD con decenas de miles de servidores casi idénticos, organizados en racks. Los proveedores diseñan su propio hardware (servidores, conmutadores, incluso procesadores como AWS Graviton o Google TPU) para abaratar costes y consumir menos. Cuando un servidor falla, no se repara en caliente: sus cargas se mueven a otro y el servidor se retira para sustituirlo.</p>
+<p>Cada región tiene varios CPD con decenas de miles de servidores casi idénticos, organizados en racks. Los proveedores diseñan su propio hardware (servidores, conmutadores, incluso procesadores como AWS Graviton o Google TPU) para abaratar costes y consumir menos. Cuando un servidor falla, no se repara en caliente: se retira y se sustituye. Las máquinas virtuales que tenía <b>se caen</b> y, como mucho, el proveedor las vuelve a arrancar en otro servidor (recuperación automática); solo en los mantenimientos programados algunos proveedores, como Google, las mueven a otro servidor sin pararlas (migración en vivo). Por eso una máquina suelta en la nube no es tolerante a fallos: para resistir la caída de un servidor o de un CPD hay que repartir la aplicación entre zonas (punto 1, apartado 5).</p>
 <h4>Virtualización</h4>
-<p>Sobre cada servidor físico corre un <b>hipervisor</b> que lo divide en máquinas virtuales para distintos clientes: AWS usa <b>Nitro</b> (basado en KVM, con tarjetas hardware que descargan la red, el almacenamiento y la seguridad), Azure usa una versión de <b>Hyper-V</b> y Google usa <b>KVM</b>. También se virtualizan la red (redes definidas por software, cada cliente tiene su red privada virtual aislada) y el almacenamiento (los discos de las VM están en sistemas distribuidos, no en el servidor físico).</p>
+<p>Sobre cada servidor físico corre un <b>hipervisor</b> que lo divide en máquinas virtuales para distintos clientes (AWS usa Nitro, Azure una versión de Hyper-V y Google, KVM). También se virtualizan la red, de modo que cada cliente tiene su propia red privada aislada, y el almacenamiento: los discos de las máquinas están en sistemas distribuidos, no en el servidor físico. Cómo funciona todo esto por dentro lo veremos en el punto 4.</p>
 <h4>Plano de control y plano de datos</h4>
 <ul>
 <li>El <b>plano de datos</b> es donde se ejecutan los recursos del cliente: sus máquinas, sus discos, su tráfico.</li>
@@ -383,6 +386,7 @@
 <h4>Multitenencia y aislamiento</h4>
 <p>En un mismo servidor físico pueden convivir máquinas de clientes distintos (<b>inquilinos</b>, <i>tenants</i>). El proveedor garantiza el aislamiento mediante el hipervisor, la red virtual y el cifrado. Para quien lo necesite (por normativa o licencias), existen <b>instancias dedicadas</b> o <b>servidores dedicados</b> en los que el hardware es solo para un cliente, a un precio mayor.</p>
 
+
 <h3>2. El modelo de negocio</h3>
 <h4>Economías de escala</h4>
 <p>Un proveedor de hiperescala compra millones de servidores, discos y energía, y consigue precios que ninguna empresa normal puede obtener. Además, automatiza la operación: una persona puede gestionar miles de servidores. Ese ahorro se traslada, en parte, al cliente.</p>
@@ -393,6 +397,7 @@
 <p>La consecuencia es el modelo de <b>pago por uso</b> (<i>pay as you go</i>): el cliente no compra, alquila; y paga solo por lo que consume, con granularidad muy fina. Una máquina virtual se factura por segundos u horas mientras está encendida; el almacenamiento, por GB y mes; la transferencia de datos, por GB. Esto convierte la infraestructura en un <b>servicio medido</b>, como la luz o el agua (<i>utility computing</i>).</p>
 <p>Para el proveedor, el negocio está en el volumen y en la <b>fidelización</b>: una vez que una empresa construye sus sistemas usando servicios propios de un proveedor, cambiar a otro es costoso (<b>dependencia del proveedor</b>, <i>vendor lock-in</i>). Por eso los proveedores ofrecen servicios cada vez más específicos, créditos gratuitos para startups y estudiantes, y capas gratuitas.</p>
 
+
 <h3>3. Qué se paga y cómo</h3>
 <h4>Dimensiones de facturación</h4>
 <div class="tabla"><table>
@@ -400,52 +405,36 @@
 <tr><td>Cómputo</td><td>Tiempo de ejecución (segundo u hora) según el tamaño de la instancia</td><td>Una VM de 2 vCPU y 4 GB por hora encendida</td></tr>
 <tr><td>Almacenamiento en bloque</td><td>GB aprovisionados al mes (aunque estén vacíos) y, a veces, rendimiento (IOPS)</td><td>Disco de 30 GB de la VM</td></tr>
 <tr><td>Almacenamiento de objetos</td><td>GB almacenados al mes, número de peticiones y clase de almacenamiento</td><td>Copias de seguridad, imágenes, documentos</td></tr>
-<tr><td>Transferencia de datos</td><td>GB que <b>salen</b> hacia Internet o entre regiones (la entrada suele ser gratis)</td><td>Páginas servidas a los pacientes</td></tr>
+<tr><td>Transferencia de datos</td><td>GB que <b>salen</b> hacia Internet, hacia otra región e incluso hacia otra zona de la misma región (en AWS, 0,01 $/GB en cada sentido entre zonas). La entrada suele ser gratis</td><td>Páginas servidas a los pacientes</td></tr>
 <tr><td>Servicios gestionados</td><td>Hora de instancia, peticiones, GB procesados...</td><td>Base de datos gestionada, balanceador de carga</td></tr>
 <tr><td>Funciones serverless</td><td>Número de invocaciones y GB-segundo de ejecución</td><td>Enviar recordatorios de citas</td></tr>
 <tr><td>Otros</td><td>IP públicas, licencias de software, soporte técnico</td><td>Licencia de Windows Server incluida</td></tr>
 </table></div>
+<h4>Ciclo de vida de una máquina: qué se paga en cada estado</h4>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 210" role="img" aria-label="Ciclo de vida de una instancia" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-ciclo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="70" width="120" height="44" rx="22" class="d-gris"/><text x="72.0" y="92" class="t tb" text-anchor="middle" dominant-baseline="middle">Pendiente</text><rect x="200" y="70" width="150" height="44" rx="22" class="d-verde"/><text x="275.0" y="92" class="t tb" text-anchor="middle" dominant-baseline="middle">En ejecución</text><rect x="430" y="70" width="120" height="44" rx="22" class="d-amarillo"/><text x="490.0" y="92" class="t tb" text-anchor="middle" dominant-baseline="middle">Detenida</text><rect x="590" y="150" width="120" height="44" rx="22" class="d-rojo"/><text x="650.0" y="172" class="t tb" text-anchor="middle" dominant-baseline="middle">Terminada</text><path d="M134,92 L198,92" class="flecha" marker-end="url(#fl-ciclo)"/><path d="M352,84 L428,84" class="flecha" marker-end="url(#fl-ciclo)"/><text x="390" y="72" class="ts" text-anchor="middle" dominant-baseline="middle">detener</text><path d="M428,100 L352,100" class="flecha" marker-end="url(#fl-ciclo)"/><text x="390" y="114" class="ts" text-anchor="middle" dominant-baseline="middle">arrancar</text><path d="M275,68 C255,20 295,20 285,66" class="flecha" marker-end="url(#fl-ciclo)"/><text x="275" y="14" class="ts" text-anchor="middle" dominant-baseline="middle">reiniciar</text><path d="M275,116 L275,172 L588,172" class="flecha" marker-end="url(#fl-ciclo)"/><text x="430" y="162" class="ts" text-anchor="middle" dominant-baseline="middle">terminar</text><path d="M552,92 L650,92 L650,148" class="flecha" marker-end="url(#fl-ciclo)"/><text x="490" y="134" class="ts" text-anchor="middle" dominant-baseline="middle">paga discos, no cómputo</text><text x="200" y="134" class="ts" text-anchor="middle" dominant-baseline="middle">paga cómputo y discos</text></svg></div><figcaption>Ciclo de vida de una máquina virtual en la nube. Detenerla no es borrarla: los discos se siguen pagando.</figcaption></figure>
+<ul>
+<li><b>En ejecución</b>: se paga el cómputo, los discos y la IP pública.</li>
+<li><b>Detenida</b>: no se paga el cómputo, pero sí los discos. La IP pública <b>dinámica</b> se libera (al volver a arrancar, la máquina tendrá otra); la <b>elástica</b> o estática sigue reservada y se sigue pagando.</li>
+<li><b>Terminada</b>: se borra la máquina y, por defecto, su disco raíz. Los discos adicionales se conservan, y se siguen pagando, salvo que se indique lo contrario.</li>
+</ul>
+<p>Las <b>instantáneas</b> (copias de un disco en un momento dado) son independientes de la máquina: se pagan hasta que se borran. Y una máquina en la nube es <b>efímera</b>: puede desaparecer, así que los datos importantes no deben estar solo en ella.</p>
 <div class="aviso"><p><b>Costes que sorprenden.</b> La salida de datos (<i>egress</i>), los discos y las IP que siguen existiendo cuando se apaga la máquina, las instantáneas (snapshots) olvidadas, los recursos creados en otra región para una prueba y nunca borrados. En la nube, apagar no siempre es borrar.</p></div>
 <h4>Modalidades de precio de cómputo</h4>
 <ul>
 <li><b>Bajo demanda</b> (<i>on demand</i>): el precio de lista por hora o segundo, sin compromiso. El más flexible y el más caro.</li>
 <li><b>Instancias reservadas</b> y <b>planes de ahorro</b> (<i>savings plans</i>): el cliente se compromete a un uso durante 1 o 3 años a cambio de descuentos que pueden superar el 50-60 %. Para cargas estables y previsibles.</li>
-<li><b>Instancias spot</b> (<i>preemptible</i>, <i>spot VMs</i>): capacidad sobrante del proveedor con descuentos de hasta el 90 %, pero el proveedor puede quitarla con un aviso de minutos. Para trabajos que se pueden interrumpir: procesamiento por lotes, pruebas, CI.</li>
+<li><b>Instancias spot</b> (<i>preemptible</i>, <i>spot VMs</i>): capacidad sobrante del proveedor con descuentos de hasta el 90 %, pero el proveedor puede quitarla con un aviso muy corto: dos minutos en AWS y 30 segundos en Azure y Google. Para trabajos que se pueden interrumpir: procesamiento por lotes, pruebas, CI.</li>
 <li><b>Capa gratuita</b> (<i>free tier</i>): cantidades limitadas de ciertos servicios gratis, o créditos iniciales para cuentas nuevas, pensados para aprender y probar. Las condiciones cambian a menudo: AWS, por ejemplo, sustituyó en julio de 2025 su capa gratuita de 12 meses por un plan con créditos de hasta 200 dólares durante 6 meses.</li>
 </ul>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 230" role="img" aria-label="Modalidades de precio de cómputo" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-precios" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="220" y="36" class="t" text-anchor="end" dominant-baseline="middle">Bajo demanda</text><rect x="232" y="20" width="320.0" height="32" rx="4" class="d-gris"/><text x="560.0" y="36" class="ts" text-anchor="start" dominant-baseline="middle">≈ 100 %  · sin compromiso</text><text x="220" y="82" class="t" text-anchor="end" dominant-baseline="middle">Reserva o plan de ahorro, 1 año</text><rect x="232" y="66" width="198.4" height="32" rx="4" class="d-azul"/><text x="438.4" y="82" class="ts" text-anchor="start" dominant-baseline="middle">≈ 62 %  · compromiso de uso</text><text x="220" y="128" class="t" text-anchor="end" dominant-baseline="middle">Reserva o plan de ahorro, 3 años</text><rect x="232" y="112" width="134.4" height="32" rx="4" class="d-azul"/><text x="374.4" y="128" class="ts" text-anchor="start" dominant-baseline="middle">≈ 42 %  · compromiso más largo</text><text x="220" y="174" class="t" text-anchor="end" dominant-baseline="middle">Spot</text><rect x="232" y="158" width="64.0" height="32" rx="4" class="d-naranja"/><text x="304.0" y="174" class="ts" text-anchor="start" dominant-baseline="middle">≈ 20 %  · el proveedor puede quitártela</text><text x="360" y="214" class="ts" text-anchor="middle" dominant-baseline="middle">Precio por hora de la misma máquina, en % del precio bajo demanda (valores orientativos).</text></svg></div><figcaption>Cuanto más compromiso o más riesgo de interrupción acepta el cliente, menos paga por la misma máquina.</figcaption></figure>
 <h4>Controlar el gasto: FinOps</h4>
 <p>Como cualquiera con permisos puede crear recursos, el gasto puede dispararse. La disciplina <b>FinOps</b> se ocupa de gestionarlo: presupuestos con alertas, etiquetas en cada recurso para saber a qué proyecto o entorno pertenece, informes de costes, apagado automático de entornos de pruebas fuera de horario y ajuste del tamaño de las máquinas a su uso real (<i>rightsizing</i>).</p>
 
-<h3>4. Responsabilidad compartida</h3>
-<p>En la nube, la seguridad es una <b>responsabilidad compartida</b> entre el proveedor y el cliente. La frase que usa AWS lo resume bien: el proveedor es responsable de la seguridad <b>de</b> la nube; el cliente, de la seguridad <b>en</b> la nube.</p>
-<p>Dónde está la frontera depende de cuánto gestione el proveedor. La tabla usa tres modelos de servicio que estudiaremos en la unidad 4: <b>IaaS</b> (se alquilan máquinas virtuales y el cliente lo instala todo encima), <b>PaaS</b> (el proveedor da una plataforma lista, como una base de datos gestionada, y el cliente solo pone su aplicación o sus datos) y <b>SaaS</b> (se usa una aplicación terminada, como el correo de Gmail o Microsoft 365).</p>
-<div class="tabla"><table>
-<tr><th>Responsabilidad</th><th>On premise</th><th>IaaS (VM en la nube)</th><th>PaaS</th><th>SaaS</th></tr>
-<tr><td>Datos y cuentas de usuario</td><td>Cliente</td><td>Cliente</td><td>Cliente</td><td>Cliente</td></tr>
-<tr><td>Aplicación</td><td>Cliente</td><td>Cliente</td><td>Cliente</td><td>Proveedor</td></tr>
-<tr><td>Sistema operativo, parches, cortafuegos del SO</td><td>Cliente</td><td>Cliente</td><td>Proveedor</td><td>Proveedor</td></tr>
-<tr><td>Virtualización, servidores, red física</td><td>Cliente</td><td>Proveedor</td><td>Proveedor</td><td>Proveedor</td></tr>
-<tr><td>CPD: edificio, energía, seguridad física</td><td>Cliente</td><td>Proveedor</td><td>Proveedor</td><td>Proveedor</td></tr>
-</table></div>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 392" role="img" aria-label="Responsabilidad compartida" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-responsabilidad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="93.8" y="21.0" class="t tb" text-anchor="middle" dominant-baseline="middle">On premise</text><rect x="12.0" y="38.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="58.0" class="t" text-anchor="middle" dominant-baseline="middle">Datos y usuarios</text><rect x="12.0" y="82.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="102.0" class="t" text-anchor="middle" dominant-baseline="middle">Aplicación</text><rect x="12.0" y="126.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="146.0" class="t" text-anchor="middle" dominant-baseline="middle">Entorno de ejecución</text><rect x="12.0" y="170.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="190.0" class="t" text-anchor="middle" dominant-baseline="middle">Sistema operativo</text><rect x="12.0" y="214.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="234.0" class="t" text-anchor="middle" dominant-baseline="middle">Virtualización</text><rect x="12.0" y="258.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="278.0" class="t" text-anchor="middle" dominant-baseline="middle">Servidores y red</text><rect x="12.0" y="302.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="322.0" class="t" text-anchor="middle" dominant-baseline="middle">CPD</text><text x="271.2" y="21.0" class="t tb" text-anchor="middle" dominant-baseline="middle">IaaS</text><rect x="189.5" y="38.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="271.2" y="58.0" class="t" text-anchor="middle" dominant-baseline="middle">Datos y usuarios</text><rect x="189.5" y="82.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="271.2" y="102.0" class="t" text-anchor="middle" dominant-baseline="middle">Aplicación</text><rect x="189.5" y="126.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="271.2" y="146.0" class="t" text-anchor="middle" dominant-baseline="middle">Entorno de ejecución</text><rect x="189.5" y="170.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="271.2" y="190.0" class="t" text-anchor="middle" dominant-baseline="middle">Sistema operativo</text><rect x="189.5" y="214.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="271.2" y="234.0" class="t" text-anchor="middle" dominant-baseline="middle">Virtualización</text><rect x="189.5" y="258.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="271.2" y="278.0" class="t" text-anchor="middle" dominant-baseline="middle">Servidores y red</text><rect x="189.5" y="302.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="271.2" y="322.0" class="t" text-anchor="middle" dominant-baseline="middle">CPD</text><text x="448.8" y="21.0" class="t tb" text-anchor="middle" dominant-baseline="middle">PaaS</text><rect x="367.0" y="38.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="448.8" y="58.0" class="t" text-anchor="middle" dominant-baseline="middle">Datos y usuarios</text><rect x="367.0" y="82.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="448.8" y="102.0" class="t" text-anchor="middle" dominant-baseline="middle">Aplicación</text><rect x="367.0" y="126.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="448.8" y="146.0" class="t" text-anchor="middle" dominant-baseline="middle">Entorno de ejecución</text><rect x="367.0" y="170.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="448.8" y="190.0" class="t" text-anchor="middle" dominant-baseline="middle">Sistema operativo</text><rect x="367.0" y="214.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="448.8" y="234.0" class="t" text-anchor="middle" dominant-baseline="middle">Virtualización</text><rect x="367.0" y="258.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="448.8" y="278.0" class="t" text-anchor="middle" dominant-baseline="middle">Servidores y red</text><rect x="367.0" y="302.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="448.8" y="322.0" class="t" text-anchor="middle" dominant-baseline="middle">CPD</text><text x="626.2" y="21.0" class="t tb" text-anchor="middle" dominant-baseline="middle">SaaS</text><rect x="544.5" y="38.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="626.2" y="58.0" class="t" text-anchor="middle" dominant-baseline="middle">Datos y usuarios</text><rect x="544.5" y="82.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="626.2" y="102.0" class="t" text-anchor="middle" dominant-baseline="middle">Aplicación</text><rect x="544.5" y="126.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="626.2" y="146.0" class="t" text-anchor="middle" dominant-baseline="middle">Entorno de ejecución</text><rect x="544.5" y="170.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="626.2" y="190.0" class="t" text-anchor="middle" dominant-baseline="middle">Sistema operativo</text><rect x="544.5" y="214.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="626.2" y="234.0" class="t" text-anchor="middle" dominant-baseline="middle">Virtualización</text><rect x="544.5" y="258.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="626.2" y="278.0" class="t" text-anchor="middle" dominant-baseline="middle">Servidores y red</text><rect x="544.5" y="302.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="626.2" y="322.0" class="t" text-anchor="middle" dominant-baseline="middle">CPD</text><rect x="14" y="365" width="14" height="14" rx="3" class="d-naranja"/><text x="34" y="372" class="ts" dominant-baseline="middle">lo gestiona el cliente</text><rect x="186.6" y="365" width="14" height="14" rx="3" class="d-azul"/><text x="206.6" y="372" class="ts" dominant-baseline="middle">lo gestiona el proveedor</text></svg></div><figcaption>El modelo de responsabilidad compartida: cuanto más gestionado es el servicio, más capas pasan a manos del proveedor. Los datos y los usuarios siempre son del cliente.</figcaption></figure>
-<p>La mayoría de los incidentes de seguridad en la nube no se deben a fallos del proveedor sino a errores de configuración del cliente: almacenamiento público por error, credenciales publicadas en un repositorio, puertos abiertos a todo Internet, contraseñas débiles sin doble factor.</p>
 
-<h3>5. Acuerdos de nivel de servicio (SLA)</h3>
-<p>Un <b>SLA</b> (<i>Service Level Agreement</i>) es el compromiso contractual del proveedor sobre la disponibilidad de un servicio. Por ejemplo, un proveedor puede comprometer un 99,99 % de disponibilidad mensual para máquinas repartidas en varias zonas y un 99,5 % para una única máquina. Si no lo cumple, devuelve un porcentaje de la factura en forma de <b>créditos</b>; no compensa las pérdidas del cliente.</p>
-<div class="tabla"><table>
-<tr><th>Disponibilidad</th><th>Caída máxima al mes (30 días)</th><th>Caída máxima al año</th></tr>
-<tr><td>99 %</td><td>7,2 horas</td><td>3,65 días</td></tr>
-<tr><td>99,5 %</td><td>3,6 horas</td><td>1,8 días</td></tr>
-<tr><td>99,9 %</td><td>43,2 minutos</td><td>8,76 horas</td></tr>
-<tr><td>99,99 %</td><td>4,32 minutos</td><td>52,6 minutos</td></tr>
-</table></div>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 176" role="img" aria-label="Disponibilidad y caída anual" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-sla" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="94.0" y="25.0" class="t" text-anchor="end" dominant-baseline="middle">99 %</text><rect x="102.0" y="12" width="478.6" height="26" rx="3" class="d-rojo"/><text x="586.6" y="25.0" class="t tb" text-anchor="start" dominant-baseline="middle">87,6 h</text><text x="94.0" y="63.0" class="t" text-anchor="end" dominant-baseline="middle">99,5 %</text><rect x="102.0" y="50" width="239.3" height="26" rx="3" class="d-naranja"/><text x="347.3" y="63.0" class="t tb" text-anchor="start" dominant-baseline="middle">43,8 h</text><text x="94.0" y="101.0" class="t" text-anchor="end" dominant-baseline="middle">99,9 %</text><rect x="102.0" y="88" width="47.9" height="26" rx="3" class="d-amarillo"/><text x="155.9" y="101.0" class="t tb" text-anchor="start" dominant-baseline="middle">8,76 h</text><text x="94.0" y="139.0" class="t" text-anchor="end" dominant-baseline="middle">99,99 %</text><rect x="102.0" y="126" width="4.8" height="26" rx="3" class="d-verde"/><text x="112.8" y="139.0" class="t tb" text-anchor="start" dominant-baseline="middle">0,88 h</text></svg></div><figcaption>Tiempo máximo de caída al año según la disponibilidad comprometida. Cada "nueve" de más divide el tiempo permitido entre diez.</figcaption></figure>
-<p>Si una aplicación depende de varios servicios en serie, su disponibilidad es como mucho el <b>producto</b> de sus disponibilidades: una web sobre una VM al 99,5 % y una base de datos al 99,9 % tiene como máximo 0,995 × 0,999 ≈ 99,4 %.</p>
+<div class="pausa"><h4>Ahora: actividades 4 y 5</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Después seguimos con el apartado 4.</p></div>
 
-<h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Una máquina, de principio a fin: qué hace el proveedor y qué cobra <span class="dur">35 min</span></h4>
+<h4>Actividad 4. Una máquina, de principio a fin: qué hace el proveedor y qué cobra <span class="dur">35 min</span></h4>
 <p>En parejas. Una desarrolladora de Cita Previa necesita una máquina de pruebas durante una semana. Este es el registro de su cuenta de AWS en un mes de 30 días (720 horas), tal como lo guarda el servicio de auditoría:</p>
 <div class="tabla"><table>
 <tr><th>Momento</th><th>Llamada a la API</th><th>Origen</th><th>Detalle</th></tr>
@@ -477,7 +466,7 @@
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. ¿Cuánto cuesta Cita Previa en la nube? <span class="dur">30 min</span></h4>
+<h4>Actividad 5. ¿Cuánto cuesta Cita Previa en la nube? <span class="dur">30 min</span></h4>
 <p>En parejas, con la calculadora pública de precios (<a href="https://calculator.aws/">AWS Pricing Calculator</a> o <a href="https://azure.microsoft.com/es-es/pricing/calculator/">calculadora de Azure</a>), en una región europea, estimad el coste mensual de esta arquitectura:</p>
 <ul>
 <li>2 máquinas virtuales de 2 vCPU y 4 GB de RAM con Linux, encendidas 24 horas.</li>
@@ -488,8 +477,31 @@
 </ul>
 <p>Calculad tres escenarios: todo bajo demanda; con compromiso a 1 año en las máquinas; y un entorno de revisión con máquinas más pequeñas que solo está encendido de lunes a viernes de 8 a 20 h. ¿Qué partida pesa más? ¿Cuánto ahorra apagar revisión fuera de horario?</p>
 </div>
+<h3>4. Responsabilidad compartida</h3>
+<p>En la nube, la seguridad es una <b>responsabilidad compartida</b> entre el proveedor y el cliente. La frase que usa AWS lo resume bien: el proveedor es responsable de la seguridad <b>de</b> la nube; el cliente, de la seguridad <b>en</b> la nube.</p>
+<p>Dónde está la frontera depende de cuánto gestione el proveedor. El esquema usa tres modelos de servicio que estudiaremos en la unidad 4: <b>IaaS</b> (se alquilan máquinas virtuales y el cliente lo instala todo encima), <b>PaaS</b> (el proveedor da una plataforma lista, como una base de datos gestionada, y el cliente solo pone su aplicación o sus datos) y <b>SaaS</b> (se usa una aplicación terminada, como el correo de Gmail o Microsoft 365).</p>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 392" role="img" aria-label="Responsabilidad compartida" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-responsabilidad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="93.8" y="21.0" class="t tb" text-anchor="middle" dominant-baseline="middle">On premise</text><rect x="12.0" y="38.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="58.0" class="t" text-anchor="middle" dominant-baseline="middle">Datos y usuarios</text><rect x="12.0" y="82.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="102.0" class="t" text-anchor="middle" dominant-baseline="middle">Aplicación</text><rect x="12.0" y="126.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="146.0" class="t" text-anchor="middle" dominant-baseline="middle">Entorno de ejecución</text><rect x="12.0" y="170.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="190.0" class="t" text-anchor="middle" dominant-baseline="middle">Sistema operativo</text><rect x="12.0" y="214.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="234.0" class="t" text-anchor="middle" dominant-baseline="middle">Virtualización</text><rect x="12.0" y="258.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="278.0" class="t" text-anchor="middle" dominant-baseline="middle">Servidores y red</text><rect x="12.0" y="302.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="93.8" y="322.0" class="t" text-anchor="middle" dominant-baseline="middle">CPD</text><text x="271.2" y="21.0" class="t tb" text-anchor="middle" dominant-baseline="middle">IaaS</text><rect x="189.5" y="38.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="271.2" y="58.0" class="t" text-anchor="middle" dominant-baseline="middle">Datos y usuarios</text><rect x="189.5" y="82.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="271.2" y="102.0" class="t" text-anchor="middle" dominant-baseline="middle">Aplicación</text><rect x="189.5" y="126.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="271.2" y="146.0" class="t" text-anchor="middle" dominant-baseline="middle">Entorno de ejecución</text><rect x="189.5" y="170.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="271.2" y="190.0" class="t" text-anchor="middle" dominant-baseline="middle">Sistema operativo</text><rect x="189.5" y="214.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="271.2" y="234.0" class="t" text-anchor="middle" dominant-baseline="middle">Virtualización</text><rect x="189.5" y="258.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="271.2" y="278.0" class="t" text-anchor="middle" dominant-baseline="middle">Servidores y red</text><rect x="189.5" y="302.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="271.2" y="322.0" class="t" text-anchor="middle" dominant-baseline="middle">CPD</text><text x="448.8" y="21.0" class="t tb" text-anchor="middle" dominant-baseline="middle">PaaS</text><rect x="367.0" y="38.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="448.8" y="58.0" class="t" text-anchor="middle" dominant-baseline="middle">Datos y usuarios</text><rect x="367.0" y="82.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="448.8" y="102.0" class="t" text-anchor="middle" dominant-baseline="middle">Aplicación</text><rect x="367.0" y="126.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="448.8" y="146.0" class="t" text-anchor="middle" dominant-baseline="middle">Entorno de ejecución</text><rect x="367.0" y="170.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="448.8" y="190.0" class="t" text-anchor="middle" dominant-baseline="middle">Sistema operativo</text><rect x="367.0" y="214.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="448.8" y="234.0" class="t" text-anchor="middle" dominant-baseline="middle">Virtualización</text><rect x="367.0" y="258.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="448.8" y="278.0" class="t" text-anchor="middle" dominant-baseline="middle">Servidores y red</text><rect x="367.0" y="302.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="448.8" y="322.0" class="t" text-anchor="middle" dominant-baseline="middle">CPD</text><text x="626.2" y="21.0" class="t tb" text-anchor="middle" dominant-baseline="middle">SaaS</text><rect x="544.5" y="38.0" width="163.5" height="40.0" rx="6" class="d-naranja"/><text x="626.2" y="58.0" class="t" text-anchor="middle" dominant-baseline="middle">Datos y usuarios</text><rect x="544.5" y="82.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="626.2" y="102.0" class="t" text-anchor="middle" dominant-baseline="middle">Aplicación</text><rect x="544.5" y="126.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="626.2" y="146.0" class="t" text-anchor="middle" dominant-baseline="middle">Entorno de ejecución</text><rect x="544.5" y="170.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="626.2" y="190.0" class="t" text-anchor="middle" dominant-baseline="middle">Sistema operativo</text><rect x="544.5" y="214.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="626.2" y="234.0" class="t" text-anchor="middle" dominant-baseline="middle">Virtualización</text><rect x="544.5" y="258.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="626.2" y="278.0" class="t" text-anchor="middle" dominant-baseline="middle">Servidores y red</text><rect x="544.5" y="302.0" width="163.5" height="40.0" rx="6" class="d-azul"/><text x="626.2" y="322.0" class="t" text-anchor="middle" dominant-baseline="middle">CPD</text><rect x="14" y="365" width="14" height="14" rx="3" class="d-naranja"/><text x="34" y="372" class="ts" dominant-baseline="middle">lo gestiona el cliente</text><rect x="186.6" y="365" width="14" height="14" rx="3" class="d-azul"/><text x="206.6" y="372" class="ts" dominant-baseline="middle">lo gestiona el proveedor</text></svg></div><figcaption>El modelo de responsabilidad compartida: cuanto más gestionado es el servicio, más capas pasan a manos del proveedor. Los datos y los usuarios siempre son del cliente.</figcaption></figure>
+<p>La mayoría de los incidentes de seguridad en la nube no se deben a fallos del proveedor sino a errores de configuración del cliente: almacenamiento público por error, credenciales publicadas en un repositorio, puertos abiertos a todo Internet, contraseñas débiles sin doble factor.</p>
+
+
+<h3>5. Acuerdos de nivel de servicio (SLA)</h3>
+<p>Un <b>SLA</b> (<i>Service Level Agreement</i>) es el compromiso contractual del proveedor sobre la disponibilidad de un servicio. Por ejemplo, un proveedor puede comprometer un 99,99 % de disponibilidad mensual para máquinas repartidas en varias zonas y un 99,5 % para una única máquina. Si no lo cumple, devuelve un porcentaje de la factura en forma de <b>créditos</b>; no compensa las pérdidas del cliente.</p>
+<div class="tabla"><table>
+<tr><th>Disponibilidad</th><th>Caída máxima al mes (30 días)</th><th>Caída máxima al año</th></tr>
+<tr><td>99 %</td><td>7,2 horas</td><td>3,65 días</td></tr>
+<tr><td>99,5 %</td><td>3,6 horas</td><td>1,8 días</td></tr>
+<tr><td>99,9 %</td><td>43,2 minutos</td><td>8,76 horas</td></tr>
+<tr><td>99,99 %</td><td>4,32 minutos</td><td>52,6 minutos</td></tr>
+</table></div>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 176" role="img" aria-label="Disponibilidad y caída anual" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-sla" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="94.0" y="25.0" class="t" text-anchor="end" dominant-baseline="middle">99 %</text><rect x="102.0" y="12" width="478.6" height="26" rx="3" class="d-rojo"/><text x="586.6" y="25.0" class="t tb" text-anchor="start" dominant-baseline="middle">87,6 h</text><text x="94.0" y="63.0" class="t" text-anchor="end" dominant-baseline="middle">99,5 %</text><rect x="102.0" y="50" width="239.3" height="26" rx="3" class="d-naranja"/><text x="347.3" y="63.0" class="t tb" text-anchor="start" dominant-baseline="middle">43,8 h</text><text x="94.0" y="101.0" class="t" text-anchor="end" dominant-baseline="middle">99,9 %</text><rect x="102.0" y="88" width="47.9" height="26" rx="3" class="d-amarillo"/><text x="155.9" y="101.0" class="t tb" text-anchor="start" dominant-baseline="middle">8,76 h</text><text x="94.0" y="139.0" class="t" text-anchor="end" dominant-baseline="middle">99,99 %</text><rect x="102.0" y="126" width="4.8" height="26" rx="3" class="d-verde"/><text x="112.8" y="139.0" class="t tb" text-anchor="start" dominant-baseline="middle">0,88 h</text></svg></div><figcaption>Tiempo máximo de caída al año según la disponibilidad comprometida. Cada "nueve" de más divide el tiempo permitido entre diez.</figcaption></figure>
+<p>Si una aplicación depende de varios servicios en serie, su disponibilidad es como mucho el <b>producto</b> de sus disponibilidades: una web sobre una VM al 99,5 % y una base de datos al 99,9 % tiene como máximo 0,995 × 0,999 ≈ 99,4 %.</p>
+<p>Con <b>redundancia</b> pasa lo contrario. Si hay dos copias en paralelo y basta con que funcione una, el servicio solo cae cuando caen las dos a la vez. Con dos máquinas al 99,5 % en zonas distintas, la probabilidad de que fallen a la vez es 0,005 × 0,005, y la disponibilidad sube a 1 − 0,005² ≈ <b>99,997 %</b> (suponiendo que los fallos de las dos zonas son independientes). Por eso los proveedores comprometen más disponibilidad, por ejemplo un 99,99 %, cuando las máquinas están repartidas en varias zonas.</p>
+
+
+<div class="pausa"><h4>Ahora: actividad 6</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 6.</p></div>
+
 <div class="actividad">
-<h4>Actividad 3. Responsabilidad y disponibilidad <span class="dur">15 min</span></h4>
+<h4>Actividad 6. Responsabilidad y disponibilidad <span class="dur">15 min</span></h4>
 <ol>
 <li>Para cada incidente, indicad quién es responsable según el modelo de responsabilidad compartida:<ol class="casos">
 <li>Falla la refrigeración del CPD de la región.</li>
@@ -500,31 +512,8 @@
 </ol></li>
 <li>Cita Previa usa una VM (SLA 99,5 %), una base de datos gestionada (99,95 %) y un balanceador (99,99 %). Calculad la disponibilidad máxima esperada y cuántas horas al año podría estar caída. ¿Qué haríais para mejorarla?</li>
 </ol>
-<p class="entrega">Entrega en Aules: línea temporal, cálculos y respuestas de la actividad 1, hoja de estimación de la actividad 2 y respuestas de la 3.</p>
 </div>
-
-<h3>Preguntas de repaso</h3>
-<ol>
-<li>¿Qué es el plano de control de un proveedor de nube?</li>
-<li>¿Por qué se dice que en la nube "todo es una API"? ¿Qué permite eso?</li>
-<li>Explica la multiplexación estadística y por qué abarata la nube.</li>
-<li>¿Cuándo usarías instancias spot y cuándo instancias reservadas?</li>
-<li>¿Qué significa "seguridad de la nube" frente a "seguridad en la nube"?</li>
-<li>¿Qué compensa un proveedor si incumple su SLA?</li>
-</ol>
-</section><section class="panel" role="tabpanel" id="p-p3" aria-labelledby="tab-p3" hidden>
-<p class="meta">Unidad 2 · 3. CapEx, OpEx y TCO · 2 horas</p>
-<h2>Beneficios de la nube frente a on premise: CapEx, OpEx y TCO</h2>
-<p class="chips"><span class="ce" title="Se han analizado los beneficios de la infraestructura de nube con respecto a la infraestructura propia (on premise).">CE 2c</span></p>
-<h3>Objetivos del punto</h3>
-<ul>
-<li>Distinguir gasto de capital (CapEx) y gasto operativo (OpEx) y su impacto en una organización.</li>
-<li>Calcular el coste total de propiedad (TCO) de una infraestructura on premise y compararlo con la nube.</li>
-<li>Analizar los beneficios de la nube (agilidad, elasticidad, alcance global, fiabilidad, seguridad) y sus inconvenientes.</li>
-<li>Argumentar cuándo compensa la nube, cuándo el on premise y cuándo una mezcla.</li>
-</ul>
-
-<h3>1. CapEx y OpEx</h3>
+<h3>6. CapEx y OpEx</h3>
 <p>La forma de pagar la infraestructura cambia radicalmente entre on premise y nube, y eso tiene consecuencias financieras, no solo técnicas.</p>
 <ul>
 <li><b>CapEx</b> (<i>capital expenditure</i>, gasto de capital o inversión): dinero que se gasta de golpe en adquirir activos que se usarán durante años: servidores, cabinas de almacenamiento, el propio CPD. En contabilidad no se imputa como gasto el año de la compra, sino que se <b>amortiza</b> a lo largo de su vida útil (por ejemplo, un servidor de 12.000 € amortizado en 4 años supone 3.000 € de gasto anual).</li>
@@ -541,7 +530,8 @@
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 270" role="img" aria-label="CapEx frente a OpEx" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-capex" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><path d="M60,30 L60,210 L700,210" class="eje"/><text x="18" y="120" class="ts" text-anchor="middle" transform="rotate(-90 18 120)">desembolso del año</text><rect x="90" y="50.0" width="36" height="160.0" rx="3" class="d-naranja"/><rect x="130" y="165.2" width="36" height="44.800000000000004" rx="3" class="d-azul"/><text x="128" y="226" class="ts" text-anchor="middle" dominant-baseline="middle">Año 1</text><rect x="194" y="190.8" width="36" height="19.200000000000003" rx="3" class="d-naranja"/><rect x="234" y="165.2" width="36" height="44.800000000000004" rx="3" class="d-azul"/><text x="232" y="226" class="ts" text-anchor="middle" dominant-baseline="middle">Año 2</text><rect x="298" y="190.8" width="36" height="19.200000000000003" rx="3" class="d-naranja"/><rect x="338" y="165.2" width="36" height="44.800000000000004" rx="3" class="d-azul"/><text x="336" y="226" class="ts" text-anchor="middle" dominant-baseline="middle">Año 3</text><rect x="402" y="190.8" width="36" height="19.200000000000003" rx="3" class="d-naranja"/><rect x="442" y="165.2" width="36" height="44.800000000000004" rx="3" class="d-azul"/><text x="440" y="226" class="ts" text-anchor="middle" dominant-baseline="middle">Año 4</text><rect x="506" y="190.8" width="36" height="19.200000000000003" rx="3" class="d-naranja"/><rect x="546" y="165.2" width="36" height="44.800000000000004" rx="3" class="d-azul"/><text x="544" y="226" class="ts" text-anchor="middle" dominant-baseline="middle">Año 5</text><rect x="610" y="50.0" width="36" height="160.0" rx="3" class="d-naranja"/><rect x="650" y="165.2" width="36" height="44.800000000000004" rx="3" class="d-azul"/><text x="648" y="226" class="ts" text-anchor="middle" dominant-baseline="middle">Año 6</text><text x="108" y="34" class="ts" text-anchor="middle" dominant-baseline="middle">compra</text><text x="628" y="34" class="ts" text-anchor="middle" dominant-baseline="middle">renovación</text><rect x="200" y="246" width="14" height="14" rx="3" class="d-naranja"/><text x="220" y="253" class="ts" text-anchor="start" dominant-baseline="middle">CapEx (on premise): compra, mantenimiento y renovación</text><rect x="200" y="262" width="0" height="0" class="d-azul"/><rect x="560" y="246" width="14" height="14" rx="3" class="d-azul"/><text x="580" y="253" class="ts" text-anchor="start" dominant-baseline="middle">OpEx (nube)</text></svg></div><figcaption>CapEx: grandes desembolsos al comprar y al renovar, y poco en medio. OpEx: un gasto parecido cada periodo, que sube o baja con el uso. Cifras orientativas.</figcaption></figure>
 <p>Pasar de CapEx a OpEx es atractivo para una startup, que no tiene capital para comprar servidores, y para cualquier organización que quiera probar ideas sin arriesgar una gran inversión. Pero no siempre es mejor: a una organización con presupuesto de inversión disponible y cargas estables le puede convenir comprar.</p>
 
-<h3>2. El coste total de propiedad (TCO)</h3>
+
+<h3>7. El coste total de propiedad (TCO)</h3>
 <p>Comparar el precio de un servidor con el precio por hora de una máquina en la nube es un error clásico. Hay que comparar el <b>coste total de propiedad</b> (<i>Total Cost of Ownership</i>, TCO): todos los costes directos e indirectos de tener y operar la infraestructura durante su vida útil (normalmente 3 a 5 años).</p>
 <h4>Costes de una infraestructura on premise</h4>
 <ul>
@@ -563,6 +553,7 @@
 <li>Migración: trasladar datos y aplicaciones, adaptar aplicaciones, formación.</li>
 <li>Conectividad: mejores líneas a Internet, enlaces dedicados con el proveedor.</li>
 <li>Herramientas de gestión, seguridad y control de costes.</li>
+<li>Salida del proveedor: si algún día se cambia de proveedor o se vuelve al on premise, hay que migrar los datos y rehacer lo que dependa de servicios propios del proveedor.</li>
 </ul>
 <h4>Un ejemplo simplificado de TCO a 5 años</h4>
 <p>Una infraestructura para Cita Previa con 4 servidores (dos para producción, uno para revisión y uno de reserva), almacenamiento y red. Cifras aproximadas y redondeadas, solo para practicar el método:</p>
@@ -580,11 +571,24 @@
 <p>Si la misma carga en la nube cuesta 2.500 € al mes de factura más 0,25 técnicos (10.000 €/año), el total a 5 años sería 150.000 + 50.000 = <b>200.000 €</b>. Pero si la carga fuera estable y se contrataran reservas a 3 años, la factura podría bajar bastante; y si la carga creciera o tuviera picos, el on premise necesitaría más hardware comprado por adelantado. <b>La respuesta depende de los datos</b>, y por eso se hace el cálculo.</p>
 <div class="nota"><p><b>Idea clave.</b> El TCO on premise casi siempre es mayor de lo que parece porque se olvidan la energía, el personal y la renovación. El coste de la nube casi siempre es mayor de lo que parece porque se olvidan la transferencia de datos, los recursos olvidados encendidos y el soporte. Un buen análisis incluye ambos lados completos.</p></div>
 
-<h3>3. Beneficios de la nube frente al on premise</h3>
+
+<div class="pausa"><h4>Ahora: actividad 7</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 8.</p></div>
+
+<div class="actividad">
+<h4>Actividad 7. Estudio de TCO <span class="dur">45 min</span></h4>
+<p>En parejas, con una hoja de cálculo (LibreOffice Calc o Google Sheets). Caso: la Conselleria debe renovar la infraestructura de Cita Previa para 5 años. Datos:</p>
+<ul>
+<li>Carga: 6 máquinas virtuales de 4 vCPU y 16 GB en producción, 3 de 2 vCPU y 8 GB en revisión, 2 TB de base de datos y documentos, 1 TB/mes de salida a Internet.</li>
+<li>On premise: 3 servidores de 10.000 € (cada uno con capacidad para 4 máquinas como las de producción), cabina de 15.000 €, red y cortafuegos 12.000 €, consumo total 2,5 kW, PUE 1,7, electricidad 0,18 €/kWh, licencias y soporte 8.000 €/año, 0,6 técnicos a 42.000 €/año.</li>
+<li>Nube: obtened los precios reales con la calculadora de AWS o Azure en una región europea, bajo demanda y con reservas a 3 años. Personal: 0,3 técnicos.</li>
+</ul>
+<p>Construid la hoja con una fila por concepto y columnas por año, calculad el total a 5 años de cada opción y un gráfico comparativo. Añadid después un escenario: durante la campaña de vacunación (2 meses al año) la carga de producción se triplica. ¿Cómo afecta a cada opción?</p>
+</div>
+<h3>8. Beneficios de la nube frente al on premise</h3>
 <p>AWS los resume en seis beneficios (en su documento <i>Overview of Amazon Web Services</i> y en la certificación <i>Cloud Practitioner</i>), y el resto de proveedores usa ideas muy parecidas:</p>
 <ol>
 <li><b>Cambiar gasto de capital por gasto variable.</b> No hay que invertir antes de saber cuánto se usará.</li>
-<li><b>Beneficiarse de economías de escala</b> (punto 2): el proveedor compra y opera más barato que cualquier organización.</li>
+<li><b>Beneficiarse de economías de escala</b> (apartado 2): el proveedor compra y opera más barato que cualquier organización.</li>
 <li><b>Dejar de adivinar la capacidad.</b> On premise se compra para el pico previsto: si se sobreestima, se tira dinero; si se subestima, el servicio se cae. En la nube la capacidad se ajusta a la demanda real (<b>elasticidad</b>).</li>
 <li><b>Velocidad y agilidad.</b> Un recurso tarda minutos en estar disponible, no semanas. Se puede experimentar barato: probar una idea cuesta unas horas de máquina.</li>
 <li><b>Dejar de gastar en mantener CPD</b> y dedicar el personal a lo que aporta valor al negocio.</li>
@@ -599,7 +603,8 @@
 <li><b>Sostenibilidad</b>: CPD más eficientes y mayor uso de energía renovable, aunque el consumo total de los CPD está creciendo mucho.</li>
 </ul>
 
-<h3>4. Inconvenientes de la nube y ventajas del on premise</h3>
+
+<h3>9. Inconvenientes de la nube</h3>
 <ul>
 <li><b>Coste a largo plazo</b> para cargas grandes y estables. Algunas empresas han vuelto parcialmente a infraestructura propia (<b>repatriación</b>) tras comprobar que les salía más barato; un caso muy comentado fue el de la empresa 37signals en 2022-2023.</li>
 <li><b>Factura impredecible</b> si no se controla (FinOps).</li>
@@ -609,18 +614,11 @@
 <li><b>Menor control</b>: no se elige el hardware, ni cuándo el proveedor hace mantenimientos, y las caídas del proveedor afectan a muchos clientes a la vez.</li>
 <li><b>Nuevas competencias</b>: el equipo debe aprender seguridad en la nube, IaC, gestión de costes.</li>
 </ul>
-<h4>Lo que sigue aportando el on premise</h4>
-<p>Los inconvenientes de la nube son, en buena parte, las ventajas del on premise:</p>
-<ul>
-<li><b>Control total</b> sobre el hardware, la ubicación de los datos y la configuración.</li>
-<li><b>Cumplimiento normativo</b> más sencillo de demostrar en ciertos sectores (defensa, algunos datos sanitarios o bancarios), aunque la nube también ofrece certificaciones.</li>
-<li><b>Coste predecible</b> y, para cargas estables y muy grandes, a menudo más barato a largo plazo.</li>
-<li><b>Latencia</b> baja para sistemas que deben estar cerca de las máquinas o de los usuarios (una fábrica, un hospital).</li>
-<li>No depender de la conexión a Internet ni de un proveedor externo.</li>
-</ul>
+<p>Leídos al revés, estos inconvenientes son las ventajas del on premise: control total sobre el hardware y los datos, coste predecible para cargas grandes y estables, latencia mínima para sistemas locales y no depender de Internet ni de un proveedor externo.</p>
 
 
-<h3>5. Cómo decidir</h3>
+
+<h3>10. Cómo decidir</h3>
 <p>No hay una respuesta universal. Estas preguntas ayudan a decidir:</p>
 <div class="tabla"><table>
 <tr><th>Pregunta</th><th>Inclina hacia la nube si...</th><th>Inclina hacia on premise si...</th></tr>
@@ -634,29 +632,27 @@
 </table></div>
 <p>Muchas organizaciones acaban en un modelo <b>híbrido</b>: parte on premise y parte en la nube. Lo estudiaremos en la unidad 3.</p>
 
-<h3>Actividades</h3>
+
+<div class="pausa"><h4>Ahora: actividades 8 y 9</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Con ellas se cierra el punto.</p></div>
+
 <div class="actividad">
-<h4>Actividad 1. Estudio de TCO <span class="dur">45 min</span></h4>
-<p>En parejas, con una hoja de cálculo (LibreOffice Calc o Google Sheets). Caso: la Conselleria debe renovar la infraestructura de Cita Previa para 5 años. Datos:</p>
-<ul>
-<li>Carga: 6 máquinas virtuales de 4 vCPU y 16 GB en producción, 3 de 2 vCPU y 8 GB en revisión, 2 TB de base de datos y documentos, 1 TB/mes de salida a Internet.</li>
-<li>On premise: 3 servidores de 10.000 € (cada uno con capacidad para 4 máquinas como las de producción), cabina de 15.000 €, red y cortafuegos 12.000 €, consumo total 2,5 kW, PUE 1,7, electricidad 0,18 €/kWh, licencias y soporte 8.000 €/año, 0,6 técnicos a 42.000 €/año.</li>
-<li>Nube: obtened los precios reales con la calculadora de AWS o Azure en una región europea, bajo demanda y con reservas a 3 años. Personal: 0,3 técnicos.</li>
-</ul>
-<p>Construid la hoja con una fila por concepto y columnas por año, calculad el total a 5 años de cada opción y un gráfico comparativo. Añadid después un escenario: durante la campaña de vacunación (2 meses al año) la carga de producción se triplica. ¿Cómo afecta a cada opción?</p>
-</div>
-<div class="actividad">
-<h4>Actividad 2. Beneficios y riesgos en el caso real <span class="dur">20 min</span></h4>
+<h4>Actividad 8. Beneficios y riesgos en el caso real <span class="dur">20 min</span></h4>
 <p>Con los resultados, redactad un informe de una página para la dirección de la Conselleria con: la opción recomendada, tres beneficios que obtendría, tres riesgos y cómo mitigarlos (incluyendo protección de datos y ENS), y qué haría falta para que la otra opción fuera la mejor.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Debate: ¿nube o no? <span class="dur">15 min</span></h4>
+<h4>Actividad 9. Debate: ¿nube o no? <span class="dur">15 min</span></h4>
 <p>Dividimos la clase en dos bandos, a favor de la nube y a favor del on premise, para Cita Previa. Cada bando tiene 3 minutos de exposición con los datos de sus hojas de cálculo, 2 minutos de réplica y 1 minuto de conclusión. El resto de la clase vota al final qué argumento ha sido más sólido.</p>
-<p class="entrega">Entrega en Aules: hoja de cálculo del TCO e informe para la dirección.</p>
 </div>
+<p class="entrega">Entrega en Aules: línea temporal, cálculos y respuestas de la actividad 4, hoja de estimación de la actividad 5, respuestas de la 6, hoja de cálculo del TCO de la actividad 7 e informe para la dirección de la actividad 8.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
+<li>¿Qué es el plano de control de un proveedor de nube?</li>
+<li>¿Por qué se dice que en la nube "todo es una API"? ¿Qué permite eso?</li>
+<li>Explica la multiplexación estadística y por qué abarata la nube.</li>
+<li>¿Cuándo usarías instancias spot y cuándo instancias reservadas?</li>
+<li>¿Qué significa "seguridad de la nube" frente a "seguridad en la nube"?</li>
+<li>¿Qué compensa un proveedor si incumple su SLA?</li>
 <li>¿Qué diferencia hay entre CapEx y OpEx? Pon un ejemplo de cada uno en una infraestructura de TI.</li>
 <li>¿Qué costes del on premise se suelen olvidar al calcular el TCO?</li>
 <li>¿Qué significa "dejar de adivinar la capacidad"?</li>
@@ -664,8 +660,9 @@
 <li>Cita dos situaciones en las que el on premise es preferible a la nube.</li>
 <li>¿Por qué los datos de Cita Previa exigen especial cuidado al elegir proveedor de nube?</li>
 </ol>
-</section><section class="panel" role="tabpanel" id="p-p4" aria-labelledby="tab-p4" hidden>
-<p class="meta">Unidad 2 · 4. Arquitectura · 2 horas</p>
+</section>
+<section class="panel" role="tabpanel" id="p-p3" aria-labelledby="tab-p3" hidden>
+<p class="meta">Unidad 2 · 3. Arquitectura · 2 horas</p>
 <h2>Infraestructura de nube y arquitectura de nube</h2>
 <p class="chips"><span class="ce" title="Se ha diferenciado entre la infraestructura de nube y la arquitectura de nube, relacionándolos con los recursos de computación y la ejecución de aplicaciones web.">CE 2d</span></p>
 <h3>Objetivos del punto</h3>
@@ -676,7 +673,6 @@
 <li>Conocer los pilares de un buen diseño en la nube (marcos <i>Well-Architected</i>).</li>
 <li>Dibujar la arquitectura de Cita Previa en la nube y justificar cada componente.</li>
 </ul>
-
 <h3>1. Dos palabras que se confunden</h3>
 <p>En el lenguaje del día a día se habla de "la infraestructura" y "la arquitectura" como si fueran lo mismo. No lo son, y el criterio de evaluación nos pide diferenciarlas.</p>
 <div class="tabla"><table>
@@ -689,15 +685,16 @@
 </table></div>
 <p>Dicho de otro modo: la infraestructura es la <b>materia prima</b> y la arquitectura es <b>la forma de usarla</b>. Con la misma infraestructura de AWS se puede construir una aplicación frágil y cara o una resistente y barata; la diferencia está en la arquitectura.</p>
 
+
 <h3>2. La infraestructura: recursos de computación</h3>
-<p>Los recursos de infraestructura que usa una aplicación se agrupan en cuatro familias, que veremos en detalle en los puntos 5 y 6:</p>
+<p>Los recursos de infraestructura que usa una aplicación se agrupan en cuatro familias, que veremos en detalle en el punto 4:</p>
 <ul>
 <li><b>Cómputo</b>: capacidad de procesamiento para ejecutar código. Máquinas virtuales (AWS EC2, Azure Virtual Machines, Google Compute Engine), contenedores (ECS, AKS, Cloud Run) y funciones (Lambda, Azure Functions).</li>
 <li><b>Almacenamiento</b>: discos de bloque, sistemas de ficheros compartidos y almacenamiento de objetos.</li>
 <li><b>Red</b>: redes virtuales, subredes, tablas de rutas, puertas de enlace a Internet, balanceadores, DNS, CDN.</li>
 <li><b>Bases de datos y otros servicios</b>: bases de datos gestionadas, cachés, colas de mensajes.</li>
 </ul>
-<p>En muchos textos la arquitectura de nube se describe con tres elementos: el <b>front end</b> (lo que usa el cliente para acceder: navegador, aplicación, consola), el <b>back end</b> (los recursos del proveedor: cómputo, almacenamiento, red, seguridad y gestión) y la <b>red</b> que los une. Ojo: aquí front end y back end se refieren al cliente y al proveedor de la nube, no a las dos partes de una aplicación web.</p>
+
 
 <h3>3. Cómo se ejecuta una aplicación web en la nube</h3>
 <p>Sigamos el camino de una petición de un paciente que abre <code>https://citaprevia.example.es</code>:</p>
@@ -713,6 +710,7 @@
 </ol>
 
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 380" role="img" aria-label="Camino de una petición en la nube" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-peticion" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="140" width="96" height="50" rx="6" class="d-gris"/><text x="60.0" y="157.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Paciente</text><text x="60.0" y="173.0" class="ts" text-anchor="middle" dominant-baseline="middle">navegador</text><rect x="150" y="12" width="128" height="44" rx="6" class="d-amarillo"/><text x="214.0" y="26.0" class="t tb" text-anchor="middle" dominant-baseline="middle">1 · DNS</text><text x="214.0" y="42.0" class="ts" text-anchor="middle" dominant-baseline="middle">nombre → dirección</text><rect x="150" y="76" width="128" height="44" rx="6" class="d-verde"/><text x="214.0" y="90.0" class="t tb" text-anchor="middle" dominant-baseline="middle">2 · CDN</text><text x="214.0" y="106.0" class="ts" text-anchor="middle" dominant-baseline="middle">CSS, imágenes, JS</text><rect x="150" y="146" width="128" height="44" rx="6" class="d-naranja"/><text x="214.0" y="160.0" class="t tb" text-anchor="middle" dominant-baseline="middle">3-4 · Balanceador</text><text x="214.0" y="176.0" class="ts" text-anchor="middle" dominant-baseline="middle">HTTPS + WAF</text><path d="M110,152 L148,40" class="flecha" marker-end="url(#fl-peticion)"/><path d="M110,160 L148,100" class="flecha" marker-end="url(#fl-peticion)"/><path d="M110,165 L148,168" class="flecha" marker-end="url(#fl-peticion)"/><rect x="300" y="110" width="408" height="258" rx="8" class="d-grupo"/><text x="504" y="126" class="ts" text-anchor="middle" dominant-baseline="middle">Subredes privadas, sin IP pública</text><rect x="316" y="146" width="116" height="44" rx="6" class="d-azul"/><text x="374.0" y="160.0" class="t tb" text-anchor="middle" dominant-baseline="middle">5 · Aplicación</text><text x="374.0" y="176.0" class="ts" text-anchor="middle" dominant-baseline="middle">zona A</text><rect x="316" y="206" width="116" height="44" rx="6" class="d-azul"/><text x="374.0" y="220.0" class="t tb" text-anchor="middle" dominant-baseline="middle">5 · Aplicación</text><text x="374.0" y="236.0" class="ts" text-anchor="middle" dominant-baseline="middle">zona B</text><path d="M280,168 L314,168" class="flecha" marker-end="url(#fl-peticion)"/><path d="M280,174 L314,222" class="flecha" marker-end="url(#fl-peticion)"/><rect x="462" y="140" width="132" height="40" rx="6" class="d-morado"/><text x="528.0" y="152.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Caché</text><text x="528.0" y="168.0" class="ts" text-anchor="middle" dominant-baseline="middle">Redis</text><rect x="462" y="200" width="132" height="50" rx="6" class="d-rojo"/><text x="528.0" y="217.0" class="t tb" text-anchor="middle" dominant-baseline="middle">6 · Base de datos</text><text x="528.0" y="233.0" class="ts" text-anchor="middle" dominant-baseline="middle">réplica en zona B</text><rect x="606" y="200" width="96" height="50" rx="6" class="d-gris"/><text x="654.0" y="217.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Documentos</text><text x="654.0" y="233.0" class="ts" text-anchor="middle" dominant-baseline="middle">objetos</text><path d="M434,164 L460,160" class="flecha" marker-end="url(#fl-peticion)"/><path d="M434,226 L460,226" class="flecha" marker-end="url(#fl-peticion)"/><path d="M410,252 L410,272 L654,272 L654,252" class="flecha" marker-end="url(#fl-peticion)"/><rect x="316" y="300" width="116" height="50" rx="6" class="d-amarillo"/><text x="374.0" y="317.0" class="t tb" text-anchor="middle" dominant-baseline="middle">7 · Cola</text><text x="374.0" y="333.0" class="ts" text-anchor="middle" dominant-baseline="middle">correo y SMS</text><rect x="462" y="300" width="132" height="50" rx="6" class="d-amarillo"/><text x="528.0" y="317.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Trabajador</text><text x="528.0" y="333.0" class="ts" text-anchor="middle" dominant-baseline="middle">envía los avisos</text><path d="M350,252 L350,298" class="flecha" marker-end="url(#fl-peticion)"/><path d="M434,325 L460,325" class="flecha" marker-end="url(#fl-peticion)"/><rect x="300" y="12" width="408" height="40" rx="6" class="d-blanco"/><text x="504.0" y="24.0" class="t tb" text-anchor="middle" dominant-baseline="middle">8 · Monitorización</text><text x="504.0" y="40.0" class="ts" text-anchor="middle" dominant-baseline="middle">métricas y registros de todos los componentes</text></svg></div><figcaption>El recorrido de una petición, con los números de la lista. Solo el DNS, la CDN y el balanceador están expuestos a Internet; lo demás vive en subredes privadas.</figcaption></figure>
+
 <h3>4. Arquitecturas habituales</h3>
 <h4>Arquitectura en tres capas</h4>
 <p>La más clásica para aplicaciones web: <b>presentación</b> (servidor web o front end), <b>lógica</b> (aplicación) y <b>datos</b> (base de datos). Cada capa en su subred, con reglas de red que solo permiten el tráfico necesario: Internet → balanceador → aplicación → base de datos, y nunca Internet → base de datos.</p>
@@ -731,8 +729,25 @@
 </ul>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 280" role="img" aria-label="Monolito frente a microservicios" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-micro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="170" y="16" class="t tb" text-anchor="middle" dominant-baseline="middle">Monolito</text><rect x="30" y="30" width="280" height="140" rx="8" class="d-azul"/><text x="170" y="46" class="ts" text-anchor="middle" dominant-baseline="middle">Un único programa, se despliega entero</text><rect x="46" y="64" width="78" height="40" rx="6" class="d-blanco"/><text x="85.0" y="84.0" class="t" text-anchor="middle" dominant-baseline="middle">Citas</text><rect x="132" y="64" width="78" height="40" rx="6" class="d-blanco"/><text x="171.0" y="84.0" class="t" text-anchor="middle" dominant-baseline="middle">Pacientes</text><rect x="218" y="64" width="78" height="40" rx="6" class="d-blanco"/><text x="257.0" y="84.0" class="t" text-anchor="middle" dominant-baseline="middle">Avisos</text><rect x="110" y="186" width="120" height="44" rx="6" class="d-rojo"/><text x="170.0" y="200.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Una base</text><text x="170.0" y="216.0" class="ts" text-anchor="middle" dominant-baseline="middle">de datos</text><path d="M170,172 L170,184" class="flecha" marker-end="url(#fl-micro)"/><text x="540" y="16" class="t tb" text-anchor="middle" dominant-baseline="middle">Microservicios</text><rect x="400" y="60" width="90" height="50" rx="6" class="d-azul"/><text x="445.0" y="77.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Citas</text><text x="445.0" y="93.0" class="ts" text-anchor="middle" dominant-baseline="middle">contenedor</text><rect x="410" y="186" width="70" height="40" rx="6" class="d-rojo"/><text x="445.0" y="206.0" class="ts" text-anchor="middle" dominant-baseline="middle">su BD</text><path d="M445,112 L445,184" class="flecha" marker-end="url(#fl-micro)"/><rect x="510" y="60" width="90" height="50" rx="6" class="d-verde"/><text x="555.0" y="77.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Pacientes</text><text x="555.0" y="93.0" class="ts" text-anchor="middle" dominant-baseline="middle">contenedor</text><rect x="520" y="186" width="70" height="40" rx="6" class="d-rojo"/><text x="555.0" y="206.0" class="ts" text-anchor="middle" dominant-baseline="middle">su BD</text><path d="M555,112 L555,184" class="flecha" marker-end="url(#fl-micro)"/><rect x="620" y="60" width="90" height="50" rx="6" class="d-morado"/><text x="665.0" y="77.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Avisos</text><text x="665.0" y="93.0" class="ts" text-anchor="middle" dominant-baseline="middle">contenedor</text><rect x="630" y="186" width="70" height="40" rx="6" class="d-rojo"/><text x="665.0" y="206.0" class="ts" text-anchor="middle" dominant-baseline="middle">su BD</text><path d="M665,112 L665,184" class="flecha" marker-end="url(#fl-micro)"/><path d="M492,85 L508,85" class="flecha" marker-end="url(#fl-micro)" marker-start="url(#fl-micro)"/><path d="M602,85 L618,85" class="flecha" marker-end="url(#fl-micro)" marker-start="url(#fl-micro)"/><text x="540" y="250" class="ts" text-anchor="middle" dominant-baseline="middle">Se comunican por API o mensajes</text><text x="540" y="266" class="ts" text-anchor="middle" dominant-baseline="middle">y se despliegan por separado</text></svg></div><figcaption>En un monolito todo va junto; con microservicios cada parte es un servicio independiente con sus propios datos.</figcaption></figure>
 <h4>Diseñar para el fallo</h4>
-<p>Werner Vogels, director técnico de Amazon, lo resume así: <i>"todo falla, todo el tiempo"</i>. En la nube un servidor puede desaparecer en cualquier momento, así que la arquitectura debe asumirlo: varias instancias en varias zonas, comprobaciones de salud, reintentos, copias de seguridad automáticas y recuperación automática. Se habla de tratar los servidores como <b>ganado y no como mascotas</b> (<i>cattle, not pets</i>): no se cuida con cariño cada servidor; si uno enferma, se sustituye por otro idéntico creado automáticamente.</p>
+<p>Werner Vogels, director técnico de Amazon, lo resume así: <i>"todo falla, todo el tiempo"</i>. En la nube un servidor puede desaparecer en cualquier momento, así que la arquitectura no confía en que no falle: elimina los puntos únicos de fallo con redundancia (punto 1) y añade comprobaciones de salud, reintentos y recuperación automática. Se habla de tratar los servidores como <b>ganado y no como mascotas</b> (<i>cattle, not pets</i>): no se cuida con cariño cada servidor; si uno enferma, se sustituye por otro idéntico creado automáticamente.</p>
 
+
+<div class="pausa"><h4>Ahora: actividad 10</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 5.</p></div>
+
+<div class="actividad">
+<h4>Actividad 10. ¿Infraestructura o arquitectura? <span class="dur">15 min</span></h4>
+<p>En parejas, clasificad cada afirmación como infraestructura o arquitectura y explicad por qué:</p>
+<ol class="casos">
+<li>La región de Madrid tiene tres zonas de disponibilidad.</li>
+<li>Las instancias de la aplicación no tienen IP pública y solo aceptan tráfico del balanceador.</li>
+<li>Una VM <code>t3.medium</code> tiene 2 vCPU y 4 GB.</li>
+<li>Las sesiones se guardan en Redis para poder escalar horizontalmente.</li>
+<li>El disco de la base de datos es SSD de 100 GB.</li>
+<li>Los recordatorios se envían mediante una cola para no bloquear la web.</li>
+<li>El proveedor usa el hipervisor Nitro.</li>
+<li>La base de datos tiene una réplica en otra zona.</li>
+</ol>
+</div>
 <h3>5. Pilares de una buena arquitectura</h3>
 <p>Los grandes proveedores publican marcos de buenas prácticas para revisar una arquitectura: el <b>AWS Well-Architected Framework</b>, el <b>Azure Well-Architected Framework</b> y el <b>Google Cloud Well-Architected Framework</b>. AWS y Google organizan el suyo en estos seis pilares (con nombres ligeramente distintos); Azure usa los cinco primeros y trata la sostenibilidad como una guía aparte:</p>
 <div class="tabla"><table>
@@ -746,23 +761,11 @@
 </table></div>
 <p>Muchas decisiones implican <b>compromisos</b> entre pilares: replicar la base de datos en otra zona mejora la fiabilidad pero duplica su coste.</p>
 
-<h3>Actividades</h3>
+
+<div class="pausa"><h4>Ahora: actividades 11 y 12</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Con ellas se cierra el punto.</p></div>
+
 <div class="actividad">
-<h4>Actividad 1. ¿Infraestructura o arquitectura? <span class="dur">15 min</span></h4>
-<p>En parejas, clasificad cada afirmación como infraestructura o arquitectura y explicad por qué:</p>
-<ol class="casos">
-<li>La región de Madrid tiene tres zonas de disponibilidad.</li>
-<li>Las instancias de la aplicación no tienen IP pública y solo aceptan tráfico del balanceador.</li>
-<li>Una VM <code>t3.medium</code> tiene 2 vCPU y 4 GB.</li>
-<li>Las sesiones se guardan en Redis para poder escalar horizontalmente.</li>
-<li>El disco de la base de datos es SSD de 100 GB.</li>
-<li>Los recordatorios se envían mediante una cola para no bloquear la web.</li>
-<li>El proveedor usa el hipervisor Nitro.</li>
-<li>La base de datos tiene una réplica en otra zona.</li>
-</ol>
-</div>
-<div class="actividad">
-<h4>Actividad 2. Diagrama de arquitectura de Cita Previa <span class="dur">45 min</span></h4>
+<h4>Actividad 11. Diagrama de arquitectura de Cita Previa <span class="dur">45 min</span></h4>
 <p>En grupos de 3. Requisitos: 20.000 citas diarias con picos los lunes de 8 a 10 h, disponibilidad objetivo del 99,9 %, datos de salud (deben quedar en la UE y cifrados), envío de recordatorios por correo y SMS, panel de gestión solo accesible desde la red de los centros de salud, entornos de revisión y producción.</p>
 <ol>
 <li>Dibujad la arquitectura en <a href="https://app.diagrams.net/">diagrams.net</a> con la biblioteca de iconos del proveedor (menú <i>Más formas</i> → AWS o Azure): región, zonas, red virtual, subredes públicas y privadas, balanceador, grupo de autoescalado o servicio de contenedores, base de datos, almacenamiento de objetos, cola, CDN y monitorización.</li>
@@ -771,10 +774,10 @@
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Revisión cruzada con el marco Well-Architected <span class="dur">20 min</span></h4>
+<h4>Actividad 12. Revisión cruzada con el marco Well-Architected <span class="dur">20 min</span></h4>
 <p>Intercambiad el diagrama con otro grupo. Para cada pilar, escribid una pregunta al otro grupo sobre su diseño y un punto débil que hayáis detectado (por ejemplo: "¿qué pasa si cae la zona A?", "¿quién puede acceder a la base de datos?", "¿cuánto cuesta el entorno de revisión?"). Devolved la revisión y corregid vuestro diagrama con lo que os hayan señalado.</p>
-<p class="entrega">Entrega en Aules: clasificación de la actividad 1, diagrama definitivo con su tabla y la revisión que hicisteis al otro grupo.</p>
 </div>
+<p class="entrega">Entrega en Aules: clasificación de la actividad 10, diagrama definitivo con su tabla de la actividad 11 y la revisión que hicisteis al otro grupo en la actividad 12.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
@@ -784,10 +787,11 @@
 <li>¿Qué quiere decir tratar los servidores "como ganado y no como mascotas"?</li>
 <li>Pon un ejemplo de conflicto entre el pilar de fiabilidad y el de costes.</li>
 </ol>
-</section><section class="panel" role="tabpanel" id="p-p5" aria-labelledby="tab-p5" hidden>
-<p class="meta">Unidad 2 · 5. Aprovisionamiento · 2 horas</p>
-<h2>Componentes y aprovisionamiento: de la máquina física a la máquina virtual</h2>
-<p class="chips"><span class="ce" title="Se ha determinado el conjunto de componentes hardware y software básico de la infraestructura en la nube, relacionándolo con el aprovisionamiento de recursos virtuales y la implementación de cargas de trabajo en la nube.">CE 2e</span></p>
+</section>
+<section class="panel" role="tabpanel" id="p-p4" aria-labelledby="tab-p4" hidden>
+<p class="meta">Unidad 2 · 4. Componentes · 4 horas</p>
+<h2>Componentes de la nube: del servidor físico a la máquina virtual, la red y el almacenamiento</h2>
+<p class="chips"><span class="ce" title="Se ha determinado el conjunto de componentes hardware y software básico de la infraestructura en la nube, relacionándolo con el aprovisionamiento de recursos virtuales y la implementación de cargas de trabajo en la nube.">CE 2e</span> <span class="ce" title="Se han caracterizado los componentes de la infraestructura de nube, especificando lo relativo a servidores, redes, almacenamiento y software.">CE 2f</span></p>
 <h3>Objetivos del punto</h3>
 <ul>
 <li>Identificar los componentes hardware básicos de la infraestructura de nube: servidores, CPU, memoria, almacenamiento y red.</li>
@@ -795,30 +799,35 @@
 <li>Explicar la virtualización y cómo convierte recursos físicos en recursos virtuales.</li>
 <li>Describir el proceso de aprovisionamiento de una máquina virtual y cómo se implementa una carga de trabajo con cloud-init.</li>
 <li>Interpretar el aprovisionamiento de una máquina con cloud-init y decidir cómo llevar cargas de trabajo reales a la nube.</li>
+<li>Caracterizar los servidores virtuales de la nube: tipos, imágenes, ciclo de vida y opciones.</li>
+<li>Caracterizar las redes en la nube: red privada virtual, subredes, rutas, puertas de enlace, grupos de seguridad, IP y DNS.</li>
+<li>Caracterizar los tipos de almacenamiento: bloque, fichero y objeto, y sus clases.</li>
+<li>Caracterizar el software de la infraestructura: sistemas operativos, servicios gestionados y software de gestión.</li>
+<li>Analizar una infraestructura de red con subredes públicas y privadas, elegir el almacenamiento adecuado y documentarlo todo en una ficha técnica.</li>
 </ul>
-
 <h3>1. Componentes hardware</h3>
 <p>Aunque el cliente de la nube no ve el hardware, todo se apoya en él, y sus características explican las opciones que ofrece el proveedor.</p>
 <h4>Servidor</h4>
-<p>Un servidor de CPD se monta en <b>rack</b> (armario estándar de 19 pulgadas, con alturas medidas en unidades de 1U = 4,45 cm) o en chasis <b>blade</b> que comparten alimentación y red. Tiene fuentes de alimentación y ventiladores redundantes, gestión remota fuera de banda (iDRAC, iLO, IPMI) para encenderlo o reinstalarlo sin ir físicamente, y componentes pensados para funcionar 24 horas durante años.</p>
+<p>Un servidor de CPD, en <b>rack</b> o en chasis <b>blade</b> (punto 1), tiene fuentes de alimentación y ventiladores redundantes, gestión remota fuera de banda (iDRAC, iLO, IPMI) para encenderlo o reinstalarlo sin ir físicamente, y componentes pensados para funcionar 24 horas durante años.</p>
 <h4>Procesador (CPU)</h4>
 <ul>
 <li><b>Sockets, núcleos e hilos</b>: un servidor puede tener 1 o 2 sockets (procesadores físicos), cada uno con decenas de núcleos (hasta más de 100 en los modelos actuales), y cada núcleo puede ejecutar 2 hilos con SMT (Hyper-Threading).</li>
 <li><b>Arquitecturas</b>: x86-64 (Intel Xeon, AMD EPYC) y, cada vez más, ARM (AWS Graviton, Ampere), que ofrecen mejor rendimiento por vatio.</li>
 <li><b>Extensiones de virtualización</b>: Intel VT-x y AMD-V permiten que el hipervisor ejecute máquinas virtuales de forma eficiente. Sin ellas, la virtualización sería mucho más lenta.</li>
-<li>En la nube, la unidad que se vende es la <b>vCPU</b>, que en procesadores x86 corresponde a un hilo de un núcleo físico. En los procesadores ARM sin SMT, como AWS Graviton, cada vCPU es un núcleo físico completo.</li>
+<li>En la nube, la unidad que se vende es la <b>vCPU</b>, que en procesadores x86 normalmente corresponde a un hilo de un núcleo físico. Hay excepciones: en los procesadores ARM sin SMT, como AWS Graviton, y en algunas instancias x86 sin SMT, como las AMD de 7.ª generación de AWS (M7a, C7a, R7a), cada vCPU es un núcleo físico completo.</li>
 </ul>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 260" role="img" aria-label="Sockets, núcleos, hilos y vCPU" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-vcpu" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="12" width="696" height="190" rx="8" class="d-grupo"/><text x="360" y="28" class="t tb" text-anchor="middle" dominant-baseline="middle">Servidor físico con 2 sockets</text><rect x="30" y="42" width="320" height="148" rx="6" class="d-gris"/><text x="190" y="58" class="t tb" text-anchor="middle" dominant-baseline="middle">Socket 1: un procesador</text><rect x="42" y="72" width="68" height="104" rx="6" class="d-azul"/><text x="76" y="88" class="ts" text-anchor="middle" dominant-baseline="middle">Núcleo</text><rect x="50" y="100" width="52" height="30" rx="6" class="d-verde"/><text x="76.0" y="115.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="50" y="136" width="52" height="30" rx="6" class="d-verde"/><text x="76.0" y="151.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="118" y="72" width="68" height="104" rx="6" class="d-azul"/><text x="152" y="88" class="ts" text-anchor="middle" dominant-baseline="middle">Núcleo</text><rect x="126" y="100" width="52" height="30" rx="6" class="d-verde"/><text x="152.0" y="115.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="126" y="136" width="52" height="30" rx="6" class="d-verde"/><text x="152.0" y="151.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="194" y="72" width="68" height="104" rx="6" class="d-azul"/><text x="228" y="88" class="ts" text-anchor="middle" dominant-baseline="middle">Núcleo</text><rect x="202" y="100" width="52" height="30" rx="6" class="d-verde"/><text x="228.0" y="115.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="202" y="136" width="52" height="30" rx="6" class="d-verde"/><text x="228.0" y="151.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="270" y="72" width="68" height="104" rx="6" class="d-azul"/><text x="304" y="88" class="ts" text-anchor="middle" dominant-baseline="middle">Núcleo</text><rect x="278" y="100" width="52" height="30" rx="6" class="d-verde"/><text x="304.0" y="115.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="278" y="136" width="52" height="30" rx="6" class="d-verde"/><text x="304.0" y="151.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="374" y="42" width="320" height="148" rx="6" class="d-gris"/><text x="534" y="58" class="t tb" text-anchor="middle" dominant-baseline="middle">Socket 2: un procesador</text><rect x="386" y="72" width="68" height="104" rx="6" class="d-azul"/><text x="420" y="88" class="ts" text-anchor="middle" dominant-baseline="middle">Núcleo</text><rect x="394" y="100" width="52" height="30" rx="6" class="d-verde"/><text x="420.0" y="115.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="394" y="136" width="52" height="30" rx="6" class="d-verde"/><text x="420.0" y="151.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="462" y="72" width="68" height="104" rx="6" class="d-azul"/><text x="496" y="88" class="ts" text-anchor="middle" dominant-baseline="middle">Núcleo</text><rect x="470" y="100" width="52" height="30" rx="6" class="d-verde"/><text x="496.0" y="115.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="470" y="136" width="52" height="30" rx="6" class="d-verde"/><text x="496.0" y="151.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="538" y="72" width="68" height="104" rx="6" class="d-azul"/><text x="572" y="88" class="ts" text-anchor="middle" dominant-baseline="middle">Núcleo</text><rect x="546" y="100" width="52" height="30" rx="6" class="d-verde"/><text x="572.0" y="115.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="546" y="136" width="52" height="30" rx="6" class="d-verde"/><text x="572.0" y="151.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="614" y="72" width="68" height="104" rx="6" class="d-azul"/><text x="648" y="88" class="ts" text-anchor="middle" dominant-baseline="middle">Núcleo</text><rect x="622" y="100" width="52" height="30" rx="6" class="d-verde"/><text x="648.0" y="115.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="622" y="136" width="52" height="30" rx="6" class="d-verde"/><text x="648.0" y="151.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><text x="360" y="222" class="t tb" text-anchor="middle" dominant-baseline="middle">x86 (Intel, AMD): 1 vCPU = 1 hilo  ·  ARM sin SMT (AWS Graviton): 1 vCPU = 1 núcleo</text><text x="360" y="244" class="ts" text-anchor="middle" dominant-baseline="middle">Este servidor de ejemplo: 2 sockets × 4 núcleos × 2 hilos = 16 vCPU en x86</text></svg></div><figcaption>Cómo se cuentan las CPU de un servidor y qué es una vCPU. Los servidores reales tienen decenas de núcleos por socket.</figcaption></figure>
 <h4>Memoria</h4>
 <p>RAM con corrección de errores (<b>ECC</b>), en cantidades de cientos de GB o varios TB por servidor. En servidores con varios sockets, cada procesador accede más rápido a su memoria cercana (<b>NUMA</b>), algo que el hipervisor tiene en cuenta al colocar las VM.</p>
 <h4>Almacenamiento</h4>
 <ul>
-<li><b>Discos locales</b>: HDD (baratos y lentos), SSD SATA/SAS y SSD <b>NVMe</b> (muy rápidos). Se agrupan en <b>RAID</b> (1, 5, 6, 10) para tolerar fallos.</li>
-<li><b>Almacenamiento en red</b>: cabinas <b>SAN</b> (bloques por Fibre Channel o iSCSI) y <b>NAS</b> (ficheros por NFS/SMB).</li>
+<li><b>Discos locales</b>: HDD (baratos y lentos), SSD SATA/SAS y SSD <b>NVMe</b> (muy rápidos), agrupados en RAID (punto 1) con distintos niveles: 1, 5, 6 o 10.</li>
+<li><b>Almacenamiento en red</b>: las cabinas SAN y NAS del punto 1 se conectan con protocolos distintos: bloques por Fibre Channel o iSCSI en la SAN, ficheros por NFS o SMB en la NAS.</li>
 <li><b>Almacenamiento distribuido definido por software</b>: muchos servidores con discos locales forman un único sistema replicado (Ceph en Proxmox y OpenStack; sistemas propios en los grandes proveedores). Es la base de los discos virtuales de la nube.</li>
 </ul>
 <h4>Red</h4>
 <p>Tarjetas de red de 10, 25, 100 Gb/s o más, conmutadores organizados en topologías <i>leaf-spine</i> para que cualquier servidor hable con cualquier otro con la misma latencia, y tarjetas inteligentes (<b>SmartNIC</b>, DPU) que descargan del procesador el trabajo de la red virtual, el cifrado y el almacenamiento, como las tarjetas Nitro de AWS.</p>
+
 
 <h3>2. Componentes software</h3>
 <div class="tabla"><table>
@@ -831,6 +840,7 @@
 <tr><td>Imágenes</td><td>Plantillas de disco con un sistema operativo listo para arrancar</td><td>AMI de AWS, imágenes cloud de Ubuntu, plantillas de Proxmox</td></tr>
 <tr><td>Agentes dentro de la VM</td><td>Configuración inicial y comunicación con la plataforma</td><td>cloud-init, qemu-guest-agent, agentes de monitorización</td></tr>
 </table></div>
+
 
 <h3>3. Virtualización: de lo físico a lo virtual</h3>
 <p>La <b>virtualización</b> crea versiones lógicas (virtuales) de recursos físicos. Gracias a ella, un servidor físico de 128 hilos y 1 TB de RAM se puede repartir en decenas de máquinas virtuales de distintos tamaños, cada una con su propio sistema operativo, aislada de las demás.</p>
@@ -848,7 +858,7 @@
 <li><b>Tarjetas de red virtuales</b> conectadas a un puente (<i>bridge</i>) o a una red definida por software. Los dispositivos <b>virtio</b> son paravirtualizados: el sistema invitado sabe que es virtual y se comunica con el hipervisor de forma más eficiente.</li>
 </ul>
 <h4>Sobresuscripción (overcommit)</h4>
-<p>Como las máquinas rara vez usan el 100 % de su CPU a la vez, un hipervisor puede asignar más vCPU que hilos físicos tiene (por ejemplo, 4:1). Con la memoria se hace con más cuidado, porque si se agota el rendimiento cae drásticamente. Los proveedores de nube controlan esta proporción; en algunos tipos de instancia la CPU es compartida y "a ráfagas" (<b>burstable</b>, como las familias <code>t</code> de AWS o <code>B</code> de Azure): baratas, pero solo pueden usar el 100 % de la CPU durante un tiempo limitado.</p>
+<p>Como las máquinas rara vez usan el 100 % de su CPU a la vez, un hipervisor puede asignar más vCPU que hilos físicos tiene (por ejemplo, 4:1). Con la memoria se hace con más cuidado, porque si se agota el rendimiento cae drásticamente. En la nube pública, las instancias normales <b>no suelen sobresuscribirse</b>: las vCPU y la memoria que se contratan están reservadas para el cliente. La excepción son las instancias de ráfagas (<b>burstable</b>, como las familias <code>t</code> de AWS o <code>B</code> de Azure): comparten CPU, por eso son más baratas, y solo pueden usar el 100 % de la CPU durante un tiempo limitado. No sirven para cargas que usan mucha CPU de forma continua.</p>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 250" role="img" aria-label="Sobresuscripción de CPU y memoria" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-overcommit" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="180" y="16" class="t tb" text-anchor="middle" dominant-baseline="middle">CPU: se puede sobresuscribir</text><text x="540" y="16" class="t tb" text-anchor="middle" dominant-baseline="middle">Memoria: con mucho cuidado</text><rect x="20" y="40" width="34" height="30" rx="6" class="d-verde"/><text x="37.0" y="55.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="60" y="40" width="34" height="30" rx="6" class="d-verde"/><text x="77.0" y="55.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="100" y="40" width="34" height="30" rx="6" class="d-verde"/><text x="117.0" y="55.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="140" y="40" width="34" height="30" rx="6" class="d-verde"/><text x="157.0" y="55.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="180" y="40" width="34" height="30" rx="6" class="d-verde"/><text x="197.0" y="55.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="220" y="40" width="34" height="30" rx="6" class="d-verde"/><text x="237.0" y="55.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="260" y="40" width="34" height="30" rx="6" class="d-verde"/><text x="277.0" y="55.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><rect x="300" y="40" width="34" height="30" rx="6" class="d-verde"/><text x="317.0" y="55.0" class="ts" text-anchor="middle" dominant-baseline="middle">hilo</text><text x="180" y="84" class="ts" text-anchor="middle" dominant-baseline="middle">8 hilos físicos</text><rect x="20" y="120" width="74" height="50" rx="6" class="d-azul"/><text x="57.0" y="137.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VM 1</text><text x="57.0" y="153.0" class="ts" text-anchor="middle" dominant-baseline="middle">8 vCPU</text><rect x="102" y="120" width="74" height="50" rx="6" class="d-azul"/><text x="139.0" y="137.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VM 2</text><text x="139.0" y="153.0" class="ts" text-anchor="middle" dominant-baseline="middle">8 vCPU</text><rect x="184" y="120" width="74" height="50" rx="6" class="d-azul"/><text x="221.0" y="137.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VM 3</text><text x="221.0" y="153.0" class="ts" text-anchor="middle" dominant-baseline="middle">8 vCPU</text><rect x="266" y="120" width="74" height="50" rx="6" class="d-azul"/><text x="303.0" y="137.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VM 4</text><text x="303.0" y="153.0" class="ts" text-anchor="middle" dominant-baseline="middle">8 vCPU</text><text x="180" y="186" class="t tb" text-anchor="middle" dominant-baseline="middle">32 vCPU asignadas → 4:1</text><text x="180" y="204" class="ts" text-anchor="middle" dominant-baseline="middle">funciona porque no todas usan</text><text x="180" y="220" class="ts" text-anchor="middle" dominant-baseline="middle">el 100 % de la CPU a la vez</text><rect x="390" y="40" width="300" height="30" rx="6" class="d-verde"/><text x="540.0" y="55.0" class="t" text-anchor="middle" dominant-baseline="middle">64 GB de RAM física</text><rect x="390" y="120" width="68" height="50" rx="6" class="d-azul"/><text x="424.0" y="137.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VM 1</text><text x="424.0" y="153.0" class="ts" text-anchor="middle" dominant-baseline="middle">16 GB</text><rect x="466" y="120" width="68" height="50" rx="6" class="d-azul"/><text x="500.0" y="137.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VM 2</text><text x="500.0" y="153.0" class="ts" text-anchor="middle" dominant-baseline="middle">16 GB</text><rect x="542" y="120" width="68" height="50" rx="6" class="d-azul"/><text x="576.0" y="137.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VM 3</text><text x="576.0" y="153.0" class="ts" text-anchor="middle" dominant-baseline="middle">16 GB</text><rect x="618" y="120" width="68" height="50" rx="6" class="d-azul"/><text x="652.0" y="137.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VM 4</text><text x="652.0" y="153.0" class="ts" text-anchor="middle" dominant-baseline="middle">16 GB</text><text x="540" y="186" class="t tb" text-anchor="middle" dominant-baseline="middle">64 GB asignados → 1:1</text><text x="540" y="204" class="ts" text-anchor="middle" dominant-baseline="middle">si la memoria se agota, el</text><text x="540" y="220" class="ts" text-anchor="middle" dominant-baseline="middle">rendimiento cae en picado</text><path d="M180,104 L180,118" class="flecha disc" marker-end="url(#fl-overcommit)"/><path d="M540,74 L540,118" class="flecha disc" marker-end="url(#fl-overcommit)"/></svg></div><figcaption>Asignar más vCPU que hilos físicos es habitual; con la memoria se evita, porque quedarse sin ella hunde el rendimiento de todas las máquinas.</figcaption></figure>
 <h4>Familias de instancias</h4>
 <p>Los proveedores ofrecen tamaños de máquina agrupados por su proporción de CPU y memoria:</p>
@@ -861,6 +871,26 @@
 <tr><td>Aceleradas</td><td>Con GPU u otros aceleradores</td><td>Inteligencia artificial, vídeo</td><td>AWS g/p, Azure N</td></tr>
 </table></div>
 
+
+<div class="pausa"><h4>Ahora: actividad 13</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 4.</p></div>
+
+<div class="actividad">
+<h4>Actividad 13. Del hardware físico al virtual <span class="dur">15 min</span></h4>
+<p>Individual, en vuestro portátil (Ubuntu MATE). Ejecutad <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code> e <code>ip a</code> y anotad: modelo de CPU, núcleos y hilos, memoria total, discos y tarjetas de red.</p>
+<p>Después, con los datos del servidor 1 de la gestoría del punto 1 (2 procesadores de 12 núcleos y 24 hilos, 128 GB de RAM), completad el cálculo. Sus máquinas virtuales tienen asignado:</p>
+<div class="tabla"><table>
+<tr><th>VM</th><th>vCPU</th><th>RAM</th></tr>
+<tr><td>Controlador de dominio</td><td>2</td><td>8 GB</td></tr>
+<tr><td>Ficheros</td><td>4</td><td>16 GB</td></tr>
+<tr><td>ERP</td><td>8</td><td>32 GB</td></tr>
+<tr><td>Base de datos</td><td>8</td><td>32 GB</td></tr>
+<tr><td>Correo</td><td>4</td><td>16 GB</td></tr>
+<tr><td>Web interna</td><td>2</td><td>4 GB</td></tr>
+<tr><td>Escritorio remoto</td><td>16</td><td>24 GB</td></tr>
+<tr><td>Pruebas</td><td>8</td><td>8 GB</td></tr>
+</table></div>
+<p>Calculad la proporción de vCPU frente a hilos físicos y frente a núcleos físicos, y la de RAM asignada frente a RAM física. ¿Hay sobresuscripción de CPU? ¿Y de memoria? ¿Cuál de las dos es más peligrosa y por qué?</p>
+</div>
 <h3>4. Aprovisionar recursos virtuales</h3>
 <p><b>Aprovisionar</b> es preparar y entregar un recurso listo para usar. Cuando pedimos una VM, el plano de control:</p>
 <ol>
@@ -872,8 +902,8 @@
 <li>Dentro de la VM, <b>cloud-init</b> lee los metadatos y los datos de usuario y hace la configuración inicial.</li>
 <li>Empieza la <b>medición</b> para la facturación.</li>
 </ol>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 228" role="img" aria-label="Aprovisionamiento" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-aprovisionar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12.0" y="12.0" width="148.5" height="82.0" rx="6" class="d-morado"/><text x="86.2" y="30.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Autenticar y</text><text x="86.2" y="46.0" class="t tb" text-anchor="middle" dominant-baseline="middle">autorizar</text><text x="86.2" y="62.0" class="ts" text-anchor="middle" dominant-baseline="middle">¿quién eres?</text><text x="86.2" y="78.0" class="ts" text-anchor="middle" dominant-baseline="middle">¿tienes cuota?</text><rect x="194.5" y="12.0" width="148.5" height="82.0" rx="6" class="d-azul"/><text x="268.8" y="38.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Planificar</text><text x="268.8" y="54.0" class="ts" text-anchor="middle" dominant-baseline="middle">elegir un servidor</text><text x="268.8" y="70.0" class="ts" text-anchor="middle" dominant-baseline="middle">físico</text><rect x="377.0" y="12.0" width="148.5" height="82.0" rx="6" class="d-azul"/><text x="451.2" y="46.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Crear el disco</text><text x="451.2" y="62.0" class="ts" text-anchor="middle" dominant-baseline="middle">desde la imagen</text><rect x="559.5" y="12.0" width="148.5" height="82.0" rx="6" class="d-azul"/><text x="633.8" y="46.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Configurar la red</text><text x="633.8" y="62.0" class="ts" text-anchor="middle" dominant-baseline="middle">IP, cortafuegos</text><rect x="12.0" y="134.0" width="148.5" height="82.0" rx="6" class="d-verde"/><text x="86.2" y="168.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Arrancar la VM</text><text x="86.2" y="184.0" class="ts" text-anchor="middle" dominant-baseline="middle">en el hipervisor</text><rect x="194.5" y="134.0" width="148.5" height="82.0" rx="6" class="d-verde"/><text x="268.8" y="160.0" class="t tb" text-anchor="middle" dominant-baseline="middle">cloud-init</text><text x="268.8" y="176.0" class="ts" text-anchor="middle" dominant-baseline="middle">usuarios, claves,</text><text x="268.8" y="192.0" class="ts" text-anchor="middle" dominant-baseline="middle">paquetes</text><rect x="377.0" y="134.0" width="148.5" height="82.0" rx="6" class="d-amarillo"/><text x="451.2" y="160.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Medir</text><text x="451.2" y="176.0" class="ts" text-anchor="middle" dominant-baseline="middle">empieza la</text><text x="451.2" y="192.0" class="ts" text-anchor="middle" dominant-baseline="middle">facturación</text><path d="M162.5,53.0 L192.5,53.0" class="flecha " marker-end="url(#fl-aprovisionar)"/><path d="M345.0,53.0 L375.0,53.0" class="flecha " marker-end="url(#fl-aprovisionar)"/><path d="M527.5,53.0 L557.5,53.0" class="flecha " marker-end="url(#fl-aprovisionar)"/><path d="M633.8,96.0 L633.8,114.0 L86.2,114.0 L86.2,132.0" class="flecha " marker-end="url(#fl-aprovisionar)"/><path d="M162.5,175.0 L192.5,175.0" class="flecha " marker-end="url(#fl-aprovisionar)"/><path d="M345.0,175.0 L375.0,175.0" class="flecha " marker-end="url(#fl-aprovisionar)"/></svg></div><figcaption>Lo que hace el plano de control cuando pedimos una máquina virtual. Todo ocurre en menos de un minuto.</figcaption></figure>
-<p>Todo esto tarda menos de un minuto. En on premise tradicional, los pasos equivalentes (pedir el servidor, recibirlo, instalarlo en el rack, cablearlo, instalar el sistema desde un USB, configurar la red a mano) tardaban semanas.</p>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 228" role="img" aria-label="Aprovisionamiento" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-aprovisionar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12.0" y="12.0" width="148.5" height="82.0" rx="6" class="d-morado"/><text x="86.2" y="30.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Autenticar y</text><text x="86.2" y="46.0" class="t tb" text-anchor="middle" dominant-baseline="middle">autorizar</text><text x="86.2" y="62.0" class="ts" text-anchor="middle" dominant-baseline="middle">¿quién eres?</text><text x="86.2" y="78.0" class="ts" text-anchor="middle" dominant-baseline="middle">¿tienes cuota?</text><rect x="194.5" y="12.0" width="148.5" height="82.0" rx="6" class="d-azul"/><text x="268.8" y="38.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Planificar</text><text x="268.8" y="54.0" class="ts" text-anchor="middle" dominant-baseline="middle">elegir un servidor</text><text x="268.8" y="70.0" class="ts" text-anchor="middle" dominant-baseline="middle">físico</text><rect x="377.0" y="12.0" width="148.5" height="82.0" rx="6" class="d-azul"/><text x="451.2" y="46.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Crear el disco</text><text x="451.2" y="62.0" class="ts" text-anchor="middle" dominant-baseline="middle">desde la imagen</text><rect x="559.5" y="12.0" width="148.5" height="82.0" rx="6" class="d-azul"/><text x="633.8" y="46.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Configurar la red</text><text x="633.8" y="62.0" class="ts" text-anchor="middle" dominant-baseline="middle">IP, cortafuegos</text><rect x="12.0" y="134.0" width="148.5" height="82.0" rx="6" class="d-verde"/><text x="86.2" y="168.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Arrancar la VM</text><text x="86.2" y="184.0" class="ts" text-anchor="middle" dominant-baseline="middle">en el hipervisor</text><rect x="194.5" y="134.0" width="148.5" height="82.0" rx="6" class="d-verde"/><text x="268.8" y="160.0" class="t tb" text-anchor="middle" dominant-baseline="middle">cloud-init</text><text x="268.8" y="176.0" class="ts" text-anchor="middle" dominant-baseline="middle">usuarios, claves,</text><text x="268.8" y="192.0" class="ts" text-anchor="middle" dominant-baseline="middle">paquetes</text><rect x="377.0" y="134.0" width="148.5" height="82.0" rx="6" class="d-amarillo"/><text x="451.2" y="160.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Medir</text><text x="451.2" y="176.0" class="ts" text-anchor="middle" dominant-baseline="middle">empieza la</text><text x="451.2" y="192.0" class="ts" text-anchor="middle" dominant-baseline="middle">facturación</text><path d="M162.5,53.0 L192.5,53.0" class="flecha " marker-end="url(#fl-aprovisionar)"/><path d="M345.0,53.0 L375.0,53.0" class="flecha " marker-end="url(#fl-aprovisionar)"/><path d="M527.5,53.0 L557.5,53.0" class="flecha " marker-end="url(#fl-aprovisionar)"/><path d="M633.8,96.0 L633.8,114.0 L86.2,114.0 L86.2,132.0" class="flecha " marker-end="url(#fl-aprovisionar)"/><path d="M162.5,175.0 L192.5,175.0" class="flecha " marker-end="url(#fl-aprovisionar)"/><path d="M345.0,175.0 L375.0,175.0" class="flecha " marker-end="url(#fl-aprovisionar)"/></svg></div><figcaption>Lo que hace el plano de control cuando pedimos una máquina virtual. De la petición al servidor configurado pasa en torno a un minuto.</figcaption></figure>
+<p>Tener la máquina en ejecución lleva unos segundos; que además esté configurada y sirviendo, en torno a un minuto. En on premise tradicional, los pasos equivalentes (pedir el servidor, recibirlo, instalarlo en el rack, cablearlo, instalar el sistema desde un USB, configurar la red a mano) tardaban semanas.</p>
 <h4>Imágenes y plantillas</h4>
 <p>No se instala el sistema operativo desde cero cada vez: se parte de una <b>imagen</b> preparada. Las distribuciones publican <b>imágenes cloud</b> (por ejemplo, <code>noble-server-cloudimg-amd64.img</code> de Ubuntu 24.04) sin usuarios ni claves, que se personalizan en el primer arranque. En Proxmox, una VM se convierte en <b>plantilla</b> y se clona (clon completo o enlazado). Las organizaciones pueden crear sus propias <b>imágenes de oro</b> con su software y sus configuraciones de seguridad (con herramientas como Packer).</p>
 <h4>cloud-init: implementar la carga de trabajo en el primer arranque</h4>
@@ -900,7 +930,7 @@ runcmd:
 <p>Con esto, la máquina arranca ya con el usuario, la clave SSH, los paquetes y el servicio web funcionando: la <b>carga de trabajo queda implementada</b> sin que nadie entre a configurarla. Es el primer paso hacia la automatización completa que haremos con Terraform (unidad 6) y Ansible (unidad 7).</p>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 190" role="img" aria-label="Cómo trabaja cloud-init" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-cloudinit" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="20" width="150" height="56" rx="6" class="d-gris"/><text x="87.0" y="32.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Imagen cloud</text><text x="87.0" y="48.0" class="ts" text-anchor="middle" dominant-baseline="middle">Ubuntu sin usuarios</text><text x="87.0" y="64.0" class="ts" text-anchor="middle" dominant-baseline="middle">ni claves</text><rect x="12" y="100" width="150" height="56" rx="6" class="d-amarillo"/><text x="87.0" y="120.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Datos de usuario</text><text x="87.0" y="136.0" class="ts" text-anchor="middle" dominant-baseline="middle">#cloud-config (YAML)</text><rect x="220" y="50" width="150" height="76" rx="6" class="d-azul"/><text x="295.0" y="72.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Primer arranque</text><text x="295.0" y="88.0" class="ts" text-anchor="middle" dominant-baseline="middle">cloud-init lee los</text><text x="295.0" y="104.0" class="ts" text-anchor="middle" dominant-baseline="middle">datos de usuario</text><path d="M164,48 L218,76" class="flecha" marker-end="url(#fl-cloudinit)"/><path d="M164,128 L218,100" class="flecha" marker-end="url(#fl-cloudinit)"/><rect x="398" y="12" width="190" height="32" rx="6" class="d-blanco"/><text x="493.0" y="28.0" class="ts" text-anchor="middle" dominant-baseline="middle">Crea el usuario y su clave SSH</text><rect x="398" y="52" width="190" height="32" rx="6" class="d-blanco"/><text x="493.0" y="68.0" class="ts" text-anchor="middle" dominant-baseline="middle">Instala los paquetes</text><rect x="398" y="92" width="190" height="32" rx="6" class="d-blanco"/><text x="493.0" y="108.0" class="ts" text-anchor="middle" dominant-baseline="middle">Escribe los ficheros</text><rect x="398" y="132" width="190" height="32" rx="6" class="d-blanco"/><text x="493.0" y="148.0" class="ts" text-anchor="middle" dominant-baseline="middle">Arranca los servicios</text><path d="M372,88 L396,88" class="flecha" marker-end="url(#fl-cloudinit)"/><rect x="612" y="50" width="100" height="76" rx="6" class="d-verde"/><text x="662.0" y="72.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Servidor</text><text x="662.0" y="88.0" class="ts" text-anchor="middle" dominant-baseline="middle">listo, sin</text><text x="662.0" y="104.0" class="ts" text-anchor="middle" dominant-baseline="middle">entrar por SSH</text><path d="M590,88 L610,88" class="flecha" marker-end="url(#fl-cloudinit)"/></svg></div><figcaption>cloud-init convierte una imagen genérica en un servidor configurado durante su primer arranque, a partir de los datos de usuario.</figcaption></figure>
 <h4>Cargas de trabajo en la nube</h4>
-<p>Una <b>carga de trabajo</b> es una aplicación o proceso con sus recursos asociados. Al llevarla a la nube hay que decidir qué recursos necesita (cómputo, memoria, almacenamiento, red), cómo se instalará (imagen, cloud-init, contenedor) y cómo crecerá (vertical, horizontal). Las estrategias de migración se resumen en las "R" (AWS habla de siete): <b>rehost</b> (llevar la VM tal cual, <i>lift and shift</i>), <b>relocate</b> (trasladar la plataforma de virtualización entera, por ejemplo un entorno VMware, a la nube), <b>replatform</b> (pequeños cambios, por ejemplo usar una base de datos gestionada), <b>refactor</b> (rediseñarla para la nube, por ejemplo en contenedores), <b>repurchase</b> (sustituirla por un SaaS), <b>retain</b> (dejarla on premise) y <b>retire</b> (eliminarla).</p>
+<p>Una <b>carga de trabajo</b> es una aplicación o proceso con sus recursos asociados. Al llevarla a la nube hay que decidir qué recursos necesita (cómputo, memoria, almacenamiento, red), cómo se instalará (imagen, cloud-init, contenedor) y cómo crecerá (vertical, horizontal). Las estrategias para decidir qué se hace con cada carga se conocen como las <b>"R" de la migración</b> (AWS describe siete):</p>
 <div class="tabla"><table>
 <tr><th>Estrategia</th><th>Qué se hace</th><th>Esfuerzo</th><th>Ejemplo</th></tr>
 <tr><td><b>Retire</b> (retirar)</td><td>Se elimina la aplicación</td><td>Ninguno</td><td>Una web interna que ya nadie usa</td></tr>
@@ -912,26 +942,11 @@ runcmd:
 <tr><td><b>Refactor</b> (rediseñar)</td><td>Se rediseña para la nube</td><td>Alto</td><td>Cita Previa se divide en contenedores con autoescalado</td></tr>
 </table></div>
 
-<h3>Actividades</h3>
+
+<div class="pausa"><h4>Ahora: actividades 14 y 15</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Después seguimos con el apartado 5.</p></div>
+
 <div class="actividad">
-<h4>Actividad 1. Del hardware físico al virtual <span class="dur">15 min</span></h4>
-<p>Individual, en vuestro portátil (Ubuntu MATE). Ejecutad <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code> e <code>ip a</code> y anotad: modelo de CPU, núcleos y hilos, memoria total, discos y tarjetas de red.</p>
-<p>Después, con los datos del servidor 1 de la gestoría del punto 1 (2 procesadores de 12 núcleos y 24 hilos, 128 GB de RAM), completad el cálculo. Sus máquinas virtuales tienen asignado:</p>
-<div class="tabla"><table>
-<tr><th>VM</th><th>vCPU</th><th>RAM</th></tr>
-<tr><td>Controlador de dominio</td><td>2</td><td>8 GB</td></tr>
-<tr><td>Ficheros</td><td>4</td><td>16 GB</td></tr>
-<tr><td>ERP</td><td>8</td><td>32 GB</td></tr>
-<tr><td>Base de datos</td><td>8</td><td>32 GB</td></tr>
-<tr><td>Correo</td><td>4</td><td>16 GB</td></tr>
-<tr><td>Web interna</td><td>2</td><td>4 GB</td></tr>
-<tr><td>Escritorio remoto</td><td>16</td><td>24 GB</td></tr>
-<tr><td>Pruebas</td><td>8</td><td>8 GB</td></tr>
-</table></div>
-<p>Calculad la proporción de vCPU frente a hilos físicos y frente a núcleos físicos, y la de RAM asignada frente a RAM física. ¿Hay sobresuscripción de CPU? ¿Y de memoria? ¿Cuál de las dos es más peligrosa y por qué?</p>
-</div>
-<div class="actividad">
-<h4>Actividad 2. Leer un aprovisionamiento con cloud-init <span class="dur">35 min</span></h4>
+<h4>Actividad 14. Leer un aprovisionamiento con cloud-init <span class="dur">35 min</span></h4>
 <p>En parejas. Un compañero ha lanzado en AWS una instancia Ubuntu 24.04 con el fichero <code>user-data.yaml</code> del apartado 4 como datos de usuario. Esto es lo que muestra la consola:</p>
 <div class="tabla"><table>
 <tr><th>Hora</th><th>Evento en la consola</th></tr>
@@ -975,8 +990,8 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Llevar las cargas de trabajo de la gestoría a la nube <span class="dur">30 min</span></h4>
-<p>En parejas. La gestoría del punto 1 quiere llevar a la nube las ocho máquinas virtuales de la actividad 1. El mantenimiento externo ha medido su uso durante tres meses:</p>
+<h4>Actividad 15. Llevar las cargas de trabajo de la gestoría a la nube <span class="dur">30 min</span></h4>
+<p>En parejas. La gestoría del punto 1 quiere llevar a la nube las ocho máquinas virtuales de la actividad 13. El mantenimiento externo ha medido su uso durante tres meses:</p>
 <div class="tabla"><table>
 <tr><th>VM</th><th>Asignado</th><th>CPU media / pico</th><th>RAM usada</th><th>Observaciones</th></tr>
 <tr><td>Controlador de dominio</td><td>2 vCPU, 8 GB</td><td>5 % / 20 %</td><td>3 GB</td><td>Uso constante todo el día</td></tr>
@@ -1006,35 +1021,11 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <li>Para cada una, indicad cómo se implementaría la carga de trabajo en la nube: imagen del sistema, configuración con cloud-init, servicio gestionado o SaaS.</li>
 <li>¿Qué máquinas no necesitan estar encendidas todo el día? ¿Qué ahorro supone eso en la nube y por qué en el cuarto de la gestoría no ahorraba nada?</li>
 </ol>
-<p class="entrega">Entrega en Aules: datos del portátil y cálculo de sobresuscripción, respuestas de la actividad 2 y tabla de migración de la actividad 3.</p>
 </div>
-
-<h3>Preguntas de repaso</h3>
-<ol>
-<li>¿Qué diferencia hay entre un hipervisor de tipo 1 y uno de tipo 2? ¿De qué tipo son KVM y VirtualBox?</li>
-<li>¿Qué es una vCPU y qué relación tiene con los núcleos físicos?</li>
-<li>¿Qué pasos sigue el plano de control para aprovisionar una VM?</li>
-<li>¿Para qué sirve cloud-init? ¿Qué información recibe?</li>
-<li>¿Qué diferencia hay entre rehost y refactor al migrar una carga de trabajo?</li>
-<li>¿A qué corresponde una vCPU en un procesador x86? ¿Y en uno ARM como Graviton?</li>
-</ol>
-</section><section class="panel" role="tabpanel" id="p-p6" aria-labelledby="tab-p6" hidden>
-<p class="meta">Unidad 2 · 6. Componentes · 2 horas</p>
-<h2>Servidores, redes, almacenamiento y software en la nube</h2>
-<p class="chips"><span class="ce" title="Se han caracterizado los componentes de la infraestructura de nube, especificando lo relativo a servidores, redes, almacenamiento y software.">CE 2f</span></p>
-<h3>Objetivos del punto</h3>
-<ul>
-<li>Caracterizar los servidores virtuales de la nube: tipos, imágenes, ciclo de vida y opciones.</li>
-<li>Caracterizar las redes en la nube: red privada virtual, subredes, rutas, puertas de enlace, grupos de seguridad, IP y DNS.</li>
-<li>Caracterizar los tipos de almacenamiento: bloque, fichero y objeto, y sus clases.</li>
-<li>Caracterizar el software de la infraestructura: sistemas operativos, servicios gestionados y software de gestión.</li>
-<li>Analizar una infraestructura de red con subredes públicas y privadas, elegir el almacenamiento adecuado y documentarlo todo en una ficha técnica.</li>
-</ul>
-
-<h3>1. Servidores (cómputo)</h3>
+<h3>5. Servidores en la nube</h3>
 <p>El servidor virtual es el recurso básico de la nube: AWS lo llama <b>instancia EC2</b>, Azure <b>máquina virtual</b> y Google <b>instancia de Compute Engine</b>. Sus características principales son:</p>
 <ul>
-<li><b>Tipo o tamaño</b>: número de vCPU, memoria, rendimiento de red y, a veces, discos locales o GPU (punto 5).</li>
+<li><b>Tipo o tamaño</b>: número de vCPU, memoria, rendimiento de red y, a veces, discos locales o GPU (apartado 3).</li>
 <li><b>Imagen</b>: el sistema operativo de partida (AMI en AWS). Hay imágenes oficiales, del marketplace (con software preinstalado, a veces con licencia de pago) y propias.</li>
 <li><b>Ubicación</b>: región y zona de disponibilidad.</li>
 <li><b>Red</b>: en qué subred está, qué IP privada tiene y si tiene IP pública.</li>
@@ -1042,21 +1033,21 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <li><b>Datos de usuario</b> para cloud-init.</li>
 </ul>
 <h4>Ciclo de vida</h4>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 210" role="img" aria-label="Ciclo de vida de una instancia" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-ciclo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="70" width="120" height="44" rx="22" class="d-gris"/><text x="72.0" y="92" class="t tb" text-anchor="middle" dominant-baseline="middle">Pendiente</text><rect x="200" y="70" width="150" height="44" rx="22" class="d-verde"/><text x="275.0" y="92" class="t tb" text-anchor="middle" dominant-baseline="middle">En ejecución</text><rect x="430" y="70" width="120" height="44" rx="22" class="d-amarillo"/><text x="490.0" y="92" class="t tb" text-anchor="middle" dominant-baseline="middle">Detenida</text><rect x="590" y="150" width="120" height="44" rx="22" class="d-rojo"/><text x="650.0" y="172" class="t tb" text-anchor="middle" dominant-baseline="middle">Terminada</text><path d="M134,92 L198,92" class="flecha" marker-end="url(#fl-ciclo)"/><path d="M352,84 L428,84" class="flecha" marker-end="url(#fl-ciclo)"/><text x="390" y="72" class="ts" text-anchor="middle" dominant-baseline="middle">detener</text><path d="M428,100 L352,100" class="flecha" marker-end="url(#fl-ciclo)"/><text x="390" y="114" class="ts" text-anchor="middle" dominant-baseline="middle">arrancar</text><path d="M275,68 C255,20 295,20 285,66" class="flecha" marker-end="url(#fl-ciclo)"/><text x="275" y="14" class="ts" text-anchor="middle" dominant-baseline="middle">reiniciar</text><path d="M275,116 L275,172 L588,172" class="flecha" marker-end="url(#fl-ciclo)"/><text x="430" y="162" class="ts" text-anchor="middle" dominant-baseline="middle">terminar</text><path d="M552,92 L650,92 L650,148" class="flecha" marker-end="url(#fl-ciclo)"/><text x="490" y="134" class="ts" text-anchor="middle" dominant-baseline="middle">paga discos, no cómputo</text><text x="200" y="134" class="ts" text-anchor="middle" dominant-baseline="middle">paga cómputo y discos</text></svg></div><figcaption>Ciclo de vida de una máquina virtual en la nube. Detenerla no es borrarla: los discos se siguen pagando.</figcaption></figure>
-<p>Detenida: no se paga el cómputo, pero sí los discos. Terminada: se borra la máquina y, por defecto, su disco raíz. Una máquina en la nube es <b>efímera</b>: puede desaparecer, así que los datos importantes no deben estar solo en ella.</p>
+<p>Los estados de una máquina (en ejecución, detenida y terminada) y lo que se paga en cada uno se explican en el punto 2, apartado 3. Recordad que, al terminar una máquina, su disco raíz se borra, pero los discos adicionales y las instantáneas se conservan.</p>
 <h4>Otras formas de cómputo</h4>
 <p>Además de VM: <b>servidores físicos dedicados</b> (<i>bare metal</i>) para cargas que no admiten virtualización o necesitan licencias por núcleo físico; <b>grupos de autoescalado</b> que mantienen un número de VM idénticas; <b>contenedores gestionados</b> y <b>funciones serverless</b> (unidad 4).</p>
 
-<h3>2. Redes</h3>
+
+<h3>6. Redes</h3>
 <h4>Red privada virtual (VPC / VNet)</h4>
-<p>Cada cliente crea sus propias redes privadas aisladas dentro de la nube: <b>VPC</b> (<i>Virtual Private Cloud</i>) en AWS y Google, <b>VNet</b> en Azure. Se define con un rango de direcciones privadas en notación CIDR (por ejemplo, <code>10.0.0.0/16</code>, 65.536 direcciones) y está limitada a una región.</p>
+<p>Cada cliente crea sus propias redes privadas aisladas dentro de la nube: <b>VPC</b> (<i>Virtual Private Cloud</i>) en AWS y Google, <b>VNet</b> en Azure. Se define con un rango de direcciones privadas en notación CIDR (por ejemplo, <code>10.0.0.0/16</code>, 65.536 direcciones) En AWS y Azure, cada red pertenece a una región; en Google Cloud, en cambio, la red es global y lo que pertenece a cada región son sus subredes.</p>
 <h4>Subredes</h4>
 <p>La VPC se divide en <b>subredes</b> (por ejemplo, <code>10.0.1.0/24</code>, 256 direcciones, de las que el proveedor reserva algunas). En AWS cada subred está en una sola zona de disponibilidad. Se distinguen:</p>
 <ul>
 <li><b>Subred pública</b>: su tabla de rutas envía el tráfico de Internet (<code>0.0.0.0/0</code>) a una <b>puerta de enlace de Internet</b> (<i>Internet Gateway</i>). Las máquinas con IP pública son alcanzables desde Internet. Aquí van los balanceadores y, como mucho, un bastión.</li>
 <li><b>Subred privada</b>: sin ruta directa desde Internet. Si sus máquinas necesitan salir (por ejemplo, a descargar actualizaciones), lo hacen a través de una <b>puerta de enlace NAT</b> situada en la subred pública, que permite salir pero no entrar. Aquí van la aplicación y la base de datos.</li>
 </ul>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 250" role="img" aria-label="VPC con subred pública y privada" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-vpc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="170" y="10" width="538" height="230" rx="8" class="d-grupo-azul"/><text x="180" y="25" class="tt">VPC 10.20.0.0/16</text><rect x="186" y="40" width="240" height="186" rx="8" class="d-grupo-verde"/><text x="196" y="55" class="tt">Subred pública 10.20.1.0/24</text><rect x="450" y="40" width="244" height="186" rx="8" class="d-grupo"/><text x="460" y="55" class="tt">Subred privada 10.20.2.0/24</text><rect x="12.0" y="60.0" width="120.0" height="44.0" rx="6" class="d-gris"/><text x="72.0" y="74.0" class="t" text-anchor="middle" dominant-baseline="middle">Vuestro</text><text x="72.0" y="90.0" class="t" text-anchor="middle" dominant-baseline="middle">portátil</text><rect x="12.0" y="140.0" width="120.0" height="62.0" rx="6" class="d-morado"/><text x="72.0" y="155.0" class="t" text-anchor="middle" dominant-baseline="middle">Puerta de</text><text x="72.0" y="171.0" class="t" text-anchor="middle" dominant-baseline="middle">enlace de</text><text x="72.0" y="187.0" class="t" text-anchor="middle" dominant-baseline="middle">Internet</text><rect x="214.0" y="64.0" width="184.0" height="56.0" rx="6" class="d-verde"/><text x="306.0" y="85.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Bastión</text><text x="306.0" y="101.0" class="ts" text-anchor="middle" dominant-baseline="middle">IP pública · sg-bastion</text><rect x="214.0" y="160.0" width="184.0" height="44.0" rx="6" class="d-blanco"/><text x="306.0" y="182.0" class="t" text-anchor="middle" dominant-baseline="middle">NAT (no la creamos)</text><rect x="482.0" y="64.0" width="184.0" height="56.0" rx="6" class="d-azul"/><text x="574.0" y="77.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VM privada</text><text x="574.0" y="93.0" class="ts" text-anchor="middle" dominant-baseline="middle">sin IP pública ·</text><text x="574.0" y="109.0" class="ts" text-anchor="middle" dominant-baseline="middle">sg-privada</text><path d="M72.0,106.0 L72.0,138.0" class="flecha " marker-end="url(#fl-vpc)"/><rect x="57.5" y="113.0" width="28.9" height="18" rx="3" class="fondo-etiqueta"/><text x="72.0" y="122.0" class="te" text-anchor="middle" dominant-baseline="middle">SSH</text><path d="M134.0,171.0 L173.0,171.0 L173.0,92.0 L212.0,92.0" class="flecha " marker-end="url(#fl-vpc)"/><path d="M400.0,92.0 L480.0,92.0" class="flecha " marker-end="url(#fl-vpc)"/><rect x="416.1" y="83.0" width="47.8" height="18" rx="3" class="fondo-etiqueta"/><text x="440.0" y="92.0" class="te" text-anchor="middle" dominant-baseline="middle">ssh -J</text><path d="M574.0,122.0 L574.0,140.0 L306.0,140.0 L306.0,158.0" class="flecha disc " marker-end="url(#fl-vpc)"/><rect x="416.1" y="131.0" width="47.8" height="18" rx="3" class="fondo-etiqueta"/><text x="440.0" y="140.0" class="te" text-anchor="middle" dominant-baseline="middle">salida</text></svg></div><figcaption>Ejemplo: una VPC con una subred pública (bastión) y otra privada. Solo se entra a la máquina privada pasando por el bastión.</figcaption></figure>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 250" role="img" aria-label="VPC con subred pública y privada" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-vpc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="170" y="10" width="538" height="230" rx="8" class="d-grupo-azul"/><text x="180" y="25" class="tt">VPC 10.20.0.0/16</text><rect x="186" y="40" width="240" height="186" rx="8" class="d-grupo-verde"/><text x="196" y="55" class="tt">Subred pública 10.20.1.0/24</text><rect x="450" y="40" width="244" height="186" rx="8" class="d-grupo"/><text x="460" y="55" class="tt">Subred privada 10.20.2.0/24</text><rect x="12.0" y="60.0" width="120.0" height="44.0" rx="6" class="d-gris"/><text x="72.0" y="74.0" class="t" text-anchor="middle" dominant-baseline="middle">Equipo del</text><text x="72.0" y="90.0" class="t" text-anchor="middle" dominant-baseline="middle">administrador</text><rect x="12.0" y="140.0" width="120.0" height="62.0" rx="6" class="d-morado"/><text x="72.0" y="155.0" class="t" text-anchor="middle" dominant-baseline="middle">Puerta de</text><text x="72.0" y="171.0" class="t" text-anchor="middle" dominant-baseline="middle">enlace de</text><text x="72.0" y="187.0" class="t" text-anchor="middle" dominant-baseline="middle">Internet</text><rect x="214.0" y="64.0" width="184.0" height="56.0" rx="6" class="d-verde"/><text x="306.0" y="85.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Bastión</text><text x="306.0" y="101.0" class="ts" text-anchor="middle" dominant-baseline="middle">IP pública · sg-bastion</text><rect x="214.0" y="160.0" width="184.0" height="44.0" rx="6" class="d-blanco"/><text x="306.0" y="182.0" class="t" text-anchor="middle" dominant-baseline="middle">Puerta de enlace NAT</text><rect x="482.0" y="64.0" width="184.0" height="56.0" rx="6" class="d-azul"/><text x="574.0" y="77.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VM privada</text><text x="574.0" y="93.0" class="ts" text-anchor="middle" dominant-baseline="middle">sin IP pública ·</text><text x="574.0" y="109.0" class="ts" text-anchor="middle" dominant-baseline="middle">sg-privada</text><path d="M72.0,106.0 L72.0,138.0" class="flecha " marker-end="url(#fl-vpc)"/><rect x="57.5" y="113.0" width="28.9" height="18" rx="3" class="fondo-etiqueta"/><text x="72.0" y="122.0" class="te" text-anchor="middle" dominant-baseline="middle">SSH</text><path d="M134.0,171.0 L173.0,171.0 L173.0,92.0 L212.0,92.0" class="flecha " marker-end="url(#fl-vpc)"/><path d="M400.0,92.0 L480.0,92.0" class="flecha " marker-end="url(#fl-vpc)"/><rect x="416.1" y="83.0" width="47.8" height="18" rx="3" class="fondo-etiqueta"/><text x="440.0" y="92.0" class="te" text-anchor="middle" dominant-baseline="middle">SSH</text><path d="M574.0,122.0 L574.0,140.0 L306.0,140.0 L306.0,158.0" class="flecha disc " marker-end="url(#fl-vpc)"/><rect x="416.1" y="131.0" width="47.8" height="18" rx="3" class="fondo-etiqueta"/><text x="440.0" y="140.0" class="te" text-anchor="middle" dominant-baseline="middle">salida</text></svg></div><figcaption>Ejemplo: una VPC con una subred pública (bastión) y otra privada. Solo se entra a la máquina privada pasando por el bastión.</figcaption></figure>
 <h4>Tablas de rutas, direcciones IP y DNS</h4>
 <ul>
 <li><b>Tabla de rutas</b>: decide adónde va el tráfico según su destino. Todas incluyen una ruta local para la comunicación dentro de la VPC.</li>
@@ -1077,44 +1068,16 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <ul>
 <li><b>Peering</b>: conecta dos VPC como si fueran una.</li>
 <li><b>VPN sitio a sitio</b>: túnel cifrado por Internet entre la VPC y la red on premise.</li>
-<li><b>Conexión dedicada</b> (AWS Direct Connect, Azure ExpressRoute): enlace privado con el proveedor, más estable y rápido. Base de la nube híbrida (unidad 3).</li>
-<li><b>Balanceadores de carga</b> de capa 7 (HTTP, con reglas por ruta y certificados) y de capa 4 (TCP/UDP), y <b>CDN</b>.</li>
+<li><b>Conexión dedicada</b> (AWS Direct Connect, Azure ExpressRoute): enlace privado con el proveedor, más estable y rápido.</li>
 </ul>
+<p>La VPN y la conexión dedicada son la base de la nube híbrida, que estudiaremos a fondo en la unidad 3.</p>
 
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 240" role="img" aria-label="Formas de conectar redes" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-conectar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="80" width="150" height="70" rx="6" class="d-naranja"/><text x="87.0" y="107.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Red on premise</text><text x="87.0" y="123.0" class="ts" text-anchor="middle" dominant-baseline="middle">oficina o CPD propio</text><rect x="330" y="80" width="150" height="70" rx="6" class="d-azul"/><text x="405.0" y="107.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VPC A</text><text x="405.0" y="123.0" class="ts" text-anchor="middle" dominant-baseline="middle">aplicación</text><rect x="570" y="80" width="138" height="70" rx="6" class="d-azul"/><text x="639.0" y="107.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VPC B</text><text x="639.0" y="123.0" class="ts" text-anchor="middle" dominant-baseline="middle">datos compartidos</text><path d="M164,96 L328,96" class="flecha disc" marker-end="url(#fl-conectar)" marker-start="url(#fl-conectar)"/><text x="246" y="82" class="ts" text-anchor="middle" dominant-baseline="middle">VPN sitio a sitio</text><text x="246" y="112" class="ts" text-anchor="middle" dominant-baseline="middle">túnel cifrado por Internet</text><path d="M164,140 L328,140" class="flecha" marker-end="url(#fl-conectar)" marker-start="url(#fl-conectar)"/><text x="246" y="160" class="ts" text-anchor="middle" dominant-baseline="middle">Conexión dedicada</text><text x="246" y="176" class="ts" text-anchor="middle" dominant-baseline="middle">Direct Connect, ExpressRoute</text><path d="M482,115 L568,115" class="flecha" marker-end="url(#fl-conectar)" marker-start="url(#fl-conectar)"/><text x="525" y="100" class="ts" text-anchor="middle" dominant-baseline="middle">peering</text><rect x="330" y="12" width="150" height="44" rx="6" class="d-verde"/><text x="405.0" y="26.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Internet</text><text x="405.0" y="42.0" class="ts" text-anchor="middle" dominant-baseline="middle">usuarios</text><rect x="330" y="180" width="150" height="44" rx="6" class="d-amarillo"/><text x="405.0" y="194.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Balanceador</text><text x="405.0" y="210.0" class="ts" text-anchor="middle" dominant-baseline="middle">capa 7 o capa 4</text><path d="M405,58 L405,78" class="flecha" marker-end="url(#fl-conectar)"/><path d="M405,152 L405,178" class="flecha" marker-end="url(#fl-conectar)" marker-start="url(#fl-conectar)"/></svg></div><figcaption>La VPN y la conexión dedicada unen la nube con la red propia (base de la nube híbrida); el peering une dos VPC entre sí.</figcaption></figure>
-<h3>3. Almacenamiento</h3>
-<p>Hay tres tipos de almacenamiento, y es importante elegir bien:</p>
-<div class="tabla"><table>
-<tr><th></th><th>Bloque</th><th>Fichero</th><th>Objeto</th></tr>
-<tr><td>Qué es</td><td>Un disco virtual que la máquina formatea y monta</td><td>Un sistema de ficheros compartido por red</td><td>Un almacén de objetos (datos + metadatos + clave) accesible por HTTP</td></tr>
-<tr><td>Acceso</td><td>Una máquina (normalmente)</td><td>Muchas máquinas a la vez (NFS, SMB)</td><td>Cualquiera con permiso, por API REST</td></tr>
-<tr><td>Servicios</td><td>AWS EBS, Azure Managed Disks, Google Persistent Disk</td><td>AWS EFS/FSx, Azure Files, Google Filestore</td><td>AWS S3, Azure Blob Storage, Google Cloud Storage</td></tr>
-<tr><td>Rendimiento</td><td>El más rápido y con menor latencia</td><td>Intermedio</td><td>Mayor latencia, pero escala casi sin límite</td></tr>
-<tr><td>Se paga por</td><td>GB aprovisionados (y a veces IOPS)</td><td>GB usados</td><td>GB usados, peticiones y transferencia</td></tr>
-<tr><td>Usos</td><td>Disco del sistema, bases de datos</td><td>Carpetas compartidas, contenido web común</td><td>Copias, imágenes, documentos, ficheros estáticos, lagos de datos</td></tr>
-</table></div>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 218" role="img" aria-label="Tipos de almacenamiento" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-almacenamiento" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="10" width="220" height="200" rx="8" class="d-grupo"/><text x="22" y="25" class="tt">Bloque (EBS)</text><rect x="250" y="10" width="220" height="200" rx="8" class="d-grupo"/><text x="260" y="25" class="tt">Fichero (EFS, NFS)</text><rect x="488" y="10" width="220" height="200" rx="8" class="d-grupo"/><text x="498" y="25" class="tt">Objeto (S3)</text><rect x="62.0" y="44.0" width="120.0" height="38.0" rx="6" class="d-azul"/><text x="122.0" y="63.0" class="t" text-anchor="middle" dominant-baseline="middle">VM</text><path d="M62,144 A60.0,8 0 0 1 182,144 L182,184 A60.0,8 0 0 1 62,184 z" class="d-naranja"/><path d="M62,144 A60.0,8 0 0 0 182,144" class="d-naranja" fill="none"/><text x="122.0" y="164.0" class="t" text-anchor="middle" dominant-baseline="middle">Disco</text><rect x="262.0" y="44.0" width="60.0" height="38.0" rx="6" class="d-azul"/><text x="292.0" y="63.0" class="t" text-anchor="middle" dominant-baseline="middle">VM</text><rect x="330.0" y="44.0" width="60.0" height="38.0" rx="6" class="d-azul"/><text x="360.0" y="63.0" class="t" text-anchor="middle" dominant-baseline="middle">VM</text><rect x="398.0" y="44.0" width="60.0" height="38.0" rx="6" class="d-azul"/><text x="428.0" y="63.0" class="t" text-anchor="middle" dominant-baseline="middle">VM</text><path d="M300,144 A60.0,8 0 0 1 420,144 L420,184 A60.0,8 0 0 1 300,184 z" class="d-naranja"/><path d="M300,144 A60.0,8 0 0 0 420,144" class="d-naranja" fill="none"/><text x="360.0" y="156.0" class="t" text-anchor="middle" dominant-baseline="middle">Carpeta</text><text x="360.0" y="172.0" class="t" text-anchor="middle" dominant-baseline="middle">compartida</text><rect x="500.0" y="44.0" width="90.0" height="38.0" rx="6" class="d-azul"/><text x="545.0" y="63.0" class="t" text-anchor="middle" dominant-baseline="middle">App</text><rect x="606.0" y="44.0" width="90.0" height="38.0" rx="6" class="d-gris"/><text x="651.0" y="63.0" class="t" text-anchor="middle" dominant-baseline="middle">Navegador</text><path d="M538,144 A60.0,8 0 0 1 658,144 L658,184 A60.0,8 0 0 1 538,184 z" class="d-naranja"/><path d="M538,144 A60.0,8 0 0 0 658,144" class="d-naranja" fill="none"/><text x="598.0" y="164.0" class="t" text-anchor="middle" dominant-baseline="middle">Bucket</text><path d="M122.0,84.0 L122.0,134.0" class="flecha " marker-end="url(#fl-almacenamiento)"/><rect x="91.8" y="100.0" width="60.4" height="18" rx="3" class="fondo-etiqueta"/><text x="122.0" y="109.0" class="te" text-anchor="middle" dominant-baseline="middle">se monta</text><path d="M311.0,84.0 L311.0,134.0" class="flecha " marker-end="url(#fl-almacenamiento)"/><path d="M360.0,84.0 L360.0,134.0" class="flecha " marker-end="url(#fl-almacenamiento)"/><path d="M409.0,84.0 L409.0,134.0" class="flecha " marker-end="url(#fl-almacenamiento)"/><path d="M564.0,84.0 L564.0,134.0" class="flecha " marker-end="url(#fl-almacenamiento)"/><rect x="543.2" y="100.0" width="41.5" height="18" rx="3" class="fondo-etiqueta"/><text x="564.0" y="109.0" class="te" text-anchor="middle" dominant-baseline="middle">HTTPS</text><path d="M632.0,84.0 L632.0,134.0" class="flecha " marker-end="url(#fl-almacenamiento)"/></svg></div><figcaption>Los tres tipos de almacenamiento: un disco para una máquina, una carpeta compartida por red y un almacén de objetos accesible por HTTP.</figcaption></figure>
-<h4>Detalles de cada tipo</h4>
-<ul>
-<li><b>Bloque</b>: se elige tipo (SSD de propósito general, SSD de alto rendimiento con IOPS garantizadas, HDD para grandes volúmenes secuenciales), tamaño y cifrado. Se pueden hacer <b>instantáneas</b> (<i>snapshots</i>) incrementales para copias o para crear discos nuevos. Además existe el <b>almacenamiento de instancia</b>: discos locales del servidor físico, muy rápidos pero que se pierden al detener la máquina.</li>
-<li><b>Objeto</b>: los objetos se guardan en <b>contenedores</b> (<i>buckets</i>) con nombres únicos. Durabilidad muy alta (S3 anuncia "once nueves", 99,999999999 %, replicando en varias zonas). Tiene <b>clases de almacenamiento</b> según la frecuencia de acceso: estándar, acceso poco frecuente y archivo (muy barato de guardar, lento y caro de recuperar), con <b>reglas de ciclo de vida</b> que mueven los objetos de clase automáticamente. Admite <b>versionado</b> y bloqueo contra borrado (útil frente a ransomware). Riesgo clásico: dejar un bucket <b>público</b> por error.</li>
-</ul>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 230" role="img" aria-label="Clases de almacenamiento de objetos" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-clases" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="12" width="216" height="56" rx="6" class="d-verde"/><text x="120.0" y="32.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Estándar</text><text x="120.0" y="48.0" class="ts" text-anchor="middle" dominant-baseline="middle">se lee a menudo</text><rect x="252" y="12" width="216" height="56" rx="6" class="d-amarillo"/><text x="360.0" y="32.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Acceso poco frecuente</text><text x="360.0" y="48.0" class="ts" text-anchor="middle" dominant-baseline="middle">se lee de vez en cuando</text><rect x="492" y="12" width="216" height="56" rx="6" class="d-azul"/><text x="600.0" y="32.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Archivo</text><text x="600.0" y="48.0" class="ts" text-anchor="middle" dominant-baseline="middle">casi nunca se lee</text><path d="M230,40 L250,40" class="flecha" marker-end="url(#fl-clases)"/><path d="M470,40 L490,40" class="flecha" marker-end="url(#fl-clases)"/><text x="240" y="84" class="ts" text-anchor="middle" dominant-baseline="middle">ciclo de vida: a los 30 días</text><text x="480" y="84" class="ts" text-anchor="middle" dominant-baseline="middle">a los 90 días</text><text x="12" y="110" class="t tb" text-anchor="start" dominant-baseline="middle">Coste de guardar (€/GB al mes)</text><rect x="12" y="120" width="194" height="22" rx="4" class="d-naranja"/><rect x="252" y="120" width="108" height="22" rx="4" class="d-naranja"/><rect x="492" y="120" width="26" height="22" rx="4" class="d-naranja"/><text x="12" y="166" class="t tb" text-anchor="start" dominant-baseline="middle">Coste y tiempo de recuperar</text><rect x="12" y="176" width="17" height="22" rx="4" class="d-morado"/><rect x="252" y="176" width="86" height="22" rx="4" class="d-morado"/><rect x="492" y="176" width="194" height="22" rx="4" class="d-morado"/><text x="360" y="222" class="ts" text-anchor="middle" dominant-baseline="middle">Proporciones orientativas: cuanto más barato es guardar, más caro y lento es recuperar.</text></svg></div><figcaption>Las reglas de ciclo de vida mueven los objetos a clases más baratas a medida que se usan menos.</figcaption></figure>
-<h4>Bases de datos gestionadas</h4>
-<p>Aunque técnicamente son un servicio, forman parte de la capa de datos: AWS RDS/Aurora, Azure SQL/Database for PostgreSQL, Cloud SQL. El proveedor gestiona la instalación, los parches, las copias, la réplica en otra zona y la recuperación a un momento concreto; el cliente gestiona el esquema, los datos y los accesos.</p>
 
-<h3>4. Software de la infraestructura</h3>
-<ul>
-<li><b>Sistemas operativos</b> de las imágenes: distribuciones Linux (Ubuntu, Debian, Red Hat, Amazon Linux) y Windows Server (con licencia incluida en el precio o traída por el cliente).</li>
-<li><b>Software de base y middleware</b>: servidores web, bases de datos, motores de contenedores.</li>
-<li><b>Servicios gestionados</b> que sustituyen software que antes se instalaba a mano: bases de datos, colas, cachés, balanceadores, DNS.</li>
-<li><b>Software de gestión</b>: consola, CLI, API, infraestructura como código, gestión de identidades (IAM), monitorización (CloudWatch, Azure Monitor), registros de auditoría (CloudTrail, Activity Log), gestión de secretos (Secrets Manager, Key Vault) y de claves de cifrado (KMS).</li>
-<li><b>Licencias</b>: incluidas en la tarifa por hora, traídas por el cliente (BYOL) o del marketplace.</li>
-</ul>
+<div class="pausa"><h4>Ahora: actividad 16</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 7.</p></div>
 
-<h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Analizar la red de Cita Previa <span class="dur">45 min</span></h4>
+<h4>Actividad 16. Analizar la red de Cita Previa <span class="dur">45 min</span></h4>
 <p>En parejas. Esta es la configuración del entorno de revisión de Cita Previa en AWS, en la región de España (<code>eu-south-2</code>):</p>
 <p><b>Red y subredes.</b> VPC <code>vpc-citaprevia-rev</code> con el rango <code>10.30.0.0/16</code>.</p>
 <div class="tabla"><table>
@@ -1165,8 +1128,32 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <li>Encontrad al menos tres problemas de seguridad o de disponibilidad en esta configuración y proponed cómo corregir cada uno. Pista: pensad qué pasa si cae la zona <code>eu-south-2a</code>.</li>
 </ol>
 </div>
+<h3>7. Almacenamiento</h3>
+<p>Hay tres tipos de almacenamiento, y es importante elegir bien:</p>
+<div class="tabla"><table>
+<tr><th></th><th>Bloque</th><th>Fichero</th><th>Objeto</th></tr>
+<tr><td>Qué es</td><td>Un disco virtual que la máquina formatea y monta</td><td>Un sistema de ficheros compartido por red</td><td>Un almacén de objetos (datos + metadatos + clave) accesible por HTTP</td></tr>
+<tr><td>Acceso</td><td>Una máquina (normalmente)</td><td>Muchas máquinas a la vez (NFS, SMB)</td><td>Cualquiera con permiso, por API REST</td></tr>
+<tr><td>Servicios</td><td>AWS EBS, Azure Managed Disks, Google Persistent Disk</td><td>AWS EFS/FSx, Azure Files, Google Filestore</td><td>AWS S3, Azure Blob Storage, Google Cloud Storage</td></tr>
+<tr><td>Rendimiento</td><td>El más rápido y con menor latencia</td><td>Intermedio</td><td>Mayor latencia, pero escala casi sin límite</td></tr>
+<tr><td>Se paga por</td><td>GB aprovisionados (y a veces IOPS)</td><td>GB usados</td><td>GB usados, peticiones y transferencia</td></tr>
+<tr><td>Usos</td><td>Disco del sistema, bases de datos</td><td>Carpetas compartidas, contenido web común</td><td>Copias, imágenes, documentos, ficheros estáticos, lagos de datos</td></tr>
+</table></div>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 218" role="img" aria-label="Tipos de almacenamiento" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-almacenamiento" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="10" width="220" height="200" rx="8" class="d-grupo"/><text x="22" y="25" class="tt">Bloque (EBS)</text><rect x="250" y="10" width="220" height="200" rx="8" class="d-grupo"/><text x="260" y="25" class="tt">Fichero (EFS, NFS)</text><rect x="488" y="10" width="220" height="200" rx="8" class="d-grupo"/><text x="498" y="25" class="tt">Objeto (S3)</text><rect x="62.0" y="44.0" width="120.0" height="38.0" rx="6" class="d-azul"/><text x="122.0" y="63.0" class="t" text-anchor="middle" dominant-baseline="middle">VM</text><path d="M62,144 A60.0,8 0 0 1 182,144 L182,184 A60.0,8 0 0 1 62,184 z" class="d-naranja"/><path d="M62,144 A60.0,8 0 0 0 182,144" class="d-naranja" fill="none"/><text x="122.0" y="164.0" class="t" text-anchor="middle" dominant-baseline="middle">Disco</text><rect x="262.0" y="44.0" width="60.0" height="38.0" rx="6" class="d-azul"/><text x="292.0" y="63.0" class="t" text-anchor="middle" dominant-baseline="middle">VM</text><rect x="330.0" y="44.0" width="60.0" height="38.0" rx="6" class="d-azul"/><text x="360.0" y="63.0" class="t" text-anchor="middle" dominant-baseline="middle">VM</text><rect x="398.0" y="44.0" width="60.0" height="38.0" rx="6" class="d-azul"/><text x="428.0" y="63.0" class="t" text-anchor="middle" dominant-baseline="middle">VM</text><path d="M300,144 A60.0,8 0 0 1 420,144 L420,184 A60.0,8 0 0 1 300,184 z" class="d-naranja"/><path d="M300,144 A60.0,8 0 0 0 420,144" class="d-naranja" fill="none"/><text x="360.0" y="156.0" class="t" text-anchor="middle" dominant-baseline="middle">Carpeta</text><text x="360.0" y="172.0" class="t" text-anchor="middle" dominant-baseline="middle">compartida</text><rect x="500.0" y="44.0" width="90.0" height="38.0" rx="6" class="d-azul"/><text x="545.0" y="63.0" class="t" text-anchor="middle" dominant-baseline="middle">App</text><rect x="606.0" y="44.0" width="90.0" height="38.0" rx="6" class="d-gris"/><text x="651.0" y="63.0" class="t" text-anchor="middle" dominant-baseline="middle">Navegador</text><path d="M538,144 A60.0,8 0 0 1 658,144 L658,184 A60.0,8 0 0 1 538,184 z" class="d-naranja"/><path d="M538,144 A60.0,8 0 0 0 658,144" class="d-naranja" fill="none"/><text x="598.0" y="164.0" class="t" text-anchor="middle" dominant-baseline="middle">Bucket</text><path d="M122.0,84.0 L122.0,134.0" class="flecha " marker-end="url(#fl-almacenamiento)"/><rect x="91.8" y="100.0" width="60.4" height="18" rx="3" class="fondo-etiqueta"/><text x="122.0" y="109.0" class="te" text-anchor="middle" dominant-baseline="middle">se monta</text><path d="M311.0,84.0 L311.0,134.0" class="flecha " marker-end="url(#fl-almacenamiento)"/><path d="M360.0,84.0 L360.0,134.0" class="flecha " marker-end="url(#fl-almacenamiento)"/><path d="M409.0,84.0 L409.0,134.0" class="flecha " marker-end="url(#fl-almacenamiento)"/><path d="M564.0,84.0 L564.0,134.0" class="flecha " marker-end="url(#fl-almacenamiento)"/><rect x="543.2" y="100.0" width="41.5" height="18" rx="3" class="fondo-etiqueta"/><text x="564.0" y="109.0" class="te" text-anchor="middle" dominant-baseline="middle">HTTPS</text><path d="M632.0,84.0 L632.0,134.0" class="flecha " marker-end="url(#fl-almacenamiento)"/></svg></div><figcaption>Los tres tipos de almacenamiento: un disco para una máquina, una carpeta compartida por red y un almacén de objetos accesible por HTTP.</figcaption></figure>
+<h4>Detalles de cada tipo</h4>
+<ul>
+<li><b>Bloque</b>: se elige tipo (SSD de propósito general, SSD de alto rendimiento con IOPS garantizadas, HDD para grandes volúmenes secuenciales), tamaño y cifrado. Se pueden hacer <b>instantáneas</b> (<i>snapshots</i>) incrementales para copias o para crear discos nuevos. Además existe el <b>almacenamiento de instancia</b>: discos locales del servidor físico, muy rápidos pero que se pierden al detener la máquina.</li>
+<li><b>Objeto</b>: los objetos se guardan en <b>contenedores</b> (<i>buckets</i>) con nombres únicos. Durabilidad muy alta (S3 anuncia "once nueves", 99,999999999 %, replicando en varias zonas). Tiene <b>clases de almacenamiento</b> según la frecuencia de acceso: estándar, acceso poco frecuente y archivo (muy barato de guardar, lento y caro de recuperar), con <b>reglas de ciclo de vida</b> que mueven los objetos de clase automáticamente. Admite <b>versionado</b> y bloqueo contra borrado (útil frente a ransomware). Riesgo clásico: dejar un bucket <b>público</b> por error.</li>
+</ul>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 230" role="img" aria-label="Clases de almacenamiento de objetos" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-clases" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="12" width="216" height="56" rx="6" class="d-verde"/><text x="120.0" y="32.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Estándar</text><text x="120.0" y="48.0" class="ts" text-anchor="middle" dominant-baseline="middle">se lee a menudo</text><rect x="252" y="12" width="216" height="56" rx="6" class="d-amarillo"/><text x="360.0" y="32.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Acceso poco frecuente</text><text x="360.0" y="48.0" class="ts" text-anchor="middle" dominant-baseline="middle">se lee de vez en cuando</text><rect x="492" y="12" width="216" height="56" rx="6" class="d-azul"/><text x="600.0" y="32.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Archivo</text><text x="600.0" y="48.0" class="ts" text-anchor="middle" dominant-baseline="middle">casi nunca se lee</text><path d="M230,40 L250,40" class="flecha" marker-end="url(#fl-clases)"/><path d="M470,40 L490,40" class="flecha" marker-end="url(#fl-clases)"/><text x="240" y="84" class="ts" text-anchor="middle" dominant-baseline="middle">ciclo de vida: a los 30 días</text><text x="480" y="84" class="ts" text-anchor="middle" dominant-baseline="middle">a los 90 días</text><text x="12" y="110" class="t tb" text-anchor="start" dominant-baseline="middle">Coste de guardar (€/GB al mes)</text><rect x="12" y="120" width="194" height="22" rx="4" class="d-naranja"/><rect x="252" y="120" width="108" height="22" rx="4" class="d-naranja"/><rect x="492" y="120" width="26" height="22" rx="4" class="d-naranja"/><text x="12" y="166" class="t tb" text-anchor="start" dominant-baseline="middle">Coste y tiempo de recuperar</text><rect x="12" y="176" width="17" height="22" rx="4" class="d-morado"/><rect x="252" y="176" width="86" height="22" rx="4" class="d-morado"/><rect x="492" y="176" width="194" height="22" rx="4" class="d-morado"/><text x="360" y="222" class="ts" text-anchor="middle" dominant-baseline="middle">Proporciones orientativas: cuanto más barato es guardar, más caro y lento es recuperar.</text></svg></div><figcaption>Las reglas de ciclo de vida mueven los objetos a clases más baratas a medida que se usan menos.</figcaption></figure>
+<h4>Bases de datos gestionadas</h4>
+<p>Aunque técnicamente son un servicio, forman parte de la capa de datos: AWS RDS/Aurora, Azure SQL/Database for PostgreSQL, Cloud SQL. El proveedor gestiona la instalación, los parches, las copias, la réplica en otra zona y la recuperación a un momento concreto; el cliente gestiona el esquema, los datos y los accesos.</p>
+
+
+<div class="pausa"><h4>Ahora: actividad 17</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 8.</p></div>
+
 <div class="actividad">
-<h4>Actividad 2. Elegir el almacenamiento <span class="dur">20 min</span></h4>
+<h4>Actividad 17. Elegir el almacenamiento <span class="dur">20 min</span></h4>
 <p>En parejas. Para cada necesidad de Cita Previa, elegid el tipo de almacenamiento (bloque, fichero u objeto) y la opción concreta (tipo de disco, clase de almacenamiento, instantáneas, ciclo de vida, bloqueo contra borrado...). Indicad también qué le pasa a ese dato si se termina la máquina virtual.</p>
 <ol class="casos">
 <li>El disco del sistema de cada servidor de aplicación.</li>
@@ -1179,21 +1166,40 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <li>Los registros de auditoría, que nadie puede borrar ni modificar durante dos años.</li>
 </ol>
 </div>
+<h3>8. Software de la infraestructura</h3>
+<ul>
+<li><b>Sistemas operativos</b> de las imágenes: distribuciones Linux (Ubuntu, Debian, Red Hat, Amazon Linux) y Windows Server (con licencia incluida en el precio o traída por el cliente).</li>
+<li><b>Software de base y middleware</b>: servidores web, bases de datos, motores de contenedores.</li>
+<li><b>Servicios gestionados</b> que sustituyen software que antes se instalaba a mano: bases de datos, colas, cachés, balanceadores, DNS.</li>
+<li><b>Software de gestión</b>: consola, CLI, API, infraestructura como código, gestión de identidades (IAM), monitorización (CloudWatch, Azure Monitor), registros de auditoría (CloudTrail, Activity Log), gestión de secretos (Secrets Manager, Key Vault) y de claves de cifrado (KMS).</li>
+<li><b>Licencias</b>: incluidas en la tarifa por hora, traídas por el cliente (BYOL) o del marketplace.</li>
+</ul>
+
+
+<div class="pausa"><h4>Ahora: actividad 18</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Con ella se cierra el punto.</p></div>
+
 <div class="actividad">
-<h4>Actividad 3. Ficha técnica <span class="dur">15 min</span></h4>
-<p>Redactad la ficha técnica del entorno de revisión de Cita Previa, ya con las correcciones de la actividad 1 y el almacenamiento de la actividad 2. Haced una tabla por tipo de componente (servidores, red, almacenamiento y software) con estas columnas: identificador, características, ubicación (zona y subred) y función. En el software, incluid el sistema operativo, el software de base de cada máquina y el software de gestión que usaríais (identidades, monitorización, auditoría). Añadid el esquema de red corregido.</p>
-<p class="entrega">Entrega en Aules: esquema y respuestas de la actividad 1, tabla de almacenamiento de la actividad 2 y ficha técnica con el esquema corregido.</p>
+<h4>Actividad 18. Ficha técnica <span class="dur">15 min</span></h4>
+<p>Redactad la ficha técnica del entorno de revisión de Cita Previa, ya con las correcciones de la actividad 16 y el almacenamiento de la actividad 17. Haced una tabla por tipo de componente (servidores, red, almacenamiento y software) con estas columnas: identificador, características, ubicación (zona y subred) y función. En el software, incluid el sistema operativo, el software de base de cada máquina y el software de gestión que usaríais (identidades, monitorización, auditoría). Añadid el esquema de red corregido.</p>
 </div>
+<p class="entrega">Entrega en Aules: datos del portátil y cálculo de sobresuscripción de la actividad 13, respuestas de la 14, tabla de migración de la 15, esquema y respuestas de la 16, tabla de almacenamiento de la 17 y ficha técnica con el esquema corregido de la 18.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
+<li>¿Qué diferencia hay entre un hipervisor de tipo 1 y uno de tipo 2? ¿De qué tipo son KVM y VirtualBox?</li>
+<li>¿Qué es una vCPU y qué relación tiene con los núcleos físicos?</li>
+<li>¿Qué pasos sigue el plano de control para aprovisionar una VM?</li>
+<li>¿Para qué sirve cloud-init? ¿Qué información recibe?</li>
+<li>¿Qué diferencia hay entre rehost y refactor al migrar una carga de trabajo?</li>
+<li>¿A qué corresponde una vCPU en un procesador x86? ¿Y en uno ARM como Graviton?</li>
 <li>¿Qué diferencia una subred pública de una privada?</li>
 <li>¿Qué hace una puerta de enlace NAT y por qué no permite conexiones entrantes?</li>
 <li>¿Qué significa que un grupo de seguridad sea "con estado"?</li>
 <li>¿Qué tipo de almacenamiento usarías para: el disco de una base de datos, los documentos escaneados de los pacientes, una carpeta compartida entre tres servidores web?</li>
 <li>¿Qué pasa con los datos de un almacenamiento de instancia cuando se detiene la máquina?</li>
 </ol>
-</section><section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden>
+</section>
+<section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden>
 <h2>Recursos y glosario</h2>
 <h3>Referencias</h3>
 <ul>
@@ -1210,7 +1216,7 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <tr><td>Región / zona de disponibilidad</td><td>Área geográfica del proveedor / CPD independiente dentro de una región.</td></tr>
 <tr><td>Hipervisor</td><td>Software que crea y ejecuta máquinas virtuales (KVM, ESXi, Hyper-V, Xen).</td></tr>
 <tr><td>VPC</td><td>Red privada virtual aislada dentro de la nube pública.</td></tr>
-<tr><td>Almacenamiento de bloque, archivo y objeto</td><td>Disco virtual (EBS), carpeta compartida (EFS/NFS) y almacén de objetos por HTTP (S3).</td></tr>
+<tr><td>Almacenamiento de bloque, fichero y objeto</td><td>Disco virtual (EBS), carpeta compartida (EFS/NFS) y almacén de objetos por HTTP (S3).</td></tr>
 <tr><td>Colocation</td><td>Servidores propios instalados en el CPD de un proveedor, que pone el espacio, la energía y la conectividad.</td></tr>
 <tr><td>Características de la nube (NIST)</td><td>Autoservicio bajo demanda, acceso amplio por red, agrupación de recursos, elasticidad rápida y servicio medido.</td></tr>
 <tr><td>Multitenencia</td><td>Varios clientes comparten la misma infraestructura física, aislados entre sí.</td></tr>
@@ -1220,7 +1226,7 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <tr><td>FinOps</td><td>Disciplina que controla y optimiza el gasto en la nube.</td></tr>
 <tr><td>Dependencia del proveedor (lock-in)</td><td>Dificultad y coste de cambiar de proveedor por usar sus servicios propios.</td></tr>
 <tr><td>Escalado vertical / horizontal</td><td>Usar una máquina más grande / añadir más máquinas iguales.</td></tr>
-<tr><td>vCPU</td><td>Unidad de CPU que vende el proveedor: un hilo de un núcleo físico (x86) o un núcleo completo (ARM sin SMT).</td></tr>
+<tr><td>vCPU</td><td>Unidad de CPU que vende el proveedor: normalmente un hilo de un núcleo físico (x86) o un núcleo completo (ARM y procesadores sin SMT).</td></tr>
 <tr><td>cloud-init</td><td>Herramienta que configura una máquina virtual en su primer arranque a partir de los datos de usuario.</td></tr>
 <tr><td>Subred pública / privada</td><td>Subred con ruta a Internet / subred sin ruta directa desde Internet.</td></tr>
 <tr><td>Grupo de seguridad</td><td>Cortafuegos con estado que se aplica a la interfaz de una máquina virtual.</td></tr>
