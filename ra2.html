@@ -302,14 +302,17 @@
 <tr><td>Administración</td><td>Una empresa de mantenimiento externa, con dos visitas al mes y atención telefónica en horario de oficina.</td></tr>
 </table></div>
 <ol>
-<li>Clasifica cada elemento en las capas del apartado 1.</li>
-<li>Marca los <b>puntos únicos de fallo</b>: elementos que, si fallan, paran toda la empresa.</li>
-<li>Escribe qué pasaría en tres situaciones:<ol class="casos">
+<li>Localiza los <b>puntos únicos de fallo</b>: elementos que, si fallan, paran toda la empresa. Revisa todos los elementos del inventario y resúmelo en una tabla con tres columnas: <b>Elemento</b>, <b>¿Para toda la empresa?</b> (sí o no) y <b>Por qué</b> (qué dejaría de funcionar o por qué no llega a pararla).</li>
+<li>Explica qué pasaría en estas tres situaciones:<ol class="casos">
 <li>Falla un SSD del servidor 1.</li>
 <li>Se va la luz un viernes a las 18:00 y no vuelve hasta el lunes.</li>
 <li>La gestoría absorbe a otra y necesita el triple de máquinas virtuales en un mes.</li>
-</ol></li>
-<li>Para cada situación, indica si la nube la resolvería mejor o peor y por qué.</li>
+</ol>
+Para cada situación, responde a tres preguntas:<ul>
+<li><b>Qué pasa:</b> qué deja de funcionar, durante cuánto tiempo y qué riesgos aparecen.</li>
+<li><b>Qué hay que hacer:</b> quién lo resuelve, con qué medios y cuánto tardaría.</li>
+<li><b>Cómo sería en la nube:</b> si la situación se resolvería mejor o peor con las máquinas en un proveedor de nube, y por qué.</li>
+</ul></li>
 </ol>
 </div>
 <div class="actividad">
@@ -318,12 +321,12 @@
 <ol class="casos">
 <li>La Conselleria tiene sus servidores en un CPD propio en Valencia.</li>
 <li>Una empresa alquila un VPS por 5 € al mes con contrato anual y lo pide por correo.</li>
-<li>Una startup crea y destruye decenas de máquinas al día con Terraform en AWS.</li>
+<li>Una startup crea y borra decenas de máquinas virtuales al día en AWS, con scripts que usan la API del proveedor, y paga por las horas que usa cada una.</li>
 <li>Un hospital lleva sus servidores al CPD de un proveedor en Madrid y los administra él mismo.</li>
-<li>Una universidad monta OpenStack y permite a sus grupos de investigación crear máquinas desde un portal pagando por horas.</li>
+<li>Una universidad monta en su propio CPD un portal desde el que sus grupos de investigación crean y borran máquinas virtuales ellos mismos; a cada grupo se le cobra por las horas que usa.</li>
 <li>Usáis Google Drive para los apuntes.</li>
 </ol>
-<p>Justificad cada respuesta.</p>
+<p>Justificad cada respuesta: para cada una de las cinco características, indicad si el caso la cumple o no, con el dato del enunciado que lo demuestra.</p>
 </div>
 <div class="actividad">
 <h4>Actividad 3. Primer contacto con un proveedor de nube <span class="dur">30 min</span></h4>
