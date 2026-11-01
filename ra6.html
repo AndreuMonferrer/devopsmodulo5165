@@ -201,7 +201,7 @@ crash.log</code></pre>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Instalar Terraform u OpenTofu <span class="dur">10 min</span></h4>
+<h4>Actividad 1. Instalar Terraform u OpenTofu</h4>
 <p>En el portátil (Docker ya instalado desde la unidad 1):</p>
 <pre><code>wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
@@ -210,7 +210,7 @@ terraform -version</code></pre>
 <p>Alternativa libre: <code>sudo snap install --classic opentofu</code> y usad <code>tofu</code> en lugar de <code>terraform</code>. Si vuestra versión de Ubuntu MATE no tiene paquetes en el repositorio, descargad el binario oficial.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Crear la infraestructura <span class="dur">25 min</span></h4>
+<h4>Actividad 2. Crear la infraestructura</h4>
 <ol>
 <li>En <code>cita-previa-app</code>, en una rama <code>iac-docker</code>, cread la carpeta <code>infra-docker/</code> con <code>main.tf</code> (poned vuestra organización en la imagen) y el <code>.gitignore</code> en la raíz.</li>
 <li><code>terraform init</code>. Mirad qué ha creado en <code>.terraform/</code> y abrid <code>.terraform.lock.hcl</code>.</li>
@@ -221,7 +221,7 @@ terraform -version</code></pre>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Modificar, idempotencia y desviación <span class="dur">25 min</span></h4>
+<h4>Actividad 3. Modificar, idempotencia y desviación</h4>
 <ol>
 <li>Ejecutad <code>terraform apply</code> otra vez sin cambiar nada. ¿Qué pasa? Explicad la idempotencia con este ejemplo.</li>
 <li>Cambiad la memoria a 512 y ejecutad <code>plan</code>: ¿modifica o reemplaza? Cambiad después el puerto externo: ¿y ahora? Aplicad.</li>
@@ -230,7 +230,7 @@ terraform -version</code></pre>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 4. Destruir, reconstruir y documentar <span class="dur">20 min</span></h4>
+<h4>Actividad 4. Destruir, reconstruir y documentar</h4>
 <ol>
 <li><code>terraform destroy</code>. Cronometrad un <code>apply</code> completo desde cero: esa es vuestra "recuperación ante desastres".</li>
 <li>Añadid un segundo contenedor con Redis (<code>redis:7-alpine</code>) en la misma red, sin puertos publicados, y una salida con su nombre. Aplicad.</li>
@@ -468,7 +468,7 @@ version_imagen = "1.0.0"</code></pre>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Parametrizar la versión de Docker <span class="dur">25 min</span></h4>
+<h4>Actividad 1. Parametrizar la versión de Docker</h4>
 <ol>
 <li>En <code>infra-docker/</code>, separad el código en <code>versions.tf</code>, <code>variables.tf</code>, <code>main.tf</code> y <code>outputs.tf</code>.</li>
 <li>Añadid variables para el entorno (con validación), el puerto, la memoria, la versión de la imagen y el número de réplicas (usad <code>count</code> para crear N contenedores con puertos consecutivos).</li>
@@ -483,7 +483,7 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Definir la infraestructura de Cita Previa <span class="dur">40 min</span></h4>
+<h4>Actividad 2. Definir la infraestructura de Cita Previa</h4>
 <ol>
 <li>Cread la carpeta <code>infra/</code> con los ficheros del apartado 4 (poned vuestra organización en la variable <code>imagen</code>) y los dos <code>.tfvars</code>.</li>
 <li>Añadid validaciones: <code>memoria</code> entre 128 y 2048, <code>replicas</code> entre 1 y 4, <code>puerto_base</code> entre 1024 y 65000, y <code>version_imagen</code> con formato de versión semántica (pista: <code>can(regex("^[0-9]+[.][0-9]+[.][0-9]+$", var.version_imagen))</code>).</li>
@@ -493,7 +493,7 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Documentar los parámetros <span class="dur">15 min</span></h4>
+<h4>Actividad 3. Documentar los parámetros</h4>
 <p>En <code>infra/README.md</code>, añadid una tabla con cada variable: descripción, tipo, validación, valor en revisión, valor en producción y si es sensible y de dónde se obtiene. Explicad cómo se separa el estado de cada entorno. Subid todo en un pull request (sin estados ni secretos: comprobadlo con gitleaks antes del push).</p>
 <p class="entrega">Entrega: pull request con <code>infra-docker/</code> parametrizado e <code>infra/</code> con la definición de Cita Previa, los dos <code>.tfvars</code>, el plan de revisión (copiado en el PR) y el README.</p>
 </div>
@@ -615,11 +615,11 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. SEGURIDAD.md <span class="dur">20 min</span></h4>
+<h4>Actividad 1. SEGURIDAD.md</h4>
 <p>En parejas, redactad <code>SEGURIDAD.md</code> en la raíz del repositorio con la matriz del apartado 5 adaptada a vuestra pareja, y añadid: procedimiento de rotación de un token, procedimiento ante la filtración de una credencial y quién puede cambiar este documento (debe estar en CODEOWNERS de operaciones).</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Configurar la seguridad de la plataforma <span class="dur">30 min</span></h4>
+<h4>Actividad 2. Configurar la seguridad de la plataforma</h4>
 <ol>
 <li><b>Usuario técnico</b>: cread el usuario que usará el runner en el punto 5 y dadle acceso a Docker, solo a él: <code>sudo adduser --disabled-password --gecos "" runner-cp</code> y <code>sudo usermod -aG docker runner-cp</code>. Comprobad quién está en el grupo con <code>getent group docker</code>.</li>
 <li><b>Contenedores endurecidos</b>: antes de tocar el código, comprobad que la aplicación arranca con las restricciones: <code>docker run --rm -d --name prueba-seg -p 8099:8000 --cap-drop ALL --security-opt no-new-privileges:true ghcr.io/ORGANIZACION/cita-previa-app:1.0.0</code> y <code>curl http://localhost:8099/salud</code>. Después borradlo (<code>docker rm -f prueba-seg</code>) y añadid los bloques del apartado 2 a <code>docker_container.app</code>.</li>
@@ -628,7 +628,7 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Secretos por entorno y prueba de alcance <span class="dur">20 min</span></h4>
+<h4>Actividad 3. Secretos por entorno y prueba de alcance</h4>
 <ol>
 <li>Guardad cada token como secreto <code>REGISTRO_TOKEN</code> en el entorno de GitHub correspondiente (<code>revision</code> y <code>produccion</code>).</li>
 <li>Comprobad el alcance del token de revisión: iniciad sesión con él (<code>echo "$TF_VAR_registro_token" | docker login ghcr.io -u USUARIO --password-stdin</code>), descargad la imagen (<code>docker pull</code>) y después intentad publicarla con otra etiqueta (<code>docker tag</code> y <code>docker push</code>). ¿Qué error da? Documentadlo en <code>SEGURIDAD.md</code>. Cerrad la sesión con <code>docker logout ghcr.io</code>.</li>
@@ -636,7 +636,7 @@ terraform apply -var-file=produccion.tfvars</code></pre>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 4. Simulacro de filtración <span class="dur">15 min</span></h4>
+<h4>Actividad 4. Simulacro de filtración</h4>
 <p>Pasad gitleaks por todo el historial del repositorio (<code>docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:latest detect --source /repo -v</code>). Después, simulad que el token de revisión se ha publicado: ¿qué podría hacer un atacante con él y qué no? Seguid vuestro procedimiento: revocad el token en GitHub, cread uno nuevo, actualizad el secreto del entorno <code>revision</code> y comprobad que <code>docker login</code> falla con el antiguo y funciona con el nuevo. Anotad cuánto habéis tardado.</p>
 <p class="entrega">Entrega: <code>SEGURIDAD.md</code>, el código con los contenedores endurecidos y la credencial del registro, los secretos configurados en los entornos de GitHub y el resultado documentado de la prueba de alcance y del simulacro.</p>
 </div>
@@ -740,7 +740,7 @@ done</code></pre>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Crear el entorno de revisión <span class="dur">30 min</span></h4>
+<h4>Actividad 1. Crear el entorno de revisión</h4>
 <ol>
 <li>En una segunda terminal, dejad en marcha <code>docker events</code>.</li>
 <li>Seguid el procedimiento del apartado 1 para <code>revision</code> con vuestras credenciales. Guardad en <code>infra/registro-revision.txt</code> la salida del plan y del apply (sin secretos).</li>
@@ -750,25 +750,25 @@ done</code></pre>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Salidas <span class="dur">15 min</span></h4>
+<h4>Actividad 2. Salidas</h4>
 <p>Consultad las salidas con <code>terraform output</code> y <code>terraform output -json</code>. Usad el bucle del apartado 6 para comprobar que todas las URL responden 200. Guardad las salidas con <code>terraform output -json &gt; salidas-revision.json</code> y abridlo: este fichero lo leerá Ansible en la unidad 7. ¿Debe subirse al repositorio? Razonadlo (pista: ¿contiene algo sensible? ¿cambia con cada despliegue?).</p>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Cambiar la infraestructura <span class="dur">15 min</span></h4>
+<h4>Actividad 3. Cambiar la infraestructura</h4>
 <ol>
 <li>Cambiad la memoria de revisión de 256 a 384 MB. Planificad: ¿modifica o reemplaza el contenedor? Aplicad y comprobad el nuevo límite con <code>docker stats --no-stream</code>.</li>
 <li>Cambiad <code>replicas</code> a 2. ¿Qué nombre y qué puerto recibe la nueva? ¿Afecta a la primera? Aplicad y comprobad las salidas. Volved a 1 y observad cuál se destruye.</li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 4. Protección e importación <span class="dur">10 min</span></h4>
+<h4>Actividad 4. Protección e importación</h4>
 <ol>
 <li>Añadid <code>prevent_destroy = true</code> al volumen y ejecutad <code>terraform plan -destroy -var-file=revision.tfvars</code>. ¿Qué mensaje da? Quitadlo después (en revisión queremos poder destruir; en producción lo dejaríamos).</li>
 <li>Explicad en el README (sin hacerlo) cómo importaríais un volumen que alguien hubiera creado a mano con <code>docker volume create</code>.</li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 5. Documentar <span class="dur">10 min</span></h4>
+<h4>Actividad 5. Documentar</h4>
 <p>Completad el <code>infra/README.md</code> con el procedimiento de despliegue paso a paso, las salidas obtenidas, capturas de <code>docker ps</code> y <code>docker events</code>, y los incidentes que hayáis tenido y cómo los resolvisteis. Subidlo en un pull request.</p>
 <p class="entrega">Entrega: infraestructura de revisión creada con vuestras credenciales, registro del plan y del apply, salidas y README. <b>No destruyáis la infraestructura de revisión</b>: la usaremos en los próximos puntos.</p>
 </div>
@@ -930,7 +930,7 @@ jobs:
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Instalar el runner autoalojado <span class="dur">20 min</span></h4>
+<h4>Actividad 1. Instalar el runner autoalojado</h4>
 <p>En el portátil de la pareja que aloja los entornos. <b>Importante</b>: el runner, los estados y los contenedores viven en ese portátil, así que la pareja debe usar el mismo equipo en los puntos 5 y 6 (pedídselo al profesor).</p>
 <ol>
 <li>Usad el usuario técnico <code>runner-cp</code> del punto 3, que ya está en el grupo <code>docker</code>. Comprobad que Terraform y <code>jq</code> están instalados para todos los usuarios (<code>which terraform jq</code>).</li>
@@ -941,7 +941,7 @@ jobs:
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. El workflow <span class="dur">25 min</span></h4>
+<h4>Actividad 2. El workflow</h4>
 <ol>
 <li>Cread <code>infra/verificar.sh</code> provisional (lo completaremos en el punto 6) que solo haga <code>terraform output</code>, y dadle permiso de ejecución (<code>git update-index --chmod=+x infra/verificar.sh</code>).</li>
 <li>Añadid <code>.github/workflows/infraestructura.yml</code>. Añadid <code>/.github/</code> e <code>/infra/</code> a CODEOWNERS de operaciones si no lo estaban.</li>
@@ -951,11 +951,11 @@ jobs:
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Del pull request a producción <span class="dur">15 min</span></h4>
+<h4>Actividad 3. Del pull request a producción</h4>
 <p>Pedid la revisión a vuestra pareja y fusionad. Seguid la ejecución: se aplica revisión, se verifica y producción queda <i>Waiting</i>. Aprobad desde la cuenta de operaciones y comprobad con <code>docker ps --filter label=entorno=produccion</code> que la infraestructura de producción se ha creado (o modificado). En la pestaña <i>Deployments</i> del repositorio, revisad el historial de cada entorno.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 4. Provocar fallos <span class="dur">15 min</span></h4>
+<h4>Actividad 4. Provocar fallos</h4>
 <p>Documentad en el README qué ocurre, en qué trabajo y con qué mensaje, cuando:</p>
 <ol class="casos">
 <li>El PR tiene un error de formato.</li>
@@ -967,7 +967,7 @@ jobs:
 <p>Restaurad todo al terminar.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 5. Detección de desviaciones <span class="dur">10 min</span></h4>
+<h4>Actividad 5. Detección de desviaciones</h4>
 <p>Añadid <code>desviacion.yml</code> solo para revisión, lanzadlo a mano (añadid <code>workflow_dispatch</code>) y comprobad que termina bien. Después cambiad a mano la memoria del contenedor de revisión (<code>docker update --memory 128m --memory-swap 128m cp-revision-app-1</code>), volved a lanzarlo y comprobad que detecta la desviación. Corregidla volviendo a aplicar desde el flujo.</p>
 <p class="entrega">Entrega: runner configurado, workflow funcionando con plan en el PR, despliegue por entornos con credenciales propias y aprobación de producción, fallos documentados y detección de desviaciones.</p>
 </div>
@@ -1115,7 +1115,7 @@ exit $(( fallos &gt; 0 ))</code></pre>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Completar la verificación <span class="dur">30 min</span></h4>
+<h4>Actividad 1. Completar la verificación</h4>
 <ol>
 <li>Sustituid el <code>verificar.sh</code> provisional por el del apartado 4 y leedlo con calma: para cada bloque, anotad qué nivel de la tabla del apartado 2 comprueba.</li>
 <li>Añadid dos comprobaciones más: que el contador de reinicios de cada réplica es 0 (<code>docker inspect -f '{{.RestartCount}}'</code>) y que cada réplica publica <b>solo</b> el puerto esperado (<code>docker port</code>).</li>
@@ -1124,11 +1124,11 @@ exit $(( fallos &gt; 0 ))</code></pre>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Integrarla en el flujo <span class="dur">15 min</span></h4>
+<h4>Actividad 2. Integrarla en el flujo</h4>
 <p>Modificad los pasos de verificación de <code>infraestructura.yml</code> para guardar el registro como artefacto. Fusionad un cambio pequeño y comprobad que la verificación de revisión se ejecuta antes de la aprobación de producción, y que el registro se puede descargar.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Provocar fallos <span class="dur">15 min</span></h4>
+<h4>Actividad 3. Provocar fallos</h4>
 <p>Comprobad que la verificación detecta cada problema y que un fallo en revisión <b>impide</b> llegar a producción:</p>
 <ol>
 <li>Parad una réplica de revisión (<code>docker stop cp-revision-app-1</code>) y lanzad el flujo.</li>
@@ -1138,7 +1138,7 @@ exit $(( fallos &gt; 0 ))</code></pre>
 <p>Documentad el mensaje de cada caso y restaurad el estado correcto aplicando desde el flujo.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 4. Documentación y revisión de la unidad <span class="dur">25 min</span></h4>
+<h4>Actividad 4. Documentación y revisión de la unidad</h4>
 <ol>
 <li>Completad <code>infra/README.md</code>: arquitectura (esquema con los dos entornos, el runner, GitHub y Docker), descripción de cada fichero, flujo de trabajo, seguridad (enlace a <code>SEGURIDAD.md</code>) y un registro completo de verificación de revisión y de producción.</li>
 <li>Revisión cruzada: intercambiad el enlace del repositorio con otra pareja y revisad el suyo con la tabla de evaluación de la pestaña Presentación. Dejad los comentarios en una issue de su repositorio.</li>

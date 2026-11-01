@@ -110,11 +110,11 @@
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Anatomía de los SaaS que usamos <span class="dur">20 min</span></h4>
+<h4>Actividad 1. Anatomía de los SaaS que usamos</h4>
 <p>En parejas, elegid dos SaaS del curso (GitHub, SonarQube Cloud, Docker Hub, Aules) y, buscando en su documentación pública y en su página de seguridad o <i>trust center</i>, completad para cada uno: qué gestiona el proveedor y qué el cliente, planes y precio, dónde se alojan los datos, certificaciones, SSO y doble factor, API y webhooks disponibles, cómo se exportan los datos y el SLA. ¿Cuál de los dos os parece más fácil de abandonar si mañana subiera mucho su precio?</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. SaaS frente a autoalojado: GitHub y Gitea <span class="dur">35 min</span></h4>
+<h4>Actividad 2. SaaS frente a autoalojado: GitHub y Gitea</h4>
 <ol>
 <li>En el portátil o en una VM, levantad Gitea con Docker:
 <pre><code>docker run -d --name gitea -p 3000:3000 -p 2222:22 -v gitea-datos:/data gitea/gitea:1.22</code></pre>
@@ -126,7 +126,7 @@ Abrid <code>http://localhost:3000</code> y completad la instalación inicial (ba
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Integración con un SaaS por API <span class="dur">25 min</span></h4>
+<h4>Actividad 3. Integración con un SaaS por API</h4>
 <p>Los SaaS se integran con otras herramientas mediante su API. Usaremos la API REST de GitHub para crear en el tablero de Cita Previa (unidad 1, punto 3) las historias de usuario desde un fichero, en lugar de hacerlo a mano.</p>
 <ol>
 <li>Cread un token de grano fino con acceso solo a <code>cita-previa-gestion</code> y permiso de lectura y escritura en <i>Issues</i>, con caducidad de 7 días. Cargadlo sin que quede en el historial: <code>read -s GH_TOKEN; export GH_TOKEN</code>.</li>
@@ -225,7 +225,7 @@ done &lt; historias.csv</code></pre></li>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Desplegar Cita Previa en un PaaS <span class="dur">40 min</span></h4>
+<h4>Actividad 1. Desplegar Cita Previa en un PaaS</h4>
 <p>En parejas, en AWS Academy (región <code>us-east-1</code>) con <b>Elastic Beanstalk</b>.</p>
 <ol>
 <li>Preparad el paquete con <code>app.py</code>, <code>requirements.txt</code> y un fichero <code>Procfile</code> con una línea: <code>web: gunicorn -b 0.0.0.0:8000 app:app</code>. Comprimidlo: <code>zip cita-previa-v1.zip app.py requirements.txt Procfile</code> (los ficheros en la raíz del ZIP, no dentro de una carpeta).</li>
@@ -235,7 +235,7 @@ done &lt; historias.csv</code></pre></li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Configurar, actualizar y volver atrás <span class="dur">25 min</span></h4>
+<h4>Actividad 2. Configurar, actualizar y volver atrás</h4>
 <ol>
 <li><b>Configuración</b>: en <i>Configuration → Updates, monitoring and logging → Environment properties</i>, añadid <code>ENTORNO=paas-revision</code>. Aplicad y comprobad <code>/salud</code>. ¿Tuvisteis que tocar el código?</li>
 <li><b>Nueva versión</b>: añadid en <code>app.py</code> una ruta <code>/version</code> que devuelva <code>"2"</code>, generad <code>cita-previa-v2.zip</code> y desplegadla (<i>Upload and deploy</i>). Medid el tiempo.</li>
@@ -246,7 +246,7 @@ done &lt; historias.csv</code></pre></li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. ¿Qué he gestionado yo? <span class="dur">15 min</span></h4>
+<h4>Actividad 3. ¿Qué he gestionado yo?</h4>
 <p>Individualmente, completad la tabla de responsabilidades del apartado 1 para lo que acabáis de hacer, marcando qué habéis tenido que hacer vosotros y qué hizo la plataforma. Después, revisad los doce factores: ¿cuáles cumple <code>cita-previa-app</code> y cuáles no? ¿Qué pasaría si la aplicación guardara las citas en un fichero local y la plataforma creara una segunda instancia?</p>
 <p class="entrega">Entrega en Aules: registro de la actividad 1 (lista de recursos creados y capturas), resultados de la actividad 2 y la tabla de la actividad 3. Comprobad que no queda ningún entorno activo.</p>
 </div>
@@ -331,7 +331,7 @@ done &lt; historias.csv</code></pre></li>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Despliegue manual en IaaS <span class="dur">50 min</span></h4>
+<h4>Actividad 1. Despliegue manual en IaaS</h4>
 <p>En parejas. Vamos a desplegar la misma aplicación que en PaaS (punto 2), pero a mano, y a <b>anotar cada orden en un registro</b> (<code>despliegue-iaas.md</code>) con el tiempo empleado.</p>
 <ol>
 <li>Cread una instancia Ubuntu 24.04 pequeña con un grupo de seguridad que permita SSH y HTTP (80) solo desde vuestra IP.</li>
@@ -363,7 +363,7 @@ y activadlo: <code>sudo systemctl daemon-reload &amp;&amp; sudo systemctl enable
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Operar la máquina <span class="dur">20 min</span></h4>
+<h4>Actividad 2. Operar la máquina</h4>
 <ol>
 <li><b>Escalado vertical</b>: detened la instancia, cambiad su tipo a uno mayor, como mucho de tamaño <code>large</code>, que es el límite del laboratorio (<i>Actions → Instance settings → Change instance type</i>), arrancadla y comprobad con <code>nproc</code> y <code>free -h</code>. ¿Ha cambiado la IP pública? ¿Por qué?</li>
 <li><b>Instantánea e imagen</b>: cread una imagen (AMI) de la instancia. Lanzad una segunda instancia desde esa imagen y comprobad que la aplicación ya funciona en ella sin instalar nada.</li>
@@ -372,7 +372,7 @@ y activadlo: <code>sudo systemctl daemon-reload &amp;&amp; sudo systemctl enable
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. PaaS frente a IaaS <span class="dur">10 min</span></h4>
+<h4>Actividad 3. PaaS frente a IaaS</h4>
 <p>Comparad vuestros registros de los puntos 2 y 3: número de pasos, tiempo, conocimientos necesarios, qué pasaría con un parche de seguridad de Python o de OpenSSL en cada caso, y qué control teníais en cada modelo. Escribid 5 líneas de conclusión: ¿cuándo elegiríais cada uno para Cita Previa?</p>
 <p class="entrega">Entrega en Aules: <code>despliegue-iaas.md</code> con órdenes, tiempos y capturas, y la comparación.</p>
 </div>
@@ -465,7 +465,7 @@ y activadlo: <code>sudo systemctl daemon-reload &amp;&amp; sudo systemctl enable
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Una API de huecos libres con una función <span class="dur">35 min</span></h4>
+<h4>Actividad 1. Una API de huecos libres con una función</h4>
 <p>En parejas, en AWS Academy, región <code>us-east-1</code>.</p>
 <ol>
 <li><i>Lambda → Create function</i>, desde cero, nombre <code>huecos-libres</code>, entorno Python 3.12, rol existente <code>LabRole</code>.</li>
@@ -495,7 +495,7 @@ Pulsad <i>Deploy</i> y probadla con un evento de prueba.</li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Una función disparada por un evento <span class="dur">25 min</span></h4>
+<h4>Actividad 2. Una función disparada por un evento</h4>
 <ol>
 <li>Cread un bucket <code>cp-volantes-NOMBRES</code>.</li>
 <li>Cread una segunda función <code>procesar-volante</code> (Python 3.12, <code>LabRole</code>) que registre el nombre, el tamaño y el tipo de cada fichero recibido:
@@ -510,7 +510,7 @@ Pulsad <i>Deploy</i> y probadla con un evento de prueba.</li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. ¿Serverless o VM? <span class="dur">20 min</span></h4>
+<h4>Actividad 3. ¿Serverless o VM?</h4>
 <p>Con la calculadora de precios de AWS, calculad el coste mensual de la función <code>huecos-libres</code> (256 MB, 150 ms por invocación) para 100.000, 10 millones y 300 millones de invocaciones al mes, sin capa gratuita. Comparad con una VM de 2 vCPU encendida todo el mes (una sola VM puede atender, supongamos, 50 peticiones por segundo). ¿A partir de qué volumen deja de compensar la función? Añadid a la comparación qué pasa con el trabajo de operación en cada caso.</p>
 <p class="entrega">Entrega en Aules: capturas de las dos funciones, de los registros con el arranque en frío y del disparador, y la hoja de cálculo de costes con su conclusión.</p>
 </div>
@@ -601,11 +601,11 @@ Pulsad <i>Deploy</i> y probadla con un evento de prueba.</li>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Nuestra comparativa con datos reales <span class="dur">25 min</span></h4>
+<h4>Actividad 1. Nuestra comparativa con datos reales</h4>
 <p>En parejas, con vuestros registros de los puntos 1 a 4, completad una tabla comparativa <b>medida por vosotros</b> para desplegar Cita Previa en PaaS (Elastic Beanstalk), IaaS (VM a mano), serverless (Lambda) y la versión SaaS (GitHub frente a Gitea para el caso de herramientas): pasos necesarios, tiempo hasta tener la URL funcionando, tiempo para desplegar una nueva versión, qué tuvisteis que configurar vosotros, qué pasó al recibir carga, coste mensual estimado para 20.000 citas al día, y qué habría que hacer para aplicar un parche de seguridad del sistema operativo.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Elegir el modelo para cada componente <span class="dur">35 min</span></h4>
+<h4>Actividad 2. Elegir el modelo para cada componente</h4>
 <p>En grupos de 3, aplicad el método del apartado 4 a estos dos sistemas. Para cada componente, indicad el modelo, un servicio concreto de un proveedor (o una herramienta autoalojada) y la justificación:</p>
 <ul>
 <li><b>Plataforma de inscripción a los ciclos formativos de la Conselleria</b>: web y API para 60.000 solicitudes concentradas en dos semanas al año; subida de documentación (PDF) que hay que validar; envío de correos de confirmación; listados de admitidos que se generan una vez; panel para el personal de los centros; datos personales de menores.</li>
@@ -614,7 +614,7 @@ Pulsad <i>Deploy</i> y probadla con un evento de prueba.</li>
 <p>Dibujad la arquitectura resultante de uno de los dos sistemas indicando, con colores, el modelo de servicio de cada pieza.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Defensa de la arquitectura <span class="dur">20 min</span></h4>
+<h4>Actividad 3. Defensa de la arquitectura</h4>
 <p>Cada grupo presenta su arquitectura en 3 minutos. El profesor plantea un cambio de requisitos a cada grupo (por ejemplo: "los datos no pueden salir de España", "el presupuesto se reduce a la mitad", "el equipo es de una sola persona") y el grupo explica qué modelos cambiaría.</p>
 <p class="entrega">Entrega en Aules: tabla comparativa con vuestros datos, tabla de decisión de los dos sistemas y diagrama.</p>
 </div>

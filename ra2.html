@@ -289,7 +289,7 @@
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Inventario de una infraestructura propia <span class="dur">25 min</span></h4>
+<h4>Actividad 1. Inventario de una infraestructura propia</h4>
 <p>Individual. Una gestoría de Castellón con 40 empleados tiene toda su informática en un cuarto de su oficina. Este es su inventario:</p>
 <div class="tabla"><table>
 <tr><th>Elemento</th><th>Datos</th></tr>
@@ -316,20 +316,20 @@ Para cada situación, responde a tres preguntas:<ul>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. ¿Es nube o no? <span class="dur">20 min</span></h4>
-<p>Para cada caso, decidid si es on premise, colocation, hosting tradicional o nube, y comprobad cuáles de las cinco características del NIST cumple:</p>
+<h4>Actividad 2. ¿Es nube o no?</h4>
+<p>Para cada caso, decidid si es on premise, colocation, hosting tradicional o nube (puede ser más de una cosa a la vez) y comprobad cuáles de las cinco características del NIST cumple:</p>
 <ol class="casos">
-<li>La Conselleria tiene sus servidores en un CPD propio en Valencia.</li>
-<li>Una empresa alquila un VPS por 5 € al mes con contrato anual y lo pide por correo.</li>
-<li>Una startup crea y borra decenas de máquinas virtuales al día en AWS, con scripts que usan la API del proveedor, y paga por las horas que usa cada una.</li>
-<li>Un hospital lleva sus servidores al CPD de un proveedor en Madrid y los administra él mismo.</li>
-<li>Una universidad monta en su propio CPD un portal desde el que sus grupos de investigación crean y borran máquinas virtuales ellos mismos; a cada grupo se le cobra por las horas que usa.</li>
-<li>Usáis Google Drive para los apuntes.</li>
+<li>Un proveedor de alojamiento vende un producto llamado «Cloud Server». Se pide desde un formulario de su web, un técnico lo prepara en unas 48 horas, se paga una cuota mensual fija con permanencia de 12 meses y, para ampliarle la memoria, hay que abrir una incidencia.</li>
+<li>Una pyme usa un proveedor europeo de servidores privados virtuales. Crea y borra los servidores desde su panel o con scripts que usan su API, están listos en menos de un minuto y se facturan por horas, con un precio máximo al mes.</li>
+<li>Una empresa alquila 20 servidores dedicados en el CPD de un proveedor. Los pide desde un panel web, el proveedor los entrega montados en unas horas, el contrato es mensual y la empresa los administra ella misma.</li>
+<li>Un hospital tiene en su CPD un clúster de virtualización en el que corren todos sus servicios. Cuando un servicio necesita una máquina nueva, se pide por el gestor de incidencias y el equipo de sistemas la crea en uno o dos días. Nadie sabe cuánto consume cada servicio.</li>
+<li>Una universidad tiene en su CPD un portal desde el que sus grupos de investigación crean y borran máquinas virtuales ellos mismos. No se cobra nada, pero cada grupo tiene una cuota de CPU, memoria y disco, y el portal muestra lo que ha consumido cada uno.</li>
+<li>Una empresa lleva sus propios servidores al CPD de un proveedor en Madrid y los administra ella. Encima ha instalado un software con el que sus departamentos crean máquinas virtuales desde un portal, y a final de mes se reparte el coste entre departamentos según las horas que ha usado cada uno.</li>
 </ol>
 <p>Justificad cada respuesta: para cada una de las cinco características, indicad si el caso la cumple o no, con el dato del enunciado que lo demuestra.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Primer contacto con un proveedor de nube <span class="dur">30 min</span></h4>
+<h4>Actividad 3. Primer contacto con un proveedor de nube</h4>
 <p>Individual, con la web pública de los proveedores:</p>
 <ol>
 <li>En la página de infraestructura global de AWS (<a href="https://aws.amazon.com/es/about-aws/global-infrastructure/">aws.amazon.com/es/about-aws/global-infrastructure</a>), anotad qué regiones hay en Europa, si hay alguna en España y cuántas zonas de disponibilidad tiene.</li>
@@ -337,7 +337,7 @@ Para cada situación, responde a tres preguntas:<ul>
 <li>Haced lo mismo con Azure (<a href="https://azure.microsoft.com/es-es/explore/global-infrastructure/">infraestructura global</a> y <a href="https://azure.microsoft.com/es-es/products/">productos</a>) y completad una tabla de equivalencias: tipo de servicio, nombre en AWS, nombre en Azure.</li>
 <li>Comparad los dos proveedores: número de regiones en el mundo y región más cercana a Castellón.</li>
 </ol>
-<p class="entrega">Entrega en Aules: ficha del inventario, tabla de casos y tabla de equivalencias entre proveedores. En la puesta en común (5 min) comparamos el cuarto de servidores de la gestoría con lo que ofrece una región de nube.</p>
+<p class="entrega">Entrega en Aules: ficha del inventario, tabla de casos y tabla de equivalencias entre proveedores. En la puesta en común comparamos el cuarto de servidores de la gestoría con lo que ofrece una región de nube.</p>
 </div>
 
 <h3>Preguntas de repaso</h3>
@@ -437,7 +437,7 @@ Para cada situación, responde a tres preguntas:<ul>
 <div class="pausa"><h4>Ahora: actividades 4 y 5</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Después seguimos con el apartado 4.</p></div>
 
 <div class="actividad">
-<h4>Actividad 4. Una máquina, de principio a fin: qué hace el proveedor y qué cobra <span class="dur">35 min</span></h4>
+<h4>Actividad 4. Una máquina, de principio a fin: qué hace el proveedor y qué cobra</h4>
 <p>En parejas. Una desarrolladora de Cita Previa necesita una máquina de pruebas durante una semana. Este es el registro de su cuenta de AWS en un mes de 30 días (720 horas), tal como lo guarda el servicio de auditoría:</p>
 <div class="tabla"><table>
 <tr><th>Momento</th><th>Llamada a la API</th><th>Origen</th><th>Detalle</th></tr>
@@ -469,7 +469,7 @@ Para cada situación, responde a tres preguntas:<ul>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 5. ¿Cuánto cuesta Cita Previa en la nube? <span class="dur">30 min</span></h4>
+<h4>Actividad 5. ¿Cuánto cuesta Cita Previa en la nube?</h4>
 <p>En parejas, con la calculadora pública de precios (<a href="https://calculator.aws/">AWS Pricing Calculator</a> o <a href="https://azure.microsoft.com/es-es/pricing/calculator/">calculadora de Azure</a>), en una región europea, estimad el coste mensual de esta arquitectura:</p>
 <ul>
 <li>2 máquinas virtuales de 2 vCPU y 4 GB de RAM con Linux, encendidas 24 horas.</li>
@@ -504,7 +504,7 @@ Para cada situación, responde a tres preguntas:<ul>
 <div class="pausa"><h4>Ahora: actividad 6</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 6.</p></div>
 
 <div class="actividad">
-<h4>Actividad 6. Responsabilidad y disponibilidad <span class="dur">15 min</span></h4>
+<h4>Actividad 6. Responsabilidad y disponibilidad</h4>
 <ol>
 <li>Para cada incidente, indicad quién es responsable según el modelo de responsabilidad compartida:<ol class="casos">
 <li>Falla la refrigeración del CPD de la región.</li>
@@ -578,7 +578,7 @@ Para cada situación, responde a tres preguntas:<ul>
 <div class="pausa"><h4>Ahora: actividad 7</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 8.</p></div>
 
 <div class="actividad">
-<h4>Actividad 7. Estudio de TCO <span class="dur">45 min</span></h4>
+<h4>Actividad 7. Estudio de TCO</h4>
 <p>En parejas, con una hoja de cálculo (LibreOffice Calc o Google Sheets). Caso: la Conselleria debe renovar la infraestructura de Cita Previa para 5 años. Datos:</p>
 <ul>
 <li>Carga: 6 máquinas virtuales de 4 vCPU y 16 GB en producción, 3 de 2 vCPU y 8 GB en revisión, 2 TB de base de datos y documentos, 1 TB/mes de salida a Internet.</li>
@@ -639,11 +639,11 @@ Para cada situación, responde a tres preguntas:<ul>
 <div class="pausa"><h4>Ahora: actividades 8 y 9</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Con ellas se cierra el punto.</p></div>
 
 <div class="actividad">
-<h4>Actividad 8. Beneficios y riesgos en el caso real <span class="dur">20 min</span></h4>
+<h4>Actividad 8. Beneficios y riesgos en el caso real</h4>
 <p>Con los resultados, redactad un informe de una página para la dirección de la Conselleria con: la opción recomendada, tres beneficios que obtendría, tres riesgos y cómo mitigarlos (incluyendo protección de datos y ENS), y qué haría falta para que la otra opción fuera la mejor.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 9. Debate: ¿nube o no? <span class="dur">15 min</span></h4>
+<h4>Actividad 9. Debate: ¿nube o no?</h4>
 <p>Dividimos la clase en dos bandos, a favor de la nube y a favor del on premise, para Cita Previa. Cada bando tiene 3 minutos de exposición con los datos de sus hojas de cálculo, 2 minutos de réplica y 1 minuto de conclusión. El resto de la clase vota al final qué argumento ha sido más sólido.</p>
 </div>
 <p class="entrega">Entrega en Aules: línea temporal, cálculos y respuestas de la actividad 4, hoja de estimación de la actividad 5, respuestas de la 6, hoja de cálculo del TCO de la actividad 7 e informe para la dirección de la actividad 8.</p>
@@ -738,7 +738,7 @@ Para cada situación, responde a tres preguntas:<ul>
 <div class="pausa"><h4>Ahora: actividad 10</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 5.</p></div>
 
 <div class="actividad">
-<h4>Actividad 10. ¿Infraestructura o arquitectura? <span class="dur">15 min</span></h4>
+<h4>Actividad 10. ¿Infraestructura o arquitectura?</h4>
 <p>En parejas, clasificad cada afirmación como infraestructura o arquitectura y explicad por qué:</p>
 <ol class="casos">
 <li>La región de Madrid tiene tres zonas de disponibilidad.</li>
@@ -768,7 +768,7 @@ Para cada situación, responde a tres preguntas:<ul>
 <div class="pausa"><h4>Ahora: actividades 11 y 12</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Con ellas se cierra el punto.</p></div>
 
 <div class="actividad">
-<h4>Actividad 11. Diagrama de arquitectura de Cita Previa <span class="dur">45 min</span></h4>
+<h4>Actividad 11. Diagrama de arquitectura de Cita Previa</h4>
 <p>En grupos de 3. Requisitos: 20.000 citas diarias con picos los lunes de 8 a 10 h, disponibilidad objetivo del 99,9 %, datos de salud (deben quedar en la UE y cifrados), envío de recordatorios por correo y SMS, panel de gestión solo accesible desde la red de los centros de salud, entornos de revisión y producción.</p>
 <ol>
 <li>Dibujad la arquitectura en <a href="https://app.diagrams.net/">diagrams.net</a> con la biblioteca de iconos del proveedor (menú <i>Más formas</i> → AWS o Azure): región, zonas, red virtual, subredes públicas y privadas, balanceador, grupo de autoescalado o servicio de contenedores, base de datos, almacenamiento de objetos, cola, CDN y monitorización.</li>
@@ -777,7 +777,7 @@ Para cada situación, responde a tres preguntas:<ul>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 12. Revisión cruzada con el marco Well-Architected <span class="dur">20 min</span></h4>
+<h4>Actividad 12. Revisión cruzada con el marco Well-Architected</h4>
 <p>Intercambiad el diagrama con otro grupo. Para cada pilar, escribid una pregunta al otro grupo sobre su diseño y un punto débil que hayáis detectado (por ejemplo: "¿qué pasa si cae la zona A?", "¿quién puede acceder a la base de datos?", "¿cuánto cuesta el entorno de revisión?"). Devolved la revisión y corregid vuestro diagrama con lo que os hayan señalado.</p>
 </div>
 <p class="entrega">Entrega en Aules: clasificación de la actividad 10, diagrama definitivo con su tabla de la actividad 11 y la revisión que hicisteis al otro grupo en la actividad 12.</p>
@@ -878,7 +878,7 @@ Para cada situación, responde a tres preguntas:<ul>
 <div class="pausa"><h4>Ahora: actividad 13</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 4.</p></div>
 
 <div class="actividad">
-<h4>Actividad 13. Del hardware físico al virtual <span class="dur">15 min</span></h4>
+<h4>Actividad 13. Del hardware físico al virtual</h4>
 <p>Individual, en vuestro portátil (Ubuntu MATE). Ejecutad <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code> e <code>ip a</code> y anotad: modelo de CPU, núcleos y hilos, memoria total, discos y tarjetas de red.</p>
 <p>Después, con los datos del servidor 1 de la gestoría del punto 1 (2 procesadores de 12 núcleos y 24 hilos, 128 GB de RAM), completad el cálculo. Sus máquinas virtuales tienen asignado:</p>
 <div class="tabla"><table>
@@ -949,7 +949,7 @@ runcmd:
 <div class="pausa"><h4>Ahora: actividades 14 y 15</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Después seguimos con el apartado 5.</p></div>
 
 <div class="actividad">
-<h4>Actividad 14. Leer un aprovisionamiento con cloud-init <span class="dur">35 min</span></h4>
+<h4>Actividad 14. Leer un aprovisionamiento con cloud-init</h4>
 <p>En parejas. Un compañero ha lanzado en AWS una instancia Ubuntu 24.04 con el fichero <code>user-data.yaml</code> del apartado 4 como datos de usuario. Esto es lo que muestra la consola:</p>
 <div class="tabla"><table>
 <tr><th>Hora</th><th>Evento en la consola</th></tr>
@@ -993,7 +993,7 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 15. Llevar las cargas de trabajo de la gestoría a la nube <span class="dur">30 min</span></h4>
+<h4>Actividad 15. Llevar las cargas de trabajo de la gestoría a la nube</h4>
 <p>En parejas. La gestoría del punto 1 quiere llevar a la nube las ocho máquinas virtuales de la actividad 13. El mantenimiento externo ha medido su uso durante tres meses:</p>
 <div class="tabla"><table>
 <tr><th>VM</th><th>Asignado</th><th>CPU media / pico</th><th>RAM usada</th><th>Observaciones</th></tr>
@@ -1080,7 +1080,7 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <div class="pausa"><h4>Ahora: actividad 16</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 7.</p></div>
 
 <div class="actividad">
-<h4>Actividad 16. Analizar la red de Cita Previa <span class="dur">45 min</span></h4>
+<h4>Actividad 16. Analizar la red de Cita Previa</h4>
 <p>En parejas. Esta es la configuración del entorno de revisión de Cita Previa en AWS, en la región de España (<code>eu-south-2</code>):</p>
 <p><b>Red y subredes.</b> VPC <code>vpc-citaprevia-rev</code> con el rango <code>10.30.0.0/16</code>.</p>
 <div class="tabla"><table>
@@ -1156,7 +1156,7 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <div class="pausa"><h4>Ahora: actividad 17</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 8.</p></div>
 
 <div class="actividad">
-<h4>Actividad 17. Elegir el almacenamiento <span class="dur">20 min</span></h4>
+<h4>Actividad 17. Elegir el almacenamiento</h4>
 <p>En parejas. Para cada necesidad de Cita Previa, elegid el tipo de almacenamiento (bloque, fichero u objeto) y la opción concreta (tipo de disco, clase de almacenamiento, instantáneas, ciclo de vida, bloqueo contra borrado...). Indicad también qué le pasa a ese dato si se termina la máquina virtual.</p>
 <ol class="casos">
 <li>El disco del sistema de cada servidor de aplicación.</li>
@@ -1182,7 +1182,7 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <div class="pausa"><h4>Ahora: actividad 18</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Con ella se cierra el punto.</p></div>
 
 <div class="actividad">
-<h4>Actividad 18. Ficha técnica <span class="dur">15 min</span></h4>
+<h4>Actividad 18. Ficha técnica</h4>
 <p>Redactad la ficha técnica del entorno de revisión de Cita Previa, ya con las correcciones de la actividad 16 y el almacenamiento de la actividad 17. Haced una tabla por tipo de componente (servidores, red, almacenamiento y software) con estas columnas: identificador, características, ubicación (zona y subred) y función. En el software, incluid el sistema operativo, el software de base de cada máquina y el software de gestión que usaríais (identidades, monitorización, auditoría). Añadid el esquema de red corregido.</p>
 </div>
 <p class="entrega">Entrega en Aules: datos del portátil y cálculo de sobresuscripción de la actividad 13, respuestas de la 14, tabla de migración de la 15, esquema y respuestas de la 16, tabla de almacenamiento de la 17 y ficha técnica con el esquema corregido de la 18.</p>

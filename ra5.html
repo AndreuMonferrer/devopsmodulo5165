@@ -96,7 +96,7 @@ Terraform ──► red, volúmenes y contenedores Docker (revisión y producci�
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Ficha técnica de una herramienta <span class="dur">45 min</span></h4>
+<h4>Actividad 1. Ficha técnica de una herramienta</h4>
 <p>Individual. Cada persona elige una herramienta distinta (sin repetir, lista en la pizarra): Docker, Podman, Harbor, GitHub Actions, GitLab CI, Jenkins, Argo CD, Terraform/OpenTofu, Ansible, Puppet, Kubernetes, Helm, Prometheus, Grafana, Vault, Kaniko. En el repositorio común <code>herramientas-devops</code> (el profesor os da permiso de escritura), cread una carpeta con vuestra herramienta y un <code>README.md</code> con:</p>
 <ol>
 <li>Objetivo y etapa del ciclo en la que actúa.</li>
@@ -109,7 +109,7 @@ Terraform ──► red, volúmenes y contenedores Docker (revisión y producci�
 <p>Subid el trabajo en una rama y abrid un pull request (así practicamos el flujo que automatizaremos en los próximos puntos).</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Docker frente a Podman <span class="dur">30 min</span></h4>
+<h4>Actividad 2. Docker frente a Podman</h4>
 <p>Primero, preparad Docker y la imagen de la aplicación en el portátil:</p>
 <ol>
 <li>Si Docker no está instalado, instaladlo con <code>sudo apt install docker.io docker-compose-v2</code> y añadid vuestro usuario al grupo con <code>sudo usermod -aG docker $USER</code> (cerrad sesión y volved a entrar). Comprobadlo con <code>docker run hello-world</code>.</li>
@@ -118,7 +118,7 @@ Terraform ──► red, volúmenes y contenedores Docker (revisión y producci�
 <p>Después, en parejas. Instalad Podman (<code>sudo apt install -y podman</code>) y ejecutad la misma imagen de <code>cita-previa-app</code> con Docker y con Podman. Comparad: ¿qué proceso es el padre del contenedor en cada caso (<code>ps -ef --forest</code>)? ¿Con qué usuario del anfitrión se ejecuta (<code>ps -o user,pid,cmd</code>)? ¿Hace falta sudo o pertenecer a un grupo? ¿Qué implicaciones de seguridad tiene?</p>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Presentaciones relámpago <span class="dur">25 min</span></h4>
+<h4>Actividad 3. Presentaciones relámpago</h4>
 <p>Cada persona presenta su ficha en 90 segundos: problema que resuelve, cómo funciona y el ejemplo. Al final, entre todos, colocamos cada herramienta en el diagrama del apartado 4.</p>
 <p class="entrega">Entrega: pull request con la ficha en <code>herramientas-devops</code> y respuestas de la actividad 2 en Aules.</p>
 </div>
@@ -204,7 +204,7 @@ Terraform ──► red, volúmenes y contenedores Docker (revisión y producci�
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 122" role="img" aria-label="Desplazar a la izquierda" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-shift_left" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12.0" y="12.0" width="112.0" height="98.0" rx="6" class="d-verde"/><text x="68.0" y="38.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Portátil</text><text x="68.0" y="54.0" class="ts" text-anchor="middle" dominant-baseline="middle">formato,</text><text x="68.0" y="70.0" class="ts" text-anchor="middle" dominant-baseline="middle">linter,</text><text x="68.0" y="86.0" class="ts" text-anchor="middle" dominant-baseline="middle">gitleaks</text><rect x="158.0" y="12.0" width="112.0" height="98.0" rx="6" class="d-verde"/><text x="214.0" y="30.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Pull request</text><text x="214.0" y="46.0" class="ts" text-anchor="middle" dominant-baseline="middle">pytest,</text><text x="214.0" y="62.0" class="ts" text-anchor="middle" dominant-baseline="middle">SonarQube,</text><text x="214.0" y="78.0" class="ts" text-anchor="middle" dominant-baseline="middle">CodeQL,</text><text x="214.0" y="94.0" class="ts" text-anchor="middle" dominant-baseline="middle">dependencias</text><rect x="304.0" y="12.0" width="112.0" height="98.0" rx="6" class="d-amarillo"/><text x="360.0" y="38.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Construir la</text><text x="360.0" y="54.0" class="t tb" text-anchor="middle" dominant-baseline="middle">imagen</text><text x="360.0" y="70.0" class="ts" text-anchor="middle" dominant-baseline="middle">Trivy, SBOM,</text><text x="360.0" y="86.0" class="ts" text-anchor="middle" dominant-baseline="middle">firma</text><rect x="450.0" y="12.0" width="112.0" height="98.0" rx="6" class="d-naranja"/><text x="506.0" y="38.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Entorno de</text><text x="506.0" y="54.0" class="t tb" text-anchor="middle" dominant-baseline="middle">revisión</text><text x="506.0" y="70.0" class="ts" text-anchor="middle" dominant-baseline="middle">integración,</text><text x="506.0" y="86.0" class="ts" text-anchor="middle" dominant-baseline="middle">E2E, ZAP</text><rect x="596.0" y="12.0" width="112.0" height="98.0" rx="6" class="d-morado"/><text x="652.0" y="38.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Cada semana</text><text x="652.0" y="54.0" class="ts" text-anchor="middle" dominant-baseline="middle">CodeQL, Trivy</text><text x="652.0" y="70.0" class="ts" text-anchor="middle" dominant-baseline="middle">y Dependabot</text><text x="652.0" y="86.0" class="ts" text-anchor="middle" dominant-baseline="middle">periódicos</text><path d="M126.0,61.0 L156.0,61.0" class="flecha " marker-end="url(#fl-shift_left)"/><path d="M272.0,61.0 L302.0,61.0" class="flecha " marker-end="url(#fl-shift_left)"/><path d="M418.0,61.0 L448.0,61.0" class="flecha " marker-end="url(#fl-shift_left)"/><path d="M564.0,61.0 L594.0,61.0" class="flecha " marker-end="url(#fl-shift_left)"/></svg></div><figcaption>Dónde se coloca cada comprobación en el pipeline de Cita Previa. Cuanto antes, más barato; y algunas se repiten de forma periódica.</figcaption></figure>
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Batería de herramientas sobre un código con fallos <span class="dur">55 min</span></h4>
+<h4>Actividad 1. Batería de herramientas sobre un código con fallos</h4>
 <p>En parejas. Cread una carpeta <code>validacion-local</code> con estos ficheros, que contienen fallos deliberados:</p>
 <p class="fichero">app_insegura.py</p>
 <pre><code>import os, sqlite3, subprocess, hashlib
@@ -250,11 +250,11 @@ docker build -t insegura . &amp;&amp; docker run --rm -v /var/run/docker.sock:/v
 <p>Para cada herramienta, anotad en una tabla: tipo (según el apartado 3), qué ha encontrado, gravedad, si hay falsos positivos y cómo corregiríais cada problema. ¿Qué fallo no ha detectado ninguna herramienta? (Pista: pensad en quién puede ver las citas de quién.)</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Corregir y volver a validar <span class="dur">20 min</span></h4>
+<h4>Actividad 2. Corregir y volver a validar</h4>
 <p>Corregid los problemas: consulta parametrizada (<code>execute("... WHERE dni = ?", (dni,))</code>), sin <code>shell=True</code>, clave en variable de entorno, hash seguro (o mejor, no guardar contraseñas en la aplicación), sin <code>debug=True</code>, dependencias actualizadas, Dockerfile con imagen <code>slim</code> reciente, usuario no root y dependencias antes que el código. Volved a ejecutar la batería y comparad el número de problemas antes y después.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Clasificación y ubicación <span class="dur">10 min</span></h4>
+<h4>Actividad 3. Clasificación y ubicación</h4>
 <p>Completad un esquema del pipeline de Cita Previa (partid del ciclo DevOps del punto 4 de la unidad 1) indicando en qué etapa colocaríais cada herramienta usada hoy y cuáles ejecutaríais además de forma periódica.</p>
 <p class="entrega">Entrega en Aules: tabla de resultados antes y después, código corregido y esquema del pipeline.</p>
 </div>
@@ -359,11 +359,11 @@ docker build -t insegura . &amp;&amp; docker run --rm -v /var/run/docker.sock:/v
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Matriz de accesos de vuestro proyecto <span class="dur">15 min</span></h4>
+<h4>Actividad 1. Matriz de accesos de vuestro proyecto</h4>
 <p>En parejas, partiendo de la matriz del apartado 4, adaptadla a vuestra pareja y al profesor (que actuará como auditoría): quién de vosotros estará en cada equipo, y añadid una columna para el acceso a la plataforma donde se ejecutan los contenedores (unidad 6). Guardadla como <code>ACCESOS.md</code>.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Organización, equipos, repositorio y entornos <span class="dur">50 min</span></h4>
+<h4>Actividad 2. Organización, equipos, repositorio y entornos</h4>
 <ol>
 <li>Cread una organización gratuita en GitHub: <code>citaprevia-APELLIDO1-APELLIDO2</code>. Invitad a vuestra pareja y al profesor.</li>
 <li>En <i>Settings → Member privileges</i>: permisos base <i>No permission</i>; desactivad la creación de repositorios por los miembros. En <i>Authentication security</i>, exigid doble factor.</li>
@@ -378,7 +378,7 @@ docker build -t insegura . &amp;&amp; docker run --rm -v /var/run/docker.sock:/v
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Probar los límites <span class="dur">15 min</span></h4>
+<h4>Actividad 3. Probar los límites</h4>
 <p>Comprobad y documentad en <code>ACCESOS.md</code> (con capturas) qué ocurre cuando: alguien del equipo auditoría intenta crear una rama; alguien de desarrollo intenta aprobar el despliegue a producción; se intenta lanzar el despliegue a producción desde otra rama; alguien intenta leer el valor de un secreto en la configuración o imprimirlo en un workflow (GitHub lo enmascara con <code>***</code>).</p>
 <p class="entrega">Entrega: enlace al repositorio con <code>ACCESOS.md</code>, el workflow y las pruebas documentadas.</p>
 </div>
@@ -477,7 +477,7 @@ Dockerfile         @citaprevia-NOMBRES/operaciones
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Autenticación fuerte y SSH <span class="dur">20 min</span></h4>
+<h4>Actividad 1. Autenticación fuerte y SSH</h4>
 <ol>
 <li>Si no lo teníais, activad el doble factor en vuestra cuenta con una aplicación de autenticación y guardad los códigos de recuperación.</li>
 <li>En el portátil: <code>ssh-keygen -t ed25519 -C "vuestro correo"</code> con frase de paso. Añadid la clave pública en GitHub como <i>Authentication Key</i>.</li>
@@ -486,11 +486,11 @@ Dockerfile         @citaprevia-NOMBRES/operaciones
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Commits firmados <span class="dur">10 min</span></h4>
+<h4>Actividad 2. Commits firmados</h4>
 <p>Configurad la firma con SSH (apartado 1), registrad la misma clave como <i>Signing Key</i> en GitHub, haced un commit y comprobad en GitHub la etiqueta <b>Verified</b>. Haced otro commit con <code>git -c commit.gpgsign=false commit</code> y observad la diferencia.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Ruleset y CODEOWNERS <span class="dur">25 min</span></h4>
+<h4>Actividad 3. Ruleset y CODEOWNERS</h4>
 <ol>
 <li>En una rama, añadid el fichero <code>CODEOWNERS</code> adaptado a vuestra organización. Abrid un pull request y fusionadlo.</li>
 <li>Cread un ruleset <code>proteger-main</code> (<i>Settings → Rules → Rulesets</i>), estado <i>Active</i>, destino la rama por defecto, con: restringir borrados, bloquear force push, exigir pull request con 1 aprobación, descartar aprobaciones con nuevos commits, revisión de CODEOWNERS obligatoria, resolver conversaciones, commits firmados. Sin excepciones.</li>
@@ -499,14 +499,14 @@ Dockerfile         @citaprevia-NOMBRES/operaciones
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 4. Token de grano fino y clave de despliegue <span class="dur">10 min</span></h4>
+<h4>Actividad 4. Token de grano fino y clave de despliegue</h4>
 <ol>
 <li>Cread un token de grano fino, con acceso solo a <code>cita-previa-app</code>, permiso <i>Contents: Read-only</i> y caducidad de 7 días. Probadlo: <code>curl -H "Authorization: Bearer $TOKEN" https://api.github.com/repos/ORG/cita-previa-app/contents/README.md</code>. Intentad crear un fichero con él (<code>PUT</code> en la misma ruta): ¿qué responde la API? Revocadlo.</li>
 <li>Generad una clave SSH nueva y añadidla como <i>Deploy key</i> de solo lectura. La usaremos en la unidad 7 para que el servidor clone el repositorio.</li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 5. Intentad saltaros las reglas <span class="dur">15 min</span></h4>
+<h4>Actividad 5. Intentad saltaros las reglas</h4>
 <p>Documentad en <code>ACCESOS.md</code>, con el mensaje exacto que devuelve GitHub, qué pasa al intentar: hacer push directo a <code>main</code>; fusionar vuestro propio PR sin aprobación; añadir un commit después de la aprobación; hacer <code>git push --force</code> a main; borrar la etiqueta <code>v0.1</code> (creadla antes con <code>git tag v0.1 &amp;&amp; git push origin v0.1</code>); hacer push de un commit sin firmar. ¿Puede el propietario de la organización saltarse las reglas? ¿Debería poder?</p>
 <p class="entrega">Entrega: repositorio con CODEOWNERS, rulesets activos, SECURITY.md, commits verificados y ACCESOS.md con las pruebas.</p>
 </div>
@@ -667,14 +667,14 @@ jobs:
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Pruebas y linter en cada pull request <span class="dur">25 min</span></h4>
+<h4>Actividad 1. Pruebas y linter en cada pull request</h4>
 <ol>
 <li>En una rama <code>ci-calidad</code>, añadid <code>requirements-dev.txt</code> (Recursos), <code>pyproject.toml</code> y el <code>test_app.py</code> del apartado 2. Ejecutad en local <code>ruff check .</code>, <code>ruff format --check .</code> y <code>pytest --cov=.</code>; corregid lo que salga.</li>
 <li>Añadid el trabajo <code>pruebas</code> del workflow (todavía sin <code>sonar</code>), haced push y abrid un pull request. Observad las dos ejecuciones de la matriz.</li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. SonarQube Cloud <span class="dur">20 min</span></h4>
+<h4>Actividad 2. SonarQube Cloud</h4>
 <ol>
 <li>Entrad en <a href="https://sonarcloud.io/">SonarQube Cloud</a> con GitHub, importad vuestra organización y el proyecto <code>cita-previa-app</code>. Elegid el análisis con GitHub Actions y <b>desactivad el análisis automático</b>.</li>
 <li>Generad el token y guardadlo como secreto del repositorio <code>SONAR_TOKEN</code>.</li>
@@ -682,11 +682,11 @@ jobs:
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Checks obligatorios <span class="dur">10 min</span></h4>
+<h4>Actividad 3. Checks obligatorios</h4>
 <p>Fusionad el pull request (con la aprobación de vuestra pareja). Editad el ruleset <code>proteger-main</code>: añadid <i>Require status checks to pass</i> con los checks <code>pruebas (3.12)</code>, <code>pruebas (3.13)</code> y <code>sonar</code>, y <i>Require branches to be up to date</i>.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 4. Validar una modificación <span class="dur">20 min</span></h4>
+<h4>Actividad 4. Validar una modificación</h4>
 <p>Cread una issue "Consultar una cita por su identificador". En una rama, añadid la ruta <code>/citas/&lt;int:id&gt;</code> que devuelva la cita o un 404 con <code>{"error": "cita no encontrada"}</code>.</p>
 <ol>
 <li>Primero haced push <b>sin pruebas</b> nuevas: ¿qué dice el quality gate sobre la cobertura del código nuevo? ¿Se puede fusionar?</li>
@@ -695,7 +695,7 @@ jobs:
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 5. Documento de validación <span class="dur">10 min</span></h4>
+<h4>Actividad 5. Documento de validación</h4>
 <p>Redactad <code>docs/validacion.md</code> con la estructura del apartado 5 para la modificación de la actividad 4, con enlaces a la issue, al pull request, a las ejecuciones fallidas y correctas y al análisis de SonarQube, y una tabla con cada comprobación y su resultado.</p>
 <p class="entrega">Entrega: repositorio con el workflow de calidad en verde, checks obligatorios en el ruleset, la nueva ruta con pruebas y <code>docs/validacion.md</code>.</p>
 </div>
@@ -836,11 +836,11 @@ jobs:
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Activar la seguridad del repositorio <span class="dur">10 min</span></h4>
+<h4>Actividad 1. Activar la seguridad del repositorio</h4>
 <p>En <i>Settings → Code security</i> de <code>cita-previa-app</code>, activad: <i>Dependency graph</i>, <i>Dependabot alerts</i>, <i>Secret scanning</i> y <i>Push protection</i>, y <i>Private vulnerability reporting</i>. No activéis todavía CodeQL por defecto: lo haremos con el workflow avanzado.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Workflow de seguridad programado <span class="dur">35 min</span></h4>
+<h4>Actividad 2. Workflow de seguridad programado</h4>
 <ol>
 <li>En una rama, añadid <code>.github/workflows/seguridad.yml</code> del apartado 5. Programadlo para que se ejecute dentro de 10 minutos (calculad la hora UTC) y así podréis ver una ejecución programada en esta misma clase. Después dejadlo semanal.</li>
 <li>Abrid el pull request. Revisad cada trabajo y los resultados en <i>Security → Code scanning</i>.</li>
@@ -849,7 +849,7 @@ jobs:
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Provocar detecciones <span class="dur">20 min</span></h4>
+<h4>Actividad 3. Provocar detecciones</h4>
 <ol>
 <li><b>Push protection</b>: copiad en un fichero <code>credenciales.txt</code> las credenciales temporales del laboratorio de AWS Academy (<i>AWS Details → AWS CLI</i>), haced commit e intentad hacer push. Anotad el mensaje. <b>No elijáis nunca "permitir el secreto"</b>: aunque sean temporales, son reales. Deshaced el commit (<code>git reset HEAD~1</code>) y borrad el fichero.</li>
 <li><b>SAST</b>: en una rama, añadid una ruta <code>/buscar</code> que construya una consulta SQL concatenando un parámetro (como en el punto 2). Abrid el PR y observad el comentario de CodeQL en la línea afectada, con el camino desde la fuente hasta el sumidero.</li>
@@ -858,7 +858,7 @@ jobs:
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 4. Clasificar hallazgos y política <span class="dur">15 min</span></h4>
+<h4>Actividad 4. Clasificar hallazgos y política</h4>
 <p>Revisad todas las alertas abiertas en la pestaña Security. Para cada una decidid: corregir, descartar como falso positivo o aceptar el riesgo, y hacedlo en GitHub con el motivo. Añadid a <code>SECURITY.md</code> la tabla de plazos de corrección del apartado 6 y la frecuencia de cada análisis periódico.</p>
 <p class="entrega">Entrega: workflow <code>seguridad.yml</code> con al menos una ejecución programada, capturas de las tres detecciones y <code>SECURITY.md</code> actualizado.</p>
 </div>
@@ -1022,14 +1022,14 @@ jobs:
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Dependencias fijadas y Dependabot <span class="dur">15 min</span></h4>
+<h4>Actividad 1. Dependencias fijadas y Dependabot</h4>
 <ol>
 <li>Renombrad <code>requirements.txt</code> a <code>requirements.in</code>, generad el fichero de bloqueo con hashes (<code>pip-compile --generate-hashes</code>) y ajustad el Dockerfile para instalar con <code>--require-hashes</code>. ¿Cuántas dependencias transitivas han aparecido?</li>
 <li>Añadid <code>.github/dependabot.yml</code> y, en <i>Settings → Code security</i>, activad <i>Dependabot security updates</i>. En <i>Insights → Dependency graph → Dependabot</i>, forzad una comprobación y revisad los PR que abra.</li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Revisión de dependencias en cada PR <span class="dur">20 min</span></h4>
+<h4>Actividad 2. Revisión de dependencias en cada PR</h4>
 <ol>
 <li>Añadid el trabajo <code>dependencias</code> del apartado 3 al workflow de calidad.</li>
 <li>Abrid un PR que añada una dependencia con vulnerabilidades conocidas (por ejemplo <code>requests==2.25.0</code>) y comprobad que el trabajo falla y muestra el resumen de vulnerabilidades y licencias.</li>
@@ -1037,7 +1037,7 @@ jobs:
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Construir, escanear, probar la integración y publicar <span class="dur">40 min</span></h4>
+<h4>Actividad 3. Construir, escanear, probar la integración y publicar</h4>
 <ol>
 <li>Añadid <code>.github/workflows/imagen.yml</code> en una rama y abrid el PR: la imagen se construye, se escanea y se prueba, pero no se publica.</li>
 <li>Provocad un fallo de integración: cambiad en el Dockerfile el puerto de Gunicorn a 9000. ¿En qué paso falla y por qué no lo habían detectado las pruebas unitarias? Deshaced el cambio.</li>
@@ -1047,7 +1047,7 @@ jobs:
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 4. Revisión final de la unidad <span class="dur">10 min</span></h4>
+<h4>Actividad 4. Revisión final de la unidad</h4>
 <p>Con la lista de comprobación de la pestaña Recursos, revisad con vuestra pareja que el repositorio cumple todos los puntos de la unidad (5c a 5g) y anotad en una issue lo que falte para completarlo.</p>
 <p class="entrega">Entrega: repositorio con dependencias bloqueadas, <code>dependabot.yml</code>, trabajo de revisión de dependencias, workflow <code>imagen.yml</code> con una imagen publicada y la issue de revisión.</p>
 </div>

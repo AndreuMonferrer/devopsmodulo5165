@@ -116,11 +116,11 @@
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Esquema de la nube pública <span class="dur">20 min</span></h4>
+<h4>Actividad 1. Esquema de la nube pública</h4>
 <p>En parejas, dibujad en diagrams.net el esquema de una nube pública con tres clientes distintos (uno de ellos la Conselleria con Cita Previa). Usad colores para distinguir: qué posee y opera el proveedor, qué recursos son compartidos, qué recursos virtuales son de cada cliente y cómo accede cada uno. Añadid una leyenda y una tabla de responsabilidades para una VM de Cita Previa (quién parchea el sistema operativo, quién protege el CPD, quién gestiona los datos).</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Estudio de mercado para Cita Previa <span class="dur">45 min</span></h4>
+<h4>Actividad 2. Estudio de mercado para Cita Previa</h4>
 <p>En grupos de 3, comparad tres proveedores: dos de los grandes (AWS, Azure, Google) y uno europeo (OVHcloud, Hetzner, Scaleway o IONOS). Buscad la información en sus webs oficiales y en el catálogo del CCN, y completad una tabla con:</p>
 <ol>
 <li>Regiones en España y en la UE, y número de zonas de disponibilidad.</li>
@@ -135,7 +135,7 @@
 <p>Terminad con una recomendación razonada de 10 líneas para Cita Previa, teniendo en cuenta que maneja datos de salud de una Administración pública.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Puesta en común de precios <span class="dur">15 min</span></h4>
+<h4>Actividad 3. Puesta en común de precios</h4>
 <p>Cada grupo copia sus precios en una tabla común en la pizarra (o en una hoja compartida). Comprobamos si los grupos que analizaron el mismo proveedor obtuvieron los mismos datos y por qué no (región, tipo de instancia, impuestos, moneda). Sacamos conclusiones: ¿dónde está la mayor diferencia de precio entre proveedores?</p>
 <p class="entrega">Entrega en Aules: esquema de la actividad 1 y tabla comparativa con la recomendación.</p>
 </div>
@@ -234,11 +234,11 @@ curl -s --unix-socket /var/run/docker.sock http://localhost/containers/json | jq
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Esquema comparativo pública/privada <span class="dur">20 min</span></h4>
+<h4>Actividad 1. Esquema comparativo pública/privada</h4>
 <p>En parejas, completad el esquema del punto 1 añadiendo al lado el de una nube privada de la Conselleria de Sanitat con tres departamentos. Usad los mismos colores para propiedad, operación, uso compartido y recursos virtuales. Añadid una tercera columna para una nube privada alojada en un proveedor y señalad qué cambia.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Autoservicio por API en una plataforma local <span class="dur">45 min</span></h4>
+<h4>Actividad 2. Autoservicio por API en una plataforma local</h4>
 <p>En parejas, en un portátil. Vamos a gestionar el ciclo de vida completo de un servidor web sin usar la orden <code>docker</code>, solo con la API, como haría un portal de autoservicio o Terraform. Todas las peticiones van al socket de Docker; para no repetirlo, definid primero <code>S=/var/run/docker.sock</code> y <code>U=http://localhost</code>.</p>
 <ol>
 <li><b>¿Quién puede usar la API?</b> Ejecutad <code>ls -l /var/run/docker.sock</code> e <code>id</code>. ¿Qué permisos tiene el socket y por qué vuestro usuario puede usarlo? Buscad en la documentación oficial de Docker (<i>Linux post-installation steps</i>) qué advierte sobre el grupo <code>docker</code>.</li>
@@ -252,7 +252,7 @@ curl -s --unix-socket /var/run/docker.sock http://localhost/containers/json | jq
 <p>Para terminar, completad una tabla comparando el control de acceso de la API de Docker con el de Proxmox VE y AWS (apartado 5 y punto 1): ¿hay usuarios, roles, tokens revocables y permisos limitados a un grupo de recursos? ¿Qué le falta a Docker para ser una nube privada?</p>
 </div>
 <div class="actividad">
-<h4>Actividad 3. ¿Nube privada o no? <span class="dur">15 min</span></h4>
+<h4>Actividad 3. ¿Nube privada o no?</h4>
 <p>Evaluad con las características del NIST y los requisitos del apartado 2 si estas infraestructuras son nube privada, y qué les falta:</p>
 <ol class="casos">
 <li>Un ayuntamiento con tres servidores VMware en los que el técnico crea las VM cuando se las piden por correo.</li>
@@ -360,11 +360,11 @@ curl -s --unix-socket /var/run/docker.sock http://localhost/containers/json | jq
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Diseño híbrido de Cita Previa <span class="dur">25 min</span></h4>
+<h4>Actividad 1. Diseño híbrido de Cita Previa</h4>
 <p>En grupos de 3. La Conselleria tiene un CPD con Proxmox y quiere mantener allí la historia clínica y la base de datos de citas. Necesita afrontar la campaña de vacunación (tráfico ×5 durante 8 semanas) y tener recuperación ante desastres. Dibujad el diseño híbrido: qué va en cada lado, cómo se conectan (y con qué rangos IP), cómo se autentican los usuarios, qué patrones de la tabla aplicáis y qué datos cruzan la conexión. Añadid tres riesgos y cómo los mitigáis.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Túnel VPN entre "nuestro CPD" y la nube pública <span class="dur">45 min</span></h4>
+<h4>Actividad 2. Túnel VPN entre "nuestro CPD" y la nube pública</h4>
 <p>En parejas vamos a unir un portátil de la pareja, que hará de "CPD propio", con una VM de la nube pública mediante <b>WireGuard</b>, una VPN moderna y sencilla. Es un modelo reducido de una conexión sitio a sitio.</p>
 <ol>
 <li>Cread una VM Ubuntu en el laboratorio de nube (los pasos del aprovisionamiento están en la unidad 2, punto 4). En su grupo de seguridad, permitid SSH y el puerto <b>UDP 51820</b> desde la IP pública del centro (podéis consultarla desde el portátil con <code>curl -s https://ifconfig.me</code>).</li>
@@ -420,7 +420,7 @@ PersistentKeepalive = 25</code></pre></li>
 <text x="340" y="176" text-anchor="middle" font-size="12">viaja dentro del túnel</text>
 </svg></div><figcaption>Conexión sitio a sitio con WireGuard: el portátil inicia el túnel hacia la nube; después, la VM llega al servicio privado del portátil por la IP del túnel, sin exponerlo a Internet.</figcaption></figure>
 <div class="actividad">
-<h4>Actividad 3. Clasificar patrones <span class="dur">10 min</span></h4>
+<h4>Actividad 3. Clasificar patrones</h4>
 <p>Asociad cada situación a un patrón híbrido:</p>
 <ol class="casos">
 <li>Un periódico que recibe diez veces más visitas la noche de elecciones.</li>
@@ -544,11 +544,11 @@ PersistentKeepalive = 25</code></pre></li>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Clasificar los datos de Cita Previa <span class="dur">15 min</span></h4>
+<h4>Actividad 1. Clasificar los datos de Cita Previa</h4>
 <p>En parejas, listad todos los datos que maneja Cita Previa (al menos 12: identificación del paciente, centro, médico, fecha y hora, motivo, teléfono, registros de acceso, estadísticas...) y clasificadlos en los cuatro niveles del apartado 2. Para cada nivel, indicad qué exigencias de seguridad supone y en qué modelo podría almacenarse.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Consultora de nube: cuatro clientes <span class="dur">50 min</span></h4>
+<h4>Actividad 2. Consultora de nube: cuatro clientes</h4>
 <p>En grupos de 3, actuáis como consultora. Cada grupo recibe uno de estos clientes:</p>
 <ul>
 <li><b>A. Clínica dental con 8 sedes</b>: agenda, historia clínica con radiografías (2 TB, crece 300 GB/año), 60 empleados, un único informático, presupuesto anual limitado, sin CPD.</li>
@@ -566,7 +566,7 @@ PersistentKeepalive = 25</code></pre></li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. Presentación al cliente <span class="dur">20 min</span></h4>
+<h4>Actividad 3. Presentación al cliente</h4>
 <p>Cada grupo presenta su recomendación en 3 minutos como si hablara con la dirección del cliente (sin tecnicismos innecesarios). El resto de la clase hace de dirección y plantea una objeción ("¿y si el proveedor sube precios?", "¿y si se va el informático?").</p>
 <p class="entrega">Entrega en Aules: clasificación de datos, matriz ponderada con el análisis de sensibilidad y el informe de recomendación.</p>
 </div>
@@ -657,7 +657,7 @@ PersistentKeepalive = 25</code></pre></li>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. ¿Híbrida, multinube o ambas? <span class="dur">15 min</span></h4>
+<h4>Actividad 1. ¿Híbrida, multinube o ambas?</h4>
 <p>En parejas, clasificad y justificad:</p>
 <ol class="casos">
 <li>Una universidad con OpenStack propio y copias en Azure.</li>
@@ -669,7 +669,7 @@ PersistentKeepalive = 25</code></pre></li>
 <p>Para cada una, indicad un requisito que deban cumplir y un riesgo.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 2. La misma imagen en dos plataformas <span class="dur">50 min</span></h4>
+<h4>Actividad 2. La misma imagen en dos plataformas</h4>
 <p>En parejas. Vamos a comprobar la portabilidad desplegando <code>cita-previa-app</code> (unidad 1, punto 5) en infraestructura propia (vuestro portátil) y en un servicio de contenedores de la nube pública.</p>
 <ol>
 <li>Publicad la imagen en un registro público: cread un token de GitHub con permiso <code>write:packages</code>, iniciad sesión (<code>echo $TOKEN | docker login ghcr.io -u USUARIO --password-stdin</code>), etiquetad y subid: <code>docker tag cita-previa-app:0.2 ghcr.io/USUARIO/cita-previa-app:0.2</code> y <code>docker push ...</code>. En GitHub, en el paquete, cambiad su visibilidad a pública.</li>
@@ -681,7 +681,7 @@ PersistentKeepalive = 25</code></pre></li>
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. ¿Merece la pena la multinube para Cita Previa? <span class="dur">15 min</span></h4>
+<h4>Actividad 3. ¿Merece la pena la multinube para Cita Previa?</h4>
 <p>Con lo aprendido, escribid un párrafo argumentando si Cita Previa debería desplegarse en dos proveedores de nube pública a la vez. Tened en cuenta: disponibilidad que se gana, costes añadidos, personal, datos de salud y complejidad. Proponed una alternativa más sencilla si la respuesta es no.</p>
 <p class="entrega">Entrega en Aules: clasificación, capturas de los dos despliegues con la tabla comparativa, y la argumentación.</p>
 </div>
@@ -774,7 +774,7 @@ PersistentKeepalive = 25</code></pre></li>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. Inventario automatizado con etiquetas <span class="dur">40 min</span></h4>
+<h4>Actividad 1. Inventario automatizado con etiquetas</h4>
 <p>En parejas. El objetivo es obtener un inventario conjunto de la infraestructura propia (Docker en el portátil) y de la nube pública (AWS) y detectar recursos que incumplen la política de etiquetado. En Docker, las etiquetas se llaman <i>labels</i>.</p>
 <ol>
 <li>Configurad el AWS CLI en el portátil: si no está, <code>sudo snap install aws-cli --classic</code>. En el Learner Lab, en <i>AWS Details → AWS CLI → Show</i>, copiad las credenciales en <code>~/.aws/credentials</code> y cread <code>~/.aws/config</code> con <code>[default]</code> y <code>region = us-east-1</code>. Comprobad con <code>aws sts get-caller-identity</code>.</li>
@@ -798,7 +798,7 @@ jq -r '.Reservations[].Instances[] |
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 2. Plan de gobernanza de Cita Previa <span class="dur">35 min</span></h4>
+<h4>Actividad 2. Plan de gobernanza de Cita Previa</h4>
 <p>En grupos de 3. Cita Previa usará una nube privada (Proxmox de la Conselleria) para los datos y AWS para la web, y Microsoft 365 para el correo del personal. Redactad un plan de gobernanza de 2 páginas con:</p>
 <ol>
 <li>Estructura de cuentas y entornos.</li>
@@ -811,7 +811,7 @@ jq -r '.Reservations[].Instances[] |
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 3. ¿Qué falla aquí? <span class="dur">10 min</span></h4>
+<h4>Actividad 3. ¿Qué falla aquí?</h4>
 <p>Este es un extracto del inventario de la Conselleria. Localizad todos los incumplimientos del plan que acabáis de redactar y proponed una acción para cada uno.</p>
 <div class="tabla"><table>
 <tr><th>Recurso</th><th>Plataforma y región</th><th>Estado</th><th>Etiquetas</th><th>Observaciones</th></tr>
