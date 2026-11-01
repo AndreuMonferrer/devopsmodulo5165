@@ -222,7 +222,7 @@
 <h4>Ubicaciones perimetrales</h4>
 <p>Las ubicaciones perimetrales son <b>puntos de presencia</b> (<i>points of presence</i>, PoP): cientos de instalaciones pequeñas, repartidas por muchas más ciudades que las regiones. En ellos no se ejecutan las aplicaciones completas, sino servicios que ganan con estar cerca:</p>
 <ul>
-<li><b>CDN</b>: guardan una copia (caché) del contenido que no cambia o cambia poco, como imágenes, vídeos, hojas de estilo o ficheros descargables, y lo sirven sin ir hasta la región. Lo que se genera para cada usuario (sus datos, una reserva, un pago) hay que pedirlo al <b>origen</b>: los servidores de la región.</li>
+<li><b>CDN</b> (Content Delivery Network, red de distribución de contenidos): guardan una copia (caché) del contenido que no cambia o cambia poco, como imágenes, vídeos, hojas de estilo o ficheros descargables, y lo sirven sin ir hasta la región. Lo que se genera para cada usuario (sus datos, una reserva, un pago) hay que pedirlo al <b>origen</b>: los servidores de la región.</li>
 <li><b>DNS</b>: responden desde el punto más cercano a la pregunta "¿qué dirección tiene este nombre?".</li>
 <li><b>Protección</b> frente a ataques de denegación de servicio, filtrando el tráfico antes de que llegue a la región.</li>
 <li>En algunos proveedores, pequeñas <b>funciones</b> que se ejecutan en el borde, por ejemplo para redirigir o modificar peticiones.</li>
@@ -334,21 +334,20 @@ Para cada situación, responde a tres preguntas:<ul>
 <ol>
 <li>En la página de infraestructura global de AWS (<a href="https://aws.amazon.com/es/about-aws/global-infrastructure/">aws.amazon.com/es/about-aws/global-infrastructure</a>), anota qué regiones hay en Europa, si hay alguna en España y cuántas zonas de disponibilidad tiene.</li>
 <li>En la lista oficial de regiones de Azure (<a href="https://learn.microsoft.com/es-es/azure/reliability/regions-list">learn.microsoft.com/azure/reliability/regions-list</a>), indica si hay región en España, cómo se llama, en qué ciudad está y cuántas zonas de disponibilidad tiene.</li>
-<li>Estos son catorce productos de AWS y de Azure, desordenados. Entra en la página de cada uno, lee qué es y completa una tabla de equivalencias con tres columnas: tipo de servicio, nombre en AWS y nombre en Azure.<ul>
-<li>AWS: <a href="https://aws.amazon.com/es/lambda/">AWS Lambda</a>, <a href="https://aws.amazon.com/es/vpc/">Amazon VPC</a>, <a href="https://aws.amazon.com/es/ebs/">Amazon EBS</a>, <a href="https://aws.amazon.com/es/ec2/">Amazon EC2</a>, <a href="https://aws.amazon.com/es/rds/">Amazon RDS</a>, <a href="https://aws.amazon.com/es/eks/">Amazon EKS</a>, <a href="https://aws.amazon.com/es/s3/">Amazon S3</a>.</li>
-<li>Azure: <a href="https://azure.microsoft.com/es-es/products/storage/blobs">Azure Blob Storage</a>, <a href="https://azure.microsoft.com/es-es/products/functions">Azure Functions</a>, <a href="https://azure.microsoft.com/es-es/products/kubernetes-service">Azure Kubernetes Service (AKS)</a>, <a href="https://azure.microsoft.com/es-es/products/storage/disks">Azure Managed Disks</a>, <a href="https://azure.microsoft.com/es-es/products/virtual-machines">Azure Virtual Machines</a>, <a href="https://azure.microsoft.com/es-es/products/virtual-network">Azure Virtual Network</a>, <a href="https://azure.microsoft.com/es-es/products/azure-sql/database">Azure SQL Database</a>.</li>
+<li>Estos son doce productos de AWS y de Azure, desordenados. Entra en la página de cada uno, lee qué es y completa una tabla de equivalencias con tres columnas: tipo de servicio, nombre en AWS y nombre en Azure.<ul>
+<li>AWS: <a href="https://aws.amazon.com/es/cloudfront/">Amazon CloudFront</a>, <a href="https://aws.amazon.com/es/vpc/">Amazon VPC</a>, <a href="https://aws.amazon.com/es/ebs/">Amazon EBS</a>, <a href="https://aws.amazon.com/es/ec2/">Amazon EC2</a>, <a href="https://aws.amazon.com/es/rds/">Amazon RDS</a>, <a href="https://aws.amazon.com/es/s3/">Amazon S3</a>.</li>
+<li>Azure: <a href="https://azure.microsoft.com/es-es/products/storage/blobs">Azure Blob Storage</a>, <a href="https://azure.microsoft.com/es-es/products/frontdoor">Azure Front Door</a>, <a href="https://azure.microsoft.com/es-es/products/storage/disks">Azure Managed Disks</a>, <a href="https://azure.microsoft.com/es-es/products/virtual-machines">Azure Virtual Machines</a>, <a href="https://azure.microsoft.com/es-es/products/virtual-network">Azure Virtual Network</a>, <a href="https://azure.microsoft.com/es-es/products/azure-sql/database">Azure SQL Database</a>.</li>
 </ul>
 La tabla tiene que tener esta forma:
 <div class="tabla"><table>
 <tr><th>Tipo de servicio</th><th>Nombre en AWS</th><th>Nombre en Azure</th></tr>
 <tr><td>Máquinas virtuales</td><td></td><td></td></tr>
+<tr><td>Discos de máquina virtual</td><td></td><td></td></tr>
 <tr><td>Almacenamiento de objetos</td><td></td><td></td></tr>
 <tr><td>Bases de datos gestionadas</td><td></td><td></td></tr>
 <tr><td>Red virtual</td><td></td><td></td></tr>
-<tr><td>Contenedores</td><td></td><td></td></tr>
-<tr><td>Funciones serverless</td><td></td><td></td></tr>
-</table></div>
-Dos de los productos no encajan en ninguno de los seis tipos. Indica cuáles son, qué son y por qué no encajan.</li>
+<tr><td>CDN (red de distribución de contenidos)</td><td></td><td></td></tr>
+</table></div></li>
 
 </ol>
 <p class="entrega">Entrega en Aules: ficha del inventario, respuestas de los casos y tabla de equivalencias entre proveedores. En la puesta en común comparamos el cuarto de servidores de la gestoría con lo que ofrece una región de nube.</p>
