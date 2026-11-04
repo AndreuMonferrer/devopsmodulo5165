@@ -467,12 +467,16 @@ La tabla tiene que tener esta forma:
 <p>En parejas. Una desarrolladora de Cita Previa necesita una máquina de pruebas durante una semana. Este es el registro de su cuenta de AWS en un mes de 30 días (720 horas), tal como lo guarda el servicio de auditoría:</p>
 <div class="tabla"><table>
 <tr><th>Momento</th><th>Llamada a la API</th><th>Origen</th><th>Detalle</th></tr>
-<tr><td>Día 1, 09:00</td><td><code>RunInstances</code></td><td>Consola web</td><td>Una <code>t3.medium</code> (2 vCPU, 4 GB) con Ubuntu 24.04, disco SSD <code>gp3</code> de 30 GB e IP pública dinámica</td></tr>
+<tr><td>Día 1, 09:00</td><td><code>RunInstances</code></td><td>Consola web</td><td>Crea una <code>t3.medium</code> (2 vCPU, 4 GB) con Ubuntu 24.04, disco SSD <code>gp3</code> de 30 GB e IP pública dinámica</td></tr>
 <tr><td>Día 1, 18:00</td><td><code>StopInstances</code></td><td>Consola web</td><td>La detiene al acabar la jornada</td></tr>
-<tr><td>Días 2 a 5, 09:00</td><td><code>StartInstances</code></td><td>Script con AWS CLI</td><td>Un script programado la arranca cada mañana</td></tr>
-<tr><td>Día 3, 12:00</td><td><code>CreateSnapshot</code></td><td>Consola web</td><td>Instantánea del disco: ocupa 8 GB</td></tr>
-<tr><td>Días 2 a 5, 18:00</td><td><code>StopInstances</code></td><td>Script con AWS CLI</td><td>El script la detiene cada tarde</td></tr>
-<tr><td>Días 6 a 30</td><td>(ninguna)</td><td></td><td>Termina las pruebas y se olvida de ella: queda detenida, con su disco y su instantánea</td></tr>
+<tr><td>Día 2, 09:00</td><td><code>StartInstances</code></td><td>Script con AWS CLI</td><td>Un script programado la arranca</td></tr>
+<tr><td>Día 2, 18:00</td><td><code>StopInstances</code></td><td>Script con AWS CLI</td><td>El script la detiene</td></tr>
+<tr><td>Día 3, 09:00</td><td><code>StartInstances</code></td><td>Script con AWS CLI</td><td>El script la arranca</td></tr>
+<tr><td>Día 3, 12:00</td><td><code>CreateSnapshot</code></td><td>Consola web</td><td>Hace una instantánea del disco, que ocupa 8 GB</td></tr>
+<tr><td>Día 3, 18:00</td><td><code>StopInstances</code></td><td>Script con AWS CLI</td><td>El script la detiene</td></tr>
+<tr><td>Días 4 y 5, 09:00</td><td><code>StartInstances</code></td><td>Script con AWS CLI</td><td>El script la arranca cada mañana</td></tr>
+<tr><td>Días 4 y 5, 18:00</td><td><code>StopInstances</code></td><td>Script con AWS CLI</td><td>El script la detiene cada tarde</td></tr>
+<tr><td>Días 6 a 30</td><td>(ninguna)</td><td></td><td>Acaba las pruebas y se olvida de ella: queda detenida, con su disco y su instantánea</td></tr>
 </table></div>
 <p>Precios de lista de AWS en <code>us-east-1</code>, en dólares (redondeados; cambian con el tiempo y son algo distintos en las regiones europeas):</p>
 <div class="tabla"><table>
@@ -483,28 +487,34 @@ La tabla tiene que tener esta forma:
 <tr><td>Instantánea</td><td>0,05 $/GB al mes</td><td>Mientras existe (se prorratea por horas)</td></tr>
 </table></div>
 <ol>
-<li>En el registro hay llamadas hechas desde la consola y otras desde un script, pero se guardan igual. ¿Por qué? Relacionadlo con el esquema de la consola, la CLI y la API del apartado 1. ¿Qué parte del proveedor recibe y ejecuta esas llamadas?</li>
-<li>Dibujad una línea temporal del mes con los estados de la máquina (en ejecución o detenida) y calculad cuántas horas ha estado en ejecución.</li>
-<li>Calculad la factura del mes, partida por partida (para simplificar, contad el disco y la instantánea como si hubieran existido el mes entero). ¿Qué parte de la factura se paga con la máquina detenida? Relacionadlo con los "costes que sorprenden" del apartado 3.</li>
-<li>Calculad la factura en tres casos alternativos:<ol class="casos">
-<li>El día 1 se olvida de detenerla y queda encendida todo el mes.</li>
-<li>Le asigna una IP elástica en lugar de una dinámica, para que no cambie cada mañana.</li>
-<li>El día 5 a las 18:00, en lugar de detenerla, la termina y borra la instantánea (aquí sí, prorratead el disco y la instantánea por las horas que existieron).</li>
+<li>Fijaos en la columna «Origen»: unas llamadas se hicieron con el ratón desde la consola web y otras desde un script con la AWS CLI, pero el registro las guarda exactamente igual. ¿Por qué? ¿Qué parte del proveedor recibe esas llamadas, comprueba quién las hace y las registra? (apartado 1, «Todo es una API»).</li>
+<li>Calculad cuántas horas ha estado la máquina en ejecución durante el mes y su factura, partida por partida, con los precios de la tabla (para simplificar, contad el disco y la instantánea como si hubieran existido el mes entero). ¿Qué parte de la factura se paga con la máquina detenida? Relacionadlo con los «costes que sorprenden» del apartado 3.</li>
+<li>Calculad la factura del mes en estos tres casos, cambiando solo lo que se indica en cada uno:<ol class="casos">
+<li><b>Se olvida de detenerla</b>: no hay script, la crea el día 1 a las 09:00 y queda en ejecución hasta el final del mes, sin detenerla nunca. Disco e instantánea, igual que en la pregunta 2.</li>
+<li><b>IP elástica</b>: todo igual que en el registro, pero le asigna una IP elástica en lugar de la dinámica, para que no cambie cada mañana. Mirad en la tabla de precios cuándo se cobra cada tipo de IP.</li>
+<li><b>La termina al acabar</b>: todo igual hasta el día 5, pero a las 18:00 de ese día, en lugar de detenerla, la termina (se borra con su disco raíz) y borra también la instantánea. Aquí sí, prorratead el disco y la instantánea por las horas que existieron.</li>
 </ol></li>
-<li>Con lo que habéis calculado, explicad con vuestras palabras qué significa "pago por uso" y por qué en la nube apagar no siempre es borrar.</li>
 </ol>
 </div>
 <div class="actividad">
 <h4>Actividad 5. ¿Cuánto cuesta Cita Previa en la nube?</h4>
-<p>En parejas, con la calculadora pública de precios (<a href="https://calculator.aws/">AWS Pricing Calculator</a> o <a href="https://azure.microsoft.com/es-es/pricing/calculator/">calculadora de Azure</a>), en una región europea, estimad el coste mensual de esta arquitectura:</p>
-<ul>
-<li>2 máquinas virtuales de 2 vCPU y 4 GB de RAM con Linux, encendidas 24 horas.</li>
-<li>Una base de datos gestionada PostgreSQL pequeña con 50 GB y copia en otra zona.</li>
-<li>200 GB de almacenamiento de objetos para documentos.</li>
-<li>Un balanceador de carga.</li>
-<li>300 GB al mes de transferencia de salida a Internet.</li>
-</ul>
-<p>Calculad tres escenarios: todo bajo demanda; con compromiso a 1 año en las máquinas; y un entorno de revisión con máquinas más pequeñas que solo está encendido de lunes a viernes de 8 a 20 h. ¿Qué partida pesa más? ¿Cuánto ahorra apagar revisión fuera de horario?</p>
+<p>En parejas, con la <a href="https://calculator.aws/">AWS Pricing Calculator</a> (es pública y no hace falta cuenta). Usad la región <b>Europa (Irlanda)</b>, <code>eu-west-1</code>, y añadid cada servicio con el botón «Añadir servicio» / «Add service».</p>
+<p>Esta es la arquitectura de producción de Cita Previa y lo que hay que poner en la calculadora:</p>
+<div class="tabla"><table>
+<tr><th>Componente</th><th>Servicio en la calculadora</th><th>Qué hay que configurar</th></tr>
+<tr><td>2 máquinas virtuales de 2 vCPU y 4 GB, encendidas siempre</td><td>Amazon EC2</td><td>Linux, instancia <code>t3.medium</code>, 2 instancias, uso constante del 100 %, disco <code>gp3</code> de 30 GB cada una. En la transferencia de datos, 300 GB al mes de salida a Internet</td></tr>
+<tr><td>Base de datos PostgreSQL gestionada, con copia en otra zona</td><td>Amazon RDS for PostgreSQL</td><td>Instancia <code>db.t3.micro</code>, implementación <b>Multi-AZ</b> (una instancia en espera en otra zona), almacenamiento de uso general <code>gp3</code> de 50 GB</td></tr>
+<tr><td>Almacenamiento de documentos</td><td>Amazon S3</td><td>S3 Standard, 200 GB al mes. Las peticiones se pueden dejar a 0</td></tr>
+<tr><td>Balanceador de carga</td><td>Elastic Load Balancing</td><td>1 Application Load Balancer con 300 GB procesados al mes. El resto de campos, con los valores por defecto</td></tr>
+</table></div>
+<p>Calculad el coste mensual en estos tres escenarios:</p>
+<div class="tabla"><table>
+<tr><th>Escenario</th><th>Qué cambia</th><th>Qué hay que averiguar</th></tr>
+<tr><td><b>A. Todo bajo demanda</b></td><td>La arquitectura tal cual, con precio bajo demanda (<i>On-Demand</i>)</td><td>El coste total y la partida que más pesa</td></tr>
+<tr><td><b>B. Compromiso a 1 año</b></td><td>Igual que A, pero las 2 máquinas EC2 con un plan de ahorro o reserva a 1 año, sin pago inicial (<i>No Upfront</i>)</td><td>Cuánto se ahorra al mes respecto a A y en qué porcentaje</td></tr>
+<tr><td><b>C. Entorno de revisión</b></td><td>Se añade un entorno de revisión con 2 máquinas <code>t3.small</code> (2 vCPU, 2 GB) bajo demanda. Calculadlo dos veces: encendidas siempre y solo de lunes a viernes de 8 a 20 h (60 horas a la semana, unas 260 horas al mes)</td><td>Cuánto se ahorra al mes apagando revisión fuera de horario</td></tr>
+</table></div>
+<p>Guardad cada estimación con «Compartir» / «Share» y copiad el enlace en la entrega: así se puede abrir y revisar tal como la dejasteis.</p>
 </div>
 <h3>4. Responsabilidad compartida</h3>
 <p>En la nube, la seguridad es una <b>responsabilidad compartida</b> entre el proveedor y el cliente. La frase que usa AWS lo resume bien: el proveedor es responsable de la seguridad <b>de</b> la nube; el cliente, de la seguridad <b>en</b> la nube.</p>
@@ -680,7 +690,7 @@ La tabla tiene que tener esta forma:
 <h4>Actividad 9. Debate: ¿nube o no?</h4>
 <p>Dividimos la clase en dos bandos, a favor de la nube y a favor del on premise, para Cita Previa. Cada bando tiene 3 minutos de exposición con los datos de sus hojas de cálculo, 2 minutos de réplica y 1 minuto de conclusión. El resto de la clase vota al final qué argumento ha sido más sólido.</p>
 </div>
-<p class="entrega">Entrega en Aules: línea temporal, cálculos y respuestas de la actividad 4, hoja de estimación de la actividad 5, respuestas de la 6, hoja de cálculo del TCO de la actividad 7 e informe para la dirección de la actividad 8.</p>
+<p class="entrega">Entrega en Aules: cálculos y respuestas de la actividad 4, enlaces de las tres estimaciones y respuestas de la actividad 5, respuestas de la 6, hoja de cálculo del TCO de la actividad 7 e informe para la dirección de la actividad 8.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
