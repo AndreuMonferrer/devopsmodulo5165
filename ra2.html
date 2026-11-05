@@ -442,7 +442,7 @@ La tabla tiene que tener esta forma:
 <ul>
 <li><b>En ejecución</b>: se paga el cómputo, los discos y la IP pública.</li>
 <li><b>Detenida</b>: no se paga el cómputo, pero sí los discos. La IP pública <b>dinámica</b> se libera (al volver a arrancar, la máquina tendrá otra); la <b>elástica</b> o estática sigue reservada y se sigue pagando. Ojo con los discos locales efímeros (<i>instance store</i>) que tienen algunos tipos de máquina en el propio servidor físico: su contenido se pierde al detenerla.</li>
-<li><b>Terminada</b>: se borra la máquina y, por defecto, su disco raíz. Los discos adicionales que se le conectaron después de crearla se conservan, y se siguen pagando, salvo que se indique lo contrario.</li>
+<li><b>Terminada</b>: se borra la máquina y, por defecto, su disco raíz. Los discos adicionales que se le conectaron después de crearla se conservan, y se siguen pagando, salvo que se indique lo contrario. La IP elástica tampoco se libera sola: sigue reservada, y pagándose, hasta que la liberas. En resumen, en terminada pagas lo que olvides borrar.</li>
 </ul>
 <p>Las <b>instantáneas</b> (copias de un disco en un momento dado) son independientes de la máquina: se pagan hasta que se borran. Y una máquina en la nube es <b>efímera</b>: puede desaparecer, así que los datos importantes no deben estar solo en ella.</p>
 <div class="aviso"><p><b>Costes que sorprenden.</b> La salida de datos (<i>egress</i>), los discos y las IP que siguen existiendo cuando se apaga la máquina, las instantáneas (snapshots) olvidadas, los recursos creados en otra región para una prueba y nunca borrados, los recargos de las instancias ampliables en modo ilimitado. En la nube, apagar no siempre es borrar.</p></div>
