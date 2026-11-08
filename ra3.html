@@ -62,7 +62,7 @@
 <div class="tabla"><table>
 <tr><th>Pregunta</th><th>Nube pública</th></tr>
 <tr><td>¿De quién es el hardware?</td><td>Del proveedor: CPD, servidores, red y almacenamiento</td></tr>
-<tr><td>¿Quién lo gestiona y opera?</td><td>El proveedor opera lo físico y la plataforma; el cliente, sus recursos virtuales, sus datos y su configuración (responsabilidad compartida, unidad 2)</td></tr>
+<tr><td>¿Quién lo gestiona y opera?</td><td>El proveedor opera lo físico y la plataforma. El cliente, sus recursos virtuales, sus datos y su configuración (responsabilidad compartida, unidad 2)</td></tr>
 <tr><td>¿Dónde está físicamente?</td><td>En los CPD del proveedor, en la región que elige el cliente</td></tr>
 <tr><td>¿Quién más lo usa?</td><td>Muchos clientes a la vez, con aislamiento lógico entre ellos</td></tr>
 </table></div>
@@ -76,7 +76,7 @@
 <tr><td><b>Instancia dedicada</b></td><td>El servidor físico solo ejecuta máquinas tuyas, pero el proveedor decide cuál es y no lo ves</td><td>AWS Dedicated Instances</td></tr>
 <tr><td><b>Host dedicado</b></td><td>Reservas un servidor físico entero y ves sus procesadores y núcleos. Se usa por normativa o por licencias que se pagan por núcleo físico</td><td>AWS Dedicated Hosts, Azure Dedicated Host, nodos <i>sole-tenant</i> de Google</td></tr>
 <tr><td><b>Región soberana</b></td><td>Infraestructura separada del resto del proveedor, con los datos y los metadatos (cuentas, facturación) dentro de la UE y operada solo por residentes en la UE</td><td>AWS European Sovereign Cloud: Brandeburgo (Alemania), disponible desde enero de 2026</td></tr>
-<tr><td><b>Nube "de confianza"</b></td><td>La tecnología es de un proveedor estadounidense, pero la opera y la controla una empresa europea, para quedar fuera del alcance de las leyes de EE. UU.</td><td>S3NS (Thales con Google Cloud), con la certificación francesa SecNumCloud desde 2025; Bleu (Orange y Capgemini con Microsoft), que la busca para finales de 2026</td></tr>
+<tr><td><b>Nube "de confianza"</b></td><td>La tecnología es de un proveedor estadounidense, pero la opera y la controla una empresa europea, para quedar fuera del alcance de las leyes de EE. UU.</td><td>S3NS (Thales con Google Cloud), con la certificación francesa SecNumCloud desde 2025. Bleu (Orange y Capgemini con Microsoft), que la busca para finales de 2026</td></tr>
 </table></div>
 <p>En todos los casos <b>sigue siendo nube pública</b>: el hardware es del proveedor y está en sus instalaciones, y cualquier cliente puede contratar la misma opción. Lo que se reduce es la respuesta a "¿quién más lo usa?" o a "¿quién lo opera?".</p>
 <p>La diferencia entre los dos últimos peldaños es importante. En la región soberana, la empresa matriz sigue siendo estadounidense, y si eso basta para protegerse de la CLOUD Act es un debate abierto. En la nube de confianza, el operador es una empresa europea con licencia de la tecnología, que es lo que exige por ejemplo la certificación SecNumCloud en Francia. Existen también regiones para gobiernos, como AWS GovCloud o Azure Government, pero son solo para la Administración de EE. UU. y sus contratistas.</p>
@@ -94,7 +94,7 @@
 <h4>Lo que exige o limita</h4>
 <ul>
 <li><b>Convivir con otros</b>: el aislamiento entre clientes es muy fuerte, pero quedan riesgos residuales como el vecino ruidoso (unidad 2). Algunas normativas o políticas internas exigen por eso hosts dedicados para ciertos datos.</li>
-<li><b>Aceptar las reglas del proveedor</b>: él decide los precios, cuándo retira un servicio o cambia una API y cuándo hace mantenimiento. El cliente se adapta; no negocia, salvo que sea muy grande.</li>
+<li><b>Aceptar las reglas del proveedor</b>: él decide los precios, cuándo retira un servicio o cambia una API y cuándo hace mantenimiento. El cliente se adapta. No negocia, salvo que sea muy grande.</li>
 <li><b>Riesgo concentrado</b>: si una región grande falla, caen a la vez miles de servicios de empresas distintas. En octubre de 2025, un fallo en la región <code>us-east-1</code> de AWS (Virginia) dejó sin servicio durante horas a aplicaciones de todo el mundo, desde bancos hasta videojuegos.</li>
 <li><b>La jurisdicción del proveedor</b>: los tres grandes son estadounidenses y les afecta la CLOUD Act (unidad 2). Esto es lo que ha dado lugar a las regiones soberanas, las nubes de confianza y el interés por los proveedores europeos.</li>
 </ul>
@@ -107,8 +107,8 @@
 <p>Estas cifras miden solo infraestructura y plataforma (IaaS y PaaS). Por eso no aparece Salesforce, aunque sea uno de los mayores vendedores de software en la nube: lo suyo es SaaS.</p>
 <div class="tabla"><table>
 <tr><th>Proveedor</th><th>Puntos fuertes</th><th>Región en España</th></tr>
-<tr><td>AWS</td><td>El más veterano y con más servicios; gran ecosistema y comunidad</td><td><code>eu-south-2</code> (Aragón), desde 2022</td></tr>
-<tr><td>Microsoft Azure</td><td>Integración con Microsoft 365, Entra ID (antes Active Directory) y Windows; muy presente en empresas</td><td><i>Spain Central</i> (Madrid), desde 2024</td></tr>
+<tr><td>AWS</td><td>El más veterano y con más servicios. Gran ecosistema y comunidad</td><td><code>eu-south-2</code> (Aragón), desde 2022</td></tr>
+<tr><td>Microsoft Azure</td><td>Integración con Microsoft 365, Entra ID (antes Active Directory) y Windows. Muy presente en empresas</td><td><i>Spain Central</i> (Madrid), desde 2024</td></tr>
 <tr><td>Google Cloud</td><td>Datos, analítica, IA y Kubernetes (lo creó Google)</td><td><code>europe-southwest1</code> (Madrid), desde 2022</td></tr>
 <tr><td>Oracle Cloud</td><td>Bases de datos Oracle y transferencia de datos barata</td><td><code>eu-madrid-1</code> (Madrid), desde 2022</td></tr>
 </table></div>
@@ -135,7 +135,7 @@
 <tr><td>Ubicación</td><td>Regiones y zonas disponibles, y su cercanía a los usuarios</td></tr>
 <tr><td>Servicios</td><td>Si tiene los que necesitamos (base de datos gestionada, Kubernetes, funciones...)</td></tr>
 <tr><td>Precio</td><td>Cómputo, almacenamiento y, sobre todo, transferencia de salida</td></tr>
-<tr><td>Cumplimiento</td><td>ENS y su categoría, ISO 27001, SOC 2; jurisdicción del proveedor</td></tr>
+<tr><td>Cumplimiento</td><td>ENS y su categoría, ISO 27001, SOC 2. Jurisdicción del proveedor</td></tr>
 <tr><td>Fiabilidad y soporte</td><td>SLA, niveles de soporte, soporte en español</td></tr>
 <tr><td>Automatización</td><td>API, CLI y proveedor oficial de Terraform para la infraestructura como código</td></tr>
 <tr><td>Salida</td><td>Formatos estándar y coste de sacar los datos si un día cambiamos de proveedor</td></tr>
@@ -177,13 +177,13 @@
 <tr><td>Elasticidad rápida</td><td>Se crean y destruyen recursos en minutos, <b>hasta el límite del hardware comprado</b></td><td>Cuotas por proyecto dentro de la capacidad total</td></tr>
 <tr><td>Servicio medido</td><td>Se mide lo que consume cada departamento</td><td>Telemetría por proyecto, base para repercutir el coste a cada departamento (<i>showback</i> o <i>chargeback</i>, unidad 2)</td></tr>
 </table></div>
-<p>La elasticidad es la característica que más se resiente: en la nube pública la capacidad es casi ilimitada; en la privada se acaba cuando se acaba el hardware. Cuando eso pasa, una salida es desbordar temporalmente a la nube pública, lo que ya es una nube híbrida (punto 3).</p>
+<p>La elasticidad es la característica que más se resiente: en la nube pública la capacidad es casi ilimitada. En la privada se acaba cuando se acaba el hardware. Cuando eso pasa, una salida es desbordar temporalmente a la nube pública, lo que ya es una nube híbrida (punto 3).</p>
 <h4>Esquema</h4>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 270" role="img" aria-label="Nube privada" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-nube_privada" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="86" width="696" height="176" rx="8" class="d-grupo-naranja"/><text x="22" y="101" class="tt">Nube privada de un hospital (uso exclusivo)</text><rect x="40.0" y="12.0" width="180.0" height="44.0" rx="6" class="d-amarillo"/><text x="130.0" y="34.0" class="t" text-anchor="middle" dominant-baseline="middle">Urgencias</text><rect x="270.0" y="12.0" width="180.0" height="44.0" rx="6" class="d-amarillo"/><text x="360.0" y="34.0" class="t" text-anchor="middle" dominant-baseline="middle">Laboratorio</text><rect x="500.0" y="12.0" width="180.0" height="44.0" rx="6" class="d-amarillo"/><text x="590.0" y="34.0" class="t" text-anchor="middle" dominant-baseline="middle">Administración</text><rect x="230.0" y="112.0" width="440.0" height="40.0" rx="6" class="d-morado"/><text x="450.0" y="125.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Portal de autoservicio, API y cuotas por proyecto</text><text x="450.0" y="141.0" class="ts" text-anchor="middle" dominant-baseline="middle">OpenStack, Proxmox VE, OpenNebula...</text><rect x="40.0" y="196.0" width="640.0" height="42.0" rx="6" class="d-naranja"/><text x="360.0" y="217.0" class="t" text-anchor="middle" dominant-baseline="middle">Servidores, almacenamiento y red DE USO EXCLUSIVO</text><path d="M130.0,58.0 L130.0,84.0 L450.0,84.0 L450.0,110.0" class="flecha " marker-end="url(#fl-nube_privada)"/><path d="M360.0,58.0 L360.0,110.0" class="flecha " marker-end="url(#fl-nube_privada)"/><path d="M590.0,58.0 L590.0,84.0 L450.0,84.0 L450.0,110.0" class="flecha " marker-end="url(#fl-nube_privada)"/><path d="M450.0,154.0 L450.0,194.0" class="flecha " marker-end="url(#fl-nube_privada)"/></svg></div><figcaption>Nube privada: la infraestructura es de uso exclusivo de una organización, que la reparte entre sus departamentos con autoservicio y cuotas.</figcaption></figure>
 <h4>Las cuatro preguntas aplicadas a la nube privada</h4>
 <div class="tabla"><table>
 <tr><th>Pregunta</th><th>Nube privada</th></tr>
-<tr><td>¿De quién es el hardware?</td><td>Normalmente de la organización; a veces de un proveedor que lo dedica en exclusiva a ella</td></tr>
+<tr><td>¿De quién es el hardware?</td><td>Normalmente de la organización. A veces de un proveedor que lo dedica en exclusiva a ella</td></tr>
 <tr><td>¿Quién lo gestiona y opera?</td><td>El equipo de sistemas de la organización, o un proveedor contratado para operarla</td></tr>
 <tr><td>¿Dónde está físicamente?</td><td>En el CPD de la organización o en el de un proveedor, en hardware dedicado</td></tr>
 <tr><td>¿Quién más lo usa?</td><td>Nadie de fuera. Se comparte solo entre departamentos y proyectos de la misma organización (<b>multitenencia interna</b>)</td></tr>
@@ -191,7 +191,7 @@
 <p>A diferencia de la pública, la nube privada se paga sobre todo <b>comprando</b> (CapEx, unidad 2) y su capacidad es la que se ha comprado.</p>
 <h4>Virtualización no es nube privada</h4>
 <p>Muchas organizaciones tienen servidores virtualizados con VMware o Proxmox y los llaman "nuestra nube privada". Si para conseguir una máquina hay que abrir una incidencia y esperar a que alguien la cree a mano, no hay autoservicio: es <b>infraestructura virtualizada</b>, no nube.</p>
-<p>La diferencia está en el <b>plano de control</b> que vimos en la unidad 2: el software que recibe las peticiones, comprueba permisos y cuotas, y ordena a los hipervisores crear lo que se pide. Un proveedor de nube pública lo tiene; una sala de servidores virtualizados, no. Una nube privada es, en el fondo, montar ese plano de control para uso interno.</p>
+<p>La diferencia está en el <b>plano de control</b> que vimos en la unidad 2: el software que recibe las peticiones, comprueba permisos y cuotas, y ordena a los hipervisores crear lo que se pide. Un proveedor de nube pública lo tiene. Una sala de servidores virtualizados, no. Una nube privada es, en el fondo, montar ese plano de control para uso interno.</p>
 <div class="tabla"><table>
 <tr><th>Capa</th><th>Infraestructura virtualizada</th><th>Nube privada</th></tr>
 <tr><td>Usuarios</td><td>Piden las máquinas por correo o incidencia</td><td>Las crean ellos mismos</td></tr>
@@ -210,18 +210,18 @@
 </ul>
 
 <h4>Misma tecnología, distinto modelo</h4>
-<p>El modelo de despliegue no lo decide el software. OpenStack es la base de la nube privada del CERN, y también de la nube <b>pública</b> de OVHcloud, que cualquiera puede contratar. Lo que cambia es la respuesta a "¿quién más lo usa?": en el CERN, solo sus grupos de investigación; en OVHcloud, cualquier cliente que pague.</p>
+<p>El modelo de despliegue no lo decide el software. OpenStack es la base de la nube privada del CERN, y también de la nube <b>pública</b> de OVHcloud, que cualquiera puede contratar. Lo que cambia es la respuesta a "¿quién más lo usa?": en el CERN, solo sus grupos de investigación. En OVHcloud, cualquier cliente que pague.</p>
 
 <h3>2. Variantes de la nube privada</h3>
 <p>"Privada" habla de quién la usa, no de dónde está ni de quién es el hardware. Por eso hay varias formas de tenerla:</p>
 <div class="tabla"><table>
 <tr><th>Variante</th><th>Hardware</th><th>Ubicación</th><th>Operación</th><th>Ejemplo</th></tr>
 <tr><td><b>En instalaciones propias</b> (<i>on premise</i>)</td><td>De la organización</td><td>CPD propio</td><td>Equipo propio</td><td>Una universidad con OpenStack en su CPD</td></tr>
-<tr><td><b>Alojada</b> (<i>hosted private cloud</i>)</td><td>Del proveedor, dedicado a un solo cliente</td><td>CPD del proveedor</td><td>El proveedor opera el hardware y la plataforma; el cliente, sus máquinas</td><td>OVHcloud Hosted Private Cloud, con VMware o Nutanix</td></tr>
+<tr><td><b>Alojada</b> (<i>hosted private cloud</i>)</td><td>Del proveedor, dedicado a un solo cliente</td><td>CPD del proveedor</td><td>El proveedor opera el hardware y la plataforma. El cliente, sus máquinas</td><td>OVHcloud Hosted Private Cloud, con VMware o Nutanix</td></tr>
 <tr><td><b>Gestionada</b> (<i>managed</i>)</td><td>De la organización o del proveedor</td><td>Propia o del proveedor</td><td>Una empresa externa, bajo contrato</td><td>Un integrador opera la nube privada de un banco en el CPD del banco</td></tr>
 <tr><td><b>Como servicio</b></td><td>Del fabricante, que lo instala y lo cobra por uso</td><td>CPD del cliente</td><td>Compartida entre el fabricante y el cliente</td><td>HPE GreenLake, Dell APEX</td></tr>
 </table></div>
-<p>La última variante es interesante porque combina dos mundos: el hardware está en casa, pero no se compra; se paga cada mes según lo que se usa, como en la nube pública. El fabricante instala algo más de capacidad de la necesaria para poder crecer.</p>
+<p>La última variante es interesante porque combina dos mundos: el hardware está en casa, pero no se compra. Se paga cada mes según lo que se usa, como en la nube pública. El fabricante instala algo más de capacidad de la necesaria para poder crecer.</p>
 <p>Un caso parecido son las <b>extensiones de nube pública en casa</b>, como AWS Outposts, Azure Local o Google Distributed Cloud: hardware del proveedor de nube, en el CPD del cliente y dedicado a él, pero gestionado desde la región pública del proveedor con su misma consola y API. Por eso se estudian como una forma de <b>nube híbrida</b> (punto 3).</p>
 <div class="aviso"><p><b>Cuidado con la VPC.</b> La "nube privada virtual" (VPC) de AWS o Google, o la VNet de Azure, no es una nube privada: es una red aislada dentro de la <b>nube pública</b>, sobre hardware compartido con otros clientes. El nombre confunde a mucha gente.</p></div>
 
@@ -247,8 +247,8 @@
 <h4>Lo que aporta</h4>
 <ul>
 <li><b>Control total</b> de la ubicación de los datos, del hardware y de la seguridad.</li>
-<li><b>Cumplimiento de normativas exigentes</b>, sin depender de las certificaciones de otro. Pero ojo: también hay que conseguirlas y mantenerlas uno mismo; en el sector público, por ejemplo, el ENS se aplica igual.</li>
-<li><b>Rendimiento previsible</b>: no hay vecinos de otras organizaciones; los "vecinos ruidosos" solo pueden ser otros departamentos, y se controlan con cuotas.</li>
+<li><b>Cumplimiento de normativas exigentes</b>, sin depender de las certificaciones de otro. Pero ojo: también hay que conseguirlas y mantenerlas uno mismo. En el sector público, por ejemplo, el ENS se aplica igual.</li>
+<li><b>Rendimiento previsible</b>: no hay vecinos de otras organizaciones. Los "vecinos ruidosos" solo pueden ser otros departamentos, y se controlan con cuotas.</li>
 <li><b>Coste menor para cargas grandes y estables</b>, como vimos con la repatriación en la unidad 2.</li>
 <li>Posibilidad de ejecutar <b>sistemas heredados</b> o con hardware especial.</li>
 <li><b>Autonomía</b> respecto a proveedores extranjeros y a sus cambios de precio o de condiciones.</li>
@@ -265,7 +265,7 @@
 <p>Administraciones públicas con datos sensibles, hospitales, banca y seguros, defensa, organizaciones con grandes cargas estables, centros de investigación, centros educativos y entornos de desarrollo internos.</p>
 
 <h3>4. Opciones en el mercado: las plataformas</h3>
-<p>En la nube pública se elige proveedor; en la privada se elige la <b>plataforma</b>, el software que hace de plano de control sobre el hardware propio.</p>
+<p>En la nube pública se elige proveedor. En la privada se elige la <b>plataforma</b>, el software que hace de plano de control sobre el hardware propio.</p>
 <div class="tabla"><table>
 <tr><th>Plataforma</th><th>Licencia</th><th>Características</th></tr>
 <tr><td><b>OpenStack</b></td><td>Libre (OpenInfra Foundation, integrada en la Linux Foundation desde 2025)</td><td>La más completa. Es un conjunto de servicios con nombre propio: cómputo (Nova), red (Neutron), discos (Cinder), almacenamiento de objetos (Swift), imágenes (Glance), identidad (Keystone), orquestación (Heat) y portal (Horizon). Proyectos, cuotas y API para todo. Compleja de instalar y mantener: necesita un equipo dedicado. La usan operadores de telecomunicaciones, universidades, centros de investigación (CERN) y proveedores de nube pública (OVHcloud).</td></tr>
@@ -320,11 +320,11 @@
 <p>Según el NIST, una <b>nube híbrida</b> es la composición de dos o más infraestructuras de nube distintas (privada, comunitaria o pública) que <b>siguen siendo entidades independientes</b> pero están <b>unidas por tecnología</b>, estándar o propia de un fabricante, que permite mover datos y aplicaciones entre ellas.</p>
 <p>La definición tiene dos condiciones, y hacen falta las dos:</p>
 <ul>
-<li>Las partes <b>siguen siendo independientes</b>: la nube privada sigue en su CPD, con su hardware y su equipo; la parte pública sigue en el proveedor. No se fusionan.</li>
+<li>Las partes <b>siguen siendo independientes</b>: la nube privada sigue en su CPD, con su hardware y su equipo. La parte pública sigue en el proveedor. No se fusionan.</li>
 <li>Están <b>integradas</b>: hay una conexión privada entre ellas, los usuarios tienen la misma identidad a los dos lados, se gestionan con herramientas comunes y se pueden mover cargas y datos de un lado a otro. Sin integración no es híbrida: es una organización que usa dos cosas por separado.</li>
 </ul>
 <p>En la práctica, el término se usa también para la combinación de <b>infraestructura on premise tradicional</b>, aunque no llegue a ser nube privada (punto 2), con una nube pública. Es la situación real de la mayoría de organizaciones que llevan años funcionando: según el informe <i>State of the Cloud</i> de Flexera de 2026, en torno al 73 % de las organizaciones encuestadas tienen infraestructura híbrida.</p>
-<p>No hay que confundirla con la <b>multinube</b>, que es usar varios proveedores de nube pública. Se pueden dar las dos a la vez; la diferencia la veremos en el punto 4.</p>
+<p>No hay que confundirla con la <b>multinube</b>, que es usar varios proveedores de nube pública. Se pueden dar las dos a la vez. La diferencia la veremos en el punto 4.</p>
 <h4>Esquema</h4>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 280" role="img" aria-label="Nube híbrida" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-nube_hibrida" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="10" width="300" height="200" rx="8" class="d-grupo-naranja"/><text x="22" y="25" class="tt">Nube privada / on premise</text><rect x="408" y="10" width="300" height="200" rx="8" class="d-grupo-azul"/><text x="418" y="25" class="tt">Nube pública</text><rect x="32.0" y="44.0" width="260.0" height="40.0" rx="6" class="d-naranja"/><text x="162.0" y="64.0" class="t" text-anchor="middle" dominant-baseline="middle">Historia clínica</text><path d="M32,108 A130.0,8 0 0 1 292,108 L292,142 A130.0,8 0 0 1 32,142 z" class="d-naranja"/><path d="M32,108 A130.0,8 0 0 0 292,108" class="d-naranja" fill="none"/><text x="162.0" y="125.0" class="t" text-anchor="middle" dominant-baseline="middle">Base de datos de citas</text><rect x="32.0" y="164.0" width="260.0" height="30.0" rx="6" class="d-gris"/><text x="162.0" y="179.0" class="t" text-anchor="middle" dominant-baseline="middle">Red 10.10.0.0/16</text><rect x="428.0" y="44.0" width="260.0" height="40.0" rx="6" class="d-azul"/><text x="558.0" y="64.0" class="t" text-anchor="middle" dominant-baseline="middle">Web de citas (autoescalado)</text><rect x="428.0" y="102.0" width="260.0" height="46.0" rx="6" class="d-azul"/><text x="558.0" y="125.0" class="t" text-anchor="middle" dominant-baseline="middle">CDN, SMS, copias de seguridad</text><rect x="428.0" y="164.0" width="260.0" height="30.0" rx="6" class="d-gris"/><text x="558.0" y="179.0" class="t" text-anchor="middle" dominant-baseline="middle">VPC 10.20.0.0/16</text><rect x="12.0" y="232.0" width="696.0" height="40.0" rx="6" class="d-morado"/><text x="360.0" y="252.0" class="t" text-anchor="middle" dominant-baseline="middle">Identidad común · gestión y monitorización unificadas · políticas comunes</text><path d="M294.0,125.0 L426.0,125.0" class="flecha " marker-end="url(#fl-nube_hibrida)" marker-start="url(#fl-nube_hibrida)"/><rect x="282.6" y="116.0" width="154.9" height="18" rx="3" class="fondo-etiqueta"/><text x="360.0" y="125.0" class="te" text-anchor="middle" dominant-baseline="middle">VPN o conexión dedicada</text><path d="M162.0,196.0 L162.0,230.0" class="flecha " marker-end="url(#fl-nube_hibrida)"/><path d="M558.0,196.0 L558.0,230.0" class="flecha " marker-end="url(#fl-nube_hibrida)"/></svg></div><figcaption>Nube híbrida: la parte privada y la pública siguen siendo independientes, pero están conectadas y se gestionan como un conjunto.</figcaption></figure>
 <h4>Las cuatro preguntas aplicadas a la nube híbrida</h4>
@@ -332,11 +332,11 @@
 <div class="tabla"><table>
 <tr><th>Pregunta</th><th>Parte privada</th><th>Parte pública</th><th>La unión</th></tr>
 <tr><td>¿De quién es el hardware?</td><td>De la organización</td><td>Del proveedor</td><td>Mixta: enlaces del operador y del proveedor, software de gestión</td></tr>
-<tr><td>¿Quién lo gestiona y opera?</td><td>La organización</td><td>El proveedor, lo físico; la organización, sus recursos virtuales</td><td>La organización</td></tr>
+<tr><td>¿Quién lo gestiona y opera?</td><td>La organización</td><td>El proveedor, lo físico. La organización, sus recursos virtuales</td><td>La organización</td></tr>
 <tr><td>¿Dónde está físicamente?</td><td>En su CPD</td><td>En la región del proveedor</td><td>Entre los dos: un túnel por Internet o un enlace dedicado</td></tr>
 <tr><td>¿Quién más lo usa?</td><td>Nadie de fuera</td><td>Muchos clientes, con aislamiento lógico</td><td>Solo la organización</td></tr>
 </table></div>
-<p>Lo que aporta el modelo es poder decidir <b>carga por carga</b> dónde vive cada cosa: los datos más sensibles y las cargas estables, en la parte privada; lo que necesita elasticidad o alcance global, en la pública.</p>
+<p>Lo que aporta el modelo es poder decidir <b>carga por carga</b> dónde vive cada cosa: los datos más sensibles y las cargas estables, en la parte privada. Lo que necesita elasticidad o alcance global, en la pública.</p>
 
 <h4>Lo que une las partes: los cuatro pilares</h4>
 <p>La integración que pide la definición se consigue con cuatro piezas. Si falla una, la nube híbrida se queda en dos mundos separados.</p>
@@ -354,7 +354,7 @@
 <div class="tabla"><table>
 <tr><th>Variante</th><th>Qué es</th><th>Ejemplos</th></tr>
 <tr><td><b>Clásica</b></td><td>El CPD o la nube privada y la nube pública, cada uno con su tecnología, unidos por los cuatro pilares</td><td>Proxmox en el CPD y AWS, unidos por VPN y con la misma identidad</td></tr>
-<tr><td><b>La pública llega a casa</b></td><td>El proveedor instala su hardware en el CPD del cliente y lo gestiona desde su región, con la misma consola y la misma API</td><td>AWS Outposts, Azure Local, Google Distributed Cloud; Amazon EKS Hybrid Nodes (servidores propios que se unen a un clúster de Kubernetes de AWS)</td></tr>
+<tr><td><b>La pública llega a casa</b></td><td>El proveedor instala su hardware en el CPD del cliente y lo gestiona desde su región, con la misma consola y la misma API</td><td>AWS Outposts, Azure Local, Google Distributed Cloud. Amazon EKS Hybrid Nodes (servidores propios que se unen a un clúster de Kubernetes de AWS)</td></tr>
 <tr><td><b>La privada llega a la pública</b></td><td>La misma plataforma de la nube privada, alquilada sobre hardware dedicado en la nube pública. Las máquinas se mueven de un lado a otro sin cambiarlas</td><td>Azure VMware Solution, Google Cloud VMware Engine, VMware Cloud on AWS</td></tr>
 <tr><td><b>Capa común de contenedores</b></td><td>Kubernetes a los dos lados, gestionado como un único conjunto de clústeres. La aplicación se despliega igual en cualquier sitio</td><td>Red Hat OpenShift, SUSE Rancher, Google Kubernetes Engine en modo flota</td></tr>
 </table></div>
@@ -381,18 +381,18 @@
 <h4>Casos de uso típicos: los patrones híbridos</h4>
 <div class="tabla"><table>
 <tr><th>Patrón</th><th>En qué consiste</th><th>Ejemplo</th></tr>
-<tr><td><b>Desbordamiento a la nube</b> (<i>cloud bursting</i>)</td><td>La carga normal va en la parte privada; cuando se satura, el exceso se atiende en la pública</td><td>Un periódico que recibe diez veces más visitas la noche de elecciones</td></tr>
-<tr><td><b>Arquitectura por capas</b></td><td>La parte que da la cara al público, en la nube; los datos sensibles, en casa</td><td>Un banco con la web y la app en la nube y las cuentas en su mainframe</td></tr>
+<tr><td><b>Desbordamiento a la nube</b> (<i>cloud bursting</i>)</td><td>La carga normal va en la parte privada. Cuando se satura, el exceso se atiende en la pública</td><td>Un periódico que recibe diez veces más visitas la noche de elecciones</td></tr>
+<tr><td><b>Arquitectura por capas</b></td><td>La parte que da la cara al público, en la nube. Los datos sensibles, en casa</td><td>Un banco con la web y la app en la nube y las cuentas en su mainframe</td></tr>
 <tr><td><b>Recuperación ante desastres</b></td><td>Réplica de datos y un entorno de respaldo en la nube que se activa si cae el CPD</td><td>Un hospital con su base de datos replicada y plantillas de máquinas listas en la nube</td></tr>
 <tr><td><b>Copia y archivo</b></td><td>Copias de seguridad fuera del sitio, en almacenamiento de objetos</td><td>Copias nocturnas cifradas a un bucket europeo con bloqueo contra borrado</td></tr>
-<tr><td><b>Desarrollo en la nube, producción en casa</b></td><td>Entornos de pruebas temporales en la nube; producción en el CPD</td><td>Una empresa que prueba cada versión en la nube antes de instalarla en su CPD</td></tr>
+<tr><td><b>Desarrollo en la nube, producción en casa</b></td><td>Entornos de pruebas temporales en la nube. Producción en el CPD</td><td>Una empresa que prueba cada versión en la nube antes de instalarla en su CPD</td></tr>
 <tr><td><b>Migración progresiva</b></td><td>Etapa intermedia mientras las aplicaciones se trasladan a la nube</td><td>Primero la web, después la API y al final los datos</td></tr>
 <tr><td><b>Borde</b> (<i>edge</i>)</td><td>Servidores cerca de donde se generan los datos, que siguen funcionando sin conexión y se gestionan desde la nube</td><td>Una cadena de supermercados con un servidor en cada tienda</td></tr>
 </table></div>
 <p>Un matiz de experto sobre el desbordamiento: es el patrón más citado y uno de los más difíciles. Solo funciona bien con partes de la aplicación <b>sin estado</b> (como servidores web que no guardan datos propios), porque si las máquinas de la nube tienen que consultar en cada petición la base de datos del CPD, la latencia y la transferencia se lo comen. Los patrones más usados en la realidad son la recuperación ante desastres, las copias y la migración progresiva.</p>
 
 <h3>4. Opciones en el mercado: las herramientas</h3>
-<p>En la pública se elige proveedor; en la privada, plataforma; en la híbrida, las herramientas de cada pilar. Cada gran proveedor tiene las suyas, y hay alternativas independientes:</p>
+<p>En la pública se elige proveedor. En la privada, plataforma. En la híbrida, las herramientas de cada pilar. Cada gran proveedor tiene las suyas, y hay alternativas independientes:</p>
 <div class="tabla"><table>
 <tr><th>Pilar</th><th>AWS</th><th>Azure</th><th>Google Cloud</th><th>Independientes y libres</th></tr>
 <tr><td>Conexión por VPN</td><td>Site-to-Site VPN</td><td>VPN Gateway</td><td>Cloud VPN</td><td>strongSwan (IPsec), WireGuard</td></tr>
@@ -455,7 +455,7 @@
 <div class="tabla"><table>
 <tr><th>Pregunta</th><th>Proveedor A</th><th>Proveedor B</th><th>La organización</th></tr>
 <tr><td>¿De quién es el hardware?</td><td>Del proveedor A</td><td>Del proveedor B</td><td>Ninguno: no necesita CPD propio</td></tr>
-<tr><td>¿Quién lo gestiona y opera?</td><td>A, lo físico; la organización, sus recursos con la consola de A</td><td>B, lo físico; la organización, sus recursos con la consola de B</td><td>Coordina todo con herramientas comunes</td></tr>
+<tr><td>¿Quién lo gestiona y opera?</td><td>A, lo físico. La organización, sus recursos con la consola de A</td><td>B, lo físico. La organización, sus recursos con la consola de B</td><td>Coordina todo con herramientas comunes</td></tr>
 <tr><td>¿Dónde está físicamente?</td><td>En las regiones de A</td><td>En las regiones de B</td><td>Si las cargas se comunican, hay red entre las dos nubes</td></tr>
 <tr><td>¿Quién más lo usa?</td><td>Muchos clientes de A</td><td>Muchos clientes de B</td><td>—</td></tr>
 </table></div>
@@ -472,13 +472,13 @@
 <tr><td>Motivación principal</td><td>Mantener el control de ciertas cargas y datos, y aprovechar la nube para el resto</td><td>Elegir lo mejor de cada proveedor, no depender de uno, requisitos geográficos o normativos</td></tr>
 <tr><td>Dificultad principal</td><td>Integrar dos mundos distintos (lo propio y lo del proveedor)</td><td>Manejar las diferencias entre proveedores</td></tr>
 </table></div>
-<p>Una regla rápida para clasificar: si hay una parte <b>privada o propia</b>, es híbrida; si hay <b>más de un proveedor público</b>, es multinube; si hay las dos cosas, es las dos a la vez. Una organización con CPD propio, AWS y Azure es <b>híbrida y multinube</b> (en inglés se dice <i>hybrid multicloud</i>), y es la situación más habitual en las grandes empresas.</p>
+<p>Una regla rápida para clasificar: si hay una parte <b>privada o propia</b>, es híbrida. Si hay <b>más de un proveedor público</b>, es multinube. Si hay las dos cosas, es las dos a la vez. Una organización con CPD propio, AWS y Azure es <b>híbrida y multinube</b> (en inglés se dice <i>hybrid multicloud</i>), y es la situación más habitual en las grandes empresas.</p>
 
 <h3>2. Variantes: tipos de multinube</h3>
 <p>Lo que distingue una multinube de otra es <b>cómo se reparten las cargas</b> entre los proveedores:</p>
 <div class="tabla"><table>
 <tr><th>Tipo</th><th>Cómo se reparten las cargas</th><th>Ejemplo</th><th>Dificultad</th></tr>
-<tr><td><b>Accidental</b></td><td>Cada área contrata la suya, sin plan</td><td>Marketing con su analítica en Google, sistemas con todo en AWS</td><td>Técnica baja; de control, alta</td></tr>
+<tr><td><b>Accidental</b></td><td>Cada área contrata la suya, sin plan</td><td>Marketing con su analítica en Google, sistemas con todo en AWS</td><td>Técnica baja. De control, alta</td></tr>
 <tr><td><b>Especializada</b> (<i>best of breed</i>)</td><td>Cada carga distinta, en el proveedor que mejor la hace</td><td>La aplicación en AWS, la analítica en BigQuery, la ofimática en Microsoft 365</td><td>Media. Es la más habitual</td></tr>
 <tr><td><b>Segmentada</b></td><td>Según el país o la normativa</td><td>Un proveedor local en un país donde el principal no tiene región o no tiene la certificación exigida</td><td>Media</td></tr>
 <tr><td><b>Redundante</b></td><td>La <b>misma</b> aplicación en dos proveedores: una de reserva (activa-pasiva) o las dos a la vez (activa-activa)</td><td>Un servicio crítico en AWS y Azure, con un DNS que reparte el tráfico</td><td>Muy alta: hay que mantener los datos sincronizados entre nubes. Es rara</td></tr>
@@ -504,18 +504,18 @@
 <h4>Lo que exige o limita</h4>
 <ul>
 <li><b>Portabilidad</b>: diseñar las cargas con tecnologías estándar que existan en todos los proveedores (apartado 4).</li>
-<li><b>Decidir entre portabilidad y potencia</b>: usar solo lo que tienen todos (el <b>mínimo común denominador</b>) es portable pero desaprovecha los mejores servicios; usar los servicios exclusivos de cada uno es más potente pero ata. No hay respuesta universal: se decide carga por carga.</li>
+<li><b>Decidir entre portabilidad y potencia</b>: usar solo lo que tienen todos (el <b>mínimo común denominador</b>) es portable pero desaprovecha los mejores servicios. Usar los servicios exclusivos de cada uno es más potente pero ata. No hay respuesta universal: se decide carga por carga.</li>
 <li><b>Conocimientos de varios proveedores</b>: cada uno llama distinto a las mismas cosas (una VPC en AWS es una VNet en Azure) y tiene su propia API, consola y certificaciones.</li>
 <li><b>Gestión unificada</b> de identidades, costes, seguridad y monitorización, para no tener varios mundos sin control (punto 5).</li>
 </ul>
 <h4>Costes ocultos de la multinube</h4>
-<p>Duplicar herramientas, formación y certificaciones; perder descuentos por volumen al repartir el gasto entre proveedores; pagar la transferencia de datos entre nubes; ampliar la superficie de ataque; y la dificultad de diagnosticar problemas que atraviesan varias nubes. La multinube tiene que tener un motivo claro: "por si acaso" no suele justificar su coste.</p>
+<p>Duplicar herramientas, formación y certificaciones. Perder descuentos por volumen al repartir el gasto entre proveedores. Pagar la transferencia de datos entre nubes. Ampliar la superficie de ataque, y la dificultad de diagnosticar problemas que atraviesan varias nubes. La multinube tiene que tener un motivo claro: "por si acaso" no suele justificar su coste.</p>
 <p>La transferencia entre nubes se está abaratando por la normativa europea. La Ley de Datos de la UE (<i>Data Act</i>, unidad 2) prohíbe cobrar por cambiar de proveedor a partir del 12 de enero de 2027, y para el uso de varios proveedores <b>en paralelo</b> solo permite cobrar la transferencia a precio de coste. Anticipándose, Google eliminó en septiembre de 2025 el coste de la transferencia multinube para sus clientes de la UE y el Reino Unido.</p>
 <h4>Requisitos: híbrida frente a multinube</h4>
 <p>El criterio de evaluación pide identificar los requisitos de cada modelo. Muchos son parecidos, pero no iguales:</p>
 <div class="tabla"><table>
 <tr><th>Área</th><th>Nube híbrida</th><th>Multinube</th></tr>
-<tr><td>Conectividad</td><td>Imprescindible entre el CPD y la nube, con rangos de direcciones sin solapar</td><td>Solo entre las nubes cuyas cargas se comunican; cuidado con el coste de transferencia</td></tr>
+<tr><td>Conectividad</td><td>Imprescindible entre el CPD y la nube, con rangos de direcciones sin solapar</td><td>Solo entre las nubes cuyas cargas se comunican. Cuidado con el coste de transferencia</td></tr>
 <tr><td>Identidad</td><td>El directorio corporativo, federado con la nube</td><td>El mismo directorio, federado con cada proveedor</td></tr>
 <tr><td>Herramientas de gestión</td><td>Que abarquen el CPD y la nube (Azure Arc, Terraform)</td><td>Que abarquen varios proveedores (Terraform, Kubernetes)</td></tr>
 <tr><td>Portabilidad</td><td>Deseable, para mover cargas entre casa y la nube</td><td>Imprescindible si se quiere poder cambiar de proveedor</td></tr>
@@ -537,12 +537,12 @@
 </table></div>
 
 <h3>4. Opciones en el mercado: las tecnologías multinube</h3>
-<p>En la nube pública se elige proveedor; en la privada, plataforma; en la híbrida, herramientas para cada pilar. En la multinube, lo que se elige son <b>tecnologías que funcionen igual en todos los proveedores</b>. La regla es sencilla: lo que es exclusivo de un proveedor ata a ese proveedor.</p>
+<p>En la nube pública se elige proveedor. En la privada, plataforma. En la híbrida, herramientas para cada pilar. En la multinube, lo que se elige son <b>tecnologías que funcionen igual en todos los proveedores</b>. La regla es sencilla: lo que es exclusivo de un proveedor ata a ese proveedor.</p>
 <div class="tabla"><table>
 <tr><th>Necesidad</th><th>Exclusivo de un proveedor (ata)</th><th>Funciona en todos (portable)</th></tr>
 <tr><td>Infraestructura como código</td><td>CloudFormation (AWS), Bicep (Azure)</td><td>Terraform y su versión libre OpenTofu, Pulumi</td></tr>
 <tr><td>Empaquetar la aplicación</td><td>—</td><td>Contenedores con imágenes estándar OCI (<i>Open Container Initiative</i>), como las de Docker</td></tr>
-<tr><td>Ejecutar contenedores</td><td>ECS (AWS), Azure Container Apps, Cloud Run (Google)</td><td>Kubernetes, que todos ofrecen gestionado (EKS, AKS, GKE); Rancher u OpenShift para gestionar varios clústeres</td></tr>
+<tr><td>Ejecutar contenedores</td><td>ECS (AWS), Azure Container Apps, Cloud Run (Google)</td><td>Kubernetes, que todos ofrecen gestionado (EKS, AKS, GKE). Rancher u OpenShift para gestionar varios clústeres</td></tr>
 <tr><td>Bases de datos</td><td>DynamoDB y Aurora (AWS), Cosmos DB (Azure), Spanner (Google)</td><td>PostgreSQL y MySQL, gestionados en todos los proveedores</td></tr>
 <tr><td>Almacenamiento de objetos</td><td>—</td><td>La API de S3, que se ha convertido en estándar: la ofrecen muchos proveedores y plataformas libres como MinIO o Ceph</td></tr>
 <tr><td>Monitorización</td><td>CloudWatch (AWS), Azure Monitor</td><td>Prometheus, Grafana y OpenTelemetry</td></tr>
@@ -558,7 +558,7 @@
 <h3>Preguntas de repaso</h3>
 <ol>
 <li>¿Qué diferencia hay entre nube híbrida y multinube? ¿Qué pregunta de la unidad marca la diferencia?</li>
-<li>Clasifica: una universidad con OpenStack propio y copias en Azure; una startup en Google Cloud con el correo en Microsoft 365; un banco con CPD, AWS y Azure.</li>
+<li>Clasifica: una universidad con OpenStack propio y copias en Azure. Una startup en Google Cloud con el correo en Microsoft 365. Un banco con CPD, AWS y Azure.</li>
 <li>¿Qué es la multinube accidental y qué problema tiene?</li>
 <li>¿En qué se diferencian la multinube especializada y la redundante? ¿Por qué la redundante es rara?</li>
 <li>¿Qué significa diseñar con el "mínimo común denominador" y qué se pierde?</li>
@@ -599,7 +599,7 @@
 <li><b>Administración</b> (gestión operativa): hacer que todo funcione cada día. Crear y modificar recursos, vigilar su estado, aplicar parches, hacer copias, atender incidencias.</li>
 <li><b>Gobernanza</b>: decidir <b>quién puede hacer qué, con qué reglas</b>, y comprobar que se cumplen. Es el conjunto de políticas, responsabilidades y controles que aseguran que el uso de la nube cumple los objetivos de la organización en seguridad, cumplimiento normativo y costes.</li>
 </ul>
-<p>Una comparación: administrar es conducir y mantener el coche; gobernar es el código de circulación, el carné y los radares. Se puede conducir muy bien sin normas, hasta el primer accidente.</p>
+<p>Una comparación: administrar es conducir y mantener el coche. Gobernar es el código de circulación, el carné y los radares. Se puede conducir muy bien sin normas, hasta el primer accidente.</p>
 <div class="tabla"><table>
 <tr><th></th><th>Administración</th><th>Gobernanza</th></tr>
 <tr><td>Pregunta</td><td>¿Funciona?</td><td>¿Se hace como se debe?</td></tr>
@@ -648,8 +648,8 @@
 <tr><td>Auditoría</td><td>Juntar los registros del CPD con los de la nube</td><td>Juntar los registros de cada proveedor en un único sistema</td></tr>
 <tr><td>Datos</td><td>Decidir qué datos se quedan en casa y cuáles pueden ir a la nube</td><td>Decidir en qué proveedor y en qué región puede estar cada tipo de dato</td></tr>
 <tr><td>Contratos y proveedores</td><td>Un proveedor de nube y, a veces, el mantenimiento del hardware</td><td>Varios contratos, varios SLA, varios soportes: hay que gestionarlos todos</td></tr>
-<tr><td>Licencias de software</td><td>Saber qué licencias (Windows Server, bases de datos comerciales) se pueden llevar del CPD a la nube y cuáles hay que volver a pagar. Los proveedores lo facilitan con programas como Azure Hybrid Benefit</td><td>Cada proveedor tiene condiciones distintas para la misma licencia; hay que controlar dónde se usa cada una para no incumplir el contrato del fabricante</td></tr>
-<tr><td>Claves de cifrado</td><td>Decidir si las claves las guarda el proveedor o la organización en su CPD, para que el proveedor no pueda leer los datos por sí solo (lo que se llama "traer o guardar tu propia clave")</td><td>Cada proveedor tiene su servicio de claves; hay que decidir si se gestionan por separado o desde un sistema externo común</td></tr>
+<tr><td>Licencias de software</td><td>Saber qué licencias (Windows Server, bases de datos comerciales) se pueden llevar del CPD a la nube y cuáles hay que volver a pagar. Los proveedores lo facilitan con programas como Azure Hybrid Benefit</td><td>Cada proveedor tiene condiciones distintas para la misma licencia. Hay que controlar dónde se usa cada una para no incumplir el contrato del fabricante</td></tr>
+<tr><td>Claves de cifrado</td><td>Decidir si las claves las guarda el proveedor o la organización en su CPD, para que el proveedor no pueda leer los datos por sí solo (lo que se llama "traer o guardar tu propia clave")</td><td>Cada proveedor tiene su servicio de claves. Hay que decidir si se gestionan por separado o desde un sistema externo común</td></tr>
 </table></div>
 
 <h3>3. Lo que aporta y lo que exige: las piezas de la gobernanza</h3>
@@ -665,7 +665,7 @@
 <div class="tabla"><table>
 <tr><th>Etiqueta</th><th>Valores</th><th>Para qué</th></tr>
 <tr><td><code>proyecto</code></td><td>portal-web, nominas…</td><td>Repartir costes, inventario</td></tr>
-<tr><td><code>entorno</code></td><td>desarrollo, pruebas, produccion</td><td>Aplicar políticas distintas; apagar fuera de horario lo que no es producción</td></tr>
+<tr><td><code>entorno</code></td><td>desarrollo, pruebas, produccion</td><td>Aplicar políticas distintas. Apagar fuera de horario lo que no es producción</td></tr>
 <tr><td><code>propietario</code></td><td>Correo del equipo responsable</td><td>Saber a quién avisar</td></tr>
 <tr><td><code>centro-coste</code></td><td>Código contable</td><td>Repercutir el coste a cada departamento</td></tr>
 <tr><td><code>clasificacion-datos</code></td><td>publico, interno, confidencial, especial</td><td>Aplicar cifrado y accesos según el nivel</td></tr>
@@ -695,11 +695,11 @@
 <div class="tabla"><table>
 <tr><th>Recurso</th><th>Dónde</th><th>Situación</th><th>Qué falla</th><th>Qué lo habría evitado</th></tr>
 <tr><td>Máquina <code>web-pruebas-1</code></td><td>AWS, España</td><td>Encendida 24 horas, con un 2 % de uso de CPU</td><td>Entorno de pruebas encendido fuera de horario</td><td>Apagado automático según la etiqueta <code>entorno</code></td></tr>
-<tr><td>Máquina <code>prueba-juan</code></td><td>AWS, Virginia (EE. UU.)</td><td>Detenida hace 5 meses, sin etiquetas, disco de 200 GB sin cifrar</td><td>Región no permitida, sin dueño, sin cifrar y pagando el disco</td><td>Guardarraíl preventivo de regiones y de etiquetas; cifrado obligatorio</td></tr>
+<tr><td>Máquina <code>prueba-juan</code></td><td>AWS, Virginia (EE. UU.)</td><td>Detenida hace 5 meses, sin etiquetas, disco de 200 GB sin cifrar</td><td>Región no permitida, sin dueño, sin cifrar y pagando el disco</td><td>Guardarraíl preventivo de regiones y de etiquetas. Cifrado obligatorio</td></tr>
 <tr><td>Almacenamiento <code>documentos</code></td><td>AWS, España</td><td>Etiquetado como datos especiales, con lectura pública activada</td><td>Datos sensibles abiertos a Internet (el caso Toyota)</td><td>Bloqueo del acceso público a nivel de toda la organización</td></tr>
 <tr><td>Base de datos <code>pacientes</code></td><td>Proxmox, CPD</td><td>Sin copia desde hace 12 días</td><td>Incumple las copias diarias</td><td>Alerta de monitorización sobre la última copia correcta</td></tr>
-<tr><td>Máquina <code>analitica</code></td><td>Azure, oeste de EE. UU.</td><td>Creada a mano, con datos exportados de pacientes</td><td>Datos personales fuera de la UE, fuera del código y sin control</td><td>Guardarraíl de regiones también en Azure; prohibir crear recursos a mano en producción</td></tr>
-<tr><td>Usuario <code>admin-temporal</code></td><td>AWS</td><td>Administrador, sin doble factor, sin usar hace 90 días</td><td>Permisos excesivos y cuenta olvidada (el caso Capital One)</td><td>Revisión periódica de permisos; doble factor obligatorio; desactivar cuentas sin uso</td></tr>
+<tr><td>Máquina <code>analitica</code></td><td>Azure, oeste de EE. UU.</td><td>Creada a mano, con datos exportados de pacientes</td><td>Datos personales fuera de la UE, fuera del código y sin control</td><td>Guardarraíl de regiones también en Azure. Prohibir crear recursos a mano en producción</td></tr>
+<tr><td>Usuario <code>admin-temporal</code></td><td>AWS</td><td>Administrador, sin doble factor, sin usar hace 90 días</td><td>Permisos excesivos y cuenta olvidada (el caso Capital One)</td><td>Revisión periódica de permisos. Doble factor obligatorio. Desactivar cuentas sin uso</td></tr>
 <tr><td>Copia <code>antes-migracion</code></td><td>AWS, España</td><td>Instantánea de hace 14 meses, creada a mano</td><td>Nadie sabe si se puede borrar, y se paga cada mes</td><td>Etiqueta de propietario y caducidad automática de las instantáneas</td></tr>
 </table></div>
 <p>Fíjate en que ninguno de estos problemas es un fallo del proveedor. Todos son decisiones o descuidos del cliente, y todos se pueden evitar con reglas automáticas.</p>
@@ -715,7 +715,7 @@
 <tr><td>Registros de auditoría</td><td>CloudTrail</td><td>Activity Log</td><td>Cloud Audit Logs</td><td>Un SIEM que los junte todos: Wazuh (libre), Microsoft Sentinel</td></tr>
 <tr><td>Costes</td><td>Cost Explorer, Budgets</td><td>Cost Management</td><td>Presupuestos de facturación</td><td>OpenCost, estándar FOCUS</td></tr>
 </table></div>
-<p>A estas se suman las herramientas de gestión de los dos lados que vimos en la nube híbrida (Azure Arc, Terraform, Ansible, Rancher; punto 3) y las de monitorización que veremos en la unidad 7. Como marcos de referencia, los tres grandes proveedores dedican una parte de su marco de adopción de la nube (<i>Cloud Adoption Framework</i>) a la gobernanza, y en seguridad se usan el ENS, la ISO 27001 y los CIS Benchmarks.</p>
+<p>A estas se suman las herramientas de gestión de los dos lados que vimos en la nube híbrida (Azure Arc, Terraform, Ansible, Rancher. Punto 3) y las de monitorización que veremos en la unidad 7. Como marcos de referencia, los tres grandes proveedores dedican una parte de su marco de adopción de la nube (<i>Cloud Adoption Framework</i>) a la gobernanza, y en seguridad se usan el ENS, la ISO 27001 y los CIS Benchmarks.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
@@ -752,9 +752,9 @@
 <tr><td><b>Público</b></td><td>Horarios, cartera de servicios, preguntas frecuentes</td><td>Cualquier modelo</td></tr>
 <tr><td><b>Interno</b></td><td>Estadísticas agregadas de actividad, turnos del personal</td><td>Cualquier modelo, con control de acceso</td></tr>
 <tr><td><b>Confidencial</b></td><td>Nombre, DNI, teléfono y citas de los pacientes</td><td>Cifrado, acceso restringido, proveedor certificado, datos en la UE</td></tr>
-<tr><td><b>Especialmente protegido</b></td><td>Diagnósticos, historia clínica, resultados de pruebas</td><td>Categoría especial del RGPD; ENS de categoría alta; a menudo se prefiere control propio o una nube soberana</td></tr>
+<tr><td><b>Especialmente protegido</b></td><td>Diagnósticos, historia clínica, resultados de pruebas</td><td>Categoría especial del RGPD. ENS de categoría alta. A menudo se prefiere control propio o una nube soberana</td></tr>
 </table></div>
-<p>La clasificación suele dar ya la primera respuesta: si casi todos los datos son públicos o internos, la nube pública no tiene obstáculos; si hay mucho dato especialmente protegido, la privada o la híbrida ganan peso, y la parte pública solo se usa con proveedores certificados y en la UE.</p>
+<p>La clasificación suele dar ya la primera respuesta: si casi todos los datos son públicos o internos, la nube pública no tiene obstáculos. Si hay mucho dato especialmente protegido, la privada o la híbrida ganan peso, y la parte pública solo se usa con proveedores certificados y en la UE.</p>
 <p>Un error frecuente es pensar "pública = insegura, privada = segura". Una nube pública bien configurada puede ser más segura que un CPD pequeño mal mantenido. Lo que decide no es el modelo, sino si cumple los requisitos de cada nivel de dato.</p>
 
 <h3>3. Paso 2: la matriz de decisión ponderada</h3>
@@ -808,20 +808,20 @@
 <h3>Actividad</h3>
 <div class="actividad">
 <h4>Actividad de cierre. Consultoría de nube</h4>
-<p>Individual. Se hace después de la exposición de los pósters, y los cinco pósters son vuestro material de consulta. Cada uno recibe una de estas organizaciones y actúa como consultor: tiene que recomendarle el modelo de despliegue más adecuado. Todos los datos que necesitáis están en la ficha; si algo no aparece, no lo supongáis: indicad en la recomendación que habría que preguntarlo.</p>
+<p>Individual. Se hace después de la exposición de los pósters, y los cinco pósters son vuestro material de consulta. Cada uno recibe una de estas organizaciones y actúa como consultor: tiene que recomendarle el modelo de despliegue más adecuado. Todos los datos que necesitáis están en la ficha. Si algo no aparece, no lo supongáis: indicad en la recomendación que habría que preguntarlo.</p>
 <ul>
 <li><b>A. Clínica dental con 6 centros.</b> Agenda de citas, historia clínica con radiografías (2 TB, crece 300 GB al año), 45 empleados. Un único informático a media jornada. No tiene CPD: un servidor de 2019 en un armario de la sede. Demanda estable, en horario de consulta. La dirección no quiere gastar más de 15.000 € de golpe.</li>
 <li><b>B. Tienda online de material deportivo.</b> 40.000 visitas al día, que se multiplican por 8 en Black Friday y en rebajas de enero. Vende en España y Portugal y quiere abrir Francia el año que viene. Cobra con tarjeta a través de una pasarela de pago externa (no guarda los números de tarjeta). Equipo de 2 desarrolladores, nadie de sistemas.</li>
 <li><b>C. Ayuntamiento de 25.000 habitantes.</b> Sede electrónica, padrón, registro y web municipal. Obligado al ENS, con sistemas de categoría media. Dos técnicos informáticos. Un CPD pequeño con servidores de 2017, al final de su vida útil. Presupuesto anual ajustado y poco margen para inversiones (capítulo 6). Demanda estable, con picos en los plazos de pago de impuestos.</li>
 <li><b>D. Centro de investigación en genómica.</b> 400 TB de datos de secuenciación, que crecen 100 TB al año. Un clúster de cálculo ocupado el 85 % del tiempo, con dos o tres picos al año antes de congresos. Equipo de 5 técnicos de sistemas con experiencia en Linux y OpenStack. Datos genéticos de pacientes de estudios clínicos. Financiación por proyectos europeos, con partidas para comprar equipamiento.</li>
-<li><b>E. Estudio de videojuegos independiente.</b> Lanza un juego multijugador en línea dentro de 4 meses. No saben cuántos jugadores tendrán: entre 5.000 y 500.000 el primer mes. Jugadores en Europa y América. Tres programadores, sin dinero para comprar hardware. Guarda cuentas de usuario (correo y apodo); los pagos los gestiona la tienda de juegos donde se vende.</li>
+<li><b>E. Estudio de videojuegos independiente.</b> Lanza un juego multijugador en línea dentro de 4 meses. No saben cuántos jugadores tendrán: entre 5.000 y 500.000 el primer mes. Jugadores en Europa y América. Tres programadores, sin dinero para comprar hardware. Guarda cuentas de usuario (correo y apodo). Los pagos los gestiona la tienda de juegos donde se vende.</li>
 </ul>
 <ol class="pasos">
 <li><b>Clasifica los datos</b> de tu organización en los cuatro niveles del apartado 2 e indica qué exige cada nivel.</li>
 <li><b>Identifica los requisitos eliminatorios</b>, si los hay, y explica de dónde salen (normativa, presupuesto, personal…).</li>
 <li><b>Construye la matriz ponderada</b> en una hoja de cálculo, con al menos 6 criterios que cubran las cuatro necesidades, comparando nube pública y nube privada. Justifica cada peso y cada puntuación en una frase.</li>
 <li><b>Haz el análisis de sensibilidad</b>: cambia 10 puntos el peso del criterio más importante y comprueba si cambia el resultado.</li>
-<li><b>Redacta la recomendación</b> (entre 10 y 15 líneas, para la dirección): el modelo que propones, que puede ser pública, privada, comunitaria o híbrida; los motivos; dos riesgos y cómo se mitigan; y qué tipo de proveedor o plataforma buscarías, apoyándote en los pósters.</li>
+<li><b>Redacta la recomendación</b> (entre 10 y 15 líneas, para la dirección): el modelo que propones, que puede ser pública, privada, comunitaria o híbrida. Los motivos. Dos riesgos y cómo se mitigan, y qué tipo de proveedor o plataforma buscarías, apoyándote en los pósters.</li>
 </ol>
 <p>Para terminar, cada uno presenta su caso en 3 minutos como si hablara con la dirección. El resto de la clase hace de dirección y plantea una objeción ("¿y si el proveedor sube los precios?", "¿y si se va el informático?").</p>
 <p class="entrega">Entrega en Aules: la hoja de cálculo con la matriz y la sensibilidad, y un documento con la clasificación de datos, los requisitos eliminatorios y la recomendación.</p>
