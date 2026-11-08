@@ -427,118 +427,144 @@
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p4" aria-labelledby="tab-p4" hidden>
 <p class="meta">Unidad 3 · 4. Multinube · 2 horas</p>
-<h2>Nube híbrida y multinube</h2>
+<h2>La multinube</h2>
 <p class="chips"><span class="ce" title="Se ha diferenciado entre servicios de nube híbrida y entornos multinube, identificando requisitos y casos de uso específicos.">CE 3e</span></p>
 <h3>Objetivos del punto</h3>
 <ul>
-<li>Definir el entorno multinube y diferenciarlo de la nube híbrida.</li>
-<li>Identificar los requisitos técnicos y organizativos de cada modelo.</li>
-<li>Conocer los casos de uso específicos de la nube híbrida y de la multinube.</li>
-<li>Comprobar en la práctica la portabilidad: desplegar la misma aplicación en contenedor en dos plataformas distintas.</li>
+<li>Definir la multinube y diferenciarla con precisión de la nube híbrida.</li>
+<li>Esquematizar un entorno multinube y responder para él las cuatro preguntas de la unidad.</li>
+<li>Distinguir los tipos de multinube según cómo se reparten las cargas entre proveedores.</li>
+<li>Identificar los requisitos y los casos de uso específicos de la multinube frente a la nube híbrida.</li>
+<li>Conocer las tecnologías que hacen posible la multinube, con los contenedores en el centro.</li>
 </ul>
 
-<h3>1. Qué es la multinube</h3>
-<p>Una estrategia <b>multinube</b> (<i>multicloud</i>) consiste en usar <b>servicios de dos o más proveedores de nube pública</b> distintos. Por ejemplo: la aplicación en AWS, el correo y la ofimática en Microsoft 365, la analítica de datos en Google BigQuery y las copias en un proveedor europeo.</p>
-<p>Según las encuestas del sector (como el informe anual de Flexera sobre el estado de la nube), la gran mayoría de las empresas medianas y grandes usan varias nubes públicas. En muchos casos no es una estrategia planificada sino algo que sucede: cada departamento contrata lo que le conviene, se compra una empresa que usaba otra nube, un servicio SaaS corre sobre otro proveedor... Por eso se distingue entre <b>multinube accidental</b> y <b>multinube estratégica</b>.</p>
-
-<h3>2. Híbrida frente a multinube</h3>
-<p>Los dos términos se confunden a menudo porque ambos combinan varios entornos. La diferencia está en <b>qué se combina</b> y <b>cómo</b>:</p>
+<h3>1. La multinube</h3>
+<p>Seguimos el mismo método que con los otros modelos: definición, esquema y las cuatro preguntas. Y como el criterio de evaluación lo pide expresamente, terminamos el apartado comparándola con la nube híbrida.</p>
+<h4>Definición</h4>
+<p>Un entorno <b>multinube</b> (<i>multicloud</i>) es el que usa servicios de <b>dos o más proveedores de nube pública</b> distintos. Por ejemplo: la aplicación en AWS, el correo y la ofimática en Microsoft 365, la analítica de datos en Google BigQuery y las copias de seguridad en un proveedor europeo.</p>
+<p>La multinube no aparece en la definición del NIST de 2011: es un término que ha creado la práctica, porque hoy casi ninguna organización mediana o grande usa un solo proveedor. Cuentan todos los modelos de servicio: usar máquinas en AWS y Microsoft 365 (SaaS) ya es, técnicamente, multinube.</p>
+<p>Se distingue entre dos situaciones:</p>
+<ul>
+<li><b>Multinube accidental</b>: no se ha planificado. Cada departamento contrata lo que le conviene, se compra una empresa que usaba otra nube, un servicio SaaS corre sobre otro proveedor... Es la más frecuente, y su problema es el descontrol: nadie sabe qué hay ni cuánto cuesta (punto 5).</li>
+<li><b>Multinube estratégica</b>: se reparte entre proveedores a propósito, con un motivo claro y unas reglas. Es la que estudiamos en este punto.</li>
+</ul>
+<h4>Esquema</h4>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 164" role="img" aria-label="Híbrida y multinube" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-hib_multi" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12.0" y="40.0" width="96.0" height="50.0" rx="6" class="d-naranja"/><text x="60.0" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">Privada</text><text x="60.0" y="73.0" class="t" text-anchor="middle" dominant-baseline="middle">(CPD)</text><rect x="176.0" y="40.0" width="96.0" height="50.0" rx="6" class="d-azul"/><text x="224.0" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">Pública</text><text x="224.0" y="73.0" class="t" text-anchor="middle" dominant-baseline="middle">(AWS)</text><rect x="300.0" y="40.0" width="96.0" height="50.0" rx="6" class="d-azul"/><text x="348.0" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">Pública</text><text x="348.0" y="73.0" class="t" text-anchor="middle" dominant-baseline="middle">(AWS)</text><rect x="404.0" y="40.0" width="96.0" height="50.0" rx="6" class="d-azul"/><text x="452.0" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">Pública</text><text x="452.0" y="73.0" class="t" text-anchor="middle" dominant-baseline="middle">(Azure)</text><rect x="512.0" y="20.0" width="96.0" height="44.0" rx="6" class="d-naranja"/><text x="560.0" y="34.0" class="t" text-anchor="middle" dominant-baseline="middle">Privada</text><text x="560.0" y="50.0" class="t" text-anchor="middle" dominant-baseline="middle">(CPD)</text><rect x="620.0" y="20.0" width="88.0" height="44.0" rx="6" class="d-azul"/><text x="664.0" y="42.0" class="t" text-anchor="middle" dominant-baseline="middle">AWS</text><rect x="620.0" y="86.0" width="88.0" height="44.0" rx="6" class="d-azul"/><text x="664.0" y="108.0" class="t" text-anchor="middle" dominant-baseline="middle">Azure</text><path d="M110.0,65.0 L174.0,65.0" class="flecha " marker-end="url(#fl-hib_multi)" marker-start="url(#fl-hib_multi)"/><rect x="105.5" y="56.0" width="73.0" height="18" rx="3" class="fondo-etiqueta"/><text x="142.0" y="65.0" class="te" text-anchor="middle" dominant-baseline="middle">integradas</text><path d="M610.0,42.0 L618.0,42.0" class="flecha " marker-end="url(#fl-hib_multi)" marker-start="url(#fl-hib_multi)"/><path d="M610.0,42.0 L614.0,42.0 L614.0,108.0 L618.0,108.0" class="flecha " marker-end="url(#fl-hib_multi)" marker-start="url(#fl-hib_multi)"/><text x="142.0" y="130.0" class="t tb" text-anchor="middle" dominant-baseline="middle">HÍBRIDA</text><text x="400.0" y="130.0" class="t tb" text-anchor="middle" dominant-baseline="middle">MULTINUBE</text><text x="610.0" y="150.0" class="t tb" text-anchor="middle" dominant-baseline="middle">HÍBRIDA + MULTINUBE</text><text x="400.0" y="108.0" class="ts" text-anchor="middle" dominant-baseline="middle">cargas distintas o la misma en ambas</text></svg></div><figcaption>Nube híbrida (tipos distintos integrados), multinube (varios proveedores públicos) y la combinación de ambas.</figcaption></figure>
+<h4>Las cuatro preguntas aplicadas a la multinube</h4>
+<p>Cada parte de una multinube es una nube pública normal (punto 1). Lo nuevo es que hay <b>varios dueños</b>, y la organización es la única que los ve todos:</p>
+<div class="tabla"><table>
+<tr><th>Pregunta</th><th>Proveedor A</th><th>Proveedor B</th><th>La organización</th></tr>
+<tr><td>¿De quién es el hardware?</td><td>Del proveedor A</td><td>Del proveedor B</td><td>Ninguno: no necesita CPD propio</td></tr>
+<tr><td>¿Quién lo gestiona y opera?</td><td>A, lo físico; la organización, sus recursos con la consola de A</td><td>B, lo físico; la organización, sus recursos con la consola de B</td><td>Coordina todo con herramientas comunes</td></tr>
+<tr><td>¿Dónde está físicamente?</td><td>En las regiones de A</td><td>En las regiones de B</td><td>Si las cargas se comunican, hay red entre las dos nubes</td></tr>
+<tr><td>¿Quién más lo usa?</td><td>Muchos clientes de A</td><td>Muchos clientes de B</td><td>—</td></tr>
+</table></div>
+<p>Varios dueños significa también varios contratos, varias facturas, varias consolas, varias formas de llamar a lo mismo y varios equipos de soporte. Ahí está toda la dificultad del modelo.</p>
+<h4>Híbrida frente a multinube</h4>
+<p>Los dos términos se confunden a menudo porque los dos combinan varios entornos. La diferencia está en <b>qué se combina</b>:</p>
 <div class="tabla"><table>
 <tr><th></th><th>Nube híbrida</th><th>Multinube</th></tr>
-<tr><td>Qué combina</td><td>Tipos distintos de nube: privada (u on premise) + pública</td><td>Varios proveedores de nube pública (puede incluir o no privada)</td></tr>
-<tr><td>Integración</td><td>Alta: las partes están conectadas y funcionan como un conjunto; datos y cargas se mueven entre ellas</td><td>Variable: a menudo cada proveedor ejecuta cargas distintas e independientes</td></tr>
-<tr><td>Motivación principal</td><td>Mantener control sobre ciertas cargas y datos y aprovechar la nube para el resto</td><td>Elegir lo mejor de cada proveedor, evitar la dependencia de uno, resiliencia, requisitos normativos o geográficos</td></tr>
-<tr><td>Infraestructura propia</td><td>Sí, siempre</td><td>No es necesaria</td></tr>
-<tr><td>Conectividad</td><td>Clave: VPN o enlace dedicado entre CPD y nube</td><td>Entre nubes solo si las cargas se comunican</td></tr>
+<tr><td>Qué combina</td><td><b>Tipos</b> distintos de nube: privada (u on premise) y pública</td><td><b>Proveedores</b> distintos de nube pública</td></tr>
+<tr><td>¿Hace falta CPD propio?</td><td>Sí, siempre</td><td>No</td></tr>
+<tr><td>Pregunta que marca la diferencia</td><td>"¿De quién es?": una parte es mía y otra de un proveedor</td><td>"¿De qué proveedor?": todo es de proveedores, pero de varios</td></tr>
+<tr><td>Integración</td><td>Alta: las partes funcionan como un conjunto y se mueven datos y cargas entre ellas</td><td>Variable: muchas veces cada proveedor ejecuta cargas distintas e independientes</td></tr>
+<tr><td>Conectividad</td><td>Imprescindible: VPN o enlace dedicado entre CPD y nube</td><td>Solo si las cargas se comunican entre nubes</td></tr>
+<tr><td>Motivación principal</td><td>Mantener el control de ciertas cargas y datos, y aprovechar la nube para el resto</td><td>Elegir lo mejor de cada proveedor, no depender de uno, requisitos geográficos o normativos</td></tr>
+<tr><td>Dificultad principal</td><td>Integrar dos mundos distintos (lo propio y lo del proveedor)</td><td>Manejar las diferencias entre proveedores</td></tr>
 </table></div>
-<p>No son excluyentes: una organización con CPD propio, AWS y Azure es a la vez <b>híbrida y multinube</b>. Hay quien lo llama <i>hybrid multicloud</i>.</p>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 164" role="img" aria-label="Híbrida y multinube" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-hib_multi" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12.0" y="40.0" width="96.0" height="50.0" rx="6" class="d-naranja"/><text x="60.0" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">Privada</text><text x="60.0" y="73.0" class="t" text-anchor="middle" dominant-baseline="middle">(CPD)</text><rect x="176.0" y="40.0" width="96.0" height="50.0" rx="6" class="d-azul"/><text x="224.0" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">Pública</text><text x="224.0" y="73.0" class="t" text-anchor="middle" dominant-baseline="middle">(AWS)</text><rect x="300.0" y="40.0" width="96.0" height="50.0" rx="6" class="d-azul"/><text x="348.0" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">Pública</text><text x="348.0" y="73.0" class="t" text-anchor="middle" dominant-baseline="middle">(AWS)</text><rect x="404.0" y="40.0" width="96.0" height="50.0" rx="6" class="d-azul"/><text x="452.0" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">Pública</text><text x="452.0" y="73.0" class="t" text-anchor="middle" dominant-baseline="middle">(Azure)</text><rect x="512.0" y="20.0" width="96.0" height="44.0" rx="6" class="d-naranja"/><text x="560.0" y="34.0" class="t" text-anchor="middle" dominant-baseline="middle">Privada</text><text x="560.0" y="50.0" class="t" text-anchor="middle" dominant-baseline="middle">(CPD)</text><rect x="620.0" y="20.0" width="88.0" height="44.0" rx="6" class="d-azul"/><text x="664.0" y="42.0" class="t" text-anchor="middle" dominant-baseline="middle">AWS</text><rect x="620.0" y="86.0" width="88.0" height="44.0" rx="6" class="d-azul"/><text x="664.0" y="108.0" class="t" text-anchor="middle" dominant-baseline="middle">Azure</text><path d="M110.0,65.0 L174.0,65.0" class="flecha " marker-end="url(#fl-hib_multi)" marker-start="url(#fl-hib_multi)"/><rect x="105.5" y="56.0" width="73.0" height="18" rx="3" class="fondo-etiqueta"/><text x="142.0" y="65.0" class="te" text-anchor="middle" dominant-baseline="middle">integradas</text><path d="M610.0,42.0 L618.0,42.0" class="flecha " marker-end="url(#fl-hib_multi)" marker-start="url(#fl-hib_multi)"/><path d="M610.0,42.0 L614.0,42.0 L614.0,108.0 L618.0,108.0" class="flecha " marker-end="url(#fl-hib_multi)" marker-start="url(#fl-hib_multi)"/><text x="142.0" y="130.0" class="t tb" text-anchor="middle" dominant-baseline="middle">HÍBRIDA</text><text x="400.0" y="130.0" class="t tb" text-anchor="middle" dominant-baseline="middle">MULTINUBE</text><text x="610.0" y="150.0" class="t tb" text-anchor="middle" dominant-baseline="middle">HÍBRIDA + MULTINUBE</text><text x="400.0" y="108.0" class="ts" text-anchor="middle" dominant-baseline="middle">cargas distintas o la misma en ambas</text></svg></div><figcaption>Nube híbrida (tipos distintos integrados), multinube (varios proveedores públicos) y la combinación de ambas.</figcaption></figure>
+<p>Una regla rápida para clasificar: si hay una parte <b>privada o propia</b>, es híbrida; si hay <b>más de un proveedor público</b>, es multinube; si hay las dos cosas, es las dos a la vez. Una organización con CPD propio, AWS y Azure es <b>híbrida y multinube</b> (en inglés se dice <i>hybrid multicloud</i>), y es la situación más habitual en las grandes empresas.</p>
 
-<h3>3. Casos de uso específicos</h3>
-<h4>Cuándo tiene sentido la nube híbrida</h4>
+<h3>2. Variantes: tipos de multinube</h3>
+<p>Lo que distingue una multinube de otra es <b>cómo se reparten las cargas</b> entre los proveedores:</p>
+<div class="tabla"><table>
+<tr><th>Tipo</th><th>Cómo se reparten las cargas</th><th>Ejemplo</th><th>Dificultad</th></tr>
+<tr><td><b>Accidental</b></td><td>Cada área contrata la suya, sin plan</td><td>Marketing con su analítica en Google, sistemas con todo en AWS</td><td>Técnica baja; de control, alta</td></tr>
+<tr><td><b>Especializada</b> (<i>best of breed</i>)</td><td>Cada carga distinta, en el proveedor que mejor la hace</td><td>La aplicación en AWS, la analítica en BigQuery, la ofimática en Microsoft 365</td><td>Media. Es la más habitual</td></tr>
+<tr><td><b>Segmentada</b></td><td>Según el país o la normativa</td><td>Un proveedor local en un país donde el principal no tiene región o no tiene la certificación exigida</td><td>Media</td></tr>
+<tr><td><b>Redundante</b></td><td>La <b>misma</b> aplicación en dos proveedores: una de reserva (activa-pasiva) o las dos a la vez (activa-activa)</td><td>Un servicio crítico en AWS y Azure, con un DNS que reparte el tráfico</td><td>Muy alta: hay que mantener los datos sincronizados entre nubes. Es rara</td></tr>
+<tr><td><b>Portable</b></td><td>Todo diseñado para poder moverse de proveedor según precio o condiciones</td><td>Aplicaciones en Kubernetes desplegadas con Terraform, sin servicios propios de ningún proveedor</td><td>Alta: renuncia a los servicios exclusivos</td></tr>
+</table></div>
+<p>Un matiz de experto sobre la multinube redundante: protege de la caída completa de un proveedor, que es muy poco frecuente, a cambio de duplicar casi todo. Para la mayoría de organizaciones, desplegar en varias zonas o regiones del mismo proveedor (unidad 2) da una disponibilidad suficiente por mucho menos coste.</p>
+<h4>Las nubes empiezan a conectarse entre sí</h4>
+<p>Hasta hace poco, unir dos nubes públicas exigía montar VPN o contratar enlaces a través de terceros. Eso está cambiando, y es una señal de que la multinube se ha vuelto normal:</p>
 <ul>
-<li><b>Datos que no pueden salir</b> de la organización o del país, con el resto de la aplicación en la nube.</li>
-<li><b>CPD reciente</b> que hay que amortizar, con crecimiento hacia la nube.</li>
-<li><b>Picos temporales</b> (desbordamiento) sobre una base estable propia.</li>
-<li><b>Latencia local</b>: fábricas, hospitales, tiendas (borde).</li>
-<li><b>Recuperación ante desastres</b> sin construir un segundo CPD.</li>
-<li><b>Migración gradual</b> a la nube.</li>
-</ul>
-<h4>Cuándo tiene sentido la multinube</h4>
-<ul>
-<li><b>Lo mejor de cada proveedor</b> (<i>best of breed</i>): IA o analítica de uno, integración con Microsoft de otro.</li>
-<li><b>Evitar la dependencia</b> de un único proveedor y mejorar la posición al negociar precios.</li>
-<li><b>Resiliencia extrema</b>: que la caída de un proveedor completo no pare el servicio. Es cara y compleja; pocas organizaciones la necesitan realmente.</li>
-<li><b>Requisitos geográficos o normativos</b>: un proveedor no tiene región en cierto país o no tiene la certificación exigida.</li>
-<li><b>Fusiones y adquisiciones</b>: la empresa comprada usaba otra nube.</li>
-<li><b>Aplicaciones SaaS</b> que ya están en otra nube.</li>
+<li><b>Interconexión directa entre proveedores</b>: Google ofrece Cross-Cloud Interconnect hacia otras nubes, y AWS lanzó en abril de 2026 <b>AWS Interconnect – multicloud</b>, enlaces privados y cifrados entre una VPC de AWS y Google Cloud, con Azure y Oracle anunciados para más adelante. AWS publicó la especificación como estándar abierto para que cualquier proveedor pueda sumarse.</li>
+<li><b>Servicios de un proveedor dentro de otro</b>: desde 2024, Oracle ofrece su base de datos funcionando en los CPD de Azure, AWS y Google Cloud (Oracle Database@Azure, @AWS y @Google Cloud). El cliente la contrata y la gestiona desde la consola de su proveedor principal.</li>
 </ul>
 
-<h3>4. Requisitos de cada modelo</h3>
-<h4>Requisitos de la nube híbrida</h4>
+<h3>3. Lo que aporta y lo que exige el modelo multinube</h3>
+<h4>Lo que aporta</h4>
 <ul>
-<li>Conectividad privada fiable y rangos IP planificados sin solapamiento.</li>
-<li>Identidad federada entre el directorio corporativo y la nube.</li>
-<li>Herramientas de gestión que abarquen ambos lados (Azure Arc, Terraform, Ansible, Kubernetes).</li>
-<li>Políticas de seguridad coherentes a ambos lados.</li>
-<li>Estrategia de datos: qué se replica y cómo.</li>
-<li>Personal que conozca la infraestructura propia y la nube.</li>
+<li><b>Lo mejor de cada proveedor</b>: la IA o la analítica de uno, la integración con Microsoft de otro, el precio de transferencia de un tercero.</li>
+<li><b>Menos dependencia</b> de un solo proveedor y más fuerza para negociar precios: si puedes irte, te tratan mejor.</li>
+<li><b>Requisitos geográficos o normativos</b>: cubrir países o certificaciones que un solo proveedor no cubre.</li>
+<li><b>Soberanía</b>: combinar un proveedor de hiperescala para lo general con un proveedor europeo para los datos más sensibles (punto 1).</li>
+<li><b>Resiliencia frente a la caída de un proveedor completo</b>, si de verdad se necesita (multinube redundante).</li>
 </ul>
-<h4>Requisitos de la multinube</h4>
+<h4>Lo que exige o limita</h4>
 <ul>
-<li><b>Portabilidad</b>: diseñar las cargas para que puedan moverse, usando tecnologías estándar o abiertas: <b>contenedores</b> (imágenes OCI), <b>Kubernetes</b> (servicios gestionados en todos los proveedores: EKS, AKS, GKE), bases de datos de código abierto (PostgreSQL, MySQL), almacenamiento con API compatible con S3.</li>
-<li><b>Infraestructura como código multiproveedor</b>: Terraform/OpenTofu o Pulumi, en lugar de herramientas específicas (CloudFormation solo sirve para AWS; Bicep solo para Azure).</li>
-<li><b>Abstracción de las diferencias</b>: cada proveedor llama distinto a las mismas cosas y tiene API distintas. Hay que decidir si se usa el "mínimo común denominador" (portable pero sin aprovechar servicios avanzados) o servicios propios de cada uno (más potentes pero menos portables).</li>
-<li><b>Identidad centralizada</b> con federación hacia cada proveedor.</li>
-<li><b>Gestión de costes</b> consolidada (herramientas FinOps multiproveedor).</li>
-<li><b>Monitorización y seguridad</b> unificadas: registros de todas las nubes en un único sistema (SIEM).</li>
-<li><b>Conocimientos</b> de varios proveedores en el equipo.</li>
-<li><b>Red entre nubes</b> si las cargas se comunican, teniendo en cuenta el coste de transferencia de salida de cada proveedor.</li>
+<li><b>Portabilidad</b>: diseñar las cargas con tecnologías estándar que existan en todos los proveedores (apartado 4).</li>
+<li><b>Decidir entre portabilidad y potencia</b>: usar solo lo que tienen todos (el <b>mínimo común denominador</b>) es portable pero desaprovecha los mejores servicios; usar los servicios exclusivos de cada uno es más potente pero ata. No hay respuesta universal: se decide carga por carga.</li>
+<li><b>Conocimientos de varios proveedores</b>: cada uno llama distinto a las mismas cosas (una VPC en AWS es una VNet en Azure) y tiene su propia API, consola y certificaciones.</li>
+<li><b>Gestión unificada</b> de identidades, costes, seguridad y monitorización, para no tener varios mundos sin control (punto 5).</li>
 </ul>
 <h4>Costes ocultos de la multinube</h4>
-<p>Duplicar herramientas, formación y certificaciones; perder descuentos por volumen al repartir el gasto; transferencia de datos entre proveedores; mayor superficie de ataque; y la complejidad de diagnosticar problemas que atraviesan varias nubes. La multinube debe tener un motivo claro: "por si acaso" no suele justificar su coste.</p>
+<p>Duplicar herramientas, formación y certificaciones; perder descuentos por volumen al repartir el gasto entre proveedores; pagar la transferencia de datos entre nubes; ampliar la superficie de ataque; y la dificultad de diagnosticar problemas que atraviesan varias nubes. La multinube tiene que tener un motivo claro: "por si acaso" no suele justificar su coste.</p>
+<p>La transferencia entre nubes se está abaratando por la normativa europea. La Ley de Datos de la UE (<i>Data Act</i>, unidad 2) prohíbe cobrar por cambiar de proveedor a partir del 12 de enero de 2027, y para el uso de varios proveedores <b>en paralelo</b> solo permite cobrar la transferencia a precio de coste. Anticipándose, Google eliminó en septiembre de 2025 el coste de la transferencia multinube para sus clientes de la UE y el Reino Unido.</p>
+<h4>Requisitos: híbrida frente a multinube</h4>
+<p>El criterio de evaluación pide identificar los requisitos de cada modelo. Muchos son parecidos, pero no iguales:</p>
+<div class="tabla"><table>
+<tr><th>Área</th><th>Nube híbrida</th><th>Multinube</th></tr>
+<tr><td>Conectividad</td><td>Imprescindible entre el CPD y la nube, con rangos de direcciones sin solapar</td><td>Solo entre las nubes cuyas cargas se comunican; cuidado con el coste de transferencia</td></tr>
+<tr><td>Identidad</td><td>El directorio corporativo, federado con la nube</td><td>El mismo directorio, federado con cada proveedor</td></tr>
+<tr><td>Herramientas de gestión</td><td>Que abarquen el CPD y la nube (Azure Arc, Terraform)</td><td>Que abarquen varios proveedores (Terraform, Kubernetes)</td></tr>
+<tr><td>Portabilidad</td><td>Deseable, para mover cargas entre casa y la nube</td><td>Imprescindible si se quiere poder cambiar de proveedor</td></tr>
+<tr><td>Datos</td><td>Qué datos se quedan en casa y cuáles cruzan</td><td>En qué proveedor vive cada dato y cuánto cuesta moverlo</td></tr>
+<tr><td>Personal</td><td>Infraestructura propia y una nube</td><td>Varias nubes, cada una con sus particularidades</td></tr>
+</table></div>
+<h4>Casos de uso: ¿híbrida o multinube?</h4>
+<p>Los casos de uso de la nube híbrida los vimos en el punto 3. Esta tabla los pone frente a los de la multinube, para saber cuál encaja en cada situación:</p>
+<div class="tabla"><table>
+<tr><th>Situación</th><th>Modelo</th><th>Por qué</th></tr>
+<tr><td>Datos que no pueden salir de la organización, con el resto de la aplicación en la nube</td><td>Híbrida</td><td>Hace falta una parte propia</td></tr>
+<tr><td>Un CPD recién renovado que hay que amortizar</td><td>Híbrida</td><td>Se aprovecha lo propio y se crece hacia la nube</td></tr>
+<tr><td>Fábricas, hospitales o tiendas que necesitan servidores in situ</td><td>Híbrida (borde)</td><td>Latencia local y funcionamiento sin conexión</td></tr>
+<tr><td>La mejor IA está en un proveedor y el resto de la empresa en otro</td><td>Multinube especializada</td><td>Cada carga en el proveedor que mejor la hace</td></tr>
+<tr><td>Se compra una empresa que lo tiene todo en otra nube</td><td>Multinube (al menos durante un tiempo)</td><td>Migrarlo todo de golpe es caro y arriesgado</td></tr>
+<tr><td>Hay que dar servicio en un país donde el proveedor principal no tiene región</td><td>Multinube segmentada</td><td>Un segundo proveedor cubre ese país</td></tr>
+<tr><td>Un servicio crítico que no puede depender de un solo proveedor</td><td>Multinube redundante</td><td>Solo si el coste de una caída lo justifica</td></tr>
+<tr><td>Un banco con su CPD, la web en AWS y la analítica en Azure</td><td>Las dos</td><td>Parte propia y varios proveedores</td></tr>
+</table></div>
 
-<h3>5. La portabilidad en la práctica: contenedores</h3>
-<p>El contenedor es la herramienta de portabilidad más potente que tenemos: la misma imagen de <code>cita-previa-app</code> se puede ejecutar en el Docker de nuestro portátil, en Amazon ECS, en Azure Container Apps, en Google Cloud Run o en cualquier Kubernetes. Lo que cambia entre plataformas es <b>cómo se despliega</b> (la definición del servicio, la red, los secretos), no la aplicación. Por eso los contenedores son el núcleo de este curso de especialización.</p>
-
-<h3>Actividades</h3>
-<div class="actividad">
-<h4>Actividad 1. ¿Híbrida, multinube o ambas?</h4>
-<p>En parejas, clasificad y justificad:</p>
-<ol class="casos">
-<li>Una universidad con OpenStack propio y copias en Azure.</li>
-<li>Una startup con su app en Google Cloud y el correo en Microsoft 365.</li>
-<li>Un banco con CPD, AWS para la web y Azure para la analítica.</li>
-<li>Una empresa con la misma aplicación en AWS y en Azure detrás de un DNS que reparte el tráfico.</li>
-<li>Un ayuntamiento con servidores propios y la sede electrónica en un proveedor certificado ENS.</li>
-</ol>
-<p>Para cada una, indicad un requisito que deban cumplir y un riesgo.</p>
-</div>
-<div class="actividad">
-<h4>Actividad 2. La misma imagen en dos plataformas</h4>
-<p>En parejas. Vamos a comprobar la portabilidad desplegando <code>cita-previa-app</code> (unidad 1, punto 5) en infraestructura propia (vuestro portátil) y en un servicio de contenedores de la nube pública.</p>
-<ol>
-<li>Publicad la imagen en un registro público: cread un token de GitHub con permiso <code>write:packages</code>, iniciad sesión (<code>echo $TOKEN | docker login ghcr.io -u USUARIO --password-stdin</code>), etiquetad y subid: <code>docker tag cita-previa-app:0.2 ghcr.io/USUARIO/cita-previa-app:0.2</code> y <code>docker push ...</code>. En GitHub, en el paquete, cambiad su visibilidad a pública.</li>
-<li><b>Infraestructura propia</b>: en el portátil de vuestra pareja (así comprobáis que se descarga del registro y no de la caché local), <code>docker run -d -p 8000:8000 -e ENTORNO=privada ghcr.io/USUARIO/cita-previa-app:0.2</code> y probad <code>http://localhost:8000/salud</code>.</li>
-<li><b>Nube pública</b>: desplegad la misma imagen como servicio de contenedores gestionado. En AWS Academy (región <code>us-east-1</code>): <i>ECS → Clusters → Create</i> (AWS Fargate), definición de tarea con la imagen, puerto 8000, variable <code>ENTORNO=publica</code>, <code>LabRole</code> como rol de tarea y de ejecución, y un servicio con IP pública en una subred pública y un grupo de seguridad que abra el 8000 solo a vuestra IP. Si el laboratorio no permite usar ECS, desplegad la imagen en una instancia EC2 con Docker instalado mediante datos de usuario (unidad 2, punto 4) y anotad en la tabla la diferencia de trabajo entre ambas opciones.</li>
-<li>Comprobad <code>/salud</code> en ambos sitios: la respuesta solo cambia en la variable de entorno.</li>
-<li>Anotad en una tabla qué fue igual y qué fue distinto en cada plataforma: cómo se indica la imagen, la red, las variables, los registros, cuánto tardó y qué habría que cambiar para migrar de una a otra.</li>
-<li>Borrad el servicio y el clúster de ECS (o la Container App) al terminar.</li>
-</ol>
-</div>
-<div class="actividad">
-<h4>Actividad 3. ¿Merece la pena la multinube para Cita Previa?</h4>
-<p>Con lo aprendido, escribid un párrafo argumentando si Cita Previa debería desplegarse en dos proveedores de nube pública a la vez. Tened en cuenta: disponibilidad que se gana, costes añadidos, personal, datos de salud y complejidad. Proponed una alternativa más sencilla si la respuesta es no.</p>
-<p class="entrega">Entrega en Aules: clasificación, capturas de los dos despliegues con la tabla comparativa, y la argumentación.</p>
-</div>
+<h3>4. Opciones en el mercado: las tecnologías multinube</h3>
+<p>En la nube pública se elige proveedor; en la privada, plataforma; en la híbrida, herramientas para cada pilar. En la multinube, lo que se elige son <b>tecnologías que funcionen igual en todos los proveedores</b>. La regla es sencilla: lo que es exclusivo de un proveedor ata a ese proveedor.</p>
+<div class="tabla"><table>
+<tr><th>Necesidad</th><th>Exclusivo de un proveedor (ata)</th><th>Funciona en todos (portable)</th></tr>
+<tr><td>Infraestructura como código</td><td>CloudFormation (AWS), Bicep (Azure)</td><td>Terraform y su versión libre OpenTofu, Pulumi</td></tr>
+<tr><td>Empaquetar la aplicación</td><td>—</td><td>Contenedores con imágenes estándar OCI (<i>Open Container Initiative</i>), como las de Docker</td></tr>
+<tr><td>Ejecutar contenedores</td><td>ECS (AWS), Azure Container Apps, Cloud Run (Google)</td><td>Kubernetes, que todos ofrecen gestionado (EKS, AKS, GKE); Rancher u OpenShift para gestionar varios clústeres</td></tr>
+<tr><td>Bases de datos</td><td>DynamoDB y Aurora (AWS), Cosmos DB (Azure), Spanner (Google)</td><td>PostgreSQL y MySQL, gestionados en todos los proveedores</td></tr>
+<tr><td>Almacenamiento de objetos</td><td>—</td><td>La API de S3, que se ha convertido en estándar: la ofrecen muchos proveedores y plataformas libres como MinIO o Ceph</td></tr>
+<tr><td>Monitorización</td><td>CloudWatch (AWS), Azure Monitor</td><td>Prometheus, Grafana y OpenTelemetry</td></tr>
+<tr><td>Costes</td><td>El formato de factura propio de cada uno</td><td>El estándar FOCUS de la FinOps Foundation, que unifica el formato de las facturas de los grandes proveedores (punto 5)</td></tr>
+<tr><td>Red entre nubes</td><td>—</td><td>VPN entre nubes, Cross-Cloud Interconnect, AWS Interconnect – multicloud</td></tr>
+</table></div>
+<p>Ojo con la columna de la izquierda: no son "malos" servicios. Muchas veces son los mejores, y por eso se usan. La decisión es consciente: se acepta la dependencia a cambio de la potencia, sabiendo lo que costaría salir.</p>
+<h4>La portabilidad en la práctica: los contenedores</h4>
+<p>El contenedor es la herramienta de portabilidad más potente que tenemos. La misma imagen se puede ejecutar en el Docker de nuestro portátil, en Amazon ECS, en Azure Container Apps, en Google Cloud Run o en cualquier Kubernetes, sin cambiar una línea de la aplicación.</p>
+<p>Lo que cambia entre plataformas es <b>cómo se despliega</b>: cómo se indica la imagen, la red, las variables de entorno, los secretos y los registros. Por eso la portabilidad completa se consigue sumando dos piezas: <b>contenedores</b> para la aplicación y <b>Kubernetes o Terraform</b> para describir el despliegue de la misma forma en todos los proveedores.</p>
+<p>Es la razón por la que los contenedores son el núcleo de este curso: son lo que permite que una aplicación no dependa del sitio donde se ejecuta, ya sea una nube privada, una pública o varias.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
-<li>¿Qué diferencia hay entre nube híbrida y multinube? ¿Puede una organización tener ambas?</li>
-<li>¿Qué es la multinube accidental?</li>
-<li>¿Qué tecnologías favorecen la portabilidad entre proveedores?</li>
+<li>¿Qué diferencia hay entre nube híbrida y multinube? ¿Qué pregunta de la unidad marca la diferencia?</li>
+<li>Clasifica: una universidad con OpenStack propio y copias en Azure; una startup en Google Cloud con el correo en Microsoft 365; un banco con CPD, AWS y Azure.</li>
+<li>¿Qué es la multinube accidental y qué problema tiene?</li>
+<li>¿En qué se diferencian la multinube especializada y la redundante? ¿Por qué la redundante es rara?</li>
 <li>¿Qué significa diseñar con el "mínimo común denominador" y qué se pierde?</li>
-<li>Cita tres costes ocultos de una estrategia multinube.</li>
+<li>¿Qué tecnologías favorecen la portabilidad entre proveedores? ¿Por qué Kubernetes es más portable que ECS?</li>
+<li>Cita tres costes ocultos de una estrategia multinube. ¿Qué ha cambiado la Ley de Datos de la UE?</li>
+<li>Pon un caso de uso en el que encaje la nube híbrida y no la multinube, y otro al revés.</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p5" aria-labelledby="tab-p5" hidden>
 <p class="meta">Unidad 3 · 5. Gobernanza · 2 horas</p>
