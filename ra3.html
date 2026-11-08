@@ -308,166 +308,122 @@
 <h3>Objetivos del punto</h3>
 <ul>
 <li>Describir el modelo de nube híbrida: propiedad de los recursos, uso compartido y cómo se integran las partes.</li>
-<li>Conocer los elementos que hacen funcionar una nube híbrida: conectividad, identidad, gestión y datos.</li>
-<li>Identificar los patrones de uso más habituales (desbordamiento, recuperación ante desastres, arquitectura por capas...).</li>
-<li>Conectar una infraestructura propia (el portátil) con la nube pública mediante un túnel VPN.</li>
+<li>Esquematizar una nube híbrida y responder para ella las cuatro preguntas de la unidad.</li>
+<li>Conocer los cuatro pilares que mantienen unida una nube híbrida: conectividad, identidad, gestión y datos.</li>
+<li>Distinguir las formas de construir una nube híbrida y sus patrones de uso más habituales.</li>
+<li>Conocer las herramientas que ofrece el mercado para cada pilar.</li>
 </ul>
 
-<h3>1. Qué es una nube híbrida</h3>
-<p>Según el NIST, una <b>nube híbrida</b> es la composición de dos o más infraestructuras de nube distintas (privada, comunitaria o pública) que <b>siguen siendo entidades independientes</b> pero están <b>unidas por tecnología estandarizada o propietaria</b> que permite la portabilidad de datos y aplicaciones.</p>
-<p>La definición tiene dos partes importantes:</p>
+<h3>1. La nube híbrida</h3>
+<p>Con la pública y la privada ya vistas, podemos combinarlas. Seguimos el mismo método: definición, esquema y las cuatro preguntas de la presentación de la unidad.</p>
+<h4>Definición</h4>
+<p>Según el NIST, una <b>nube híbrida</b> es la composición de dos o más infraestructuras de nube distintas (privada, comunitaria o pública) que <b>siguen siendo entidades independientes</b> pero están <b>unidas por tecnología</b>, estándar o propia de un fabricante, que permite mover datos y aplicaciones entre ellas.</p>
+<p>La definición tiene dos condiciones, y hacen falta las dos:</p>
 <ul>
-<li>Las partes <b>siguen siendo independientes</b>: la nube privada de la Conselleria sigue en su CPD, con su hardware; la parte pública sigue en el proveedor.</li>
-<li>Están <b>integradas</b>: hay conectividad privada entre ellas, la misma identidad de usuarios, herramientas de gestión comunes y la posibilidad de mover cargas y datos de un lado a otro. Si no hay integración, no es híbrida: es simplemente una organización que usa dos cosas por separado.</li>
+<li>Las partes <b>siguen siendo independientes</b>: la nube privada sigue en su CPD, con su hardware y su equipo; la parte pública sigue en el proveedor. No se fusionan.</li>
+<li>Están <b>integradas</b>: hay una conexión privada entre ellas, los usuarios tienen la misma identidad a los dos lados, se gestionan con herramientas comunes y se pueden mover cargas y datos de un lado a otro. Sin integración no es híbrida: es una organización que usa dos cosas por separado.</li>
 </ul>
-<p>En la práctica, el término se usa también para la combinación de <b>infraestructura on premise tradicional</b> (aunque no sea estrictamente nube privada) con una nube pública, que es la situación real de la mayoría de las organizaciones que llevan años funcionando.</p>
-
+<p>En la práctica, el término se usa también para la combinación de <b>infraestructura on premise tradicional</b>, aunque no llegue a ser nube privada (punto 2), con una nube pública. Es la situación real de la mayoría de organizaciones que llevan años funcionando: según el informe <i>State of the Cloud</i> de Flexera de 2026, en torno al 73 % de las organizaciones encuestadas tienen infraestructura híbrida.</p>
+<p>No hay que confundirla con la <b>multinube</b>, que es usar varios proveedores de nube pública. Se pueden dar las dos a la vez; la diferencia la veremos en el punto 5.</p>
 <h4>Esquema</h4>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 280" role="img" aria-label="Nube híbrida" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-nube_hibrida" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="10" width="300" height="200" rx="8" class="d-grupo-naranja"/><text x="22" y="25" class="tt">Nube privada / on premise</text><rect x="408" y="10" width="300" height="200" rx="8" class="d-grupo-azul"/><text x="418" y="25" class="tt">Nube pública</text><rect x="32.0" y="44.0" width="260.0" height="40.0" rx="6" class="d-naranja"/><text x="162.0" y="64.0" class="t" text-anchor="middle" dominant-baseline="middle">Historia clínica</text><path d="M32,108 A130.0,8 0 0 1 292,108 L292,142 A130.0,8 0 0 1 32,142 z" class="d-naranja"/><path d="M32,108 A130.0,8 0 0 0 292,108" class="d-naranja" fill="none"/><text x="162.0" y="125.0" class="t" text-anchor="middle" dominant-baseline="middle">Base de datos de citas</text><rect x="32.0" y="164.0" width="260.0" height="30.0" rx="6" class="d-gris"/><text x="162.0" y="179.0" class="t" text-anchor="middle" dominant-baseline="middle">Red 10.10.0.0/16</text><rect x="428.0" y="44.0" width="260.0" height="40.0" rx="6" class="d-azul"/><text x="558.0" y="64.0" class="t" text-anchor="middle" dominant-baseline="middle">Web de Cita Previa (autoescalado)</text><rect x="428.0" y="102.0" width="260.0" height="46.0" rx="6" class="d-azul"/><text x="558.0" y="125.0" class="t" text-anchor="middle" dominant-baseline="middle">CDN, SMS, copias de seguridad</text><rect x="428.0" y="164.0" width="260.0" height="30.0" rx="6" class="d-gris"/><text x="558.0" y="179.0" class="t" text-anchor="middle" dominant-baseline="middle">VPC 10.20.0.0/16</text><rect x="12.0" y="232.0" width="696.0" height="40.0" rx="6" class="d-morado"/><text x="360.0" y="252.0" class="t" text-anchor="middle" dominant-baseline="middle">Identidad común · gestión y monitorización unificadas · políticas comunes</text><path d="M294.0,125.0 L426.0,125.0" class="flecha " marker-end="url(#fl-nube_hibrida)" marker-start="url(#fl-nube_hibrida)"/><rect x="282.6" y="116.0" width="154.9" height="18" rx="3" class="fondo-etiqueta"/><text x="360.0" y="125.0" class="te" text-anchor="middle" dominant-baseline="middle">VPN o conexión dedicada</text><path d="M162.0,196.0 L162.0,230.0" class="flecha " marker-end="url(#fl-nube_hibrida)"/><path d="M558.0,196.0 L558.0,230.0" class="flecha " marker-end="url(#fl-nube_hibrida)"/></svg></div><figcaption>Nube híbrida: la parte privada y la pública siguen siendo independientes, pero están conectadas y se gestionan como un conjunto.</figcaption></figure>
-<h4>Propiedad y uso compartido</h4>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 280" role="img" aria-label="Nube híbrida" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-nube_hibrida" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="10" width="300" height="200" rx="8" class="d-grupo-naranja"/><text x="22" y="25" class="tt">Nube privada / on premise</text><rect x="408" y="10" width="300" height="200" rx="8" class="d-grupo-azul"/><text x="418" y="25" class="tt">Nube pública</text><rect x="32.0" y="44.0" width="260.0" height="40.0" rx="6" class="d-naranja"/><text x="162.0" y="64.0" class="t" text-anchor="middle" dominant-baseline="middle">Historia clínica</text><path d="M32,108 A130.0,8 0 0 1 292,108 L292,142 A130.0,8 0 0 1 32,142 z" class="d-naranja"/><path d="M32,108 A130.0,8 0 0 0 292,108" class="d-naranja" fill="none"/><text x="162.0" y="125.0" class="t" text-anchor="middle" dominant-baseline="middle">Base de datos de citas</text><rect x="32.0" y="164.0" width="260.0" height="30.0" rx="6" class="d-gris"/><text x="162.0" y="179.0" class="t" text-anchor="middle" dominant-baseline="middle">Red 10.10.0.0/16</text><rect x="428.0" y="44.0" width="260.0" height="40.0" rx="6" class="d-azul"/><text x="558.0" y="64.0" class="t" text-anchor="middle" dominant-baseline="middle">Web de citas (autoescalado)</text><rect x="428.0" y="102.0" width="260.0" height="46.0" rx="6" class="d-azul"/><text x="558.0" y="125.0" class="t" text-anchor="middle" dominant-baseline="middle">CDN, SMS, copias de seguridad</text><rect x="428.0" y="164.0" width="260.0" height="30.0" rx="6" class="d-gris"/><text x="558.0" y="179.0" class="t" text-anchor="middle" dominant-baseline="middle">VPC 10.20.0.0/16</text><rect x="12.0" y="232.0" width="696.0" height="40.0" rx="6" class="d-morado"/><text x="360.0" y="252.0" class="t" text-anchor="middle" dominant-baseline="middle">Identidad común · gestión y monitorización unificadas · políticas comunes</text><path d="M294.0,125.0 L426.0,125.0" class="flecha " marker-end="url(#fl-nube_hibrida)" marker-start="url(#fl-nube_hibrida)"/><rect x="282.6" y="116.0" width="154.9" height="18" rx="3" class="fondo-etiqueta"/><text x="360.0" y="125.0" class="te" text-anchor="middle" dominant-baseline="middle">VPN o conexión dedicada</text><path d="M162.0,196.0 L162.0,230.0" class="flecha " marker-end="url(#fl-nube_hibrida)"/><path d="M558.0,196.0 L558.0,230.0" class="flecha " marker-end="url(#fl-nube_hibrida)"/></svg></div><figcaption>Nube híbrida: la parte privada y la pública siguen siendo independientes, pero están conectadas y se gestionan como un conjunto.</figcaption></figure>
+<h4>Las cuatro preguntas aplicadas a la nube híbrida</h4>
+<p>En una nube híbrida no hay una sola respuesta: cada parte conserva las suyas, y aparece una tercera pieza, la unión entre ellas.</p>
 <div class="tabla"><table>
-<tr><th>Parte</th><th>Propiedad</th><th>Uso</th><th>Operación</th></tr>
-<tr><td>Privada / on premise</td><td>Organización</td><td>Exclusivo</td><td>Organización</td></tr>
-<tr><td>Pública</td><td>Proveedor</td><td>Compartido con otros clientes</td><td>Proveedor (física) y organización (recursos virtuales)</td></tr>
-<tr><td>Conexión y capa de gestión</td><td>Mixta (enlaces del operador, software de gestión)</td><td>Exclusivo de la organización</td><td>Organización</td></tr>
+<tr><th>Pregunta</th><th>Parte privada</th><th>Parte pública</th><th>La unión</th></tr>
+<tr><td>¿De quién es el hardware?</td><td>De la organización</td><td>Del proveedor</td><td>Mixta: enlaces del operador y del proveedor, software de gestión</td></tr>
+<tr><td>¿Quién lo gestiona y opera?</td><td>La organización</td><td>El proveedor, lo físico; la organización, sus recursos virtuales</td><td>La organización</td></tr>
+<tr><td>¿Dónde está físicamente?</td><td>En su CPD</td><td>En la región del proveedor</td><td>Entre los dos: un túnel por Internet o un enlace dedicado</td></tr>
+<tr><td>¿Quién más lo usa?</td><td>Nadie de fuera</td><td>Muchos clientes, con aislamiento lógico</td><td>Solo la organización</td></tr>
 </table></div>
-<p>La nube híbrida permite decidir, <b>carga por carga</b>, dónde vive cada cosa: los datos más sensibles o las cargas estables en la parte privada; lo que necesita elasticidad o alcance global en la pública.</p>
+<p>Lo que aporta el modelo es poder decidir <b>carga por carga</b> dónde vive cada cosa: los datos más sensibles y las cargas estables, en la parte privada; lo que necesita elasticidad o alcance global, en la pública.</p>
 
-<h3>2. Los cuatro pilares técnicos de la nube híbrida</h3>
-<h4>Conectividad</h4>
-<ul>
-<li><b>VPN sitio a sitio</b> (IPsec o WireGuard) por Internet: barata y rápida de montar; ancho de banda y latencia dependen de Internet. Los proveedores ofrecen puertas de enlace VPN gestionadas (AWS Site-to-Site VPN, Azure VPN Gateway).</li>
-<li><b>Conexión dedicada</b> (AWS Direct Connect, Azure ExpressRoute, Google Cloud Interconnect): enlace privado a través de un operador hasta un punto de interconexión del proveedor. Latencia estable, gran ancho de banda y más seguridad; más cara y tarda semanas en contratarse.</li>
-<li><b>Planificación de direcciones</b>: los rangos IP de ambas partes no pueden solaparse (si on premise usa <code>10.0.0.0/16</code>, la VPC no puede usar el mismo). Es un error habitual que obliga a rehacer redes.</li>
-<li><b>DNS híbrido</b>: que los nombres se resuelvan igual a ambos lados.</li>
-</ul>
-<h4>Identidad y acceso</h4>
-<p>Los usuarios no deben tener una cuenta distinta en cada lado. Se usa un <b>proveedor de identidad</b> central (Active Directory, Microsoft Entra ID, Keycloak) y <b>federación</b> (SAML, OpenID Connect) para entrar en la consola de la nube con la misma cuenta corporativa y con los permisos derivados de sus grupos.</p>
-<h4>Gestión y operación unificadas</h4>
-<ul>
-<li>Herramientas que gestionan ambos lados: <b>Azure Arc</b> (gestiona servidores y Kubernetes de cualquier sitio desde Azure), <b>Google Distributed Cloud / GKE Enterprise</b>, <b>AWS Systems Manager</b> para servidores on premise, <b>VMware Cloud Foundation</b>.</li>
-<li><b>Infraestructura como código</b> con herramientas multiplataforma como Terraform, que tiene proveedores para Proxmox, VMware, OpenStack, AWS, Azure...</li>
-<li><b>Kubernetes</b> como capa común: la misma aplicación en contenedores se despliega igual en un clúster propio o en uno gestionado en la nube.</li>
-<li><b>Monitorización y registros centralizados</b> para ver todo en un único panel.</li>
-</ul>
-<h4>Datos</h4>
-<p>Mover datos entre ambos lados cuesta tiempo (latencia) y dinero (transferencia de salida). Hay que decidir qué datos se replican, cuáles se sincronizan y cuáles no salen nunca de la parte privada. Herramientas típicas: replicación de bases de datos, pasarelas de almacenamiento (AWS Storage Gateway, Azure File Sync), sincronización de copias.</p>
-
-<h3>3. Patrones de uso</h3>
+<h4>Lo que une las partes: los cuatro pilares</h4>
+<p>La integración que pide la definición se consigue con cuatro piezas. Si falla una, la nube híbrida se queda en dos mundos separados.</p>
 <div class="tabla"><table>
-<tr><th>Patrón</th><th>En qué consiste</th><th>Ejemplo con Cita Previa</th></tr>
-<tr><td><b>Desbordamiento a la nube</b> (<i>cloud bursting</i>)</td><td>La carga normal va en la parte privada; cuando se satura, el exceso se atiende en la pública</td><td>Campaña de vacunación: se levantan instancias extra en la nube durante dos meses</td></tr>
-<tr><td><b>Arquitectura por capas</b></td><td>El front end en la nube pública, los datos sensibles en la privada</td><td>La web y la CDN en la nube; la base de datos de pacientes en el CPD</td></tr>
-<tr><td><b>Recuperación ante desastres en la nube</b></td><td>Copias y un entorno de respaldo en la nube que se activa si cae el CPD</td><td>Réplica de la base de datos y plantillas de VM listas en la nube</td></tr>
-<tr><td><b>Copia y archivo</b></td><td>Copias de seguridad fuera del sitio en almacenamiento de objetos</td><td>Copias nocturnas cifradas a un bucket con bloqueo contra borrado</td></tr>
-<tr><td><b>Desarrollo en la nube, producción en casa</b></td><td>Entornos de pruebas efímeros en la nube; producción on premise</td><td>Cada pull request crea un entorno de revisión temporal en la nube</td></tr>
-<tr><td><b>Migración progresiva</b></td><td>Etapa intermedia mientras se trasladan aplicaciones a la nube</td><td>Primero la web, después la API y al final los datos</td></tr>
-<tr><td><b>Borde</b> (<i>edge</i>)</td><td>Procesamiento cerca del lugar donde se generan los datos, gestión desde la nube</td><td>Quioscos de los centros de salud que funcionan aunque se corte Internet</td></tr>
+<tr><th>Pilar</th><th>Qué resuelve</th><th>Cómo se consigue</th></tr>
+<tr><td><b>Conectividad</b></td><td>Que las dos partes se hablen por una red privada, como si fueran una</td><td>Una <b>VPN sitio a sitio</b> por Internet o un <b>enlace dedicado</b> con el proveedor (unidad 2). Además, los rangos de direcciones de las dos partes <b>no pueden solaparse</b>: si el CPD usa <code>10.10.0.0/16</code>, la VPC tiene que usar otro rango (recuerda la notación CIDR de la unidad 2). Y hace falta un <b>DNS híbrido</b>, para que los nombres se resuelvan igual a los dos lados.</td></tr>
+<tr><td><b>Identidad</b></td><td>Que cada persona tenga una sola cuenta para todo</td><td>Un <b>proveedor de identidad</b> central (el directorio de usuarios de la organización) y <b>federación</b>: la nube pública confía en ese directorio, de modo que el usuario entra en la consola con su cuenta corporativa y los permisos que le dan sus grupos. Los protocolos habituales son SAML y OpenID Connect.</td></tr>
+<tr><td><b>Gestión</b></td><td>Ver y operar todo desde un mismo sitio</td><td>Herramientas que gestionan los dos lados, infraestructura como código con herramientas que sirven para ambos (Terraform) y monitorización centralizada. Lo veremos a fondo en el punto 6.</td></tr>
+<tr><td><b>Datos</b></td><td>Decidir qué datos cruzan, cómo y cuándo</td><td>Replicación de bases de datos, sincronización de ficheros y copias. Hay que decidir qué se replica, qué se sincroniza y qué no sale nunca de la parte privada.</td></tr>
 </table></div>
+<p>El pilar de los datos es el más difícil, por lo que se llama <b>gravedad de los datos</b>: cuantos más datos acumula un sitio, más cuesta moverlos (tiempo de transferencia y coste de salida), y más aplicaciones acaban instalándose a su lado. Por eso en una nube híbrida se suelen mover las aplicaciones hacia los datos, y no al revés.</p>
 
-<h3>4. Ventajas y retos</h3>
-<h4>Ventajas</h4>
+<h3>2. Variantes: cómo se construye una nube híbrida</h3>
+<p>Hay cuatro formas de construirla, según hacia dónde se extiende cada parte:</p>
+<div class="tabla"><table>
+<tr><th>Variante</th><th>Qué es</th><th>Ejemplos</th></tr>
+<tr><td><b>Clásica</b></td><td>El CPD o la nube privada y la nube pública, cada uno con su tecnología, unidos por los cuatro pilares</td><td>Proxmox en el CPD y AWS, unidos por VPN y con la misma identidad</td></tr>
+<tr><td><b>La pública llega a casa</b></td><td>El proveedor instala su hardware en el CPD del cliente y lo gestiona desde su región, con la misma consola y la misma API</td><td>AWS Outposts, Azure Local, Google Distributed Cloud; Amazon EKS Hybrid Nodes (servidores propios que se unen a un clúster de Kubernetes de AWS)</td></tr>
+<tr><td><b>La privada llega a la pública</b></td><td>La misma plataforma de la nube privada, alquilada sobre hardware dedicado en la nube pública. Las máquinas se mueven de un lado a otro sin cambiarlas</td><td>Azure VMware Solution, Google Cloud VMware Engine, VMware Cloud on AWS</td></tr>
+<tr><td><b>Capa común de contenedores</b></td><td>Kubernetes a los dos lados, gestionado como un único conjunto de clústeres. La aplicación se despliega igual en cualquier sitio</td><td>Red Hat OpenShift, SUSE Rancher, Google Kubernetes Engine en modo flota</td></tr>
+</table></div>
+<p>Las tres últimas reducen la complejidad, porque hay <b>una sola tecnología</b> a los dos lados, pero aumentan la dependencia de un fabricante. La clásica es más flexible y más trabajosa.</p>
+<p>Este curso va precisamente hacia la última variante: los contenedores son la forma más extendida de que una aplicación funcione igual en la parte privada y en la pública.</p>
+
+<h3>3. Lo que aporta y lo que exige el modelo híbrido</h3>
+<h4>Lo que aporta</h4>
 <ul>
-<li><b>Flexibilidad</b>: cada carga en el sitio más adecuado.</li>
-<li><b>Cumplimiento</b>: los datos regulados se quedan bajo control propio.</li>
-<li><b>Aprovechar la inversión existente</b> en el CPD mientras se amortiza.</li>
-<li><b>Elasticidad</b> de la nube pública para los picos, sin dimensionar el CPD para ellos.</li>
-<li><b>Resiliencia</b>: la otra parte puede servir de respaldo.</li>
+<li><b>Cada carga en su sitio</b>: se elige parte por parte, sin tener que decidir "todo o nada".</li>
+<li><b>Cumplimiento</b>: los datos regulados se quedan bajo control propio, y el resto aprovecha la nube pública.</li>
+<li><b>Aprovechar la inversión</b> en el CPD mientras se amortiza, en lugar de tirarla.</li>
+<li><b>Elasticidad para los picos</b>: el CPD se dimensiona para la carga normal y la nube absorbe lo excepcional.</li>
+<li><b>Resiliencia</b>: una parte puede servir de respaldo de la otra.</li>
 </ul>
-<h4>Retos</h4>
+<h4>Lo que exige o limita</h4>
 <ul>
-<li><b>Complejidad</b>: dos entornos distintos que operar, con herramientas y conocimientos diferentes.</li>
-<li><b>Seguridad coherente</b>: las mismas políticas a ambos lados; la conexión amplía la superficie de ataque.</li>
-<li><b>Latencia</b> entre componentes repartidos (una web en la nube que consulta una base de datos en el CPD en cada petición puede ser lenta).</li>
-<li><b>Costes de transferencia</b> de datos entre las partes.</li>
-<li><b>Visibilidad</b>: saber qué hay y cuánto cuesta en cada sitio.</li>
+<li><b>Complejidad</b>: dos entornos distintos que operar, con herramientas y conocimientos diferentes. Hace falta un equipo que domine los dos.</li>
+<li><b>Seguridad coherente</b>: las mismas políticas a los dos lados. La conexión entre ellos amplía la superficie de ataque: quien entre en una parte puede intentar saltar a la otra.</li>
+<li><b>Latencia</b>: una web en la nube que consulta en cada petición una base de datos del CPD será lenta, porque cada consulta cruza el túnel.</li>
+<li><b>Costes de transferencia</b> de los datos que salen de la nube pública hacia el CPD.</li>
+<li><b>Visibilidad</b>: saber qué hay y cuánto cuesta en cada sitio (punto 6).</li>
 </ul>
-<div class="nota"><p><b>Idea clave.</b> La nube híbrida no es "tener un poco de todo". Es un diseño deliberado en el que las partes están conectadas y gestionadas como un conjunto, y cada carga está donde tiene más sentido.</p></div>
+<h4>Casos de uso típicos: los patrones híbridos</h4>
+<div class="tabla"><table>
+<tr><th>Patrón</th><th>En qué consiste</th><th>Ejemplo</th></tr>
+<tr><td><b>Desbordamiento a la nube</b> (<i>cloud bursting</i>)</td><td>La carga normal va en la parte privada; cuando se satura, el exceso se atiende en la pública</td><td>Un periódico que recibe diez veces más visitas la noche de elecciones</td></tr>
+<tr><td><b>Arquitectura por capas</b></td><td>La parte que da la cara al público, en la nube; los datos sensibles, en casa</td><td>Un banco con la web y la app en la nube y las cuentas en su mainframe</td></tr>
+<tr><td><b>Recuperación ante desastres</b></td><td>Réplica de datos y un entorno de respaldo en la nube que se activa si cae el CPD</td><td>Un hospital con su base de datos replicada y plantillas de máquinas listas en la nube</td></tr>
+<tr><td><b>Copia y archivo</b></td><td>Copias de seguridad fuera del sitio, en almacenamiento de objetos</td><td>Copias nocturnas cifradas a un bucket europeo con bloqueo contra borrado</td></tr>
+<tr><td><b>Desarrollo en la nube, producción en casa</b></td><td>Entornos de pruebas temporales en la nube; producción en el CPD</td><td>Una empresa que prueba cada versión en la nube antes de instalarla en su CPD</td></tr>
+<tr><td><b>Migración progresiva</b></td><td>Etapa intermedia mientras las aplicaciones se trasladan a la nube</td><td>Primero la web, después la API y al final los datos</td></tr>
+<tr><td><b>Borde</b> (<i>edge</i>)</td><td>Servidores cerca de donde se generan los datos, que siguen funcionando sin conexión y se gestionan desde la nube</td><td>Una cadena de supermercados con un servidor en cada tienda</td></tr>
+</table></div>
+<p>Un matiz de experto sobre el desbordamiento: es el patrón más citado y uno de los más difíciles. Solo funciona bien con partes de la aplicación <b>sin estado</b> (como servidores web que no guardan datos propios), porque si las máquinas de la nube tienen que consultar en cada petición la base de datos del CPD, la latencia y la transferencia se lo comen. Los patrones más usados en la realidad son la recuperación ante desastres, las copias y la migración progresiva.</p>
 
-<h3>Actividades</h3>
-<div class="actividad">
-<h4>Actividad 1. Diseño híbrido de Cita Previa</h4>
-<p>En grupos de 3. La Conselleria tiene un CPD con Proxmox y quiere mantener allí la historia clínica y la base de datos de citas. Necesita afrontar la campaña de vacunación (tráfico ×5 durante 8 semanas) y tener recuperación ante desastres. Dibujad el diseño híbrido: qué va en cada lado, cómo se conectan (y con qué rangos IP), cómo se autentican los usuarios, qué patrones de la tabla aplicáis y qué datos cruzan la conexión. Añadid tres riesgos y cómo los mitigáis.</p>
-</div>
-<div class="actividad">
-<h4>Actividad 2. Túnel VPN entre "nuestro CPD" y la nube pública</h4>
-<p>En parejas vamos a unir un portátil de la pareja, que hará de "CPD propio", con una VM de la nube pública mediante <b>WireGuard</b>, una VPN moderna y sencilla. Es un modelo reducido de una conexión sitio a sitio.</p>
-<ol>
-<li>Cread una VM Ubuntu en el laboratorio de nube (los pasos del aprovisionamiento están en la unidad 2, punto 4). En su grupo de seguridad, permitid SSH y el puerto <b>UDP 51820</b> desde la IP pública del centro (podéis consultarla desde el portátil con <code>curl -s https://ifconfig.me</code>).</li>
-<li>En la VM y en el portátil: <code>sudo apt install -y wireguard</code> y generad las claves: <code>wg genkey | tee priv.key | wg pubkey &gt; pub.key</code>.</li>
-<li>En la VM de la nube, <code>/etc/wireguard/wg0.conf</code>:
-<pre><code>[Interface]
-Address = 172.16.99.1/24
-ListenPort = 51820
-PrivateKey = CLAVE_PRIVADA_NUBE
-
-[Peer]
-PublicKey = CLAVE_PUBLICA_PORTATIL
-AllowedIPs = 172.16.99.2/32</code></pre></li>
-<li>En el portátil, también en <code>/etc/wireguard/wg0.conf</code>:
-<pre><code>[Interface]
-Address = 172.16.99.2/24
-PrivateKey = CLAVE_PRIVADA_PORTATIL
-
-[Peer]
-PublicKey = CLAVE_PUBLICA_NUBE
-Endpoint = IP_PUBLICA_NUBE:51820
-AllowedIPs = 172.16.99.1/32
-PersistentKeepalive = 25</code></pre></li>
-<li>Levantad el túnel en las dos (<code>sudo wg-quick up wg0</code>), comprobad con <code>sudo wg show</code> y haced <code>ping 172.16.99.1</code> desde el portátil.</li>
-<li>Levantad un servidor web en el portátil (<code>docker run -d --name s14-web -p 8080:80 nginx:stable</code>) y acceded a él desde la VM de la nube por la IP del túnel: <code>curl http://172.16.99.2:8080</code>. Un servicio "privado" es accesible desde la nube sin exponerlo a Internet.</li>
-<li>Medid la latencia (<code>ping</code>) y el ancho de banda aproximado (<code>iperf3</code>, si da tiempo) por el túnel. ¿Qué implicaciones tiene para el patrón "web en la nube, base de datos en el CPD"?</li>
-</ol>
-</div>
-<div class="aviso"><p><b>Plan B si la red del centro bloquea el tráfico.</b> Si al cabo de un minuto <code>sudo wg show</code> en el portátil no muestra ninguna línea <i>latest handshake</i>, lo más probable es que el centro no deje salir el UDP 51820. En ese caso no perdáis más tiempo: desmontad lo creado (<code>sudo wg-quick down wg0</code>, terminad la instancia) y haced la actividad sobre el esquema siguiente: explicad por escrito qué hace cada extremo, qué clave va en cada fichero, por qué el portátil no necesita abrir puertos, qué regla del grupo de seguridad hace falta y qué recorrido hace la petición <code>curl</code>. Si tampoco funciona el SSH hacia la VM, usad EC2 Instance Connect (unidad 2, punto 2).</p></div>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 680 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Túnel WireGuard entre el portátil y una VM de la nube" font-family="inherit" font-size="13" fill="currentColor">
-<rect x="10" y="40" width="190" height="170" rx="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<text x="105" y="65" text-anchor="middle" font-weight="bold">Portátil («CPD propio»)</text>
-<text x="105" y="95" text-anchor="middle">wg0: 172.16.99.2</text>
-<text x="105" y="120" text-anchor="middle">nginx en :8080</text>
-<text x="105" y="150" text-anchor="middle" font-size="12">Inicia la conexión</text>
-<text x="105" y="168" text-anchor="middle" font-size="12">(no abre puertos)</text>
-<rect x="245" y="25" width="190" height="200" rx="10" fill="none" stroke="currentColor" stroke-dasharray="6 4"/>
-<text x="340" y="48" text-anchor="middle" font-weight="bold">Red del instituto</text>
-<text x="340" y="66" text-anchor="middle" font-size="12">NAT y cortafuegos</text>
-<text x="340" y="205" text-anchor="middle" font-size="12">Debe dejar salir UDP 51820</text>
-<rect x="480" y="40" width="190" height="170" rx="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<text x="575" y="65" text-anchor="middle" font-weight="bold">VM en AWS</text>
-<text x="575" y="95" text-anchor="middle">wg0: 172.16.99.1</text>
-<text x="575" y="120" text-anchor="middle">IP pública</text>
-<text x="575" y="150" text-anchor="middle" font-size="12">Grupo de seguridad:</text>
-<text x="575" y="168" text-anchor="middle" font-size="12">UDP 51820 desde el centro</text>
-<line x1="200" y1="110" x2="472" y2="110" stroke="currentColor" stroke-width="2.5"/>
-<polygon points="480,110 468,104 468,116"/>
-<text x="340" y="100" text-anchor="middle" font-size="12">Túnel cifrado (UDP 51820)</text>
-<line x1="472" y1="140" x2="208" y2="140" stroke="currentColor" stroke-dasharray="5 4"/>
-<polygon points="200,140 212,134 212,146"/>
-<text x="340" y="160" text-anchor="middle" font-size="12">curl http://172.16.99.2:8080</text>
-<text x="340" y="176" text-anchor="middle" font-size="12">viaja dentro del túnel</text>
-</svg></div><figcaption>Conexión sitio a sitio con WireGuard: el portátil inicia el túnel hacia la nube; después, la VM llega al servicio privado del portátil por la IP del túnel, sin exponerlo a Internet.</figcaption></figure>
-<div class="actividad">
-<h4>Actividad 3. Clasificar patrones</h4>
-<p>Asociad cada situación a un patrón híbrido:</p>
-<ol class="casos">
-<li>Un periódico que recibe diez veces más visitas la noche de elecciones.</li>
-<li>Un hospital que copia cada noche sus copias de seguridad cifradas a un bucket europeo.</li>
-<li>Una empresa que prueba cada versión en la nube antes de instalarla en su CPD.</li>
-<li>Una cadena de supermercados con servidores en cada tienda gestionados desde Azure Arc.</li>
-<li>Un banco que tiene su web en la nube pero las cuentas en su mainframe.</li>
-</ol>
-<p class="entrega">Entrega en Aules: diseño híbrido, capturas del túnel y de las pruebas, y clasificación. Al terminar: <code>sudo wg-quick down wg0</code> en el portátil, <code>docker rm -f s14-web</code> y terminad la instancia de la nube.</p>
-</div>
-<details><summary>Preparación previa (profesor)</summary>
-<p>Comprobar que la red del centro permite tráfico UDP saliente al puerto 51820 (si no, usar otro puerto permitido, por ejemplo UDP 443, en <code>ListenPort</code> y <code>Endpoint</code>). El portátil inicia la conexión, así que no hace falta abrir puertos en el centro. Los portátiles necesitan permiso de <code>sudo</code> para instalar WireGuard.</p>
-</details>
+<h3>4. Opciones en el mercado: las herramientas</h3>
+<p>En la pública se elige proveedor; en la privada, plataforma; en la híbrida, las herramientas de cada pilar. Cada gran proveedor tiene las suyas, y hay alternativas independientes:</p>
+<div class="tabla"><table>
+<tr><th>Pilar</th><th>AWS</th><th>Azure</th><th>Google Cloud</th><th>Independientes y libres</th></tr>
+<tr><td>Conexión por VPN</td><td>Site-to-Site VPN</td><td>VPN Gateway</td><td>Cloud VPN</td><td>strongSwan (IPsec), WireGuard</td></tr>
+<tr><td>Enlace dedicado</td><td>Direct Connect</td><td>ExpressRoute</td><td>Cloud Interconnect</td><td>Operadores de telecomunicaciones y puntos neutros de interconexión</td></tr>
+<tr><td>Identidad</td><td>IAM Identity Center</td><td>Microsoft Entra ID</td><td>Cloud Identity</td><td>Keycloak, FreeIPA</td></tr>
+<tr><td>Gestión de los dos lados</td><td>Systems Manager</td><td>Azure Arc</td><td>Google Distributed Cloud, flotas de GKE</td><td>Terraform, Ansible, Rancher</td></tr>
+<tr><td>Datos</td><td>Storage Gateway, DataSync</td><td>Azure File Sync</td><td>Storage Transfer Service</td><td>rclone, replicación de la propia base de datos</td></tr>
+<tr><td>Hardware del proveedor en casa</td><td>Outposts</td><td>Azure Local</td><td>Google Distributed Cloud</td><td>—</td></tr>
+</table></div>
+<h4>VPN o enlace dedicado</h4>
+<p>Es la primera decisión de cualquier nube híbrida:</p>
+<div class="tabla"><table>
+<tr><th>Aspecto</th><th>VPN sitio a sitio</th><th>Enlace dedicado</th></tr>
+<tr><td>Por dónde va</td><td>Por Internet, cifrada</td><td>Por un circuito privado del operador hasta un punto de interconexión del proveedor</td></tr>
+<tr><td>Ancho de banda y latencia</td><td>Dependen de Internet: varían</td><td>Estables y garantizados (1, 10 o 100 Gbps)</td></tr>
+<tr><td>Coste</td><td>Bajo</td><td>Alto: circuito del operador más puerto del proveedor</td></tr>
+<tr><td>Tiempo para tenerla</td><td>Minutos u horas</td><td>Semanas</td></tr>
+<tr><td>Cuándo se usa</td><td>Para empezar, cargas pequeñas o como respaldo del enlace dedicado</td><td>Mucho tráfico, latencia crítica o requisitos de no pasar por Internet</td></tr>
+</table></div>
+<p>Lo habitual en organizaciones grandes es tener <b>las dos</b>: el enlace dedicado para el día a día y la VPN como respaldo por si falla.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
-<li>¿Qué dos condiciones pone el NIST para que una combinación de nubes sea híbrida?</li>
-<li>¿Por qué no deben solaparse los rangos IP de la parte privada y la pública?</li>
-<li>Explica el patrón de desbordamiento a la nube y un requisito técnico para que funcione.</li>
-<li>¿Qué ventajas tiene una conexión dedicada frente a una VPN por Internet?</li>
-<li>¿Por qué puede ser mala idea poner la web en la nube y la base de datos en el CPD?</li>
+<li>¿Qué dos condiciones pone el NIST para que una combinación de nubes sea híbrida? ¿Es híbrida una empresa que tiene su CPD y usa Gmail, sin ninguna conexión entre ellos?</li>
+<li>Responde a las cuatro preguntas de la unidad para la nube híbrida. ¿Por qué hace falta una tercera columna?</li>
+<li>¿Qué son los cuatro pilares de la nube híbrida? ¿Qué pasa si falla el de identidad?</li>
+<li>¿Por qué no deben solaparse los rangos de direcciones de la parte privada y de la pública?</li>
+<li>¿Qué es la gravedad de los datos y qué consecuencia tiene al diseñar una nube híbrida?</li>
+<li>¿En qué se diferencian las variantes "la pública llega a casa" y "la privada llega a la pública"? Pon un ejemplo de cada una.</li>
+<li>¿Por qué el desbordamiento a la nube es más difícil de lo que parece?</li>
+<li>¿Cuándo elegirías una VPN y cuándo un enlace dedicado?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p4" aria-labelledby="tab-p4" hidden>
 <p class="meta">Unidad 3 · 4. Pública o privada · 2 horas</p>
