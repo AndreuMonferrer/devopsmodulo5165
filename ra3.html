@@ -13,7 +13,25 @@
 <h2>Resultado de aprendizaje 3</h2>
 <p class="ra-texto">Selecciona el modelo de implementación o despliegue de infraestructura de nube más apropiado en función de las necesidades de funcionalidad, seguridad digital, escalabilidad o costes, valorando las opciones disponibles en el mercado.</p>
 <p>La unidad 2 distinguía entre tener la infraestructura en casa o en la nube. Pero "la nube" admite varios modelos de despliegue según quién es propietario de los recursos, quién los gestiona y con quién se comparten. En esta unidad los describimos, los dibujamos y, sobre todo, aprendemos a elegir: un hospital, una tienda online y un ayuntamiento no necesitan lo mismo.</p>
-<p>Trabajaremos con casos de empresas, un estudio de mercado de proveedores y la API de Docker de nuestros portátiles para practicar el autoservicio.</p>
+<p>La unidad se trabaja con pósters: cada uno preparará el de uno de los modelos, y con los cinco juntos aprenderemos a comparar y a elegir.</p>
+<h3>Antes de empezar: de quién es la nube</h3>
+<p>El NIST, en la misma definición de nube que vimos en la unidad 2 (SP 800-145), distingue cuatro <b>modelos de despliegue</b>:</p>
+<ul>
+<li><b>Nube pública</b>: la infraestructura está abierta al uso del público general. Pertenece a un proveedor (una empresa, aunque también podría ser una universidad o una administración), que la gestiona y la opera en sus propias instalaciones (punto 1).</li>
+<li><b>Nube privada</b>: la infraestructura es para uso exclusivo de una única organización (punto 2).</li>
+<li><b>Nube comunitaria</b>: para uso exclusivo de una comunidad de organizaciones con necesidades comunes, por ejemplo varias administraciones públicas o varios hospitales (punto 2).</li>
+<li><b>Nube híbrida</b>: composición de dos o más nubes distintas que siguen siendo entidades separadas, pero unidas por tecnología que permite mover datos y aplicaciones entre ellas (punto 3).</li>
+</ul>
+<p>La definición del NIST es de 2011. Desde entonces se ha generalizado un quinto modelo, la <b>multinube</b>: usar a la vez servicios de varios proveedores de nube (punto 5).</p>
+<p>Para diferenciar los modelos nos fijaremos siempre en cuatro preguntas. Son la herramienta de toda la unidad: en cada punto (y en cada póster) las responderemos para un modelo distinto, y así podremos compararlos.</p>
+<div class="tabla"><table>
+<tr><th>Pregunta</th><th>Qué analiza</th></tr>
+<tr><td>¿De quién es el hardware?</td><td>Propiedad de los recursos</td></tr>
+<tr><td>¿Quién lo gestiona y opera?</td><td>Responsabilidad de la operación</td></tr>
+<tr><td>¿Dónde está físicamente?</td><td>Ubicación: instalaciones propias o del proveedor</td></tr>
+<tr><td>¿Quién más lo usa?</td><td>Uso compartido: un inquilino o muchos</td></tr>
+</table></div>
+
 <h3>Criterios de evaluación</h3>
 <div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Puntos</th></tr><tr><td><b>3a)</b></td><td>Se ha descrito el modelo de nube pública, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.</td><td><a href="#p1">1</a></td></tr><tr><td><b>3b)</b></td><td>Se ha descrito el modelo de nube privada, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.</td><td><a href="#p2">2</a></td></tr><tr><td><b>3c)</b></td><td>Se ha descrito el modelo de nube híbrida, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.</td><td><a href="#p3">3</a></td></tr><tr><td><b>3d)</b></td><td>Se ha diferenciado entre nubes públicas y privadas, valorando la configuración más adecuada en función de las necesidades de una organización.</td><td><a href="#p4">4</a></td></tr><tr><td><b>3e)</b></td><td>Se ha diferenciado entre servicios de nube híbrida y entornos multinube, identificando requisitos y casos de uso específicos.</td><td><a href="#p5">5</a></td></tr><tr><td><b>3f)</b></td><td>Se han analizado entornos híbridos y de multinube, identificando sus respectivas necesidades de administración y gobernanza.</td><td><a href="#p6">6</a></td></tr></table></div>
 <h3>Puntos de la unidad</h3>
@@ -26,32 +44,14 @@
 <p class="chips"><span class="ce" title="Se ha descrito el modelo de nube pública, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.">CE 3a</span></p>
 <h3>Objetivos del punto</h3>
 <ul>
-<li>Conocer los modelos de despliegue de nube definidos por el NIST y las cuatro preguntas que los distinguen.</li>
 <li>Describir el modelo de nube pública: propiedad de los recursos, uso compartido y funcionamiento.</li>
 <li>Esquematizar una nube pública identificando quién posee, quién gestiona y quién usa cada parte.</li>
 <li>Distinguir los grados de aislamiento que ofrece la nube pública, desde la máquina compartida hasta la región soberana.</li>
 <li>Valorar las opciones del mercado, incluidas las europeas, y los requisitos para usarlas en el sector público español.</li>
 </ul>
 
-<h3>1. Modelos de despliegue: de quién es la nube</h3>
-<p>En la unidad 2 vimos qué es la nube. Ahora nos preguntamos <b>dónde está, de quién es y con quién se comparte</b>. El NIST, en la misma definición de la unidad 2 (SP 800-145), distingue cuatro <b>modelos de despliegue</b>:</p>
-<ul>
-<li><b>Nube pública</b>: la infraestructura está abierta al uso del público general. Pertenece a un proveedor (una empresa, aunque también podría ser una universidad o una administración), que la gestiona y la opera en sus propias instalaciones.</li>
-<li><b>Nube privada</b>: la infraestructura es para uso exclusivo de una única organización (punto 2).</li>
-<li><b>Nube comunitaria</b>: para uso exclusivo de una comunidad de organizaciones con necesidades comunes, por ejemplo varias administraciones públicas o varios hospitales (punto 2).</li>
-<li><b>Nube híbrida</b>: composición de dos o más nubes distintas que siguen siendo entidades separadas, pero unidas por tecnología que permite mover datos y aplicaciones entre ellas (punto 3).</li>
-</ul>
-<p>La definición del NIST es de 2011. Desde entonces se ha generalizado un quinto modelo, la <b>multinube</b>: usar a la vez servicios de varios proveedores de nube (punto 5).</p>
-<p>Para diferenciar los modelos nos fijaremos siempre en cuatro preguntas. Son la herramienta de toda la unidad:</p>
-<div class="tabla"><table>
-<tr><th>Pregunta</th><th>Qué analiza</th></tr>
-<tr><td>¿De quién es el hardware?</td><td>Propiedad de los recursos</td></tr>
-<tr><td>¿Quién lo gestiona y opera?</td><td>Responsabilidad de la operación</td></tr>
-<tr><td>¿Dónde está físicamente?</td><td>Ubicación: instalaciones propias o del proveedor</td></tr>
-<tr><td>¿Quién más lo usa?</td><td>Uso compartido: un inquilino o muchos</td></tr>
-</table></div>
-
-<h3>2. La nube pública</h3>
+<h3>1. La nube pública</h3>
+<p>Empezamos por el modelo más conocido. Le aplicaremos las cuatro preguntas de la presentación de la unidad (de quién es, quién lo opera, dónde está y quién más lo usa).</p>
 <h4>Definición</h4>
 <p>En una <b>nube pública</b>, un proveedor es propietario de toda la infraestructura (CPD, servidores, red, almacenamiento y software de gestión), la opera y la pone a disposición de <b>cualquier cliente</b> a través de Internet, normalmente con pago por uso. Los recursos físicos se <b>comparten</b> entre muchos clientes (la multitenencia de la unidad 2), y cada uno tiene sus recursos virtuales aislados de los demás.</p>
 <p>"Pública" no significa que los datos sean públicos ni que cualquiera pueda entrar en tus máquinas. Significa que <b>el servicio está abierto a cualquiera que quiera contratarlo</b>, igual que la red eléctrica o una línea de autobús: el autobús es público, pero tu asiento es tuyo mientras viajas.</p>
@@ -80,7 +80,7 @@
 <p>En todos los casos <b>sigue siendo nube pública</b>: el hardware es del proveedor y está en sus instalaciones, y cualquier cliente puede contratar la misma opción. Lo que se reduce es la respuesta a "¿quién más lo usa?" o a "¿quién lo opera?". Existen también regiones para gobiernos, como AWS GovCloud o Azure Government, pero son solo para la Administración de EE. UU. y sus contratistas.</p>
 <p>Hay un caso que rompe la pregunta "¿dónde está?": el proveedor puede instalar su hardware <b>en el CPD del cliente</b> (AWS Outposts, Azure Local). Lo veremos en el punto 2, porque se parece mucho a una nube privada.</p>
 
-<h3>3. Lo que aporta y lo que exige el modelo público</h3>
+<h3>2. Lo que aporta y lo que exige el modelo público</h3>
 <p>Las ventajas e inconvenientes generales de la nube frente al on premise (pago por uso, elasticidad, dependencia del proveedor, costes de salida, soberanía) ya los vimos en la unidad 2. Aquí nos fijamos solo en lo que se debe a que la nube sea <b>pública</b>: compartida con miles de clientes y en manos de un tercero.</p>
 <h4>Lo que aporta por ser compartida</h4>
 <ul>
@@ -99,7 +99,7 @@
 <h4>Casos de uso típicos</h4>
 <p>Aplicaciones web y móviles con demanda variable, startups, entornos de desarrollo y pruebas, análisis de datos e inteligencia artificial que necesitan mucha capacidad durante poco tiempo, copias de seguridad y recuperación ante desastres, y cualquier servicio que deba llegar a usuarios de todo el mundo.</p>
 
-<h3>4. El mercado de la nube pública</h3>
+<h3>3. El mercado de la nube pública</h3>
 <h4>Los grandes proveedores</h4>
 <p>El mercado de infraestructura en la nube está muy concentrado. Según Synergy Research Group, en el tercer trimestre de 2025 <b>AWS</b> tenía el 29 % del mercado mundial, <b>Microsoft Azure</b> el 20 % y <b>Google Cloud</b> el 13 %: entre los tres, casi dos tercios. La tendencia de 2026 es que AWS baja poco a poco (28 % a principios de año) y Google sube (14 %), empujado por la demanda de IA. Detrás vienen Alibaba Cloud (fuerte en Asia), Oracle Cloud, IBM Cloud y los llamados <b><i>neoclouds</i></b>, proveedores especializados en alquilar GPU para IA, como CoreWeave.</p>
 <p>Estas cifras miden solo infraestructura y plataforma (IaaS y PaaS). Por eso no aparece Salesforce, aunque sea uno de los mayores vendedores de software en la nube: lo suyo es SaaS.</p>
@@ -141,9 +141,8 @@
 
 <h3>Preguntas de repaso</h3>
 <ol>
-<li>¿Qué cuatro modelos de despliegue define el NIST? ¿Qué quinto modelo se ha añadido en la práctica?</li>
 <li>¿Qué significa exactamente "pública" en nube pública?</li>
-<li>Responde a las cuatro preguntas de la unidad para la nube pública.</li>
+<li>Responde a las cuatro preguntas de la presentación de la unidad para la nube pública.</li>
 <li>Una empresa usa hosts dedicados de AWS para su base de datos. ¿Sigue siendo nube pública? Razónalo con las cuatro preguntas.</li>
 <li>¿Qué cambia en la AWS European Sovereign Cloud respecto a una región normal de AWS? ¿Qué sigue igual?</li>
 <li>¿Qué es el ENS y qué categoría tendría Cita Previa? ¿Basta con que el proveedor tenga la certificación?</li>
