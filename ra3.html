@@ -572,140 +572,160 @@
 <p class="chips"><span class="ce" title="Se han analizado entornos híbridos y de multinube, identificando sus respectivas necesidades de administración y gobernanza.">CE 3f</span></p>
 <h3>Objetivos del punto</h3>
 <ul>
-<li>Distinguir administración (operación) y gobernanza de la nube.</li>
-<li>Identificar las necesidades de administración de los entornos híbridos y multinube: inventario, identidad, monitorización, parches, copias, costes.</li>
-<li>Identificar las necesidades de gobernanza: políticas, etiquetado, cumplimiento, control de costes, responsabilidades.</li>
-<li>Conocer las herramientas y prácticas habituales: zonas de aterrizaje, políticas como código, etiquetado, FinOps, centro de excelencia.</li>
-<li>Elaborar un inventario automatizado con etiquetas y un plan de gobernanza para Cita Previa.</li>
+<li>Entender por qué un entorno en la nube necesita gobernanza y qué pasa cuando falta.</li>
+<li>Distinguir la administración (hacer funcionar) de la gobernanza (decidir las reglas y comprobar que se cumplen).</li>
+<li>Identificar las necesidades de administración y de gobernanza de un entorno híbrido y de uno multinube, y en qué se diferencian.</li>
+<li>Conocer las piezas de la gobernanza: guardarraíles, zonas de aterrizaje, etiquetado, costes, auditoría, datos y responsabilidades.</li>
+<li>Conocer las herramientas con las que se aplica en cada proveedor y en varios a la vez.</li>
 </ul>
 
-<h3>1. Administración y gobernanza</h3>
-<p>Cuando una organización tiene recursos en su CPD, en AWS y en Azure, aparecen dos tipos de preguntas:</p>
+<h3>1. La gobernanza de la nube</h3>
+<p>Este punto no presenta un modelo nuevo: trata de <b>cómo se controla</b> un entorno con varias partes, sea híbrido o multinube. Pero seguimos el mismo método de la unidad: qué es, un esquema y las cuatro preguntas.</p>
+<h4>El problema: crear es demasiado fácil</h4>
+<p>En la nube, cualquiera con permisos crea un servidor o un almacenamiento en dos minutos. Es su gran ventaja, y también su gran riesgo. Sin reglas, en pocos meses aparecen máquinas que nadie sabe de quién son, datos en países no permitidos, almacenamientos abiertos a Internet, usuarios con más permisos de los necesarios y facturas que nadie sabe explicar. Tiene nombre:</p>
 <ul>
-<li><b>Administración</b> (gestión operativa): ¿cómo hacemos funcionar todo esto día a día? Crear y modificar recursos, vigilar su estado, aplicar parches, hacer copias, atender incidencias.</li>
-<li><b>Gobernanza</b>: ¿quién decide qué se puede hacer, con qué reglas, y cómo comprobamos que se cumplen? Es el conjunto de <b>políticas, procesos, responsabilidades y controles</b> que aseguran que el uso de la nube cumple los objetivos de la organización en seguridad, cumplimiento normativo, costes y calidad.</li>
+<li><b>Crecimiento descontrolado</b> (<i>cloud sprawl</i>): recursos que se acumulan sin control, porque crearlos es fácil y borrarlos no lo hace nadie.</li>
+<li><b>TI en la sombra</b> (<i>shadow IT</i>): departamentos que contratan servicios en la nube por su cuenta, sin que lo sepa el área de sistemas. Es el origen de la multinube accidental (punto 4).</li>
 </ul>
-<p>La nube hace que crear recursos sea tan fácil que, sin gobernanza, aparecen problemas en pocos meses: cuentas creadas por cualquiera, máquinas que nadie sabe de quién son, datos en regiones no permitidas, buckets públicos, facturas imprevistas y ninguna forma de saber qué cuesta cada proyecto. Esto se conoce como <b>expansión descontrolada</b> (<i>cloud sprawl</i>) y como <b>TI en la sombra</b> (<i>shadow IT</i>) cuando los departamentos contratan servicios sin conocimiento del área de sistemas.</p>
-
-<h3>2. Necesidades de administración</h3>
+<p>No es un problema teórico. Muchas de las grandes fugas de datos en la nube no se deben a fallos del proveedor, sino a configuraciones del cliente que nadie revisó:</p>
 <div class="tabla"><table>
-<tr><th>Necesidad</th><th>Qué implica</th><th>En híbrida</th><th>En multinube</th></tr>
-<tr><td>Inventario y visibilidad</td><td>Saber qué recursos existen, dónde, de quién y en qué estado</td><td>Unir el inventario del CPD (CMDB) con el de la nube</td><td>Consolidar los inventarios de cada proveedor, con nombres distintos para lo mismo</td></tr>
-<tr><td>Aprovisionamiento</td><td>Crear recursos de forma estándar y repetible</td><td>IaC que cubra hipervisor propio y nube</td><td>IaC multiproveedor (Terraform) con módulos por proveedor</td></tr>
-<tr><td>Identidad y acceso</td><td>Quién entra, con qué permisos</td><td>Federar el directorio corporativo con la nube</td><td>Federar con cada proveedor y mantener roles equivalentes</td></tr>
-<tr><td>Monitorización</td><td>Métricas, registros, alertas</td><td>Un panel que vea CPD y nube</td><td>Recoger datos de cada proveedor en una herramienta común</td></tr>
-<tr><td>Parches y configuración</td><td>Sistemas actualizados y configurados igual</td><td>La misma herramienta (Ansible) en ambos lados</td><td>Ídem, con imágenes base equivalentes en cada nube</td></tr>
-<tr><td>Copias y recuperación</td><td>Poder restaurar datos y servicios</td><td>Copias cruzadas: del CPD a la nube y viceversa</td><td>Copias en otro proveedor para evitar dependencia</td></tr>
-<tr><td>Red</td><td>Conectividad, DNS, direcciones</td><td>VPN o enlace dedicado, rangos sin solapar</td><td>Interconexión entre nubes solo si hace falta</td></tr>
-<tr><td>Gestión de incidencias y cambios</td><td>Procesos (por ejemplo, según ITIL) para atender y cambiar</td><td>Responsables claros de cada lado</td><td>Saber a qué proveedor escalar y con qué contrato</td></tr>
+<tr><th>Caso</th><th>Qué pasó</th><th>Qué regla de gobernanza faltaba</th></tr>
+<tr><td><b>Capital One</b> (2019)</td><td>Un cortafuegos mal configurado y un rol con demasiados permisos en AWS permitieron a una atacante descargar datos de unos 100 millones de clientes en EE. UU. y 6 millones en Canadá. El banco recibió una multa de 80 millones de dólares.</td><td>Mínimo privilegio en los permisos y revisión automática de la configuración</td></tr>
+<tr><td><b>Toyota</b> (2023)</td><td>Una base de datos en la nube con información de vehículos de unos 2,15 millones de clientes en Japón estuvo accesible desde Internet durante unos diez años, por un error de configuración.</td><td>Prohibir el acceso público a los datos y detectar automáticamente los recursos expuestos</td></tr>
 </table></div>
-<p>La diferencia de fondo: en la <b>nube híbrida</b> el reto es <b>integrar dos mundos muy distintos</b> (hardware propio y servicios de nube) que deben funcionar juntos; en la <b>multinube</b> el reto es <b>homogeneizar varios mundos parecidos pero incompatibles</b> (cada proveedor con sus API, sus nombres, sus permisos y su facturación).</p>
-
-<h3>3. Necesidades de gobernanza</h3>
-<h4>Políticas y controles (guardarraíles)</h4>
-<p>Las políticas se definen por escrito y, siempre que se pueda, se <b>imponen automáticamente</b> mediante <b>guardarraíles</b> (<i>guardrails</i>): controles que impiden o detectan lo que no está permitido. Dos tipos:</p>
+<h4>Administración y gobernanza</h4>
+<p>Cuando una organización tiene recursos en su CPD, en AWS y en Azure, aparecen dos tipos de trabajo distintos:</p>
 <ul>
-<li><b>Preventivos</b>: impiden la acción. Ejemplos: <b>Service Control Policies</b> de AWS Organizations (prohibir crear recursos fuera de las regiones de la UE), <b>Azure Policy</b> con efecto <i>deny</i> (prohibir IP públicas en las subredes de datos), permisos de Proxmox limitados a un pool.</li>
-<li><b>Detectivos</b>: detectan y avisan (o corrigen). Ejemplos: AWS Config, Azure Policy en modo <i>audit</i>, herramientas de <b>gestión de la postura de seguridad</b> (CSPM) que revisan continuamente la configuración frente a buenas prácticas (Prowler, Microsoft Defender for Cloud, AWS Security Hub).</li>
+<li><b>Administración</b> (gestión operativa): hacer que todo funcione cada día. Crear y modificar recursos, vigilar su estado, aplicar parches, hacer copias, atender incidencias.</li>
+<li><b>Gobernanza</b>: decidir <b>quién puede hacer qué, con qué reglas</b>, y comprobar que se cumplen. Es el conjunto de políticas, responsabilidades y controles que aseguran que el uso de la nube cumple los objetivos de la organización en seguridad, cumplimiento normativo y costes.</li>
 </ul>
-<p><b>Políticas como código</b>: las políticas se escriben en ficheros versionados y se comprueban automáticamente, incluso antes de crear los recursos, analizando el código de Terraform con herramientas como <b>Checkov</b>, <b>tfsec/Trivy</b> u <b>Open Policy Agent</b>. Lo veremos en las unidades 5 y 6.</p>
-<h4>Estructura de cuentas y zonas de aterrizaje</h4>
-<p>Una <b>zona de aterrizaje</b> (<i>landing zone</i>) es el entorno base, preparado y gobernado, en el que los equipos despliegan sus cargas: estructura de cuentas o suscripciones (una por entorno y proyecto: <code>citaprevia-revision</code>, <code>citaprevia-produccion</code>), red base, identidad federada, registros centralizados de auditoría y guardarraíles ya aplicados. Los proveedores ofrecen herramientas para montarla (AWS Control Tower, Azure Landing Zones). Separar entornos en cuentas distintas limita el daño de un error: un script de pruebas nunca podrá borrar producción.</p>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 240" role="img" aria-label="Zona de aterrizaje" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-landing_zone" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="220.0" y="10.0" width="280.0" height="40.0" rx="6" class="d-morado"/><text x="360.0" y="30.0" class="t" text-anchor="middle" dominant-baseline="middle">Organización de la Conselleria</text><rect x="40.0" y="64.0" width="640.0" height="40.0" rx="6" class="d-rojo"/><text x="360.0" y="76.0" class="t" text-anchor="middle" dominant-baseline="middle">Guardarraíles: solo regiones UE · discos cifrados · sin buckets públicos · etiquetas</text><text x="360.0" y="92.0" class="t" text-anchor="middle" dominant-baseline="middle">obligatorias</text><rect x="20.0" y="130.0" width="210.0" height="36.0" rx="6" class="d-gris"/><text x="125.0" y="148.0" class="t" text-anchor="middle" dominant-baseline="middle">Seguridad</text><rect x="255.0" y="130.0" width="210.0" height="36.0" rx="6" class="d-azul"/><text x="360.0" y="148.0" class="t" text-anchor="middle" dominant-baseline="middle">Cita Previa</text><rect x="490.0" y="130.0" width="210.0" height="36.0" rx="6" class="d-amarillo"/><text x="595.0" y="148.0" class="t" text-anchor="middle" dominant-baseline="middle">Pruebas (sandbox)</text><rect x="20.0" y="190.0" width="100.0" height="40.0" rx="6" class="d-gris"/><text x="70.0" y="210.0" class="t" text-anchor="middle" dominant-baseline="middle">Auditoría</text><rect x="130.0" y="190.0" width="100.0" height="40.0" rx="6" class="d-gris"/><text x="180.0" y="210.0" class="t" text-anchor="middle" dominant-baseline="middle">Registros</text><rect x="255.0" y="190.0" width="100.0" height="40.0" rx="6" class="d-azul"/><text x="305.0" y="210.0" class="t" text-anchor="middle" dominant-baseline="middle">revision</text><rect x="365.0" y="190.0" width="100.0" height="40.0" rx="6" class="d-azul"/><text x="415.0" y="210.0" class="t" text-anchor="middle" dominant-baseline="middle">produccion</text><rect x="545.0" y="190.0" width="100.0" height="40.0" rx="6" class="d-amarillo"/><text x="595.0" y="210.0" class="t" text-anchor="middle" dominant-baseline="middle">personal</text><path d="M360.0,52.0 L360.0,62.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M360.0,106.0 L360.0,117.0 L125.0,117.0 L125.0,128.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M360.0,106.0 L360.0,128.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M360.0,106.0 L360.0,117.0 L595.0,117.0 L595.0,128.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M125.0,168.0 L125.0,178.0 L70.0,178.0 L70.0,188.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M125.0,168.0 L125.0,178.0 L180.0,178.0 L180.0,188.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M360.0,168.0 L360.0,178.0 L305.0,178.0 L305.0,188.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M360.0,168.0 L360.0,178.0 L415.0,178.0 L415.0,188.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M595.0,168.0 L595.0,188.0" class="flecha " marker-end="url(#fl-landing_zone)"/></svg></div><figcaption>Una zona de aterrizaje: cuentas separadas por función y entorno, con guardarraíles aplicados desde arriba a todas ellas.</figcaption></figure>
+<p>Una comparación: administrar es conducir y mantener el coche; gobernar es el código de circulación, el carné y los radares. Se puede conducir muy bien sin normas, hasta el primer accidente.</p>
+<div class="tabla"><table>
+<tr><th></th><th>Administración</th><th>Gobernanza</th></tr>
+<tr><td>Pregunta</td><td>¿Funciona?</td><td>¿Se hace como se debe?</td></tr>
+<tr><td>Quién</td><td>Los equipos de operación de cada sistema</td><td>Dirección, seguridad y un equipo transversal (apartado 3)</td></tr>
+<tr><td>Ejemplos</td><td>Aplicar un parche, ampliar un disco, restaurar una copia</td><td>"Todo recurso lleva etiqueta de propietario", "solo regiones de la UE", "los permisos se revisan cada trimestre"</td></tr>
+<tr><td>Ritmo</td><td>Diario</td><td>Se define una vez, se aplica de forma automática y se revisa periódicamente</td></tr>
+</table></div>
+<p>La gobernanza no es un tema legal: la normativa (RGPD, ENS) es solo uno de sus motivos. En la nube, la gobernanza se <b>automatiza</b>: las reglas se escriben como código y la propia plataforma las aplica. Eso es DevOps, no burocracia.</p>
+<h4>Las cuatro preguntas, convertidas en preguntas de gobierno</h4>
+<p>Las cuatro preguntas que usamos para describir cada modelo son, en un entorno real, las que la gobernanza tiene que poder responder en todo momento y para cada recurso:</p>
+<div class="tabla"><table>
+<tr><th>Pregunta de la unidad</th><th>Pregunta de gobierno</th><th>Cómo se responde</th></tr>
+<tr><td>¿De quién es?</td><td>¿De quién es este recurso, a qué proyecto pertenece y quién lo paga?</td><td>Etiquetas obligatorias e inventario</td></tr>
+<tr><td>¿Quién lo gestiona y opera?</td><td>¿Quién puede crearlo, cambiarlo o borrarlo?</td><td>Identidades, permisos y una matriz de responsabilidades</td></tr>
+<tr><td>¿Dónde está?</td><td>¿Dónde se permite que esté?</td><td>Guardarraíles, por ejemplo "solo regiones de la UE"</td></tr>
+<tr><td>¿Quién más lo usa?</td><td>¿Quién puede acceder a sus datos, y quién lo ha hecho?</td><td>Políticas de acceso y registros de auditoría</td></tr>
+</table></div>
+<h4>Esquema: una zona de aterrizaje</h4>
+<p>La forma práctica de gobernar es preparar, antes de que nadie despliegue nada, una <b>zona de aterrizaje</b> (<i>landing zone</i>): el entorno base ya gobernado en el que los equipos "aterrizan" sus aplicaciones. Incluye una estructura de cuentas (en AWS) o suscripciones (en Azure) separadas por función y entorno, la red base, la identidad federada, los registros de auditoría centralizados y los guardarraíles ya aplicados desde arriba a todas las cuentas.</p>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 240" role="img" aria-label="Zona de aterrizaje" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-landing_zone" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="220.0" y="10.0" width="280.0" height="40.0" rx="6" class="d-morado"/><text x="360.0" y="30.0" class="t" text-anchor="middle" dominant-baseline="middle">Organización de un hospital</text><rect x="40.0" y="64.0" width="640.0" height="40.0" rx="6" class="d-rojo"/><text x="360.0" y="76.0" class="t" text-anchor="middle" dominant-baseline="middle">Guardarraíles: solo regiones UE · discos cifrados · sin buckets públicos · etiquetas</text><text x="360.0" y="92.0" class="t" text-anchor="middle" dominant-baseline="middle">obligatorias</text><rect x="20.0" y="130.0" width="210.0" height="36.0" rx="6" class="d-gris"/><text x="125.0" y="148.0" class="t" text-anchor="middle" dominant-baseline="middle">Seguridad</text><rect x="255.0" y="130.0" width="210.0" height="36.0" rx="6" class="d-azul"/><text x="360.0" y="148.0" class="t" text-anchor="middle" dominant-baseline="middle">Portal web</text><rect x="490.0" y="130.0" width="210.0" height="36.0" rx="6" class="d-amarillo"/><text x="595.0" y="148.0" class="t" text-anchor="middle" dominant-baseline="middle">Pruebas (sandbox)</text><rect x="20.0" y="190.0" width="100.0" height="40.0" rx="6" class="d-gris"/><text x="70.0" y="210.0" class="t" text-anchor="middle" dominant-baseline="middle">Auditoría</text><rect x="130.0" y="190.0" width="100.0" height="40.0" rx="6" class="d-gris"/><text x="180.0" y="210.0" class="t" text-anchor="middle" dominant-baseline="middle">Registros</text><rect x="255.0" y="190.0" width="100.0" height="40.0" rx="6" class="d-azul"/><text x="305.0" y="210.0" class="t" text-anchor="middle" dominant-baseline="middle">revision</text><rect x="365.0" y="190.0" width="100.0" height="40.0" rx="6" class="d-azul"/><text x="415.0" y="210.0" class="t" text-anchor="middle" dominant-baseline="middle">produccion</text><rect x="545.0" y="190.0" width="100.0" height="40.0" rx="6" class="d-amarillo"/><text x="595.0" y="210.0" class="t" text-anchor="middle" dominant-baseline="middle">personal</text><path d="M360.0,52.0 L360.0,62.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M360.0,106.0 L360.0,117.0 L125.0,117.0 L125.0,128.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M360.0,106.0 L360.0,128.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M360.0,106.0 L360.0,117.0 L595.0,117.0 L595.0,128.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M125.0,168.0 L125.0,178.0 L70.0,178.0 L70.0,188.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M125.0,168.0 L125.0,178.0 L180.0,178.0 L180.0,188.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M360.0,168.0 L360.0,178.0 L305.0,178.0 L305.0,188.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M360.0,168.0 L360.0,178.0 L415.0,178.0 L415.0,188.0" class="flecha " marker-end="url(#fl-landing_zone)"/><path d="M595.0,168.0 L595.0,188.0" class="flecha " marker-end="url(#fl-landing_zone)"/></svg></div><figcaption>Una zona de aterrizaje: cuentas separadas por función y entorno, con guardarraíles aplicados desde arriba a todas ellas.</figcaption></figure>
+<p>Separar los entornos en cuentas distintas limita el daño de un error: un script de pruebas nunca podrá borrar producción, porque ni siquiera la ve. Y los registros de auditoría van a una cuenta aparte, a la que no puede entrar quien administra el resto, para que nadie pueda borrar el rastro de lo que ha hecho.</p>
+
+<h3>2. Variantes: gobernar una nube híbrida y una multinube</h3>
+<p>El criterio de evaluación pide analizar las necesidades de administración y gobernanza de cada entorno. La diferencia de fondo es esta:</p>
+<ul>
+<li>En la <b>nube híbrida</b>, el reto es <b>integrar</b> dos mundos muy distintos: el hardware propio, con sus herramientas, y los servicios del proveedor, que deben funcionar como uno.</li>
+<li>En la <b>multinube</b>, el reto es <b>homogeneizar</b> varios mundos parecidos pero incompatibles: cada proveedor tiene sus API, sus nombres, su sistema de permisos y su factura, y hay que conseguir que las mismas reglas se cumplan en todos.</li>
+</ul>
+<h4>Necesidades de administración</h4>
+<div class="tabla"><table>
+<tr><th>Necesidad</th><th>Qué implica</th><th>En una nube híbrida</th><th>En una multinube</th></tr>
+<tr><td>Inventario</td><td>Saber qué recursos existen, dónde, de quién y en qué estado</td><td>Unir el inventario del CPD con el de la nube</td><td>Consolidar los inventarios de cada proveedor, que llaman distinto a lo mismo</td></tr>
+<tr><td>Aprovisionamiento</td><td>Crear recursos de forma estándar y repetible</td><td>Infraestructura como código que cubra el hipervisor propio y la nube</td><td>Infraestructura como código multiproveedor (Terraform), con módulos por proveedor</td></tr>
+<tr><td>Identidad y acceso</td><td>Quién entra y con qué permisos</td><td>Federar el directorio corporativo con la nube</td><td>Federarlo con cada proveedor y mantener roles equivalentes en todos</td></tr>
+<tr><td>Monitorización</td><td>Métricas, registros y alertas</td><td>Un panel que vea el CPD y la nube</td><td>Recoger los datos de cada proveedor en una herramienta común</td></tr>
+<tr><td>Parches y configuración</td><td>Sistemas actualizados y configurados igual</td><td>La misma herramienta (Ansible) a los dos lados</td><td>Lo mismo, con imágenes base equivalentes en cada nube</td></tr>
+<tr><td>Copias y recuperación</td><td>Poder restaurar datos y servicios</td><td>Copias cruzadas: del CPD a la nube y al revés</td><td>Copias en otro proveedor para no depender de uno</td></tr>
+<tr><td>Incidencias</td><td>Atender y resolver problemas</td><td>Responsables claros de cada lado</td><td>Saber a qué proveedor escalar y con qué contrato de soporte</td></tr>
+</table></div>
+<h4>Necesidades de gobernanza</h4>
+<div class="tabla"><table>
+<tr><th>Necesidad</th><th>En una nube híbrida</th><th>En una multinube</th></tr>
+<tr><td>Políticas</td><td>La misma regla se aplica con dos mecanismos muy distintos: los permisos de la plataforma propia (Proxmox, vSphere) y las políticas de la nube</td><td>La misma regla hay que escribirla una vez por proveedor, con su propio sistema (AWS, Azure y Google tienen cada uno el suyo)</td></tr>
+<tr><td>Etiquetado</td><td>Las etiquetas del CPD (Proxmox tiene las suyas) y las de la nube deben seguir la misma política</td><td>Cada proveedor tiene reglas distintas: en Google se llaman <i>labels</i> y solo admiten minúsculas, así que la política debe valer para todos</td></tr>
+<tr><td>Costes</td><td>Comparar dos modelos de coste distintos: la amortización del CPD (CapEx) y la factura de la nube (OpEx)</td><td>Unir varias facturas con formatos distintos (el estándar FOCUS del punto 4 lo facilita)</td></tr>
+<tr><td>Auditoría</td><td>Juntar los registros del CPD con los de la nube</td><td>Juntar los registros de cada proveedor en un único sistema</td></tr>
+<tr><td>Datos</td><td>Decidir qué datos se quedan en casa y cuáles pueden ir a la nube</td><td>Decidir en qué proveedor y en qué región puede estar cada tipo de dato</td></tr>
+<tr><td>Contratos y proveedores</td><td>Un proveedor de nube y, a veces, el mantenimiento del hardware</td><td>Varios contratos, varios SLA, varios soportes: hay que gestionarlos todos</td></tr>
+</table></div>
+
+<h3>3. Lo que aporta y lo que exige: las piezas de la gobernanza</h3>
+<h4>Políticas y guardarraíles</h4>
+<p>Las políticas se definen por escrito y, siempre que se pueda, se imponen de forma automática mediante <b>guardarraíles</b> (<i>guardrails</i>): controles que impiden o detectan lo que no está permitido. El nombre lo dice: no cierran la carretera, evitan que te salgas de ella. Hay dos tipos:</p>
+<ul>
+<li><b>Preventivos</b>: impiden la acción. Por ejemplo, prohibir crear recursos fuera de las regiones de la UE, o prohibir IP públicas en las subredes de datos. Si alguien lo intenta, la plataforma lo rechaza.</li>
+<li><b>Detectivos</b>: dejan hacer, pero detectan y avisan, o corrigen solos. Por ejemplo, revisar cada hora que todos los discos estén cifrados y avisar si uno no lo está. Las herramientas que revisan continuamente la configuración frente a buenas prácticas se llaman <b>CSPM</b> (gestión de la postura de seguridad en la nube).</li>
+</ul>
+<p>Lo ideal es ir un paso más allá, con <b>políticas como código</b>: las reglas se escriben en ficheros versionados y se comprueban antes de crear nada, analizando el código de Terraform. Lo veremos en la unidad 5.</p>
 <h4>Etiquetado</h4>
-<p>Las <b>etiquetas</b> (<i>tags</i> en AWS y Azure, <i>labels</i> en Google, <i>tags</i> en Proxmox) son pares clave-valor asociados a cada recurso. Son la base de la gobernanza porque permiten saber de quién es cada cosa, cuánto cuesta cada proyecto y qué políticas aplicar. Una política de etiquetado define las etiquetas <b>obligatorias</b> y sus valores permitidos:</p>
+<p>Las <b>etiquetas</b> son pares clave-valor asociados a cada recurso. Son la base de la gobernanza, porque responden a "¿de quién es?" y "¿quién lo paga?". Una <b>política de etiquetado</b> define cuáles son obligatorias y qué valores admiten:</p>
 <div class="tabla"><table>
 <tr><th>Etiqueta</th><th>Valores</th><th>Para qué</th></tr>
-<tr><td><code>proyecto</code></td><td><code>citaprevia</code>, <code>portal-empleado</code>...</td><td>Repartir costes, inventario</td></tr>
-<tr><td><code>entorno</code></td><td><code>desarrollo</code>, <code>revision</code>, <code>produccion</code></td><td>Aplicar políticas distintas, apagar fuera de horario lo que no es producción</td></tr>
-<tr><td><code>propietario</code></td><td>correo del equipo responsable</td><td>Saber a quién avisar</td></tr>
-<tr><td><code>centro-coste</code></td><td>código contable</td><td>Repercutir costes</td></tr>
-<tr><td><code>clasificacion-datos</code></td><td><code>publico</code>, <code>interno</code>, <code>confidencial</code>, <code>especial</code></td><td>Aplicar cifrado y accesos</td></tr>
-<tr><td><code>gestionado-por</code></td><td><code>terraform</code>, <code>manual</code></td><td>Detectar recursos creados a mano</td></tr>
+<tr><td><code>proyecto</code></td><td>portal-web, nominas…</td><td>Repartir costes, inventario</td></tr>
+<tr><td><code>entorno</code></td><td>desarrollo, pruebas, produccion</td><td>Aplicar políticas distintas; apagar fuera de horario lo que no es producción</td></tr>
+<tr><td><code>propietario</code></td><td>Correo del equipo responsable</td><td>Saber a quién avisar</td></tr>
+<tr><td><code>centro-coste</code></td><td>Código contable</td><td>Repercutir el coste a cada departamento</td></tr>
+<tr><td><code>clasificacion-datos</code></td><td>publico, interno, confidencial, especial</td><td>Aplicar cifrado y accesos según el nivel</td></tr>
+<tr><td><code>gestionado-por</code></td><td>terraform, manual</td><td>Detectar recursos creados a mano, fuera del código</td></tr>
 </table></div>
-<h4>Costes (FinOps)</h4>
-<p>Presupuestos con alertas por proyecto y entorno, informes de costes por etiqueta, revisión periódica de recursos infrautilizados, compromisos de uso para lo estable y una visión consolidada en multinube. La <b>FinOps Foundation</b> describe el ciclo <i>informar → optimizar → operar</i>.</p>
-<h4>Cumplimiento y auditoría</h4>
-<p>Registros de auditoría de todas las acciones (AWS CloudTrail, Azure Activity Log, registro de tareas de Proxmox) centralizados y protegidos contra borrado; evidencias para auditorías del ENS o del RGPD; revisiones periódicas de permisos.</p>
+<p>Una política de etiquetado sin guardarraíl no sirve: hay que impedir crear recursos sin las etiquetas obligatorias, o al menos detectarlos.</p>
+<h4>Costes</h4>
+<p>La disciplina FinOps que vimos en la unidad 2 (presupuestos con alertas, informes por etiqueta, apagar lo que no se usa) se aplica igual, con una dificultad añadida: en un entorno híbrido o multinube hay que juntar costes de varios orígenes para ver el total por proyecto.</p>
+<h4>Auditoría y cumplimiento</h4>
+<p>Todas las acciones quedan en <b>registros de auditoría</b> (quién hizo qué, cuándo y desde dónde), centralizados y protegidos contra borrado. Sirven para investigar incidentes y para demostrar el cumplimiento en una auditoría del ENS o del RGPD. Se completan con revisiones periódicas de permisos y con referencias externas, como los <b>CIS Benchmarks</b>: guías públicas de configuración segura para cada proveedor y sistema, que muchas herramientas comprueban de forma automática.</p>
 <h4>Datos</h4>
-<p>Dónde puede estar cada tipo de dato (regiones permitidas), cifrado obligatorio, retención y borrado, y quién puede acceder.</p>
+<p>Dónde puede estar cada tipo de dato (regiones permitidas), qué cifrado es obligatorio, cuánto tiempo se guarda, cuándo se borra y quién puede acceder. Parte de la clasificación de datos que usaremos para elegir el modelo (punto 6).</p>
 <h4>Personas y responsabilidades</h4>
-<p>Muchas organizaciones crean un <b>centro de excelencia de nube</b> (CCoE): un equipo transversal que define las políticas, prepara las zonas de aterrizaje, forma a los equipos y revisa el cumplimiento. Una matriz <b>RACI</b> (quién es Responsable, quién Aprueba, a quién se Consulta y a quién se Informa) deja claro quién hace qué en cada lado de una nube híbrida.</p>
-<h4>Marcos de referencia</h4>
-<p>Los <b>Cloud Adoption Framework</b> de AWS, Azure y Google dedican una parte a la gobernanza; en seguridad, el ENS, la ISO 27001 y los controles del <i>Center for Internet Security</i> (CIS Benchmarks) para cada proveedor.</p>
-
-<h3>4. Herramientas de gestión unificada</h3>
-<ul>
-<li><b>Infraestructura como código</b>: Terraform/OpenTofu para todos los proveedores y Proxmox.</li>
-<li><b>Gestión de configuración</b>: Ansible, con inventarios dinámicos que leen las máquinas de cada nube y de Proxmox.</li>
-<li><b>Plataformas de gestión híbrida</b>: Azure Arc, Google Distributed Cloud, Red Hat OpenShift, Rancher (para clústeres Kubernetes en cualquier sitio).</li>
-<li><b>Monitorización</b>: Prometheus y Grafana, Zabbix, Datadog, Elastic, que recogen datos de todos los entornos.</li>
-<li><b>Seguridad</b>: CSPM multinube (Prowler, Wiz, Defender for Cloud), SIEM (Wazuh, Microsoft Sentinel).</li>
-<li><b>Costes</b>: herramientas FinOps multiproveedor (OpenCost, Kubecost, CloudHealth).</li>
-</ul>
-
-<h3>Actividades</h3>
-<div class="actividad">
-<h4>Actividad 1. Inventario automatizado con etiquetas</h4>
-<p>En parejas. El objetivo es obtener un inventario conjunto de la infraestructura propia (Docker en el portátil) y de la nube pública (AWS) y detectar recursos que incumplen la política de etiquetado. En Docker, las etiquetas se llaman <i>labels</i>.</p>
-<ol>
-<li>Configurad el AWS CLI en el portátil: si no está, <code>sudo snap install aws-cli --classic</code>. En el Learner Lab, en <i>AWS Details → AWS CLI → Show</i>, copiad las credenciales en <code>~/.aws/credentials</code> y cread <code>~/.aws/config</code> con <code>[default]</code> y <code>region = us-east-1</code>. Comprobad con <code>aws sts get-caller-identity</code>.</li>
-<li>Cread dos instancias pequeñas en AWS y dos contenedores en el portátil. Etiquetad solo uno de cada lado con <code>proyecto=citaprevia</code>, <code>entorno=revision</code> y <code>propietario=vuestro-correo</code>. En Docker: <code>docker run -d --name cp-rev-1 --label proyecto=citaprevia --label entorno=revision --label propietario=vuestro-correo nginx:stable</code> y <code>docker run -d --name prueba-sin-etiquetar nginx:stable</code>.</li>
-<li>Escribid un script <code>inventario.sh</code> que genere un CSV con columnas <code>plataforma,id,nombre,estado,etiquetas</code>:
-<pre><code>#!/usr/bin/env bash
-set -euo pipefail
-echo "plataforma,id,nombre,estado,etiquetas"
-# Docker (infraestructura propia)
-docker ps -aq | xargs -r docker inspect |
-jq -r '.[] | ["docker", .Id[0:12], (.Name | ltrimstr("/")), .State.Status,
-((.Config.Labels // {}) | to_entries | map(.key+"="+.value) | join(";"))] | @csv'
-# AWS
-aws ec2 describe-instances --output json |
-jq -r '.Reservations[].Instances[] |
-["aws", .InstanceId, ((.Tags // [])[] | select(.Key=="Name") | .Value) // "",
-.State.Name, ((.Tags // []) | map(.Key+"="+.Value) | join(";"))] | @csv'</code></pre></li>
-<li>Ejecutadlo y abrid el CSV en la hoja de cálculo. ¿Por qué el contenedor "sin etiquetar" tiene alguna etiqueta? (Pista: las imágenes también llevan <i>labels</i>.) Añadid una segunda parte al script que liste solo los recursos <b>sin</b> la etiqueta <code>proyecto</code> (pista: <code>grep -v</code> o un filtro <code>select</code> en jq).</li>
-<li>En AWS, buscad los recursos por etiqueta con <i>Resource Groups &amp; Tag Editor</i> y comparad con vuestro script.</li>
-<li>Limpiad: <code>docker rm -f cp-rev-1 prueba-sin-etiquetar</code>, terminad las dos instancias y borrad <code>~/.aws/credentials</code> del portátil.</li>
-</ol>
-</div>
-<div class="actividad">
-<h4>Actividad 2. Plan de gobernanza de Cita Previa</h4>
-<p>En grupos de 3. Cita Previa usará una nube privada (Proxmox de la Conselleria) para los datos y AWS para la web, y Microsoft 365 para el correo del personal. Redactad un plan de gobernanza de 2 páginas con:</p>
-<ol>
-<li>Estructura de cuentas y entornos.</li>
-<li>Política de etiquetado (etiquetas obligatorias y valores).</li>
-<li>Cinco guardarraíles concretos, indicando si son preventivos o detectivos y con qué herramienta se aplicarían en cada plataforma (por ejemplo: "solo regiones de la UE", "prohibidos los buckets públicos", "todos los discos cifrados").</li>
-<li>Gestión de identidades: directorio, federación, doble factor y revisión de permisos.</li>
-<li>Control de costes: presupuestos, alertas y apagado de revisión fuera de horario.</li>
-<li>Registros de auditoría y cómo se protegen.</li>
-<li>Matriz RACI con cuatro roles (CCoE, equipo de Cita Previa, seguridad, proveedor) para: crear recursos, aprobar pasos a producción, aplicar parches, responder a incidentes y revisar costes.</li>
-</ol>
-</div>
-<div class="actividad">
-<h4>Actividad 3. ¿Qué falla aquí?</h4>
-<p>Este es un extracto del inventario de la Conselleria. Localizad todos los incumplimientos del plan que acabáis de redactar y proponed una acción para cada uno.</p>
+<p>Muchas organizaciones crean un <b>centro de excelencia de nube</b> (CCoE): un equipo transversal que define las políticas, prepara las zonas de aterrizaje, forma a los equipos y revisa el cumplimiento. Y una <b>matriz RACI</b> deja claro quién hace qué en cada tarea: quién es <b>R</b>esponsable de hacerla, quién la <b>A</b>prueba, a quién se <b>C</b>onsulta y a quién se <b>I</b>nforma.</p>
 <div class="tabla"><table>
-<tr><th>Recurso</th><th>Plataforma y región</th><th>Estado</th><th>Etiquetas</th><th>Observaciones</th></tr>
-<tr><td>vm web-pro-1</td><td>AWS eu-south-2</td><td>En ejecución</td><td>proyecto=citaprevia; entorno=produccion; propietario=equipo-cp</td><td>Disco cifrado</td></tr>
-<tr><td>vm web-rev-1</td><td>AWS eu-south-2</td><td>En ejecución 24 h</td><td>proyecto=citaprevia; entorno=revision</td><td>Uso medio de CPU 2 %</td></tr>
-<tr><td>vm prueba-juan</td><td>AWS us-east-1</td><td>Detenida hace 5 meses</td><td>(ninguna)</td><td>Disco de 200 GB sin cifrar</td></tr>
-<tr><td>bucket cp-documentos</td><td>AWS eu-south-2</td><td>-</td><td>proyecto=citaprevia; clasificacion-datos=especial</td><td>Acceso público de lectura activado</td></tr>
-<tr><td>bd citas</td><td>Proxmox CPD</td><td>En ejecución</td><td>citaprevia; produccion</td><td>Sin copia desde hace 12 días</td></tr>
-<tr><td>vm analitica</td><td>Azure West US</td><td>En ejecución</td><td>proyecto=citaprevia</td><td>Creada a mano con datos de citas exportados</td></tr>
-<tr><td>usuario admin-temporal</td><td>AWS IAM</td><td>Activo</td><td>-</td><td>Permisos de administrador, sin doble factor, último acceso hace 90 días</td></tr>
-<tr><td>snapshot antes-migracion</td><td>AWS eu-south-2</td><td>-</td><td>gestionado-por=manual</td><td>De hace 14 meses</td></tr>
+<tr><th>Tarea</th><th>Centro de excelencia</th><th>Equipo del proyecto</th><th>Seguridad</th><th>Proveedor</th></tr>
+<tr><td>Crear recursos</td><td>C</td><td>R</td><td>I</td><td>—</td></tr>
+<tr><td>Aprobar el paso a producción</td><td>A</td><td>R</td><td>C</td><td>—</td></tr>
+<tr><td>Parchear el hardware de la nube pública</td><td>I</td><td>—</td><td>I</td><td>R</td></tr>
+<tr><td>Responder a un incidente de seguridad</td><td>C</td><td>C</td><td>R, A</td><td>C</td></tr>
+<tr><td>Revisar los costes</td><td>A</td><td>R</td><td>—</td><td>—</td></tr>
 </table></div>
-<p class="entrega">Entrega en Aules: script de inventario con su CSV, y plan de gobernanza.</p>
-</div>
+<h4>Lo que aporta y lo que exige</h4>
+<p>Una buena gobernanza aporta <b>control</b> (se sabe qué hay y de quién es), <b>seguridad</b> (los errores típicos se evitan antes de que pasen), <b>costes previsibles</b> y auditorías que se superan sin sustos. A cambio exige un <b>esfuerzo inicial</b> (preparar la zona de aterrizaje, escribir las políticas), un equipo que la mantenga y evitar el riesgo contrario: una gobernanza tan estricta que obliga a pedir permiso para todo y lleva a los equipos de vuelta a la TI en la sombra. La regla de los expertos: <b>guardarraíles, no barreras</b>. Lo permitido debe ser fácil, y lo prohibido, imposible o al menos visible.</p>
+<h4>Ejemplo: un inventario sin gobernanza</h4>
+<p>Este es un extracto del inventario de una organización híbrida y multinube, con un CPD con Proxmox, AWS y Azure. Su política dice: solo regiones de la UE, etiquetas obligatorias, todo cifrado, nada público con datos sensibles, copias diarias, doble factor para todos y apagar fuera de horario lo que no es producción. Cada fila incumple algo:</p>
+<div class="tabla"><table>
+<tr><th>Recurso</th><th>Dónde</th><th>Situación</th><th>Qué falla</th><th>Qué lo habría evitado</th></tr>
+<tr><td>Máquina <code>web-pruebas-1</code></td><td>AWS, España</td><td>Encendida 24 horas, con un 2 % de uso de CPU</td><td>Entorno de pruebas encendido fuera de horario</td><td>Apagado automático según la etiqueta <code>entorno</code></td></tr>
+<tr><td>Máquina <code>prueba-juan</code></td><td>AWS, Virginia (EE. UU.)</td><td>Detenida hace 5 meses, sin etiquetas, disco de 200 GB sin cifrar</td><td>Región no permitida, sin dueño, sin cifrar y pagando el disco</td><td>Guardarraíl preventivo de regiones y de etiquetas; cifrado obligatorio</td></tr>
+<tr><td>Almacenamiento <code>documentos</code></td><td>AWS, España</td><td>Etiquetado como datos especiales, con lectura pública activada</td><td>Datos sensibles abiertos a Internet (el caso Toyota)</td><td>Bloqueo del acceso público a nivel de toda la organización</td></tr>
+<tr><td>Base de datos <code>pacientes</code></td><td>Proxmox, CPD</td><td>Sin copia desde hace 12 días</td><td>Incumple las copias diarias</td><td>Alerta de monitorización sobre la última copia correcta</td></tr>
+<tr><td>Máquina <code>analitica</code></td><td>Azure, oeste de EE. UU.</td><td>Creada a mano, con datos exportados de pacientes</td><td>Datos personales fuera de la UE, fuera del código y sin control</td><td>Guardarraíl de regiones también en Azure; prohibir crear recursos a mano en producción</td></tr>
+<tr><td>Usuario <code>admin-temporal</code></td><td>AWS</td><td>Administrador, sin doble factor, sin usar hace 90 días</td><td>Permisos excesivos y cuenta olvidada (el caso Capital One)</td><td>Revisión periódica de permisos; doble factor obligatorio; desactivar cuentas sin uso</td></tr>
+<tr><td>Copia <code>antes-migracion</code></td><td>AWS, España</td><td>Instantánea de hace 14 meses, creada a mano</td><td>Nadie sabe si se puede borrar, y se paga cada mes</td><td>Etiqueta de propietario y caducidad automática de las instantáneas</td></tr>
+</table></div>
+<p>Fíjate en que ninguno de estos problemas es un fallo del proveedor. Todos son decisiones o descuidos del cliente, y todos se pueden evitar con reglas automáticas.</p>
+
+<h3>4. Opciones en el mercado: las herramientas</h3>
+<p>Cada proveedor tiene sus herramientas de gobernanza, y en entornos híbridos o multinube se añaden otras que funcionan en todos:</p>
+<div class="tabla"><table>
+<tr><th>Necesidad</th><th>AWS</th><th>Azure</th><th>Google Cloud</th><th>Multiplataforma y libres</th></tr>
+<tr><td>Estructura de cuentas y zona de aterrizaje</td><td>Organizations, Control Tower</td><td>Grupos de administración, Azure Landing Zones</td><td>Organización y carpetas de Resource Manager</td><td>Módulos de Terraform para zonas de aterrizaje</td></tr>
+<tr><td>Guardarraíles preventivos</td><td>Service Control Policies</td><td>Azure Policy (efecto <i>deny</i>)</td><td>Organization Policy</td><td>Open Policy Agent, Checkov (unidad 5)</td></tr>
+<tr><td>Revisión de la configuración (CSPM)</td><td>AWS Config, Security Hub</td><td>Microsoft Defender for Cloud</td><td>Security Command Center</td><td>Prowler</td></tr>
+<tr><td>Inventario</td><td>Resource Explorer</td><td>Resource Graph</td><td>Cloud Asset Inventory</td><td>Steampipe (consulta varias nubes con SQL)</td></tr>
+<tr><td>Registros de auditoría</td><td>CloudTrail</td><td>Activity Log</td><td>Cloud Audit Logs</td><td>Un SIEM que los junte todos: Wazuh (libre), Microsoft Sentinel</td></tr>
+<tr><td>Costes</td><td>Cost Explorer, Budgets</td><td>Cost Management</td><td>Presupuestos de facturación</td><td>OpenCost, estándar FOCUS</td></tr>
+</table></div>
+<p>A estas se suman las herramientas de gestión de los dos lados que vimos en la nube híbrida (Azure Arc, Terraform, Ansible, Rancher; punto 3) y las de monitorización que veremos en la unidad 7. Como marcos de referencia, los tres grandes proveedores dedican una parte de su marco de adopción de la nube (<i>Cloud Adoption Framework</i>) a la gobernanza, y en seguridad se usan el ENS, la ISO 27001 y los CIS Benchmarks.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
-<li>¿Qué diferencia hay entre administración y gobernanza de la nube?</li>
-<li>¿Por qué la gobernanza en multinube se centra en homogeneizar y en híbrida en integrar?</li>
-<li>¿Qué es un guardarraíl preventivo? Pon un ejemplo.</li>
-<li>¿Qué problemas resuelve una buena política de etiquetado?</li>
+<li>¿Qué diferencia hay entre administración y gobernanza de la nube? Pon un ejemplo de cada una.</li>
+<li>¿Qué son el crecimiento descontrolado y la TI en la sombra?</li>
+<li>Convierte las cuatro preguntas de la unidad en preguntas de gobierno. ¿Cómo se responde cada una?</li>
+<li>¿Por qué se dice que en la nube híbrida el reto es integrar y en la multinube homogeneizar? Pon un ejemplo de cada uno.</li>
+<li>¿Qué diferencia hay entre un guardarraíl preventivo y uno detectivo? Pon un ejemplo de cada uno.</li>
 <li>¿Qué es una zona de aterrizaje y por qué se separan los entornos en cuentas distintas?</li>
+<li>¿Qué problemas resuelve una buena política de etiquetado? ¿Por qué no sirve sin un guardarraíl?</li>
+<li>¿Qué falló en los casos de Capital One y Toyota, y qué regla lo habría evitado?</li>
+<li>¿Qué significa "guardarraíles, no barreras"?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p6" aria-labelledby="tab-p6" hidden>
 <p class="meta">Unidad 3 · 6. Elegir el modelo · 2 horas</p>
