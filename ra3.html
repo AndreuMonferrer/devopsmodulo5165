@@ -37,7 +37,7 @@
 <h3>Puntos de la unidad</h3>
 <div class="tabla"><table><tr><th>Nº</th><th>Punto</th><th>CE</th></tr><tr><td><a href="#p1">1</a></td><td>La nube pública</td><td>a</td></tr><tr><td><a href="#p2">2</a></td><td>La nube privada</td><td>b</td></tr><tr><td><a href="#p3">3</a></td><td>La nube híbrida</td><td>c</td></tr><tr><td><a href="#p4">4</a></td><td>Nube pública o privada: elegir según las necesidades</td><td>d</td></tr><tr><td><a href="#p5">5</a></td><td>Nube híbrida y multinube</td><td>e</td></tr><tr><td><a href="#p6">6</a></td><td>Administración y gobernanza en entornos híbridos y multinube</td><td>f</td></tr></table></div>
 <h3>Evaluación</h3>
-<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>60 %</b> prueba escrita (fecha por confirmar) y <b>40 %</b> trabajos de clase (esquemas de los modelos, estudio de mercado, diseño híbrido, informe de consultoría, comparativa híbrida/multinube y plan de gobernanza).</p>
+<p>La unidad pesa un <b>10 %</b> de la nota del módulo: <b>60 %</b> prueba escrita (fecha por confirmar) y <b>40 %</b> trabajos de clase: el póster con su exposición y la actividad de consultoría del punto 4.</p>
 </section><section class="panel" role="tabpanel" id="p-p1" aria-labelledby="tab-p1" hidden>
 <p class="meta">Unidad 3 · 1. Nube pública · 2 horas</p>
 <h2>La nube pública</h2>
@@ -431,74 +431,49 @@
 <p class="chips"><span class="ce" title="Se ha diferenciado entre nubes públicas y privadas, valorando la configuración más adecuada en función de las necesidades de una organización.">CE 3d</span></p>
 <h3>Objetivos del punto</h3>
 <ul>
-<li>Diferenciar con precisión la nube pública y la privada en todos sus aspectos.</li>
+<li>Clasificar los datos de una organización y deducir qué modelos admite cada nivel.</li>
 <li>Analizar las necesidades de una organización en funcionalidad, seguridad, escalabilidad y costes.</li>
-<li>Aplicar un método de decisión con una matriz ponderada para elegir el modelo de despliegue.</li>
-<li>Redactar una recomendación razonada como si fuerais una consultora.</li>
+<li>Aplicar una matriz de decisión ponderada, con requisitos eliminatorios y análisis de sensibilidad.</li>
+<li>Recomendar de forma razonada el modelo de despliegue más adecuado para un caso real.</li>
 </ul>
 
-<h3>1. Pública frente a privada: la comparación completa</h3>
+<h3>1. De describir a decidir</h3>
+<p>En los puntos 1 a 3 hemos <b>descrito</b> los modelos. Este punto es distinto: aquí aprendemos a <b>elegir</b>. No hace falta volver a comparar la nube pública y la privada aspecto por aspecto: esa comparación sale de poner uno al lado del otro los apartados "Lo que aporta y lo que exige" de los puntos 1 y 2 (y los pósters de nube pública y nube privada). Tampoco repetimos las "Nueve preguntas para decidir" de la unidad 2 ni el cálculo del TCO: los usaremos.</p>
+<p>Lo que añadimos es un <b>método</b>, para que la decisión no dependa de gustos personales ni de lo que le suene mejor a cada uno. Tiene tres pasos: clasificar los datos, analizar las necesidades con una matriz ponderada y redactar una recomendación.</p>
+
+<h3>2. Paso 1: clasificar los datos</h3>
+<p>Antes de hablar de modelos, hay que saber <b>qué datos</b> se van a manejar, porque el tipo de dato pone límites que ningún precio compensa. Una clasificación típica, en cuatro niveles:</p>
 <div class="tabla"><table>
-<tr><th>Criterio</th><th>Nube pública</th><th>Nube privada</th></tr>
-<tr><td>Propiedad de los recursos</td><td>Proveedor</td><td>Organización (o un tercero en exclusiva)</td></tr>
-<tr><td>Uso compartido</td><td>Multitenencia entre organizaciones</td><td>Exclusiva de una organización</td></tr>
-<tr><td>Inversión inicial</td><td>Nula</td><td>Alta (hardware, CPD, licencias)</td></tr>
-<tr><td>Modelo de coste</td><td>Variable, por uso</td><td>Fijo, amortización y personal</td></tr>
-<tr><td>Escalabilidad</td><td>Prácticamente ilimitada, en minutos</td><td>Limitada a la capacidad comprada; ampliar tarda semanas</td></tr>
-<tr><td>Funcionalidad</td><td>Cientos de servicios gestionados</td><td>Lo que la organización monte y mantenga</td></tr>
-<tr><td>Control</td><td>Limitado a lo que expone el proveedor</td><td>Total</td></tr>
-<tr><td>Seguridad física y certificaciones</td><td>Del proveedor, muy alta</td><td>Depende de la inversión propia</td></tr>
-<tr><td>Ubicación y soberanía de los datos</td><td>Región elegible; sujeto a la ley del proveedor</td><td>Totalmente controlada</td></tr>
-<tr><td>Rendimiento</td><td>Bueno, con posible variabilidad</td><td>Previsible, sin vecinos</td></tr>
-<tr><td>Personal necesario</td><td>Perfiles de nube, IaC, FinOps</td><td>Perfiles de sistemas, redes, almacenamiento, hardware</td></tr>
-<tr><td>Tiempo hasta estar operativo</td><td>Horas</td><td>Meses</td></tr>
-<tr><td>Riesgo principal</td><td>Dependencia del proveedor, costes descontrolados, errores de configuración</td><td>Infradimensionar o sobredimensionar, obsolescencia, falta de personal</td></tr>
+<tr><th>Nivel</th><th>Ejemplos en un hospital</th><th>Implicaciones</th></tr>
+<tr><td><b>Público</b></td><td>Horarios, cartera de servicios, preguntas frecuentes</td><td>Cualquier modelo</td></tr>
+<tr><td><b>Interno</b></td><td>Estadísticas agregadas de actividad, turnos del personal</td><td>Cualquier modelo, con control de acceso</td></tr>
+<tr><td><b>Confidencial</b></td><td>Nombre, DNI, teléfono y citas de los pacientes</td><td>Cifrado, acceso restringido, proveedor certificado, datos en la UE</td></tr>
+<tr><td><b>Especialmente protegido</b></td><td>Diagnósticos, historia clínica, resultados de pruebas</td><td>Categoría especial del RGPD; ENS de categoría alta; a menudo se prefiere control propio o una nube soberana</td></tr>
 </table></div>
+<p>La clasificación suele dar ya la primera respuesta: si casi todos los datos son públicos o internos, la nube pública no tiene obstáculos; si hay mucho dato especialmente protegido, la privada o la híbrida ganan peso, y la parte pública solo se usa con proveedores certificados y en la UE.</p>
+<p>Un error frecuente es pensar "pública = insegura, privada = segura". Una nube pública bien configurada puede ser más segura que un CPD pequeño mal mantenido. Lo que decide no es el modelo, sino si cumple los requisitos de cada nivel de dato.</p>
 
-<h3>2. Las necesidades de la organización</h3>
-<p>El resultado de aprendizaje nos pide elegir el modelo "en función de las necesidades de funcionalidad, seguridad digital, escalabilidad o costes". Veamos qué preguntar en cada una.</p>
-<h4>Funcionalidad</h4>
-<ul>
-<li>¿Qué servicios necesita la aplicación? ¿Bases de datos gestionadas, colas, IA, analítica? Si son muchos y avanzados, la pública tiene ventaja.</li>
-<li>¿Hay software heredado que exige hardware, sistema operativo o licencias concretas?</li>
-<li>¿Qué latencia se necesita y dónde están los usuarios o las máquinas?</li>
-<li>¿Hace falta integración con sistemas que ya están en el CPD?</li>
-</ul>
-<h4>Seguridad digital y cumplimiento</h4>
-<p>El punto de partida es <b>clasificar los datos</b>. Una clasificación típica:</p>
+<h3>3. Paso 2: la matriz de decisión ponderada</h3>
+<h4>De dónde salen los criterios</h4>
+<p>El resultado de aprendizaje de la unidad nos dice qué necesidades mirar: <b>funcionalidad, seguridad digital, escalabilidad y costes</b>. Cada una se convierte en uno o varios criterios de la matriz:</p>
 <div class="tabla"><table>
-<tr><th>Nivel</th><th>Ejemplos en Cita Previa</th><th>Implicaciones</th></tr>
-<tr><td>Público</td><td>Horarios de los centros, preguntas frecuentes</td><td>Cualquier modelo</td></tr>
-<tr><td>Interno</td><td>Estadísticas agregadas de citas</td><td>Cualquier modelo con control de acceso</td></tr>
-<tr><td>Confidencial</td><td>Nombre, DNI, teléfono y citas de pacientes</td><td>Cifrado, acceso restringido, proveedor certificado, datos en la UE</td></tr>
-<tr><td>Especialmente protegido</td><td>Motivo de la consulta, historia clínica</td><td>Categoría especial del RGPD; requisitos ENS de nivel alto; a menudo se prefiere control propio</td></tr>
+<tr><th>Necesidad</th><th>Qué preguntar</th><th>Hacia dónde empuja normalmente</th></tr>
+<tr><td>Funcionalidad</td><td>¿Hacen falta servicios avanzados (bases de datos gestionadas, IA, analítica)? ¿Hay software heredado o hardware especial? ¿Dónde están los usuarios?</td><td>Muchos servicios o usuarios repartidos → pública. Software heredado o latencia local → privada</td></tr>
+<tr><td>Seguridad y cumplimiento</td><td>¿Qué nivel tienen los datos (paso 1)? ¿Qué exige la normativa (RGPD, ENS, PCI DSS para pagos con tarjeta)? ¿Se permite hardware compartido?</td><td>Datos especialmente protegidos o normativa estricta → privada, híbrida o nube soberana</td></tr>
+<tr><td>Escalabilidad</td><td>¿Cómo es la demanda: estable, con picos previsibles, con picos imprevisibles o creciendo? ¿Cuánto mayor es el pico que la media?</td><td>Picos grandes o demanda incierta → pública. Demanda estable → cualquiera</td></tr>
+<tr><td>Costes</td><td>¿Hay presupuesto para invertir o solo para gasto corriente? ¿Hay CPD amortizado y personal? ¿Qué dice el TCO a 3-5 años? ¿Cuántos datos salen hacia Internet?</td><td>Sin capital ni personal → pública. Carga grande y estable con CPD y equipo → privada</td></tr>
 </table></div>
-<p>Otras preguntas: ¿qué exige la normativa (RGPD, ENS, normas sectoriales como PCI DSS para pagos)? ¿Se permite hardware compartido? ¿Quién debe poder auditar? ¿Qué nivel de disponibilidad necesita el servicio? Recordad que la nube pública bien configurada puede ser <b>más segura</b> que un CPD pequeño mal mantenido; la decisión no es "pública insegura, privada segura".</p>
-<h4>Escalabilidad</h4>
-<ul>
-<li>¿Cómo es la curva de demanda? ¿Estable, con picos predecibles (campañas), con picos imprevisibles (noticias) o creciente?</li>
-<li>¿Cuál es la diferencia entre la demanda media y la de pico? Si el pico es 10 veces la media, en privada habría que comprar 10 veces lo que se usa normalmente.</li>
-<li>¿Hace falta presencia en otras regiones o países?</li>
-</ul>
-<h4>Costes</h4>
-<ul>
-<li>¿Hay presupuesto de inversión o solo de gasto corriente?</li>
-<li>¿Existe ya un CPD amortizado y personal para operarlo?</li>
-<li>¿Qué dice el TCO a 3-5 años (unidad 2, punto 3)?</li>
-<li>¿Qué volumen de datos sale hacia Internet? (La transferencia puede decidir el coste.)</li>
-</ul>
-
-<h3>3. Un método de decisión: la matriz ponderada</h3>
-<p>Para que la decisión no dependa de preferencias personales, se usa una <b>matriz de decisión ponderada</b>:</p>
-<ol>
-<li><b>Elegir los criterios</b> relevantes para el caso (6-10).</li>
-<li><b>Asignar un peso</b> a cada criterio según su importancia para esa organización, sumando 100 %. El mismo criterio pesa distinto en un hospital (seguridad) que en una startup (coste y velocidad).</li>
-<li><b>Puntuar cada opción</b> en cada criterio, por ejemplo de 1 a 5, justificando la nota.</li>
-<li><b>Multiplicar y sumar</b>: la opción con mayor puntuación ponderada es la candidata.</li>
-<li><b>Analizar la sensibilidad</b>: ¿cambia el resultado si se modifica un poco algún peso? Si cambia con facilidad, la decisión no es clara y quizá la respuesta es un modelo híbrido.</li>
-<li><b>Revisar los requisitos eliminatorios</b>: si la normativa prohíbe algo, esa opción queda fuera sea cual sea su puntuación.</li>
+<p>Una regla útil para la escalabilidad: si el pico es 10 veces la media, en una nube privada habría que comprar 10 veces lo que se usa normalmente, y tenerlo parado el resto del año.</p>
+<h4>El método, paso a paso</h4>
+<ol class="pasos">
+<li><b>Elegir los criterios</b> relevantes para el caso (entre 6 y 10), cubriendo las cuatro necesidades.</li>
+<li><b>Asignar un peso</b> a cada criterio según su importancia <b>para esa organización</b>, de forma que sumen 100 %. El mismo criterio pesa distinto en un hospital (seguridad) que en una startup (coste y rapidez).</li>
+<li><b>Puntuar</b> cada opción en cada criterio, por ejemplo de 1 a 5, justificando cada nota.</li>
+<li><b>Multiplicar y sumar</b>: puntuación × peso en cada criterio, y se suma. La opción con más puntos es la candidata.</li>
+<li><b>Revisar los requisitos eliminatorios</b>: si la normativa o la organización prohíbe algo (por ejemplo, que ciertos datos salgan de su CPD), esa opción queda fuera sea cual sea su puntuación. Conviene revisarlos al principio para no puntuar opciones imposibles.</li>
+<li><b>Analizar la sensibilidad</b>: cambiar un poco los pesos más importantes (por ejemplo, 10 puntos) y ver si cambia el ganador. Si cambia con facilidad, la decisión no es clara, y muchas veces la respuesta es un modelo <b>híbrido</b>.</li>
 </ol>
-<p>Ejemplo para una tienda online mediana:</p>
+<h4>Ejemplo: una tienda online mediana</h4>
 <div class="tabla"><table>
 <tr><th>Criterio</th><th>Peso</th><th>Pública (1-5)</th><th>Ponderada</th><th>Privada (1-5)</th><th>Ponderada</th></tr>
 <tr><td>Escalabilidad ante picos</td><td>25 %</td><td>5</td><td>1,25</td><td>2</td><td>0,50</td></tr>
@@ -509,57 +484,53 @@
 <tr><td>Personal disponible</td><td>15 %</td><td>4</td><td>0,60</td><td>2</td><td>0,30</td></tr>
 <tr><td><b>Total</b></td><td>100 %</td><td></td><td><b>4,35</b></td><td></td><td><b>2,75</b></td></tr>
 </table></div>
-
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 130" role="img" aria-label="Matriz ponderada" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-matriz" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="114.0" y="25.0" class="t" text-anchor="end" dominant-baseline="middle">Nube pública</text><rect x="122.0" y="12" width="129.0" height="26" rx="3" class="d-azul"/><text x="186.5" y="25.0" class="ts" text-anchor="middle" dominant-baseline="middle">1,25</text><rect x="251.0" y="12" width="82.6" height="26" rx="3" class="d-verde"/><text x="292.3" y="25.0" class="ts" text-anchor="middle" dominant-baseline="middle">0,80</text><rect x="333.6" y="12" width="77.4" height="26" rx="3" class="d-morado"/><text x="372.3" y="25.0" class="ts" text-anchor="middle" dominant-baseline="middle">0,75</text><rect x="411.0" y="12" width="82.6" height="26" rx="3" class="d-naranja"/><text x="452.2" y="25.0" class="ts" text-anchor="middle" dominant-baseline="middle">0,80</text><rect x="493.5" y="12" width="15.5" height="26" rx="3" class="d-gris"/><rect x="509.0" y="12" width="61.9" height="26" rx="3" class="d-amarillo"/><text x="540.0" y="25.0" class="ts" text-anchor="middle" dominant-baseline="middle">0,60</text><text x="576.9" y="25.0" class="t tb" text-anchor="start" dominant-baseline="middle">4,35</text><text x="114.0" y="63.0" class="t" text-anchor="end" dominant-baseline="middle">Nube privada</text><rect x="122.0" y="50" width="51.6" height="26" rx="3" class="d-azul"/><text x="147.8" y="63.0" class="ts" text-anchor="middle" dominant-baseline="middle">0,50</text><rect x="173.6" y="50" width="61.9" height="26" rx="3" class="d-verde"/><text x="204.6" y="63.0" class="ts" text-anchor="middle" dominant-baseline="middle">0,60</text><rect x="235.5" y="50" width="31.0" height="26" rx="3" class="d-morado"/><rect x="266.5" y="50" width="82.6" height="26" rx="3" class="d-naranja"/><text x="307.8" y="63.0" class="ts" text-anchor="middle" dominant-baseline="middle">0,80</text><rect x="349.0" y="50" width="25.8" height="26" rx="3" class="d-gris"/><rect x="374.8" y="50" width="31.0" height="26" rx="3" class="d-amarillo"/><text x="411.8" y="63.0" class="t tb" text-anchor="start" dominant-baseline="middle">2,75</text><rect x="14" y="107" width="14" height="14" rx="3" class="d-azul"/><text x="34" y="114" class="ts" dominant-baseline="middle">escalabilidad</text><rect x="129.89999999999998" y="107" width="14" height="14" rx="3" class="d-verde"/><text x="149.89999999999998" y="114" class="ts" dominant-baseline="middle">coste</text><rect x="195.39999999999998" y="107" width="14" height="14" rx="3" class="d-morado"/><text x="215.39999999999998" y="114" class="ts" dominant-baseline="middle">rapidez</text><rect x="273.5" y="107" width="14" height="14" rx="3" class="d-naranja"/><text x="293.5" y="114" class="ts" dominant-baseline="middle">seguridad</text><rect x="364.2" y="107" width="14" height="14" rx="3" class="d-gris"/><text x="384.2" y="114" class="ts" dominant-baseline="middle">control</text><rect x="442.29999999999995" y="107" width="14" height="14" rx="3" class="d-amarillo"/><text x="462.29999999999995" y="114" class="ts" dominant-baseline="middle">personal</text></svg></div><figcaption>Resultado de la matriz ponderada del ejemplo de la tienda online: cada color es la aportación de un criterio (puntuación × peso).</figcaption></figure>
-<h3>4. Perfiles típicos</h3>
+<p>Análisis de sensibilidad del ejemplo: si la escalabilidad bajara del 25 % al 15 % y ese 10 % pasara a control y personalización, la pública seguiría ganando con claridad (4,15 frente a 3,05). La decisión es robusta.</p>
+
+<h3>4. Paso 3: la recomendación, y los perfiles típicos</h3>
+<p>La matriz no decide sola: es la base para una <b>recomendación razonada</b> que pueda leer la dirección de la organización. Una buena recomendación dice qué modelo se propone, por qué (los criterios que más pesaron), qué riesgos tiene y cómo se mitigan, y cuáles son los siguientes pasos. Sin tecnicismos innecesarios: quien decide no suele ser técnico.</p>
+<p>Con la experiencia, se ve que ciertos tipos de organización tienden hacia un modelo. Es una referencia para comprobar si nuestra matriz tiene sentido, no un atajo para saltársela:</p>
 <div class="tabla"><table>
 <tr><th>Organización</th><th>Tendencia</th><th>Por qué</th></tr>
-<tr><td>Startup</td><td>Pública</td><td>Sin capital, necesita velocidad, demanda incierta</td></tr>
-<tr><td>Comercio electrónico</td><td>Pública</td><td>Picos fuertes (rebajas, Black Friday), alcance</td></tr>
+<tr><td>Startup</td><td>Pública</td><td>Sin capital, necesita rapidez, demanda incierta</td></tr>
+<tr><td>Comercio electrónico</td><td>Pública</td><td>Picos fuertes (rebajas, Black Friday), alcance internacional</td></tr>
 <tr><td>Banco</td><td>Privada o híbrida</td><td>Regulación, sistemas heredados, cargas enormes y estables</td></tr>
-<tr><td>Hospital</td><td>Privada o híbrida</td><td>Datos de salud, sistemas de equipos médicos, latencia local</td></tr>
-<tr><td>Ayuntamiento pequeño</td><td>Pública (o comunitaria) con proveedor certificado ENS</td><td>Poco personal técnico, servicios estándar</td></tr>
-<tr><td>Centro de investigación</td><td>Privada con desbordamiento a pública</td><td>Cálculo intensivo continuo, picos puntuales</td></tr>
-<tr><td>Empresa de videojuegos</td><td>Pública</td><td>Lanzamientos con picos enormes y usuarios globales</td></tr>
+<tr><td>Hospital</td><td>Privada o híbrida</td><td>Datos de salud, equipos médicos conectados, latencia local</td></tr>
+<tr><td>Ayuntamiento pequeño</td><td>Pública o comunitaria, con proveedor certificado en el ENS</td><td>Poco personal técnico, servicios estándar</td></tr>
+<tr><td>Centro de investigación</td><td>Privada, con desbordamiento a la pública</td><td>Cálculo intensivo continuo, picos puntuales</td></tr>
+<tr><td>Estudio de videojuegos</td><td>Pública</td><td>Lanzamientos con picos enormes y jugadores en todo el mundo</td></tr>
 </table></div>
-<p><b>Nube comunitaria</b>: cuando varias organizaciones con necesidades comunes comparten una nube privada. En España, por ejemplo, la Administración General del Estado dispone de servicios compartidos de nube (como la nube SARA) para los organismos públicos. Combina el control de la privada con costes repartidos.</p>
 
-<h3>Actividades</h3>
+<h3>Actividad</h3>
 <div class="actividad">
-<h4>Actividad 1. Clasificar los datos de Cita Previa</h4>
-<p>En parejas, listad todos los datos que maneja Cita Previa (al menos 12: identificación del paciente, centro, médico, fecha y hora, motivo, teléfono, registros de acceso, estadísticas...) y clasificadlos en los cuatro niveles del apartado 2. Para cada nivel, indicad qué exigencias de seguridad supone y en qué modelo podría almacenarse.</p>
-</div>
-<div class="actividad">
-<h4>Actividad 2. Consultora de nube: cuatro clientes</h4>
-<p>En grupos de 3, actuáis como consultora. Cada grupo recibe uno de estos clientes:</p>
+<h4>Actividad de cierre. Consultoría de nube</h4>
+<p>Individual. Se hace después de la exposición de los pósters, y los cinco pósters son vuestro material de consulta. Cada uno recibe una de estas organizaciones y actúa como consultor: tiene que recomendarle el modelo de despliegue más adecuado. Todos los datos que necesitáis están en la ficha; si algo no aparece, no lo supongáis: indicad en la recomendación que habría que preguntarlo.</p>
 <ul>
-<li><b>A. Clínica dental con 8 sedes</b>: agenda, historia clínica con radiografías (2 TB, crece 300 GB/año), 60 empleados, un único informático, presupuesto anual limitado, sin CPD.</li>
-<li><b>B. Tienda online de material deportivo</b>: 5.000 pedidos/día, 40.000 en Black Friday, pagos con tarjeta (PCI DSS), equipo de 6 desarrolladores, quiere lanzar en Portugal y Francia.</li>
-<li><b>C. Mutua de seguros</b>: CPD propio renovado hace 2 años, 25 técnicos de sistemas, aplicación principal en Java con Oracle, carga muy estable, regulación de la Dirección General de Seguros, quiere modernizar su web de clientes.</li>
-<li><b>D. Ayuntamiento de 15.000 habitantes</b>: sede electrónica, padrón, registro, web municipal; obligado al ENS; un técnico informático y una empresa de mantenimiento; servidores de hace 9 años.</li>
+<li><b>A. Clínica dental con 6 centros.</b> Agenda de citas, historia clínica con radiografías (2 TB, crece 300 GB al año), 45 empleados. Un único informático a media jornada. No tiene CPD: un servidor de 2019 en un armario de la sede. Demanda estable, en horario de consulta. La dirección no quiere gastar más de 15.000 € de golpe.</li>
+<li><b>B. Tienda online de material deportivo.</b> 40.000 visitas al día, que se multiplican por 8 en Black Friday y en rebajas de enero. Vende en España y Portugal y quiere abrir Francia el año que viene. Cobra con tarjeta a través de una pasarela de pago externa (no guarda los números de tarjeta). Equipo de 2 desarrolladores, nadie de sistemas.</li>
+<li><b>C. Ayuntamiento de 25.000 habitantes.</b> Sede electrónica, padrón, registro y web municipal. Obligado al ENS, con sistemas de categoría media. Dos técnicos informáticos. Un CPD pequeño con servidores de 2017, al final de su vida útil. Presupuesto anual ajustado y poco margen para inversiones (capítulo 6). Demanda estable, con picos en los plazos de pago de impuestos.</li>
+<li><b>D. Centro de investigación en genómica.</b> 400 TB de datos de secuenciación, que crecen 100 TB al año. Un clúster de cálculo ocupado el 85 % del tiempo, con dos o tres picos al año antes de congresos. Equipo de 5 técnicos de sistemas con experiencia en Linux y OpenStack. Datos genéticos de pacientes de estudios clínicos. Financiación por proyectos europeos, con partidas para comprar equipamiento.</li>
+<li><b>E. Estudio de videojuegos independiente.</b> Lanza un juego multijugador en línea dentro de 4 meses. No saben cuántos jugadores tendrán: entre 5.000 y 500.000 el primer mes. Jugadores en Europa y América. Tres programadores, sin dinero para comprar hardware. Guarda cuentas de usuario (correo y apodo); los pagos los gestiona la tienda de juegos donde se vende.</li>
 </ul>
-<p>Pasos:</p>
 <ol class="pasos">
-<li>Analizad las necesidades de funcionalidad, seguridad, escalabilidad y costes con las preguntas del apartado 2.</li>
-<li>Identificad requisitos eliminatorios.</li>
-<li>Construid la matriz ponderada en una hoja de cálculo con al menos 7 criterios, comparando pública, privada y comunitaria o híbrida.</li>
-<li>Haced un análisis de sensibilidad cambiando los dos pesos principales.</li>
-<li>Redactad una recomendación de una página con el modelo, los proveedores o plataformas candidatos, los riesgos y los siguientes pasos.</li>
+<li><b>Clasifica los datos</b> de tu organización en los cuatro niveles del apartado 2 e indica qué exige cada nivel.</li>
+<li><b>Identifica los requisitos eliminatorios</b>, si los hay, y explica de dónde salen (normativa, presupuesto, personal…).</li>
+<li><b>Construye la matriz ponderada</b> en una hoja de cálculo, con al menos 6 criterios que cubran las cuatro necesidades, comparando nube pública y nube privada. Justifica cada peso y cada puntuación en una frase.</li>
+<li><b>Haz el análisis de sensibilidad</b>: cambia 10 puntos el peso del criterio más importante y comprueba si cambia el resultado.</li>
+<li><b>Redacta la recomendación</b> (entre 10 y 15 líneas, para la dirección): el modelo que propones, que puede ser pública, privada, comunitaria o híbrida; los motivos; dos riesgos y cómo se mitigan; y qué tipo de proveedor o plataforma buscarías, apoyándote en los pósters.</li>
 </ol>
-</div>
-<div class="actividad">
-<h4>Actividad 3. Presentación al cliente</h4>
-<p>Cada grupo presenta su recomendación en 3 minutos como si hablara con la dirección del cliente (sin tecnicismos innecesarios). El resto de la clase hace de dirección y plantea una objeción ("¿y si el proveedor sube precios?", "¿y si se va el informático?").</p>
-<p class="entrega">Entrega en Aules: clasificación de datos, matriz ponderada con el análisis de sensibilidad y el informe de recomendación.</p>
+<p>Para terminar, cada uno presenta su caso en 3 minutos como si hablara con la dirección. El resto de la clase hace de dirección y plantea una objeción ("¿y si el proveedor sube los precios?", "¿y si se va el informático?").</p>
+<p class="entrega">Entrega en Aules: la hoja de cálculo con la matriz y la sensibilidad, y un documento con la clasificación de datos, los requisitos eliminatorios y la recomendación.</p>
 </div>
 
 <h3>Preguntas de repaso</h3>
 <ol>
-<li>¿Qué cuatro necesidades de una organización hay que analizar para elegir el modelo de nube?</li>
-<li>¿Por qué es útil clasificar los datos antes de decidir?</li>
+<li>¿Qué cuatro necesidades de una organización hay que analizar para elegir el modelo de nube? ¿De dónde salen?</li>
+<li>¿Por qué conviene clasificar los datos antes de decidir? ¿Qué niveles hay?</li>
+<li>¿Por qué no es correcto decir "la nube pública es insegura y la privada segura"?</li>
 <li>¿Qué es un requisito eliminatorio en una matriz de decisión? Pon un ejemplo.</li>
-<li>¿Para qué sirve el análisis de sensibilidad?</li>
-<li>¿Qué es una nube comunitaria y cuándo tiene sentido?</li>
+<li>¿Para qué sirve el análisis de sensibilidad? ¿Qué indica que el ganador cambie con facilidad?</li>
+<li>Si el pico de demanda es 10 veces la media, ¿qué implica para una nube privada?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p5" aria-labelledby="tab-p5" hidden>
 <p class="meta">Unidad 3 · 5. Multinube · 2 horas</p>
