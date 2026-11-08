@@ -26,22 +26,23 @@
 <p class="chips"><span class="ce" title="Se ha descrito el modelo de nube pública, esquematizándolo y relacionándolo con la propiedad de los recursos y su uso compartido.">CE 3a</span></p>
 <h3>Objetivos del punto</h3>
 <ul>
-<li>Conocer los modelos de despliegue de nube definidos por el NIST y los criterios que los distinguen.</li>
+<li>Conocer los modelos de despliegue de nube definidos por el NIST y las cuatro preguntas que los distinguen.</li>
 <li>Describir el modelo de nube pública: propiedad de los recursos, uso compartido y funcionamiento.</li>
 <li>Esquematizar una nube pública identificando quién posee, quién gestiona y quién usa cada parte.</li>
-<li>Valorar las principales opciones del mercado de nube pública, incluidas las europeas y los requisitos del sector público español.</li>
+<li>Distinguir los grados de aislamiento que ofrece la nube pública, desde la máquina compartida hasta la región soberana.</li>
+<li>Valorar las opciones del mercado, incluidas las europeas, y los requisitos para usarlas en el sector público español.</li>
 </ul>
 
 <h3>1. Modelos de despliegue: de quién es la nube</h3>
-<p>En la unidad 2 vimos qué es la nube. Ahora nos preguntamos <b>dónde está, de quién es y con quién se comparte</b>. El NIST define cuatro <b>modelos de despliegue</b>:</p>
+<p>En la unidad 2 vimos qué es la nube. Ahora nos preguntamos <b>dónde está, de quién es y con quién se comparte</b>. El NIST, en la misma definición de la unidad 2 (SP 800-145), distingue cuatro <b>modelos de despliegue</b>:</p>
 <ul>
-<li><b>Nube pública</b>: la infraestructura se ofrece para uso abierto del público general. Es propiedad de un proveedor que la gestiona y la opera en sus instalaciones.</li>
+<li><b>Nube pública</b>: la infraestructura está abierta al uso del público general. Pertenece a un proveedor (una empresa, aunque también podría ser una universidad o una administración), que la gestiona y la opera en sus propias instalaciones.</li>
 <li><b>Nube privada</b>: la infraestructura es para uso exclusivo de una única organización (punto 2).</li>
-<li><b>Nube comunitaria</b>: para uso exclusivo de una comunidad de organizaciones con intereses comunes (por ejemplo, varias administraciones públicas o varios hospitales).</li>
-<li><b>Nube híbrida</b>: composición de dos o más nubes distintas que siguen siendo entidades separadas pero están unidas por tecnología que permite mover datos y aplicaciones (punto 3).</li>
+<li><b>Nube comunitaria</b>: para uso exclusivo de una comunidad de organizaciones con necesidades comunes, por ejemplo varias administraciones públicas o varios hospitales (punto 2).</li>
+<li><b>Nube híbrida</b>: composición de dos o más nubes distintas que siguen siendo entidades separadas, pero unidas por tecnología que permite mover datos y aplicaciones entre ellas (punto 3).</li>
 </ul>
-<p>A estos se ha añadido en la práctica la <b>multinube</b>: el uso de varios proveedores de nube pública a la vez (punto 5).</p>
-<p>Para diferenciar los modelos nos fijaremos siempre en cuatro preguntas:</p>
+<p>La definición del NIST es de 2011. Desde entonces se ha generalizado un quinto modelo, la <b>multinube</b>: usar a la vez servicios de varios proveedores de nube (punto 5).</p>
+<p>Para diferenciar los modelos nos fijaremos siempre en cuatro preguntas. Son la herramienta de toda la unidad:</p>
 <div class="tabla"><table>
 <tr><th>Pregunta</th><th>Qué analiza</th></tr>
 <tr><td>¿De quién es el hardware?</td><td>Propiedad de los recursos</td></tr>
@@ -52,100 +53,101 @@
 
 <h3>2. La nube pública</h3>
 <h4>Definición</h4>
-<p>En una <b>nube pública</b>, un proveedor es propietario de toda la infraestructura (CPD, servidores, red, almacenamiento, software de gestión), la opera y la pone a disposición de <b>cualquier cliente</b> a través de Internet, normalmente con pago por uso. Los recursos físicos se <b>comparten</b> entre muchos clientes (multitenencia), aunque cada uno tiene sus recursos virtuales aislados de los demás.</p>
-<p>"Pública" no significa que los datos sean públicos ni que cualquiera pueda acceder a tus máquinas. Significa que <b>el servicio está abierto a cualquiera que quiera contratarlo</b>, igual que la red eléctrica o una línea de autobús.</p>
+<p>En una <b>nube pública</b>, un proveedor es propietario de toda la infraestructura (CPD, servidores, red, almacenamiento y software de gestión), la opera y la pone a disposición de <b>cualquier cliente</b> a través de Internet, normalmente con pago por uso. Los recursos físicos se <b>comparten</b> entre muchos clientes (la multitenencia de la unidad 2), y cada uno tiene sus recursos virtuales aislados de los demás.</p>
+<p>"Pública" no significa que los datos sean públicos ni que cualquiera pueda entrar en tus máquinas. Significa que <b>el servicio está abierto a cualquiera que quiera contratarlo</b>, igual que la red eléctrica o una línea de autobús: el autobús es público, pero tu asiento es tuyo mientras viajas.</p>
 <h4>Esquema</h4>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 330" role="img" aria-label="Nube pública" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-nube_publica" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="86" width="696" height="206" rx="8" class="d-grupo-azul"/><text x="22" y="101" class="tt">Proveedor de nube pública</text><rect x="28" y="150" width="664" height="128" rx="8" class="d-grupo"/><text x="38" y="165" class="tt">Región con varias zonas de disponibilidad</text><rect x="40.0" y="12.0" width="180.0" height="44.0" rx="6" class="d-naranja"/><text x="130.0" y="27.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Conselleria</text><text x="130.0" y="43.0" class="ts" text-anchor="middle" dominant-baseline="middle">Cita Previa</text><rect x="270.0" y="12.0" width="180.0" height="44.0" rx="6" class="d-naranja"/><text x="360.0" y="34.0" class="t" text-anchor="middle" dominant-baseline="middle">Tienda online</text><rect x="500.0" y="12.0" width="180.0" height="44.0" rx="6" class="d-naranja"/><text x="590.0" y="34.0" class="t" text-anchor="middle" dominant-baseline="middle">Startup</text><rect x="190.0" y="110.0" width="420.0" height="32.0" rx="6" class="d-morado"/><text x="400.0" y="126.0" class="t" text-anchor="middle" dominant-baseline="middle">Plano de control: consola, API, IAM, facturación</text><rect x="48.0" y="176.0" width="196.0" height="36.0" rx="6" class="d-naranja"/><text x="146.0" y="194.0" class="t" text-anchor="middle" dominant-baseline="middle">VPC de la Conselleria</text><rect x="262.0" y="176.0" width="196.0" height="36.0" rx="6" class="d-naranja"/><text x="360.0" y="194.0" class="t" text-anchor="middle" dominant-baseline="middle">VPC de la tienda</text><rect x="476.0" y="176.0" width="196.0" height="36.0" rx="6" class="d-naranja"/><text x="574.0" y="194.0" class="t" text-anchor="middle" dominant-baseline="middle">VPC de la startup</text><rect x="48.0" y="226.0" width="624.0" height="38.0" rx="6" class="d-azul"/><text x="360.0" y="245.0" class="t" text-anchor="middle" dominant-baseline="middle">Servidores, almacenamiento y red físicos COMPARTIDOS (multitenencia)</text><path d="M130.0,58.0 L130.0,83.0 L400.0,83.0 L400.0,108.0" class="flecha " marker-end="url(#fl-nube_publica)"/><rect x="234.8" y="74.0" width="60.4" height="18" rx="3" class="fondo-etiqueta"/><text x="265.0" y="83.0" class="te" text-anchor="middle" dominant-baseline="middle">Internet</text><path d="M360.0,58.0 L360.0,108.0" class="flecha " marker-end="url(#fl-nube_publica)"/><path d="M590.0,58.0 L590.0,83.0 L400.0,83.0 L400.0,108.0" class="flecha " marker-end="url(#fl-nube_publica)"/><rect x="14" y="307" width="14" height="14" rx="3" class="d-naranja"/><text x="34" y="314" class="ts" dominant-baseline="middle">de cada cliente</text><rect x="142.5" y="307" width="14" height="14" rx="3" class="d-azul"/><text x="162.5" y="314" class="ts" dominant-baseline="middle">del proveedor, compartido</text><rect x="334.0" y="307" width="14" height="14" rx="3" class="d-morado"/><text x="354.0" y="314" class="ts" dominant-baseline="middle">gestión del proveedor</text></svg></div><figcaption>Nube pública: el proveedor es propietario de todo y lo comparte entre muchos clientes, cada uno con sus recursos virtuales aislados.</figcaption></figure>
-<h4>Propiedad y uso compartido</h4>
+<h4>Las cuatro preguntas aplicadas a la nube pública</h4>
 <div class="tabla"><table>
-<tr><th>Aspecto</th><th>Nube pública</th></tr>
-<tr><td>Propiedad del hardware y del CPD</td><td>Proveedor</td></tr>
-<tr><td>Operación de la infraestructura física y de la plataforma</td><td>Proveedor</td></tr>
-<tr><td>Ubicación</td><td>CPD del proveedor, en la región que elige el cliente</td></tr>
-<tr><td>Uso</td><td>Compartido entre muchos clientes (multitenencia) con aislamiento lógico</td></tr>
-<tr><td>Recursos virtuales, datos, configuración</td><td>Cliente (responsabilidad compartida)</td></tr>
-<tr><td>Modelo de pago</td><td>Por uso, sin inversión inicial</td></tr>
+<tr><th>Pregunta</th><th>Nube pública</th></tr>
+<tr><td>¿De quién es el hardware?</td><td>Del proveedor: CPD, servidores, red y almacenamiento</td></tr>
+<tr><td>¿Quién lo gestiona y opera?</td><td>El proveedor opera lo físico y la plataforma; el cliente, sus recursos virtuales, sus datos y su configuración (responsabilidad compartida, unidad 2)</td></tr>
+<tr><td>¿Dónde está físicamente?</td><td>En los CPD del proveedor, en la región que elige el cliente</td></tr>
+<tr><td>¿Quién más lo usa?</td><td>Muchos clientes a la vez, con aislamiento lógico entre ellos</td></tr>
 </table></div>
-<p>Dentro de la nube pública hay grados de aislamiento para quien los necesite: instancias o servidores <b>dedicados</b> (hardware para un solo cliente), <b>regiones soberanas</b> operadas por personal local (por ejemplo, la <i>AWS European Sovereign Cloud</i> anunciada en Alemania) o regiones para gobiernos (AWS GovCloud, Azure Government). Siguen siendo nube pública del mismo proveedor, pero con restricciones sobre quién comparte el hardware o quién lo opera.</p>
+<p>A estas cuatro respuestas se suman dos rasgos que también la caracterizan: <b>cualquiera puede contratarla</b> y se paga <b>por uso</b>, sin inversión inicial.</p>
 
-<h3>3. Ventajas e inconvenientes</h3>
-<h4>Ventajas</h4>
+<h4>Grados de aislamiento dentro de la nube pública</h4>
+<p>La nube pública no es un bloque único. Para clientes con requisitos especiales, los proveedores ofrecen opciones en las que cambia <b>quién comparte el hardware</b> o <b>quién lo opera</b>. De menos a más aislamiento:</p>
+<div class="tabla"><table>
+<tr><th>Opción</th><th>Qué cambia</th><th>Ejemplos</th></tr>
+<tr><td><b>Instancia compartida</b> (la normal)</td><td>Tu máquina virtual comparte servidor físico con las de otros clientes</td><td>Cualquier máquina de AWS, Azure o Google por defecto</td></tr>
+<tr><td><b>Instancia dedicada</b></td><td>El servidor físico solo ejecuta máquinas tuyas, pero el proveedor decide cuál es y no lo ves</td><td>AWS Dedicated Instances</td></tr>
+<tr><td><b>Host dedicado</b></td><td>Reservas un servidor físico entero y ves sus procesadores y núcleos. Se usa por normativa o por licencias que se pagan por núcleo físico</td><td>AWS Dedicated Hosts, Azure Dedicated Host, nodos <i>sole-tenant</i> de Google</td></tr>
+<tr><td><b>Región soberana</b></td><td>Infraestructura separada del resto del proveedor, con los datos y los metadatos (cuentas, facturación) dentro de la UE y operada solo por residentes en la UE</td><td>AWS European Sovereign Cloud: Brandeburgo (Alemania), disponible desde enero de 2026</td></tr>
+<tr><td><b>Nube "de confianza"</b></td><td>La tecnología es de un proveedor estadounidense, pero la opera y la controla una empresa europea, para quedar fuera del alcance de las leyes de EE. UU.</td><td>S3NS (Thales con Google Cloud), con la certificación francesa SecNumCloud desde 2025; Bleu (Orange y Capgemini con Microsoft), que la busca para finales de 2026</td></tr>
+</table></div>
+<p>En todos los casos <b>sigue siendo nube pública</b>: el hardware es del proveedor y está en sus instalaciones, y cualquier cliente puede contratar la misma opción. Lo que se reduce es la respuesta a "¿quién más lo usa?" o a "¿quién lo opera?". Existen también regiones para gobiernos, como AWS GovCloud o Azure Government, pero son solo para la Administración de EE. UU. y sus contratistas.</p>
+<p>Hay un caso que rompe la pregunta "¿dónde está?": el proveedor puede instalar su hardware <b>en el CPD del cliente</b> (AWS Outposts, Azure Local). Lo veremos en el punto 2, porque se parece mucho a una nube privada.</p>
+
+<h3>3. Lo que aporta y lo que exige el modelo público</h3>
+<p>Las ventajas e inconvenientes generales de la nube frente al on premise (pago por uso, elasticidad, dependencia del proveedor, costes de salida, soberanía) ya los vimos en la unidad 2. Aquí nos fijamos solo en lo que se debe a que la nube sea <b>pública</b>: compartida con miles de clientes y en manos de un tercero.</p>
+<h4>Lo que aporta por ser compartida</h4>
 <ul>
-<li><b>Sin inversión inicial</b> y pago por uso (unidad 2).</li>
-<li><b>Escalabilidad prácticamente ilimitada</b> y elasticidad inmediata.</li>
-<li><b>Catálogo enorme</b> de servicios gestionados: los grandes proveedores ofrecen más de 200.</li>
-<li><b>Alcance global</b>: decenas de regiones en todo el mundo.</li>
-<li><b>Fiabilidad</b> gracias a varias zonas y regiones.</li>
-<li><b>Sin mantenimiento físico</b> para el cliente.</li>
-<li><b>Seguridad física y certificaciones</b> difíciles de alcanzar por una organización mediana.</li>
+<li><b>Capacidad casi ilimitada</b>: como millones de clientes no tienen sus picos a la vez (la multiplexación de la unidad 2), siempre hay capacidad libre para el que la necesita.</li>
+<li><b>Catálogo enorme</b>: los grandes proveedores ofrecen más de 200 servicios gestionados (bases de datos, colas, IA, análisis...) que ninguna organización mediana podría construir y mantener.</li>
+<li><b>Alcance global</b>: decenas de regiones en todo el mundo. Dar servicio en otro continente es elegir otra región, no construir un CPD.</li>
+<li><b>Certificaciones ya obtenidas</b>: ENS, ISO 27001, SOC 2... El cliente las aprovecha para la parte que gestiona el proveedor y solo tiene que cumplir con la suya.</li>
 </ul>
-<h4>Inconvenientes</h4>
+<h4>Lo que exige o limita</h4>
 <ul>
-<li><b>Menor control</b> sobre el hardware, la ubicación exacta y los cambios del proveedor.</li>
-<li><b>Hardware compartido</b>: aunque el aislamiento es muy fuerte, algunas normativas o políticas internas no lo aceptan para ciertos datos.</li>
-<li><b>Soberanía de los datos</b>: la mayoría de los grandes proveedores son estadounidenses y están sujetos a leyes de su país.</li>
-<li><b>Costes variables</b> que pueden dispararse sin control, y caros para cargas muy grandes y estables.</li>
-<li><b>Dependencia del proveedor</b> y costes de salida de datos.</li>
-<li><b>Dependencia de Internet</b> y de la disponibilidad del proveedor: cuando una región grande tiene problemas, caen muchos servicios a la vez.</li>
+<li><b>Convivir con otros</b>: el aislamiento entre clientes es muy fuerte, pero quedan riesgos residuales como el vecino ruidoso (unidad 2). Algunas normativas o políticas internas exigen por eso hosts dedicados para ciertos datos.</li>
+<li><b>Aceptar las reglas del proveedor</b>: él decide los precios, cuándo retira un servicio o cambia una API y cuándo hace mantenimiento. El cliente se adapta; no negocia, salvo que sea muy grande.</li>
+<li><b>Riesgo concentrado</b>: si una región grande falla, caen a la vez miles de servicios de empresas distintas. En octubre de 2025, un fallo en la región <code>us-east-1</code> de AWS (Virginia) dejó sin servicio durante horas a aplicaciones de todo el mundo, desde bancos hasta videojuegos.</li>
+<li><b>La jurisdicción del proveedor</b>: los tres grandes son estadounidenses y les afecta la CLOUD Act (unidad 2). Esto es lo que ha dado lugar a las regiones soberanas, las nubes de confianza y el interés por los proveedores europeos.</li>
 </ul>
 <h4>Casos de uso típicos</h4>
-<p>Aplicaciones web y móviles con demanda variable, startups, entornos de desarrollo y pruebas, análisis de datos e inteligencia artificial que necesitan mucha capacidad puntual, copias de seguridad y recuperación ante desastres, y cualquier servicio que deba llegar a usuarios de todo el mundo.</p>
+<p>Aplicaciones web y móviles con demanda variable, startups, entornos de desarrollo y pruebas, análisis de datos e inteligencia artificial que necesitan mucha capacidad durante poco tiempo, copias de seguridad y recuperación ante desastres, y cualquier servicio que deba llegar a usuarios de todo el mundo.</p>
 
 <h3>4. El mercado de la nube pública</h3>
 <h4>Los grandes proveedores</h4>
-<p>El mercado de infraestructura en la nube está muy concentrado. Según las estimaciones de firmas de análisis como Synergy Research o Canalys, en los últimos años <b>AWS</b> tiene en torno a un tercio del mercado, <b>Microsoft Azure</b> en torno a una cuarta parte y <b>Google Cloud</b> alrededor de un 10-13 %; entre los tres superan el 60 %. Les siguen Alibaba Cloud (fuerte en Asia), Oracle Cloud, IBM Cloud, Salesforce y otros. Las cifras cambian cada trimestre, pero el reparto general se mantiene.</p>
+<p>El mercado de infraestructura en la nube está muy concentrado. Según Synergy Research Group, en el tercer trimestre de 2025 <b>AWS</b> tenía el 29 % del mercado mundial, <b>Microsoft Azure</b> el 20 % y <b>Google Cloud</b> el 13 %: entre los tres, casi dos tercios. La tendencia de 2026 es que AWS baja poco a poco (28 % a principios de año) y Google sube (14 %), empujado por la demanda de IA. Detrás vienen Alibaba Cloud (fuerte en Asia), Oracle Cloud, IBM Cloud y los llamados <b><i>neoclouds</i></b>, proveedores especializados en alquilar GPU para IA, como CoreWeave.</p>
+<p>Estas cifras miden solo infraestructura y plataforma (IaaS y PaaS). Por eso no aparece Salesforce, aunque sea uno de los mayores vendedores de software en la nube: lo suyo es SaaS.</p>
 <div class="tabla"><table>
-<tr><th>Proveedor</th><th>Puntos fuertes</th><th>Presencia en España</th></tr>
-<tr><td>AWS</td><td>El más veterano y con más servicios; gran ecosistema y comunidad</td><td>Región <code>eu-south-2</code> (Aragón), desde 2022</td></tr>
-<tr><td>Microsoft Azure</td><td>Integración con Microsoft 365, Active Directory (Entra ID) y Windows; fuerte en empresas</td><td>Región <i>Spain Central</i> (Madrid), desde 2024</td></tr>
-<tr><td>Google Cloud</td><td>Datos, analítica, IA, Kubernetes (lo creó Google)</td><td>Región <code>europe-southwest1</code> (Madrid), desde 2022</td></tr>
-<tr><td>Oracle Cloud</td><td>Bases de datos Oracle, precios de transferencia bajos</td><td>Región en Madrid</td></tr>
+<tr><th>Proveedor</th><th>Puntos fuertes</th><th>Región en España</th></tr>
+<tr><td>AWS</td><td>El más veterano y con más servicios; gran ecosistema y comunidad</td><td><code>eu-south-2</code> (Aragón), desde 2022</td></tr>
+<tr><td>Microsoft Azure</td><td>Integración con Microsoft 365, Entra ID (antes Active Directory) y Windows; muy presente en empresas</td><td><i>Spain Central</i> (Madrid), desde 2024</td></tr>
+<tr><td>Google Cloud</td><td>Datos, analítica, IA y Kubernetes (lo creó Google)</td><td><code>europe-southwest1</code> (Madrid), desde 2022</td></tr>
+<tr><td>Oracle Cloud</td><td>Bases de datos Oracle y transferencia de datos barata</td><td><code>eu-madrid-1</code> (Madrid), desde 2022</td></tr>
 </table></div>
-<p>Los nombres y fechas de las regiones se pueden comprobar en la página de infraestructura global de cada proveedor, y conviene hacerlo porque cambian con frecuencia.</p>
+<p>Las regiones cambian con frecuencia: los datos actuales están siempre en la página de infraestructura global de cada proveedor.</p>
 <h4>Proveedores europeos</h4>
-<p>Por motivos de soberanía y precio existen alternativas europeas: <b>OVHcloud</b> (Francia), <b>Hetzner</b> e <b>IONOS</b> (Alemania), <b>Scaleway</b> (Francia), <b>T-Systems/Open Telekom Cloud</b> (Alemania), y en España proveedores como <b>Arsys</b> o <b>Telefónica Tech</b>. Suelen tener menos servicios gestionados, pero precios muy competitivos en cómputo y transferencia, y están sujetos solo a leyes europeas. Iniciativas como <b>Gaia-X</b> y el futuro esquema europeo de certificación de nube (EUCS) buscan reforzar la soberanía digital europea.</p>
+<p>Por soberanía y por precio existen alternativas europeas: <b>OVHcloud</b> y <b>Scaleway</b> (Francia), <b>Hetzner</b>, <b>IONOS</b> y <b>T-Systems/Open Telekom Cloud</b> (Alemania), y en España <b>Arsys</b> o <b>Telefónica Tech</b>. Tienen menos servicios gestionados, pero precios muy competitivos en cómputo y sobre todo en transferencia, y solo están sujetos a leyes europeas.</p>
+<h4>Cómo se mide la soberanía en Europa</h4>
+<p>"Nube soberana" se ha convertido en una etiqueta comercial que usan todos, así que Europa intenta medirla con criterios objetivos:</p>
+<ul>
+<li><b>Gaia-X</b> (2019): asociación europea que define reglas comunes de transparencia e interoperabilidad entre proveedores. No es un proveedor de nube.</li>
+<li><b>EUCS</b>: esquema europeo de certificación de seguridad para servicios en la nube, preparado por ENISA (la agencia europea de ciberseguridad). Se negocia desde 2020 y sigue sin aprobarse, sobre todo por el debate de si debe exigir que el proveedor sea europeo.</li>
+<li><b>Marco de Soberanía de la Nube</b> de la Comisión Europea: evalúa a los proveedores con 48 criterios en 8 categorías (estratégica, legal, datos, operativa, cadena de suministro, tecnológica, seguridad y sostenibilidad) y les asigna un nivel <b>SEAL</b>, de SEAL-2 (soberanía de los datos) a SEAL-4 (soberanía plena). La Comisión lo usó en abril de 2026 para contratar nube soberana para las instituciones de la UE, por 180 millones de euros, y recomienda a cualquier organización usarlo.</li>
+</ul>
 <h4>Requisitos en el sector público español</h4>
 <p>Para un proyecto como Cita Previa no basta con elegir por precio:</p>
 <ul>
-<li><b>RGPD y LOPDGDD</b>: los datos de salud son categoría especial. Se exige un contrato de encargo del tratamiento con el proveedor y garantías si hay transferencias fuera del Espacio Económico Europeo.</li>
-<li><b>Esquema Nacional de Seguridad (ENS)</b>, Real Decreto 311/2022: los servicios en la nube que usa la Administración deben estar certificados en la categoría adecuada (básica, media o alta). El <b>CCN</b> (Centro Criptológico Nacional) publica el catálogo de productos y servicios certificados (CPSTIC) y guías de configuración segura específicas para los principales proveedores (serie CCN-STIC 880).</li>
-<li><b>Contratación pública</b>: la nube se contrata mediante procedimientos de la Ley de Contratos del Sector Público o acuerdos marco.</li>
+<li><b>RGPD y LOPDGDD</b>: los datos de salud son una <b>categoría especial</b> de datos personales. La Conselleria sigue siendo la responsable de los datos, y el proveedor actúa como <b>encargado del tratamiento</b>: los trata por cuenta de ella y debe firmar un contrato que diga qué puede hacer con ellos. Si los datos salen del <b>Espacio Económico Europeo</b> (la UE más Noruega, Islandia y Liechtenstein), hacen falta garantías adicionales, como el marco de privacidad UE-EE. UU. que vimos en la unidad 2.</li>
+<li><b>Esquema Nacional de Seguridad (ENS)</b>, Real Decreto 311/2022: los servicios en la nube que usa la Administración deben estar certificados en la categoría que corresponde al sistema: básica, media o alta, según el daño que causaría un incidente. Un sistema con datos de salud como Cita Previa será normalmente de <b>categoría alta</b>. Los grandes proveedores tienen certificación ENS alta, pero hay que comprobar que <b>los servicios concretos</b> que se van a usar están dentro de su alcance. El <b>CCN</b> (Centro Criptológico Nacional) publica el catálogo de productos y servicios certificados (CPSTIC) y guías CCN-STIC de configuración segura para los principales proveedores.</li>
+<li><b>Contratación pública</b>: la nube se contrata con los procedimientos de la Ley de Contratos del Sector Público. Lo habitual es usar un <b>acuerdo marco</b>: un contrato general que la Administración firma con varias empresas para que cada organismo pueda contratarles después sin repetir todo el concurso.</li>
 </ul>
 <h4>Criterios para comparar proveedores</h4>
-<p>Regiones y zonas disponibles (y su cercanía), servicios que necesitamos, precio de cómputo, almacenamiento y sobre todo transferencia, certificaciones (ISO 27001, ENS, SOC 2), SLA, soporte en español y niveles de soporte, herramientas de gestión y de IaC (¿tiene proveedor de Terraform?), facilidad de salida (formatos estándar, costes de egress), programas educativos y comunidad.</p>
-
-<h3>Actividades</h3>
-<div class="actividad">
-<h4>Actividad 1. Esquema de la nube pública</h4>
-<p>En parejas, dibujad en diagrams.net el esquema de una nube pública con tres clientes distintos (uno de ellos la Conselleria con Cita Previa). Usad colores para distinguir: qué posee y opera el proveedor, qué recursos son compartidos, qué recursos virtuales son de cada cliente y cómo accede cada uno. Añadid una leyenda y una tabla de responsabilidades para una VM de Cita Previa (quién parchea el sistema operativo, quién protege el CPD, quién gestiona los datos).</p>
-</div>
-<div class="actividad">
-<h4>Actividad 2. Estudio de mercado para Cita Previa</h4>
-<p>En grupos de 3, comparad tres proveedores: dos de los grandes (AWS, Azure, Google) y uno europeo (OVHcloud, Hetzner, Scaleway o IONOS). Buscad la información en sus webs oficiales y en el catálogo del CCN, y completad una tabla con:</p>
-<ol>
-<li>Regiones en España y en la UE, y número de zonas de disponibilidad.</li>
-<li>Precio mensual de una VM de 2 vCPU y 4-8 GB con Linux en la región más cercana, bajo demanda.</li>
-<li>Precio de 1 TB al mes de transferencia de salida a Internet.</li>
-<li>Precio de 100 GB de almacenamiento de objetos al mes.</li>
-<li>¿Ofrece base de datos PostgreSQL gestionada? ¿Kubernetes gestionado? ¿Funciones serverless?</li>
-<li>Certificación ENS (categoría) e ISO 27001.</li>
-<li>¿Tiene proveedor oficial de Terraform?</li>
-<li>Sede y legislación a la que está sujeto.</li>
-</ol>
-<p>Terminad con una recomendación razonada de 10 líneas para Cita Previa, teniendo en cuenta que maneja datos de salud de una Administración pública.</p>
-</div>
-<div class="actividad">
-<h4>Actividad 3. Puesta en común de precios</h4>
-<p>Cada grupo copia sus precios en una tabla común en la pizarra (o en una hoja compartida). Comprobamos si los grupos que analizaron el mismo proveedor obtuvieron los mismos datos y por qué no (región, tipo de instancia, impuestos, moneda). Sacamos conclusiones: ¿dónde está la mayor diferencia de precio entre proveedores?</p>
-<p class="entrega">Entrega en Aules: esquema de la actividad 1 y tabla comparativa con la recomendación.</p>
-</div>
+<div class="tabla"><table>
+<tr><th>Criterio</th><th>Qué mirar</th></tr>
+<tr><td>Ubicación</td><td>Regiones y zonas disponibles, y su cercanía a los usuarios</td></tr>
+<tr><td>Servicios</td><td>Si tiene los que necesitamos (base de datos gestionada, Kubernetes, funciones...)</td></tr>
+<tr><td>Precio</td><td>Cómputo, almacenamiento y, sobre todo, transferencia de salida</td></tr>
+<tr><td>Cumplimiento</td><td>ENS y su categoría, ISO 27001, SOC 2; jurisdicción del proveedor</td></tr>
+<tr><td>Fiabilidad y soporte</td><td>SLA, niveles de soporte, soporte en español</td></tr>
+<tr><td>Automatización</td><td>API, CLI y proveedor oficial de Terraform para la infraestructura como código</td></tr>
+<tr><td>Salida</td><td>Formatos estándar y coste de sacar los datos si un día cambiamos de proveedor</td></tr>
+</table></div>
 
 <h3>Preguntas de repaso</h3>
 <ol>
-<li>¿Qué cuatro modelos de despliegue define el NIST?</li>
+<li>¿Qué cuatro modelos de despliegue define el NIST? ¿Qué quinto modelo se ha añadido en la práctica?</li>
 <li>¿Qué significa exactamente "pública" en nube pública?</li>
-<li>En una nube pública, ¿qué es compartido y qué es exclusivo de cada cliente?</li>
-<li>¿Qué es el ENS y por qué es relevante al elegir proveedor para un proyecto de la Administración?</li>
+<li>Responde a las cuatro preguntas de la unidad para la nube pública.</li>
+<li>Una empresa usa hosts dedicados de AWS para su base de datos. ¿Sigue siendo nube pública? Razónalo con las cuatro preguntas.</li>
+<li>¿Qué cambia en la AWS European Sovereign Cloud respecto a una región normal de AWS? ¿Qué sigue igual?</li>
+<li>¿Qué es el ENS y qué categoría tendría Cita Previa? ¿Basta con que el proveedor tenga la certificación?</li>
+<li>¿Por qué Salesforce no aparece en las cuotas de mercado de infraestructura en la nube?</li>
 <li>Cita dos ventajas de un proveedor europeo frente a uno de hiperescala y dos inconvenientes.</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p2" aria-labelledby="tab-p2" hidden>
