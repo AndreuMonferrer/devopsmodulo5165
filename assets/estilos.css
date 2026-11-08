@@ -33,7 +33,7 @@ img{max-width:100%}
 
 /* Contenido */
 main{max-width:1240px;margin:0 auto;padding:1.5rem 1rem 4rem}
-.panel{max-width:74ch}
+.panel{max-width:none}
 .panel.ancho{max-width:none}
 .panel[hidden]{display:none}
 .panel h2{font-size:1.6rem;line-height:1.25;margin:.2rem 0 .5rem}
@@ -164,8 +164,6 @@ table.cal{table-layout:fixed;font-size:.85rem}
 main.con-indice{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:2.5rem;align-items:start}
 .con-indice .contenido{grid-column:1;grid-row:1;min-width:0}
 .con-indice .panel{max-width:none}
-.con-indice .panel > :not(.diagrama):not(.tabla):not(pre):not(.actividad):not(.ficha){max-width:74ch}
-.con-indice .actividad,.con-indice .ficha{max-width:80ch}
 .con-indice .diagrama{width:auto;max-width:900px}
 .panel h3,.panel h4{scroll-margin-top:72px}
 .indice{grid-column:2;grid-row:1;position:sticky;top:66px;max-height:calc(100vh - 84px);overflow:auto;background:none;border-left:1px solid var(--linea);border-radius:0;padding:.1rem 0 .1rem 1rem;margin:1.4rem 0 0;font-size:.86rem}
