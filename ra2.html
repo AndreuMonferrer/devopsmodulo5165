@@ -643,7 +643,7 @@ La tabla tiene que tener esta forma:
 <li>On premise: 3 servidores de 10.000 € (cada uno con capacidad para 4 máquinas como las de producción), cabina de 15.000 €, red y cortafuegos 12.000 €, consumo total 2,5 kW, PUE 1,7, electricidad 0,18 €/kWh, licencias y soporte 8.000 €/año, 0,6 técnicos a 42.000 €/año de coste para la Conselleria.</li>
 <li>Nube: obtén los precios reales con la calculadora de AWS (región Europe (Spain)) o de Azure (región Spain Central). Las máquinas virtuales, como máquinas Linux: en la calculadora, elige un tipo de máquina con las mismas vCPU y la misma memoria. La base de datos, como base de datos gestionada PostgreSQL de 2 vCPU y 8 GB, con 500 GB de disco. Los documentos, en almacenamiento de objetos. Calcula dos opciones: todo bajo demanda, y las máquinas virtuales con reserva a 3 años sin pago por adelantado. Las reservas duran 3 años: para los años 4 y 5, supón que se renuevan al mismo precio. Migración: 15.000 € el primer año. Personal: 0,3 técnicos a 42.000 €/año de coste para la Conselleria.</li>
 </ul>
-<p>Construye la hoja con una fila por concepto y columnas por año, calcula el total a 5 años de cada opción y haz un gráfico comparativo. Añade después un escenario: durante la campaña de vacunación (2 meses al año) la carga de producción se triplica. Calcula cuántos servidores más necesitaría el on premise (cada máquina de revisión ocupa la mitad que una de producción) y cuánto subiría la factura de la nube esos 2 meses. ¿Cómo cambia la comparación?</p>
+<p>Construye la hoja con una fila por concepto y columnas por año, calcula el total a 5 años de cada opción y haz un gráfico comparativo. <b>Ampliación (opcional, si acabas antes):</b> añade un escenario. Durante la campaña de vacunación (2 meses al año) la carga de producción se triplica. Calcula cuántos servidores más necesitaría el on premise (cada máquina de revisión ocupa la mitad que una de producción) y cuánto subiría la factura de la nube esos 2 meses. ¿Cómo cambia la comparación?</p>
 </div>
 <h3>8. Beneficios de la nube frente al on premise</h3>
 <p>AWS los resume en seis beneficios (en su documento <i>Overview of Amazon Web Services</i> y en la certificación <i>Cloud Practitioner</i>), y el resto de proveedores usa ideas muy parecidas:</p>
@@ -702,15 +702,11 @@ La tabla tiene que tener esta forma:
 <p>Muchas organizaciones acaban en un modelo <b>híbrido</b>: parte on premise y parte en la nube. Lo estudiaremos en la unidad 3.</p>
 
 
-<div class="pausa"><h4>Ahora: actividades 8 y 9</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Con ellas se cierra el punto.</p></div>
+<div class="pausa"><h4>Ahora: actividad 8</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Con ella se cierra el punto.</p></div>
 
 <div class="actividad">
 <h4>Actividad 8. Beneficios y riesgos en el caso real</h4>
-<p>Individual. Con los resultados de la actividad 7, redacta un informe de una página para la dirección de la Conselleria con: la opción recomendada, tres beneficios que obtendría, tres riesgos y cómo mitigarlos (incluyendo protección de datos y ENS), y qué haría falta para que la otra opción fuera la mejor.</p>
-</div>
-<div class="actividad">
-<h4>Actividad 9. Debate: ¿nube o no?</h4>
-<p>Dos bandos de dos personas, uno a favor de la nube y otro a favor del on premise para Cita Previa. La quinta persona modera: controla los tiempos y anota los argumentos de cada bando. Cada bando tiene 3 minutos de exposición con los datos de sus hojas de cálculo, 2 minutos de réplica y 1 minuto de conclusión. Al final, quien modera y el profesor deciden qué argumento ha sido más sólido y explican por qué.</p>
+<p>Individual. Puedes empezarla en clase y terminarla en casa. Con los resultados de la actividad 7, redacta un informe de una página para la dirección de la Conselleria con: la opción recomendada, tres beneficios que obtendría, tres riesgos y cómo mitigarlos (incluyendo protección de datos y ENS), y qué haría falta para que la otra opción fuera la mejor.</p>
 </div>
 <p class="entrega">Entrega en Aules: cálculos y respuestas de la actividad 4, enlaces de las tres estimaciones y respuestas de la actividad 5, respuestas de la 6, hoja de cálculo del TCO de la actividad 7 e informe para la dirección de la actividad 8.</p>
 
@@ -822,10 +818,10 @@ La tabla tiene que tener esta forma:
 <p>Werner Vogels, director técnico de Amazon, lo resume así: <i>"todo falla, todo el tiempo"</i>. En la nube un servidor puede desaparecer en cualquier momento, así que la arquitectura no confía en que no falle: elimina los puntos únicos de fallo con redundancia (punto 1) y añade comprobaciones de salud, reintentos y recuperación automática. Se habla de tratar los servidores como <b>ganado y no como mascotas</b> (<i>cattle, not pets</i>): no se cuida con cariño cada servidor; si uno enferma, se sustituye por otro idéntico creado automáticamente.</p>
 
 
-<div class="pausa"><h4>Ahora: actividad 10</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 5.</p></div>
+<div class="pausa"><h4>Ahora: actividad 9</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 5.</p></div>
 
 <div class="actividad">
-<h4>Actividad 10. ¿Infraestructura o arquitectura?</h4>
+<h4>Actividad 9. ¿Infraestructura o arquitectura?</h4>
 <p>Individual. Clasifica cada afirmación como <b>infraestructura</b> o <b>arquitectura</b> y explica por qué en una frase:</p>
 <ol class="casos">
 <li>La región de AWS en España (Aragón) tiene tres zonas de disponibilidad.</li>
@@ -852,10 +848,10 @@ La tabla tiene que tener esta forma:
 <p>Muchas decisiones implican <b>compromisos</b> entre pilares: replicar la base de datos en otra zona mejora la fiabilidad pero duplica su coste; una CDN mejora el rendimiento y también cuesta. Diseñar es elegir qué pilar pesa más en cada caso: en Cita Previa, la seguridad de los datos de salud y la fiabilidad pesan más que ahorrar unos euros.</p>
 
 
-<div class="pausa"><h4>Ahora: actividades 11 y 12</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Con ellas se cierra el punto.</p></div>
+<div class="pausa"><h4>Ahora: actividades 10 y 11</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Con ellas se cierra el punto.</p></div>
 
 <div class="actividad">
-<h4>Actividad 11. Diagrama de arquitectura de Cita Previa</h4>
+<h4>Actividad 10. Diagrama de arquitectura de Cita Previa</h4>
 <p>En dos grupos, uno de tres personas y otro de dos. Requisitos de Cita Previa:</p>
 <ul>
 <li>20.000 citas diarias, con picos los lunes de 8 a 10 h.</li>
@@ -879,7 +875,7 @@ La tabla tiene que tener esta forma:
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 12. Puesta en común</h4>
+<h4>Actividad 11. Puesta en común</h4>
 <p>Oral, unos 10 minutos y sin entrega. Cada grupo enseña su diagrama y el otro grupo le hace dos de estas preguntas:</p>
 <ul>
 <li>¿Qué pasa si cae la zona A?</li>
@@ -890,7 +886,7 @@ La tabla tiene que tener esta forma:
 </ul>
 <p>Si una pregunta descubre un fallo, se corrige el diagrama antes de entregarlo.</p>
 </div>
-<p class="entrega">Entrega en Aules: clasificación de la actividad 10, y diagrama con su tabla y la explicación del entorno de revisión de la actividad 11 (una entrega por grupo).</p>
+<p class="entrega">Entrega en Aules: clasificación de la actividad 9, y diagrama con su tabla y la explicación del entorno de revisión de la actividad 10 (una entrega por grupo).</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
@@ -990,10 +986,10 @@ La tabla tiene que tener esta forma:
 </table></div>
 
 
-<div class="pausa"><h4>Ahora: actividad 13</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 4.</p></div>
+<div class="pausa"><h4>Ahora: actividad 12</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 4.</p></div>
 
 <div class="actividad">
-<h4>Actividad 13. Del hardware físico al virtual</h4>
+<h4>Actividad 12. Del hardware físico al virtual</h4>
 <p>Individual, en vuestro portátil (Ubuntu MATE). Ejecutad <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code> e <code>ip a</code> y anotad: modelo de CPU, núcleos y hilos, memoria total, discos y tarjetas de red.</p>
 <p>Después, con los datos del servidor 1 de la gestoría del punto 1 (2 procesadores de 12 núcleos y 24 hilos, 128 GB de RAM), completad el cálculo. Sus máquinas virtuales tienen asignado:</p>
 <div class="tabla"><table>
@@ -1061,10 +1057,10 @@ runcmd:
 </table></div>
 
 
-<div class="pausa"><h4>Ahora: actividades 14 y 15</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Después seguimos con el apartado 5.</p></div>
+<div class="pausa"><h4>Ahora: actividades 13 y 14</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Después seguimos con el apartado 5.</p></div>
 
 <div class="actividad">
-<h4>Actividad 14. Leer un aprovisionamiento con cloud-init</h4>
+<h4>Actividad 13. Leer un aprovisionamiento con cloud-init</h4>
 <p>Individual. Un compañero ha lanzado en AWS, en la región de España, una instancia Ubuntu 24.04 con el fichero <code>user-data.yaml</code> del apartado 4 como datos de usuario. Esto es lo que muestra la consola:</p>
 <div class="tabla"><table>
 <tr><th>Hora</th><th>Evento en la consola</th></tr>
@@ -1108,8 +1104,8 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 15. Llevar las cargas de trabajo de la gestoría a la nube</h4>
-<p>En parejas (si sois impares, un grupo de tres). La gestoría del punto 1 quiere llevar a la nube las ocho máquinas virtuales de la actividad 13. El mantenimiento externo ha medido su uso durante tres meses:</p>
+<h4>Actividad 14. Llevar las cargas de trabajo de la gestoría a la nube</h4>
+<p>En parejas (si sois impares, un grupo de tres). La gestoría del punto 1 quiere llevar a la nube las ocho máquinas virtuales de la actividad 12. El mantenimiento externo ha medido su uso durante tres meses:</p>
 <div class="tabla"><table>
 <tr><th>VM</th><th>Asignado</th><th>CPU media / pico</th><th>RAM usada</th><th>Observaciones</th></tr>
 <tr><td>Controlador de dominio</td><td>2 vCPU, 8 GB</td><td>5 % / 20 %</td><td>3 GB</td><td>Uso constante todo el día</td></tr>
@@ -1199,10 +1195,10 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 240" role="img" aria-label="Formas de conectar redes" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-conectar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="80" width="150" height="70" rx="6" class="d-naranja"/><text x="87.0" y="107.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Red on premise</text><text x="87.0" y="123.0" class="ts" text-anchor="middle" dominant-baseline="middle">oficina o CPD propio</text><rect x="330" y="80" width="150" height="70" rx="6" class="d-azul"/><text x="405.0" y="107.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VPC A</text><text x="405.0" y="123.0" class="ts" text-anchor="middle" dominant-baseline="middle">aplicación</text><rect x="570" y="80" width="138" height="70" rx="6" class="d-azul"/><text x="639.0" y="107.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VPC B</text><text x="639.0" y="123.0" class="ts" text-anchor="middle" dominant-baseline="middle">datos compartidos</text><path d="M164,96 L328,96" class="flecha disc" marker-end="url(#fl-conectar)" marker-start="url(#fl-conectar)"/><text x="246" y="82" class="ts" text-anchor="middle" dominant-baseline="middle">VPN sitio a sitio</text><text x="246" y="112" class="ts" text-anchor="middle" dominant-baseline="middle">túnel cifrado por Internet</text><path d="M164,140 L328,140" class="flecha" marker-end="url(#fl-conectar)" marker-start="url(#fl-conectar)"/><text x="246" y="160" class="ts" text-anchor="middle" dominant-baseline="middle">Conexión dedicada</text><text x="246" y="176" class="ts" text-anchor="middle" dominant-baseline="middle">Direct Connect, ExpressRoute</text><path d="M482,115 L568,115" class="flecha" marker-end="url(#fl-conectar)" marker-start="url(#fl-conectar)"/><text x="525" y="100" class="ts" text-anchor="middle" dominant-baseline="middle">peering</text><rect x="330" y="12" width="150" height="44" rx="6" class="d-verde"/><text x="405.0" y="26.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Internet</text><text x="405.0" y="42.0" class="ts" text-anchor="middle" dominant-baseline="middle">usuarios</text><rect x="330" y="180" width="150" height="44" rx="6" class="d-amarillo"/><text x="405.0" y="194.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Balanceador</text><text x="405.0" y="210.0" class="ts" text-anchor="middle" dominant-baseline="middle">capa 7 o capa 4</text><path d="M405,58 L405,78" class="flecha" marker-end="url(#fl-conectar)"/><path d="M405,152 L405,178" class="flecha" marker-end="url(#fl-conectar)" marker-start="url(#fl-conectar)"/></svg></div><figcaption>La VPN y la conexión dedicada unen la nube con la red propia (base de la nube híbrida); el peering une dos VPC entre sí.</figcaption></figure>
 
-<div class="pausa"><h4>Ahora: actividad 16</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 7.</p></div>
+<div class="pausa"><h4>Ahora: actividad 15</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 7.</p></div>
 
 <div class="actividad">
-<h4>Actividad 16. Analizar la red de Cita Previa</h4>
+<h4>Actividad 15. Analizar la red de Cita Previa</h4>
 <p>En parejas (si sois impares, un grupo de tres). Esta es la configuración del entorno de revisión de Cita Previa en AWS, en la región de España (<code>eu-south-2</code>):</p>
 <p><b>Red y subredes.</b> VPC <code>vpc-citaprevia-rev</code> con el rango <code>10.30.0.0/16</code>.</p>
 <div class="tabla"><table>
@@ -1275,10 +1271,10 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <p>Aunque técnicamente son un servicio, forman parte de la capa de datos: AWS RDS/Aurora, Azure SQL/Database for PostgreSQL, Cloud SQL. El proveedor gestiona la instalación, los parches, las copias, la réplica en otra zona y la recuperación a un momento concreto; el cliente gestiona el esquema, los datos y los accesos.</p>
 
 
-<div class="pausa"><h4>Ahora: actividad 17</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 8.</p></div>
+<div class="pausa"><h4>Ahora: actividad 16</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 8.</p></div>
 
 <div class="actividad">
-<h4>Actividad 17. Elegir el almacenamiento</h4>
+<h4>Actividad 16. Elegir el almacenamiento</h4>
 <p>Individual. Para cada necesidad de Cita Previa, elige el tipo de almacenamiento (bloque, fichero u objeto) y la opción concreta (tipo de disco, clase de almacenamiento, instantáneas, ciclo de vida, bloqueo contra borrado...). Indica también qué le pasa a ese dato si se termina la máquina virtual.</p>
 <ol class="casos">
 <li>El disco del sistema de cada servidor de aplicación.</li>
@@ -1301,13 +1297,13 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 </ul>
 
 
-<div class="pausa"><h4>Ahora: actividad 18</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Con ella se cierra el punto.</p></div>
+<div class="pausa"><h4>Ahora: actividad 17</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Con ella se cierra el punto.</p></div>
 
 <div class="actividad">
-<h4>Actividad 18. Ficha técnica</h4>
-<p>Con la misma pareja de la actividad 16. Redactad la ficha técnica del entorno de revisión de Cita Previa, ya con las correcciones de la actividad 16 y el almacenamiento de la actividad 17; podéis reutilizar las tablas que ya tenéis. Haced una tabla por tipo de componente (servidores, red, almacenamiento y software) con estas columnas: identificador, características, ubicación (zona y subred) y función. En el software, incluid el sistema operativo, el software de base de cada máquina y el software de gestión que usaríais (identidades, monitorización, auditoría). Añadid el esquema de red corregido.</p>
+<h4>Actividad 17. Ficha técnica</h4>
+<p>Con la misma pareja de la actividad 15. Redactad la ficha técnica del entorno de revisión de Cita Previa, ya con las correcciones de la actividad 15 y el almacenamiento de la actividad 16; podéis reutilizar las tablas que ya tenéis. Haced una tabla por tipo de componente (servidores, red, almacenamiento y software) con estas columnas: identificador, características, ubicación (zona y subred) y función. En el software, incluid el sistema operativo, el software de base de cada máquina y el software de gestión que usaríais (identidades, monitorización, auditoría). Añadid el esquema de red corregido.</p>
 </div>
-<p class="entrega">Entrega en Aules: datos del portátil y cálculo de sobresuscripción de la actividad 13, respuestas de la 14, tabla de migración de la 15, esquema y respuestas de la 16, tabla de almacenamiento de la 17 y ficha técnica con el esquema corregido de la 18.</p>
+<p class="entrega">Entrega en Aules: datos del portátil y cálculo de sobresuscripción de la actividad 12, respuestas de la 13, tabla de migración de la 14, esquema y respuestas de la 15, tabla de almacenamiento de la 16 y ficha técnica con el esquema corregido de la 17.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
