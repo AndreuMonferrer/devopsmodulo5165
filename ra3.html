@@ -158,124 +158,145 @@
 <h3>Objetivos del punto</h3>
 <ul>
 <li>Describir el modelo de nube privada: propiedad de los recursos, uso exclusivo y funcionamiento.</li>
-<li>Distinguir entre nube privada en instalaciones propias, nube privada alojada y gestionada, y una simple infraestructura virtualizada.</li>
-<li>Conocer las plataformas con las que se construye una nube privada (OpenStack, Proxmox VE, VMware, OpenNebula...).</li>
-<li>Practicar el autoservicio por API sobre una plataforma local (la API de Docker) y analizar quién puede usarla.</li>
+<li>Esquematizar una nube privada y responder para ella las cuatro preguntas de la unidad.</li>
+<li>Diferenciar una nube privada de una simple infraestructura virtualizada.</li>
+<li>Distinguir las variantes de nube privada y la nube comunitaria.</li>
+<li>Conocer las plataformas con las que se construye una nube privada y valorar sus ventajas e inconvenientes.</li>
 </ul>
 
 <h3>1. Qué es una nube privada</h3>
-<p>Según el NIST, en la <b>nube privada</b> la infraestructura se aprovisiona para <b>uso exclusivo de una sola organización</b>, que puede tener varios consumidores internos (departamentos, unidades de negocio, proyectos). Puede ser propiedad de la organización, de un tercero o de una combinación de ambos, y puede estar dentro o fuera de sus instalaciones.</p>
-<p>La clave es que <b>no se comparte con otras organizaciones</b>. Pero para que sea "nube" y no simplemente "servidores propios" debe mantener las cinco características esenciales: autoservicio, acceso por red, agrupación de recursos (compartidos entre los departamentos de la organización), elasticidad dentro de su capacidad y medición del uso.</p>
-<h4>Esquema</h4>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 270" role="img" aria-label="Nube privada" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-nube_privada" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="86" width="696" height="176" rx="8" class="d-grupo-naranja"/><text x="22" y="101" class="tt">Nube privada de la Conselleria (uso exclusivo)</text><rect x="40.0" y="12.0" width="180.0" height="44.0" rx="6" class="d-amarillo"/><text x="130.0" y="34.0" class="t" text-anchor="middle" dominant-baseline="middle">Atención primaria</text><rect x="270.0" y="12.0" width="180.0" height="44.0" rx="6" class="d-amarillo"/><text x="360.0" y="34.0" class="t" text-anchor="middle" dominant-baseline="middle">Sistemas centrales</text><rect x="500.0" y="12.0" width="180.0" height="44.0" rx="6" class="d-amarillo"/><text x="590.0" y="34.0" class="t" text-anchor="middle" dominant-baseline="middle">Proyecto Cita Previa</text><rect x="230.0" y="112.0" width="440.0" height="40.0" rx="6" class="d-morado"/><text x="450.0" y="125.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Portal de autoservicio, API y cuotas por proyecto</text><text x="450.0" y="141.0" class="ts" text-anchor="middle" dominant-baseline="middle">OpenStack, Proxmox VE, OpenNebula...</text><rect x="40.0" y="196.0" width="640.0" height="42.0" rx="6" class="d-naranja"/><text x="360.0" y="217.0" class="t" text-anchor="middle" dominant-baseline="middle">Servidores, almacenamiento y red DE USO EXCLUSIVO</text><path d="M130.0,58.0 L130.0,84.0 L450.0,84.0 L450.0,110.0" class="flecha " marker-end="url(#fl-nube_privada)"/><path d="M360.0,58.0 L360.0,110.0" class="flecha " marker-end="url(#fl-nube_privada)"/><path d="M590.0,58.0 L590.0,84.0 L450.0,84.0 L450.0,110.0" class="flecha " marker-end="url(#fl-nube_privada)"/><path d="M450.0,154.0 L450.0,194.0" class="flecha " marker-end="url(#fl-nube_privada)"/></svg></div><figcaption>Nube privada: la infraestructura es de uso exclusivo de una organización, que la reparte entre sus departamentos con autoservicio y cuotas.</figcaption></figure>
-
-<h3>2. Variantes de nube privada</h3>
+<h4>Definición</h4>
+<p>Según el NIST, en la <b>nube privada</b> la infraestructura se aprovisiona para <b>uso exclusivo de una sola organización</b>, que puede tener varios consumidores internos (departamentos, unidades de negocio, proyectos). Puede ser propiedad de la organización, de un tercero o de ambos, y puede estar dentro o fuera de sus instalaciones.</p>
+<p>La clave es que <b>no se comparte con otras organizaciones</b>. Pero que sea solo de una organización no basta: para ser "nube", y no simplemente "nuestros servidores", tiene que cumplir las <b>cinco características esenciales</b> del NIST que vimos en la unidad 2. Así se consiguen en una nube privada:</p>
 <div class="tabla"><table>
-<tr><th>Variante</th><th>Propiedad del hardware</th><th>Ubicación</th><th>Operación</th><th>Ejemplo</th></tr>
-<tr><td><b>Nube privada en instalaciones propias</b> (<i>on premise private cloud</i>)</td><td>La organización</td><td>CPD propio</td><td>Equipo propio</td><td>Una universidad con OpenStack en su CPD</td></tr>
-<tr><td><b>Nube privada alojada</b> (<i>hosted</i>)</td><td>El proveedor o la organización</td><td>CPD del proveedor, hardware dedicado</td><td>Organización o proveedor</td><td>Servidores dedicados con VMware en un proveedor, solo para un cliente</td></tr>
-<tr><td><b>Nube privada gestionada</b> (<i>managed</i>)</td><td>Variable</td><td>Propia o del proveedor</td><td>El proveedor, bajo contrato</td><td>Un integrador opera la nube privada de un banco</td></tr>
-<tr><td><b>Extensiones de nube pública en casa</b></td><td>El proveedor de nube (alquilado)</td><td>CPD del cliente</td><td>El proveedor de nube</td><td>AWS Outposts, Azure Local, Google Distributed Cloud</td></tr>
+<tr><th>Característica</th><th>En una nube privada</th><th>Cómo lo hace OpenStack, por ejemplo</th></tr>
+<tr><td>Autoservicio bajo demanda</td><td>Cada equipo crea sus máquinas sin pedírselo a sistemas</td><td>Portal web (Horizon) y API</td></tr>
+<tr><td>Acceso amplio por red</td><td>Se usa desde la red de la organización, con navegador, línea de órdenes o API</td><td>API REST y cliente <code>openstack</code></td></tr>
+<tr><td>Agrupación de recursos</td><td>El hardware se comparte, pero solo entre departamentos y proyectos de la misma organización</td><td>Proyectos aislados, cada uno con sus redes y permisos</td></tr>
+<tr><td>Elasticidad rápida</td><td>Se crean y destruyen recursos en minutos, <b>hasta el límite del hardware comprado</b></td><td>Cuotas por proyecto dentro de la capacidad total</td></tr>
+<tr><td>Servicio medido</td><td>Se mide lo que consume cada departamento</td><td>Telemetría por proyecto, base para el <i>showback</i> o el <i>chargeback</i> (apartado 2)</td></tr>
 </table></div>
-<div class="aviso"><p><b>Cuidado con la VPC.</b> La "nube privada virtual" (VPC) de AWS o Google no es una nube privada: es una red aislada dentro de la <b>nube pública</b>, sobre hardware compartido con otros clientes. El nombre confunde a mucha gente.</p></div>
-<h4>Virtualización no es nube privada</h4>
-<p>Muchas organizaciones tienen servidores virtualizados con VMware o Proxmox y los llaman "nuestra nube privada". Si para conseguir una máquina hay que abrir una incidencia y esperar a que alguien la cree a mano, no hay autoservicio: es <b>infraestructura virtualizada</b>, no nube. Pasa a ser nube cuando se añade:</p>
+<p>La elasticidad es la característica que más se resiente: en la nube pública la capacidad es casi ilimitada; en la privada se acaba cuando se acaba el hardware. Cuando eso pasa, una salida es desbordar temporalmente a la nube pública, lo que ya es una nube híbrida (punto 3).</p>
+<h4>Esquema</h4>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 270" role="img" aria-label="Nube privada" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-nube_privada" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="86" width="696" height="176" rx="8" class="d-grupo-naranja"/><text x="22" y="101" class="tt">Nube privada de un hospital (uso exclusivo)</text><rect x="40.0" y="12.0" width="180.0" height="44.0" rx="6" class="d-amarillo"/><text x="130.0" y="34.0" class="t" text-anchor="middle" dominant-baseline="middle">Urgencias</text><rect x="270.0" y="12.0" width="180.0" height="44.0" rx="6" class="d-amarillo"/><text x="360.0" y="34.0" class="t" text-anchor="middle" dominant-baseline="middle">Laboratorio</text><rect x="500.0" y="12.0" width="180.0" height="44.0" rx="6" class="d-amarillo"/><text x="590.0" y="34.0" class="t" text-anchor="middle" dominant-baseline="middle">Administración</text><rect x="230.0" y="112.0" width="440.0" height="40.0" rx="6" class="d-morado"/><text x="450.0" y="125.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Portal de autoservicio, API y cuotas por proyecto</text><text x="450.0" y="141.0" class="ts" text-anchor="middle" dominant-baseline="middle">OpenStack, Proxmox VE, OpenNebula...</text><rect x="40.0" y="196.0" width="640.0" height="42.0" rx="6" class="d-naranja"/><text x="360.0" y="217.0" class="t" text-anchor="middle" dominant-baseline="middle">Servidores, almacenamiento y red DE USO EXCLUSIVO</text><path d="M130.0,58.0 L130.0,84.0 L450.0,84.0 L450.0,110.0" class="flecha " marker-end="url(#fl-nube_privada)"/><path d="M360.0,58.0 L360.0,110.0" class="flecha " marker-end="url(#fl-nube_privada)"/><path d="M590.0,58.0 L590.0,84.0 L450.0,84.0 L450.0,110.0" class="flecha " marker-end="url(#fl-nube_privada)"/><path d="M450.0,154.0 L450.0,194.0" class="flecha " marker-end="url(#fl-nube_privada)"/></svg></div><figcaption>Nube privada: la infraestructura es de uso exclusivo de una organización, que la reparte entre sus departamentos con autoservicio y cuotas.</figcaption></figure>
+<h4>Las cuatro preguntas aplicadas a la nube privada</h4>
+<div class="tabla"><table>
+<tr><th>Pregunta</th><th>Nube privada</th></tr>
+<tr><td>¿De quién es el hardware?</td><td>Normalmente de la organización; a veces de un proveedor que lo dedica en exclusiva a ella</td></tr>
+<tr><td>¿Quién lo gestiona y opera?</td><td>El equipo de sistemas de la organización, o un proveedor contratado para operarla</td></tr>
+<tr><td>¿Dónde está físicamente?</td><td>En el CPD de la organización o en el de un proveedor, en hardware dedicado</td></tr>
+<tr><td>¿Quién más lo usa?</td><td>Nadie de fuera. Se comparte solo entre departamentos y proyectos de la misma organización (<b>multitenencia interna</b>)</td></tr>
+</table></div>
+<p>A diferencia de la pública, la nube privada se paga sobre todo <b>comprando</b> (CapEx, unidad 2) y su capacidad es la que se ha comprado.</p>
+<h4>Misma tecnología, distinto modelo</h4>
+<p>El modelo de despliegue no lo decide el software. OpenStack es la base de la nube privada del CERN, y también de la nube <b>pública</b> de OVHcloud, que cualquiera puede contratar. Lo que cambia es la respuesta a "¿quién más lo usa?": en el CERN, solo sus grupos de investigación; en OVHcloud, cualquier cliente que pague.</p>
+
+<h3>2. Virtualización no es nube privada</h3>
+<p>Muchas organizaciones tienen servidores virtualizados con VMware o Proxmox y los llaman "nuestra nube privada". Si para conseguir una máquina hay que abrir una incidencia y esperar a que alguien la cree a mano, no hay autoservicio: es <b>infraestructura virtualizada</b>, no nube.</p>
+<p>La diferencia está en una capa que se pone encima del hipervisor: el <b>plano de control</b>, el software que recibe las peticiones de los usuarios, comprueba sus permisos y cuotas, y ordena a los hipervisores crear lo que se pide. Es la misma pieza que tiene un proveedor de nube pública (la consola, la API y la gestión de identidades del punto 1), pero de uso interno.</p>
+<div class="tabla"><table>
+<tr><th>Capa</th><th>Infraestructura virtualizada</th><th>Nube privada</th></tr>
+<tr><td>Usuarios</td><td>Piden las máquinas por correo o incidencia</td><td>Las crean ellos mismos</td></tr>
+<tr><td>Plano de control</td><td>No hay: el técnico usa la consola del hipervisor</td><td>Portal y API de autoservicio, identidades, cuotas, catálogo y medición</td></tr>
+<tr><td>Hipervisor</td><td>KVM, ESXi, Hyper-V…</td><td>Los mismos</td></tr>
+<tr><td>Hardware</td><td>Servidores, almacenamiento y red</td><td>Los mismos</td></tr>
+</table></div>
+<p>Para pasar de una a otra hay que añadir:</p>
 <ul>
 <li>Un <b>portal y una API de autoservicio</b> para que cada equipo cree sus recursos.</li>
 <li><b>Multitenencia interna</b>: proyectos o departamentos aislados, cada uno con sus redes y sus permisos.</li>
-<li><b>Cuotas</b>: límites de CPU, memoria y disco por proyecto.</li>
-<li><b>Catálogo</b> de imágenes y plantillas aprobadas.</li>
-<li><b>Medición y repercusión de costes</b> (<i>showback</i>: informar a cada departamento de lo que consume; <i>chargeback</i>: cobrárselo internamente).</li>
-<li><b>Automatización</b>: que las herramientas de IaC puedan crear recursos.</li>
+<li><b>Cuotas</b>: límites de CPU, memoria y disco por proyecto, para que un departamento no se quede con todo.</li>
+<li><b>Catálogo</b> de imágenes y plantillas aprobadas, ya configuradas con las normas de seguridad de la organización.</li>
+<li><b>Medición y repercusión de costes</b>: <i>showback</i> (informar a cada departamento de lo que consume) o <i>chargeback</i> (cobrárselo internamente de su presupuesto).</li>
+<li><b>Automatización</b>: que herramientas de infraestructura como código, como Terraform, puedan crear recursos a través de la API.</li>
 </ul>
 
-<h3>3. Plataformas para construir una nube privada</h3>
+<h3>3. Variantes de nube privada</h3>
+<p>"Privada" habla de quién la usa, no de dónde está ni de quién es el hardware. Por eso hay varias formas de tenerla:</p>
+<div class="tabla"><table>
+<tr><th>Variante</th><th>Hardware</th><th>Ubicación</th><th>Operación</th><th>Ejemplo</th></tr>
+<tr><td><b>En instalaciones propias</b> (<i>on premise</i>)</td><td>De la organización</td><td>CPD propio</td><td>Equipo propio</td><td>Una universidad con OpenStack en su CPD</td></tr>
+<tr><td><b>Alojada</b> (<i>hosted private cloud</i>)</td><td>Del proveedor, dedicado a un solo cliente</td><td>CPD del proveedor</td><td>El proveedor opera el hardware y la plataforma; el cliente, sus máquinas</td><td>OVHcloud Hosted Private Cloud, con VMware o Nutanix</td></tr>
+<tr><td><b>Gestionada</b> (<i>managed</i>)</td><td>De la organización o del proveedor</td><td>Propia o del proveedor</td><td>Una empresa externa, bajo contrato</td><td>Un integrador opera la nube privada de un banco en el CPD del banco</td></tr>
+<tr><td><b>Como servicio</b></td><td>Del fabricante, que lo instala y lo cobra por uso</td><td>CPD del cliente</td><td>Compartida entre el fabricante y el cliente</td><td>HPE GreenLake, Dell APEX</td></tr>
+</table></div>
+<p>La última variante es interesante porque combina dos mundos: el hardware está en casa, pero no se compra; se paga cada mes según lo que se usa, como en la nube pública. El fabricante instala algo más de capacidad de la necesaria para poder crecer.</p>
+<p>Un caso parecido son las <b>extensiones de nube pública en casa</b>, como AWS Outposts, Azure Local o Google Distributed Cloud: hardware del proveedor de nube, en el CPD del cliente y dedicado a él, pero gestionado desde la región pública del proveedor con su misma consola y API. Por eso se estudian como una forma de <b>nube híbrida</b> (punto 3).</p>
+<div class="aviso"><p><b>Cuidado con la VPC.</b> La "nube privada virtual" (VPC) de AWS o Google, o la VNet de Azure, no es una nube privada: es una red aislada dentro de la <b>nube pública</b>, sobre hardware compartido con otros clientes. El nombre confunde a mucha gente.</p></div>
+
+<h3>4. La nube comunitaria</h3>
+<p>Entre la pública y la privada está la <b>nube comunitaria</b>: según el NIST, una infraestructura para uso exclusivo de una <b>comunidad de organizaciones</b> con necesidades comunes (misión, requisitos de seguridad, normativa). Puede ser propiedad de una o varias de ellas o de un tercero, y estar en sus instalaciones o fuera.</p>
+<div class="tabla"><table>
+<tr><th>Pregunta</th><th>Nube comunitaria</th></tr>
+<tr><td>¿De quién es el hardware?</td><td>De uno o varios miembros de la comunidad, o de un tercero que da el servicio</td></tr>
+<tr><td>¿Quién lo gestiona y opera?</td><td>Un miembro, un organismo creado para ello o un proveedor</td></tr>
+<tr><td>¿Dónde está físicamente?</td><td>En los CPD de uno o varios miembros, o del proveedor</td></tr>
+<tr><td>¿Quién más lo usa?</td><td>Solo las organizaciones de la comunidad: varias, pero no cualquiera</td></tr>
+</table></div>
+<p>Ejemplos:</p>
+<ul>
+<li><b>EGI Federated Cloud</b>: centros de investigación europeos que unen sus nubes privadas para que los científicos de cualquiera de ellos puedan usar capacidad de los demás.</li>
+<li><b>Nube SARA</b>: la nube de la Administración General del Estado, que da servicio a los distintos ministerios y organismos. Se puede discutir si es privada (la Administración como una sola organización) o comunitaria (muchos organismos distintos con necesidades comunes), y es un buen ejercicio razonarlo con las cuatro preguntas.</li>
+<li>Las regiones para gobiernos del punto 1, como AWS GovCloud, encajan en la definición del NIST de nube comunitaria aunque las ofrezca un proveedor público: solo pueden usarlas organismos del Gobierno de EE. UU. y sus contratistas.</li>
+</ul>
+<p>Su ventaja es <b>repartir el coste</b> de una infraestructura que ninguno podría pagar solo, cumpliendo requisitos que la nube pública no garantiza. Su dificultad es la <b>gobernanza entre miembros</b>: quién paga qué, quién decide las inversiones, qué pasa si un miembro se va. Por eso es el modelo menos frecuente de los cuatro.</p>
+
+<h3>5. Plataformas para construir una nube privada</h3>
 <div class="tabla"><table>
 <tr><th>Plataforma</th><th>Licencia</th><th>Características</th></tr>
-<tr><td><b>OpenStack</b></td><td>Libre (Fundación OpenInfra)</td><td>La más completa: cómputo (Nova), red (Neutron), bloque (Cinder), objeto (Swift), imágenes (Glance), identidad (Keystone), portal (Horizon). Proyectos, cuotas y API compatible en parte con AWS. Compleja de instalar y mantener. La usan operadores de telecomunicaciones, universidades y centros de investigación (CERN).</td></tr>
-<tr><td><b>Proxmox VE</b></td><td>Libre (AGPL), soporte de pago</td><td>Virtualización KVM y contenedores LXC, clúster, Ceph, copias con Proxmox Backup Server, cortafuegos, SDN, API REST completa, usuarios, roles y pools. Sencilla. Sin portal de autoservicio con cuotas tan completo como OpenStack.</td></tr>
-<tr><td><b>VMware vSphere / Cloud Foundation</b></td><td>Propietaria (Broadcom)</td><td>Referencia en empresas durante 20 años. Tras la compra por Broadcom en 2023 cambió su modelo de licencias y subió precios, lo que ha llevado a muchas organizaciones a buscar alternativas como Proxmox.</td></tr>
+<tr><td><b>OpenStack</b></td><td>Libre (OpenInfra Foundation, integrada en la Linux Foundation desde 2025)</td><td>La más completa. Es un conjunto de servicios con nombre propio: cómputo (Nova), red (Neutron), discos (Cinder), almacenamiento de objetos (Swift), imágenes (Glance), identidad (Keystone), orquestación (Heat) y portal (Horizon). Proyectos, cuotas y API para todo. Compleja de instalar y mantener: necesita un equipo dedicado. La usan operadores de telecomunicaciones, universidades, centros de investigación (CERN) y proveedores de nube pública (OVHcloud).</td></tr>
+<tr><td><b>Proxmox VE</b></td><td>Libre (AGPL), con soporte de pago</td><td>Virtualización KVM y contenedores LXC, clúster, almacenamiento Ceph, copias con Proxmox Backup Server, cortafuegos, redes definidas por software (SDN), API REST completa, usuarios, roles y pools. Sencilla de instalar. No tiene un portal de autoservicio con cuotas tan completo como OpenStack (apartado 6).</td></tr>
+<tr><td><b>VMware vSphere / Cloud Foundation</b></td><td>Propietaria (Broadcom)</td><td>La referencia en empresas durante 20 años. Desde que Broadcom la compró (finales de 2023) dejó de vender licencias perpetuas, pasó a suscripciones en paquetes y subió mucho los precios. Muchas organizaciones están migrando a Proxmox, Nutanix u OpenStack: es un ejemplo real del riesgo de depender de un solo fabricante.</td></tr>
 <tr><td><b>OpenNebula</b></td><td>Libre</td><td>Nacida en la Universidad Complutense de Madrid. Más ligera que OpenStack, con portal de autoservicio, cuotas y multitenencia.</td></tr>
-<tr><td><b>Apache CloudStack</b></td><td>Libre</td><td>Plataforma IaaS completa, usada por proveedores de alojamiento.</td></tr>
-<tr><td><b>Nutanix</b></td><td>Propietaria</td><td>Infraestructura hiperconvergente (cómputo y almacenamiento en los mismos nodos) con su hipervisor AHV.</td></tr>
-<tr><td><b>Kubernetes</b></td><td>Libre</td><td>Para cargas en contenedores, un clúster Kubernetes propio actúa como una "nube privada de contenedores". Con KubeVirt también ejecuta VM.</td></tr>
+<tr><td><b>Apache CloudStack</b></td><td>Libre</td><td>Plataforma IaaS completa y más sencilla que OpenStack, muy usada por proveedores de alojamiento.</td></tr>
+<tr><td><b>Nutanix</b></td><td>Propietaria</td><td>Infraestructura hiperconvergente con su propio hipervisor (AHV). Una de las alternativas habituales a VMware.</td></tr>
+<tr><td><b>Kubernetes</b> (y Red Hat OpenShift)</td><td>Libre (OpenShift, de pago)</td><td>Para cargas en contenedores, un clúster Kubernetes propio funciona como una "nube privada de contenedores": autoservicio por API, espacios de nombres por equipo y cuotas. Con KubeVirt (OpenShift Virtualization) también ejecuta máquinas virtuales.</td></tr>
 </table></div>
-<p>La <b>infraestructura hiperconvergente</b> (HCI) es una tendencia importante: en lugar de servidores por un lado y cabina de almacenamiento por otro, cada nodo aporta CPU, memoria y discos, y el software los une en un clúster. Proxmox con Ceph es un ejemplo de HCI libre.</p>
+<p>La <b>infraestructura hiperconvergente</b> (HCI) es una tendencia importante: en lugar de servidores por un lado y una cabina de almacenamiento por otro, cada nodo aporta CPU, memoria y discos, y el software los une en un clúster. Para crecer, se añade otro nodo igual. Proxmox con Ceph es un ejemplo de HCI libre.</p>
 
-<h3>4. Propiedad y uso compartido</h3>
-<div class="tabla"><table>
-<tr><th>Aspecto</th><th>Nube pública</th><th>Nube privada</th></tr>
-<tr><td>Propiedad del hardware</td><td>Proveedor</td><td>La organización (o un tercero para ella en exclusiva)</td></tr>
-<tr><td>Uso compartido</td><td>Muchas organizaciones</td><td>Una organización; se comparte solo entre sus departamentos</td></tr>
-<tr><td>Ubicación</td><td>CPD del proveedor</td><td>CPD propio o dedicado en un proveedor</td></tr>
-<tr><td>Capacidad</td><td>Prácticamente ilimitada</td><td>Limitada al hardware comprado</td></tr>
-<tr><td>Coste</td><td>OpEx, pago por uso</td><td>Principalmente CapEx, más personal</td></tr>
-<tr><td>Control y personalización</td><td>Limitados a lo que ofrece el proveedor</td><td>Totales</td></tr>
-<tr><td>Cumplimiento normativo</td><td>Depende de las certificaciones del proveedor</td><td>La organización controla todo</td></tr>
-<tr><td>Catálogo de servicios</td><td>Enorme</td><td>El que la organización monte y mantenga</td></tr>
-</table></div>
-<h4>Ventajas de la nube privada</h4>
-<p>Control total sobre la ubicación de los datos, el hardware y la seguridad; cumplimiento de normativas exigentes; rendimiento previsible (no hay "vecinos ruidosos"); coste potencialmente menor para cargas grandes y estables; posibilidad de ejecutar sistemas heredados o hardware especial; autonomía respecto a proveedores extranjeros.</p>
-<h4>Inconvenientes</h4>
-<p>Inversión inicial alta; capacidad limitada (la elasticidad termina donde termina el hardware); la organización asume la operación completa y necesita personal muy cualificado; la renovación del hardware; catálogo de servicios mucho más reducido; y el riesgo de montar una plataforma compleja (OpenStack) sin poder mantenerla.</p>
-<h4>Casos de uso</h4>
-<p>Administraciones públicas con datos sensibles, hospitales, banca y seguros, defensa, organizaciones con grandes cargas estables, centros de investigación y centros educativos (como el nuestro), y entornos de desarrollo internos.</p>
-
-<h3>5. Un ejemplo de nube privada ligera: Proxmox VE</h3>
-<p>Proxmox VE, muy usado en pymes y centros educativos, cumple buena parte de los requisitos:</p>
+<h3>6. Un ejemplo de nube privada ligera: Proxmox VE</h3>
+<p>Proxmox VE, muy usado en pymes y centros educativos, cumple buena parte de los requisitos del apartado 2:</p>
 <ul>
-<li><b>Autoservicio</b>: se pueden dar a cada equipo un usuario y un <b>pool</b> en el que crea sus propias VM a partir de plantillas, sin pedírselo a nadie.</li>
-<li><b>API REST</b>, que usan la interfaz web, la orden <code>pvesh</code> y herramientas como Terraform.</li>
-<li><b>Permisos por rol</b>: roles como <code>PVEVMUser</code> (usar VM) o <code>PVEVMAdmin</code> (administrarlas), asignados a usuarios o grupos sobre una ruta (por ejemplo, un pool).</li>
-<li><b>Tokens de API</b>: credenciales para programas, con permisos iguales o menores que los del usuario y que se pueden revocar.</li>
-<li><b>Medición</b>: gráficas de uso de CPU, memoria, red y disco por VM.</li>
+<li><b>Autoservicio</b>: a cada equipo se le da un usuario y un <b>pool</b> (un grupo de recursos) en el que crea sus propias máquinas a partir de plantillas, sin pedírselo a nadie.</li>
+<li><b>API REST</b>: la usan la interfaz web, la orden <code>pvesh</code> y herramientas como Terraform (con proveedores mantenidos por la comunidad). Por ejemplo, <code>pvesh get /cluster/resources --type vm</code> lista todas las máquinas del clúster, igual que se ven en la web.</li>
+<li><b>Permisos por rol</b>: roles como <code>PVEVMUser</code> (usar máquinas) o <code>PVEVMAdmin</code> (administrarlas), asignados a usuarios o grupos sobre una ruta, por ejemplo un pool.</li>
+<li><b>Tokens de API</b>: credenciales para programas, con permisos iguales o menores que los del usuario y que se pueden revocar sin cambiar su contraseña.</li>
+<li><b>Medición</b>: gráficas de uso de CPU, memoria, red y disco por máquina.</li>
 </ul>
-<p>Lo que le falta respecto a OpenStack: cuotas por proyecto integradas, portal de catálogo y facturación interna. Es una "nube privada ligera", suficiente para un centro educativo o una pyme.</p>
-<p>La idea clave es que <b>todo lo que se hace con clics se puede hacer por API</b>, y eso es lo que permite automatizar. En la actividad 2 lo practicaremos con una plataforma que ya tenemos en el portátil: <b>Docker también expone una API REST</b> (en el socket <code>/var/run/docker.sock</code>), que es la que usa por debajo la orden <code>docker</code>:</p>
-<pre><code># La orden docker ps, hecha directamente contra la API
-curl -s --unix-socket /var/run/docker.sock http://localhost/containers/json | jq '.[] | {Names, Image, State}'</code></pre>
+<p>Lo que le falta respecto a OpenStack: cuotas por proyecto integradas, un portal de catálogo para el usuario final y facturación interna. Es una "nube privada ligera", suficiente para un centro educativo o una pyme, y por eso es la alternativa más habitual a VMware en organizaciones pequeñas y medianas.</p>
 
-<h3>Actividades</h3>
-<div class="actividad">
-<h4>Actividad 1. Esquema comparativo pública/privada</h4>
-<p>En parejas, completad el esquema del punto 1 añadiendo al lado el de una nube privada de la Conselleria de Sanitat con tres departamentos. Usad los mismos colores para propiedad, operación, uso compartido y recursos virtuales. Añadid una tercera columna para una nube privada alojada en un proveedor y señalad qué cambia.</p>
-</div>
-<div class="actividad">
-<h4>Actividad 2. Autoservicio por API en una plataforma local</h4>
-<p>En parejas, en un portátil. Vamos a gestionar el ciclo de vida completo de un servidor web sin usar la orden <code>docker</code>, solo con la API, como haría un portal de autoservicio o Terraform. Todas las peticiones van al socket de Docker; para no repetirlo, definid primero <code>S=/var/run/docker.sock</code> y <code>U=http://localhost</code>.</p>
-<ol>
-<li><b>¿Quién puede usar la API?</b> Ejecutad <code>ls -l /var/run/docker.sock</code> e <code>id</code>. ¿Qué permisos tiene el socket y por qué vuestro usuario puede usarlo? Buscad en la documentación oficial de Docker (<i>Linux post-installation steps</i>) qué advierte sobre el grupo <code>docker</code>.</li>
-<li>Listad los contenedores por la API (<code>curl -s --unix-socket $S "$U/containers/json?all=true" | jq</code>) y comparad con <code>docker ps -a</code>.</li>
-<li>Descargad la imagen: <code>curl -s --unix-socket $S -X POST "$U/images/create?fromImage=nginx&amp;tag=stable"</code>.</li>
-<li>Cread el contenedor: <code>curl -s --unix-socket $S -X POST -H "Content-Type: application/json" -d '{"Image":"nginx:stable","HostConfig":{"PortBindings":{"80/tcp":[{"HostPort":"8081"}]}}}' "$U/containers/create?name=api-web"</code>. ¿Qué devuelve?</li>
-<li>Arrancadlo (<code>curl -s --unix-socket $S -X POST "$U/containers/api-web/start"</code>), abrid <code>http://localhost:8081</code> y consultad su estado (<code>curl -s --unix-socket $S "$U/containers/api-web/json" | jq .State</code>) y sus métricas (<code>curl -s --unix-socket $S "$U/containers/api-web/stats?stream=false" | jq .memory_stats.usage</code>): ¿cuánta memoria usa?</li>
-<li>Paradlo (<code>curl -s --unix-socket $S -X POST "$U/containers/api-web/stop"</code>) y borradlo (<code>curl -s --unix-socket $S -X DELETE "$U/containers/api-web"</code>).</li>
-<li>Guardad todas las órdenes en un script <code>autoservicio.sh</code> que reciba el nombre del contenedor y el puerto como parámetros.</li>
-</ol>
-<p>Para terminar, completad una tabla comparando el control de acceso de la API de Docker con el de Proxmox VE y AWS (apartado 5 y punto 1): ¿hay usuarios, roles, tokens revocables y permisos limitados a un grupo de recursos? ¿Qué le falta a Docker para ser una nube privada?</p>
-</div>
-<div class="actividad">
-<h4>Actividad 3. ¿Nube privada o no?</h4>
-<p>Evaluad con las características del NIST y los requisitos del apartado 2 si estas infraestructuras son nube privada, y qué les falta:</p>
-<ol class="casos">
-<li>Un ayuntamiento con tres servidores VMware en los que el técnico crea las VM cuando se las piden por correo.</li>
-<li>Una pyme con Proxmox VE en la que cada departamento tiene un usuario y un pool para crear sus VM desde plantillas, con API y tokens, pero sin cuotas ni facturación.</li>
-<li>Una universidad con OpenStack, proyectos por grupo de investigación y cuotas.</li>
-<li>Un banco que alquila a un proveedor 20 servidores dedicados con OpenNebula que gestiona su propio equipo.</li>
-<li>Una empresa con toda su infraestructura en una VPC de AWS.</li>
-</ol>
-<p class="entrega">Entrega en Aules: esquema, capturas y script de la actividad 2, y respuestas de la actividad 3.</p>
-</div>
-<details><summary>Preparación previa (profesor)</summary>
-<p>Comprobar que <code>curl</code> y <code>jq</code> están instalados en los portátiles (<code>sudo apt install -y curl jq</code>) y que Docker funciona sin <code>sudo</code> (instalado en la unidad 1).</p>
-</details>
+<h3>7. Ventajas, inconvenientes y casos de uso</h3>
+<p>La comparación completa con la nube pública, para decidir entre una y otra, la haremos en el punto 4. Aquí, lo que caracteriza a la nube privada:</p>
+<h4>Ventajas</h4>
+<ul>
+<li><b>Control total</b> de la ubicación de los datos, del hardware y de la seguridad.</li>
+<li><b>Cumplimiento de normativas exigentes</b>, sin depender de las certificaciones de otro. Pero ojo: también hay que conseguirlas y mantenerlas uno mismo; en el sector público, por ejemplo, el ENS se aplica igual.</li>
+<li><b>Rendimiento previsible</b>: no hay vecinos de otras organizaciones; los "vecinos ruidosos" solo pueden ser otros departamentos, y se controlan con cuotas.</li>
+<li><b>Coste menor para cargas grandes y estables</b>, como vimos con la repatriación en la unidad 2.</li>
+<li>Posibilidad de ejecutar <b>sistemas heredados</b> o con hardware especial.</li>
+<li><b>Autonomía</b> respecto a proveedores extranjeros y a sus cambios de precio o de condiciones.</li>
+</ul>
+<h4>Inconvenientes</h4>
+<ul>
+<li><b>Inversión inicial alta</b> y renovación del hardware cada pocos años.</li>
+<li><b>Capacidad limitada</b>: la elasticidad termina donde termina el hardware.</li>
+<li>La organización asume <b>toda la operación</b> y necesita personal muy cualificado.</li>
+<li><b>Catálogo reducido</b>: solo los servicios que la organización sea capaz de montar y mantener.</li>
+<li><b>Riesgo de quedarse a medias</b>: montar una plataforma compleja como OpenStack sin poder mantenerla, o quedarse en virtualización llamándola nube.</li>
+</ul>
+<h4>Casos de uso</h4>
+<p>Administraciones públicas con datos sensibles, hospitales, banca y seguros, defensa, organizaciones con grandes cargas estables, centros de investigación, centros educativos y entornos de desarrollo internos.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
-<li>¿Qué diferencia una nube privada de una infraestructura virtualizada?</li>
-<li>¿Puede una nube privada estar fuera de las instalaciones de la organización? Explica cómo.</li>
+<li>Responde a las cuatro preguntas de la unidad para la nube privada. ¿Cuál cambia más entre sus variantes?</li>
+<li>¿Qué diferencia una nube privada de una infraestructura virtualizada? ¿Qué es el plano de control?</li>
+<li>¿Puede una nube privada estar fuera de las instalaciones de la organización? Pon un ejemplo.</li>
+<li>OpenStack se usa en el CERN y en la nube pública de OVHcloud. ¿Cómo puede la misma tecnología dar dos modelos distintos?</li>
 <li>¿Por qué una VPC no es una nube privada?</li>
+<li>¿Qué es una nube comunitaria? ¿Es Nube SARA privada o comunitaria? Razónalo.</li>
 <li>¿Qué es la infraestructura hiperconvergente?</li>
+<li>¿Por qué los cambios de Broadcom en VMware son un ejemplo de dependencia del proveedor?</li>
 <li>¿Qué ventaja tiene un token de API frente a usar el usuario y la contraseña en un script?</li>
 </ol>
 </section><section class="panel" role="tabpanel" id="p-p3" aria-labelledby="tab-p3" hidden>
