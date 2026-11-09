@@ -644,13 +644,21 @@ La tabla tiene que tener esta forma:
 
 <div class="actividad">
 <h4>Actividad 7. Estudio de TCO</h4>
-<p>Individual, con una hoja de cálculo (LibreOffice Calc o Google Sheets). Caso: la Conselleria debe renovar la infraestructura de Cita Previa para 5 años. Datos:</p>
-<ul>
-<li>Carga: 6 máquinas virtuales Linux de 4 vCPU y 16 GB en producción, 3 de 2 vCPU y 8 GB en revisión, una base de datos de 500 GB, 1,5 TB de documentos y 1 TB/mes de salida a Internet.</li>
-<li>On premise: 3 servidores de 10.000 € (cada uno con capacidad para 4 máquinas como las de producción), cabina de 15.000 €, red y cortafuegos 12.000 €, consumo total 2,5 kW, PUE 1,7, electricidad 0,18 €/kWh, licencias y soporte 8.000 €/año, 0,6 técnicos a 42.000 €/año de coste para la Conselleria.</li>
-<li>Nube: obtén los precios reales con la calculadora de AWS (región Europe (Spain)) o de Azure (región Spain Central). Las máquinas virtuales, como máquinas Linux: en la calculadora, elige un tipo de máquina con las mismas vCPU y la misma memoria. La base de datos, como base de datos gestionada PostgreSQL de 2 vCPU y 8 GB, con 500 GB de disco. Los documentos, en almacenamiento de objetos. Calcula dos opciones: todo bajo demanda, y las máquinas virtuales con reserva a 3 años sin pago por adelantado. Las reservas duran 3 años: para los años 4 y 5, supón que se renuevan al mismo precio. Migración: 15.000 € el primer año. Personal: 0,3 técnicos a 42.000 €/año de coste para la Conselleria.</li>
-</ul>
-<p>Construye la hoja con una fila por concepto y columnas por año, calcula el total a 5 años de cada opción y haz un gráfico comparativo. <b>Ampliación (opcional, si acabas antes):</b> añade un escenario. Durante la campaña de vacunación (2 meses al año) la carga de producción se triplica. Calcula cuántos servidores más necesitaría el on premise (cada máquina de revisión ocupa la mitad que una de producción) y cuánto subiría la factura de la nube esos 2 meses. ¿Cómo cambia la comparación?</p>
+<p>Individual, con una hoja de cálculo (LibreOffice Calc o Google Sheets), todo en una sola hoja. Caso: la Conselleria debe renovar la infraestructura de Cita Previa para 5 años y quiere saber qué opción le sale más barata. Todos los datos están aquí:</p>
+<div class="tabla"><table>
+<tr><th>On premise</th><th>Nube</th></tr>
+<tr><td>Compra el primer año: 3 servidores (30.000 €), cabina de almacenamiento (15.000 €), red y cortafuegos (12.000 €)</td><td>Migración el primer año: 15.000 €</td></tr>
+<tr><td>Energía: los equipos consumen 2,5 kW, todo el año (8.760 horas), con un PUE de 1,7 y la electricidad a 0,18 €/kWh</td><td>Factura mensual: máquinas virtuales 1.100 €, base de datos gestionada 190 €, documentos 40 €, salida de datos a Internet 85 €</td></tr>
+<tr><td>Licencias y soporte: 8.000 € al año</td><td></td></tr>
+<tr><td>Personal: 0,6 técnicos a 42.000 € al año cada uno (coste para la Conselleria)</td><td>Personal: 0,3 técnicos a 42.000 € al año cada uno</td></tr>
+</table></div>
+<ol class="pasos">
+<li>Haz una tabla con tres columnas: <b>concepto</b>, <b>on premise (5 años)</b> y <b>nube (5 años)</b>. Pon una fila por concepto y calcula cada celda con una fórmula. Ojo: lo que se paga una vez va una sola vez, lo anual se multiplica por 5 y lo mensual, por 12 y por 5.</li>
+<li>Suma el total de cada opción. ¿Cuál sale más barata y por cuánto?</li>
+<li>¿Qué concepto pesa más en cada opción?</li>
+<li>Si la Conselleria reservara las máquinas virtuales durante todo el periodo, pagaría un 45 % menos por ellas. ¿Cuánto bajaría el total de la nube?</li>
+<li>Escribe una conclusión de 3 o 4 frases: qué opción recomiendas y qué otros aspectos, además del precio, tendrías en cuenta.</li>
+</ol>
 </div>
 <h3>8. Beneficios de la nube frente al on premise</h3>
 <p>AWS los resume en seis beneficios (en su documento <i>Overview of Amazon Web Services</i> y en la certificación <i>Cloud Practitioner</i>), y el resto de proveedores usa ideas muy parecidas:</p>
