@@ -565,7 +565,20 @@ La tabla tiene que tener esta forma:
 <li><b>CapEx</b> (<i>capital expenditure</i>, gasto de capital o inversión): dinero que se gasta de golpe en adquirir activos que se usarán durante años: servidores, cabinas de almacenamiento, el propio CPD. En contabilidad no se imputa como gasto el año de la compra, sino que se <b>amortiza</b> a lo largo de su vida útil (por ejemplo, 40.000 € en servidores amortizados en 4 años suponen 10.000 € de gasto al año). <b>Ventaja</b>: si la carga es estable y dura años, suele salir más barato. <b>Inconveniente</b>: exige mucho dinero de golpe, si el proyecto fracasa ya está pagado, y hay que renovar el hardware cada pocos años.</li>
 <li><b>OpEx</b> (<i>operational expenditure</i>, gasto operativo): gastos corrientes del día a día que se imputan en el periodo en que se producen: electricidad, sueldos, alquileres, licencias por suscripción y, por supuesto, la factura mensual de la nube. <b>Ventaja</b>: no hace falta invertir, se empieza hoy y se puede parar en cualquier momento. <b>Inconveniente</b>: si el uso dura muchos años puede salir más caro, y la factura cambia cada mes.</li>
 </ul>
-<p>Ojo: on premise no es solo CapEx. La luz, el personal o el mantenimiento de un CPD propio también son OpEx. Lo que cambia con la nube es que también el hardware pasa a pagarse como gasto corriente.</p>
+<p>La pregunta que distingue uno de otro es: <b>¿compro algo que será mío durante años, o pago por usarlo?</b> No depende de si es on premise o nube, sino del tipo de gasto:</p>
+<div class="tabla"><table>
+<tr><th>Gasto</th><th>Tipo</th><th>Dónde aparece</th></tr>
+<tr><td>Comprar servidores y cabinas</td><td>CapEx</td><td>On premise</td></tr>
+<tr><td>Construir o reformar el CPD</td><td>CapEx</td><td>On premise</td></tr>
+<tr><td>Comprar una licencia de software para siempre (perpetua)</td><td>CapEx</td><td>On premise</td></tr>
+<tr><td>Luz y climatización</td><td>OpEx</td><td>On premise</td></tr>
+<tr><td>Sueldos de los técnicos</td><td>OpEx</td><td>On premise y nube</td></tr>
+<tr><td>Contrato de mantenimiento y soporte anual</td><td>OpEx</td><td>On premise</td></tr>
+<tr><td>Renting de servidores</td><td>OpEx</td><td>On premise</td></tr>
+<tr><td>Suscripciones (Microsoft 365…)</td><td>OpEx</td><td>Nube</td></tr>
+<tr><td>La factura de la nube</td><td>OpEx</td><td>Nube</td></tr>
+</table></div>
+<p>Así que on premise <b>mezcla los dos</b>: compra el hardware (CapEx) y paga luz, personal y mantenimiento (OpEx). Lo que hace la nube es convertir en OpEx la parte que antes era CapEx, el hardware, y por eso casi todo pasa a ser OpEx. En la nube casi no hay CapEx: lo más parecido es pagar por adelantado una reserva a 3 años, porque el dinero sale de golpe como en una compra, aunque en contabilidad se trata como un pago anticipado y no como un bien de la empresa.</p>
 <div class="tabla"><table>
 <tr><th></th><th>CapEx (on premise)</th><th>OpEx (nube)</th></tr>
 <tr><td>Desembolso</td><td>Grande al principio y en cada renovación</td><td>Pequeño y periódico, proporcional al uso</td></tr>
