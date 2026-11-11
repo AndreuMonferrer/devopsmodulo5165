@@ -222,3 +222,11 @@ main.con-indice{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:2.5re
 .panel .tabla-servicios td.ico{width:40px;padding:.2rem .3rem}
 .panel .tabla-servicios td:first-child{font-weight:600}
 .ico-aws{width:24px;height:24px;display:block;margin:0 auto;border-radius:4px}
+
+/* Tabla para rellenar en una actividad */
+.panel .tabla-ficha table{font-size:.88rem;table-layout:fixed;width:100%}
+.panel .tabla-ficha th,.panel .tabla-ficha td{padding:.35rem .6rem;vertical-align:middle;height:2rem}
+.panel .tabla-ficha th:nth-child(1){width:26%}.panel .tabla-ficha th:nth-child(2){width:20%}.panel .tabla-ficha th:nth-child(3){width:20%}
+.panel .tabla-ficha td:first-child{font-weight:600}
+.panel .tabla-ficha tr.ejemplo td{font-style:italic;color:var(--suave)}
+.panel .tabla-ficha tr.ejemplo td:first-child{font-style:normal;color:var(--texto)}

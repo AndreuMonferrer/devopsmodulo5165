@@ -964,26 +964,39 @@ La tabla tiene que tener esta forma:
 </div>
 <div class="actividad">
 <h4>Actividad 10. Diagrama de arquitectura de Cita Previa</h4>
-<p>En dos grupos, uno de tres personas y otro de dos. Requisitos de Cita Previa:</p>
+<p>En dos grupos, uno de tres personas y otro de dos. Diseñad la arquitectura de Cita Previa en AWS con estos requisitos:</p>
 <ul>
+<li>Disponibilidad del 99,9 %.</li>
 <li>Picos de demanda los lunes de 8 a 10 h.</li>
-<li>Disponibilidad objetivo del 99,9 %.</li>
-<li>Datos de salud: deben quedar en la UE y cifrados.</li>
+<li>Datos de salud: en la UE y cifrados.</li>
 <li>Recordatorios por correo y SMS.</li>
 <li>Panel de gestión accesible solo desde la red de los centros de salud.</li>
 <li>Un entorno de revisión, además del de producción.</li>
 </ul>
 <ol>
-<li>Abrid la plantilla en diagrams.net: <a href="https://app.diagrams.net/#Uhttps%3A%2F%2Fandreumonferrer.github.io%2Fdevopsmodulo5165%2Fassets%2Fplantilla-cita-previa.drawio">abrir la plantilla</a> (o <a href="assets/plantilla-cita-previa.drawio" download>descargarla</a> y abrirla con <i>Archivo → Abrir</i>). Ya tiene dibujadas la región, las dos zonas, la red virtual, las subredes, los servicios globales y los servicios de la región. Debajo del dibujo, en "Piezas para arrastrar", tenéis los iconos de AWS que necesitáis.</li>
-<li>Arrastrad cada icono a su sitio. Si una pieza va en las dos zonas, copiadla con Ctrl+C y Ctrl+V. Si preferís Azure, activad sus iconos en el menú <i>Más formas</i> → Azure. Colocad estos componentes: DNS, CDN con WAF, balanceador, grupo de autoescalado con instancias de la aplicación en las dos zonas, caché para las sesiones, una puerta NAT por zona, base de datos con su copia en espera, almacenamiento de objetos, cola con su trabajador, servicio de envío de correo y SMS, claves de cifrado, monitorización y la VPN hacia los centros de salud con su balanceador interno para el panel. La tabla del apartado 3 os dice cómo se llama cada servicio.<br><b>Pista:</b> el diagrama de tres capas del apartado 4 y el del recorrido de una petición del apartado 3, juntos, ya tienen casi todas las piezas en su sitio.</li>
-<li>Numerad el camino de una petición de un paciente, como en el apartado 3.</li>
-<li>Al lado, completad esta tabla con una fila por componente. En "Dónde vive" indicad si está en el borde global, en una subred pública, en una subred privada o es un servicio de la región. Si un componente no cubre ningún requisito de la lista, explicad para qué está:
-<div class="tabla"><table>
-<tr><th>Componente</th><th>Servicio del proveedor</th><th>Dónde vive</th><th>Requisito que cubre</th></tr>
-<tr><td>Balanceador</td><td>Elastic Load Balancing</td><td>Subred pública, un nodo por zona</td><td>Disponibilidad del 99,9 %: reparte entre las dos zonas y deja de enviar tráfico a la instancia que falla</td></tr>
-<tr><td>…</td><td></td><td></td><td></td></tr>
+<li>Abrid la <a href="https://app.diagrams.net/#Uhttps%3A%2F%2Fandreumonferrer.github.io%2Fdevopsmodulo5165%2Fassets%2Fplantilla-cita-previa.drawio">plantilla en diagrams.net</a> (o <a href="assets/plantilla-cita-previa.drawio" download>descargadla</a>). Arrastrad los iconos de "Piezas para arrastrar" a su sitio. Si una pieza va en las dos zonas, copiadla. <b>Pista:</b> el diagrama de tres capas y el del recorrido de una petición, juntos, tienen casi todas las piezas.</li>
+<li>Numerad en el diagrama el camino de una petición de un paciente.</li>
+<li>Completad la tabla. En "Dónde va" poned borde global, subred pública, subred privada o servicio de la región:
+<div class="tabla tabla-ficha"><table>
+<tr><th>Componente</th><th>Servicio de AWS</th><th>Dónde va</th><th>Requisito que cubre</th></tr>
+<tr><td>DNS</td><td></td><td></td><td></td></tr>
+<tr><td>CDN</td><td></td><td></td><td></td></tr>
+<tr><td>WAF</td><td></td><td></td><td></td></tr>
+<tr class="ejemplo"><td>Balanceador</td><td>Elastic Load Balancing</td><td>Subred pública (un nodo en cada zona)</td><td>99,9 %: reparte entre las dos zonas y deja de enviar tráfico a la instancia que falla</td></tr>
+<tr><td>Aplicación (autoescalado)</td><td></td><td></td><td></td></tr>
+<tr><td>Caché de sesiones</td><td></td><td></td><td></td></tr>
+<tr><td>Puerta NAT</td><td></td><td></td><td></td></tr>
+<tr><td>BD con copia en espera</td><td></td><td></td><td></td></tr>
+<tr><td>Justificantes PDF</td><td></td><td></td><td></td></tr>
+<tr><td>Cola de avisos</td><td></td><td></td><td></td></tr>
+<tr><td>Trabajador de avisos</td><td></td><td></td><td></td></tr>
+<tr><td>Correo y SMS</td><td></td><td></td><td></td></tr>
+<tr><td>Claves de cifrado</td><td></td><td></td><td></td></tr>
+<tr><td>Monitorización</td><td></td><td></td><td></td></tr>
+<tr><td>VPN con los centros</td><td></td><td></td><td></td></tr>
+<tr><td>Balanceador interno (panel)</td><td></td><td></td><td></td></tr>
 </table></div></li>
-<li>En dos o tres frases, explicad cómo sería el entorno de revisión: dónde va y en qué se diferencia del de producción. No hace falta dibujarlo.</li>
+<li>En dos o tres frases, explicad cómo sería el entorno de revisión y en qué se diferencia del de producción.</li>
 </ol>
 </div>
 <p class="entrega">Entrega en Aules: clasificación de la actividad 9 (individual), y diagrama con su tabla y la explicación del entorno de revisión de la actividad 10 (una entrega por grupo).</p>
