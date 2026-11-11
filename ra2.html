@@ -979,22 +979,18 @@ La tabla tiene que tener esta forma:
 <li>Completad la tabla. En "Dónde va" poned borde global, subred pública, subred privada o servicio de la región:
 <div class="tabla tabla-ficha"><table>
 <tr><th>Componente</th><th>Servicio de AWS</th><th>Dónde va</th><th>Requisito que cubre</th></tr>
-<tr><td>DNS</td><td></td><td></td><td></td></tr>
-<tr><td>CDN</td><td></td><td></td><td></td></tr>
-<tr><td>WAF</td><td></td><td></td><td></td></tr>
+<tr><td>CDN con WAF</td><td></td><td></td><td></td></tr>
 <tr class="ejemplo"><td>Balanceador</td><td>Elastic Load Balancing</td><td>Subred pública (un nodo en cada zona)</td><td>99,9 %: reparte entre las dos zonas y deja de enviar tráfico a la instancia que falla</td></tr>
 <tr><td>Aplicación (autoescalado)</td><td></td><td></td><td></td></tr>
 <tr><td>Caché de sesiones</td><td></td><td></td><td></td></tr>
 <tr><td>Puerta NAT</td><td></td><td></td><td></td></tr>
 <tr><td>BD con copia en espera</td><td></td><td></td><td></td></tr>
 <tr><td>Justificantes PDF</td><td></td><td></td><td></td></tr>
-<tr><td>Cola de avisos</td><td></td><td></td><td></td></tr>
-<tr><td>Trabajador de avisos</td><td></td><td></td><td></td></tr>
+<tr><td>Cola y trabajador de avisos</td><td></td><td></td><td></td></tr>
 <tr><td>Correo y SMS</td><td></td><td></td><td></td></tr>
 <tr><td>Claves de cifrado</td><td></td><td></td><td></td></tr>
 <tr><td>Monitorización</td><td></td><td></td><td></td></tr>
-<tr><td>VPN con los centros</td><td></td><td></td><td></td></tr>
-<tr><td>Balanceador interno (panel)</td><td></td><td></td><td></td></tr>
+<tr><td>VPN y balanceador interno (panel)</td><td></td><td></td><td></td></tr>
 </table></div></li>
 <li>En dos o tres frases, explicad cómo sería el entorno de revisión y en qué se diferencia del de producción.</li>
 </ol>
