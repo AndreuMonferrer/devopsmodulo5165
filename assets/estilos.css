@@ -216,6 +216,9 @@ main.con-indice{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:2.5re
 .inicio-tema{margin:2.8rem 0 -.6rem;padding:.7rem 1rem;background:var(--gris);border-left:6px solid var(--ra);font-weight:600;font-size:1.05rem}
 .inicio-tema span{display:block;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--suave)}
 
-/* Iconos de servicios del proveedor en tablas */
-.servicio{display:inline-flex;align-items:center;gap:10px}
-.ico-aws{width:28px;height:28px;flex:none;border-radius:4px}
+/* Tabla compacta de servicios del proveedor con iconos */
+.panel .tabla-servicios table{font-size:.86rem}
+.panel .tabla-servicios th,.panel .tabla-servicios td{text-align:center;vertical-align:middle;padding:.28rem .6rem;line-height:1.3}
+.panel .tabla-servicios td.ico{width:40px;padding:.2rem .3rem}
+.panel .tabla-servicios td:first-child{font-weight:600}
+.ico-aws{width:24px;height:24px;display:block;margin:0 auto;border-radius:4px}

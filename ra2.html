@@ -846,25 +846,25 @@ La tabla tiene que tener esta forma:
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 372" role="img" aria-label="NAT, VPN, entornos separados y cifrado" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-extra" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="6" y="6" width="350" height="174" rx="8" class="d-grupo"/><text x="20" y="26" class="t tb" text-anchor="start" dominant-baseline="middle">Puerta NAT: salir sí, entrar no</text><rect x="20" y="62" width="92" height="40" rx="6" class="d-azul"/><text x="66.0" y="74.0" class="t tb" text-anchor="middle" dominant-baseline="middle">App</text><text x="66.0" y="90.0" class="ts" text-anchor="middle" dominant-baseline="middle">sin IP pública</text><rect x="140" y="62" width="80" height="40" rx="6" class="d-gris"/><text x="180.0" y="82.0" class="t tb" text-anchor="middle" dominant-baseline="middle">NAT</text><rect x="250" y="62" width="92" height="40" rx="6" class="d-blanco"/><text x="296.0" y="82.0" class="t" text-anchor="middle" dominant-baseline="middle">Internet</text><path d="M114,82 L138,82" class="flecha" marker-end="url(#fl-extra)"/><path d="M222,82 L248,82" class="flecha" marker-end="url(#fl-extra)"/><path d="M296,104 L296,140 L66,140 L66,106" class="flecha disc" marker-end="url(#fl-extra)"/><rect x="98.5" y="132" width="165.0" height="16" rx="3" class="fondo-etiqueta"/><text x="181" y="140" class="te" text-anchor="middle" dominant-baseline="middle">✗ desde fuera no se entra</text><rect x="364" y="6" width="350" height="174" rx="8" class="d-grupo"/><text x="378" y="26" class="t tb" text-anchor="start" dominant-baseline="middle">VPN: el panel, solo desde los centros</text><rect x="378" y="52" width="104" height="40" rx="6" class="d-gris"/><text x="430.0" y="64.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Centro de salud</text><text x="430.0" y="80.0" class="ts" text-anchor="middle" dominant-baseline="middle">red propia</text><rect x="548" y="52" width="150" height="40" rx="6" class="d-morado"/><text x="623.0" y="64.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Balanceador interno</text><text x="623.0" y="80.0" class="ts" text-anchor="middle" dominant-baseline="middle">sin IP pública</text><rect x="573" y="122" width="100" height="36" rx="6" class="d-azul"/><text x="623.0" y="140.0" class="t" text-anchor="middle" dominant-baseline="middle">Panel de gestión</text><path d="M484,72 L546,72" class="flecha" marker-end="url(#fl-extra)"/><rect x="483.0" y="50" width="64.0" height="16" rx="3" class="fondo-etiqueta"/><text x="515" y="58" class="te" text-anchor="middle" dominant-baseline="middle">túnel VPN</text><path d="M623,94 L623,120" class="flecha" marker-end="url(#fl-extra)"/><rect x="378" y="122" width="104" height="36" rx="6" class="d-blanco"/><text x="430.0" y="140.0" class="t" text-anchor="middle" dominant-baseline="middle">Internet</text><path d="M484,140 L546,140" class="flecha disc" marker-end="url(#fl-extra)"/><rect x="475.0" y="118" width="80.0" height="16" rx="3" class="fondo-etiqueta"/><text x="515" y="126" class="te" text-anchor="middle" dominant-baseline="middle">✗ sin acceso</text><rect x="6" y="192" width="350" height="174" rx="8" class="d-grupo"/><text x="20" y="212" class="t tb" text-anchor="start" dominant-baseline="middle">Entornos separados</text><rect x="20" y="226" width="154" height="112" rx="8" class="d-grupo-azul"/><text x="30" y="241" class="ts">Cuenta de producción</text><text x="97" y="262" class="t" text-anchor="middle" dominant-baseline="middle">Dos zonas</text><text x="97" y="282" class="ts" text-anchor="middle" dominant-baseline="middle">BD con copia en espera</text><text x="97" y="300" class="ts" text-anchor="middle" dominant-baseline="middle">Datos reales</text><rect x="188" y="226" width="154" height="112" rx="8" class="d-grupo-verde"/><text x="198" y="241" class="ts">Cuenta de revisión</text><text x="265" y="262" class="t" text-anchor="middle" dominant-baseline="middle">Una zona</text><text x="265" y="282" class="ts" text-anchor="middle" dominant-baseline="middle">Máquinas pequeñas</text><text x="265" y="300" class="ts" text-anchor="middle" dominant-baseline="middle">Datos de prueba</text><text x="181" y="352" class="ts" text-anchor="middle" dominant-baseline="middle">Sin conexión entre ellas</text><rect x="364" y="192" width="350" height="174" rx="8" class="d-grupo"/><text x="378" y="212" class="t tb" text-anchor="start" dominant-baseline="middle">Cifrado en tránsito y en reposo</text><rect x="378" y="236" width="84" height="36" rx="6" class="d-gris"/><text x="420.0" y="254.0" class="t" text-anchor="middle" dominant-baseline="middle">Paciente</text><rect x="560" y="236" width="84" height="36" rx="6" class="d-azul"/><text x="602.0" y="254.0" class="t" text-anchor="middle" dominant-baseline="middle">App</text><path d="M464,254 L558,254" class="flecha" marker-end="url(#fl-extra)"/><rect x="473.0" y="232" width="76.0" height="16" rx="3" class="fondo-etiqueta"/><text x="511" y="240" class="te" text-anchor="middle" dominant-baseline="middle">HTTPS / TLS</text><path d="M378,308 A46.0,8 0 0 1 470,308 L470,340 A46.0,8 0 0 1 378,340 z" class="d-rojo"/><path d="M378,308 A46.0,8 0 0 0 470,308" class="d-rojo" fill="none"/><text x="424.0" y="327.0" class="t tb" text-anchor="middle" dominant-baseline="middle">BD</text><rect x="484" y="304" width="100" height="40" rx="6" class="d-gris"/><text x="534.0" y="324.0" class="t" text-anchor="middle" dominant-baseline="middle">Objetos</text><rect x="604" y="300" width="96" height="48" rx="6" class="d-amarillo"/><text x="652.0" y="316.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Claves</text><text x="652.0" y="332.0" class="ts" text-anchor="middle" dominant-baseline="middle">KMS / Key Vault</text><path d="M602,314 L586,314" class="flecha disc" marker-end="url(#fl-extra)"/><path d="M602,336 L594,336 L594,356 L424,356 L424,350" class="flecha disc" marker-end="url(#fl-extra)"/><rect x="426.0" y="278" width="196.0" height="16" rx="3" class="fondo-etiqueta"/><text x="524" y="286" class="te" text-anchor="middle" dominant-baseline="middle">en reposo: cifrados con las claves</text></svg></div><figcaption>Las cuatro piezas que protegen y organizan la arquitectura, aunque no estén en el camino del paciente.</figcaption></figure>
 <h4>Cómo se llama cada pieza en AWS y en Azure</h4>
 <p>Hasta ahora hemos hablado de las piezas en genérico. En la consola, en la documentación y en los diagramas de cualquier empresa aparecen con el nombre del servicio de cada proveedor:</p>
-<div class="tabla"><table>
-<tr><th>Pieza</th><th>AWS</th><th>Azure</th></tr>
-<tr><td>DNS</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/Route53.png" alt="" width="28" height="28">Amazon Route 53</span></td><td>Azure DNS</td></tr>
-<tr><td>CDN</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/CloudFront.png" alt="" width="28" height="28">Amazon CloudFront</span></td><td>Azure Front Door</td></tr>
-<tr><td>WAF</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/WAF.png" alt="" width="28" height="28">AWS WAF</span></td><td>Azure Web Application Firewall</td></tr>
-<tr><td>Balanceador</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/ElasticLoadBalancing.png" alt="" width="28" height="28">Elastic Load Balancing (Application Load Balancer)</span></td><td>Azure Application Gateway</td></tr>
-<tr><td>Aplicación en contenedores</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/ElasticContainerService.png" alt="" width="28" height="28">Amazon ECS</span></td><td>Azure Container Apps</td></tr>
-<tr><td>Autoescalado de máquinas</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/EC2AutoScaling.png" alt="" width="28" height="28">Amazon EC2 Auto Scaling</span></td><td>Virtual Machine Scale Sets</td></tr>
-<tr><td>Caché</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/ElastiCache.png" alt="" width="28" height="28">Amazon ElastiCache</span></td><td>Azure Managed Redis</td></tr>
-<tr><td>Base de datos</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/RDS.png" alt="" width="28" height="28">Amazon RDS</span></td><td>Azure Database for PostgreSQL o MySQL</td></tr>
-<tr><td>Almacenamiento de objetos</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/SimpleStorageService.png" alt="" width="28" height="28">Amazon S3</span></td><td>Azure Blob Storage</td></tr>
-<tr><td>Cola</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/SimpleQueueService.png" alt="" width="28" height="28">Amazon SQS</span></td><td>Azure Queue Storage o Service Bus</td></tr>
-<tr><td>Correo y SMS</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/SimpleEmailService.png" alt="" width="28" height="28">Amazon SES (correo) y AWS End User Messaging (SMS)</span></td><td>Azure Communication Services</td></tr>
-<tr><td>Monitorización</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/CloudWatch.png" alt="" width="28" height="28">Amazon CloudWatch</span></td><td>Azure Monitor</td></tr>
-<tr><td>Puerta NAT</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/VPCNATGateway.png" alt="" width="28" height="28">NAT Gateway</span></td><td>Azure NAT Gateway</td></tr>
-<tr><td>VPN sitio a sitio</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/SitetoSiteVPN.png" alt="" width="28" height="28">AWS Site-to-Site VPN</span></td><td>Azure VPN Gateway</td></tr>
-<tr><td>Punto de conexión privado</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/VPCEndpoints.png" alt="" width="28" height="28">VPC endpoints</span></td><td>Private Endpoint</td></tr>
-<tr><td>Claves de cifrado</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/KeyManagementService.png" alt="" width="28" height="28">AWS KMS</span></td><td>Azure Key Vault</td></tr>
-<tr><td>Entornos separados</td><td><span class="servicio"><img class="ico-aws" src="assets/iconos-aws/Organizations.png" alt="" width="28" height="28">AWS Organizations (una cuenta por entorno)</span></td><td>Suscripciones y grupos de administración</td></tr>
+<div class="tabla tabla-servicios"><table>
+<tr><th>Pieza</th><th colspan="2">AWS</th><th>Azure</th></tr>
+<tr><td>DNS</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/Route53.png" alt="" width="24" height="24"></td><td>Amazon Route 53</td><td>Azure DNS</td></tr>
+<tr><td>CDN</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/CloudFront.png" alt="" width="24" height="24"></td><td>Amazon CloudFront</td><td>Azure Front Door</td></tr>
+<tr><td>WAF</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/WAF.png" alt="" width="24" height="24"></td><td>AWS WAF</td><td>Azure WAF</td></tr>
+<tr><td>Balanceador</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/ElasticLoadBalancing.png" alt="" width="24" height="24"></td><td>Elastic Load Balancing (ALB)</td><td>Azure Application Gateway</td></tr>
+<tr><td>Contenedores</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/ElasticContainerService.png" alt="" width="24" height="24"></td><td>Amazon ECS</td><td>Azure Container Apps</td></tr>
+<tr><td>Autoescalado</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/EC2AutoScaling.png" alt="" width="24" height="24"></td><td>Amazon EC2 Auto Scaling</td><td>Virtual Machine Scale Sets</td></tr>
+<tr><td>Caché</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/ElastiCache.png" alt="" width="24" height="24"></td><td>Amazon ElastiCache</td><td>Azure Managed Redis</td></tr>
+<tr><td>Base de datos</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/RDS.png" alt="" width="24" height="24"></td><td>Amazon RDS</td><td>Azure Database (PostgreSQL, MySQL)</td></tr>
+<tr><td>Objetos</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/SimpleStorageService.png" alt="" width="24" height="24"></td><td>Amazon S3</td><td>Azure Blob Storage</td></tr>
+<tr><td>Cola</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/SimpleQueueService.png" alt="" width="24" height="24"></td><td>Amazon SQS</td><td>Queue Storage o Service Bus</td></tr>
+<tr><td>Correo y SMS</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/SimpleEmailService.png" alt="" width="24" height="24"></td><td>Amazon SES y End User Messaging</td><td>Azure Communication Services</td></tr>
+<tr><td>Monitorización</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/CloudWatch.png" alt="" width="24" height="24"></td><td>Amazon CloudWatch</td><td>Azure Monitor</td></tr>
+<tr><td>Puerta NAT</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/VPCNATGateway.png" alt="" width="24" height="24"></td><td>NAT Gateway</td><td>Azure NAT Gateway</td></tr>
+<tr><td>VPN sitio a sitio</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/SitetoSiteVPN.png" alt="" width="24" height="24"></td><td>AWS Site-to-Site VPN</td><td>Azure VPN Gateway</td></tr>
+<tr><td>Conexión privada</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/VPCEndpoints.png" alt="" width="24" height="24"></td><td>VPC endpoints</td><td>Private Endpoint</td></tr>
+<tr><td>Claves</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/KeyManagementService.png" alt="" width="24" height="24"></td><td>AWS KMS</td><td>Azure Key Vault</td></tr>
+<tr><td>Entornos separados</td><td class="ico"><img class="ico-aws" src="assets/iconos-aws/Organizations.png" alt="" width="24" height="24"></td><td>AWS Organizations</td><td>Suscripciones</td></tr>
 </table></div>
 <p>Los iconos son los oficiales de AWS, los mismos que encontraréis en diagrams.net (<i>Más formas</i> → AWS). Los proveedores renombran y sustituyen servicios con frecuencia: Azure, por ejemplo, retira su CDN clásica en 2027 en favor de Front Door. Por eso, antes de diseñar, conviene comprobar el nombre actual en la documentación oficial.</p>
 <div class="nota"><p><b>Idea clave.</b> Solo la CDN y el balanceador dan la cara a Internet. Todo lo demás vive en subredes privadas o como servicio de la región, y se llega a ello por caminos controlados: NAT, VPN o puntos de conexión privados.</p></div>
@@ -919,23 +919,6 @@ La tabla tiene que tener esta forma:
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 372" role="img" aria-label="Mecanismos para convivir con los fallos" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-fallo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="6" y="6" width="350" height="174" rx="8" class="d-grupo"/><text x="20" y="26" class="t tb" text-anchor="start" dominant-baseline="middle">1 · Autorreparación</text><rect x="20" y="86" width="92" height="36" rx="6" class="d-morado"/><text x="66.0" y="104.0" class="t" text-anchor="middle" dominant-baseline="middle">Balanceador</text><rect x="178" y="42" width="160" height="32" rx="6" class="d-rojo"/><text x="258.0" y="58.0" class="t" text-anchor="middle" dominant-baseline="middle">Instancia A ✗</text><rect x="178" y="88" width="160" height="32" rx="6" class="d-azul"/><text x="258.0" y="104.0" class="t" text-anchor="middle" dominant-baseline="middle">Instancia B</text><rect x="178" y="134" width="160" height="32" rx="6" class="d-verde"/><text x="258.0" y="150.0" class="t" text-anchor="middle" dominant-baseline="middle">Instancia C (nueva)</text><path d="M114,98 L144,98 L144,58 L176,58" class="flecha disc" marker-end="url(#fl-fallo)"/><path d="M114,104 L176,104" class="flecha" marker-end="url(#fl-fallo)"/><path d="M114,110 L144,110 L144,150 L176,150" class="flecha" marker-end="url(#fl-fallo)"/><rect x="169.0" y="74" width="178.0" height="16" rx="3" class="fondo-etiqueta"/><text x="258" y="82" class="te" text-anchor="middle" dominant-baseline="middle">falla la comprobación de salud</text><rect x="364" y="6" width="350" height="174" rx="8" class="d-grupo"/><text x="378" y="26" class="t tb" text-anchor="start" dominant-baseline="middle">2 · Reintentos con espera exponencial</text><path d="M384,100 L700,100" class="flecha"/><circle cx="392" cy="100" r="13" class="d-rojo"/><text x="392" y="100" class="t tb" text-anchor="middle" dominant-baseline="middle">1</text><circle cx="432" cy="100" r="13" class="d-rojo"/><text x="432" y="100" class="t tb" text-anchor="middle" dominant-baseline="middle">2</text><circle cx="512" cy="100" r="13" class="d-rojo"/><text x="512" y="100" class="t tb" text-anchor="middle" dominant-baseline="middle">3</text><circle cx="672" cy="100" r="13" class="d-verde"/><text x="672" y="100" class="t tb" text-anchor="middle" dominant-baseline="middle">4</text><text x="412.0" y="128" class="ts" text-anchor="middle" dominant-baseline="middle">+1 s</text><text x="472.0" y="128" class="ts" text-anchor="middle" dominant-baseline="middle">+2 s</text><text x="592.0" y="128" class="ts" text-anchor="middle" dominant-baseline="middle">+4 s</text><text x="392" y="72" class="t" text-anchor="middle" dominant-baseline="middle">✗</text><text x="432" y="72" class="t" text-anchor="middle" dominant-baseline="middle">✗</text><text x="512" y="72" class="t" text-anchor="middle" dominant-baseline="middle">✗</text><text x="672" y="72" class="t tb" text-anchor="middle" dominant-baseline="middle">✓</text><text x="539" y="152" class="ts" text-anchor="middle" dominant-baseline="middle">Entre intentos se espera 1 s, luego 2 s, luego 4 s...</text><text x="539" y="168" class="ts" text-anchor="middle" dominant-baseline="middle">Así no se satura al servicio que ya va mal</text><rect x="6" y="192" width="350" height="174" rx="8" class="d-grupo"/><text x="20" y="212" class="t tb" text-anchor="start" dominant-baseline="middle">3 · Desacoplar con colas</text><rect x="16" y="262" width="56" height="36" rx="6" class="d-azul"/><text x="44.0" y="280.0" class="t" text-anchor="middle" dominant-baseline="middle">App</text><rect x="88" y="238" width="84" height="84" rx="8" class="d-amarillo"/><text x="130" y="252" class="t tb" text-anchor="middle" dominant-baseline="middle">Cola</text><rect x="98" y="262" width="64" height="14" rx="6" class="d-blanco"/><rect x="98" y="280" width="64" height="14" rx="6" class="d-blanco"/><rect x="98" y="298" width="64" height="14" rx="6" class="d-blanco"/><rect x="186" y="262" width="84" height="36" rx="6" class="d-amarillo"/><text x="228.0" y="280.0" class="t" text-anchor="middle" dominant-baseline="middle">Trabajador</text><rect x="286" y="256" width="60" height="48" rx="6" class="d-rojo"/><text x="316.0" y="272.0" class="t tb" text-anchor="middle" dominant-baseline="middle">SMS</text><text x="316.0" y="288.0" class="ts" text-anchor="middle" dominant-baseline="middle">caído</text><path d="M74,280 L86,280" class="flecha" marker-end="url(#fl-fallo)"/><path d="M174,280 L184,280" class="flecha" marker-end="url(#fl-fallo)"/><path d="M272,280 L284,280" class="flecha disc" marker-end="url(#fl-fallo)"/><text x="181" y="344" class="ts" text-anchor="middle" dominant-baseline="middle">Las citas se reservan y los avisos esperan en la cola</text><rect x="364" y="192" width="350" height="174" rx="8" class="d-grupo"/><text x="378" y="212" class="t tb" text-anchor="start" dominant-baseline="middle">4 · Degradación controlada</text><rect x="400" y="230" width="280" height="106" rx="8" class="d-grupo-azul"/><text x="410" y="245" class="tt">Cita Previa</text><rect x="416" y="256" width="248" height="32" rx="6" class="d-verde"/><text x="540.0" y="272.0" class="t" text-anchor="middle" dominant-baseline="middle">Reservar y anular cita  ✓</text><rect x="416" y="296" width="248" height="32" rx="6" class="d-gris"/><text x="540.0" y="312.0" class="t" text-anchor="middle" dominant-baseline="middle">Recordatorios  en pausa</text><text x="539" y="352" class="ts" text-anchor="middle" dominant-baseline="middle">Lo esencial sigue funcionando</text></svg></div><figcaption>Cuatro mecanismos para que un fallo no tumbe la aplicación. Los tres primeros los resuelve la arquitectura de forma automática. El cuarto lo decide el diseño de la propia aplicación.</figcaption></figure>
 <div class="nota"><p><b>Idea clave.</b> Para crecer se añaden máquinas iguales, no máquinas más grandes, y eso solo funciona si la aplicación no guarda nada en la máquina. Y como todo acaba fallando, el diseño cuenta con ello desde el principio.</p></div>
 
-
-<div class="pausa"><h4>Ahora: actividad 9</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 5.</p></div>
-
-<div class="actividad">
-<h4>Actividad 9. ¿Infraestructura o arquitectura?</h4>
-<p>Individual. Clasifica cada afirmación como <b>infraestructura</b> o <b>arquitectura</b> y explica por qué en una frase:</p>
-<ol class="casos">
-<li>La región de AWS en España (Aragón) tiene tres zonas de disponibilidad.</li>
-<li>Las instancias de la aplicación no tienen IP pública y solo aceptan tráfico del balanceador.</li>
-<li>Una VM <code>t3.medium</code> tiene 2 vCPU y 4 GB.</li>
-<li>Las sesiones se guardan en Redis para poder escalar horizontalmente.</li>
-<li>El disco de la base de datos es SSD de 100 GB.</li>
-<li>Los recordatorios se envían mediante una cola para no bloquear la web.</li>
-<li>El proveedor usa el hipervisor Nitro.</li>
-<li>La base de datos tiene una réplica en otra zona.</li>
-</ol>
-</div>
 <h3>5. Pilares de una buena arquitectura</h3>
 <p>Los grandes proveedores publican marcos de buenas prácticas para revisar una arquitectura: el <b>AWS Well-Architected Framework</b>, el <b>Azure Well-Architected Framework</b> y el <b>Google Cloud Well-Architected Framework</b>. AWS y Google organizan el suyo en estos seis pilares (con nombres ligeramente distintos). Azure usa los cinco primeros y trata la sostenibilidad como una guía aparte. No hace falta memorizarlos: se usan como <b>lista de comprobación</b> al revisar un diseño.</p>
 <div class="tabla"><table>
@@ -950,14 +933,26 @@ La tabla tiene que tener esta forma:
 <p>Muchas decisiones implican <b>compromisos</b> entre pilares. La copia en espera de la base de datos mejora la fiabilidad pero duplica su coste. Una NAT por zona evita que una caída deje sin salida a la otra zona, y también duplica ese gasto. Una CDN mejora el rendimiento y también cuesta. Diseñar es elegir qué pilar pesa más en cada caso: en Cita Previa, la seguridad de los datos de salud y la fiabilidad pesan más que ahorrar unos euros. En el entorno de revisión, en cambio, se puede sacrificar fiabilidad para ahorrar.</p>
 <div class="nota"><p><b>Idea clave.</b> Los pilares no se memorizan, se usan para revisar un diseño. Y casi siempre obligan a elegir: más fiabilidad suele costar más dinero.</p></div>
 
-
-<div class="pausa"><h4>Ahora: actividades 10 y 11</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Con ellas se cierra el punto.</p></div>
-
+<h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 9. ¿Infraestructura o arquitectura?</h4>
+<p>Individual. Clasifica cada afirmación como <b>infraestructura</b> o <b>arquitectura</b> y explica por qué en una frase:</p>
+<ol class="casos">
+<li>La región de AWS en España (Aragón) tiene tres zonas de disponibilidad.</li>
+<li>Las instancias de la aplicación no tienen IP pública y solo aceptan tráfico del balanceador.</li>
+<li>Una VM <code>t3.medium</code> tiene 2 vCPU y 4 GB.</li>
+<li>Las sesiones se guardan en Redis para poder escalar horizontalmente.</li>
+<li>El disco de la base de datos es SSD de 100 GB.</li>
+<li>Los recordatorios se envían mediante una cola para no bloquear la web.</li>
+<li>El proveedor usa el hipervisor Nitro.</li>
+<li>La base de datos tiene una copia en espera en otra zona.</li>
+</ol>
+</div>
 <div class="actividad">
 <h4>Actividad 10. Diagrama de arquitectura de Cita Previa</h4>
 <p>En dos grupos, uno de tres personas y otro de dos. Requisitos de Cita Previa:</p>
 <ul>
-<li>20.000 citas diarias, con picos los lunes de 8 a 10 h.</li>
+<li>Picos de demanda los lunes de 8 a 10 h.</li>
 <li>Disponibilidad objetivo del 99,9 %.</li>
 <li>Datos de salud: deben quedar en la UE y cifrados.</li>
 <li>Recordatorios por correo y SMS.</li>
@@ -966,30 +961,18 @@ La tabla tiene que tener esta forma:
 </ul>
 <ol>
 <li>Abrid la plantilla en diagrams.net: <a href="https://app.diagrams.net/#Uhttps%3A%2F%2Fandreumonferrer.github.io%2Fdevopsmodulo5165%2Fassets%2Fplantilla-cita-previa.drawio">abrir la plantilla</a> (o <a href="assets/plantilla-cita-previa.drawio" download>descargarla</a> y abrirla con <i>Archivo → Abrir</i>). Ya tiene dibujadas la región, las dos zonas, la red virtual, las subredes, los servicios globales y los servicios de la región.</li>
-<li>Activad los iconos del proveedor (menú <i>Más formas</i> → AWS o Azure) y colocad cada componente en su sitio: CDN y DNS, balanceador, dos instancias de la aplicación (o un grupo de autoescalado), puerta NAT, base de datos con su copia en espera, almacenamiento de objetos, cola, servicio de envío de SMS y correo, monitorización y la VPN hacia los centros de salud.</li>
+<li>Activad los iconos del proveedor (menú <i>Más formas</i> → AWS o Azure) y colocad cada componente en su sitio: DNS, CDN con WAF, balanceador, grupo de autoescalado con instancias de la aplicación en las dos zonas, caché para las sesiones, una puerta NAT por zona, base de datos con su copia en espera, almacenamiento de objetos, cola con su trabajador, servicio de envío de correo y SMS, claves de cifrado, monitorización y la VPN hacia los centros de salud con su balanceador interno para el panel. La tabla del apartado 3 os dice cómo se llama cada servicio.</li>
 <li>Numerad el camino de una petición de un paciente, como en el apartado 3.</li>
-<li>Al lado, completad esta tabla con una fila por componente:
+<li>Al lado, completad esta tabla con una fila por componente. En "Dónde vive" indicad si está en el borde global, en una subred pública, en una subred privada o es un servicio de la región. Si un componente no cubre ningún requisito de la lista, explicad para qué está:
 <div class="tabla"><table>
-<tr><th>Componente</th><th>Servicio del proveedor</th><th>Recurso de infraestructura que usa</th><th>Requisito que cubre</th></tr>
-<tr><td>Balanceador</td><td></td><td></td><td></td></tr>
+<tr><th>Componente</th><th>Servicio del proveedor</th><th>Dónde vive</th><th>Requisito que cubre</th></tr>
+<tr><td>Balanceador</td><td>Elastic Load Balancing</td><td>Subred pública, un nodo por zona</td><td>Disponibilidad del 99,9 %: reparte entre las dos zonas y deja de enviar tráfico a la instancia que falla</td></tr>
 <tr><td>…</td><td></td><td></td><td></td></tr>
 </table></div></li>
 <li>En dos o tres frases, explicad cómo sería el entorno de revisión: dónde va y en qué se diferencia del de producción. No hace falta dibujarlo.</li>
 </ol>
 </div>
-<div class="actividad">
-<h4>Actividad 11. Puesta en común</h4>
-<p>Oral y sin entrega. Cada grupo enseña su diagrama y el otro grupo le hace dos de estas preguntas:</p>
-<ul>
-<li>¿Qué pasa si cae la zona A?</li>
-<li>¿Quién puede llegar a la base de datos, y desde dónde?</li>
-<li>¿Cómo sale el SMS hacia Internet si la aplicación no tiene IP pública?</li>
-<li>¿Cómo llega el personal de un centro de salud al panel de gestión?</li>
-<li>¿Qué parte del diseño es la más cara y se podría ahorrar?</li>
-</ul>
-<p>Si una pregunta descubre un fallo, se corrige el diagrama antes de entregarlo.</p>
-</div>
-<p class="entrega">Entrega en Aules: clasificación de la actividad 9, y diagrama con su tabla y la explicación del entorno de revisión de la actividad 10 (una entrega por grupo).</p>
+<p class="entrega">Entrega en Aules: clasificación de la actividad 9 (individual), y diagrama con su tabla y la explicación del entorno de revisión de la actividad 10 (una entrega por grupo).</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
@@ -1092,10 +1075,10 @@ La tabla tiene que tener esta forma:
 </table></div>
 
 
-<div class="pausa"><h4>Ahora: actividad 12</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 4.</p></div>
+<div class="pausa"><h4>Ahora: actividad 11</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 4.</p></div>
 
 <div class="actividad">
-<h4>Actividad 12. Del hardware físico al virtual</h4>
+<h4>Actividad 11. Del hardware físico al virtual</h4>
 <p>Individual, en vuestro portátil (Ubuntu MATE). Ejecutad <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code> e <code>ip a</code> y anotad: modelo de CPU, núcleos y hilos, memoria total, discos y tarjetas de red.</p>
 <p>Después, con los datos del servidor 1 de la gestoría del punto 1 (2 procesadores de 12 núcleos y 24 hilos, 128 GB de RAM), completad el cálculo. Sus máquinas virtuales tienen asignado:</p>
 <div class="tabla"><table>
@@ -1163,10 +1146,10 @@ runcmd:
 </table></div>
 
 
-<div class="pausa"><h4>Ahora: actividades 13 y 14</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Después seguimos con el apartado 5.</p></div>
+<div class="pausa"><h4>Ahora: actividades 12 y 13</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Después seguimos con el apartado 5.</p></div>
 
 <div class="actividad">
-<h4>Actividad 13. Leer un aprovisionamiento con cloud-init</h4>
+<h4>Actividad 12. Leer un aprovisionamiento con cloud-init</h4>
 <p>Individual. Un compañero ha lanzado en AWS, en la región de España, una instancia Ubuntu 24.04 con el fichero <code>user-data.yaml</code> del apartado 4 como datos de usuario. Esto es lo que muestra la consola:</p>
 <div class="tabla"><table>
 <tr><th>Hora</th><th>Evento en la consola</th></tr>
@@ -1210,8 +1193,8 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 </ol>
 </div>
 <div class="actividad">
-<h4>Actividad 14. Llevar las cargas de trabajo de la gestoría a la nube</h4>
-<p>En parejas (si sois impares, un grupo de tres). La gestoría del punto 1 quiere llevar a la nube las ocho máquinas virtuales de la actividad 12. El mantenimiento externo ha medido su uso durante tres meses:</p>
+<h4>Actividad 13. Llevar las cargas de trabajo de la gestoría a la nube</h4>
+<p>En parejas (si sois impares, un grupo de tres). La gestoría del punto 1 quiere llevar a la nube las ocho máquinas virtuales de la actividad 11. El mantenimiento externo ha medido su uso durante tres meses:</p>
 <div class="tabla"><table>
 <tr><th>VM</th><th>Asignado</th><th>CPU media / pico</th><th>RAM usada</th><th>Observaciones</th></tr>
 <tr><td>Controlador de dominio</td><td>2 vCPU, 8 GB</td><td>5 % / 20 %</td><td>3 GB</td><td>Uso constante todo el día</td></tr>
@@ -1301,10 +1284,10 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 240" role="img" aria-label="Formas de conectar redes" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-conectar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="80" width="150" height="70" rx="6" class="d-naranja"/><text x="87.0" y="107.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Red on premise</text><text x="87.0" y="123.0" class="ts" text-anchor="middle" dominant-baseline="middle">oficina o CPD propio</text><rect x="330" y="80" width="150" height="70" rx="6" class="d-azul"/><text x="405.0" y="107.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VPC A</text><text x="405.0" y="123.0" class="ts" text-anchor="middle" dominant-baseline="middle">aplicación</text><rect x="570" y="80" width="138" height="70" rx="6" class="d-azul"/><text x="639.0" y="107.0" class="t tb" text-anchor="middle" dominant-baseline="middle">VPC B</text><text x="639.0" y="123.0" class="ts" text-anchor="middle" dominant-baseline="middle">datos compartidos</text><path d="M164,96 L328,96" class="flecha disc" marker-end="url(#fl-conectar)" marker-start="url(#fl-conectar)"/><text x="246" y="82" class="ts" text-anchor="middle" dominant-baseline="middle">VPN sitio a sitio</text><text x="246" y="112" class="ts" text-anchor="middle" dominant-baseline="middle">túnel cifrado por Internet</text><path d="M164,140 L328,140" class="flecha" marker-end="url(#fl-conectar)" marker-start="url(#fl-conectar)"/><text x="246" y="160" class="ts" text-anchor="middle" dominant-baseline="middle">Conexión dedicada</text><text x="246" y="176" class="ts" text-anchor="middle" dominant-baseline="middle">Direct Connect, ExpressRoute</text><path d="M482,115 L568,115" class="flecha" marker-end="url(#fl-conectar)" marker-start="url(#fl-conectar)"/><text x="525" y="100" class="ts" text-anchor="middle" dominant-baseline="middle">peering</text><rect x="330" y="12" width="150" height="44" rx="6" class="d-verde"/><text x="405.0" y="26.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Internet</text><text x="405.0" y="42.0" class="ts" text-anchor="middle" dominant-baseline="middle">usuarios</text><rect x="330" y="180" width="150" height="44" rx="6" class="d-amarillo"/><text x="405.0" y="194.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Balanceador</text><text x="405.0" y="210.0" class="ts" text-anchor="middle" dominant-baseline="middle">capa 7 o capa 4</text><path d="M405,58 L405,78" class="flecha" marker-end="url(#fl-conectar)"/><path d="M405,152 L405,178" class="flecha" marker-end="url(#fl-conectar)" marker-start="url(#fl-conectar)"/></svg></div><figcaption>La VPN y la conexión dedicada unen la nube con la red propia (base de la nube híbrida). El peering une dos VPC entre sí.</figcaption></figure>
 
-<div class="pausa"><h4>Ahora: actividad 15</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 7.</p></div>
+<div class="pausa"><h4>Ahora: actividad 14</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 7.</p></div>
 
 <div class="actividad">
-<h4>Actividad 15. Analizar la red de Cita Previa</h4>
+<h4>Actividad 14. Analizar la red de Cita Previa</h4>
 <p>En parejas (si sois impares, un grupo de tres). Esta es la configuración del entorno de revisión de Cita Previa en AWS, en la región de España (<code>eu-south-2</code>):</p>
 <p><b>Red y subredes.</b> VPC <code>vpc-citaprevia-rev</code> con el rango <code>10.30.0.0/16</code>.</p>
 <div class="tabla"><table>
@@ -1377,10 +1360,10 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <p>Aunque técnicamente son un servicio, forman parte de la capa de datos: AWS RDS/Aurora, Azure SQL/Database for PostgreSQL, Cloud SQL. El proveedor gestiona la instalación, los parches, las copias, la réplica en otra zona y la recuperación a un momento concreto. El cliente gestiona el esquema, los datos y los accesos.</p>
 
 
-<div class="pausa"><h4>Ahora: actividad 16</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 8.</p></div>
+<div class="pausa"><h4>Ahora: actividad 15</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 8.</p></div>
 
 <div class="actividad">
-<h4>Actividad 16. Elegir el almacenamiento</h4>
+<h4>Actividad 15. Elegir el almacenamiento</h4>
 <p>Individual. Para cada necesidad de Cita Previa, elige el tipo de almacenamiento (bloque, fichero u objeto) y la opción concreta (tipo de disco, clase de almacenamiento, instantáneas, ciclo de vida, bloqueo contra borrado...). Indica también qué le pasa a ese dato si se termina la máquina virtual.</p>
 <ol class="casos">
 <li>El disco del sistema de cada servidor de aplicación.</li>
@@ -1403,13 +1386,13 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 </ul>
 
 
-<div class="pausa"><h4>Ahora: actividad 17</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Con ella se cierra el punto.</p></div>
+<div class="pausa"><h4>Ahora: actividad 16</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Con ella se cierra el punto.</p></div>
 
 <div class="actividad">
-<h4>Actividad 17. Ficha técnica</h4>
-<p>Con la misma pareja de la actividad 15. Redactad la ficha técnica del entorno de revisión de Cita Previa, ya con las correcciones de la actividad 15 y el almacenamiento de la actividad 16. Podéis reutilizar las tablas que ya tenéis. Haced una tabla por tipo de componente (servidores, red, almacenamiento y software) con estas columnas: identificador, características, ubicación (zona y subred) y función. En el software, incluid el sistema operativo, el software de base de cada máquina y el software de gestión que usaríais (identidades, monitorización, auditoría). Añadid el esquema de red corregido.</p>
+<h4>Actividad 16. Ficha técnica</h4>
+<p>Con la misma pareja de la actividad 14. Redactad la ficha técnica del entorno de revisión de Cita Previa, ya con las correcciones de la actividad 14 y el almacenamiento de la actividad 15. Podéis reutilizar las tablas que ya tenéis. Haced una tabla por tipo de componente (servidores, red, almacenamiento y software) con estas columnas: identificador, características, ubicación (zona y subred) y función. En el software, incluid el sistema operativo, el software de base de cada máquina y el software de gestión que usaríais (identidades, monitorización, auditoría). Añadid el esquema de red corregido.</p>
 </div>
-<p class="entrega">Entrega en Aules: datos del portátil y cálculo de sobresuscripción de la actividad 12, respuestas de la 13, tabla de migración de la 14, esquema y respuestas de la 15, tabla de almacenamiento de la 16 y ficha técnica con el esquema corregido de la 17.</p>
+<p class="entrega">Entrega en Aules: datos del portátil y cálculo de sobresuscripción de la actividad 11, respuestas de la 13, tabla de migración de la 14, esquema y respuestas de la 15, tabla de almacenamiento de la 16 y ficha técnica con el esquema corregido de la 17.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
