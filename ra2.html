@@ -1034,7 +1034,14 @@ La tabla tiene que tener esta forma:
 <h3>1. Componentes hardware</h3>
 <p>Aunque el cliente de la nube no ve el hardware, todo se apoya en él, y sus características explican las opciones que ofrece el proveedor.</p>
 <h4>Servidor</h4>
-<p>Un servidor de CPD, en <b>rack</b> o en chasis <b>blade</b> (punto 1), tiene fuentes de alimentación y ventiladores redundantes, gestión remota fuera de banda (iDRAC, iLO, IPMI) para encenderlo o reinstalarlo sin ir físicamente, y componentes pensados para funcionar 24 horas durante años.</p>
+<p>Un servidor de CPD va atornillado en un <b>rack</b>, el armario del CPD, o como tarjeta en un chasis <b>blade</b> que comparte fuentes y red (punto 1). Por dentro se ordena como pasa el aire, que entra frío por delante y sale caliente por detrás:</p>
+<ol>
+<li><b>Delante, los discos</b>: es lo que más se cambia, y se sustituyen en caliente, sin apagar el servidor.</li>
+<li><b>Los ventiladores</b>: empujan el aire hacia atrás. Son varios, así que si falla uno los demás aguantan.</li>
+<li><b>En el centro, los procesadores</b>, cada uno en su socket, con la memoria a los lados.</li>
+<li><b>Detrás, los puertos</b>: los de red, el de gestión y la corriente de las dos fuentes de alimentación.</li>
+</ol>
+<p>Tres cosas lo diferencian de un PC: la <b>redundancia</b> (dos fuentes, varios ventiladores, discos en RAID), la memoria con corrección de errores y la <b>gestión fuera de banda</b>. Esta última es un pequeño ordenador integrado en la placa, el BMC (iDRAC en Dell, iLO en HPE, con el estándar IPMI), con su propio puerto de red. Aunque el sistema esté colgado o sin instalar, permite encender, apagar o reinstalar el servidor a distancia, y así se gestionan miles de servidores sin entrar al CPD. Todo está pensado para funcionar 24 horas durante años.</p>
 <h4>Procesador (CPU)</h4>
 <ul>
 <li><b>Sockets, núcleos e hilos</b>: un servidor puede tener 1 o 2 sockets (procesadores físicos), cada uno con decenas de núcleos (hasta más de 100 en los modelos actuales), y cada núcleo puede ejecutar 2 hilos con SMT (Hyper-Threading).</li>
