@@ -1053,8 +1053,8 @@ La tabla tiene que tener esta forma:
 <p>RAM con corrección de errores (<b>ECC</b>), en cantidades de cientos de GB o varios TB por servidor. En servidores con varios sockets, cada procesador accede más rápido a su memoria cercana, y llegar a la memoria del otro procesador es más lento (<b>NUMA</b>). El hipervisor lo tiene en cuenta y procura dar a cada VM memoria del mismo procesador donde corre.</p>
 <h4>Almacenamiento</h4>
 <ul>
-<li><b>Discos locales</b>: HDD (baratos y lentos), SSD SATA/SAS y SSD <b>NVMe</b> (muy rápidos), agrupados en RAID (punto 1) con distintos niveles: 1, 5, 6 o 10.</li>
-<li><b>Almacenamiento en red</b>: las cabinas SAN y NAS del punto 1 se conectan con protocolos distintos: bloques por Fibre Channel o iSCSI en la SAN, ficheros por NFS o SMB en la NAS.</li>
+<li><b>Discos locales</b>: HDD (baratos y lentos), SSD SATA/SAS y SSD <b>NVMe</b> (muy rápidos, conectados directamente al procesador por PCIe). Cuanto más rápidos, más caros por GB. Se agrupan en RAID (punto 1) con distintos niveles, 1, 5, 6 o 10, para que si un disco falla no se pierdan datos.</li>
+<li><b>Almacenamiento en red</b>: las cabinas SAN y NAS del punto 1 se conectan con protocolos distintos: bloques por Fibre Channel o iSCSI en la SAN, ficheros por NFS o SMB en la NAS. La diferencia está en lo que ve el servidor: con una SAN ve un disco entero, que formatea él como si fuera local, y con una NAS ve una carpeta compartida, como una unidad de red.</li>
 <li><b>Almacenamiento distribuido definido por software</b>: muchos servidores con discos locales forman un único sistema replicado (Ceph en Proxmox y OpenStack, sistemas propios en los grandes proveedores). El disco de una VM no está en el servidor donde corre: se guarda, normalmente, en tres copias en servidores distintos. Si uno falla, siguen las otras y el sistema crea una copia nueva en otro servidor. Es la base de los discos virtuales de la nube.</li>
 </ul>
 <h4>Red</h4>
