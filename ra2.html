@@ -1234,13 +1234,13 @@ runcmd:
 <tr><td>Web interna</td><td>Casi nada</td><td>La última visita registrada es de hace 14 meses</td></tr>
 <tr><td>Pruebas</td><td>Mucha CPU y poca memoria mientras se usa</td><td>Solo se usa unos 2 días al mes, para probar actualizaciones</td></tr>
 </table></div>
-<p>Familias de máquinas disponibles:</p>
+<p>Familias de máquinas disponibles. Lo que las distingue es cuánta memoria trae cada vCPU: en propósito general, por ejemplo, cada vCPU viene con 4 GB, así que una máquina de 2 vCPU tiene 8 GB y una de 4 vCPU tiene 16 GB. No se puede pedir CPU y memoria por separado, se elige la familia cuya proporción se parece más a lo que usa la carga.</p>
 <div class="tabla"><table>
-<tr><th>Familia</th><th>vCPU : memoria</th><th>Para qué</th></tr>
-<tr><td>Ráfagas (<code>t</code>)</td><td>CPU compartida con créditos</td><td>Uso bajo casi siempre, con picos cortos</td></tr>
-<tr><td>Propósito general (<code>m</code>)</td><td>1 : 4</td><td>Uso equilibrado de CPU y memoria</td></tr>
-<tr><td>Cómputo (<code>c</code>)</td><td>1 : 2</td><td>Mucha CPU y poca memoria</td></tr>
-<tr><td>Memoria (<code>r</code>)</td><td>1 : 8</td><td>Mucha memoria</td></tr>
+<tr><th>Familia</th><th>Memoria por cada vCPU</th><th>Ejemplo</th><th>Para qué</th></tr>
+<tr><td>Ráfagas (<code>t</code>)</td><td>Como propósito general, pero la CPU no está reservada entera</td><td>2 vCPU y 8 GB</td><td>Uso bajo casi siempre, con picos cortos</td></tr>
+<tr><td>Propósito general (<code>m</code>)</td><td>4 GB</td><td>2 vCPU y 8 GB</td><td>Uso equilibrado de CPU y memoria</td></tr>
+<tr><td>Cómputo (<code>c</code>)</td><td>2 GB</td><td>2 vCPU y 4 GB</td><td>Mucha CPU y poca memoria</td></tr>
+<tr><td>Memoria (<code>r</code>)</td><td>8 GB</td><td>2 vCPU y 16 GB</td><td>Mucha memoria</td></tr>
 </table></div>
 <p>Además de máquinas virtuales, la gestoría puede contratar una base de datos gestionada y correo como SaaS (Microsoft 365).</p>
 <ol>
