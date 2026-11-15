@@ -1224,32 +1224,29 @@ runcmd:
 </div>
 <div class="actividad">
 <h4>Actividad 13. Llevar las cargas de trabajo de la gestoría a la nube</h4>
-<p><b>Para qué</b>: decidir, con datos de uso reales, qué hacer con cada carga al llevarla a la nube y qué tamaño de máquina pedir, en lugar de copiar lo que había.</p>
-<p>En parejas (si sois impares, un grupo de tres). La gestoría del punto 1 quiere llevar a la nube las ocho máquinas virtuales de la actividad 11. El mantenimiento externo ha medido su uso durante tres meses:</p>
+<p><b>Para qué</b>: decidir, con datos de uso reales, qué hacer con cada carga al llevarla a la nube y qué tipo de máquina pedir, en lugar de copiar lo que había.</p>
+<p>En parejas (si sois impares, un grupo de tres). La gestoría del punto 1 quiere llevar a la nube cinco de sus máquinas virtuales. El mantenimiento externo ha medido cómo se usan:</p>
 <div class="tabla"><table>
-<tr><th>VM</th><th>Asignado</th><th>CPU media / pico</th><th>RAM usada</th><th>Observaciones</th></tr>
-<tr><td>Controlador de dominio</td><td>2 vCPU, 8 GB</td><td>5 % / 20 %</td><td>3 GB</td><td>Uso constante todo el día</td></tr>
-<tr><td>Ficheros</td><td>4 vCPU, 16 GB</td><td>10 % / 30 %</td><td>6 GB</td><td>1,5 TB de documentos de clientes</td></tr>
-<tr><td>ERP</td><td>8 vCPU, 32 GB</td><td>35 % / 85 %</td><td>24 GB</td><td>Picos al cierre de cada trimestre. El fabricante solo lo soporta sobre Windows Server</td></tr>
-<tr><td>Base de datos</td><td>8 vCPU, 32 GB</td><td>30 % / 70 %</td><td>28 GB</td><td>SQL Server del ERP. Usa casi toda la memoria como caché</td></tr>
-<tr><td>Correo</td><td>4 vCPU, 16 GB</td><td>15 % / 40 %</td><td>10 GB</td><td>Servidor de correo propio. Su licencia caduca en marzo</td></tr>
-<tr><td>Web interna</td><td>2 vCPU, 4 GB</td><td>1 % / 3 %</td><td>1 GB</td><td>La última visita registrada es de hace 14 meses</td></tr>
-<tr><td>Escritorio remoto</td><td>16 vCPU, 24 GB</td><td>40 % / 75 %</td><td>20 GB</td><td>30 usuarios, solo de 8 a 15 h, de lunes a viernes</td></tr>
-<tr><td>Pruebas</td><td>8 vCPU, 8 GB</td><td>0 % / 90 %</td><td>2 GB</td><td>Solo se usa unos 2 días al mes, para probar actualizaciones</td></tr>
+<tr><th>VM</th><th>Cómo se usa</th><th>Observaciones</th></tr>
+<tr><td>Ficheros</td><td>Poca CPU y algo de memoria, de forma constante</td><td>Guarda 1,5 TB de documentos de clientes</td></tr>
+<tr><td>Base de datos</td><td>CPU media, pero usa casi toda la memoria como caché</td><td>Es un SQL Server normal, sin nada especial</td></tr>
+<tr><td>Correo</td><td>Poca CPU y poca memoria</td><td>Servidor de correo propio. Su licencia caduca en marzo</td></tr>
+<tr><td>Web interna</td><td>Casi nada</td><td>La última visita registrada es de hace 14 meses</td></tr>
+<tr><td>Pruebas</td><td>Mucha CPU y poca memoria mientras se usa</td><td>Solo se usa unos 2 días al mes, para probar actualizaciones</td></tr>
 </table></div>
 <p>Familias de máquinas disponibles:</p>
 <div class="tabla"><table>
-<tr><th>Familia</th><th>Letra en AWS</th><th>vCPU : memoria</th><th>Tamaños disponibles (vCPU y GB)</th></tr>
-<tr><td>Ráfagas</td><td><code>t</code></td><td>CPU compartida con créditos</td><td>2 y 4 · 2 y 8</td></tr>
-<tr><td>Propósito general</td><td><code>m</code></td><td>1 : 4</td><td>2 y 8 · 4 y 16 · 8 y 32</td></tr>
-<tr><td>Cómputo</td><td><code>c</code></td><td>1 : 2</td><td>4 y 8 · 8 y 16 · 16 y 32</td></tr>
-<tr><td>Memoria</td><td><code>r</code></td><td>1 : 8</td><td>2 y 16 · 4 y 32 · 8 y 64</td></tr>
+<tr><th>Familia</th><th>vCPU : memoria</th><th>Para qué</th></tr>
+<tr><td>Ráfagas (<code>t</code>)</td><td>CPU compartida con créditos</td><td>Uso bajo casi siempre, con picos cortos</td></tr>
+<tr><td>Propósito general (<code>m</code>)</td><td>1 : 4</td><td>Uso equilibrado de CPU y memoria</td></tr>
+<tr><td>Cómputo (<code>c</code>)</td><td>1 : 2</td><td>Mucha CPU y poca memoria</td></tr>
+<tr><td>Memoria (<code>r</code>)</td><td>1 : 8</td><td>Mucha memoria</td></tr>
 </table></div>
-<p>Además del cómputo, la gestoría puede contratar una base de datos gestionada, correo como SaaS (Microsoft 365) y escritorios virtuales gestionados (Amazon WorkSpaces).</p>
+<p>Además de máquinas virtuales, la gestoría puede contratar una base de datos gestionada y correo como SaaS (Microsoft 365).</p>
 <ol>
-<li><b>Qué hacer con cada una.</b> Para cada VM, elegid una estrategia de migración (las "R" del apartado 4) y justificadla con los datos de la tabla.</li>
-<li><b>Qué tamaño pedir.</b> Para las que sigan siendo máquinas virtuales, elegid familia y tamaño a partir de su uso real (pico de CPU y RAM usada), no de lo que tenían asignado. ¿Estaban bien dimensionadas?</li>
-<li><b>Cuándo encenderlas.</b> ¿Qué máquinas no necesitan estar encendidas todo el día? ¿Qué ahorro supone eso en la nube y por qué en el cuarto de la gestoría no ahorraba nada?</li>
+<li><b>Qué hacer con cada una.</b> Para cada VM, elegid una de las "R" del apartado 4 y justificadla en una frase con los datos de la tabla.</li>
+<li><b>Qué familia pedir.</b> Elegid la familia para los ficheros, la base de datos y las pruebas, y explicad por qué. La base de datos también necesita su familia, aunque sea gestionada.</li>
+<li><b>Cuándo encenderla.</b> La máquina de pruebas solo se usa 2 días al mes. ¿Qué se ahorra en la nube si se apaga el resto del tiempo? ¿Por qué en el cuarto de la gestoría apagarla no ahorraba nada?</li>
 </ol>
 </div>
 <h3>5. Servidores en la nube</h3>
@@ -1423,7 +1420,7 @@ runcmd:
 <h4>Actividad 16. Ficha técnica</h4>
 <p>Con la misma pareja de la actividad 14. Redactad la ficha técnica del entorno de revisión de Cita Previa, ya con las correcciones de la actividad 14 y el almacenamiento de la actividad 15. Podéis reutilizar las tablas que ya tenéis. Haced una tabla por tipo de componente (servidores, red, almacenamiento y software) con estas columnas: identificador, características, ubicación (zona y subred) y función. En el software, incluid el sistema operativo, el software de base de cada máquina y el software de gestión que usaríais (identidades, monitorización, auditoría). Añadid el esquema de red corregido.</p>
 </div>
-<p class="entrega">Entrega en Aules: respuestas de la actividad 11, respuestas de la 12, tabla de migración de la 13, esquema y respuestas de la 14, tabla de almacenamiento de la 15 y ficha técnica con el esquema corregido de la 16.</p>
+<p class="entrega">Entrega en Aules: respuestas de la actividad 11, respuestas de la 12, tabla de la 13, esquema y respuestas de la 14, tabla de almacenamiento de la 15 y ficha técnica con el esquema corregido de la 16.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
