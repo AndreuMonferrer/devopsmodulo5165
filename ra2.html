@@ -1123,12 +1123,12 @@ La tabla tiene que tener esta forma:
 <div class="pausa"><h4>Ahora: actividad 11</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 4.</p></div>
 
 <div class="actividad">
-<h4>Actividad 11. Del hardware físico al virtual</h4>
-<p><b>Para qué</b>: comprobar en vuestro propio equipo qué es una vCPU, entender por qué un proveedor puede repartir un servidor entre muchas máquinas y dónde está el límite.</p>
-<p>Individual. Tres partes, cada una sobre una idea distinta del apartado 3.</p>
+<h4>Actividad 11. Del servidor físico a la máquina virtual</h4>
+<p><b>Para qué</b>: entender qué recibe realmente quien alquila una máquina en la nube y por qué el proveedor puede repartir un servidor entre muchos clientes.</p>
+<p>Individual. Tres partes, cada una sobre una idea del apartado 3.</p>
 <ol>
-<li><b>Qué es una vCPU, en vuestro portátil.</b> En Ubuntu MATE, abrid un terminal y ejecutad <code>lscpu</code> y <code>free -h</code>. Anotad el modelo de CPU, los núcleos, los hilos y la memoria total (da igual que el portátil sea modesto: cualquier valor sirve). Después responded: ¿tiene SMT vuestro procesador? Si le dierais a una máquina virtual todo el portátil, ¿cuántas vCPU vería? ¿Y cuántas vería si fuera un procesador Graviton con los mismos núcleos?</li>
-<li><b>Sobresuscripción, en la gestoría.</b> El servidor 1 de la gestoría del punto 1 tiene 2 procesadores de 12 núcleos y 24 hilos cada uno (48 hilos en total) y 128 GB de RAM. Sus máquinas virtuales tienen asignado:
+<li><b>Qué es una vCPU.</b> Una empresa duda entre dos máquinas de AWS con 4 vCPU y 16 GB: una <code>m7i.xlarge</code> (Intel) y una <code>m7g.xlarge</code> (Graviton). ¿Cuántos núcleos físicos tiene cada una por detrás? ¿Por qué, con las mismas vCPU, pueden rendir distinto? ¿Cuál elegiríais para un servidor web en Linux y cuál para un programa que solo existe para Windows?</li>
+<li><b>Sobresuscripción.</b> El servidor 1 de la gestoría del punto 1 tiene 48 hilos y 128 GB de RAM. Sus máquinas virtuales tienen asignado:
 <div class="tabla"><table>
 <tr><th>VM</th><th>vCPU</th><th>RAM</th></tr>
 <tr><td>Controlador de dominio</td><td>2</td><td>8 GB</td></tr>
@@ -1140,7 +1140,7 @@ La tabla tiene que tener esta forma:
 <tr><td>Escritorio remoto</td><td>16</td><td>24 GB</td></tr>
 <tr><td>Pruebas</td><td>8</td><td>8 GB</td></tr>
 </table></div>
-Sumad las vCPU y la RAM asignadas y comparadlas con los hilos y la RAM del servidor. ¿Hay sobresuscripción de CPU? ¿Y de memoria? ¿Cuál de las dos es peligrosa y por qué?</li>
+Sumad las vCPU y la RAM. ¿Caben todas sin sobresuscribir? Si un lunes todas trabajan a tope a la vez, ¿qué notarían los usuarios? ¿Por qué pasarse con la memoria es más peligroso que pasarse con la CPU?</li>
 <li><b>Para qué sirven los hilos (búsqueda).</b> Buscad información, con la herramienta que queráis, y explicad con vuestras palabras para qué cargas de trabajo conviene tener varios hilos por núcleo (SMT) y para cuáles no. Poned dos ejemplos de cada caso.</li>
 </ol>
 </div>
@@ -1199,46 +1199,27 @@ runcmd:
 <div class="pausa"><h4>Ahora: actividades 12 y 13</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Después seguimos con el apartado 5.</p></div>
 
 <div class="actividad">
-<h4>Actividad 12. Leer un aprovisionamiento con cloud-init</h4>
-<p><b>Para qué</b>: ver con un caso real qué pasa entre pedir una máquina y tenerla funcionando, qué parte es lenta y qué hacer cuando cloud-init falla.</p>
-<p>Individual. Un compañero ha lanzado en AWS, en la región de España, una instancia Ubuntu 24.04 con el fichero <code>user-data.yaml</code> del apartado 4 como datos de usuario. Esto es lo que muestra la consola:</p>
-<div class="tabla"><table>
-<tr><th>Hora</th><th>Evento en la consola</th></tr>
-<tr><td>10:02:05</td><td>Pulsa <i>Lanzar instancia</i>: petición aceptada, identificador <code>i-0a1b2c3d4e5f60718</code></td></tr>
-<tr><td>10:02:11</td><td>Estado <i>pending</i>, zona <code>eu-south-2a</code>, IP privada <code>172.31.20.15</code>, IP pública <code>203.0.113.40</code></td></tr>
-<tr><td>10:02:19</td><td>Estado <i>running</i></td></tr>
-<tr><td>10:03:00</td><td><code>http://203.0.113.40</code> responde con la página de Cita Previa</td></tr>
-</table></div>
-<p>Y este es un extracto simplificado del fichero <code>/var/log/cloud-init-output.log</code> de la máquina:</p>
-<p class="fichero">/var/log/cloud-init-output.log (extracto)</p>
-<pre><code>Cloud-init v. 25.1.4-0ubuntu0~24.04.1 running 'init' at Mon, 02 Nov 2026 10:02:24 +0000. Up 6.12 seconds.
-ci-info: | ens5 | True | 172.31.20.15 | 255.255.240.0 | global | 0e:a1:b2:c3:d4:e5 |
-Generating public/private ed25519 key pair.
-Cloud-init v. 25.1.4-0ubuntu0~24.04.1 running 'modules:config' at Mon, 02 Nov 2026 10:02:29 +0000. Up 11.40 seconds.
-Cloud-init v. 25.1.4-0ubuntu0~24.04.1 running 'modules:final' at Mon, 02 Nov 2026 10:02:31 +0000. Up 13.02 seconds.
-Hit:1 http://eu-south-2.ec2.archive.ubuntu.com/ubuntu noble InRelease
-Get:2 http://eu-south-2.ec2.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
-Reading package lists...
-The following NEW packages will be installed:
-  nginx nginx-common
-Setting up nginx (1.24.0-2ubuntu7) ...
-Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:02:58 +0000. Datasource DataSourceEc2Local.  Up 40.31 seconds</code></pre>
+<h4>Actividad 12. Qué pasa al pedir una máquina</h4>
+<p><b>Para qué</b>: entender qué ocurre desde que se pide una máquina hasta que funciona, cómo elegir el molde de partida y qué hacer cuando la configuración falla.</p>
+<p>Individual. Tres partes.</p>
 <ol>
-<li><b>Los pasos.</b> Asignad cada evento de la consola y cada bloque del registro a uno de los siete pasos del aprovisionamiento del apartado 4. ¿Qué pasos ocurren fuera de la máquina (en el plano de control) y cuáles dentro?</li>
-<li><b>Los tiempos.</b> Calculad cuánto tarda el plano de control en tener la máquina en ejecución y cuánto tarda después cloud-init en dejar la web funcionando. ¿Qué parte es la más lenta y por qué? ¿Cómo la acortaría una imagen de oro (apartado 4)?</li>
-<li><b>El fallo.</b> Otro compañero lanza la misma máquina, pero la web no responde. Su máquina muestra esto:
-<pre><code>$ cloud-init status --long
-status: error
-extended_status: error - done
-detail: DataSourceEc2Local
-errors:
-	- (package_update_upgrade_install) failed
-
-$ tail -n 3 /var/log/cloud-init-output.log
-E: Unable to locate package ngnix
-Failed to install packages: ['ngnix']
-Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +0000. Datasource DataSourceEc2Local.  Up 31.87 seconds</code></pre>
-¿Qué ha fallado y en qué sección del <code>user-data.yaml</code>? ¿Se habrá creado el usuario <code>despliegue</code>? ¿Por qué lo correcto en la nube es terminar esta máquina y lanzar otra con el fichero corregido, en lugar de entrar a arreglarla a mano?</li>
+<li><b>Ordenar los pasos.</b> Estos son los siete pasos del aprovisionamiento, desordenados. Ordenadlos y marcad cuáles ocurren fuera de la máquina (en el plano de control del proveedor) y cuáles dentro. ¿Cuál suele tardar más y por qué?
+<ul>
+<li>Empieza a contar el tiempo que se factura.</li>
+<li>cloud-init crea el usuario, instala los paquetes y arranca la web.</li>
+<li>Se comprueba quién eres, si tienes permiso y si te queda cuota.</li>
+<li>Se arranca la máquina en el hipervisor.</li>
+<li>Se crea el disco copiando la imagen.</li>
+<li>Se elige un servidor físico con hueco libre.</li>
+<li>Se asignan la IP y las reglas de cortafuegos.</li>
+</ul></li>
+<li><b>Elegir el molde.</b> Para cada situación, ¿qué usaríais: una imagen cloud con cloud-init, una plantilla de Proxmox o una imagen de oro? Justificadlo.
+<ul>
+<li>Probar una vez un programa nuevo en un Ubuntu limpio.</li>
+<li>Cada lunes hacen falta 100 servidores web iguales, listos en segundos.</li>
+<li>En el Proxmox del aula, cada alumno necesita una máquina con el mismo Ubuntu y las mismas herramientas.</li>
+</ul></li>
+<li><b>El fallo.</b> Un compañero lanza una máquina con el <code>user-data.yaml</code> del apartado 4, pero escribió <code>ngnix</code> en lugar de <code>nginx</code>. La máquina arranca, pero la web no responde. ¿Qué tarea de cloud-init ha fallado? ¿Se habrá creado igualmente el usuario? ¿Por qué lo correcto es terminar la máquina y lanzar otra con el fichero corregido, en lugar de entrar a arreglarla a mano?</li>
 </ol>
 </div>
 <div class="actividad">
@@ -1256,24 +1237,18 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <tr><td>Escritorio remoto</td><td>16 vCPU, 24 GB</td><td>40 % / 75 %</td><td>20 GB</td><td>30 usuarios, solo de 8 a 15 h, de lunes a viernes</td></tr>
 <tr><td>Pruebas</td><td>8 vCPU, 8 GB</td><td>0 % / 90 %</td><td>2 GB</td><td>Solo se usa unos 2 días al mes, para probar actualizaciones</td></tr>
 </table></div>
-<p>Tipos de instancia disponibles (especificaciones reales de AWS):</p>
+<p>Familias de máquinas disponibles:</p>
 <div class="tabla"><table>
-<tr><th>Tipo</th><th>Familia</th><th>vCPU</th><th>RAM</th></tr>
-<tr><td><code>t3.medium</code></td><td>Ráfagas</td><td>2</td><td>4 GB</td></tr>
-<tr><td><code>t3.large</code></td><td>Ráfagas</td><td>2</td><td>8 GB</td></tr>
-<tr><td><code>m7i.large</code></td><td>Propósito general</td><td>2</td><td>8 GB</td></tr>
-<tr><td><code>m7i.xlarge</code></td><td>Propósito general</td><td>4</td><td>16 GB</td></tr>
-<tr><td><code>m7i.2xlarge</code></td><td>Propósito general</td><td>8</td><td>32 GB</td></tr>
-<tr><td><code>c7i.xlarge</code></td><td>Optimizada para cómputo</td><td>4</td><td>8 GB</td></tr>
-<tr><td><code>c7i.4xlarge</code></td><td>Optimizada para cómputo</td><td>16</td><td>32 GB</td></tr>
-<tr><td><code>r7i.large</code></td><td>Optimizada para memoria</td><td>2</td><td>16 GB</td></tr>
-<tr><td><code>r7i.xlarge</code></td><td>Optimizada para memoria</td><td>4</td><td>32 GB</td></tr>
-<tr><td><code>r7i.2xlarge</code></td><td>Optimizada para memoria</td><td>8</td><td>64 GB</td></tr>
+<tr><th>Familia</th><th>Letra en AWS</th><th>vCPU : memoria</th><th>Tamaños disponibles (vCPU y GB)</th></tr>
+<tr><td>Ráfagas</td><td><code>t</code></td><td>CPU compartida con créditos</td><td>2 y 4 · 2 y 8</td></tr>
+<tr><td>Propósito general</td><td><code>m</code></td><td>1 : 4</td><td>2 y 8 · 4 y 16 · 8 y 32</td></tr>
+<tr><td>Cómputo</td><td><code>c</code></td><td>1 : 2</td><td>4 y 8 · 8 y 16 · 16 y 32</td></tr>
+<tr><td>Memoria</td><td><code>r</code></td><td>1 : 8</td><td>2 y 16 · 4 y 32 · 8 y 64</td></tr>
 </table></div>
 <p>Además del cómputo, la gestoría puede contratar una base de datos gestionada, correo como SaaS (Microsoft 365) y escritorios virtuales gestionados (Amazon WorkSpaces).</p>
 <ol>
 <li><b>Qué hacer con cada una.</b> Para cada VM, elegid una estrategia de migración (las "R" del apartado 4) y justificadla con los datos de la tabla.</li>
-<li><b>Qué tamaño pedir.</b> Para las que sigan siendo máquinas virtuales, elegid un tipo de instancia de la lista a partir de su uso real (pico de CPU y RAM usada). Comparad lo que pedís con lo que tienen asignado ahora: ¿estaban bien dimensionadas?</li>
+<li><b>Qué tamaño pedir.</b> Para las que sigan siendo máquinas virtuales, elegid familia y tamaño a partir de su uso real (pico de CPU y RAM usada), no de lo que tenían asignado. ¿Estaban bien dimensionadas?</li>
 <li><b>Cuándo encenderlas.</b> ¿Qué máquinas no necesitan estar encendidas todo el día? ¿Qué ahorro supone eso en la nube y por qué en el cuarto de la gestoría no ahorraba nada?</li>
 </ol>
 </div>
@@ -1448,7 +1423,7 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <h4>Actividad 16. Ficha técnica</h4>
 <p>Con la misma pareja de la actividad 14. Redactad la ficha técnica del entorno de revisión de Cita Previa, ya con las correcciones de la actividad 14 y el almacenamiento de la actividad 15. Podéis reutilizar las tablas que ya tenéis. Haced una tabla por tipo de componente (servidores, red, almacenamiento y software) con estas columnas: identificador, características, ubicación (zona y subred) y función. En el software, incluid el sistema operativo, el software de base de cada máquina y el software de gestión que usaríais (identidades, monitorización, auditoría). Añadid el esquema de red corregido.</p>
 </div>
-<p class="entrega">Entrega en Aules: datos del portátil y cálculo de sobresuscripción de la actividad 11, respuestas de la 12, tabla de migración de la 13, esquema y respuestas de la 14, tabla de almacenamiento de la 15 y ficha técnica con el esquema corregido de la 16.</p>
+<p class="entrega">Entrega en Aules: respuestas de la actividad 11, respuestas de la 12, tabla de migración de la 13, esquema y respuestas de la 14, tabla de almacenamiento de la 15 y ficha técnica con el esquema corregido de la 16.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
