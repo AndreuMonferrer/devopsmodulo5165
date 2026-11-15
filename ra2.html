@@ -1124,8 +1124,11 @@ La tabla tiene que tener esta forma:
 
 <div class="actividad">
 <h4>Actividad 11. Del hardware físico al virtual</h4>
-<p>Individual, en vuestro portátil (Ubuntu MATE). Ejecutad <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code> e <code>ip a</code> y anotad: modelo de CPU, núcleos y hilos, memoria total, discos y tarjetas de red.</p>
-<p>Después, con los datos del servidor 1 de la gestoría del punto 1 (2 procesadores de 12 núcleos y 24 hilos cada uno, 128 GB de RAM), completad el cálculo. Sus máquinas virtuales tienen asignado:</p>
+<p><b>Para qué</b>: comprobar en vuestro propio equipo qué es una vCPU, entender por qué un proveedor puede repartir un servidor entre muchas máquinas y dónde está el límite.</p>
+<p>Individual. Tres partes, cada una sobre una idea distinta del apartado 3.</p>
+<ol>
+<li><b>Qué es una vCPU, en vuestro portátil.</b> En Ubuntu MATE, abrid un terminal y ejecutad <code>lscpu</code> y <code>free -h</code>. Anotad el modelo de CPU, los núcleos, los hilos y la memoria total (da igual que el portátil sea modesto: cualquier valor sirve). Después responded: ¿tiene SMT vuestro procesador? Si le dierais a una máquina virtual todo el portátil, ¿cuántas vCPU vería? ¿Y cuántas vería si fuera un procesador Graviton con los mismos núcleos?</li>
+<li><b>Sobresuscripción, en la gestoría.</b> El servidor 1 de la gestoría del punto 1 tiene 2 procesadores de 12 núcleos y 24 hilos cada uno (48 hilos en total) y 128 GB de RAM. Sus máquinas virtuales tienen asignado:
 <div class="tabla"><table>
 <tr><th>VM</th><th>vCPU</th><th>RAM</th></tr>
 <tr><td>Controlador de dominio</td><td>2</td><td>8 GB</td></tr>
@@ -1137,8 +1140,9 @@ La tabla tiene que tener esta forma:
 <tr><td>Escritorio remoto</td><td>16</td><td>24 GB</td></tr>
 <tr><td>Pruebas</td><td>8</td><td>8 GB</td></tr>
 </table></div>
-<p>Calculad la proporción de vCPU frente a hilos físicos y frente a núcleos físicos, y la de RAM asignada frente a RAM física. ¿Hay sobresuscripción de CPU? ¿Y de memoria? ¿Cuál de las dos es más peligrosa y por qué?</p>
-<p>Por último, buscad información y explicad con vuestras palabras para qué tipo de cargas conviene tener varios hilos por núcleo (SMT) y para cuáles no. Poned al menos dos ejemplos de cada caso y relacionadlo con el número de hilos de cada arquitectura: x86, ARM (AWS Graviton) e IBM Power.</p>
+Sumad las vCPU y la RAM asignadas y comparadlas con los hilos y la RAM del servidor. ¿Hay sobresuscripción de CPU? ¿Y de memoria? ¿Cuál de las dos es peligrosa y por qué?</li>
+<li><b>Para qué sirven los hilos (búsqueda).</b> Buscad información, con la herramienta que queráis, y explicad con vuestras palabras para qué cargas de trabajo conviene tener varios hilos por núcleo (SMT) y para cuáles no. Poned dos ejemplos de cada caso.</li>
+</ol>
 </div>
 <h3>4. Aprovisionar recursos virtuales</h3>
 <p><b>Aprovisionar</b> es preparar y entregar un recurso listo para usar. Cuando pedimos una VM, el plano de control:</p>
@@ -1196,6 +1200,7 @@ runcmd:
 
 <div class="actividad">
 <h4>Actividad 12. Leer un aprovisionamiento con cloud-init</h4>
+<p><b>Para qué</b>: ver con un caso real qué pasa entre pedir una máquina y tenerla funcionando, qué parte es lenta y qué hacer cuando cloud-init falla.</p>
 <p>Individual. Un compañero ha lanzado en AWS, en la región de España, una instancia Ubuntu 24.04 con el fichero <code>user-data.yaml</code> del apartado 4 como datos de usuario. Esto es lo que muestra la consola:</p>
 <div class="tabla"><table>
 <tr><th>Hora</th><th>Evento en la consola</th></tr>
@@ -1219,10 +1224,9 @@ The following NEW packages will be installed:
 Setting up nginx (1.24.0-2ubuntu7) ...
 Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:02:58 +0000. Datasource DataSourceEc2Local.  Up 40.31 seconds</code></pre>
 <ol>
-<li>Asignad cada evento de la consola y cada bloque del registro a uno de los siete pasos del aprovisionamiento del apartado 4. ¿Qué pasos ocurren fuera de la máquina (en el plano de control) y cuáles dentro?</li>
-<li>Para cada sección del <code>user-data.yaml</code> (<code>hostname</code>, <code>users</code>, <code>package_update</code> y <code>packages</code>, <code>write_files</code>, <code>runcmd</code>), indicad qué evidencia del registro o de la consola demuestra que se ha ejecutado, o cómo lo comprobaríais si no aparece.</li>
-<li>Calculad cuánto tarda el plano de control en tener la máquina en ejecución y cuánto tarda después cloud-init en dejar la web funcionando. ¿Qué parte es la más lenta y por qué? ¿Cómo la acortaría una imagen de oro (apartado 4)?</li>
-<li>Otro compañero lanza la misma máquina, pero la web no responde. Su máquina muestra esto:
+<li><b>Los pasos.</b> Asignad cada evento de la consola y cada bloque del registro a uno de los siete pasos del aprovisionamiento del apartado 4. ¿Qué pasos ocurren fuera de la máquina (en el plano de control) y cuáles dentro?</li>
+<li><b>Los tiempos.</b> Calculad cuánto tarda el plano de control en tener la máquina en ejecución y cuánto tarda después cloud-init en dejar la web funcionando. ¿Qué parte es la más lenta y por qué? ¿Cómo la acortaría una imagen de oro (apartado 4)?</li>
+<li><b>El fallo.</b> Otro compañero lanza la misma máquina, pero la web no responde. Su máquina muestra esto:
 <pre><code>$ cloud-init status --long
 status: error
 extended_status: error - done
@@ -1235,11 +1239,11 @@ E: Unable to locate package ngnix
 Failed to install packages: ['ngnix']
 Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +0000. Datasource DataSourceEc2Local.  Up 31.87 seconds</code></pre>
 ¿Qué ha fallado y en qué sección del <code>user-data.yaml</code>? ¿Se habrá creado el usuario <code>despliegue</code>? ¿Por qué lo correcto en la nube es terminar esta máquina y lanzar otra con el fichero corregido, en lugar de entrar a arreglarla a mano?</li>
-<li>Para los picos de los lunes hacen falta 10 servidores web iguales. ¿Qué cambiaríais en el <code>user-data.yaml</code> para que sirva para los 10?</li>
 </ol>
 </div>
 <div class="actividad">
 <h4>Actividad 13. Llevar las cargas de trabajo de la gestoría a la nube</h4>
+<p><b>Para qué</b>: decidir, con datos de uso reales, qué hacer con cada carga al llevarla a la nube y qué tamaño de máquina pedir, en lugar de copiar lo que había.</p>
 <p>En parejas (si sois impares, un grupo de tres). La gestoría del punto 1 quiere llevar a la nube las ocho máquinas virtuales de la actividad 11. El mantenimiento externo ha medido su uso durante tres meses:</p>
 <div class="tabla"><table>
 <tr><th>VM</th><th>Asignado</th><th>CPU media / pico</th><th>RAM usada</th><th>Observaciones</th></tr>
@@ -1268,9 +1272,9 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 </table></div>
 <p>Además del cómputo, la gestoría puede contratar una base de datos gestionada, correo como SaaS (Microsoft 365) y escritorios virtuales gestionados (Amazon WorkSpaces).</p>
 <ol>
-<li>Para cada VM, elegid una estrategia de migración (las "R" del apartado 4) y justificadla con los datos de la tabla.</li>
-<li>Para las que sigan siendo máquinas virtuales, elegid tipo de instancia e indicad cómo se instalaría la carga de trabajo (imagen del sistema, configuración con cloud-init). Comparad lo que pedís con lo que tienen asignado ahora: ¿estaban bien dimensionadas?</li>
-<li>¿Qué máquinas no necesitan estar encendidas todo el día? ¿Qué ahorro supone eso en la nube y por qué en el cuarto de la gestoría no ahorraba nada?</li>
+<li><b>Qué hacer con cada una.</b> Para cada VM, elegid una estrategia de migración (las "R" del apartado 4) y justificadla con los datos de la tabla.</li>
+<li><b>Qué tamaño pedir.</b> Para las que sigan siendo máquinas virtuales, elegid un tipo de instancia de la lista a partir de su uso real (pico de CPU y RAM usada). Comparad lo que pedís con lo que tienen asignado ahora: ¿estaban bien dimensionadas?</li>
+<li><b>Cuándo encenderlas.</b> ¿Qué máquinas no necesitan estar encendidas todo el día? ¿Qué ahorro supone eso en la nube y por qué en el cuarto de la gestoría no ahorraba nada?</li>
 </ol>
 </div>
 <h3>5. Servidores en la nube</h3>
