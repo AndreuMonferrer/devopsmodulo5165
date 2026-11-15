@@ -1285,7 +1285,7 @@ Cloud-init v. 25.1.4-0ubuntu0~24.04.1 finished at Mon, 02 Nov 2026 10:15:40 +000
 <tr><td><b>Datos de usuario</b></td><td>La configuración inicial para cloud-init (apartado 4)</td><td>El <code>user-data.yaml</code> del apartado 4</td></tr>
 </table></div>
 <h4>Ciclo de vida</h4>
-<p>Los estados de una máquina (en ejecución, detenida y terminada) y lo que se paga en cada uno se explican en el punto 2, apartado 3. Recordad que, al terminar una máquina, por defecto su disco raíz se borra, pero los discos que se le añadieron y las instantáneas se conservan (y se siguen pagando).</p>
+<p>Cuando ya no se necesita una máquina, se <b>termina</b>: se borra para siempre. Pero no todo se borra con ella: por defecto su disco raíz se borra, mientras que los discos que se le añadieron y las instantáneas se conservan, y se siguen pagando aunque la máquina ya no exista. Hay que borrarlos a mano. (Los estados de una máquina y lo que se paga en cada uno están en el punto 2, apartado 3.)</p>
 <h4>Otras formas de cómputo</h4>
 <p>Además de VM: <b>servidores físicos dedicados</b> (<i>bare metal</i>) para cargas que no admiten virtualización o necesitan licencias por núcleo físico. <b>Grupos de autoescalado</b> que mantienen un número de VM idénticas. <b>Contenedores gestionados</b> y <b>funciones serverless</b> (unidad 4).</p>
 
