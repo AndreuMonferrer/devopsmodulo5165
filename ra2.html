@@ -1188,8 +1188,8 @@ runcmd:
 <tr><th>Estrategia</th><th>Qué se hace</th><th>Esfuerzo</th><th>Ejemplo</th></tr>
 <tr><td><b>Retire</b> (retirar)</td><td>Se elimina la aplicación</td><td>Ninguno</td><td>Una web interna que ya nadie usa</td></tr>
 <tr><td><b>Retain</b> (mantener)</td><td>Se deja on premise, de momento</td><td>Ninguno</td><td>Un sistema que caduca en un año</td></tr>
-<tr><td><b>Rehost</b> (<i>lift and shift</i>)</td><td>La VM se lleva tal cual a la nube</td><td>Bajo</td><td>El servidor de ficheros pasa a una VM en la nube</td></tr>
-<tr><td><b>Relocate</b> (trasladar)</td><td>Se traslada la plataforma de virtualización entera de golpe, sin convertir cada VM: el proveedor alquila servidores con VMware ya instalado</td><td>Bajo</td><td>Cientos de VM en VMware pasan a VMware Cloud on AWS</td></tr>
+<tr><td><b>Rehost</b> (<i>lift and shift</i>)</td><td>La máquina pasa a la nube sin cambiar nada: el mismo sistema, los mismos programas y los mismos datos</td><td>Bajo</td><td>El servidor de ficheros sigue igual, pero ahora está en AWS en lugar de en el cuarto de la gestoría</td></tr>
+<tr><td><b>Relocate</b> (trasladar)</td><td>El proveedor alquila servidores con el mismo hipervisor que ya usa la empresa (en empresas, lo más habitual es VMware), así que las máquinas se llevan todas a la vez, sin adaptarlas una por una como en Rehost</td><td>Bajo</td><td>Una empresa con 300 máquinas virtuales las lleva todas a la nube a la vez, sin tocarlas</td></tr>
 <tr><td><b>Repurchase</b> (recomprar)</td><td>Se sustituye por un SaaS</td><td>Medio</td><td>El correo propio pasa a Microsoft 365</td></tr>
 <tr><td><b>Replatform</b> (cambiar plataforma)</td><td>Pequeños cambios para aprovechar servicios gestionados</td><td>Medio</td><td>La base de datos pasa a una base de datos gestionada</td></tr>
 <tr><td><b>Refactor</b> (rediseñar)</td><td>Se rediseña para la nube</td><td>Alto</td><td>Cita Previa se divide en contenedores con autoescalado</td></tr>
