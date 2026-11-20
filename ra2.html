@@ -1270,16 +1270,13 @@ runcmd:
 
 <h3>6. Redes</h3>
 <h4>Red privada virtual (VPC / VNet)</h4>
-<p>En el punto 3 vimos la red virtual como pieza de la arquitectura: <b>VPC</b> (nube privada virtual) en AWS y Google, <b>VNet</b> en Azure. Es tu propia red dentro de la nube, aislada de la de los demás clientes, y todas tus máquinas viven dentro. Al crearla se elige su <b>rango</b>, es decir, qué direcciones IP privadas tendrán sus máquinas, y se escribe en notación CIDR (por ejemplo, <code>10.0.0.0/16</code>). En AWS y Azure, cada red pertenece a una región. En Google Cloud, en cambio, la red es global y lo que pertenece a cada región son sus subredes.</p>
-<p><b>Cómo se lee un rango CIDR.</b> Sirve de ejemplo la red de casa: el router da direcciones del tipo <code>192.168.1.x</code>, en las que los tres primeros números no cambian y el último va de 0 a 255. Eso, en CIDR, es <code>192.168.1.0/24</code>. Cada número de una IP son 8 bits, 32 en total, y el número tras la barra dice cuántos bits quedan <b>fijos</b> (la red): /24 son los tres primeros números, y /16, los dos primeros. Los bits que quedan sirven para las máquinas, y cada bit libre duplica el número de direcciones:</p>
-<div class="tabla"><table>
-<tr><th>Rango</th><th>Qué queda fijo</th><th>Qué cambia</th><th>Direcciones</th><th>Uso típico</th></tr>
-<tr><td><code>192.168.1.0/24</code></td><td><code>192.168.1</code></td><td>El último número (0 a 255)</td><td>2<sup>8</sup> = 256</td><td>La red de casa</td></tr>
-<tr><td><code>10.0.0.0/16</code></td><td><code>10.0</code></td><td>Los dos últimos números</td><td>2<sup>16</sup> = 65.536</td><td>Una VPC entera</td></tr>
-<tr><td><code>10.0.1.0/24</code></td><td><code>10.0.1</code></td><td>El último número</td><td>2<sup>8</sup> = 256</td><td>Una subred</td></tr>
-<tr><td><code>10.0.1.0/28</code></td><td>28 bits</td><td>Los 4 últimos bits</td><td>2<sup>4</sup> = 16</td><td>Una subred muy pequeña</td></tr>
-</table></div>
-<p><b>Regla rápida:</b> cuanto menor es el número tras la barra, más grande es la red. Cuando la barra no es múltiplo de 8, se aplica la fórmula: bits libres = 32 − número de la barra, y direcciones = 2 elevado a los bits libres. En AWS, una VPC puede ir de /16 a /28.</p>
+<p>En el punto 3 vimos la red virtual como pieza de la arquitectura: <b>VPC</b> (nube privada virtual) en AWS y Google, <b>VNet</b> en Azure. Es una red privada y aislada de la de los demás clientes, y al crearla se le asigna un bloque CIDR privado (por ejemplo, <code>10.0.0.0/16</code>). En AWS y Azure, cada red pertenece a una región. En Google Cloud, en cambio, la red es global y lo que pertenece a cada región son sus subredes.</p>
+<p><b>El rango CIDR de la VPC.</b> El bloque se toma de los rangos privados de la RFC 1918 (<code>10.0.0.0/8</code>, <code>172.16.0.0/12</code> o <code>192.168.0.0/16</code>) y después se reparte en subredes, cada una con su trozo y sin solaparse. Por ejemplo, una VPC <code>10.0.0.0/16</code> (65.536 direcciones) puede tener subredes <code>10.0.1.0/24</code> y <code>10.0.2.0/24</code> (256 cada una) y una <code>10.0.3.0/28</code> (16). Al elegir el rango hay tres decisiones que importan:</p>
+<ul>
+<li><b>Tamaño con margen.</b> En AWS, una VPC va de /16 a /28. El bloque principal no se puede cambiar una vez creada la VPC, solo se pueden añadir bloques secundarios, así que conviene ir sobrado.</li>
+<li><b>Sin solapes.</b> Si la VPC usa el mismo rango que la red de la oficina o que otra VPC, después no se podrán unir por VPN o por peering, porque el enrutamiento no sabría a cuál de las dos redes enviar el tráfico. Es un error clásico usar <code>192.168.1.0/24</code>, el rango de muchos routers, o el mismo <code>10.0.0.0/16</code> en todas las VPC.</li>
+<li><b>Recordatorio de cálculo.</b> Direcciones = 2<sup>(32 − prefijo)</sup>. Una /20, por ejemplo, deja 12 bits libres: 4.096 direcciones.</li>
+</ul>
 <h4>Subredes</h4>
 <p>Cada subred tiene su propio rango dentro del de la VPC (por ejemplo, <code>10.0.1.0/24</code>, 256 direcciones, de las que el proveedor reserva algunas). En AWS cada subred está en una sola zona de disponibilidad. En el punto 3 vimos qué va en la subred pública y qué en la privada. Lo que de verdad hace pública o privada a una subred es su <b>tabla de rutas</b>:</p>
 <ul>
