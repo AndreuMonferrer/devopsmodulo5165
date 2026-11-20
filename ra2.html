@@ -1270,15 +1270,16 @@ runcmd:
 
 <h3>6. Redes</h3>
 <h4>Red privada virtual (VPC / VNet)</h4>
-<p>En el punto 3 vimos qué es una red virtual: <b>VPC</b> en AWS y Google, <b>VNet</b> en Azure. Al crearla, se define con un rango de direcciones privadas en notación CIDR (por ejemplo, <code>10.0.0.0/16</code>). En AWS y Azure, cada red pertenece a una región. En Google Cloud, en cambio, la red es global y lo que pertenece a cada región son sus subredes.</p>
-<p><b>Cómo se lee un rango CIDR.</b> Una dirección IPv4 tiene 32 bits. El número tras la barra dice cuántos bits están <b>fijos</b> (la red). Los que quedan sirven para las máquinas. Cada bit libre duplica el número de direcciones:</p>
+<p>En el punto 3 vimos la red virtual como pieza de la arquitectura: <b>VPC</b> (nube privada virtual) en AWS y Google, <b>VNet</b> en Azure. Es tu propia red dentro de la nube, aislada de la de los demás clientes, y todas tus máquinas viven dentro. Al crearla se elige su <b>rango</b>, es decir, qué direcciones IP privadas tendrán sus máquinas, y se escribe en notación CIDR (por ejemplo, <code>10.0.0.0/16</code>). En AWS y Azure, cada red pertenece a una región. En Google Cloud, en cambio, la red es global y lo que pertenece a cada región son sus subredes.</p>
+<p><b>Cómo se lee un rango CIDR.</b> Sirve de ejemplo la red de casa: el router da direcciones del tipo <code>192.168.1.x</code>, en las que los tres primeros números no cambian y el último va de 0 a 255. Eso, en CIDR, es <code>192.168.1.0/24</code>. Cada número de una IP son 8 bits, 32 en total, y el número tras la barra dice cuántos bits quedan <b>fijos</b> (la red): /24 son los tres primeros números, y /16, los dos primeros. Los bits que quedan sirven para las máquinas, y cada bit libre duplica el número de direcciones:</p>
 <div class="tabla"><table>
-<tr><th>Rango</th><th>Bits libres</th><th>Direcciones</th><th>Uso típico</th></tr>
-<tr><td><code>10.0.0.0/16</code></td><td>32 − 16 = 16</td><td>2<sup>16</sup> = 65.536</td><td>Una VPC entera</td></tr>
-<tr><td><code>10.0.1.0/24</code></td><td>32 − 24 = 8</td><td>2<sup>8</sup> = 256</td><td>Una subred</td></tr>
-<tr><td><code>10.0.1.0/28</code></td><td>32 − 28 = 4</td><td>2<sup>4</sup> = 16</td><td>Una subred muy pequeña</td></tr>
+<tr><th>Rango</th><th>Qué queda fijo</th><th>Qué cambia</th><th>Direcciones</th><th>Uso típico</th></tr>
+<tr><td><code>192.168.1.0/24</code></td><td><code>192.168.1</code></td><td>El último número (0 a 255)</td><td>2<sup>8</sup> = 256</td><td>La red de casa</td></tr>
+<tr><td><code>10.0.0.0/16</code></td><td><code>10.0</code></td><td>Los dos últimos números</td><td>2<sup>16</sup> = 65.536</td><td>Una VPC entera</td></tr>
+<tr><td><code>10.0.1.0/24</code></td><td><code>10.0.1</code></td><td>El último número</td><td>2<sup>8</sup> = 256</td><td>Una subred</td></tr>
+<tr><td><code>10.0.1.0/28</code></td><td>28 bits</td><td>Los 4 últimos bits</td><td>2<sup>4</sup> = 16</td><td>Una subred muy pequeña</td></tr>
 </table></div>
-<p>Truco: con <code>/24</code> cambia solo el último número (<code>10.0.1.0</code> a <code>10.0.1.255</code>); con <code>/16</code>, los dos últimos.</p>
+<p><b>Regla rápida:</b> cuanto menor es el número tras la barra, más grande es la red. Cuando la barra no es múltiplo de 8, se aplica la fórmula: bits libres = 32 − número de la barra, y direcciones = 2 elevado a los bits libres. En AWS, una VPC puede ir de /16 a /28.</p>
 <h4>Subredes</h4>
 <p>Cada subred tiene su propio rango dentro del de la VPC (por ejemplo, <code>10.0.1.0/24</code>, 256 direcciones, de las que el proveedor reserva algunas). En AWS cada subred está en una sola zona de disponibilidad. En el punto 3 vimos qué va en la subred pública y qué en la privada. Lo que de verdad hace pública o privada a una subred es su <b>tabla de rutas</b>:</p>
 <ul>
