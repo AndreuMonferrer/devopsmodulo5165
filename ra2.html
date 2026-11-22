@@ -1314,55 +1314,27 @@ runcmd:
 <div class="pausa"><h4>Ahora: actividad 14</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 7.</p></div>
 
 <div class="actividad">
-<h4>Actividad 14. Analizar la red de Cita Previa</h4>
-<p>En parejas (si sois impares, un grupo de tres). Esta es la configuración del entorno de revisión de Cita Previa en AWS, en la región de España (<code>eu-south-2</code>):</p>
-<p><b>Red y subredes.</b> VPC <code>vpc-citaprevia-rev</code> con el rango <code>10.30.0.0/16</code>.</p>
+<h4>Actividad 14. Repasar la red de Cita Previa</h4>
+<p><b>Para qué</b>: repasar el apartado 6 (rango CIDR, subredes, tablas de rutas y grupos de seguridad) aplicándolo a una red pequeña.</p>
+<p>Individual. La red de revisión de Cita Previa en AWS es la VPC <code>10.30.0.0/16</code>, con estas tres subredes, todas en la zona <code>eu-south-2a</code>:</p>
 <div class="tabla"><table>
-<tr><th>Subred</th><th>Rango</th><th>Zona</th><th>Tabla de rutas</th></tr>
-<tr><td><code>pub-a</code></td><td><code>10.30.1.0/24</code></td><td><code>eu-south-2a</code></td><td><code>rt-publica</code></td></tr>
-<tr><td><code>app-a</code></td><td><code>10.30.11.0/24</code></td><td><code>eu-south-2a</code></td><td><code>rt-privada</code></td></tr>
-<tr><td><code>app-b</code></td><td><code>10.30.12.0/24</code></td><td><code>eu-south-2b</code></td><td><code>rt-privada</code></td></tr>
-<tr><td><code>datos-a</code></td><td><code>10.30.21.0/24</code></td><td><code>eu-south-2a</code></td><td><code>rt-datos</code></td></tr>
+<tr><th>Subred</th><th>Rango</th><th>Ruta <code>0.0.0.0/0</code> de su tabla</th><th>Máquina</th></tr>
+<tr><td><code>pub-a</code></td><td><code>10.30.1.0/24</code></td><td>Puerta de enlace de Internet</td><td><code>bastion</code>, con IP pública <code>203.0.113.25</code></td></tr>
+<tr><td><code>app-a</code></td><td><code>10.30.11.0/24</code></td><td>Puerta de enlace NAT</td><td><code>app-1</code>, sin IP pública</td></tr>
+<tr><td><code>datos-a</code></td><td><code>10.30.21.0/24</code></td><td>No tiene</td><td><code>bd</code> (PostgreSQL), sin IP pública</td></tr>
 </table></div>
-<p><b>Tablas de rutas y puertas de enlace.</b> Hay una puerta de enlace de Internet <code>igw-cita</code> asociada a la VPC y una puerta de enlace NAT <code>nat-a</code> situada en <code>pub-a</code>.</p>
+<p>Grupos de seguridad (reglas de entrada):</p>
 <div class="tabla"><table>
-<tr><th>Tabla</th><th>Destino</th><th>Siguiente salto</th></tr>
-<tr><td rowspan="2"><code>rt-publica</code></td><td><code>10.30.0.0/16</code></td><td><code>local</code></td></tr>
-<tr><td><code>0.0.0.0/0</code></td><td><code>igw-cita</code></td></tr>
-<tr><td rowspan="2"><code>rt-privada</code></td><td><code>10.30.0.0/16</code></td><td><code>local</code></td></tr>
-<tr><td><code>0.0.0.0/0</code></td><td><code>nat-a</code></td></tr>
-<tr><td><code>rt-datos</code></td><td><code>10.30.0.0/16</code></td><td><code>local</code></td></tr>
-</table></div>
-<p><b>Máquinas.</b></p>
-<div class="tabla"><table>
-<tr><th>Máquina</th><th>Subred</th><th>IP privada</th><th>IP pública</th><th>Grupo de seguridad</th></tr>
-<tr><td><code>bastion</code></td><td><code>pub-a</code></td><td><code>10.30.1.10</code></td><td><code>203.0.113.25</code></td><td><code>sg-bastion</code></td></tr>
-<tr><td><code>app-1</code></td><td><code>app-a</code></td><td><code>10.30.11.21</code></td><td>no</td><td><code>sg-app</code></td></tr>
-<tr><td><code>app-2</code></td><td><code>app-b</code></td><td><code>10.30.12.34</code></td><td>no</td><td><code>sg-app</code></td></tr>
-<tr><td><code>bd</code> (PostgreSQL)</td><td><code>datos-a</code></td><td><code>10.30.21.5</code></td><td>no</td><td><code>sg-bd</code></td></tr>
-</table></div>
-<p><b>Grupos de seguridad</b> (reglas de entrada. La salida está permitida en todos):</p>
-<div class="tabla"><table>
-<tr><th>Grupo</th><th>Protocolo y puerto</th><th>Origen</th></tr>
-<tr><td><code>sg-bastion</code></td><td>TCP 22 (SSH)</td><td><code>0.0.0.0/0</code></td></tr>
-<tr><td rowspan="2"><code>sg-app</code></td><td>TCP 22 (SSH)</td><td><code>sg-bastion</code></td></tr>
-<tr><td>TCP 8080 (aplicación)</td><td><code>10.30.1.0/24</code></td></tr>
-<tr><td><code>sg-bd</code></td><td>TCP 5432 (PostgreSQL)</td><td><code>0.0.0.0/0</code></td></tr>
+<tr><th>Grupo</th><th>Puerto</th><th>Origen</th></tr>
+<tr><td><code>sg-bastion</code></td><td>22 (SSH)</td><td><code>0.0.0.0/0</code></td></tr>
+<tr><td><code>sg-app</code></td><td>22 (SSH)</td><td><code>sg-bastion</code></td></tr>
+<tr><td><code>sg-bd</code></td><td>5432 (PostgreSQL)</td><td><code>sg-app</code></td></tr>
 </table></div>
 <ol>
-<li>Dibujad el esquema de la red en diagrams.net o en papel: VPC, zonas, subredes, puertas de enlace, máquinas y salida a Internet de cada subred.</li>
-<li>Clasificad cada subred como pública o privada y explicad qué dato de la configuración lo decide. Sabiendo que AWS reserva 5 direcciones en cada subred, ¿cuántas máquinas caben en cada una?</li>
-<li>Para cada intento de conexión, decidid si funciona y qué elemento lo permite o lo bloquea (tabla de rutas, puerta de enlace, IP pública o grupo de seguridad):<ol class="casos">
-<li>Desde casa, SSH a <code>203.0.113.25</code>.</li>
-<li>Desde casa, SSH a <code>10.30.11.21</code>.</li>
-<li>Desde <code>bastion</code>, SSH a <code>app-1</code>.</li>
-<li>Desde <code>app-1</code>, descargar actualizaciones de Internet.</li>
-<li>Desde <code>bd</code>, descargar actualizaciones de Internet.</li>
-<li>Desde <code>app-2</code>, conectar con <code>bd</code> por el puerto 5432.</li>
-<li>Desde <code>bastion</code>, conectar con <code>bd</code> por el puerto 5432.</li>
-<li>Desde <code>app-1</code>, conectar con <code>app-2</code> por el puerto 8080.</li>
-</ol></li>
-<li>Encontrad al menos tres problemas de seguridad o de disponibilidad en esta configuración y proponed cómo corregir cada uno. Pista: pensad qué pasa si cae la zona <code>eu-south-2a</code>.</li>
+<li><b>El rango.</b> ¿Cuántas direcciones tiene la VPC? ¿Cuántas máquinas caben en cada subred, si AWS reserva 5 direcciones en cada una? ¿Por qué daría problemas haber usado el mismo rango que la red de la oficina?</li>
+<li><b>Pública o privada.</b> Clasificad cada subred y decid qué dato lo decide. ¿Qué máquinas pueden descargar actualizaciones de Internet?</li>
+<li><b>Cuatro conexiones.</b> Decid si funcionan y qué lo permite o lo bloquea: desde casa, SSH a <code>203.0.113.25</code>. Desde casa, SSH a <code>app-1</code>. Desde <code>bastion</code>, SSH a <code>app-1</code>. Desde <code>bastion</code>, conectar con <code>bd</code> por el 5432.</li>
+<li><b>Una mejora.</b> ¿Qué cambiaríais en <code>sg-bastion</code> y por qué? Proponed dos alternativas.</li>
 </ol>
 </div>
 <h3>7. Almacenamiento</h3>
@@ -1391,17 +1363,17 @@ runcmd:
 
 <div class="actividad">
 <h4>Actividad 15. Elegir el almacenamiento</h4>
-<p>Individual. Para cada necesidad de Cita Previa, elegid el tipo de almacenamiento (bloque, fichero u objeto) y la opción concreta (tipo de disco, clase de almacenamiento, instantáneas, ciclo de vida, bloqueo contra borrado...). Indicad también qué le pasa a ese dato si se termina la máquina virtual.</p>
-<ol class="casos">
-<li>El disco del sistema de cada servidor de aplicación.</li>
-<li>Los datos de una base de datos PostgreSQL instalada en una máquina virtual, que necesita muchas operaciones por segundo garantizadas.</li>
-<li>Las plantillas de los correos de recordatorio, que <code>app-1</code> y <code>app-2</code> deben leer y modificar a la vez.</li>
-<li>Los justificantes en PDF que descargan los pacientes: unos 2 TB, y crecen cada mes.</li>
-<li>Los justificantes de más de un año, que hay que conservar cinco años y casi nunca se consultan.</li>
-<li>Ficheros temporales para generar un informe nocturno, que se pueden perder sin problema.</li>
-<li>Una copia diaria del disco de la base de datos de la necesidad 2.</li>
-<li>Los registros de auditoría, que nadie puede borrar ni modificar durante dos años.</li>
-</ol>
+<p><b>Para qué</b>: repasar el apartado 7 eligiendo el tipo de almacenamiento adecuado para cada dato.</p>
+<p>Individual. Completad la tabla para estos datos de Cita Previa: el tipo (bloque, fichero u objeto), la opción concreta (tipo de disco, clase, almacenamiento de instancia...) y qué le pasa al dato si se termina la máquina.</p>
+<div class="tabla"><table>
+<tr><th>Dato</th><th>Tipo</th><th>Opción concreta</th><th>Si se termina la máquina</th></tr>
+<tr><td>El disco del sistema de <code>app-1</code></td><td></td><td></td><td></td></tr>
+<tr><td>Unas plantillas que <code>app-1</code> y <code>app-2</code> leen y modifican a la vez</td><td></td><td></td><td></td></tr>
+<tr><td>Los justificantes en PDF de los pacientes (2 TB, y crecen)</td><td></td><td></td><td></td></tr>
+<tr><td>Los justificantes de más de un año, que casi nunca se consultan</td><td></td><td></td><td></td></tr>
+<tr><td>Ficheros temporales que se pueden perder sin problema</td><td></td><td></td><td></td></tr>
+</table></div>
+<p>Y una pregunta más: ¿qué ventajas tiene usar una base de datos gestionada en lugar de instalar PostgreSQL en una máquina virtual? Dad dos ventajas y un inconveniente.</p>
 </div>
 <h3>8. Software de la infraestructura</h3>
 <p>Es el software que el cliente <b>elige, usa o gestiona</b>, por encima del software del proveedor del apartado 2:</p>
@@ -1416,10 +1388,22 @@ runcmd:
 <div class="pausa"><h4>Ahora: actividad 16</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Con ella se cierra el punto.</p></div>
 
 <div class="actividad">
-<h4>Actividad 16. Ficha técnica</h4>
-<p>Con la misma pareja de la actividad 14. Redactad la ficha técnica del entorno de revisión de Cita Previa, ya con las correcciones de la actividad 14 y el almacenamiento de la actividad 15. Podéis reutilizar las tablas que ya tenéis. Haced una tabla por tipo de componente (servidores, red, almacenamiento y software) con estas columnas: identificador, características, ubicación (zona y subred) y función. En el software, incluid el sistema operativo, el software de base de cada máquina y el software de gestión que usaríais (identidades, monitorización, auditoría). Añadid el esquema de red corregido.</p>
+<h4>Actividad 16. Ficha técnica de un servidor</h4>
+<p><b>Para qué</b>: repasar todo el punto juntando en una ficha lo que se elige al crear un servidor en la nube.</p>
+<p>En parejas. Completad la ficha técnica de <code>app-1</code>, el servidor de aplicación de la actividad 14. En cada fila, poned vuestra elección y en qué apartado del punto se explica.</p>
+<div class="tabla"><table>
+<tr><th>Componente</th><th>Elección para <code>app-1</code></th><th>Apartado</th></tr>
+<tr><td>Tipo de máquina (familia y tamaño)</td><td></td><td></td></tr>
+<tr><td>Imagen de partida</td><td></td><td></td></tr>
+<tr><td>Cómo se configura al arrancar</td><td></td><td></td></tr>
+<tr><td>Subred e IP</td><td></td><td></td></tr>
+<tr><td>Grupo de seguridad</td><td></td><td></td></tr>
+<tr><td>Disco</td><td></td><td></td></tr>
+<tr><td>Software de base</td><td></td><td></td></tr>
+<tr><td>Software de gestión (identidades, monitorización, auditoría)</td><td></td><td></td></tr>
+</table></div>
 </div>
-<p class="entrega">Entrega en Aules: respuestas de la actividad 11, respuestas de la 12, tabla de la 13, esquema y respuestas de la 14, tabla de almacenamiento de la 15 y ficha técnica con el esquema corregido de la 16.</p>
+<p class="entrega">Entrega en Aules: respuestas de las actividades 11, 12 y 13, respuestas de la 14, tabla y respuesta de la 15 y ficha técnica de la 16.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
