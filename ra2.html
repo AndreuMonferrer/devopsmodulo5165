@@ -1363,17 +1363,22 @@ runcmd:
 
 <div class="actividad">
 <h4>Actividad 15. Elegir el almacenamiento</h4>
-<p><b>Para qué</b>: repasar el apartado 7 eligiendo el tipo de almacenamiento adecuado para cada dato.</p>
-<p>Individual. Completad la tabla para estos datos de Cita Previa: el tipo (bloque, fichero u objeto), la opción concreta (tipo de disco, clase, almacenamiento de instancia...) y qué le pasa al dato si se termina la máquina.</p>
+<p><b>Para qué</b>: repasar el apartado 7 eligiendo el almacenamiento adecuado para cada dato.</p>
+<p>Individual. Completad la tabla para estos datos de Cita Previa. Usad los nombres del apartado 7:</p>
+<ul>
+<li><b>Tipo</b>: bloque, fichero u objeto.</li>
+<li><b>Opción</b>: SSD de propósito general, SSD de alto rendimiento, HDD, almacenamiento de instancia, sistema de ficheros compartido, clase estándar, acceso poco frecuente o archivo.</li>
+<li><b>Servicio en AWS</b>: el que aparece en la tabla de los tres tipos.</li>
+</ul>
 <div class="tabla"><table>
-<tr><th>Dato</th><th>Tipo</th><th>Opción concreta</th><th>Si se termina la máquina</th></tr>
-<tr><td>El disco del sistema de <code>app-1</code></td><td></td><td></td><td></td></tr>
-<tr><td>Unas plantillas que <code>app-1</code> y <code>app-2</code> leen y modifican a la vez</td><td></td><td></td><td></td></tr>
-<tr><td>Los justificantes en PDF de los pacientes (2 TB, y crecen)</td><td></td><td></td><td></td></tr>
-<tr><td>Los justificantes de más de un año, que casi nunca se consultan</td><td></td><td></td><td></td></tr>
-<tr><td>Ficheros temporales que se pueden perder sin problema</td><td></td><td></td><td></td></tr>
+<tr><th>Dato</th><th>Tipo</th><th>Opción</th><th>Servicio en AWS</th><th>¿Se pierde si se termina la máquina?</th></tr>
+<tr><td>El disco del sistema de <code>app-1</code></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Unas plantillas que <code>app-1</code> y <code>app-2</code> leen y modifican a la vez</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Los justificantes en PDF de los pacientes (2 TB, y crecen)</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Los justificantes de más de un año, que casi nunca se consultan</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Ficheros temporales de un informe, que se pueden perder sin problema y necesitan el disco más rápido posible</td><td></td><td></td><td></td><td></td></tr>
 </table></div>
-<p>Y una pregunta más: ¿qué ventajas tiene usar una base de datos gestionada en lugar de instalar PostgreSQL en una máquina virtual? Dad dos ventajas y un inconveniente.</p>
+<p>Para terminar: según el apartado 7, ¿qué tareas os ahorra una base de datos gestionada frente a instalar PostgreSQL en una máquina virtual? ¿Qué se pierde a cambio?</p>
 </div>
 <h3>8. Software de la infraestructura</h3>
 <p>Es el software que el cliente <b>elige, usa o gestiona</b>, por encima del software del proveedor del apartado 2:</p>
