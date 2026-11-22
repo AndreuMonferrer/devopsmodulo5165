@@ -1316,25 +1316,25 @@ runcmd:
 <div class="actividad">
 <h4>Actividad 14. Repasar la red de Cita Previa</h4>
 <p><b>Para qué</b>: repasar el apartado 6 (rango CIDR, subredes, tablas de rutas y grupos de seguridad) aplicándolo a una red pequeña.</p>
-<p>Individual. La red de revisión de Cita Previa en AWS es la VPC <code>10.30.0.0/16</code>, con estas tres subredes, todas en la zona <code>eu-south-2a</code>:</p>
+<p>Individual. Esta es la red de revisión de Cita Previa en AWS: una VPC con el rango <code>10.30.0.0/16</code> y tres subredes, cada una con una máquina.</p>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 250" role="img" aria-label="Red de la actividad 14: VPC con una subred pública con el bastión y la NAT, una subred privada con app-1 y una subred de datos con bd" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-a14" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="150" y="8" width="562" height="234" rx="8" class="d-grupo-azul"/><text x="160" y="23" class="tt">VPC 10.30.0.0/16</text><rect x="162" y="34" width="176" height="198" rx="8" class="d-grupo-verde"/><text x="170" y="49" class="tt">pub-a · 10.30.1.0/24</text><rect x="348" y="34" width="176" height="198" rx="8" class="d-grupo"/><text x="356" y="49" class="tt">app-a · 10.30.11.0/24</text><rect x="534" y="34" width="170" height="198" rx="8" class="d-grupo"/><text x="542" y="49" class="tt">datos-a · 10.30.21.0/24</text><rect x="12" y="40" width="110" height="44" rx="6" class="d-gris"/><text x="67.0" y="54.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Internet</text><text x="67.0" y="72.0" class="ts" text-anchor="middle" dominant-baseline="middle">casa, oficina</text><rect x="12" y="150" width="110" height="62" rx="6" class="d-morado"/><text x="67.0" y="173.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Puerta de</text><text x="67.0" y="191.0" class="ts" text-anchor="middle" dominant-baseline="middle">enlace de Internet</text><rect x="180" y="64" width="140" height="52" rx="6" class="d-verde"/><text x="250.0" y="82.0" class="t tb" text-anchor="middle" dominant-baseline="middle">bastion</text><text x="250.0" y="100.0" class="ts" text-anchor="middle" dominant-baseline="middle">IP pública 203.0.113.25</text><rect x="180" y="166" width="140" height="44" rx="6" class="d-gris"/><text x="250.0" y="188.0" class="t" text-anchor="middle" dominant-baseline="middle">Puerta de enlace NAT</text><rect x="366" y="64" width="140" height="52" rx="6" class="d-azul"/><text x="436.0" y="82.0" class="t tb" text-anchor="middle" dominant-baseline="middle">app-1</text><text x="436.0" y="100.0" class="ts" text-anchor="middle" dominant-baseline="middle">sin IP pública</text><rect x="549" y="64" width="140" height="52" rx="6" class="d-azul"/><text x="619.0" y="82.0" class="t tb" text-anchor="middle" dominant-baseline="middle">bd (PostgreSQL)</text><text x="619.0" y="100.0" class="ts" text-anchor="middle" dominant-baseline="middle">sin IP pública</text><path d="M67,84 L67,148" class="flecha" marker-start="url(#fl-a14)" marker-end="url(#fl-a14)"/><path d="M122,170 L178,100" class="flecha" marker-end="url(#fl-a14)"/><path d="M180,188 L124,188" class="flecha" marker-end="url(#fl-a14)"/><path d="M436,118 L436,188 L322,188" class="flecha" stroke-dasharray="5 4" marker-end="url(#fl-a14)"/><text x="442" y="160" class="ts">salida</text></svg></div><figcaption>La red de revisión de Cita Previa. Las flechas muestran por dónde se entra desde Internet y por dónde se sale. Lo que pueden hablar las máquinas entre ellas lo deciden los grupos de seguridad.</figcaption></figure>
 <div class="tabla"><table>
-<tr><th>Subred</th><th>Rango</th><th>Ruta <code>0.0.0.0/0</code> de su tabla</th><th>Máquina</th></tr>
-<tr><td><code>pub-a</code></td><td><code>10.30.1.0/24</code></td><td>Puerta de enlace de Internet</td><td><code>bastion</code>, con IP pública <code>203.0.113.25</code></td></tr>
-<tr><td><code>app-a</code></td><td><code>10.30.11.0/24</code></td><td>Puerta de enlace NAT</td><td><code>app-1</code>, sin IP pública</td></tr>
-<tr><td><code>datos-a</code></td><td><code>10.30.21.0/24</code></td><td>No tiene</td><td><code>bd</code> (PostgreSQL), sin IP pública</td></tr>
-</table></div>
-<p>Grupos de seguridad (reglas de entrada):</p>
-<div class="tabla"><table>
-<tr><th>Grupo</th><th>Puerto</th><th>Origen</th></tr>
-<tr><td><code>sg-bastion</code></td><td>22 (SSH)</td><td><code>0.0.0.0/0</code></td></tr>
-<tr><td><code>sg-app</code></td><td>22 (SSH)</td><td><code>sg-bastion</code></td></tr>
-<tr><td><code>sg-bd</code></td><td>5432 (PostgreSQL)</td><td><code>sg-app</code></td></tr>
+<tr><th>Máquina</th><th>Subred y rango</th><th>Ruta <code>0.0.0.0/0</code> de su subred</th><th>IP pública</th><th>Su grupo de seguridad deja entrar</th></tr>
+<tr><td><code>bastion</code></td><td><code>pub-a</code> · <code>10.30.1.0/24</code></td><td>Puerta de enlace de Internet</td><td>Sí: <code>203.0.113.25</code></td><td>SSH (22) desde cualquier IP de Internet</td></tr>
+<tr><td><code>app-1</code></td><td><code>app-a</code> · <code>10.30.11.0/24</code></td><td>Puerta de enlace NAT</td><td>No</td><td>SSH (22) solo desde el bastión</td></tr>
+<tr><td><code>bd</code></td><td><code>datos-a</code> · <code>10.30.21.0/24</code></td><td>No tiene</td><td>No</td><td>PostgreSQL (5432) solo desde <code>app-1</code></td></tr>
 </table></div>
 <ol>
-<li><b>El rango.</b> ¿Cuántas direcciones tiene la VPC? ¿Cuántas máquinas caben en cada subred, si AWS reserva 5 direcciones en cada una? ¿Por qué daría problemas haber usado el mismo rango que la red de la oficina?</li>
-<li><b>Pública o privada.</b> Clasificad cada subred y decid qué dato lo decide. ¿Qué máquinas pueden descargar actualizaciones de Internet?</li>
-<li><b>Cuatro conexiones.</b> Decid si funcionan y qué lo permite o lo bloquea: desde casa, SSH a <code>203.0.113.25</code>. Desde casa, SSH a <code>app-1</code>. Desde <code>bastion</code>, SSH a <code>app-1</code>. Desde <code>bastion</code>, conectar con <code>bd</code> por el 5432.</li>
-<li><b>Una mejora.</b> ¿Qué cambiaríais en <code>sg-bastion</code> y por qué? Proponed dos alternativas.</li>
+<li><b>El rango.</b> ¿Cuántas direcciones tiene la VPC? ¿Cuántas máquinas caben en cada subred, si AWS reserva 5 direcciones en cada una? La red de los centros de salud también usa el rango <code>10.30.0.0/16</code> y se quiere unir con la VPC por una VPN: ¿funcionaría? ¿Qué rango le pondríais a la VPC?</li>
+<li><b>Pública o privada.</b> Clasificad cada subred y decid qué columna de la tabla lo decide. ¿Qué máquinas pueden descargar actualizaciones de Internet?</li>
+<li><b>Cuatro conexiones.</b> Decid si funcionan y qué lo permite o lo bloquea:
+<ul>
+<li>Desde casa, SSH al bastión.</li>
+<li>Desde casa, SSH directo a <code>app-1</code>.</li>
+<li>Desde el bastión, SSH a <code>app-1</code>.</li>
+<li>Desde el bastión, conectar con <code>bd</code> por el puerto 5432.</li>
+</ul></li>
+<li><b>Una mejora.</b> El bastión deja entrar SSH desde cualquier IP de Internet. ¿Por qué es un riesgo? Proponed dos formas de mejorarlo.</li>
 </ol>
 </div>
 <h3>7. Almacenamiento</h3>
