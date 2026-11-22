@@ -1360,7 +1360,17 @@ runcmd:
 <p>Aunque técnicamente son un servicio, forman parte de la capa de datos: Amazon RDS y Aurora, Azure SQL Database y Azure Database for PostgreSQL, y Google Cloud SQL. El proveedor gestiona la instalación, los parches, las copias, la réplica en otra zona y la recuperación a un momento concreto. El cliente gestiona el esquema, los datos y los accesos.</p>
 
 
-<div class="pausa"><h4>Ahora: actividad 15</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Después seguimos con el apartado 8.</p></div>
+<h3>8. Software de la infraestructura</h3>
+<p>Es el software que el cliente <b>elige, usa o gestiona</b>, por encima del software del proveedor del apartado 2:</p>
+<ul>
+<li><b>Sistema operativo y software de base</b>: los mismos que en un CPD propio (Linux o Windows Server, servidores web, bases de datos, motores de contenedores), instalados desde las imágenes o con cloud-init.</li>
+<li><b>Servicios gestionados</b> que sustituyen software que antes se instalaba a mano: bases de datos, colas, cachés, balanceadores, DNS.</li>
+<li><b>Software de gestión</b>: consola, CLI, API, infraestructura como código, gestión de identidades (IAM), monitorización (CloudWatch, Azure Monitor), registros de auditoría (CloudTrail, Activity Log), gestión de secretos (Secrets Manager, Key Vault) y de claves de cifrado (KMS).</li>
+<li><b>Licencias</b>: incluidas en la tarifa por hora, traídas por el cliente (BYOL) o del marketplace.</li>
+</ul>
+
+
+<div class="pausa"><h4>Ahora: actividades 15 y 16</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Con ellas se cierra el punto.</p></div>
 
 <div class="actividad">
 <h4>Actividad 15. Elegir el almacenamiento</h4>
@@ -1381,35 +1391,24 @@ runcmd:
 </table></div>
 <p>Para terminar: según el apartado 7, ¿qué tareas os ahorra una base de datos gestionada frente a instalar PostgreSQL en una máquina virtual? ¿Qué se pierde a cambio?</p>
 </div>
-<h3>8. Software de la infraestructura</h3>
-<p>Es el software que el cliente <b>elige, usa o gestiona</b>, por encima del software del proveedor del apartado 2:</p>
-<ul>
-<li><b>Sistema operativo y software de base</b>: los mismos que en un CPD propio (Linux o Windows Server, servidores web, bases de datos, motores de contenedores), instalados desde las imágenes o con cloud-init.</li>
-<li><b>Servicios gestionados</b> que sustituyen software que antes se instalaba a mano: bases de datos, colas, cachés, balanceadores, DNS.</li>
-<li><b>Software de gestión</b>: consola, CLI, API, infraestructura como código, gestión de identidades (IAM), monitorización (CloudWatch, Azure Monitor), registros de auditoría (CloudTrail, Activity Log), gestión de secretos (Secrets Manager, Key Vault) y de claves de cifrado (KMS).</li>
-<li><b>Licencias</b>: incluidas en la tarifa por hora, traídas por el cliente (BYOL) o del marketplace.</li>
-</ul>
-
-
-<div class="pausa"><h4>Ahora: actividad 16</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerla. Con ella se cierra el punto.</p></div>
 
 <div class="actividad">
-<h4>Actividad 16. Ficha técnica de un servidor</h4>
-<p><b>Para qué</b>: repasar todo el punto juntando en una ficha lo que se elige al crear un servidor en la nube.</p>
-<p>En parejas. <code>app-1</code> es el servidor de la aplicación web de Cita Previa de la actividad 14. Corre en Linux, usa unos 2 vCPU y 6 GB de memoria de forma equilibrada y necesita leer los justificantes guardados en S3. Completad su ficha técnica: en cada fila, vuestra elección y el apartado del punto donde se explica.</p>
-<div class="tabla"><table>
-<tr><th>Componente</th><th>Elección para <code>app-1</code></th><th>Apartado</th></tr>
-<tr><td>Tipo de máquina: familia y tamaño</td><td></td><td></td></tr>
-<tr><td>Imagen de partida: imagen cloud, plantilla o imagen de oro</td><td></td><td></td></tr>
-<tr><td>Qué la configura en el primer arranque</td><td></td><td></td></tr>
-<tr><td>Subred, IP privada e IP pública (de la actividad 14)</td><td></td><td></td></tr>
-<tr><td>Qué deja entrar su grupo de seguridad (de la actividad 14)</td><td></td><td></td></tr>
-<tr><td>Disco del sistema: tipo y opción (de la actividad 15)</td><td></td><td></td></tr>
-<tr><td>Software de base</td><td></td><td></td></tr>
-<tr><td>Software de gestión: un servicio de AWS para identidades, otro para monitorización y otro para auditoría</td><td></td><td></td></tr>
-</table></div>
+<h4>Actividad 16. El software de la infraestructura</h4>
+<p><b>Para qué</b>: repasar qué software elige, usa o gestiona el cliente en la nube.</p>
+<p>Individual. Una empresa tiene su aplicación en AWS y usa esto:</p>
+<ul>
+<li>Ubuntu 24.04</li>
+<li>nginx</li>
+<li>Amazon RDS para PostgreSQL</li>
+<li>IAM</li>
+<li>CloudWatch</li>
+<li>CloudTrail</li>
+<li>Secrets Manager</li>
+<li>Una licencia de Windows Server que la empresa ya tenía comprada</li>
+</ul>
+<p>Para cada elemento, decid en qué grupo va (sistema operativo y software de base, servicio gestionado, software de gestión o licencia) y para qué sirve, en una frase.</p>
 </div>
-<p class="entrega">Entrega en Aules: respuestas de las actividades 11, 12 y 13, respuestas de la 14, tabla y respuesta de la 15 y ficha técnica de la 16.</p>
+<p class="entrega">Entrega en Aules: respuestas de las actividades 11, 12 y 13, respuestas de la 14, tabla y respuesta de la 15 y respuestas de la 16.</p>
 
 <h3>Preguntas de repaso</h3>
 <ol>
