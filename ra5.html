@@ -125,7 +125,7 @@
 <p><b>Para qué</b>: ver funcionando las piezas del motor de contenedores y dejar Docker listo para el resto del módulo.</p>
 <p>Individual, en el portátil:</p>
 <ol>
-<li>Si Docker no está instalado: <code>sudo apt install docker.io</code> y <code>sudo usermod -aG docker $USER</code>. Cerrad la sesión y volved a entrar. Comprobadlo con <code>docker run --rm hello-world</code>.</li>
+<li>Si Docker no está instalado (hace falta poder usar <code>sudo</code>): <code>sudo apt install docker.io</code> y <code>sudo usermod -aG docker $USER</code>. Cerrad la sesión y volved a entrar. Comprobadlo con <code>docker run --rm hello-world</code>.</li>
 <li>Descargad <a href="assets/ra5/cita-previa-app.zip">cita-previa-app.zip</a> (pestaña Recursos), descomprimidlo y, dentro de la carpeta, construid la imagen: <code>docker build -t cita-previa-app:0.1 .</code></li>
 <li>Ejecutadla: <code>docker run -d --name prueba -p 8000:8000 cita-previa-app:0.1</code> y comprobad que responde: <code>curl localhost:8000/salud</code></li>
 <li>Mirad las capas de la imagen: <code>docker image history cita-previa-app:0.1</code></li>
@@ -322,9 +322,10 @@
 <div class="actividad">
 <h4>Actividad 5. Organización, equipos y repositorio</h4>
 <p><b>Para qué</b>: convertir la matriz de accesos en perfiles reales de GitHub.</p>
-<p>En parejas (o en trío). Repartid los papeles: una persona será de <b>operaciones</b> y la otra de <b>desarrollo</b> (en un trío, dos de desarrollo). El profesor será <b>auditoria</b>. La persona de operaciones:</p>
+<p>En parejas (o en trío). Antes de empezar, todas las personas, también el profesor, tienen que tener activado el doble factor en su cuenta de GitHub (<i>Settings → Password and authentication</i>, con una aplicación de autenticación) y guardar sus códigos de recuperación. Si la organización exige el doble factor, quien no lo tenga no podrá acceder a ella.</p>
+<p>Repartid los papeles: una persona será de <b>operaciones</b> y la otra de <b>desarrollo</b> (en un trío, dos de desarrollo). El profesor será <b>auditoria</b>. La persona de operaciones:</p>
 <ol>
-<li>Crea una organización gratuita en GitHub con el nombre <code>citaprevia-APELLIDO1-APELLIDO2</code>, con los primeros apellidos de la pareja. Será la única owner: en una empresa habría dos, pero así podremos comprobar los límites de los demás perfiles.</li>
+<li>Crea una organización gratuita en GitHub con el nombre <code>citaprevia-APELLIDO1-APELLIDO2</code>, con los primeros apellidos de la pareja, sin tildes ni eñes. Será la única owner: en una empresa habría dos, pero así podremos comprobar los límites de los demás perfiles.</li>
 <li>En <i>Settings → Member privileges</i>, pone los permisos base en <i>No permission</i> y desactiva la creación de repositorios por los miembros. En <i>Settings → Authentication security</i>, exige el doble factor.</li>
 <li>Invita a la otra persona y al profesor como miembros y crea los equipos <code>desarrollo</code>, <code>operaciones</code> y <code>auditoria</code> con cada persona en el suyo.</li>
 <li>Crea el repositorio <b>público</b> <code>cita-previa-app</code> y sube los ficheros de la carpeta que hay dentro de <a href="assets/ra5/cita-previa-app.zip">cita-previa-app.zip</a> (<i>Add file → Upload files</i>, incluidos <code>.gitignore</code> y <code>.dockerignore</code>, que son ocultos: en el selector de ficheros, <kbd>Ctrl</kbd>+<kbd>H</kbd> los muestra).</li>
@@ -462,9 +463,8 @@ Dockerfile      @ORGANIZACION/operaciones
 <p><b>Para qué</b>: configurar una autenticación fuerte y comprobar el alcance limitado de un token de grano fino.</p>
 <p>Individual:</p>
 <ol>
-<li>Si no lo teníais, activad el doble factor en vuestra cuenta con una aplicación de autenticación y guardad los códigos de recuperación.</li>
 <li>En el portátil, generad una clave SSH con frase de paso: <code>ssh-keygen -t ed25519 -C "vuestro correo"</code>. Añadid la clave pública (<code>~/.ssh/id_ed25519.pub</code>) en GitHub, en <i>Settings → SSH and GPG keys</i>.</li>
-<li>Comprobadlo con <code>ssh -T git@github.com</code> y clonad <code>cita-previa-app</code> por SSH.</li>
+<li>Comprobadlo con <code>ssh -T git@github.com</code> y clonad <code>cita-previa-app</code> por SSH. Si la red del instituto bloquea el puerto 22 (la orden se queda esperando), GitHub admite SSH por el puerto 443: añadid a <code>~/.ssh/config</code> las líneas <code>Host github.com</code>, <code>Hostname ssh.github.com</code> y <code>Port 443</code>, y volved a probar.</li>
 <li>Cread un token de grano fino (<i>Settings → Developer settings → Personal access tokens → Fine-grained tokens</i>) con propietario la organización, acceso solo a <code>cita-previa-app</code>, permiso <i>Contents: Read-only</i> y caducidad de 7 días. Si la organización pide aprobación, la persona owner la concede en <i>Settings → Personal access tokens → Pending requests</i>.</li>
 <li>Intentad crear un fichero con el token: <code>curl -s -X PUT -H "Authorization: Bearer TOKEN" https://api.github.com/repos/ORGANIZACION/cita-previa-app/contents/prueba.txt -d '{"message":"prueba","content":"aG9sYQ=="}'</code></li>
 <li>Revocad el token.</li>
@@ -929,7 +929,7 @@ jobs:
 <h4>Actividad 17. Construir, escanear, probar y publicar</h4>
 <p><b>Para qué</b>: validar la imagen completa antes de publicarla para los entornos de despliegue.</p>
 <ol>
-<li>La persona de desarrollo añade <code>.github/workflows/imagen.yml</code> en una rama y abre el pull request. Comprobad que la imagen se construye, se escanea y se prueba, pero no se publica.</li>
+<li>La persona de desarrollo añade <code>.github/workflows/imagen.yml</code> en una rama y abre el pull request. Comprobad que la imagen se construye, se escanea y se prueba, pero no se publica. Si el escaneo falla por una vulnerabilidad crítica de la imagen base, anotad cuál es: es justo lo que debe hacer el paso. Para seguir, esperad a que se publique una imagen base corregida o, solo en esta práctica, cambiad <code>exit-code</code> a <code>"0"</code> y documentadlo.</li>
 <li>En el mismo pull request, la persona de desarrollo provoca un fallo de integración: en la última línea del Dockerfile cambia <code>0.0.0.0:8000</code> por <code>0.0.0.0:9000</code>. ¿En qué paso falla? ¿Por qué las pruebas unitarias del punto 5 no lo detectaron?</li>
 <li>Deshaced el cambio, la persona de operaciones aprueba el pull request y se fusiona. Comprobad en la página de la organización, en <i>Packages</i>, que aparece la imagen <code>cita-previa-app</code> con la etiqueta <code>sha-...</code></li>
 <li>Cread la versión: <code>git pull</code>, <code>git tag v1.0.0</code> y <code>git push origin v1.0.0</code>. Comprobad que se publica también la etiqueta <code>1.0.0</code>.</li>
@@ -976,7 +976,7 @@ gunicorn==23.0.0
 -r requirements.txt
 pytest&gt;=8
 pytest-cov&gt;=5
-ruff&gt;=0.15</code></pre>
+ruff==0.16.9</code></pre>
 <p class="fichero">pyproject.toml</p>
 <pre><code>[tool.ruff]
 line-length = 100
