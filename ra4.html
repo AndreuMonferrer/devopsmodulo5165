@@ -51,6 +51,7 @@
 <li><b>Estructura</b>: cómputo (máquinas virtuales de distintas familias y tamaños), almacenamiento (de bloque, de objetos, de ficheros) y red (redes virtuales, subredes, grupos de seguridad, balanceadores). Son los componentes que vimos en la unidad 2.</li>
 <li><b>Funcionamiento</b>: el cliente lanza una máquina a partir de una imagen, elige su tamaño y su red, entra por SSH y a partir de ahí la administra: instala el software, aplica parches, configura el cortafuegos, hace copias. Para crecer puede cambiar a una máquina más grande (escalado vertical) o añadir más máquinas detrás de un balanceador (escalado horizontal).</li>
 <li><b>Se paga</b> por el tiempo que los recursos están encendidos o reservados.</li>
+<li><b>Claves técnicas</b>: la alta disponibilidad la diseña el cliente (varias máquinas en varias zonas de disponibilidad, detrás de un balanceador). El autoescalado se basa en una plantilla de lanzamiento y en comprobaciones de salud que sustituyen las máquinas que fallan. En lugar de parchear máquinas en marcha (infraestructura <b>mutable</b>), lo habitual es preparar una imagen nueva y sustituirlas (infraestructura <b>inmutable</b>), lo que evita que cada servidor acabe siendo distinto.</li>
 <li><b>Ejemplos</b>: Amazon EC2, Azure Virtual Machines, Google Compute Engine.</li>
 </ul>
 
@@ -60,6 +61,7 @@
 <li><b>Estructura</b>: entornos de ejecución para varios lenguajes (Python, Java, Node.js…), un proceso que construye la aplicación a partir del código, un balanceador que reparte el tráfico, escalado automático, registros y métricas, y servicios añadidos como bases de datos o colas.</li>
 <li><b>Funcionamiento</b>: el desarrollador sube el código (por ejemplo, con un <code>git push</code>), la plataforma lo construye, lo despliega en sus servidores y le da una URL. Las variables de entorno sirven para la configuración, y la plataforma permite volver a la versión anterior si algo falla.</li>
 <li><b>Se paga</b> por las instancias que ejecutan la aplicación y el tiempo que están en marcha.</li>
+<li><b>Claves técnicas</b>: la plataforma puede parar, mover o multiplicar las instancias en cualquier momento, así que la aplicación tiene que ser <b>sin estado</b>. Los ficheros y las sesiones van a servicios externos (almacenamiento de objetos, base de datos, caché), nunca al disco de la instancia. Es lo que recoge la metodología <b>twelve-factor</b>: configuración en variables de entorno, registros por la salida estándar y procesos que se pueden arrancar y parar sin perder nada. A cambio, el cliente renuncia al acceso de administrador y queda limitado a los lenguajes y versiones que soporta la plataforma.</li>
 <li><b>Ejemplos</b>: AWS Elastic Beanstalk, Azure App Service, Google App Engine, Heroku. Una base de datos gestionada como Amazon RDS sigue la misma idea aplicada a una base de datos.</li>
 </ul>
 
@@ -69,6 +71,7 @@
 <li><b>Estructura</b>: la función (el código y su configuración de memoria y tiempo máximo), el <b>disparador</b> que la activa (una petición HTTP, la subida de un fichero, un mensaje en una cola, una hora programada) y los servicios gestionados con los que trabaja (almacenamiento, bases de datos, colas).</li>
 <li><b>Funcionamiento</b>: llega el evento, el proveedor busca una instancia libre o arranca una nueva, ejecuta la función y devuelve el resultado. La primera ejecución tras un rato sin uso tarda algo más (<b>arranque en frío</b>). Las funciones no guardan estado entre ejecuciones y tienen límites de duración (en AWS Lambda, 15 minutos como máximo), así que encajan en tareas cortas.</li>
 <li><b>Se paga</b> por ejecución y por el tiempo de cómputo consumido. Si no hay eventos, el coste es prácticamente cero.</li>
+<li><b>Claves técnicas</b>: cada instancia atiende una petición a la vez, y hay un límite de ejecuciones simultáneas por cuenta. El arranque en frío se puede reducir manteniendo instancias preparadas (concurrencia aprovisionada), aunque eso se paga aparte. Muchos disparadores entregan los eventos <b>al menos una vez</b>, así que un mismo evento puede llegar repetido y la función tiene que ser <b>idempotente</b>: ejecutarla dos veces debe dar el mismo resultado que una. Con tráfico alto y constante, el pago por ejecución puede salir más caro que una máquina o un contenedor encendidos todo el día.</li>
 <li><b>Ejemplos</b>: AWS Lambda, Azure Functions, Google Cloud Run functions.</li>
 </ul>
 
@@ -78,30 +81,30 @@
 <li><b>Estructura</b>: una aplicación <b>multitenencia</b>, en la que una sola instancia atiende a muchos clientes con sus datos separados, una capa de acceso con autenticación (a menudo con inicio de sesión único, SSO) y una API para integrarla con otros sistemas.</li>
 <li><b>Funcionamiento</b>: el cliente se da de alta, configura usuarios y permisos y empieza a usarla. El proveedor actualiza la aplicación para todos a la vez, sin que el cliente tenga que hacer nada.</li>
 <li><b>Se paga</b> con una suscripción, normalmente por usuario y mes o por uso.</li>
+<li><b>Claves técnicas</b>: la multitenencia admite varios diseños, desde una base de datos compartida en la que cada fila lleva el identificador del cliente hasta una instancia separada por cliente, más cara pero más aislada. En las empresas, los usuarios se gestionan desde su propio directorio con <b>SSO</b> (SAML u OpenID Connect) y se dan de alta y de baja automáticamente con <b>SCIM</b>. Antes de contratar conviene revisar el SLA, dónde se guardan los datos (por el RGPD) y cómo se exportan si un día se cambia de proveedor.</li>
 <li><b>Ejemplos</b>: Google Workspace, Microsoft 365, Salesforce, Slack. Y muchas herramientas DevOps del curso: GitHub, Docker Hub, SonarQube Cloud.</li>
 </ul>
 
 <div class="actividad">
-<h4>Actividad 1. ¿Qué modelo es?</h4>
-<p><b>Para qué</b>: reconocer el modelo de servicio de servicios reales y qué le queda por gestionar al cliente.</p>
-<p>Individual. Una empresa usa estos servicios:</p>
-<ul>
-<li><b>Microsoft 365</b>: correo, documentos y videollamadas para toda la plantilla.</li>
-<li><b>Amazon EC2</b>: máquinas virtuales en las que la empresa elige el sistema operativo.</li>
-<li><b>Heroku</b>: la empresa sube el código de su web con <code>git push</code> y la web queda publicada.</li>
-<li><b>AWS Lambda</b>: un código que se ejecuta cada noche para borrar ficheros temporales.</li>
-<li><b>GitHub</b>: repositorios, incidencias y flujos de CI/CD.</li>
-<li><b>Azure App Service</b>: aloja una API en Java sin que la empresa vea las máquinas.</li>
-<li><b>Azure Virtual Machines</b>: un servidor Windows con un programa de contabilidad instalado por la empresa.</li>
-<li><b>Azure Functions</b>: un código que redimensiona cada foto que se sube a la web.</li>
-</ul>
-<p>Completad esta tabla con una fila por servicio:</p>
+<h4>Actividad 1. ¿Quién responde?</h4>
+<p><b>Para qué</b>: aplicar el reparto de responsabilidades de cada modelo a problemas reales.</p>
+<p>Individual. Una empresa tiene servicios en varios modelos y le pasa lo siguiente:</p>
+<ol>
+<li>Se publica una vulnerabilidad crítica en el núcleo de Linux, y afecta a sus máquinas de Amazon EC2.</li>
+<li>La misma vulnerabilidad afecta a los servidores de Heroku donde se ejecuta su web.</li>
+<li>Un empleado dejó la empresa hace un mes y todavía puede entrar en su correo de Microsoft 365.</li>
+<li>Falla un disco físico del CPD donde se ejecuta una de sus máquinas de Azure.</li>
+<li>Una función de AWS Lambda que registra pagos ha cobrado dos veces el mismo pedido porque el evento llegó repetido.</li>
+<li>Su API en Azure App Service guardaba los ficheros subidos en el disco local, y tras un reinicio de la plataforma han desaparecido.</li>
+<li>La primera petición de la mañana a su API en AWS Lambda tarda tres segundos y las siguientes, unos milisegundos.</li>
+<li>El CRM que usa en modo SaaS ha estado caído seis horas.</li>
+</ol>
+<p>Completad esta tabla con una fila por situación:</p>
 <div class="tabla"><table>
-<tr><th>Servicio</th><th>Modelo de servicio</th><th>Qué gestiona la empresa</th></tr>
-<tr><td>Microsoft 365</td><td></td><td></td></tr>
-<tr><td>…</td><td></td><td></td></tr>
+<tr><th>Situación</th><th>Modelo de servicio</th><th>¿De quién es la responsabilidad?</th><th>Qué habría que hacer o haber hecho</th></tr>
+<tr><td>1</td><td></td><td></td><td></td></tr>
+<tr><td>…</td><td></td><td></td><td></td></tr>
 </table></div>
-<p>Para terminar, responded: si se publica un parche de seguridad urgente para el sistema operativo, ¿en cuáles de estos servicios tiene que aplicarlo la empresa?</p>
 </div>
 </section><section class="panel" role="tabpanel" id="p-p2" aria-labelledby="tab-p2" hidden>
 <p class="meta">Unidad 4 · 2. Comparativa · 2 horas</p>
@@ -180,7 +183,12 @@
 <tr><td>Correo y documentos</td><td></td><td></td><td></td></tr>
 <tr><td>…</td><td></td><td></td><td></td></tr>
 </table></div>
-<p>Para terminar, responded: ¿qué pieza le dará más trabajo de mantenimiento a la persona de informática y por qué?</p>
+<p>Para terminar, responded:</p>
+<ul>
+<li>¿Qué pieza le dará más trabajo de mantenimiento a la persona de informática y por qué?</li>
+<li>Si la web de reservas pasara a tener tráfico alto y constante las 24 horas, ¿mantendríais el mismo modelo? ¿Por qué?</li>
+<li>¿Qué tendría que cumplir el servicio de correo y documentos para poder guardar datos de los socios?</li>
+</ul>
 <p class="entrega">Entrega en Aules: tabla y respuesta de la actividad 1 y tabla y respuesta de la actividad 2.</p>
 </div>
 </section><section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden>
