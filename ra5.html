@@ -246,21 +246,44 @@ Failed conditions: 42.0% Coverage on New Code (required ≥ 80%)</code></pre></d
 </div>
 <div class="actividad">
 <h4>Actividad 4. Diseño de las comprobaciones de calidad y seguridad de un proyecto</h4>
-<p><b>Para qué</b>: elegir las comprobaciones que necesita un proyecto concreto y decidir en qué momento del pipeline va cada una.</p>
-<p>En parejas. Una gestoría encarga a vuestra empresa una aplicación y tenéis que decidir qué comprobaciones automáticas llevará. Para cada característica del proyecto, completad la fila:</p>
+<p><b>Para qué</b>: elegir la herramienta adecuada para cada riesgo de un proyecto, clasificarla y decidir en qué momento del pipeline se ejecuta.</p>
+<p>En parejas. Una gestoría ha encargado a vuestra empresa una aplicación. Cada característica del proyecto trae un riesgo, y vuestro trabajo es elegir, del catálogo de herramientas que usa la empresa, cuál lo controla.</p>
+<p><b>Catálogo de herramientas de la empresa.</b> Una de ellas no hace falta en este proyecto.</p>
+<div class="tabla"><table>
+<tr><th>Herramienta</th><th>Qué hace</th></tr>
+<tr><td><b>Ruff</b></td><td>Revisa el código Python sin ejecutarlo y avisa de errores probables y malas prácticas.</td></tr>
+<tr><td><b>Trivy</b></td><td>Analiza los paquetes del sistema operativo y las librerías que hay dentro de una imagen de contenedor.</td></tr>
+<tr><td><b>pip-audit</b></td><td>Compara las librerías de Python del proyecto con bases de datos de vulnerabilidades conocidas.</td></tr>
+<tr><td><b>pytest contra el entorno de pruebas de la pasarela</b></td><td>Ejecuta pruebas que llaman al entorno de pruebas (<i>sandbox</i>) del proveedor y comprueban que las respuestas son las esperadas.</td></tr>
+<tr><td><b>Checkov</b></td><td>Revisa ficheros de Terraform, Dockerfile o Kubernetes en busca de configuraciones inseguras.</td></tr>
+<tr><td><b>Dependabot</b></td><td>Vigila las dependencias del repositorio y, cuando se publica una vulnerabilidad, abre una alerta y un pull request para actualizar.</td></tr>
+<tr><td><b>gitleaks</b></td><td>Busca contraseñas, tokens y claves en el código y en el historial de Git.</td></tr>
+<tr><td><b>OWASP ZAP</b></td><td>Ataca desde fuera la aplicación en marcha, como lo haría un atacante.</td></tr>
+</table></div>
+<p><b>Cómo se rellena cada fila:</b></p>
 <ul>
-<li><b>Tipo de herramienta</b>: uno de los de los apartados 2 y 3 (linter, pruebas, SAST, SCA, detección de secretos, escaneo de imágenes, escaneo de configuración, DAST...).</li>
-<li><b>Herramienta concreta</b>: una herramienta real de ese tipo.</li>
-<li><b>Cuándo se ejecuta</b>: uno o varios de los momentos del apartado 4 (en el portátil, en cada pull request, al construir la imagen, en el entorno de revisión o de forma periódica).</li>
-<li><b>Si falla</b>: si debe <b>parar</b> el despliegue o solo <b>avisar</b>.</li>
+<li><b>Herramienta</b>: la del catálogo que controla ese riesgo.</li>
+<li><b>Tipo</b>: a qué tipo de los apartados 2 y 3 pertenece (linter, pruebas, SAST, SCA, detección de secretos, escaneo de imágenes, escaneo de configuración o DAST).</li>
+<li><b>Cuándo se ejecuta</b>: uno o varios momentos del apartado 4. En el portátil antes del commit, en cada pull request, al construir la imagen, en el entorno de revisión o de forma periódica.</li>
+<li><b>Si falla</b>: <b>para</b> el despliegue cuando el problema llegaría a producción o expondría datos. Solo <b>avisa</b> cuando no hay ningún despliegue en marcha que parar.</li>
 </ul>
 <p>La primera fila es un ejemplo resuelto:</p>
 <div class="tabla"><table>
-<tr><th>Característica del proyecto</th><th>Tipo de herramienta</th><th>Herramienta concreta</th><th>Cuándo se ejecuta</th><th>Si falla</th></tr>
-<tr><td><i>Ejemplo: el código Python tiene que seguir un estilo uniforme.</i></td><td><i>Formateador</i></td><td><i>ruff format</i></td><td><i>En el portátil y en cada pull request</i></td><td><i>Para</i></td></tr>
-<tr><td>API en Python con Flask, empaquetada en una imagen de contenedor a partir de <code>python:3.12-slim</code>.</td><td></td><td></td><td></td><td></td></tr><tr><td>Usa 14 librerías externas de PyPI.</td><td></td><td></td><td></td><td></td></tr><tr><td>Se conecta a una pasarela de pago externa que ofrece un entorno de pruebas.</td><td></td><td></td><td></td><td></td></tr><tr><td>La infraestructura se define con ficheros de Terraform en el mismo repositorio.</td><td></td><td></td><td></td><td></td></tr><tr><td>Se despliega en producción una vez por semana, y a veces pasan meses sin cambios en el código.</td><td></td><td></td><td></td><td></td></tr><tr><td>Guarda datos personales de clientes, así que una filtración tendría consecuencias legales (RGPD).</td><td></td><td></td><td></td><td></td></tr></table></div>
-<p>Responded en dos o tres líneas: ¿por qué algunas de estas comprobaciones se tienen que seguir ejecutando aunque pasen meses sin cambios en el código?</p>
-<p class="entrega">Entrega en Aules: tabla de la actividad 3 con el orden de prioridad y tabla y respuesta de la actividad 4.</p>
+<tr><th>Característica</th><th>Riesgo</th><th>Herramienta</th><th>Tipo</th><th>Cuándo se ejecuta</th><th>Si falla</th></tr>
+<tr><td><i>Ejemplo: el código de la API está escrito en Python.</i></td><td><i>Se cuelan errores como variables sin definir o importaciones que no se usan.</i></td><td><i>Ruff</i></td><td><i>Linter</i></td><td><i>En el portátil antes del commit y en cada pull request</i></td><td><i>Para</i></td></tr>
+<tr><td>API en Python con Flask, empaquetada en una imagen de contenedor a partir de <code>python:3.12-slim</code>.</td><td>La imagen base trae paquetes con vulnerabilidades conocidas.</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Usa 14 librerías externas de PyPI.</td><td>Una de las librerías tiene una vulnerabilidad conocida.</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Se conecta a una pasarela de pago externa que ofrece un entorno de pruebas.</td><td>El proveedor cambia su API o un cambio nuestro rompe la llamada, y los pagos dejan de funcionar.</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>La infraestructura se define con ficheros de Terraform en el mismo repositorio.</td><td>Alguien deja una configuración insegura, como una base de datos abierta a todo Internet.</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Se despliega una vez por semana y a veces pasan meses sin cambios en el código.</td><td>Se publica una vulnerabilidad nueva en una dependencia mientras nadie está tocando el proyecto.</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Guarda datos personales de clientes (RGPD).</td><td>Alguien sube por error al repositorio la contraseña de la base de datos de clientes.</td><td></td><td></td><td></td><td></td></tr>
+</table></div>
+<p>Para terminar, responded:</p>
+<ul>
+<li>¿Qué herramienta del catálogo no habéis usado? ¿En qué momento del pipeline la pondríais si este proyecto la necesitara?</li>
+<li>¿Por qué algunas comprobaciones se tienen que seguir ejecutando aunque pasen meses sin cambios en el código?</li>
+</ul>
+<p class="entrega">Entrega en Aules: tabla de la actividad 3 con el orden de prioridad y tabla y respuestas de la actividad 4.</p>
 </div>
 </section><section class="panel" role="tabpanel" id="p-p3" aria-labelledby="tab-p3" hidden>
 <p class="meta">Unidad 5 · 3. Control de acceso · 4 horas</p>
