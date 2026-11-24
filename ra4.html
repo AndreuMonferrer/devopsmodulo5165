@@ -115,20 +115,7 @@
 <li>La página que sirve nginx es vuestro <code>index.html</code>, en la carpeta <code>/var/www/html</code> del contenedor.</li>
 <li>Se ve en Firefox entrando en <code>http://localhost:8080</code> desde el portátil.</li>
 </ul>
-<details><summary>Si os atascáis</summary>
-<ol class="pasos">
-<li>Arrancad un contenedor Ubuntu que redirige el puerto 8080 del portátil al puerto 80 del contenedor:
-<pre><code>docker run -it --name iaas -p 8080:80 ubuntu bash</code></pre></li>
-<li>Dentro del contenedor, instalad nginx:
-<pre><code>apt update
-apt install -y nginx</code></pre>
-Si os pregunta la zona horaria, elegid <i>Europe</i> y después <i>Madrid</i>.</li>
-<li>Abrid otra terminal en el portátil y copiad vuestra página dentro del contenedor:
-<pre><code>docker cp ~/index.html iaas:/var/www/html/index.html</code></pre></li>
-<li>Volved a la terminal del contenedor y arrancad nginx:
-<pre><code>nginx</code></pre></li>
-</ol>
-</details>
+<p>En la pestaña <a href="#recursos">Recursos</a> tenéis los comandos básicos de Docker. Buscad los que necesitáis y adaptadlos a lo que pide esta parte.</p>
 
 <p><b>Parte B. PaaS: subís la página y la plataforma la sirve</b></p>
 <p>GitHub Pages solo publica páginas estáticas, así que es un PaaS muy sencillo. Aun así, la idea es la misma que en AWS Elastic Beanstalk o Azure App Service: vosotros aportáis el contenido y la plataforma se encarga de servirlo.</p>
@@ -267,6 +254,32 @@ Si os pregunta la zona horaria, elegid <i>Europe</i> y después <i>Madrid</i>.</
 <li>Modelo de responsabilidad compartida de AWS: <a href="https://aws.amazon.com/compliance/shared-responsibility-model/">aws.amazon.com</a></li>
 <li>Azure App Service y Azure Functions: <a href="https://learn.microsoft.com/es-es/azure/">learn.microsoft.com</a></li>
 <li>AWS Elastic Beanstalk y AWS Lambda: <a href="https://docs.aws.amazon.com/">docs.aws.amazon.com</a></li></ul>
+<h3>Comandos básicos de Docker</h3>
+<p>Plantillas generales para trabajar con contenedores. Lo que va entre <code>&lt; &gt;</code> se sustituye por vuestros valores. No todos los comandos hacen falta en cada actividad.</p>
+<div class="tabla"><table>
+<tr><th>Para qué</th><th>Comando</th></tr>
+<tr><td>Abrir una terminal en Ubuntu MATE</td><td><code>Ctrl + Alt + T</code></td></tr>
+<tr><td>Descargar una imagen</td><td><code>docker pull &lt;imagen&gt;</code></td></tr>
+<tr><td>Ver las imágenes descargadas</td><td><code>docker images</code></td></tr>
+<tr><td>Crear y arrancar un contenedor</td><td><code>docker run [opciones] &lt;imagen&gt; [comando]</code></td></tr>
+<tr><td>Opción: ponerle nombre al contenedor</td><td><code>--name &lt;nombre&gt;</code></td></tr>
+<tr><td>Opción: entrar en el contenedor con una terminal interactiva</td><td><code>-it</code> (y como comando, <code>bash</code>)</td></tr>
+<tr><td>Opción: ejecutarlo en segundo plano</td><td><code>-d</code></td></tr>
+<tr><td>Opción: publicar un puerto del contenedor en el portátil</td><td><code>-p &lt;puerto_portátil&gt;:&lt;puerto_contenedor&gt;</code></td></tr>
+<tr><td>Opción: borrar el contenedor al pararlo</td><td><code>--rm</code></td></tr>
+<tr><td>Ver los contenedores en marcha (con <code>-a</code>, también los parados)</td><td><code>docker ps</code> · <code>docker ps -a</code></td></tr>
+<tr><td>Abrir una terminal en un contenedor que ya está en marcha</td><td><code>docker exec -it &lt;nombre&gt; bash</code></td></tr>
+<tr><td>Copiar un archivo del portátil al contenedor</td><td><code>docker cp &lt;archivo&gt; &lt;nombre&gt;:&lt;ruta_en_el_contenedor&gt;</code></td></tr>
+<tr><td>Copiar un archivo del contenedor al portátil</td><td><code>docker cp &lt;nombre&gt;:&lt;ruta_en_el_contenedor&gt; &lt;destino&gt;</code></td></tr>
+<tr><td>Ver los registros (salida) de un contenedor</td><td><code>docker logs &lt;nombre&gt;</code></td></tr>
+<tr><td>Parar y volver a arrancar un contenedor</td><td><code>docker stop &lt;nombre&gt;</code> · <code>docker start -ai &lt;nombre&gt;</code></td></tr>
+<tr><td>Borrar un contenedor (parado) o una imagen</td><td><code>docker rm &lt;nombre&gt;</code> · <code>docker rmi &lt;imagen&gt;</code></td></tr>
+<tr><td>Dentro de un contenedor Ubuntu: actualizar la lista de paquetes</td><td><code>apt update</code></td></tr>
+<tr><td>Dentro de un contenedor Ubuntu: instalar un paquete</td><td><code>apt install -y &lt;paquete&gt;</code></td></tr>
+<tr><td>Dentro de un contenedor: arrancar un servicio instalado</td><td><code>service &lt;servicio&gt; start</code></td></tr>
+<tr><td>Salir de la terminal del contenedor</td><td><code>exit</code></td></tr>
+</table></div>
+<p>Si un comando de Docker da error de permisos, ponedle <code>sudo</code> delante.</p>
 <h3>Glosario</h3>
 <div class="tabla"><table><tr><th>Término</th><th>Significado</th></tr>
 <tr><td>Responsabilidad compartida</td><td>Reparto de tareas de seguridad y operación entre proveedor y cliente, distinto en cada modelo.</td></tr>
