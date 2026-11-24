@@ -194,6 +194,7 @@
 <li><b>CVE</b> (<i>Common Vulnerabilities and Exposures</i>): identificador público de una vulnerabilidad conocida, como <code>CVE-2021-44228</code> (Log4Shell). Las herramientas SCA y de imágenes buscan CVE en las versiones que usamos. GitHub publica además sus propios avisos con identificadores <code>GHSA-...</code>.</li>
 <li><b>CVSS</b>: puntuación de gravedad de 0 a 10 (baja, media, alta, crítica). Ayuda a priorizar, aunque hay que valorar si la parte vulnerable se usa realmente.</li>
 <li><b>Bases de datos de vulnerabilidades</b>: NVD (EE. UU.), GitHub Advisory Database, OSV.</li>
+<li><b>Cabeceras de seguridad</b>: el aviso más habitual de un análisis DAST es que la web no envía alguna cabecera HTTP de seguridad. La más conocida es <code>Content-Security-Policy</code> (CSP), que indica al navegador de qué orígenes puede cargar scripts y estilos, y así limita el daño de un ataque XSS. Se corrige configurando el servidor web o la aplicación para que la envíe.</li>
 <li><b>Falsos positivos</b>: avisos que no son un problema real. Se revisan y se descartan con una justificación. Ignorarlos sin más hace que se pierda la confianza en la herramienta.</li>
 </ul>
 <h4>Integraciones externas</h4>
