@@ -214,20 +214,21 @@
 <h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 3. Clasificación y priorización de alertas de validación</h4>
-<p><b>Para qué</b>: reconocer el tipo de herramienta por lo que detecta y decidir qué hacer con cada aviso, como en una guardia real.</p>
+<p><b>Para qué</b>: reconocer el tipo de herramienta por lo que detecta y decidir qué hacer con cada aviso, como se hace a diario en un equipo DevOps.</p>
 <p>Individual. Es lunes por la mañana. Durante el fin de semana, las herramientas de validación de varios proyectos de la empresa han dejado estos avisos en el canal de alertas del equipo DevOps, y os toca revisarlos:</p>
-<ol>
-<li><code>app.py:3:8: F401 [*] `os` imported but unused</code></li>
-<li><code>FAILED test_app.py::test_cita_inexistente - assert 200 == 404</code></li>
-<li><code>SQL query built from user-controlled sources (py/sql-injection)</code>, señalado en la línea <code>con.execute("SELECT * FROM citas WHERE dni = '" + dni + "'")</code></li>
-<li><code>Finding: AWS_ACCESS_KEY_ID=AKIA... RuleID: aws-access-token File: config/.env Line: 3</code></li>
-<li><code>flask 2.2.0 GHSA-m2qf-hxjv-5gpq 2.2.5,2.3.2</code>, en una tabla con las columnas <i>Name</i>, <i>Version</i>, <i>ID</i> y <i>Fix Versions</i></li>
-<li><code>org.apache.logging.log4j:log4j-core (app.jar) │ CVE-2021-44228 │ CRITICAL │ fixed │ 2.14.1 │ 2.15.0, 2.12.2, 2.3.1</code>, en el análisis de la imagen <code>facturas:3.2</code></li>
-<li><code>Dockerfile:1 DL3007 warning: Using latest is prone to errors if the image will ever update. Pin the version explicitly to a release tag</code></li>
-<li><code>Quality Gate failed · Failed conditions: 42.0% Coverage on New Code (required ≥ 80%)</code>, en un pull request</li>
-<li><code>WARN-NEW: Content Security Policy (CSP) Header Not Set [10038] x 3</code>, en las URL de <code>https://revision.empresa.es/</code></li>
-</ol>
-<p>Haced el triaje en esta tabla, con una fila por alerta:</p>
+<div class="tabla"><table>
+<tr><th>Aviso</th><th>Proyecto</th><th>Dónde ha aparecido</th><th>Mensaje</th></tr>
+<tr><td><b>1</b></td><td>citas&#8209;api</td><td>Pull request #42</td><td><code>app.py:3:8: F401 [*] `os` imported but unused</code></td></tr>
+<tr><td><b>2</b></td><td>citas&#8209;api</td><td>Pull request #42</td><td><code>FAILED test_app.py::test_cita_inexistente - assert 200 == 404</code></td></tr>
+<tr><td><b>3</b></td><td>pagos&#8209;web</td><td>Pull request #17</td><td><code>SQL query built from user-controlled sources (py/sql-injection)</code><br>Línea señalada: <code>con.execute("SELECT * FROM citas WHERE dni = '" + dni + "'")</code></td></tr>
+<tr><td><b>4</b></td><td>pagos&#8209;web</td><td>Push a la rama <code>login</code></td><td><code>Finding: AWS_ACCESS_KEY_ID=AKIA... RuleID: aws-access-token File: config/.env Line: 3</code></td></tr>
+<tr><td><b>5</b></td><td>citas&#8209;api</td><td>Análisis programado del sábado</td><td>Tabla con las columnas <i>Name</i>, <i>Version</i>, <i>ID</i> y <i>Fix Versions</i>:<br><code>flask 2.2.0 GHSA-m2qf-hxjv-5gpq 2.2.5,2.3.2</code></td></tr>
+<tr><td><b>6</b></td><td>facturas</td><td>Análisis programado de la imagen <code>facturas:3.2</code></td><td><code>org.apache.logging.log4j:log4j-core (app.jar) │ CVE-2021-44228 │ CRITICAL │ fixed │ 2.14.1 │ 2.15.0, 2.12.2, 2.3.1</code></td></tr>
+<tr><td><b>7</b></td><td>facturas</td><td>Pull request #8</td><td><code>Dockerfile:1 DL3007 warning: Using latest is prone to errors if the image will ever update. Pin the version explicitly to a release tag</code></td></tr>
+<tr><td><b>8</b></td><td>pagos&#8209;web</td><td>Pull request #17</td><td><code>Quality Gate failed · Failed conditions: 42.0% Coverage on New Code (required ≥ 80%)</code></td></tr>
+<tr><td><b>9</b></td><td>pagos&#8209;web</td><td>Entorno de revisión <code>https://revision.empresa.es/</code></td><td><code>WARN-NEW: Content Security Policy (CSP) Header Not Set [10038] x 3</code></td></tr>
+</table></div>
+<p>Haced el triaje en esta tabla, con una fila por aviso:</p>
 <div class="tabla"><table>
 <tr><th>Aviso</th><th>Tipo y herramienta probable (apartados 2 y 3)</th><th>Qué ha detectado</th><th>Prioridad: urgente, esta semana o puede esperar</th><th>Qué haríais</th><th>Dónde debería haber saltado antes</th></tr>
 <tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
