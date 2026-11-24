@@ -28,6 +28,7 @@
 <li>Situar los modelos de servicio en la pila y relacionarlos con lo que gestiona el cliente y lo que gestiona el proveedor.</li>
 <li>Describir la estructura y el funcionamiento del SaaS, el PaaS, el IaaS y el serverless.</li>
 <li>Reconocer el modelo de servicio de servicios reales.</li>
+<li>Comprobar en la práctica qué cambia entre IaaS, PaaS y serverless publicando una misma web.</li>
 </ul>
 
 <h3>1. Quién gestiona cada capa</h3>
@@ -86,25 +87,90 @@
 </ul>
 
 <div class="actividad">
-<h4>Actividad 1. ¿Quién responde?</h4>
-<p><b>Para qué</b>: aplicar el reparto de responsabilidades de cada modelo a problemas reales.</p>
-<p>Individual. Una empresa tiene servicios en varios modelos y le pasa lo siguiente:</p>
-<ol>
-<li>Se publica una vulnerabilidad crítica en el núcleo de Linux, y afecta a sus máquinas de Amazon EC2.</li>
-<li>La misma vulnerabilidad afecta a los servidores de Heroku donde se ejecuta su web.</li>
-<li>Un empleado dejó la empresa hace un mes y todavía puede entrar en su correo de Microsoft 365.</li>
-<li>Falla un disco físico del CPD donde se ejecuta una de sus máquinas de Azure.</li>
-<li>Una función de AWS Lambda que registra pagos ha cobrado dos veces el mismo pedido porque el evento llegó repetido.</li>
-<li>Su API en Azure App Service guardaba los ficheros subidos en el disco local, y tras un reinicio de la plataforma han desaparecido.</li>
-<li>La primera petición de la mañana a su API en AWS Lambda tarda tres segundos y las siguientes, unos milisegundos.</li>
-<li>El CRM que usa en modo SaaS ha estado caído seis horas.</li>
+<h4>Actividad 1. La misma web, tres modelos</h4>
+<p><b>Para qué</b>: comprobar con vuestro propio portátil qué tenéis que hacer vosotros y qué hace el proveedor en IaaS, PaaS y serverless, publicando la misma página de las tres formas.</p>
+<p>Individual. Antes de empezar necesitáis:</p>
+<ul>
+<li>Docker instalado en el portátil. Si un comando de Docker da error de permisos, ponedle <code>sudo</code> delante.</li>
+<li>Una cuenta de GitHub.</li>
+<li>Firefox.</li>
+</ul>
+<p><b>Preparación.</b> Cread en vuestra carpeta personal un archivo <code>index.html</code> con este contenido, cambiando el nombre por el vuestro:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;Mi web&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Web de Nombre Apellido&lt;/h1&gt;
+    &lt;p&gt;Esta página se publica con tres modelos de servicio distintos.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p><b>Parte A. IaaS: lo gestionáis todo vosotros</b></p>
+<p>En IaaS el proveedor os da una máquina con el sistema operativo instalado y todo lo demás es cosa vuestra. Lo simuláis con un contenedor Ubuntu vacío en el portátil. No es una nube, pero el trabajo que hacéis es el mismo que en una máquina virtual de Amazon EC2.</p>
+<ol class="pasos">
+<li>Arrancad un contenedor Ubuntu que redirige el puerto 8080 del portátil al puerto 80 del contenedor:
+<pre><code>docker run -it --name iaas -p 8080:80 ubuntu bash</code></pre></li>
+<li>Dentro del contenedor, instalad el servidor web nginx:
+<pre><code>apt update
+apt install -y nginx</code></pre>
+Si os pregunta la zona horaria, elegid <i>Europe</i> y después <i>Madrid</i>.</li>
+<li>Abrid otra terminal en el portátil y copiad vuestra página dentro del contenedor:
+<pre><code>docker cp ~/index.html iaas:/var/www/html/index.html</code></pre></li>
+<li>Volved a la terminal del contenedor y arrancad nginx:
+<pre><code>nginx</code></pre></li>
+<li>Abrid <code>http://localhost:8080</code> en Firefox y comprobad que aparece vuestra página.</li>
 </ol>
-<p>Completad esta tabla con una fila por situación:</p>
+
+<p><b>Parte B. PaaS: subís la página y la plataforma la sirve</b></p>
+<p>GitHub Pages solo publica páginas estáticas, así que es un PaaS muy sencillo. Aun así, la idea es la misma que en AWS Elastic Beanstalk o Azure App Service: vosotros aportáis el contenido y la plataforma se encarga de servirlo.</p>
+<ol class="pasos">
+<li>En GitHub, cread un repositorio público llamado <code>web-paas</code>.</li>
+<li>Pulsad <i>Add file → Upload files</i>, subid vuestro <code>index.html</code> y confirmad con <i>Commit changes</i>.</li>
+<li>Id a <i>Settings → Pages</i>. En <i>Source</i> elegid <i>Deploy from a branch</i>, la rama <code>main</code> y la carpeta <code>/ (root)</code>, y guardad.</li>
+<li>Esperad un par de minutos y abrid <code>https://vuestro-usuario.github.io/web-paas/</code></li>
+</ol>
+
+<p><b>Parte C. Serverless: solo escribís la función</b></p>
+<p>En serverless no hay servidor que instalar ni que arrancar: escribís una función que se ejecuta cada vez que llega una petición y devuelve la respuesta. Usaréis el Playground de Cloudflare Workers, que funciona en el navegador y no necesita cuenta.</p>
+<ol class="pasos">
+<li>Abrid <code>https://workers.cloudflare.com/playground</code> en Firefox.</li>
+<li>En el archivo principal (<code>index.js</code>), borrad todo el código y pegad este. Entre las comillas invertidas va el contenido de vuestro <code>index.html</code>:
+<pre><code>export default {
+  fetch(request) {
+    const html = `aquí va el contenido de vuestro index.html`
+    return new Response(html, {
+      headers: { "content-type": "text/html" }
+    })
+  }
+}</code></pre></li>
+<li>Comprobad en la vista previa de la derecha que aparece vuestra página.</li>
+<li>Pulsad <i>Copy Link</i> para obtener el enlace de lo que habéis hecho.</li>
+</ol>
+
+<p><b>Parte D. Publicar un cambio</b></p>
+<p>Cambiad el título por <i>Web de Nombre Apellido · versión 2</i> y volved a publicarlo con los tres modelos:</p>
+<ul>
+<li><b>IaaS</b>: editad <code>index.html</code> en el portátil, repetid el <code>docker cp</code> del paso 3 y recargad <code>localhost:8080</code>.</li>
+<li><b>PaaS</b>: en el repositorio <code>web-paas</code>, abrid <code>index.html</code>, pulsad el lápiz para editarlo, cambiad el título y confirmad con <i>Commit changes</i>. Esperad un poco y recargad la página.</li>
+<li><b>Serverless</b>: cambiad el título dentro de la función y mirad la vista previa.</li>
+</ul>
+<p>Cuando acabéis, podéis parar el contenedor con <code>docker stop iaas</code>.</p>
+
+<p><b>Parte E. Comparar los tres modelos</b></p>
+<p>Completad esta tabla con lo que habéis hecho:</p>
 <div class="tabla"><table>
-<tr><th>Situación</th><th>Modelo de servicio</th><th>¿De quién es la responsabilidad?</th><th>Qué habría que hacer o haber hecho</th></tr>
-<tr><td>1</td><td></td><td></td><td></td></tr>
-<tr><td>…</td><td></td><td></td><td></td></tr>
+<tr><th>Pregunta</th><th>IaaS</th><th>PaaS</th><th>Serverless</th></tr>
+<tr><td>¿Habéis instalado software?</td><td></td><td></td><td></td></tr>
+<tr><td>¿Habéis arrancado o configurado un servidor?</td><td></td><td></td><td></td></tr>
+<tr><td>¿Qué habéis tenido que subir o escribir?</td><td></td><td></td><td></td></tr>
+<tr><td>¿Qué habéis hecho para publicar el cambio?</td><td></td><td></td><td></td></tr>
+<tr><td>¿Quién se encarga del sistema operativo y de sus parches de seguridad?</td><td></td><td></td><td></td></tr>
 </table></div>
+<p>Para terminar, responded:</p>
+<ul>
+<li>¿Con qué modelo habéis tenido más control? ¿Y menos trabajo?</li>
+<li>Durante la actividad habéis usado al menos un servicio SaaS. ¿Cuál y por qué lo es?</li>
+</ul>
 </div>
 </section><section class="panel" role="tabpanel" id="p-p2" aria-labelledby="tab-p2" hidden>
 <p class="meta">Unidad 4 · 2. Comparativa · 2 horas</p>
@@ -183,14 +249,10 @@
 <tr><td>Correo y documentos</td><td></td><td></td><td></td></tr>
 <tr><td>…</td><td></td><td></td><td></td></tr>
 </table></div>
-<p>Para terminar, responded:</p>
-<ul>
-<li>¿Qué pieza le dará más trabajo de mantenimiento a la persona de informática y por qué?</li>
-<li>Si la web de reservas pasara a tener tráfico alto y constante las 24 horas, ¿mantendríais el mismo modelo? ¿Por qué?</li>
-<li>¿Qué tendría que cumplir el servicio de correo y documentos para poder guardar datos de los socios?</li>
-</ul>
-<p class="entrega">Entrega en Aules: tabla y respuesta de la actividad 1 y tabla y respuesta de la actividad 2.</p>
+<p>Para terminar, responded: si la web de reservas pasara a tener tráfico alto y constante las 24 horas, ¿mantendríais el mismo modelo? ¿Por qué?</p>
+<p class="entrega">Entrega en Aules: de la actividad 1, la captura de la parte A, los enlaces de las partes B y C, la tabla y las respuestas. De la actividad 2, la tabla y la respuesta.</p>
 </div>
+<div class="nota"><p><b>Para cerrar la unidad.</b> Kahoot de repaso de los dos puntos. Si os sobra tiempo, el cuestionario de práctica de la unidad en Aules os sirve para preparar el examen.</p></div>
 </section><section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden>
 <h2>Recursos y glosario</h2>
 <h3>Referencias</h3>
