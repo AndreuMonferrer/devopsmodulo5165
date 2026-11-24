@@ -100,23 +100,23 @@
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 1. ¿Qué herramienta hace falta?</h4>
-<p><b>Para qué</b>: relacionar cada necesidad del despliegue con el tipo de herramienta que la resuelve.</p>
-<p>Individual. Una empresa que empieza a usar contenedores tiene estas necesidades:</p>
-<ol>
-<li>Sus desarrolladores quieren arrancar en el portátil la API, PostgreSQL y Redis con una sola orden.</li>
-<li>Seguridad no quiere que haya en los servidores ningún proceso con root para ejecutar contenedores.</li>
-<li>Necesita guardar sus imágenes en sus propios servidores, con permisos por proyecto y escaneo de vulnerabilidades.</li>
-<li>Su pipeline se ejecuta dentro de un clúster de Kubernetes y tiene que construir imágenes sin un demonio de Docker.</li>
-<li>La aplicación tiene que ejecutarse en 12 servidores y reiniciarse sola si un servidor cae.</li>
-<li>Quiere que cada push ejecute las pruebas y construya la imagen sin mantener ningún servidor de CI.</li>
-<li>Quiere que lo desplegado en el clúster sea siempre exactamente lo que hay en la rama <code>main</code> de un repositorio.</li>
-<li>Producción tiene que ejecutar siempre la misma imagen que se probó, aunque alguien vuelva a publicar la etiqueta <code>1.0.0</code>.</li>
+<h4>Actividad 1. Tus primeros tickets como DevOps</h4>
+<p><b>Para qué</b>: elegir la herramienta adecuada ante peticiones reales de un equipo de desarrollo y justificarlo con sus características.</p>
+<p>Individual. Acabáis de entrar como DevOps en una empresa de software que está pasando sus aplicaciones a contenedores. Durante la primera semana os llegan estos tickets:</p>
+<ol class="casos">
+<li><b>Desarrollo</b>: «Para probar la API en mi portátil tengo que arrancar a mano PostgreSQL, Redis y la API, cada uno con su orden y en el orden correcto. Pierdo media hora cada mañana. ¿Se puede arrancar todo con una sola orden?»</li>
+<li><b>Seguridad</b>: «La auditoría ha detectado que en los servidores hay un demonio con permisos de root para ejecutar contenedores. Si alguien escapa de un contenedor, se queda con el servidor. Quiero que eso desaparezca sin que los equipos tengan que aprender órdenes nuevas.»</li>
+<li><b>Dirección técnica</b>: «Por contrato con un cliente, nuestras imágenes no pueden salir de nuestros servidores. Necesitamos un sitio propio donde guardarlas, con permisos distintos por proyecto y que avise si una imagen tiene vulnerabilidades.»</li>
+<li><b>Plataforma</b>: «Hemos movido los runners del pipeline dentro del clúster de Kubernetes y ahora falla el paso de construir la imagen. No hay ningún demonio de Docker al que conectarse y no podemos dar privilegios al contenedor que construye.»</li>
+<li><b>Guardia del fin de semana</b>: «El sábado a las 3 de la mañana se cayó uno de los 12 servidores de producción. La aplicación estuvo caída hasta que alguien entró a levantar los contenedores a mano en otro servidor. Que no vuelva a pasar.»</li>
+<li><b>Desarrollo</b>: «Queremos que cada push ejecute las pruebas y construya la imagen. El código ya está en GitHub y nadie quiere instalar ni mantener un servidor de integración continua.»</li>
+<li><b>Operaciones</b>: «Ayer alguien cambió a mano un despliegue del clúster y ahora nadie sabe qué hay en producción. Queremos que lo desplegado sea siempre exactamente lo que hay en la rama <code>main</code> del repositorio y que cualquier cambio pase por Git.»</li>
+<li><b>Calidad</b>: «Probamos la versión <code>1.0.0</code>, todo correcto, y en producción falló. Resulta que entre medias alguien volvió a publicar la etiqueta <code>1.0.0</code> con otra imagen. ¿Cómo nos aseguramos de que producción ejecuta exactamente la imagen que probamos?»</li>
 </ol>
-<p>Completad esta tabla con una fila por necesidad:</p>
+<p>Completad esta tabla con una fila por ticket:</p>
 <div class="tabla"><table>
-<tr><th>Necesidad</th><th>Paso de la cadena</th><th>Herramienta</th><th>Qué característica de la herramienta la resuelve</th></tr>
-<tr><td>1</td><td></td><td></td><td></td></tr>
+<tr><th>Ticket</th><th>Paso de la cadena</th><th>Herramienta o solución</th><th>Qué característica lo resuelve</th></tr>
+<tr><td>a</td><td></td><td></td><td></td></tr>
 <tr><td>…</td><td></td><td></td><td></td></tr>
 </table></div>
 </div>
