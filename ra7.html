@@ -275,7 +275,7 @@ ansible --version</code></pre>
 <p>Ansible tiene más de 20 niveles de precedencia. Los que usaremos, de menor a mayor: <code>defaults</code> del rol → <code>group_vars/all</code> → <code>group_vars/&lt;grupo&gt;</code> → <code>host_vars</code> → <code>vars</code> del play → <code>-e</code> en la línea de órdenes (gana siempre). La idea: el rol trae valores razonables y cada entorno los ajusta. Es el mismo principio que los <code>.tfvars</code> de la unidad 6.</p>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 266" role="img" aria-label="Precedencia de variables" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-precedencia" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="114.0" y="54.0" class="ts" text-anchor="end" dominant-baseline="middle">gana siempre</text><text x="114.0" y="90.0" class="ts" text-anchor="end" dominant-baseline="middle"></text><text x="114.0" y="126.0" class="ts" text-anchor="end" dominant-baseline="middle"></text><text x="114.0" y="162.0" class="ts" text-anchor="end" dominant-baseline="middle">por entorno</text><text x="114.0" y="198.0" class="ts" text-anchor="end" dominant-baseline="middle"></text><text x="114.0" y="234.0" class="ts" text-anchor="end" dominant-baseline="middle">por defecto</text><text x="415.0" y="21.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Precedencia (de mayor a menor)</text><rect x="122.0" y="38.0" width="586.0" height="32.0" rx="6" class="d-rojo"/><text x="415.0" y="54.0" class="t" text-anchor="middle" dominant-baseline="middle">-e en la línea de órdenes</text><rect x="122.0" y="74.0" width="586.0" height="32.0" rx="6" class="d-naranja"/><text x="415.0" y="90.0" class="t" text-anchor="middle" dominant-baseline="middle">vars del play</text><rect x="122.0" y="110.0" width="586.0" height="32.0" rx="6" class="d-amarillo"/><text x="415.0" y="126.0" class="t" text-anchor="middle" dominant-baseline="middle">host_vars/&lt;nodo&gt;</text><rect x="122.0" y="146.0" width="586.0" height="32.0" rx="6" class="d-verde"/><text x="415.0" y="162.0" class="t" text-anchor="middle" dominant-baseline="middle">group_vars/&lt;grupo&gt; (revision, produccion)</text><rect x="122.0" y="182.0" width="586.0" height="32.0" rx="6" class="d-azul"/><text x="415.0" y="198.0" class="t" text-anchor="middle" dominant-baseline="middle">group_vars/all</text><rect x="122.0" y="218.0" width="586.0" height="32.0" rx="6" class="d-gris"/><text x="415.0" y="234.0" class="t" text-anchor="middle" dominant-baseline="middle">defaults del rol</text></svg></div><figcaption>Precedencia de las variables que usamos en Ansible: la de más arriba gana. El rol trae valores razonables y cada entorno los ajusta.</figcaption></figure>
 <h4>Plantillas Jinja2</h4>
-<p>El módulo <code>template</code> genera un fichero en el nodo a partir de una plantilla con variables, condiciones y bucles. Por ejemplo, la configuración del demonio de Docker:</p>
+<p>El módulo <code>template</code> genera un fichero en el nodo a partir de una plantilla con variables, condiciones y bucles. Por ejemplo, la configuración del daemon de Docker:</p>
 <p class="fichero">roles/docker/templates/daemon.json.j2</p>
 <pre><code>{
   "log-driver": "json-file",
@@ -288,7 +288,7 @@ ansible --version</code></pre>
 <h4>Handlers</h4>
 <p>Un <b>handler</b> es una tarea que solo se ejecuta si otra la <b>notifica</b> y esta ha producido un cambio, y una sola vez al final del play aunque se notifique varias veces. Es la forma idempotente de reiniciar un servicio solo cuando su configuración ha cambiado. (Al reiniciar Docker se paran los contenedores; los que tienen la política <code>unless-stopped</code> vuelven a arrancar solos.)</p>
 <pre><code># tasks
-- name: Configuración del demonio de Docker
+- name: Configuración del daemon de Docker
   ansible.builtin.template:
     src: daemon.json.j2
     dest: /etc/docker/daemon.json
@@ -372,7 +372,7 @@ docker_log_ficheros: "3"
 docker_registro_espejo: ""     # p. ej., un espejo de Docker Hub del centro, si lo hubiera</code></pre>
 <p class="fichero">roles/docker/tasks/main.yml</p>
 <pre><code># Las tareas de instalar.yml del punto 1, más:
-- name: Configuración del demonio de Docker
+- name: Configuración del daemon de Docker
   ansible.builtin.template:
     src: daemon.json.j2
     dest: /etc/docker/daemon.json
@@ -574,7 +574,7 @@ grep -E "changed=[1-9]" segunda.log &amp;&amp; echo "NO ES IDEMPOTENTE" || echo 
       ansible.builtin.assert:
         that: "'unattended-upgrades' in ansible_facts.packages"
 
-    - name: Leer la configuración del demonio de Docker
+    - name: Leer la configuración del daemon de Docker
       ansible.builtin.slurp:
         src: /etc/docker/daemon.json
       register: daemon
