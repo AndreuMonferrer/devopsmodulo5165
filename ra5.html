@@ -2,7 +2,7 @@
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RA5. Repositorios de código, calidad y seguridad | Módulo 5165</title>
-<link rel="stylesheet" href="assets/estilos.css?v=9">
+<link rel="stylesheet" href="assets/estilos.css?v=10">
 <script src="assets/tema.js?v=5"></script>
 </head><body style="--ra:#9a6a0b">
 <header class="cab"><div class="dentro"><nav class="menu" aria-label="Secciones"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="ra1.html">RA1</a><a href="ra2.html">RA2</a><a href="ra3.html">RA3</a><a href="ra4.html">RA4</a><a href="ra5.html" aria-current="page">RA5</a><a href="ra6.html">RA6</a><a href="ra7.html">RA7</a><button type="button" class="boton-tema" id="cambiar-tema">☾ Modo oscuro</button></nav>
@@ -216,18 +216,26 @@
 <h4>Actividad 3. Clasificación y priorización de alertas de validación</h4>
 <p><b>Para qué</b>: reconocer el tipo de herramienta por lo que detecta y decidir qué hacer con cada aviso, como se hace a diario en un equipo DevOps.</p>
 <p>Individual. Es lunes por la mañana. Durante el fin de semana, las herramientas de validación de varios proyectos de la empresa han dejado estos avisos en el canal de alertas del equipo DevOps, y os toca revisarlos:</p>
-<div class="tabla"><table>
-<tr><th>Aviso</th><th>Proyecto</th><th>Dónde ha aparecido</th><th>Mensaje</th></tr>
-<tr><td><b>1</b></td><td>citas&#8209;api</td><td>Pull request #42</td><td><code>app.py:3:8: F401 [*] `os` imported but unused</code></td></tr>
-<tr><td><b>2</b></td><td>citas&#8209;api</td><td>Pull request #42</td><td><code>FAILED test_app.py::test_cita_inexistente - assert 200 == 404</code></td></tr>
-<tr><td><b>3</b></td><td>pagos&#8209;web</td><td>Pull request #17</td><td><code>SQL query built from user-controlled sources (py/sql-injection)</code><br>Línea señalada: <code>con.execute("SELECT * FROM citas WHERE dni = '" + dni + "'")</code></td></tr>
-<tr><td><b>4</b></td><td>pagos&#8209;web</td><td>Push a la rama <code>login</code></td><td><code>Finding: AWS_ACCESS_KEY_ID=AKIA... RuleID: aws-access-token File: config/.env Line: 3</code></td></tr>
-<tr><td><b>5</b></td><td>citas&#8209;api</td><td>Análisis programado del sábado</td><td>Tabla con las columnas <i>Name</i>, <i>Version</i>, <i>ID</i> y <i>Fix Versions</i>:<br><code>flask 2.2.0 GHSA-m2qf-hxjv-5gpq 2.2.5,2.3.2</code></td></tr>
-<tr><td><b>6</b></td><td>facturas</td><td>Análisis programado de la imagen <code>facturas:3.2</code></td><td><code>org.apache.logging.log4j:log4j-core (app.jar) │ CVE-2021-44228 │ CRITICAL │ fixed │ 2.14.1 │ 2.15.0, 2.12.2, 2.3.1</code></td></tr>
-<tr><td><b>7</b></td><td>facturas</td><td>Pull request #8</td><td><code>Dockerfile:1 DL3007 warning: Using latest is prone to errors if the image will ever update. Pin the version explicitly to a release tag</code></td></tr>
-<tr><td><b>8</b></td><td>pagos&#8209;web</td><td>Pull request #17</td><td><code>Quality Gate failed · Failed conditions: 42.0% Coverage on New Code (required ≥ 80%)</code></td></tr>
-<tr><td><b>9</b></td><td>pagos&#8209;web</td><td>Entorno de revisión <code>https://revision.empresa.es/</code></td><td><code>WARN-NEW: Content Security Policy (CSP) Header Not Set [10038] x 3</code></td></tr>
-</table></div>
+<div class="canal">
+<div class="canal-cab"># alertas-devops <span>9 mensajes sin leer</span></div>
+<div class="canal-dia">Sábado</div>
+<div class="msj"><div class="avatar">CI</div><div class="cuerpo"><div class="meta"><b>ci-bot</b><span class="hora">10:14</span><span class="etq">citas-api</span><span class="num">Aviso 1</span></div><p>Pull request #42 · comprobación fallida</p><pre><code>app.py:3:8: F401 [*] `os` imported but unused</code></pre></div></div>
+<div class="msj"><div class="avatar">CI</div><div class="cuerpo"><div class="meta"><b>ci-bot</b><span class="hora">10:14</span><span class="etq">citas-api</span><span class="num">Aviso 2</span></div><p>Pull request #42 · comprobación fallida</p><pre><code>FAILED test_app.py::test_cita_inexistente - assert 200 == 404</code></pre></div></div>
+<div class="msj"><div class="avatar">CI</div><div class="cuerpo"><div class="meta"><b>ci-bot</b><span class="hora">11:02</span><span class="etq">pagos-web</span><span class="num">Aviso 3</span></div><p>Pull request #17 · nueva alerta de seguridad</p><pre><code>SQL query built from user-controlled sources (py/sql-injection)</code></pre><p>Línea señalada:</p><pre><code>con.execute("SELECT * FROM citas WHERE dni = '" + dni + "'")</code></pre></div></div>
+<div class="msj"><div class="avatar">CI</div><div class="cuerpo"><div class="meta"><b>ci-bot</b><span class="hora">12:40</span><span class="etq">pagos-web</span><span class="num">Aviso 4</span></div><p>Push a la rama <code>login</code> · comprobación fallida</p><pre><code>Finding: AWS_ACCESS_KEY_ID=AKIA...
+RuleID:  aws-access-token
+File:    config/.env
+Line:    3</code></pre></div></div>
+<div class="canal-dia">Domingo</div>
+<div class="msj"><div class="avatar">CI</div><div class="cuerpo"><div class="meta"><b>ci-bot</b><span class="hora">03:00</span><span class="etq">citas-api</span><span class="num">Aviso 5</span></div><p>Análisis programado · 1 vulnerabilidad encontrada</p><pre><code>Name  Version ID                  Fix Versions
+----- ------- ------------------- ------------
+flask 2.2.0   GHSA-m2qf-hxjv-5gpq 2.2.5,2.3.2</code></pre></div></div>
+<div class="msj"><div class="avatar">CI</div><div class="cuerpo"><div class="meta"><b>ci-bot</b><span class="hora">03:05</span><span class="etq">facturas</span><span class="num">Aviso 6</span></div><p>Análisis programado de la imagen <code>facturas:3.2</code> · 1 vulnerabilidad crítica</p><pre><code>org.apache.logging.log4j:log4j-core (app.jar) │ CVE-2021-44228 │ CRITICAL │ fixed │ 2.14.1 │ 2.15.0, 2.12.2, 2.3.1</code></pre></div></div>
+<div class="msj"><div class="avatar">CI</div><div class="cuerpo"><div class="meta"><b>ci-bot</b><span class="hora">17:20</span><span class="etq">facturas</span><span class="num">Aviso 7</span></div><p>Pull request #8 · aviso</p><pre><code>Dockerfile:1 DL3007 warning: Using latest is prone to errors if the image will ever update. Pin the version explicitly to a release tag</code></pre></div></div>
+<div class="msj"><div class="avatar">CI</div><div class="cuerpo"><div class="meta"><b>ci-bot</b><span class="hora">19:03</span><span class="etq">pagos-web</span><span class="num">Aviso 8</span></div><p>Pull request #17 · comprobación fallida</p><pre><code>Quality Gate failed
+Failed conditions: 42.0% Coverage on New Code (required ≥ 80%)</code></pre></div></div>
+<div class="msj"><div class="avatar">CI</div><div class="cuerpo"><div class="meta"><b>ci-bot</b><span class="hora">22:10</span><span class="etq">pagos-web</span><span class="num">Aviso 9</span></div><p>Entorno de revisión <code>https://revision.empresa.es/</code> · análisis nocturno</p><pre><code>WARN-NEW: Content Security Policy (CSP) Header Not Set [10038] x 3</code></pre></div></div>
+</div>
 <p>Haced el triaje en esta tabla, con una fila por aviso:</p>
 <div class="tabla"><table>
 <tr><th>Aviso</th><th>Tipo y herramienta probable (apartados 2 y 3)</th><th>Qué ha detectado</th><th>Prioridad: urgente, esta semana o puede esperar</th><th>Qué haríais</th><th>Dónde debería haber saltado antes</th></tr>
