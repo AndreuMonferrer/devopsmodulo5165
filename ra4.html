@@ -108,10 +108,18 @@
 
 <p><b>Parte A. IaaS: lo gestionáis todo vosotros</b></p>
 <p>En IaaS el proveedor os da una máquina con el sistema operativo instalado y todo lo demás es cosa vuestra. Lo simuláis con un contenedor Ubuntu vacío en el portátil. No es una nube, pero el trabajo que hacéis es el mismo que en una máquina virtual de Amazon EC2.</p>
+<p>Publicad vuestra página de forma que cumpla estos requisitos:</p>
+<ul>
+<li>Se ejecuta en un contenedor llamado <code>iaas</code> creado a partir de la imagen <code>ubuntu</code>, sin ningún software añadido de partida.</li>
+<li>El servidor web es nginx, instalado por vosotros dentro del contenedor.</li>
+<li>La página que sirve nginx es vuestro <code>index.html</code>, en la carpeta <code>/var/www/html</code> del contenedor.</li>
+<li>Se ve en Firefox entrando en <code>http://localhost:8080</code> desde el portátil.</li>
+</ul>
+<details><summary>Si os atascáis</summary>
 <ol class="pasos">
 <li>Arrancad un contenedor Ubuntu que redirige el puerto 8080 del portátil al puerto 80 del contenedor:
 <pre><code>docker run -it --name iaas -p 8080:80 ubuntu bash</code></pre></li>
-<li>Dentro del contenedor, instalad el servidor web nginx:
+<li>Dentro del contenedor, instalad nginx:
 <pre><code>apt update
 apt install -y nginx</code></pre>
 Si os pregunta la zona horaria, elegid <i>Europe</i> y después <i>Madrid</i>.</li>
@@ -119,17 +127,12 @@ Si os pregunta la zona horaria, elegid <i>Europe</i> y después <i>Madrid</i>.</
 <pre><code>docker cp ~/index.html iaas:/var/www/html/index.html</code></pre></li>
 <li>Volved a la terminal del contenedor y arrancad nginx:
 <pre><code>nginx</code></pre></li>
-<li>Abrid <code>http://localhost:8080</code> en Firefox y comprobad que aparece vuestra página.</li>
 </ol>
+</details>
 
 <p><b>Parte B. PaaS: subís la página y la plataforma la sirve</b></p>
 <p>GitHub Pages solo publica páginas estáticas, así que es un PaaS muy sencillo. Aun así, la idea es la misma que en AWS Elastic Beanstalk o Azure App Service: vosotros aportáis el contenido y la plataforma se encarga de servirlo.</p>
-<ol class="pasos">
-<li>En GitHub, cread un repositorio público llamado <code>web-paas</code>.</li>
-<li>Pulsad <i>Add file → Upload files</i>, subid vuestro <code>index.html</code> y confirmad con <i>Commit changes</i>.</li>
-<li>Id a <i>Settings → Pages</i>. En <i>Source</i> elegid <i>Deploy from a branch</i>, la rama <code>main</code> y la carpeta <code>/ (root)</code>, y guardad.</li>
-<li>Esperad un par de minutos y abrid <code>https://vuestro-usuario.github.io/web-paas/</code></li>
-</ol>
+<p>Publicad vuestro <code>index.html</code> con GitHub Pages en un repositorio público llamado <code>web-paas</code>. Al acabar tenéis que tener una URL pública en la que se vea vuestra página.</p>
 
 <p><b>Parte C. Serverless: solo escribís la función</b></p>
 <p>En serverless no hay servidor que instalar ni que arrancar: escribís una función que se ejecuta cada vez que llega una petición y devuelve la respuesta. Usaréis el Playground de Cloudflare Workers, que funciona en el navegador y no necesita cuenta.</p>
@@ -151,8 +154,8 @@ Si os pregunta la zona horaria, elegid <i>Europe</i> y después <i>Madrid</i>.</
 <p><b>Parte D. Publicar un cambio</b></p>
 <p>Cambiad el título por <i>Web de Nombre Apellido · versión 2</i> y volved a publicarlo con los tres modelos:</p>
 <ul>
-<li><b>IaaS</b>: editad <code>index.html</code> en el portátil, repetid el <code>docker cp</code> del paso 3 y recargad <code>localhost:8080</code>.</li>
-<li><b>PaaS</b>: en el repositorio <code>web-paas</code>, abrid <code>index.html</code>, pulsad el lápiz para editarlo, cambiad el título y confirmad con <i>Commit changes</i>. Esperad un poco y recargad la página.</li>
+<li><b>IaaS</b>: haced que el contenedor sirva la página nueva y comprobadlo en <code>localhost:8080</code>.</li>
+<li><b>PaaS</b>: actualizad la página en el repositorio <code>web-paas</code> y comprobadlo en vuestra URL.</li>
 <li><b>Serverless</b>: cambiad el título dentro de la función y mirad la vista previa.</li>
 </ul>
 <p>Cuando acabéis, podéis parar el contenedor con <code>docker stop iaas</code>.</p>
@@ -167,9 +170,10 @@ Si os pregunta la zona horaria, elegid <i>Europe</i> y después <i>Madrid</i>.</
 <tr><td>¿Qué habéis hecho para publicar el cambio?</td><td></td><td></td><td></td></tr>
 <tr><td>¿Quién se encarga del sistema operativo y de sus parches de seguridad?</td><td></td><td></td><td></td></tr>
 </table></div>
-<p>Para terminar, responded:</p>
+<p>Para terminar, responded pensando en lo que habéis hecho y en la teoría del punto:</p>
 <ul>
-<li>¿Con qué modelo habéis tenido más control? ¿Y menos trabajo?</li>
+<li>Mañana se publica una vulnerabilidad grave en nginx. ¿Qué tendríais que hacer en cada uno de los tres modelos? ¿Quién se encarga de corregirla en cada caso?</li>
+<li>Vuestra web pasa de 10 visitas al día a 100.000. ¿Qué tendríais que hacer en cada modelo para que aguante?</li>
 <li>Durante la actividad habéis usado al menos un servicio SaaS. ¿Cuál y por qué lo es?</li>
 </ul>
 </div>
