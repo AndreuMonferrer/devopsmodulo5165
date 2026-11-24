@@ -255,31 +255,52 @@
 <li>Azure App Service y Azure Functions: <a href="https://learn.microsoft.com/es-es/azure/">learn.microsoft.com</a></li>
 <li>AWS Elastic Beanstalk y AWS Lambda: <a href="https://docs.aws.amazon.com/">docs.aws.amazon.com</a></li></ul>
 <h3>Comandos básicos de Docker</h3>
-<p>Plantillas generales para trabajar con contenedores. Lo que va entre <code>&lt; &gt;</code> se sustituye por vuestros valores. No todos los comandos hacen falta en cada actividad.</p>
+<p>Plantillas generales para trabajar con contenedores. Lo que va entre <code>&lt; &gt;</code> se sustituye por vuestros valores. No todos los comandos hacen falta en cada actividad. Para abrir una terminal en Ubuntu MATE, pulsad <code>Ctrl + Alt + T</code>. Si un comando de Docker da error de permisos, ponedle <code>sudo</code> delante.</p>
+
+<h4>Imágenes</h4>
 <div class="tabla"><table>
-<tr><th>Para qué</th><th>Comando</th></tr>
-<tr><td>Abrir una terminal en Ubuntu MATE</td><td><code>Ctrl + Alt + T</code></td></tr>
-<tr><td>Descargar una imagen</td><td><code>docker pull &lt;imagen&gt;</code></td></tr>
-<tr><td>Ver las imágenes descargadas</td><td><code>docker images</code></td></tr>
-<tr><td>Crear y arrancar un contenedor</td><td><code>docker run [opciones] &lt;imagen&gt; [comando]</code></td></tr>
-<tr><td>Opción: ponerle nombre al contenedor</td><td><code>--name &lt;nombre&gt;</code></td></tr>
-<tr><td>Opción: entrar en el contenedor con una terminal interactiva</td><td><code>-it</code> (y como comando, <code>bash</code>)</td></tr>
-<tr><td>Opción: ejecutarlo en segundo plano</td><td><code>-d</code></td></tr>
-<tr><td>Opción: publicar un puerto del contenedor en el portátil</td><td><code>-p &lt;puerto_portátil&gt;:&lt;puerto_contenedor&gt;</code></td></tr>
-<tr><td>Opción: borrar el contenedor al pararlo</td><td><code>--rm</code></td></tr>
-<tr><td>Ver los contenedores en marcha (con <code>-a</code>, también los parados)</td><td><code>docker ps</code> · <code>docker ps -a</code></td></tr>
-<tr><td>Abrir una terminal en un contenedor que ya está en marcha</td><td><code>docker exec -it &lt;nombre&gt; bash</code></td></tr>
-<tr><td>Copiar un archivo del portátil al contenedor</td><td><code>docker cp &lt;archivo&gt; &lt;nombre&gt;:&lt;ruta_en_el_contenedor&gt;</code></td></tr>
-<tr><td>Copiar un archivo del contenedor al portátil</td><td><code>docker cp &lt;nombre&gt;:&lt;ruta_en_el_contenedor&gt; &lt;destino&gt;</code></td></tr>
-<tr><td>Ver los registros (salida) de un contenedor</td><td><code>docker logs &lt;nombre&gt;</code></td></tr>
-<tr><td>Parar y volver a arrancar un contenedor</td><td><code>docker stop &lt;nombre&gt;</code> · <code>docker start -ai &lt;nombre&gt;</code></td></tr>
-<tr><td>Borrar un contenedor (parado) o una imagen</td><td><code>docker rm &lt;nombre&gt;</code> · <code>docker rmi &lt;imagen&gt;</code></td></tr>
-<tr><td>Dentro de un contenedor Ubuntu: actualizar la lista de paquetes</td><td><code>apt update</code></td></tr>
-<tr><td>Dentro de un contenedor Ubuntu: instalar un paquete</td><td><code>apt install -y &lt;paquete&gt;</code></td></tr>
-<tr><td>Dentro de un contenedor: arrancar un servicio instalado</td><td><code>service &lt;servicio&gt; start</code></td></tr>
-<tr><td>Salir de la terminal del contenedor</td><td><code>exit</code></td></tr>
+<tr><th>Comando</th><th>Para qué sirve</th></tr>
+<tr><td><code>docker pull &lt;imagen&gt;</code></td><td>Descargar una imagen</td></tr>
+<tr><td><code>docker images</code></td><td>Ver las imágenes descargadas</td></tr>
+<tr><td><code>docker rmi &lt;imagen&gt;</code></td><td>Borrar una imagen</td></tr>
 </table></div>
-<p>Si un comando de Docker da error de permisos, ponedle <code>sudo</code> delante.</p>
+
+<h4>Crear un contenedor</h4>
+<p>Los contenedores se crean y se arrancan con <code>docker run</code>. Su forma general es:</p>
+<pre><code>docker run &lt;opciones&gt; &lt;imagen&gt; &lt;comando&gt;</code></pre>
+<p>Las opciones se pueden combinar. Las más habituales son:</p>
+<div class="tabla"><table>
+<tr><th>Opción</th><th>Para qué sirve</th></tr>
+<tr><td><code>--name &lt;nombre&gt;</code></td><td>Ponerle un nombre al contenedor para referirse a él después</td></tr>
+<tr><td><code>-it</code></td><td>Trabajar dentro del contenedor con una terminal interactiva (como comando se pone <code>bash</code>)</td></tr>
+<tr><td><code>-d</code></td><td>Ejecutar el contenedor en segundo plano</td></tr>
+<tr><td><code>-p &lt;puerto_portátil&gt;:&lt;puerto_contenedor&gt;</code></td><td>Hacer accesible desde el portátil un puerto del contenedor</td></tr>
+<tr><td><code>--rm</code></td><td>Borrar el contenedor automáticamente al pararlo</td></tr>
+</table></div>
+<p>Por ejemplo, <code>docker run -it --name prueba debian bash</code> crea un contenedor llamado <code>prueba</code> a partir de la imagen <code>debian</code> y abre una terminal dentro de él.</p>
+
+<h4>Gestionar contenedores</h4>
+<div class="tabla"><table>
+<tr><th>Comando</th><th>Para qué sirve</th></tr>
+<tr><td><code>docker ps</code></td><td>Ver los contenedores en marcha (con <code>-a</code>, también los parados)</td></tr>
+<tr><td><code>docker exec -it &lt;nombre&gt; bash</code></td><td>Abrir una terminal en un contenedor que ya está en marcha</td></tr>
+<tr><td><code>docker cp &lt;archivo&gt; &lt;nombre&gt;:&lt;ruta&gt;</code></td><td>Copiar un archivo del portátil al contenedor</td></tr>
+<tr><td><code>docker cp &lt;nombre&gt;:&lt;ruta&gt; &lt;destino&gt;</code></td><td>Copiar un archivo del contenedor al portátil</td></tr>
+<tr><td><code>docker logs &lt;nombre&gt;</code></td><td>Ver lo que ha mostrado el contenedor por pantalla</td></tr>
+<tr><td><code>docker stop &lt;nombre&gt;</code></td><td>Parar un contenedor</td></tr>
+<tr><td><code>docker start -ai &lt;nombre&gt;</code></td><td>Volver a arrancar un contenedor parado y entrar en él</td></tr>
+<tr><td><code>docker rm &lt;nombre&gt;</code></td><td>Borrar un contenedor parado</td></tr>
+</table></div>
+
+<h4>Dentro de un contenedor Ubuntu</h4>
+<div class="tabla"><table>
+<tr><th>Comando</th><th>Para qué sirve</th></tr>
+<tr><td><code>apt update</code></td><td>Actualizar la lista de paquetes disponibles</td></tr>
+<tr><td><code>apt install -y &lt;paquete&gt;</code></td><td>Instalar un paquete sin que pida confirmación</td></tr>
+<tr><td><code>service &lt;servicio&gt; start</code></td><td>Arrancar un servicio instalado</td></tr>
+<tr><td><code>exit</code></td><td>Salir de la terminal del contenedor</td></tr>
+</table></div>
+
 <h3>Glosario</h3>
 <div class="tabla"><table><tr><th>Término</th><th>Significado</th></tr>
 <tr><td>Responsabilidad compartida</td><td>Reparto de tareas de seguridad y operación entre proveedor y cliente, distinto en cada modelo.</td></tr>
