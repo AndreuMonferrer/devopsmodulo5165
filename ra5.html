@@ -7,19 +7,19 @@
 </head><body style="--ra:#9a6a0b">
 <header class="cab"><div class="dentro"><nav class="menu" aria-label="Secciones"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="ra1.html">RA1</a><a href="ra2.html">RA2</a><a href="ra3.html">RA3</a><a href="ra4.html">RA4</a><a href="ra5.html" aria-current="page">RA5</a><a href="ra6.html">RA6</a><a href="ra7.html">RA7</a><button type="button" class="boton-tema" id="cambiar-tema">☾ Modo oscuro</button></nav>
 <h1>Unidad 5. Repositorios de código, calidad y seguridad</h1><p>Controlar quién toca el código y validar cada cambio antes de desplegarlo.</p></div></header>
-<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Puntos de la unidad 5"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-p1" data-panel="p1">1. Herramientas</button><button role="tab" id="tab-p2" data-panel="p2">2. Calidad y seguridad</button><button role="tab" id="tab-p3" data-panel="p3">3. Mínimo privilegio</button><button role="tab" id="tab-p4" data-panel="p4">4. Acceso seguro</button><button role="tab" id="tab-p5" data-panel="p5">5. Validar cambios</button><button role="tab" id="tab-p6" data-panel="p6">6. Seguridad periódica</button><button role="tab" id="tab-p7" data-panel="p7">7. Dependencias</button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
+<nav class="pestanas"><div class="dentro" role="tablist" aria-label="Puntos de la unidad 5"><button role="tab" id="tab-presentacion" data-panel="presentacion">Presentación</button><button role="tab" id="tab-p1" data-panel="p1">1. Herramientas</button><button role="tab" id="tab-p2" data-panel="p2">2. Calidad y seguridad</button><button role="tab" id="tab-p3" data-panel="p3">3. Control de acceso</button><button role="tab" id="tab-p4" data-panel="p4">4. Validar cambios</button><button role="tab" id="tab-p5" data-panel="p5">5. Seguridad y dependencias</button><button role="tab" id="tab-recursos" data-panel="recursos">Recursos</button></div></nav>
 <main class="con-indice"><details class="indice" id="indice" open><summary>Índice del punto</summary><ol></ol></details><div class="contenido"><section class="panel" role="tabpanel" id="p-presentacion" aria-labelledby="tab-presentacion" hidden>
-<p class="meta">Unidad 5 de 7 · 7 puntos · 14 horas · del 14 dic al 18 ene</p>
+<p class="meta">Unidad 5 de 7 · 5 puntos · 14 horas · del 14 dic al 18 ene</p>
 <h2>Resultado de aprendizaje 5</h2>
 <p class="ra-texto">Crea el acceso a los repositorios de código de infraestructura y/o servicios, comprobando las herramientas de gestión y de validación de la calidad y seguridad de las modificaciones de código fuente previas al despliegue.</p>
-<p>Empieza la parte técnica del módulo. Antes de desplegar nada hay que tener bajo control el código: quién puede leerlo y cambiarlo, qué cambios se aceptan y con qué comprobaciones. Los dos primeros puntos son teóricos: qué herramientas intervienen en el despliegue de contenedores y cómo se clasifican las que validan la calidad y la seguridad del código. Del punto 3 al 7 lo llevamos a la práctica con GitHub.</p>
-<p>La práctica se hace por parejas sobre un repositorio pequeño, <code>cita-previa-app</code>: una API de pocas líneas que os damos hecha (pestaña Recursos), para que el trabajo se centre en el acceso y la validación y no en programar. En cada punto se añade una pieza al repositorio y esa pieza se termina en la misma sesión. Lo que construyáis aquí se reutiliza en las unidades 6 y 7, que despliegan la imagen publicada en el punto 7.</p>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 112" role="img" aria-label="Qué se construye en cada punto" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-piezas" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="12" width="100" height="88" rx="6" class="d-azul"/><text x="62" y="36" class="t tb" text-anchor="middle" dominant-baseline="middle">Punto 3</text><text x="62" y="58" class="ts" text-anchor="middle" dominant-baseline="middle">equipos y</text><text x="62" y="74" class="ts" text-anchor="middle" dominant-baseline="middle">entornos</text><rect x="130" y="12" width="100" height="88" rx="6" class="d-azul"/><text x="180" y="36" class="t tb" text-anchor="middle" dominant-baseline="middle">Punto 4</text><text x="180" y="58" class="ts" text-anchor="middle" dominant-baseline="middle">reglas de</text><text x="180" y="74" class="ts" text-anchor="middle" dominant-baseline="middle">main</text><rect x="248" y="12" width="100" height="88" rx="6" class="d-verde"/><text x="298" y="36" class="t tb" text-anchor="middle" dominant-baseline="middle">Punto 5</text><text x="298" y="58" class="ts" text-anchor="middle" dominant-baseline="middle">pruebas en</text><text x="298" y="74" class="ts" text-anchor="middle" dominant-baseline="middle">cada cambio</text><rect x="366" y="12" width="100" height="88" rx="6" class="d-verde"/><text x="416" y="36" class="t tb" text-anchor="middle" dominant-baseline="middle">Punto 6</text><text x="416" y="58" class="ts" text-anchor="middle" dominant-baseline="middle">análisis</text><text x="416" y="74" class="ts" text-anchor="middle" dominant-baseline="middle">periódicos</text><rect x="484" y="12" width="100" height="88" rx="6" class="d-verde"/><text x="534" y="36" class="t tb" text-anchor="middle" dominant-baseline="middle">Punto 7</text><text x="534" y="58" class="ts" text-anchor="middle" dominant-baseline="middle">imagen</text><text x="534" y="74" class="ts" text-anchor="middle" dominant-baseline="middle">1.0.0</text><rect x="602" y="12" width="106" height="88" rx="6" class="d-gris"/><text x="655" y="36" class="t tb" text-anchor="middle" dominant-baseline="middle">Unidades 6 y 7</text><text x="655" y="58" class="ts" text-anchor="middle" dominant-baseline="middle">despliegan</text><text x="655" y="74" class="ts" text-anchor="middle" dominant-baseline="middle">la imagen</text><path d="M113,56 L128,56" class="flecha" marker-end="url(#fl-piezas)"/><path d="M231,56 L246,56" class="flecha" marker-end="url(#fl-piezas)"/><path d="M349,56 L364,56" class="flecha" marker-end="url(#fl-piezas)"/><path d="M467,56 L482,56" class="flecha" marker-end="url(#fl-piezas)"/><path d="M585,56 L600,56" class="flecha" marker-end="url(#fl-piezas)"/></svg></div><figcaption>La pieza que se añade al repositorio en cada punto práctico. En azul, el control del acceso. En verde, la validación del código.</figcaption></figure>
+<p>Empieza la parte técnica del módulo. Antes de desplegar nada hay que tener bajo control el código: quién puede leerlo y cambiarlo, qué cambios se aceptan y con qué comprobaciones. Los dos primeros puntos son teóricos: qué herramientas intervienen en el despliegue de contenedores y cómo se clasifican las que validan la calidad y la seguridad del código. Del punto 3 al 5 lo llevamos a la práctica con GitHub.</p>
+<p>La práctica se hace por parejas sobre un repositorio pequeño, <code>cita-previa-app</code>: una API de pocas líneas que os damos hecha (pestaña Recursos), para que el trabajo se centre en el acceso y la validación y no en programar. En cada punto se añaden al repositorio nuevas piezas que se terminan en clase. Lo que construyáis aquí se reutiliza en las unidades 6 y 7, que despliegan la imagen publicada en el punto 5.</p>
+
 <p>Los repositorios serán <b>públicos</b>. En GitHub gratuito, las reglas de protección de ramas, los revisores obligatorios de los entornos, el análisis de CodeQL y la revisión de dependencias solo están disponibles en repositorios públicos. Por eso no subáis nunca contraseñas reales ni datos personales: todos los datos de la unidad son de prueba.</p>
 <h3>Criterios de evaluación</h3>
-<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Punto</th></tr><tr><td><b>5a)</b></td><td>Se han enumerado herramientas relacionadas con el despliegue en contenedores, describiendo sus objetivos, características y funcionamiento.</td><td><a href="#p1">1</a></td></tr><tr><td><b>5b)</b></td><td>Se han clasificado las herramientas de validación de calidad y seguridad del código y dependencias de librerías externas o integraciones, describiendo sus características y aplicaciones.</td><td><a href="#p2">2</a></td></tr><tr><td><b>5c)</b></td><td>Se ha habilitado el acceso a los recursos y herramientas para desplegar y/o gestionar los entornos de producción definidos en la arquitectura, definiendo personas usuarias y perfiles que permitan y limiten.</td><td><a href="#p3">3</a></td></tr><tr><td><b>5d)</b></td><td>Se ha configurado el acceso a un código fuente para ser gestionado a través de herramientas, identificando los parámetros de seguridad y políticas de acceso, a través de las personas usuarias y/o grupos asignados.</td><td><a href="#p4">4</a></td></tr><tr><td><b>5e)</b></td><td>Se han validado unas modificaciones del código fuente, ejecutando pruebas de calidad mediante herramientas específicas y documentándolas.</td><td><a href="#p5">5</a></td></tr><tr><td><b>5f)</b></td><td>Se han ejecutado comprobaciones de parámetros de seguridad del código, mediante herramientas específicas y de forma periódica.</td><td><a href="#p6">6</a></td></tr><tr><td><b>5g)</b></td><td>Se han validado, con anterioridad al despliegue, las dependencias del código de librerías externas o integraciones, usando herramientas de comprobación para verificar la seguridad y funcionalidad e integración con el resto de los componentes del aplicativo.</td><td><a href="#p7">7</a></td></tr></table></div>
+<div class="tabla"><table><tr><th>CE</th><th>Criterio</th><th>Punto</th></tr><tr><td><b>5a)</b></td><td>Se han enumerado herramientas relacionadas con el despliegue en contenedores, describiendo sus objetivos, características y funcionamiento.</td><td><a href="#p1">1</a></td></tr><tr><td><b>5b)</b></td><td>Se han clasificado las herramientas de validación de calidad y seguridad del código y dependencias de librerías externas o integraciones, describiendo sus características y aplicaciones.</td><td><a href="#p2">2</a></td></tr><tr><td><b>5c)</b></td><td>Se ha habilitado el acceso a los recursos y herramientas para desplegar y/o gestionar los entornos de producción definidos en la arquitectura, definiendo personas usuarias y perfiles que permitan y limiten.</td><td><a href="#p3">3</a></td></tr><tr><td><b>5d)</b></td><td>Se ha configurado el acceso a un código fuente para ser gestionado a través de herramientas, identificando los parámetros de seguridad y políticas de acceso, a través de las personas usuarias y/o grupos asignados.</td><td><a href="#p3">3</a></td></tr><tr><td><b>5e)</b></td><td>Se han validado unas modificaciones del código fuente, ejecutando pruebas de calidad mediante herramientas específicas y documentándolas.</td><td><a href="#p4">4</a></td></tr><tr><td><b>5f)</b></td><td>Se han ejecutado comprobaciones de parámetros de seguridad del código, mediante herramientas específicas y de forma periódica.</td><td><a href="#p5">5</a></td></tr><tr><td><b>5g)</b></td><td>Se han validado, con anterioridad al despliegue, las dependencias del código de librerías externas o integraciones, usando herramientas de comprobación para verificar la seguridad y funcionalidad e integración con el resto de los componentes del aplicativo.</td><td><a href="#p5">5</a></td></tr></table></div>
 <h3>Puntos de la unidad</h3>
-<div class="tabla"><table><tr><th>Nº</th><th>Punto</th><th>CE</th></tr><tr><td><a href="#p1">1</a></td><td>Herramientas del despliegue en contenedores</td><td>a</td></tr><tr><td><a href="#p2">2</a></td><td>Herramientas de validación de calidad y seguridad del código</td><td>b</td></tr><tr><td><a href="#p3">3</a></td><td>Usuarios, perfiles y entornos: el principio de mínimo privilegio</td><td>c</td></tr><tr><td><a href="#p4">4</a></td><td>Acceso seguro al código fuente: autenticación, políticas y protección de ramas</td><td>d</td></tr><tr><td><a href="#p5">5</a></td><td>Validar cada cambio: pruebas automáticas y documentación</td><td>e</td></tr><tr><td><a href="#p6">6</a></td><td>Comprobaciones de seguridad periódicas</td><td>f</td></tr><tr><td><a href="#p7">7</a></td><td>Validar dependencias e integración antes de desplegar</td><td>g</td></tr></table></div>
+<div class="tabla"><table><tr><th>Nº</th><th>Punto</th><th>CE</th></tr><tr><td><a href="#p1">1</a></td><td>Herramientas del despliegue en contenedores</td><td>a</td></tr><tr><td><a href="#p2">2</a></td><td>Herramientas de validación de calidad y seguridad del código</td><td>b</td></tr><tr><td><a href="#p3">3</a></td><td>Control de acceso: perfiles, entornos y protección del código</td><td>c, d</td></tr><tr><td><a href="#p4">4</a></td><td>Validar cada cambio: pruebas automáticas y documentación</td><td>e</td></tr><tr><td><a href="#p5">5</a></td><td>Seguridad periódica y validación de dependencias antes de desplegar</td><td>f, g</td></tr></table></div>
 <h3>Evaluación</h3>
 <p>La unidad pesa un <b>20 %</b> de la nota del módulo: <b>30 %</b> prueba escrita sobre los criterios a y b (fecha por confirmar) y <b>70 %</b> prácticas sobre los criterios c a g (actividades 5 a 17), revisadas con la lista de comprobación de la pestaña Recursos.</p>
 </section><section class="panel" role="tabpanel" id="p-p1" aria-labelledby="tab-p1" hidden>
@@ -78,7 +78,7 @@
 
 <h3>6. Automatizar el despliegue</h3>
 <ul>
-<li><b>CI/CD</b>: <b>GitHub Actions</b> y <b>GitLab CI</b> definen los pasos en ficheros YAML dentro del propio repositorio y los ejecutan en máquinas temporales (<i>runners</i>) cuando ocurre un evento, como un push. <b>Jenkins</b> es un servidor propio, muy flexible gracias a sus plugins, pero hay que instalarlo y mantenerlo. Desde el punto 5 usaremos GitHub Actions.</li>
+<li><b>CI/CD</b>: <b>GitHub Actions</b> y <b>GitLab CI</b> definen los pasos en ficheros YAML dentro del propio repositorio y los ejecutan en máquinas temporales (<i>runners</i>) cuando ocurre un evento, como un push. <b>Jenkins</b> es un servidor propio, muy flexible gracias a sus plugins, pero hay que instalarlo y mantenerlo. Desde el punto 3 usaremos GitHub Actions.</li>
 <li><b>GitOps</b>: <b>Argo CD</b> y <b>Flux</b> se ejecutan dentro de Kubernetes y comparan continuamente lo que hay desplegado con lo declarado en un repositorio Git. Para desplegar, basta con fusionar un cambio en Git.</li>
 <li><b>Infraestructura y configuración</b>: <b>Terraform</b> crea la infraestructura donde se ejecutan los contenedores (unidad 6) y <b>Ansible</b> instala y configura el software de los servidores (unidad 7).</li>
 </ul>
@@ -195,7 +195,7 @@
 <li><b>Falsos positivos</b>: avisos que no son un problema real. Se revisan y se descartan con una justificación. Ignorarlos sin más hace que se pierda la confianza en la herramienta.</li>
 </ul>
 <h4>Integraciones externas</h4>
-<p>Además de librerías, las aplicaciones dependen de <b>integraciones</b>: API de terceros, pasarelas de pago, proveedores de SMS. No se pueden escanear como una librería. Se validan con <b>pruebas de integración</b> contra los entornos de pruebas (<i>sandbox</i>) del proveedor o contra simulaciones (<i>mocks</i>), y con <b>pruebas de contrato</b>, que comprueban que el formato de las peticiones y respuestas sigue siendo el esperado. Lo aplicaremos en el punto 7.</p>
+<p>Además de librerías, las aplicaciones dependen de <b>integraciones</b>: API de terceros, pasarelas de pago, proveedores de SMS. No se pueden escanear como una librería. Se validan con <b>pruebas de integración</b> contra los entornos de pruebas (<i>sandbox</i>) del proveedor o contra simulaciones (<i>mocks</i>), y con <b>pruebas de contrato</b>, que comprueban que el formato de las peticiones y respuestas sigue siendo el esperado. Lo aplicaremos en el punto 5.</p>
 
 <h3>4. Dónde se coloca cada herramienta</h3>
 <div class="tabla"><table>
@@ -247,15 +247,18 @@
 <p class="entrega">Entrega en Aules: tablas de las actividades 3 y 4 y la justificación de la actividad 4.</p>
 </div>
 </section><section class="panel" role="tabpanel" id="p-p3" aria-labelledby="tab-p3" hidden>
-<p class="meta">Unidad 5 · 3. Mínimo privilegio · 2 horas</p>
-<h2>Usuarios, perfiles y entornos: el principio de mínimo privilegio</h2>
-<p class="chips"><span class="ce" title="Se ha habilitado el acceso a los recursos y herramientas para desplegar y/o gestionar los entornos de producción definidos en la arquitectura, definiendo personas usuarias y perfiles que permitan y limiten.">CE 5c</span></p>
+<p class="meta">Unidad 5 · 3. Control de acceso · 4 horas</p>
+<h2>Control de acceso: perfiles, entornos y protección del código</h2>
+<p class="chips"><span class="ce" title="Se ha habilitado el acceso a los recursos y herramientas para desplegar y/o gestionar los entornos de producción definidos en la arquitectura, definiendo personas usuarias y perfiles que permitan y limiten.">CE 5c</span><span class="ce" title="Se ha configurado el acceso a un código fuente para ser gestionado a través de herramientas, identificando los parámetros de seguridad y políticas de acceso, a través de las personas usuarias y/o grupos asignados.">CE 5d</span></p>
 <h3>Objetivos del punto</h3>
 <ul>
 <li>Aplicar el principio de mínimo privilegio, el control de acceso basado en roles y la separación de funciones.</li>
 <li>Definir perfiles con equipos y roles en una organización de GitHub.</li>
 <li>Habilitar el acceso a los recursos de despliegue: entornos de revisión y producción con reglas y secretos propios, permisos de los workflows y del registro de imágenes.</li>
 <li>Comprobar que los perfiles permiten lo que deben y limitan lo que no.</li>
+<li>Identificar los parámetros de seguridad del acceso a un repositorio: cómo se autentican las personas y las máquinas.</li>
+<li>Configurar políticas de acceso al código con reglas de protección (rulesets) y responsables de cada ruta (CODEOWNERS), aplicadas a los equipos.</li>
+<li>Comprobar que las políticas no se pueden saltar.</li>
 </ul>
 
 <h3>1. Principios de control de acceso</h3>
@@ -293,7 +296,7 @@
 </ul>
 <p>Un trabajo de un workflow entra en un entorno con la clave <code>environment</code>. Desde ese momento se le aplican sus reglas y recibe sus secretos.</p>
 <h4>El token de los workflows</h4>
-<p>Cada ejecución de GitHub Actions recibe un token temporal, <code>GITHUB_TOKEN</code>, que caduca al terminar el trabajo. Por mínimo privilegio se configura como <b>solo lectura por defecto</b>, y cada workflow pide de forma explícita lo que necesita con la clave <code>permissions</code>. Por ejemplo, solo el trabajo que publica la imagen pedirá <code>packages: write</code> (punto 7).</p>
+<p>Cada ejecución de GitHub Actions recibe un token temporal, <code>GITHUB_TOKEN</code>, que caduca al terminar el trabajo. Por mínimo privilegio se configura como <b>solo lectura por defecto</b>, y cada workflow pide de forma explícita lo que necesita con la clave <code>permissions</code>. Por ejemplo, solo el trabajo que publica la imagen pedirá <code>packages: write</code> (punto 5).</p>
 <h4>El registro de imágenes</h4>
 <p>Las imágenes que un workflow publica en <code>ghcr.io</code> quedan vinculadas al repositorio y heredan sus permisos: quien puede leer el repositorio puede descargar la imagen y solo el workflow con <code>packages: write</code> puede publicarla. Los servidores que descargan la imagen usan un token propio de <b>solo lectura</b> (<code>read:packages</code>), distinto en cada entorno. Lo configuraremos en la unidad 6.</p>
 
@@ -307,6 +310,61 @@
 <tr><td>Owner de la organización</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Los gestiona, no los lee</td><td>Sí</td></tr>
 <tr><td>Workflow (<code>GITHUB_TOKEN</code>)</td><td>Sí</td><td>No</td><td>No</td><td>Sí</td><td>No, espera la aprobación</td><td>Solo los de su entorno</td><td>No</td></tr>
 </table></div>
+
+<div class="pausa"><h4>Ahora: actividades 5, 6 y 7</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Después seguimos con el apartado 5.</p></div>
+
+<h3>5. Autenticación: quién accede</h3>
+<h4>Personas</h4>
+<ul>
+<li><b>Contraseña y doble factor</b> (2FA): con una aplicación de autenticación (TOTP), una llave de seguridad física o una <b>passkey</b>. GitHub exige 2FA a quien contribuye código, y una organización puede exigirlo a todos sus miembros. Los códigos de recuperación se guardan en un lugar seguro.</li>
+<li><b>Claves SSH</b> para trabajar con Git desde el portátil. Se genera un par de claves: la privada no sale nunca del portátil y se protege con una frase de paso, y la pública se registra en GitHub. Se recomienda el tipo <b>ed25519</b> y una clave por persona y por dispositivo, para poder revocar solo la del portátil perdido.</li>
+<li>Git por HTTPS no admite contraseñas: necesita un token o el gestor de credenciales.</li>
+</ul>
+<h4>Máquinas y programas</h4>
+<div class="tabla"><table>
+<tr><th>Credencial</th><th>Alcance</th><th>Uso recomendado</th></tr>
+<tr><td>Token personal <b>clásico</b></td><td>Todos los repositorios del usuario, permisos amplios, caducidad opcional</td><td>Evitarlo salvo que una herramienta no admita otro</td></tr>
+<tr><td>Token personal <b>de grano fino</b></td><td>Repositorios concretos, permisos concretos (por ejemplo, solo lectura del contenido), caducidad obligatoria</td><td>Scripts e integraciones puntuales</td></tr>
+<tr><td><b>Clave de despliegue</b> (<i>deploy key</i>)</td><td>Una clave SSH para un único repositorio, de solo lectura por defecto</td><td>Un servidor que necesita clonar un repositorio</td></tr>
+<tr><td><b>GitHub App</b></td><td>Permisos detallados, tokens de corta duración</td><td>Bots e integraciones de la organización</td></tr>
+<tr><td><code>GITHUB_TOKEN</code></td><td>El repositorio del workflow, dura lo que el trabajo</td><td>GitHub Actions</td></tr>
+</table></div>
+<p>Las cuatro primeras credenciales las crea una persona y quedan a su nombre, por eso se revisan periódicamente y se revocan las que ya no se usan.</p>
+
+<h3>6. Autorización: qué se puede hacer con el código</h3>
+<p>Los equipos y sus roles (apartado 2) dicen <b>quién</b> puede escribir. Las reglas de protección dicen <b>cómo</b> tiene que hacerlo.</p>
+<h4>Reglas de protección (rulesets)</h4>
+<p>Un <b>ruleset</b> aplica políticas a las ramas o etiquetas que coinciden con un patrón. Se aplica a todo el mundo, owners incluidos, salvo a quien se añada a su lista de excepciones (<i>bypass list</i>). Las reglas más importantes para la rama <code>main</code>:</p>
+<div class="tabla"><table>
+<tr><th>Regla</th><th>Qué impide o exige</th></tr>
+<tr><td>Restringir borrados</td><td>Que alguien borre la rama</td></tr>
+<tr><td>Bloquear force push</td><td>Reescribir el historial ya publicado</td></tr>
+<tr><td>Exigir pull request</td><td>Hacer push directo: todo cambio pasa por un pull request</td></tr>
+<tr><td>Aprobaciones requeridas</td><td>Fusionar sin un número mínimo de revisiones aprobadas</td></tr>
+<tr><td>Descartar aprobaciones con nuevos commits</td><td>Aprobar una versión y colar otra después</td></tr>
+<tr><td>Revisión de los propietarios del código</td><td>Fusionar cambios en ciertas rutas sin la aprobación de su responsable</td></tr>
+<tr><td>Resolver conversaciones</td><td>Fusionar con comentarios de revisión pendientes</td></tr>
+<tr><td>Comprobaciones de estado obligatorias</td><td>Fusionar si las pruebas y los análisis no están en verde (punto 4)</td></tr>
+</table></div>
+<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 98" role="img" aria-label="Flujo de un pull request" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-pr_flujo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12.0" y="12.0" width="87.7" height="74.0" rx="6" class="d-gris"/><text x="55.8" y="49.0" class="t" text-anchor="middle" dominant-baseline="middle">Rama nueva</text><rect x="133.7" y="12.0" width="87.7" height="74.0" rx="6" class="d-azul"/><text x="177.5" y="41.0" class="t" text-anchor="middle" dominant-baseline="middle">Commits</text><text x="177.5" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">en la rama</text><rect x="255.3" y="12.0" width="87.7" height="74.0" rx="6" class="d-azul"/><text x="299.2" y="41.0" class="t" text-anchor="middle" dominant-baseline="middle">Pull</text><text x="299.2" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">request</text><rect x="377.0" y="12.0" width="87.7" height="74.0" rx="6" class="d-amarillo"/><text x="420.8" y="26.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Checks en</text><text x="420.8" y="42.0" class="t tb" text-anchor="middle" dominant-baseline="middle">verde</text><text x="420.8" y="58.0" class="ts" text-anchor="middle" dominant-baseline="middle">pruebas y</text><text x="420.8" y="74.0" class="ts" text-anchor="middle" dominant-baseline="middle">análisis</text><rect x="498.7" y="12.0" width="87.7" height="74.0" rx="6" class="d-amarillo"/><text x="542.5" y="34.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Revisión</text><text x="542.5" y="50.0" class="t tb" text-anchor="middle" dominant-baseline="middle">aprobada</text><text x="542.5" y="66.0" class="ts" text-anchor="middle" dominant-baseline="middle">CODEOWNERS</text><rect x="620.3" y="12.0" width="87.7" height="74.0" rx="6" class="d-verde"/><text x="664.2" y="41.0" class="t" text-anchor="middle" dominant-baseline="middle">Fusión en</text><text x="664.2" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">main</text><path d="M101.7,49.0 L131.7,49.0" class="flecha " marker-end="url(#fl-pr_flujo)"/><path d="M223.3,49.0 L253.3,49.0" class="flecha " marker-end="url(#fl-pr_flujo)"/><path d="M345.0,49.0 L375.0,49.0" class="flecha " marker-end="url(#fl-pr_flujo)"/><path d="M466.7,49.0 L496.7,49.0" class="flecha " marker-end="url(#fl-pr_flujo)"/><path d="M588.3,49.0 L618.3,49.0" class="flecha " marker-end="url(#fl-pr_flujo)"/></svg></div><figcaption>El camino de un cambio hasta main con las reglas de protección: nadie puede saltarse los checks ni la revisión.</figcaption></figure>
+<p>También se protegen las <b>etiquetas de versión</b> (<code>v*</code>), para que nadie mueva ni borre la etiqueta de una versión ya publicada.</p>
+<h4>CODEOWNERS</h4>
+<p>El fichero <code>.github/CODEOWNERS</code> asigna equipos responsables a rutas del repositorio. Cuando un pull request toca esas rutas, se pide automáticamente su revisión y, con la regla correspondiente, es obligatoria. Si varias líneas coinciden con un fichero, manda la última:</p>
+<p class="fichero">.github/CODEOWNERS</p>
+<pre><code>*               @ORGANIZACION/desarrollo
+Dockerfile      @ORGANIZACION/operaciones
+/.github/       @ORGANIZACION/operaciones</code></pre>
+<p>Así, un cambio en los workflows o en la forma de construir la imagen siempre lo aprueba operaciones, y un cambio en el código de la aplicación lo aprueba desarrollo. Como nadie puede aprobar su propio pull request, en vuestra pareja los cambios de <code>.github/</code> los propondrá la persona de desarrollo y los aprobará la de operaciones: es la separación de funciones del apartado 1.</p>
+
+<h3>7. Otros parámetros de seguridad del repositorio</h3>
+<ul>
+<li><b>Visibilidad</b>: público, privado o interno. Un repositorio público nunca debe contener secretos ni datos personales.</li>
+<li><b>Detección de secretos</b> y <b>alertas de dependencias</b>: las activaremos en el punto 5.</li>
+<li><b>Commits firmados</b>: Git deja poner cualquier nombre en un commit. Firmándolos con una clave SSH o GPG, GitHub muestra la marca <i>Verified</i> y garantiza la autoría. Un ruleset puede exigirlos.</li>
+<li><b>Registro de auditoría</b> de la organización: quién cambió permisos, reglas o secretos y cuándo.</li>
+<li><b>Revisión periódica</b> de miembros, claves de despliegue y tokens autorizados.</li>
+</ul>
+<div class="nota"><p><b>Idea clave.</b> La seguridad del acceso al código combina tres capas: <b>quién</b> entra (autenticación fuerte y credenciales de máquina limitadas), <b>qué</b> puede hacer (equipos y roles) y <b>cómo</b> debe hacerlo (reglas que obligan a revisar y validar cada cambio).</p></div>
 
 <h3>Actividades</h3>
 <div class="actividad">
@@ -380,73 +438,7 @@ jobs:
 <tr><td>…</td><td></td><td></td><td></td></tr>
 </table></div>
 <p>Al acabar, deshaced el cambio de la prueba 4.</p>
-<p class="entrega">Entrega en Aules: enlace al repositorio con <code>ACCESOS.md</code> y respuestas de la actividad 6.</p>
 </div>
-</section><section class="panel" role="tabpanel" id="p-p4" aria-labelledby="tab-p4" hidden>
-<p class="meta">Unidad 5 · 4. Acceso seguro · 2 horas</p>
-<h2>Acceso seguro al código fuente: autenticación, políticas y protección de ramas</h2>
-<p class="chips"><span class="ce" title="Se ha configurado el acceso a un código fuente para ser gestionado a través de herramientas, identificando los parámetros de seguridad y políticas de acceso, a través de las personas usuarias y/o grupos asignados.">CE 5d</span></p>
-<h3>Objetivos del punto</h3>
-<ul>
-<li>Identificar los parámetros de seguridad del acceso a un repositorio: cómo se autentican las personas y las máquinas.</li>
-<li>Configurar políticas de acceso al código con reglas de protección (rulesets) y responsables de cada ruta (CODEOWNERS), aplicadas a los equipos.</li>
-<li>Comprobar que las políticas no se pueden saltar.</li>
-</ul>
-
-<h3>1. Autenticación: quién accede</h3>
-<h4>Personas</h4>
-<ul>
-<li><b>Contraseña y doble factor</b> (2FA): con una aplicación de autenticación (TOTP), una llave de seguridad física o una <b>passkey</b>. GitHub exige 2FA a quien contribuye código, y una organización puede exigirlo a todos sus miembros. Los códigos de recuperación se guardan en un lugar seguro.</li>
-<li><b>Claves SSH</b> para trabajar con Git desde el portátil. Se genera un par de claves: la privada no sale nunca del portátil y se protege con una frase de paso, y la pública se registra en GitHub. Se recomienda el tipo <b>ed25519</b> y una clave por persona y por dispositivo, para poder revocar solo la del portátil perdido.</li>
-<li>Git por HTTPS no admite contraseñas: necesita un token o el gestor de credenciales.</li>
-</ul>
-<h4>Máquinas y programas</h4>
-<div class="tabla"><table>
-<tr><th>Credencial</th><th>Alcance</th><th>Uso recomendado</th></tr>
-<tr><td>Token personal <b>clásico</b></td><td>Todos los repositorios del usuario, permisos amplios, caducidad opcional</td><td>Evitarlo salvo que una herramienta no admita otro</td></tr>
-<tr><td>Token personal <b>de grano fino</b></td><td>Repositorios concretos, permisos concretos (por ejemplo, solo lectura del contenido), caducidad obligatoria</td><td>Scripts e integraciones puntuales</td></tr>
-<tr><td><b>Clave de despliegue</b> (<i>deploy key</i>)</td><td>Una clave SSH para un único repositorio, de solo lectura por defecto</td><td>Un servidor que necesita clonar un repositorio</td></tr>
-<tr><td><b>GitHub App</b></td><td>Permisos detallados, tokens de corta duración</td><td>Bots e integraciones de la organización</td></tr>
-<tr><td><code>GITHUB_TOKEN</code></td><td>El repositorio del workflow, dura lo que el trabajo</td><td>GitHub Actions</td></tr>
-</table></div>
-<p>Las cuatro primeras credenciales las crea una persona y quedan a su nombre, por eso se revisan periódicamente y se revocan las que ya no se usan.</p>
-
-<h3>2. Autorización: qué se puede hacer con el código</h3>
-<p>Los equipos y sus roles (punto 3) dicen <b>quién</b> puede escribir. Las reglas de protección dicen <b>cómo</b> tiene que hacerlo.</p>
-<h4>Reglas de protección (rulesets)</h4>
-<p>Un <b>ruleset</b> aplica políticas a las ramas o etiquetas que coinciden con un patrón. Se aplica a todo el mundo, owners incluidos, salvo a quien se añada a su lista de excepciones (<i>bypass list</i>). Las reglas más importantes para la rama <code>main</code>:</p>
-<div class="tabla"><table>
-<tr><th>Regla</th><th>Qué impide o exige</th></tr>
-<tr><td>Restringir borrados</td><td>Que alguien borre la rama</td></tr>
-<tr><td>Bloquear force push</td><td>Reescribir el historial ya publicado</td></tr>
-<tr><td>Exigir pull request</td><td>Hacer push directo: todo cambio pasa por un pull request</td></tr>
-<tr><td>Aprobaciones requeridas</td><td>Fusionar sin un número mínimo de revisiones aprobadas</td></tr>
-<tr><td>Descartar aprobaciones con nuevos commits</td><td>Aprobar una versión y colar otra después</td></tr>
-<tr><td>Revisión de los propietarios del código</td><td>Fusionar cambios en ciertas rutas sin la aprobación de su responsable</td></tr>
-<tr><td>Resolver conversaciones</td><td>Fusionar con comentarios de revisión pendientes</td></tr>
-<tr><td>Comprobaciones de estado obligatorias</td><td>Fusionar si las pruebas y los análisis no están en verde (punto 5)</td></tr>
-</table></div>
-<figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 98" role="img" aria-label="Flujo de un pull request" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-pr_flujo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12.0" y="12.0" width="87.7" height="74.0" rx="6" class="d-gris"/><text x="55.8" y="49.0" class="t" text-anchor="middle" dominant-baseline="middle">Rama nueva</text><rect x="133.7" y="12.0" width="87.7" height="74.0" rx="6" class="d-azul"/><text x="177.5" y="41.0" class="t" text-anchor="middle" dominant-baseline="middle">Commits</text><text x="177.5" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">en la rama</text><rect x="255.3" y="12.0" width="87.7" height="74.0" rx="6" class="d-azul"/><text x="299.2" y="41.0" class="t" text-anchor="middle" dominant-baseline="middle">Pull</text><text x="299.2" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">request</text><rect x="377.0" y="12.0" width="87.7" height="74.0" rx="6" class="d-amarillo"/><text x="420.8" y="26.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Checks en</text><text x="420.8" y="42.0" class="t tb" text-anchor="middle" dominant-baseline="middle">verde</text><text x="420.8" y="58.0" class="ts" text-anchor="middle" dominant-baseline="middle">pruebas y</text><text x="420.8" y="74.0" class="ts" text-anchor="middle" dominant-baseline="middle">análisis</text><rect x="498.7" y="12.0" width="87.7" height="74.0" rx="6" class="d-amarillo"/><text x="542.5" y="34.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Revisión</text><text x="542.5" y="50.0" class="t tb" text-anchor="middle" dominant-baseline="middle">aprobada</text><text x="542.5" y="66.0" class="ts" text-anchor="middle" dominant-baseline="middle">CODEOWNERS</text><rect x="620.3" y="12.0" width="87.7" height="74.0" rx="6" class="d-verde"/><text x="664.2" y="41.0" class="t" text-anchor="middle" dominant-baseline="middle">Fusión en</text><text x="664.2" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">main</text><path d="M101.7,49.0 L131.7,49.0" class="flecha " marker-end="url(#fl-pr_flujo)"/><path d="M223.3,49.0 L253.3,49.0" class="flecha " marker-end="url(#fl-pr_flujo)"/><path d="M345.0,49.0 L375.0,49.0" class="flecha " marker-end="url(#fl-pr_flujo)"/><path d="M466.7,49.0 L496.7,49.0" class="flecha " marker-end="url(#fl-pr_flujo)"/><path d="M588.3,49.0 L618.3,49.0" class="flecha " marker-end="url(#fl-pr_flujo)"/></svg></div><figcaption>El camino de un cambio hasta main con las reglas de protección: nadie puede saltarse los checks ni la revisión.</figcaption></figure>
-<p>También se protegen las <b>etiquetas de versión</b> (<code>v*</code>), para que nadie mueva ni borre la etiqueta de una versión ya publicada.</p>
-<h4>CODEOWNERS</h4>
-<p>El fichero <code>.github/CODEOWNERS</code> asigna equipos responsables a rutas del repositorio. Cuando un pull request toca esas rutas, se pide automáticamente su revisión y, con la regla correspondiente, es obligatoria. Si varias líneas coinciden con un fichero, manda la última:</p>
-<p class="fichero">.github/CODEOWNERS</p>
-<pre><code>*               @ORGANIZACION/desarrollo
-Dockerfile      @ORGANIZACION/operaciones
-/.github/       @ORGANIZACION/operaciones</code></pre>
-<p>Así, un cambio en los workflows o en la forma de construir la imagen siempre lo aprueba operaciones, y un cambio en el código de la aplicación lo aprueba desarrollo. Como nadie puede aprobar su propio pull request, en vuestra pareja los cambios de <code>.github/</code> los propondrá la persona de desarrollo y los aprobará la de operaciones: es la separación de funciones del punto 3.</p>
-
-<h3>3. Otros parámetros de seguridad del repositorio</h3>
-<ul>
-<li><b>Visibilidad</b>: público, privado o interno. Un repositorio público nunca debe contener secretos ni datos personales.</li>
-<li><b>Detección de secretos</b> y <b>alertas de dependencias</b>: las activaremos en el punto 6.</li>
-<li><b>Commits firmados</b>: Git deja poner cualquier nombre en un commit. Firmándolos con una clave SSH o GPG, GitHub muestra la marca <i>Verified</i> y garantiza la autoría. Un ruleset puede exigirlos.</li>
-<li><b>Registro de auditoría</b> de la organización: quién cambió permisos, reglas o secretos y cuándo.</li>
-<li><b>Revisión periódica</b> de miembros, claves de despliegue y tokens autorizados.</li>
-</ul>
-<div class="nota"><p><b>Idea clave.</b> La seguridad del acceso al código combina tres capas: <b>quién</b> entra (autenticación fuerte y credenciales de máquina limitadas), <b>qué</b> puede hacer (equipos y roles) y <b>cómo</b> debe hacerlo (reglas que obligan a revisar y validar cada cambio).</p></div>
-
-<h3>Actividades</h3>
 <div class="actividad">
 <h4>Actividad 8. Acceso de personas y de máquinas</h4>
 <p><b>Para qué</b>: configurar una autenticación fuerte y comprobar el alcance limitado de un token de grano fino.</p>
@@ -464,7 +456,7 @@ Dockerfile      @ORGANIZACION/operaciones
 <h4>Actividad 9. Ruleset y CODEOWNERS</h4>
 <p><b>Para qué</b>: aplicar las políticas de acceso al código sobre los equipos de la organización.</p>
 <ol>
-<li>La persona de desarrollo, en una rama, añade el fichero <code>.github/CODEOWNERS</code> del apartado 2 con el nombre de vuestra organización, abre un pull request y lo fusiona.</li>
+<li>La persona de desarrollo, en una rama, añade el fichero <code>.github/CODEOWNERS</code> del apartado 6 con el nombre de vuestra organización, abre un pull request y lo fusiona.</li>
 <li>La persona de operaciones crea un ruleset (<i>Settings → Rules → Rulesets → New branch ruleset</i>) llamado <code>proteger-main</code>, con estado <i>Active</i>, destino <i>Include default branch</i>, sin excepciones y con estas reglas:
  <ul>
  <li>Restrict deletions</li>
@@ -487,10 +479,10 @@ Dockerfile      @ORGANIZACION/operaciones
 <li>Borrar la etiqueta: <code>git push --delete origin v0.1</code></li>
 </ol>
 <p>Añadid a <code>ACCESOS.md</code> una tabla con una fila por intento: qué esperabais, el mensaje exacto que devuelve Git o GitHub y qué regla lo explica. Terminad con una respuesta breve: ¿debería la persona owner poder saltarse estas reglas? ¿En qué caso tendría sentido una excepción?</p>
-<p class="entrega">Entrega en Aules: respuestas de la actividad 8 y enlace al repositorio con <code>CODEOWNERS</code>, los dos rulesets activos y <code>ACCESOS.md</code> actualizado.</p>
+<p class="entrega">Entrega en Aules: respuestas de las actividades 6 y 8 y enlace al repositorio con <code>ACCESOS.md</code> completo, <code>CODEOWNERS</code> y los dos rulesets activos.</p>
 </div>
-</section><section class="panel" role="tabpanel" id="p-p5" aria-labelledby="tab-p5" hidden>
-<p class="meta">Unidad 5 · 5. Validar cambios · 2 horas</p>
+</section><section class="panel" role="tabpanel" id="p-p4" aria-labelledby="tab-p4" hidden>
+<p class="meta">Unidad 5 · 4. Validar cambios · 2 horas</p>
 <h2>Validar cada cambio: pruebas automáticas y documentación</h2>
 <p class="chips"><span class="ce" title="Se han validado unas modificaciones del código fuente, ejecutando pruebas de calidad mediante herramientas específicas y documentándolas.">CE 5e</span></p>
 <h3>Objetivos del punto</h3>
@@ -632,19 +624,23 @@ def test_cita_inexistente(cliente):
 </ol>
 <p class="entrega">Entrega en Aules: enlace al pull request de la actividad 12 con la plantilla rellenada y respuestas de las actividades 11 y 12.</p>
 </div>
-</section><section class="panel" role="tabpanel" id="p-p6" aria-labelledby="tab-p6" hidden>
-<p class="meta">Unidad 5 · 6. Seguridad periódica · 2 horas</p>
-<h2>Comprobaciones de seguridad periódicas</h2>
-<p class="chips"><span class="ce" title="Se han ejecutado comprobaciones de parámetros de seguridad del código, mediante herramientas específicas y de forma periódica.">CE 5f</span></p>
+</section><section class="panel" role="tabpanel" id="p-p5" aria-labelledby="tab-p5" hidden>
+<p class="meta">Unidad 5 · 5. Seguridad y dependencias · 4 horas</p>
+<h2>Seguridad periódica y validación de dependencias antes de desplegar</h2>
+<p class="chips"><span class="ce" title="Se han ejecutado comprobaciones de parámetros de seguridad del código, mediante herramientas específicas y de forma periódica.">CE 5f</span><span class="ce" title="Se han validado, con anterioridad al despliegue, las dependencias del código de librerías externas o integraciones, usando herramientas de comprobación para verificar la seguridad y funcionalidad e integración con el resto de los componentes del aplicativo.">CE 5g</span></p>
 <h3>Objetivos del punto</h3>
 <ul>
 <li>Identificar qué parámetros de seguridad del código hay que comprobar y por qué de forma periódica.</li>
 <li>Ejecutar las comprobaciones con herramientas específicas: CodeQL, la detección de secretos de GitHub y OpenSSF Scorecard.</li>
 <li>Programar las comprobaciones para que se repitan solas e interpretar sus resultados.</li>
+<li>Identificar los riesgos de las dependencias externas y de la cadena de suministro del software.</li>
+<li>Fijar las versiones de las dependencias para que lo validado sea lo que se despliega.</li>
+<li>Validar las dependencias nuevas en cada pull request.</li>
+<li>Construir la imagen, escanearla y probar su integración antes de publicarla.</li>
 </ul>
 
 <h3>1. Qué se comprueba y por qué de forma periódica</h3>
-<p>En los puntos 4 y 5 configurasteis los <b>parámetros de seguridad</b> del repositorio: quién puede entrar, qué reglas protegen <code>main</code>, qué permisos tienen los workflows, qué comprobaciones pasa cada cambio. En este punto se comprueba que esos parámetros, y el propio código, siguen siendo seguros con el paso del tiempo. Hay dos cosas que comprobar:</p>
+<p>En los puntos 3 y 4 configurasteis los <b>parámetros de seguridad</b> del repositorio: quién puede entrar, qué reglas protegen <code>main</code>, qué permisos tienen los workflows, qué comprobaciones pasa cada cambio. En este punto se comprueba que esos parámetros, y el propio código, siguen siendo seguros con el paso del tiempo. Hay dos cosas que comprobar:</p>
 <div class="tabla"><table>
 <tr><th></th><th>El contenido del código</th><th>La configuración de seguridad del repositorio</th></tr>
 <tr><td>Qué se comprueba</td><td>Vulnerabilidades en el código propio y secretos publicados por error</td><td>Reglas de protección, permisos de los workflows, versiones fijadas, política de seguridad, actualización de dependencias</td></tr>
@@ -673,11 +669,11 @@ def test_cita_inexistente(cliente):
 <p><b>Scorecard</b> es una herramienta libre de la <b>OpenSSF</b> (Open Source Security Foundation, de la Linux Foundation). Lee la configuración del repositorio y sus ficheros, ejecuta una serie de comprobaciones y da a cada una una nota del 0 al 10. Las que no llegan al 10 aparecen como alertas en <i>Security → Code scanning</i>, con su nota y el motivo. Estas son las que tienen que ver con lo que habéis configurado:</p>
 <div class="tabla"><table>
 <tr><th>Comprobación</th><th>Qué verifica</th><th>Dónde lo configurasteis</th></tr>
-<tr><td>Branch-Protection</td><td>Que <code>main</code> está protegida: sin force push ni borrados, con revisiones, con checks obligatorios, sin excepciones para administradores</td><td>Ruleset <code>proteger-main</code> (punto 4)</td></tr>
-<tr><td>Code-Review</td><td>Que los últimos cambios de <code>main</code> los ha revisado otra persona</td><td>Pull requests aprobados (puntos 4 y 5)</td></tr>
+<tr><td>Branch-Protection</td><td>Que <code>main</code> está protegida: sin force push ni borrados, con revisiones, con checks obligatorios, sin excepciones para administradores</td><td>Ruleset <code>proteger-main</code> (punto 3)</td></tr>
+<tr><td>Code-Review</td><td>Que los últimos cambios de <code>main</code> los ha revisado otra persona</td><td>Pull requests aprobados (puntos 3 y 4)</td></tr>
 <tr><td>Token-Permissions</td><td>Que los workflows piden permisos de solo lectura y solo dan escritura al trabajo que la necesita</td><td>Clave <code>permissions</code> de los workflows (punto 3)</td></tr>
-<tr><td>Dangerous-Workflow</td><td>Que ningún workflow ejecuta código de terceros con permisos peligrosos</td><td>Workflows de los puntos 3 y 5</td></tr>
-<tr><td>CI-Tests</td><td>Que los cambios pasan pruebas automáticas antes de fusionarse</td><td>Workflow de calidad (punto 5)</td></tr>
+<tr><td>Dangerous-Workflow</td><td>Que ningún workflow ejecuta código de terceros con permisos peligrosos</td><td>Workflows de los puntos 3 y 4</td></tr>
+<tr><td>CI-Tests</td><td>Que los cambios pasan pruebas automáticas antes de fusionarse</td><td>Workflow de calidad (punto 4)</td></tr>
 <tr><td>SAST</td><td>Que se analiza el código con una herramienta SAST</td><td>CodeQL (este punto)</td></tr>
 <tr><td>Pinned-Dependencies</td><td>Que las acciones de los workflows y la imagen base están fijadas por hash, no solo por etiqueta</td><td>Workflows y Dockerfile</td></tr>
 <tr><td>Vulnerabilities</td><td>Que las dependencias no tienen vulnerabilidades conocidas sin corregir</td><td><code>requirements.txt</code></td></tr>
@@ -763,92 +759,26 @@ jobs:
 </table></div>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 392" role="img" aria-label="Gestión de vulnerabilidades" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-vulns" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><path d="M429.8,53.9 A217.5,150.0 0 0 1 534.3,106.3" class="flecha" marker-end="url(#fl-vulns)"/><path d="M577.5,197.9 A217.5,150.0 0 0 1 537.6,282.6" class="flecha" marker-end="url(#fl-vulns)"/><path d="M424.6,339.2 A217.5,150.0 0 0 1 295.4,339.2" class="flecha" marker-end="url(#fl-vulns)"/><path d="M182.4,282.6 A217.5,150.0 0 0 1 142.5,197.9" class="flecha" marker-end="url(#fl-vulns)"/><path d="M185.7,106.3 A217.5,150.0 0 0 1 290.2,53.9" class="flecha" marker-end="url(#fl-vulns)"/><rect x="285.0" y="20.0" width="150.0" height="52.0" rx="6" class="d-azul"/><text x="360.0" y="39.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Detectar</text><text x="360.0" y="55.0" class="ts" text-anchor="middle" dominant-baseline="middle">análisis periódicos</text><rect x="491.9" y="123.6" width="150.0" height="52.0" rx="6" class="d-amarillo"/><text x="566.9" y="142.6" class="t tb" text-anchor="middle" dominant-baseline="middle">Clasificar</text><text x="566.9" y="158.6" class="ts" text-anchor="middle" dominant-baseline="middle">¿real? ¿nos afecta?</text><rect x="412.8" y="291.4" width="150.0" height="52.0" rx="6" class="d-naranja"/><text x="487.8" y="302.4" class="t tb" text-anchor="middle" dominant-baseline="middle">Priorizar</text><text x="487.8" y="318.4" class="ts" text-anchor="middle" dominant-baseline="middle">gravedad y</text><text x="487.8" y="334.4" class="ts" text-anchor="middle" dominant-baseline="middle">exposición</text><rect x="157.2" y="291.4" width="150.0" height="52.0" rx="6" class="d-rojo"/><text x="232.2" y="310.4" class="t tb" text-anchor="middle" dominant-baseline="middle">Corregir o aceptar</text><text x="232.2" y="326.4" class="ts" text-anchor="middle" dominant-baseline="middle">en plazo</text><rect x="78.1" y="123.6" width="150.0" height="52.0" rx="6" class="d-verde"/><text x="153.1" y="142.6" class="t tb" text-anchor="middle" dominant-baseline="middle">Verificar</text><text x="153.1" y="158.6" class="ts" text-anchor="middle" dominant-baseline="middle">la alerta se cierra</text></svg></div><figcaption>El ciclo de gestión de vulnerabilidades: detectar no sirve de nada si no se clasifica, se prioriza, se corrige y se comprueba.</figcaption></figure>
 
-<h3>Actividades</h3>
-<div class="actividad">
-<h4>Actividad 13. Activar las comprobaciones de GitHub</h4>
-<p><b>Para qué</b>: dejar en marcha las comprobaciones periódicas del código que ofrece GitHub.</p>
-<ol>
-<li>La persona de operaciones abre <i>Settings → Advanced Security</i> del repositorio (en algunas cuentas aparece como <i>Code security</i>) y activa <i>Dependency graph</i> y <i>Dependabot alerts</i>. Comprueba que <i>Secret Protection</i> (o <i>Secret scanning</i>) y <i>Push protection</i> están activados.</li>
-<li>En la misma página, en <i>Code scanning → CodeQL analysis</i>, elige <i>Set up → Default</i> y acepta la configuración.</li>
-<li>En la pestaña <i>Actions</i>, esperad a que termine el primer análisis de CodeQL y abrid su resultado en <i>Security → Code scanning</i>.</li>
-</ol>
-<p>Responded: ¿qué lenguajes ha detectado CodeQL? ¿Cuándo volverá a ejecutarse sin que nadie haga nada?</p>
-</div>
-<div class="actividad">
-<h4>Actividad 14. Comprobar la configuración con Scorecard</h4>
-<p><b>Para qué</b>: comprobar con una herramienta específica los parámetros de seguridad que configurasteis en los puntos 3 a 5.</p>
-<ol>
-<li>La persona de desarrollo añade <code>.github/workflows/scorecard.yml</code> en una rama, abre el pull request y lo aprueba la persona de operaciones. Al fusionarlo, el workflow se ejecuta solo.</li>
-<li>Cuando termine, abrid <i>Security → Code scanning</i> y filtrad por la herramienta Scorecard. Cada alerta es una comprobación que no tiene la nota máxima.</li>
-<li>Completad una tabla con una fila por alerta: comprobación, nota, qué dice la alerta, a qué parámetro configurado en la unidad se refiere y decisión (corregir, falso positivo, no aplica o aceptar el riesgo, apartado 6).</li>
-</ol>
-<p>Responded: ¿qué nota tiene Branch-Protection y qué regla del ruleset os falta para subirla? ¿Por qué baja Code-Review si habéis revisado todos los pull requests? (Pista: pensad en lo que se hizo directamente en <code>main</code> en el punto 3.)</p>
-</div>
-<div class="actividad">
-<h4>Actividad 15. Corregir y volver a comprobar</h4>
-<p><b>Para qué</b>: cerrar el ciclo de una comprobación periódica: detectar, corregir y verificar.</p>
-<ol>
-<li>La persona de desarrollo abre un pull request con dos ficheros que corrigen dos alertas de Scorecard:
- <ul>
- <li><code>.github/dependabot.yml</code>, el del apartado 4.</li>
- <li><code>SECURITY.md</code>, en la raíz, con este contenido (cambiad <code>ORGANIZACION</code> por la vuestra):
-<pre><code># Política de seguridad
+<div class="pausa"><h4>Ahora: actividades 13, 14 y 15</h4><p>Con lo que hemos visto hasta aquí ya podéis hacerlas. Después seguimos con el apartado 7.</p></div>
 
-## Comunicar una vulnerabilidad
-No abras una issue pública. Comunica la vulnerabilidad de forma privada en
-https://github.com/ORGANIZACION/cita-previa-app/security/advisories/new
-
-## Qué pasará después
-Responderemos en un plazo de 7 días. Corregiremos las vulnerabilidades críticas
-en 72 horas como máximo y publicaremos la corrección y el aviso a la vez.
-
-## Comprobaciones periódicas
-CodeQL y Scorecard se ejecutan cada semana. Secret scanning y push protection están activos.</code></pre></li>
- </ul></li>
-<li>Para que el enlace funcione, la persona de operaciones activa <i>Private vulnerability reporting</i> en <i>Settings → Advanced Security</i>.</li>
-<li>Tras fusionarlo, Scorecard se ejecuta otra vez. ¿Qué alertas se han cerrado solas? ¿Ha abierto Dependabot algún pull request?</li>
-<li>Por último, comprobad el código: la persona de operaciones crea una rama y, en <code>app.py</code>, añade <code>import sqlite3</code> debajo de <code>import os</code>, cambia <code>from flask import Flask, jsonify</code> por <code>from flask import Flask, jsonify, request</code> y añade al final esta ruta:
-<pre><code>@app.route("/buscar")
-def buscar():
-    paciente = request.args.get("paciente", "")
-    con = sqlite3.connect(":memory:")
-    consulta = "SELECT * FROM citas WHERE paciente = '" + paciente + "'"
-    return jsonify(con.execute(consulta).fetchall())</code></pre>
-Abre el pull request, esperad a que terminen los checks y cerradlo sin fusionar.</li>
-</ol>
-<p>Responded: ¿qué herramientas han detectado la inyección SQL del paso 4 y dónde lo muestra cada una? ¿Por qué un análisis semanal de CodeQL no sobra si ya analiza cada pull request?</p>
-<p class="entrega">Entrega en Aules: respuestas de las actividades 13, 14 y 15 y la tabla de alertas de la actividad 14 con una columna más: si la alerta se ha cerrado tras la actividad 15.</p>
-</div>
-</section><section class="panel" role="tabpanel" id="p-p7" aria-labelledby="tab-p7" hidden>
-<p class="meta">Unidad 5 · 7. Dependencias · 2 horas</p>
-<h2>Validar dependencias e integración antes de desplegar</h2>
-<p class="chips"><span class="ce" title="Se han validado, con anterioridad al despliegue, las dependencias del código de librerías externas o integraciones, usando herramientas de comprobación para verificar la seguridad y funcionalidad e integración con el resto de los componentes del aplicativo.">CE 5g</span></p>
-<h3>Objetivos del punto</h3>
-<ul>
-<li>Identificar los riesgos de las dependencias externas y de la cadena de suministro del software.</li>
-<li>Fijar las versiones de las dependencias para que lo validado sea lo que se despliega.</li>
-<li>Validar las dependencias nuevas en cada pull request.</li>
-<li>Construir la imagen, escanearla y probar su integración antes de publicarla.</li>
-</ul>
-
-<h3>1. El problema de las dependencias</h3>
+<h3>7. El problema de las dependencias</h3>
 <p>Una aplicación tiene muy poco código propio: la mayor parte son <b>dependencias</b>. <code>cita-previa-app</code> declara dos (Flask y Gunicorn), pero al instalarlas se descargan también sus dependencias <b>transitivas</b>, y la imagen de contenedor añade cientos de paquetes del sistema operativo. Todo ese código de terceros se ejecuta con los permisos de nuestra aplicación.</p>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 280" role="img" aria-label="Árbol de dependencias" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-dependencias" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="280.0" y="10.0" width="160.0" height="40.0" rx="6" class="d-morado"/><text x="360.0" y="30.0" class="t" text-anchor="middle" dominant-baseline="middle">cita-previa-app</text><rect x="150.0" y="80.0" width="130.0" height="36.0" rx="6" class="d-azul"/><text x="215.0" y="98.0" class="t" text-anchor="middle" dominant-baseline="middle">flask</text><rect x="560.0" y="80.0" width="130.0" height="36.0" rx="6" class="d-azul"/><text x="625.0" y="98.0" class="t" text-anchor="middle" dominant-baseline="middle">gunicorn</text><rect x="12.0" y="150.0" width="104.0" height="34.0" rx="6" class="d-gris"/><text x="64.0" y="167.0" class="t" text-anchor="middle" dominant-baseline="middle">werkzeug</text><rect x="126.0" y="150.0" width="104.0" height="34.0" rx="6" class="d-gris"/><text x="178.0" y="167.0" class="t" text-anchor="middle" dominant-baseline="middle">jinja2</text><rect x="240.0" y="150.0" width="104.0" height="34.0" rx="6" class="d-gris"/><text x="292.0" y="167.0" class="t" text-anchor="middle" dominant-baseline="middle">itsdangerous</text><rect x="354.0" y="150.0" width="104.0" height="34.0" rx="6" class="d-gris"/><text x="406.0" y="167.0" class="t" text-anchor="middle" dominant-baseline="middle">click</text><rect x="468.0" y="150.0" width="104.0" height="34.0" rx="6" class="d-gris"/><text x="520.0" y="167.0" class="t" text-anchor="middle" dominant-baseline="middle">blinker</text><rect x="594.0" y="150.0" width="110.0" height="34.0" rx="6" class="d-gris"/><text x="649.0" y="167.0" class="t" text-anchor="middle" dominant-baseline="middle">packaging</text><rect x="126.0" y="206.0" width="104.0" height="34.0" rx="6" class="d-gris"/><text x="178.0" y="223.0" class="t" text-anchor="middle" dominant-baseline="middle">markupsafe</text><path d="M360.0,52.0 L360.0,65.0 L215.0,65.0 L215.0,78.0" class="flecha " marker-end="url(#fl-dependencias)"/><path d="M360.0,52.0 L360.0,65.0 L625.0,65.0 L625.0,78.0" class="flecha " marker-end="url(#fl-dependencias)"/><path d="M215.0,118.0 L215.0,133.0 L64.0,133.0 L64.0,148.0" class="flecha " marker-end="url(#fl-dependencias)"/><path d="M215.0,118.0 L215.0,133.0 L178.0,133.0 L178.0,148.0" class="flecha " marker-end="url(#fl-dependencias)"/><path d="M215.0,118.0 L215.0,133.0 L292.0,133.0 L292.0,148.0" class="flecha " marker-end="url(#fl-dependencias)"/><path d="M215.0,118.0 L215.0,133.0 L406.0,133.0 L406.0,148.0" class="flecha " marker-end="url(#fl-dependencias)"/><path d="M215.0,118.0 L215.0,133.0 L520.0,133.0 L520.0,148.0" class="flecha " marker-end="url(#fl-dependencias)"/><path d="M178.0,186.0 L178.0,204.0" class="flecha " marker-end="url(#fl-dependencias)"/><path d="M625.0,118.0 L625.0,133.0 L649.0,133.0 L649.0,148.0" class="flecha " marker-end="url(#fl-dependencias)"/><rect x="14" y="257" width="14" height="14" rx="3" class="d-azul"/><text x="34" y="264" class="ts" dominant-baseline="middle">directas (requirements.txt)</text><rect x="211.79999999999998" y="257" width="14" height="14" rx="3" class="d-gris"/><text x="231.79999999999998" y="264" class="ts" dominant-baseline="middle">transitivas</text></svg></div><figcaption>Declaramos dos dependencias, pero se instalan muchas más: las transitivas. Todas pueden tener vulnerabilidades.</figcaption></figure>
 <h4>Riesgos</h4>
 <ul>
 <li><b>Vulnerabilidades conocidas</b> en versiones concretas.</li>
 <li><b>Paquetes maliciosos</b>: publicados con nombres parecidos a otros populares (<i>typosquatting</i>, como <code>reqeusts</code> en lugar de <code>requests</code>) o legítimos cuya cuenta de publicación ha sido robada.</li>
-<li><b>Ataques a la cadena de suministro</b>: introducir código malicioso en un proyecto de confianza. Casos reales: la puerta trasera de <b>xz-utils</b> (2024), preparada durante años y descubierta por casualidad poco antes de llegar a las distribuciones Linux, y el ataque a <b>Trivy</b> de marzo de 2026, que se explica en el apartado 4.</li>
+<li><b>Ataques a la cadena de suministro</b>: introducir código malicioso en un proyecto de confianza. Casos reales: la puerta trasera de <b>xz-utils</b> (2024), preparada durante años y descubierta por casualidad poco antes de llegar a las distribuciones Linux, y el ataque a <b>Trivy</b> de marzo de 2026, que se explica en el apartado 10.</li>
 <li><b>Proyectos abandonados</b> que ya no reciben correcciones.</li>
 <li><b>Cambios incompatibles</b> al actualizar, que rompen la aplicación.</li>
 <li><b>Licencias</b> incompatibles con el uso que se quiere hacer del software.</li>
 </ul>
 
-<h3>2. Fijar y actualizar las dependencias</h3>
+<h3>8. Fijar y actualizar las dependencias</h3>
 <p>El <b>versionado semántico</b> (<code>MAYOR.MENOR.PARCHE</code>) indica el tipo de cambio: el parche corrige errores, la menor añade novedades compatibles y la mayor rompe la compatibilidad. Si se declaran rangos (<code>flask&gt;=3</code>), dos construcciones hechas en días distintos pueden instalar versiones diferentes. Por eso, en lo que se despliega, las versiones se <b>fijan</b>: <code>flask==3.1.3</code> en <code>requirements.txt</code> y <code>python:3.12-slim</code> en el Dockerfile. Para fijar también las transitivas se usan ficheros de bloqueo (<code>poetry.lock</code>, <code>uv.lock</code>, <code>package-lock.json</code>).</p>
-<p>Fijar no significa no actualizar nunca, sino actualizar <b>de forma deliberada y validada</b>. Dependabot, que configurasteis en el punto 6, abre pull requests con las actualizaciones, y cada una pasa por las comprobaciones de este punto antes de fusionarse.</p>
+<p>Fijar no significa no actualizar nunca, sino actualizar <b>de forma deliberada y validada</b>. Dependabot, que configurasteis en el apartado 4, abre pull requests con las actualizaciones, y cada una pasa por las comprobaciones de este punto antes de fusionarse.</p>
 
-<h3>3. Validar las dependencias en cada pull request</h3>
+<h3>9. Validar las dependencias en cada pull request</h3>
 <p>La acción <b>dependency-review</b> compara las dependencias del pull request con las de <code>main</code> y falla si el cambio introduce una versión con vulnerabilidades conocidas. También informa de las licencias. <b>pip-audit</b> revisa además todas las dependencias de Python contra la base de datos de PyPI. Se añade como un segundo trabajo al workflow de calidad:</p>
 <p class="fichero">.github/workflows/calidad.yml (trabajo nuevo)</p>
 <pre><code>  dependencias:
@@ -865,8 +795,8 @@ Abre el pull request, esperad a que terminen los checks y cerradlo sin fusionar.
       - name: pip-audit
         run: pip install pip-audit &amp;&amp; pip-audit -r requirements.txt</code></pre>
 
-<h3>4. Validar la integración antes de publicar</h3>
-<p>Que cada pieza pase sus pruebas no garantiza que funcionen <b>juntas</b>. Las pruebas unitarias del punto 5 prueban el código con Flask, pero no la imagen tal como se desplegará: con Gunicorn, su usuario, su puerto y su configuración. Las <b>pruebas de integración</b> se hacen contra el contenedor real:</p>
+<h3>10. Validar la integración antes de publicar</h3>
+<p>Que cada pieza pase sus pruebas no garantiza que funcionen <b>juntas</b>. Las pruebas unitarias del punto 4 prueban el código con Flask, pero no la imagen tal como se desplegará: con Gunicorn, su usuario, su puerto y su configuración. Las <b>pruebas de integración</b> se hacen contra el contenedor real:</p>
 <ol>
 <li><b>Construir</b> la imagen una sola vez.</li>
 <li><b>Escanearla</b> con Trivy: si tiene vulnerabilidades críticas con corrección disponible, se para.</li>
@@ -928,10 +858,64 @@ jobs:
             docker tag app:ci "$IMAGEN:${GITHUB_REF_NAME#v}"
             docker push "$IMAGEN:${GITHUB_REF_NAME#v}"
           fi</code></pre>
-<p>La acción de Trivy que usa este workflow es un buen ejemplo de ataque a la cadena de suministro. En marzo de 2026, unos atacantes con credenciales robadas movieron casi todas las etiquetas de versión de <code>aquasecurity/trivy-action</code> a un código que robaba los secretos de los pipelines que la usaban. Tras el incidente se borraron las etiquetas antiguas y la primera segura es la <code>v0.35.0</code>. Por eso Scorecard pide fijar las acciones por el hash de su commit, que no se puede mover (punto 6).</p>
+<p>La acción de Trivy que usa este workflow es un buen ejemplo de ataque a la cadena de suministro. En marzo de 2026, unos atacantes con credenciales robadas movieron casi todas las etiquetas de versión de <code>aquasecurity/trivy-action</code> a un código que robaba los secretos de los pipelines que la usaban. Tras el incidente se borraron las etiquetas antiguas y la primera segura es la <code>v0.35.0</code>. Por eso Scorecard pide fijar las acciones por el hash de su commit, que no se puede mover (apartado 4).</p>
 <p>Cada imagen publicada desde <code>main</code> lleva como etiqueta el hash corto del commit (<code>sha-1a2b3c4</code>), y la publicada desde una etiqueta <code>v1.0.0</code> se etiqueta además como <code>1.0.0</code>. Es la imagen que desplegarán las unidades 6 y 7.</p>
 
 <h3>Actividades</h3>
+<div class="actividad">
+<h4>Actividad 13. Activar las comprobaciones de GitHub</h4>
+<p><b>Para qué</b>: dejar en marcha las comprobaciones periódicas del código que ofrece GitHub.</p>
+<ol>
+<li>La persona de operaciones abre <i>Settings → Advanced Security</i> del repositorio (en algunas cuentas aparece como <i>Code security</i>) y activa <i>Dependency graph</i> y <i>Dependabot alerts</i>. Comprueba que <i>Secret Protection</i> (o <i>Secret scanning</i>) y <i>Push protection</i> están activados.</li>
+<li>En la misma página, en <i>Code scanning → CodeQL analysis</i>, elige <i>Set up → Default</i> y acepta la configuración.</li>
+<li>En la pestaña <i>Actions</i>, esperad a que termine el primer análisis de CodeQL y abrid su resultado en <i>Security → Code scanning</i>.</li>
+</ol>
+<p>Responded: ¿qué lenguajes ha detectado CodeQL? ¿Cuándo volverá a ejecutarse sin que nadie haga nada?</p>
+</div>
+<div class="actividad">
+<h4>Actividad 14. Comprobar la configuración con Scorecard</h4>
+<p><b>Para qué</b>: comprobar con una herramienta específica los parámetros de seguridad que configurasteis en los puntos 3 y 4.</p>
+<ol>
+<li>La persona de desarrollo añade <code>.github/workflows/scorecard.yml</code> en una rama, abre el pull request y lo aprueba la persona de operaciones. Al fusionarlo, el workflow se ejecuta solo.</li>
+<li>Cuando termine, abrid <i>Security → Code scanning</i> y filtrad por la herramienta Scorecard. Cada alerta es una comprobación que no tiene la nota máxima.</li>
+<li>Completad una tabla con una fila por alerta: comprobación, nota, qué dice la alerta, a qué parámetro configurado en la unidad se refiere y decisión (corregir, falso positivo, no aplica o aceptar el riesgo, apartado 6).</li>
+</ol>
+<p>Responded: ¿qué nota tiene Branch-Protection y qué regla del ruleset os falta para subirla? ¿Por qué baja Code-Review si habéis revisado todos los pull requests? (Pista: pensad en lo que se hizo directamente en <code>main</code> en el punto 3.)</p>
+</div>
+<div class="actividad">
+<h4>Actividad 15. Corregir y volver a comprobar</h4>
+<p><b>Para qué</b>: cerrar el ciclo de una comprobación periódica: detectar, corregir y verificar.</p>
+<ol>
+<li>La persona de desarrollo abre un pull request con dos ficheros que corrigen dos alertas de Scorecard:
+ <ul>
+ <li><code>.github/dependabot.yml</code>, el del apartado 4.</li>
+ <li><code>SECURITY.md</code>, en la raíz, con este contenido (cambiad <code>ORGANIZACION</code> por la vuestra):
+<pre><code># Política de seguridad
+
+## Comunicar una vulnerabilidad
+No abras una issue pública. Comunica la vulnerabilidad de forma privada en
+https://github.com/ORGANIZACION/cita-previa-app/security/advisories/new
+
+## Qué pasará después
+Responderemos en un plazo de 7 días. Corregiremos las vulnerabilidades críticas
+en 72 horas como máximo y publicaremos la corrección y el aviso a la vez.
+
+## Comprobaciones periódicas
+CodeQL y Scorecard se ejecutan cada semana. Secret scanning y push protection están activos.</code></pre></li>
+ </ul></li>
+<li>Para que el enlace funcione, la persona de operaciones activa <i>Private vulnerability reporting</i> en <i>Settings → Advanced Security</i>.</li>
+<li>Tras fusionarlo, Scorecard se ejecuta otra vez. ¿Qué alertas se han cerrado solas? ¿Ha abierto Dependabot algún pull request?</li>
+<li>Por último, comprobad el código: la persona de operaciones crea una rama y, en <code>app.py</code>, añade <code>import sqlite3</code> debajo de <code>import os</code>, cambia <code>from flask import Flask, jsonify</code> por <code>from flask import Flask, jsonify, request</code> y añade al final esta ruta:
+<pre><code>@app.route("/buscar")
+def buscar():
+    paciente = request.args.get("paciente", "")
+    con = sqlite3.connect(":memory:")
+    consulta = "SELECT * FROM citas WHERE paciente = '" + paciente + "'"
+    return jsonify(con.execute(consulta).fetchall())</code></pre>
+Abre el pull request, esperad a que terminen los checks y cerradlo sin fusionar.</li>
+</ol>
+<p>Responded: ¿qué herramientas han detectado la inyección SQL del paso 4 y dónde lo muestra cada una? ¿Por qué un análisis semanal de CodeQL no sobra si ya analiza cada pull request?</p>
+</div>
 <div class="actividad">
 <h4>Actividad 16. Revisión de dependencias en cada pull request</h4>
 <p><b>Para qué</b>: parar en el pull request las dependencias que traen vulnerabilidades, antes de que lleguen a desplegarse.</p>
@@ -939,7 +923,7 @@ jobs:
 <li>Antes de empezar, comprobad en <i>Actions</i> que el lunes se ejecutó Scorecard con el evento <code>schedule</code>.</li>
 <li>La persona de desarrollo añade el trabajo <code>dependencias</code> al final de <code>calidad.yml</code> en una rama. Abre el pull request y lo aprueba operaciones.</li>
 <li>La persona de operaciones abre un pull request que añade a <code>requirements.txt</code> la línea <code>requests==2.25.0</code>. ¿Qué pasos fallan y qué vulnerabilidades muestra cada uno? Cerradlo sin fusionar.</li>
-<li>Si Dependabot ha abierto algún pull request desde el punto 6, abridlo: ¿qué dependencia actualiza y ha pasado el trabajo <code>dependencias</code>?</li>
+<li>Si Dependabot ha abierto algún pull request desde la actividad 15, abridlo: ¿qué dependencia actualiza y ha pasado el trabajo <code>dependencias</code>?</li>
 </ol>
 </div>
 <div class="actividad">
@@ -947,11 +931,11 @@ jobs:
 <p><b>Para qué</b>: validar la imagen completa antes de publicarla para los entornos de despliegue.</p>
 <ol>
 <li>La persona de desarrollo añade <code>.github/workflows/imagen.yml</code> en una rama y abre el pull request. Comprobad que la imagen se construye, se escanea y se prueba, pero no se publica. Si el escaneo falla por una vulnerabilidad crítica de la imagen base, anotad cuál es: es justo lo que debe hacer el paso. Para seguir, esperad a que se publique una imagen base corregida o, solo en esta práctica, cambiad <code>exit-code</code> a <code>"0"</code> y documentadlo.</li>
-<li>En el mismo pull request, la persona de desarrollo provoca un fallo de integración: en la última línea del Dockerfile cambia <code>0.0.0.0:8000</code> por <code>0.0.0.0:9000</code>. ¿En qué paso falla? ¿Por qué las pruebas unitarias del punto 5 no lo detectaron?</li>
+<li>En el mismo pull request, la persona de desarrollo provoca un fallo de integración: en la última línea del Dockerfile cambia <code>0.0.0.0:8000</code> por <code>0.0.0.0:9000</code>. ¿En qué paso falla? ¿Por qué las pruebas unitarias del punto 4 no lo detectaron?</li>
 <li>Deshaced el cambio, la persona de operaciones aprueba el pull request y se fusiona. Comprobad en la página de la organización, en <i>Packages</i>, que aparece la imagen <code>cita-previa-app</code> con la etiqueta <code>sha-...</code></li>
 <li>Cread la versión: <code>git pull</code>, <code>git tag v1.0.0</code> y <code>git push origin v1.0.0</code>. Comprobad que se publica también la etiqueta <code>1.0.0</code>.</li>
 </ol>
-<p class="entrega">Entrega en Aules: respuestas de las actividades 16 y 17 y enlace a la imagen <code>1.0.0</code> publicada.</p>
+<p class="entrega">Entrega en Aules: respuestas de las actividades 13 a 17, la tabla de alertas de la actividad 14 con una columna más que indique si la alerta se ha cerrado tras la actividad 15 y el enlace a la imagen 1.0.0 publicada.</p>
 </div>
 </section><section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden>
 <h2>Recursos y glosario</h2>
@@ -960,8 +944,8 @@ jobs:
 <div class="tabla"><table>
 <tr><th>Fichero</th><th>Para qué sirve</th></tr>
 <tr><td><code>app.py</code></td><td>La aplicación, con las rutas <code>/salud</code> y <code>/citas</code></td></tr>
-<tr><td><code>test_app.py</code></td><td>Las pruebas automáticas (punto 5)</td></tr>
-<tr><td><code>requirements.txt</code></td><td>Dependencias de la aplicación, con versiones fijadas (punto 7)</td></tr>
+<tr><td><code>test_app.py</code></td><td>Las pruebas automáticas (punto 4)</td></tr>
+<tr><td><code>requirements.txt</code></td><td>Dependencias de la aplicación, con versiones fijadas (punto 5)</td></tr>
 <tr><td><code>requirements-dev.txt</code></td><td>Herramientas de desarrollo: pytest, pytest-cov y Ruff</td></tr>
 <tr><td><code>pyproject.toml</code></td><td>Configuración de Ruff</td></tr>
 <tr><td><code>Dockerfile</code> y <code>.dockerignore</code></td><td>Construcción de la imagen</td></tr>

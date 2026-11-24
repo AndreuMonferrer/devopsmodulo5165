@@ -170,7 +170,7 @@ resource "docker_network" "red" {
 }
 
 resource "docker_image" "app" {
-  name         = "ghcr.io/ORGANIZACION/cita-previa-app:1.0.0"   # la imagen publicada en el punto 7 de la unidad 5
+  name         = "ghcr.io/ORGANIZACION/cita-previa-app:1.0.0"   # la imagen publicada en el punto 5 de la unidad 5
   keep_locally = true
 }
 
@@ -464,7 +464,7 @@ version_imagen = "1.0.0"</code></pre>
 <div class="aviso"><p><b>Nunca</b> pongáis un secreto (contraseñas, tokens) en un <code>.tfvars</code> que se sube al repositorio: se pasa como variable de entorno <code>TF_VAR_nombre</code>. En el punto 3 añadiremos así la credencial del registro de imágenes.</p></div>
 
 <h3>5. Módulos (introducción)</h3>
-<p>Un <b>módulo</b> es una carpeta de ficheros <code>.tf</code> que se reutiliza con parámetros, como una función. Cuando el código crece, se extraen módulos (<code>modulos/vm-web</code>, <code>modulos/red</code>) y cada entorno los llama con sus valores. Hay módulos públicos en el Registry para casi todo, aunque conviene revisarlos antes de usarlos igual que cualquier dependencia (unidad 5, punto 7).</p>
+<p>Un <b>módulo</b> es una carpeta de ficheros <code>.tf</code> que se reutiliza con parámetros, como una función. Cuando el código crece, se extraen módulos (<code>modulos/vm-web</code>, <code>modulos/red</code>) y cada entorno los llama con sus valores. Hay módulos públicos en el Registry para casi todo, aunque conviene revisarlos antes de usarlos igual que cualquier dependencia (unidad 5, punto 5).</p>
 
 <h3>Actividades</h3>
 <div class="actividad">

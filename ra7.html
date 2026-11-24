@@ -102,7 +102,7 @@ variable: "{{ otra }}"       # plantillas Jinja2: siempre entre comillas</code><
 </table></div>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 218" role="img" aria-label="Niveles de paquetes" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-niveles_paquetes" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="154.0" y="57.0" class="ts" text-anchor="end" dominant-baseline="middle">ansible-galaxy</text><text x="154.0" y="99.0" class="ts" text-anchor="end" dominant-baseline="middle">Docker / registro</text><text x="154.0" y="141.0" class="ts" text-anchor="end" dominant-baseline="middle">pip / pipx</text><text x="154.0" y="183.0" class="ts" text-anchor="end" dominant-baseline="middle">apt</text><text x="435.0" y="21.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Qué se instala</text><rect x="162.0" y="38.0" width="546.0" height="38.0" rx="6" class="d-morado"/><text x="435.0" y="57.0" class="t" text-anchor="middle" dominant-baseline="middle">Colecciones de Ansible (en el nodo de control)</text><rect x="162.0" y="80.0" width="546.0" height="38.0" rx="6" class="d-azul"/><text x="435.0" y="99.0" class="t" text-anchor="middle" dominant-baseline="middle">Imagen de la aplicación con todas sus librerías</text><rect x="162.0" y="122.0" width="546.0" height="38.0" rx="6" class="d-verde"/><text x="435.0" y="141.0" class="t" text-anchor="middle" dominant-baseline="middle">Herramientas de Python y SDK de Docker</text><rect x="162.0" y="164.0" width="546.0" height="38.0" rx="6" class="d-naranja"/><text x="435.0" y="183.0" class="t" text-anchor="middle" dominant-baseline="middle">Docker Engine, utilidades y bibliotecas del sistema</text></svg></div><figcaption>Los niveles de paquetes y dependencias de un servidor de Cita Previa, cada uno con su gestor.</figcaption></figure>
 <p>Un detalle importante: los módulos de <code>community.docker</code> se ejecutan en el nodo gestionado con Python y necesitan allí la librería <b>Docker SDK para Python</b> (paquete <code>python3-docker</code>). Es una dependencia de la automatización que también hay que instalar.</p>
-<p>Igual que en el punto 7 de la unidad 5, las versiones se fijan: la del repositorio de Docker, las de las colecciones en <code>requirements.yml</code> y las de las imágenes (nunca <code>latest</code>).</p>
+<p>Igual que en el punto 5 de la unidad 5, las versiones se fijan: la del repositorio de Docker, las de las colecciones en <code>requirements.yml</code> y las de las imágenes (nunca <code>latest</code>).</p>
 
 <h3>4. El proyecto Ansible</h3>
 <p class="fichero">ansible/ansible.cfg</p>
@@ -213,7 +213,7 @@ ansible --version</code></pre>
 <h4>Actividad 5. Dependencias de la aplicación</h4>
 <p>Añadid al playbook un segundo play o nuevas tareas que:</p>
 <ol>
-<li>Descarguen la imagen de la aplicación publicada en el punto 7 de la unidad 5, con una versión fija: <code>community.docker.docker_image</code> con <code>name: ghcr.io/ORGANIZACION/cita-previa-app</code>, <code>tag: "1.0.0"</code>, <code>source: pull</code>.</li>
+<li>Descarguen la imagen de la aplicación publicada en el punto 5 de la unidad 5, con una versión fija: <code>community.docker.docker_image</code> con <code>name: ghcr.io/ORGANIZACION/cita-previa-app</code>, <code>tag: "1.0.0"</code>, <code>source: pull</code>.</li>
 <li>Creen un entorno virtual de Python en <code>/opt/herramientas</code> e instalen en él <code>httpie</code> con <code>ansible.builtin.pip</code> (<code>virtualenv: /opt/herramientas</code>, <code>virtualenv_command: python3 -m venv</code>) para tener una herramienta de pruebas HTTP en el servidor.</li>
 </ol>
 <p>Ejecutad y comprobad (<code>docker images</code>, <code>/opt/herramientas/bin/http --version</code>). En <code>ansible/README.md</code>, documentad qué se instala en cada nivel de la tabla del apartado 3 y con qué gestor.</p>
@@ -464,7 +464,7 @@ jobs:
 <li><b>Reparto de responsabilidades</b>: en una rama, quitad de <code>infra/</code> el recurso <code>docker_container.app</code>, el recurso <code>docker_image.app</code> y las salidas <code>urls</code> y <code>contenedores</code>; en <code>verificar.sh</code>, quitad las comprobaciones de las réplicas (bloques 2 a 4, salvo la de Redis). Abrid el pull request: el plan debe mostrar que se destruyen los contenedores de la aplicación y nada más. Fusionad y aprobad producción.</li>
 <li>Completad el rol <code>app</code> y <code>group_vars/revision.yml</code> con vuestra imagen de GHCR. Como la imagen es privada (unidad 6, punto 3), iniciad sesión una vez con el token de solo lectura: <code>docker login ghcr.io</code>.</li>
 <li>Ejecutad <code>ansible-playbook desplegar.yml</code> y comprobad: <code>curl http://localhost:8080/salud</code> y <code>docker network inspect cp-revision-red</code> (¿está conectado el contenedor?).</li>
-<li>Simulad una nueva versión: publicad la etiqueta <code>v1.0.1</code> (el workflow del punto 7 de la unidad 5 publica la imagen), cambiad <code>app_version</code> y volved a desplegar. ¿Qué hace el módulo con el contenedor antiguo? Volved a la versión 1.0.0 cambiando solo la variable: esa es vuestra vuelta atrás.</li>
+<li>Simulad una nueva versión: publicad la etiqueta <code>v1.0.1</code> (el workflow del punto 5 de la unidad 5 publica la imagen), cambiad <code>app_version</code> y volved a desplegar. ¿Qué hace el módulo con el contenedor antiguo? Volved a la versión 1.0.0 cambiando solo la variable: esa es vuestra vuelta atrás.</li>
 </ol>
 </div>
 <div class="actividad">
@@ -738,7 +738,7 @@ jobs:
 <li><b>Red</b>: redes de Docker propias por aplicación y entorno; publicar solo los puertos necesarios y, si detrás hay un proxy, solo en <code>127.0.0.1</code>. Recordad (punto 2) que los puertos publicados por Docker se saltan UFW.</li>
 <li><b>Nada de montar el socket de Docker</b> (<code>/var/run/docker.sock</code>) en contenedores de aplicación: equivale a darles root en el anfitrión.</li>
 <li><b>Secretos</b>: mejor como ficheros montados de solo lectura o con un gestor de secretos que como variables de entorno, que aparecen en <code>docker inspect</code>.</li>
-<li><b>Imagen</b>: mínima (<code>slim</code>, <code>distroless</code>), escaneada (unidad 5, punto 7) y fijada por versión o digest.</li>
+<li><b>Imagen</b>: mínima (<code>slim</code>, <code>distroless</code>), escaneada (unidad 5, punto 5) y fijada por versión o digest.</li>
 </ul>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 248" role="img" aria-label="Defensa en profundidad" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-defensa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><rect x="12" y="10" width="696" height="230" rx="8" class="d-grupo-naranja"/><text x="22" y="25" class="tt">Equipo: UFW, fail2ban, parches</text><rect x="40" y="40" width="640" height="186" rx="8" class="d-grupo-azul"/><text x="50" y="55" class="tt">Docker: seccomp, AppArmor, red propia, sin socket montado</text><rect x="70" y="70" width="580" height="142" rx="8" class="d-grupo-verde"/><text x="80" y="85" class="tt">Contenedor: sin root, sin capacidades, no-new-privileges, solo lectura, límites</text><rect x="250.0" y="110.0" width="220.0" height="60.0" rx="6" class="d-morado"/><text x="360.0" y="133.0" class="t tb" text-anchor="middle" dominant-baseline="middle">Aplicación</text><text x="360.0" y="149.0" class="ts" text-anchor="middle" dominant-baseline="middle">imagen mínima y escaneada</text></svg></div><figcaption>Defensa en profundidad del contenedor de Cita Previa: si una capa falla, las demás siguen protegiendo.</figcaption></figure>
 <p>Estas reglas coinciden con las del <b>CIS Docker Benchmark</b>, que se puede comprobar automáticamente con <code>docker-bench-security</code>.</p>
@@ -1252,7 +1252,7 @@ LABEL org.opencontainers.image.title="cita-previa-app" \
       org.opencontainers.image.source="https://github.com/ORGANIZACION/cita-previa-app" \
       org.opencontainers.image.documentation="https://github.com/ORGANIZACION/cita-previa-app/blob/main/docs/imagen.md" \
       org.opencontainers.image.licenses="MIT"</code></pre>
-<p>En el workflow del punto 7 de la unidad 5, se pasan al construir: <code>docker build --build-arg VERSION=${GITHUB_REF_NAME#v} --build-arg REVISION=$GITHUB_SHA ...</code>. La etiqueta <code>source</code> además enlaza el paquete de GHCR con el repositorio.</p>
+<p>En el workflow del punto 5 de la unidad 5, se pasan al construir: <code>docker build --build-arg VERSION=${GITHUB_REF_NAME#v} --build-arg REVISION=$GITHUB_SHA ...</code>. La etiqueta <code>source</code> además enlaza el paquete de GHCR con el repositorio.</p>
 
 <h3>Actividades</h3>
 <div class="actividad">
