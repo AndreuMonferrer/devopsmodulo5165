@@ -153,6 +153,8 @@
 <li>Interpretar los resultados de estas herramientas y decidir en qué momento del pipeline se ejecuta cada una.</li>
 </ul>
 
+<div class="nota"><p><b>Caso real.</b> El 1 de agosto de 2012, Knight Capital, una de las mayores empresas de compraventa de acciones de Estados Unidos, instaló a mano una versión nueva de su software en ocho servidores. En uno de ellos no se copió, y allí se activó un código antiguo que llevaba años sin usarse. En 45 minutos lanzó millones de órdenes erróneas y perdió unos 440 millones de dólares. Nadie había comprobado de forma automática qué se desplegaba ni cómo. Este punto trata de las herramientas que hacen esas comprobaciones.</p></div>
+
 <h3>1. Por qué validar antes de desplegar</h3>
 <p>Cada cambio que llega a producción puede introducir errores, código difícil de mantener, vulnerabilidades o dependencias con fallos conocidos. Revisarlo todo a mano es imposible cuando se despliega a menudo. La solución DevOps es <b>automatizar las comprobaciones</b> y ejecutarlas en cada cambio, lo antes posible. Es el principio de <b>desplazar a la izquierda</b> (<i>shift left</i>): en un diagrama del ciclo de vida dibujado de izquierda a derecha, las comprobaciones se mueven hacia el principio, donde corregir es más barato. Integrar así la seguridad en todo el ciclo es lo que se llama <b>DevSecOps</b>.</p>
 <figure class="diagrama"><div class="lienzo"><svg viewBox="0 0 720 214" role="img" aria-label="Coste de un defecto" xmlns="http://www.w3.org/2000/svg"><defs><marker id="fl-coste_defecto" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker></defs><text x="204.0" y="25.0" class="t" text-anchor="end" dominant-baseline="middle">En el portátil (pre-commit)</text><rect x="212.0" y="12" width="3.8" height="26" rx="3" class="d-verde"/><text x="221.8" y="25.0" class="t tb" text-anchor="start" dominant-baseline="middle">1×</text><text x="204.0" y="63.0" class="t" text-anchor="end" dominant-baseline="middle">En el pull request</text><rect x="212.0" y="50" width="11.4" height="26" rx="3" class="d-verde"/><text x="229.4" y="63.0" class="t tb" text-anchor="start" dominant-baseline="middle">3×</text><text x="204.0" y="101.0" class="t" text-anchor="end" dominant-baseline="middle">En el entorno de revisión</text><rect x="212.0" y="88" width="38.0" height="26" rx="3" class="d-amarillo"/><text x="256.0" y="101.0" class="t tb" text-anchor="start" dominant-baseline="middle">10×</text><text x="204.0" y="139.0" class="t" text-anchor="end" dominant-baseline="middle">En pruebas finales</text><rect x="212.0" y="126" width="95.1" height="26" rx="3" class="d-naranja"/><text x="313.1" y="139.0" class="t tb" text-anchor="start" dominant-baseline="middle">25×</text><text x="204.0" y="177.0" class="t" text-anchor="end" dominant-baseline="middle">En producción</text><rect x="212.0" y="164" width="380.4" height="26" rx="3" class="d-rojo"/><text x="598.4" y="177.0" class="t tb" text-anchor="start" dominant-baseline="middle">100×</text></svg></div><figcaption>Coste relativo de corregir un mismo defecto según cuándo se detecta. Cifras orientativas de la ingeniería del software: la tendencia es lo importante.</figcaption></figure>
@@ -210,9 +212,9 @@
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 3. ¿Qué herramienta lo ha dicho?</h4>
-<p><b>Para qué</b>: reconocer el tipo de herramienta por lo que detecta y decidir qué hacer con cada resultado.</p>
-<p>Individual. Estas son salidas reales de herramientas ejecutadas en varios proyectos de una empresa:</p>
+<h4>Actividad 3. Las alertas del lunes</h4>
+<p><b>Para qué</b>: reconocer el tipo de herramienta por lo que detecta y decidir qué hacer con cada aviso, como en una guardia real.</p>
+<p>Individual. Es lunes a primera hora y estáis de guardia en el equipo DevOps de una empresa con varios proyectos. Durante el fin de semana, el canal de alertas ha recogido estas salidas de herramientas:</p>
 <ol>
 <li><code>app.py:3:8: F401 [*] `os` imported but unused</code></li>
 <li><code>FAILED test_app.py::test_cita_inexistente - assert 200 == 404</code></li>
@@ -224,16 +226,17 @@
 <li><code>Quality Gate failed: Coverage on New Code 42.0% (required ≥ 80.0%)</code></li>
 <li><code>WARN-NEW: Content Security Policy (CSP) Header Not Set [10038]</code>, en la URL <code>https://revision.empresa.es/</code></li>
 </ol>
-<p>Completad esta tabla con una fila por salida:</p>
+<p>Haced el triaje en esta tabla, con una fila por alerta:</p>
 <div class="tabla"><table>
-<tr><th>Salida</th><th>Tipo de herramienta (apartados 2 y 3)</th><th>Herramienta probable</th><th>Qué ha detectado</th><th>Qué haríais</th><th>Momento del pipeline en que debería saltar</th></tr>
+<tr><th>Alerta</th><th>Tipo y herramienta probable (apartados 2 y 3)</th><th>Qué ha detectado</th><th>Prioridad: urgente, esta semana o puede esperar</th><th>Qué haríais</th><th>Dónde debería haber saltado antes</th></tr>
 <tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><td>…</td><td></td><td></td><td></td><td></td><td></td></tr>
 </table></div>
+<p>Para terminar, ordenad las nueve alertas de la más urgente a la menos urgente y justificad en una línea por qué la primera va la primera.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 4. Las comprobaciones de un proyecto</h4>
-<p><b>Para qué</b>: elegir las comprobaciones que necesita un proyecto concreto y situarlas en el pipeline.</p>
+<h4>Actividad 4. Propuesta para un cliente</h4>
+<p><b>Para qué</b>: elegir las comprobaciones que necesita un proyecto concreto, situarlas en el pipeline y saber explicárselo a quien paga.</p>
 <p>En parejas. Una gestoría encarga a vuestra empresa una aplicación con estas características:</p>
 <ul>
 <li>API en Python con Flask, empaquetada en una imagen de contenedor a partir de <code>python:3.12-slim</code>.</li>
@@ -243,8 +246,12 @@
 <li>Se despliega en producción una vez por semana, y a veces pasan meses sin cambios en el código.</li>
 <li>Guarda datos personales de clientes, así que una filtración tendría consecuencias legales (RGPD).</li>
 </ul>
-<p>Diseñad sus comprobaciones en una tabla con una fila por comprobación: tipo de herramienta, herramienta concreta, qué protege, en qué momento se ejecuta y si su fallo debe <b>parar</b> el despliegue o solo <b>avisar</b>. Incluid al menos una comprobación por cada característica de la lista y justificad en dos o tres líneas por qué no basta con ejecutarlas al hacer un cambio.</p>
-<p class="entrega">Entrega en Aules: tablas de las actividades 3 y 4 y la justificación de la actividad 4.</p>
+<p>Preparad la propuesta de comprobaciones que le presentaríais:</p>
+<ul>
+<li>Una tabla con una fila por comprobación: tipo de herramienta, herramienta concreta, qué protege, en qué momento se ejecuta y si su fallo debe <b>parar</b> el despliegue o solo <b>avisar</b>. Incluid al menos una comprobación por cada característica de la lista.</li>
+<li>Un párrafo para el gerente de la gestoría, que no es informático, que explique por qué hay comprobaciones que se siguen ejecutando aunque nadie toque el código durante meses. Sin tecnicismos.</li>
+</ul>
+<p class="entrega">Entrega en Aules: tabla de la actividad 3 con el orden de prioridad y la propuesta de la actividad 4.</p>
 </div>
 </section><section class="panel" role="tabpanel" id="p-p3" aria-labelledby="tab-p3" hidden>
 <p class="meta">Unidad 5 · 3. Control de acceso · 4 horas</p>
@@ -260,6 +267,8 @@
 <li>Configurar políticas de acceso al código con reglas de protección (rulesets) y responsables de cada ruta (CODEOWNERS), aplicadas a los equipos.</li>
 <li>Comprobar que las políticas no se pueden saltar.</li>
 </ul>
+
+<div class="nota"><p><b>Caso real.</b> En septiembre de 2022, un atacante consiguió la contraseña de un trabajador externo de Uber. La cuenta tenía doble factor, así que le envió solicitudes de aprobación una y otra vez hasta que el trabajador aceptó una. Ya dentro de la red, encontró un script con la contraseña de administrador de la herramienta que guardaba las credenciales privilegiadas de la empresa, y con ella llegó a sistemas internos críticos. Bastaron un doble factor que se aprobaba con un clic y una credencial guardada donde no debía. Este punto trata de cómo evitarlo: quién accede, con qué permisos y cómo se protege el código.</p></div>
 
 <h3>1. Principios de control de acceso</h3>
 <ul>
@@ -368,28 +377,29 @@ Dockerfile      @ORGANIZACION/operaciones
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 5. Organización, equipos y repositorio</h4>
+<h4>Actividad 5. Alta de un proyecto nuevo</h4>
 <p><b>Para qué</b>: convertir la matriz de accesos en perfiles reales de GitHub.</p>
-<p>En parejas (o en trío). Repartid los papeles: una persona será de <b>operaciones</b> y la otra de <b>desarrollo</b> (en un trío, dos de desarrollo). El profesor será <b>auditoria</b>. La persona de operaciones:</p>
-<ol>
-<li>Crea una organización gratuita en GitHub con el nombre <code>citaprevia-APELLIDO1-APELLIDO2</code>, con los primeros apellidos de la pareja, sin tildes ni eñes. Será la única owner: en una empresa habría dos, pero así podremos comprobar los límites de los demás perfiles.</li>
-<li>En <i>Settings → Member privileges</i>, pone los permisos base en <i>No permission</i> y desactiva la creación de repositorios por los miembros.</li>
-<li>Invita a la otra persona y al profesor como miembros y crea los equipos <code>desarrollo</code>, <code>operaciones</code> y <code>auditoria</code> con cada persona en el suyo.</li>
-<li>Crea el repositorio <b>público</b> <code>cita-previa-app</code> y sube los ficheros de la carpeta que hay dentro de <a href="assets/ra5/cita-previa-app.zip">cita-previa-app.zip</a> (<i>Add file → Upload files</i>, incluidos <code>.gitignore</code> y <code>.dockerignore</code>, que son ocultos: en el selector de ficheros, <kbd>Ctrl</kbd>+<kbd>H</kbd> los muestra).</li>
-<li>En <i>Settings → Collaborators and teams</i> del repositorio, da a cada equipo su rol: desarrollo <i>Write</i>, operaciones <i>Maintain</i> y auditoria <i>Read</i>.</li>
-<li>En <i>Settings → Actions → General</i> de la organización, pone los permisos del <code>GITHUB_TOKEN</code> en <i>Read repository contents and packages permissions</i>.</li>
-</ol>
+<p>En parejas (o en trío). Repartid los papeles: una persona será de operaciones y la otra de desarrollo (en un trío, dos de desarrollo). El profesor hace de auditoría externa. Vuestra empresa acaba de firmar con un centro de salud el desarrollo de una API de cita previa, y la responsable técnica abre este ticket:</p>
+<div class="nota"><p><b>Ticket · Responsable técnica</b></p><p>«Montad el espacio del proyecto en GitHub. Lo quiero cerrado por defecto: nadie ve nada que no le toque y nadie crea repositorios por su cuenta. Tres equipos: desarrollo, operaciones y la auditoría externa, que solo mira.»</p></div><p><b>Criterios de aceptación. El ticket se cierra cuando se cumple todo esto:</b></p>
+<ul>
+<li>Existe la organización gratuita <code>citaprevia-APELLIDO1-APELLIDO2</code>, con los primeros apellidos de la pareja, sin tildes ni eñes. La única owner es la persona de operaciones: en una empresa habría dos, pero así se pueden comprobar los límites de los demás perfiles.</li>
+<li>Los miembros no tienen ningún permiso base sobre los repositorios y no pueden crear repositorios.</li>
+<li>Existen los equipos <code>desarrollo</code>, <code>operaciones</code> y <code>auditoria</code>, con cada persona en el suyo y el profesor en <code>auditoria</code>.</li>
+<li>Existe el repositorio público <code>cita-previa-app</code> con todos los ficheros de <code>cita-previa-app.zip</code> (pestaña Recursos), también los ocultos <code>.gitignore</code> y <code>.dockerignore</code>.</li>
+<li>Cada equipo tiene en el repositorio el rol que le da la matriz del apartado 4.</li>
+<li>El <code>GITHUB_TOKEN</code> de los workflows de la organización es de solo lectura por defecto.</li>
+</ul><p>Dónde se configura cada cosa y las órdenes de Git y SSH: tabla <a href="#recursos">Chuleta de GitHub y Git</a> de la pestaña Recursos.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 6. Entornos de revisión y producción</h4>
+<h4>Actividad 6. Dos entornos, dos niveles de riesgo</h4>
 <p><b>Para qué</b>: habilitar el acceso a los entornos de despliegue con reglas distintas según su riesgo.</p>
-<ol>
-<li>La persona de operaciones crea en <i>Settings → Environments</i> del repositorio:
- <ul><li><code>revision</code>: sin revisores. En <i>Deployment branches and tags</i>, solo la rama <code>main</code>. Un secreto <code>DB_PASSWORD</code> con el valor <code>prueba-revision-123</code> y una variable <code>URL_ENTORNO</code> con <code>http://localhost:8080</code>.</li>
- <li><code>produccion</code>: revisor obligatorio el equipo <code>operaciones</code>, marcada la opción <i>Prevent self-review</i> y desmarcada <i>Allow administrators to bypass configured protection rules</i>. Solo la rama <code>main</code>. Un secreto <code>DB_PASSWORD</code> con el valor <code>prueba-produccion-456</code> y una variable <code>URL_ENTORNO</code> con <code>http://localhost:9080</code>.</li></ul></li>
-<li>La persona de desarrollo crea, directamente en <code>main</code>, el fichero <code>.github/workflows/entornos.yml</code>:</li>
-</ol>
-<p class="fichero">.github/workflows/entornos.yml</p>
+<div class="nota"><p><b>Ticket · Seguridad</b></p><p>«Producción va a guardar datos de pacientes. Nadie despliega allí sin que operaciones lo apruebe, nadie se aprueba a sí mismo, ni siquiera un administrador, y la contraseña de producción no la recibe ningún trabajo que no despliegue en producción.»</p></div><p><b>Criterios de aceptación. El ticket se cierra cuando se cumple todo esto:</b></p>
+<ul>
+<li>Existe el entorno <code>revision</code>: sin revisores, solo se despliega desde <code>main</code>, con el secreto <code>DB_PASSWORD</code> con el valor <code>prueba-revision-123</code> y la variable <code>URL_ENTORNO</code> con <code>http://localhost:8080</code>.</li>
+<li>Existe el entorno <code>produccion</code>: revisor obligatorio el equipo <code>operaciones</code>, nadie puede aprobar su propio despliegue, los administradores no se pueden saltar las reglas y solo se despliega desde <code>main</code>. Secreto <code>DB_PASSWORD</code> con el valor <code>prueba-produccion-456</code> y variable <code>URL_ENTORNO</code> con <code>http://localhost:9080</code>.</li>
+<li>El workflow de comprobación que os ha pasado un compañero, este de abajo, está en <code>main</code>. La persona de desarrollo lo sube directamente, sin pull request.</li>
+<li>Al lanzarlo a mano, el trabajo de producción se queda esperando (<i>Waiting for review</i>) hasta que lo aprueba la persona de operaciones.</li>
+</ul><p class="fichero">.github/workflows/entornos.yml</p>
 <pre><code>name: Entornos
 on: workflow_dispatch          # se lanza a mano desde la pestaña Actions
 permissions:
@@ -416,70 +426,69 @@ jobs:
         run: |
           echo "Entorno produccion en ${{ vars.URL_ENTORNO }}"
           echo "La contraseña tiene ${#DB_PASSWORD} caracteres"</code></pre>
-<ol start="3">
-<li>La persona de desarrollo lo lanza en <i>Actions → Entornos → Run workflow</i>. Observad cómo el trabajo de producción queda en espera (<i>Waiting for review</i>) y aprobadlo con la persona de operaciones.</li>
-<li>Abrid el registro de cada trabajo. ¿Qué longitud tiene la contraseña en cada entorno? ¿Por qué no es la misma?</li>
-</ol>
+<p>Responded: según los registros de cada trabajo, ¿qué longitud tiene la contraseña en cada entorno? ¿Por qué no es la misma si los dos trabajos ejecutan exactamente las mismas órdenes?</p><p>Dónde se configura cada cosa y las órdenes de Git y SSH: tabla <a href="#recursos">Chuleta de GitHub y Git</a> de la pestaña Recursos.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 7. Probar los límites</h4>
-<p><b>Para qué</b>: comprobar que los perfiles no solo permiten, sino que también limitan.</p>
-<p>Haced estas pruebas:</p>
-<ol>
+<h4>Actividad 7. La auditoría de accesos</h4>
+<p><b>Para qué</b>: demostrar que los perfiles no solo permiten, sino que también limitan.</p>
+<p>Antes de dar el alta por terminada, la auditora externa os pide pruebas. No le vale que digáis que está configurado: quiere ver qué pasa cuando alguien intenta hacer lo que no debe. Haced estas pruebas:</p>
+<ol class="casos">
 <li>La persona de desarrollo lanza el workflow e intenta aprobar ella misma el trabajo de producción.</li>
 <li>La persona de desarrollo busca la pestaña <i>Settings</i> del repositorio.</li>
-<li>Cread una rama <code>prueba</code> y lanzad el workflow eligiendo esa rama en <i>Run workflow</i>.</li>
-<li>La persona de desarrollo cambia en <code>main</code> el primer paso para que imprima el secreto (<code>echo "$DB_PASSWORD"</code>) y lanza el workflow.</li>
+<li>Se crea una rama <code>prueba</code> y se lanza el workflow sobre esa rama.</li>
+<li>La persona de desarrollo cambia en <code>main</code> el primer paso del workflow para que imprima el secreto (<code>echo "$DB_PASSWORD"</code>) y lo lanza.</li>
 </ol>
-<p>Cread en el repositorio el fichero <code>ACCESOS.md</code> con la matriz del apartado 4, indicando quién de vosotros está en cada equipo, y esta tabla con una fila por prueba:</p>
+<p>El informe para la auditora es un fichero <code>ACCESOS.md</code> en el repositorio con la matriz del apartado 4, quién de vosotros está en cada equipo y esta tabla:</p>
 <div class="tabla"><table>
 <tr><th>Prueba</th><th>Qué esperabais</th><th>Qué ha pasado (mensaje exacto de GitHub)</th><th>Qué configuración lo explica</th></tr>
-<tr><td>1</td><td></td><td></td><td></td></tr>
+<tr><td>a</td><td></td><td></td><td></td></tr>
 <tr><td>…</td><td></td><td></td><td></td></tr>
 </table></div>
-<p>Al acabar, deshaced el cambio de la prueba 4.</p>
+<p>Al acabar, deshaced el cambio de la prueba d.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 8. Acceso de personas y de máquinas</h4>
-<p><b>Para qué</b>: configurar una autenticación fuerte y comprobar el alcance limitado de un token de grano fino.</p>
-<p>Individual:</p>
-<ol>
-<li>En el portátil, generad una clave SSH con frase de paso: <code>ssh-keygen -t ed25519 -C "vuestro correo"</code>. Añadid la clave pública (<code>~/.ssh/id_ed25519.pub</code>) en GitHub, en <i>Settings → SSH and GPG keys</i>.</li>
-<li>Comprobadlo con <code>ssh -T git@github.com</code> y clonad <code>cita-previa-app</code> por SSH. Si la red del instituto bloquea el puerto 22 (la orden se queda esperando), GitHub admite SSH por el puerto 443: añadid a <code>~/.ssh/config</code> las líneas <code>Host github.com</code>, <code>Hostname ssh.github.com</code> y <code>Port 443</code>, y volved a probar.</li>
-<li>Cread un token de grano fino (<i>Settings → Developer settings → Personal access tokens → Fine-grained tokens</i>) con propietario la organización, acceso solo a <code>cita-previa-app</code>, permiso <i>Contents: Read-only</i> y caducidad de 7 días. Si la organización pide aprobación, la persona owner la concede en <i>Settings → Personal access tokens → Pending requests</i>.</li>
-<li>Intentad crear un fichero con el token: <code>curl -s -X PUT -H "Authorization: Bearer TOKEN" https://api.github.com/repos/ORGANIZACION/cita-previa-app/contents/prueba.txt -d '{"message":"prueba","content":"aG9sYQ=="}'</code></li>
-<li>Revocad el token.</li>
-</ol>
-<p>Responded: ¿qué ha respondido la API en el paso 5 y por qué? ¿Qué pasaría si alguien robara ese token? ¿Y si robara un token clásico con todos los permisos?</p>
+<h4>Actividad 8. Un script con demasiados permisos</h4>
+<p><b>Para qué</b>: configurar una autenticación fuerte y limitar lo que puede hacer una credencial de máquina.</p>
+<p>Individual.</p>
+<div class="nota"><p><b>Ticket · Un compañero</b></p><p>«He hecho un script que hace cada noche una copia del repositorio. Le pongo mi token clásico con todos los permisos, que así seguro que funciona, ¿vale?»</p></div>
+<p>Antes de contestarle, dejad bien configurado vuestro propio acceso y preparad la credencial que debería usar el script.</p>
+<p><b>Lo que tenéis que dejar hecho:</b></p>
+<ul>
+<li>Trabajáis con Git por SSH con una clave <code>ed25519</code> protegida con frase de paso, y habéis clonado <code>cita-previa-app</code> por SSH. Si la red del instituto bloquea el puerto 22, en Recursos tenéis cómo usar el 443.</li>
+<li>Habéis creado para el script un token de grano fino con propietario la organización, acceso solo a <code>cita-previa-app</code>, solo lectura del contenido y caducidad de 7 días. Si la organización pide aprobarlo, la persona owner lo aprueba.</li>
+<li>Habéis comprobado que el token no sirve para escribir, haciendo lo que intentaría un atacante que lo robara (cambiad <code>TOKEN</code> y <code>ORGANIZACION</code>):<pre><code>curl -s -X PUT -H "Authorization: Bearer TOKEN" \
+  https://api.github.com/repos/ORGANIZACION/cita-previa-app/contents/prueba.txt \
+  -d '{"message":"prueba","content":"aG9sYQ=="}'</code></pre></li>
+<li>Al terminar, el token está revocado.</li>
+</ul>
+<p>Para terminar, escribid la respuesta que le daríais al compañero en el ticket, en cuatro o cinco líneas: qué ha respondido la API a vuestro intento de escritura, qué podría hacer quien robara el token de grano fino y qué podría hacer quien robara su token clásico.</p><p>Dónde se configura cada cosa y las órdenes de Git y SSH: tabla <a href="#recursos">Chuleta de GitHub y Git</a> de la pestaña Recursos.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 9. Ruleset y CODEOWNERS</h4>
-<p><b>Para qué</b>: aplicar las políticas de acceso al código sobre los equipos de la organización.</p>
-<ol>
-<li>La persona de desarrollo, en una rama, añade el fichero <code>.github/CODEOWNERS</code> del apartado 6 con el nombre de vuestra organización, abre un pull request y lo fusiona.</li>
-<li>La persona de operaciones crea un ruleset (<i>Settings → Rules → Rulesets → New branch ruleset</i>) llamado <code>proteger-main</code>, con estado <i>Active</i>, destino <i>Include default branch</i>, sin excepciones y con estas reglas:
- <ul>
- <li>Restrict deletions</li>
- <li>Block force pushes</li>
- <li>Require a pull request before merging, con 1 aprobación, <i>Dismiss stale pull request approvals when new commits are pushed</i>, <i>Require review from Code Owners</i> y <i>Require conversation resolution before merging</i></li>
- </ul></li>
-<li>Crea también un ruleset de etiquetas (<i>New tag ruleset</i>) llamado <code>proteger-versiones</code>, con destino el patrón <code>v*</code> y las reglas <i>Restrict updates</i> y <i>Restrict deletions</i>.</li>
-</ol>
+<h4>Actividad 9. Que no vuelva a pasar</h4>
+<p><b>Para qué</b>: aplicar políticas de acceso al código sobre los equipos de la organización.</p>
+<div class="nota"><p><b>Ticket · Dirección</b></p><p>«En otro proyecto, alguien hizo un <code>git push --force</code> a <code>main</code> un viernes por la tarde y perdimos dos días de trabajo. Y alguien movió la etiqueta de una versión que ya habíamos entregado al cliente. En cita-previa-app esto tiene que ser imposible, también para los administradores.»</p></div><p><b>Criterios de aceptación. El ticket se cierra cuando se cumple todo esto:</b></p>
+<ul>
+<li>Existe <code>.github/CODEOWNERS</code>, el del apartado 6 con el nombre de vuestra organización. Lo añade la persona de desarrollo con un pull request.</li>
+<li>Hay un ruleset activo llamado <code>proteger-main</code> sobre la rama por defecto y sin excepciones que impide borrar la rama y hacer force push, obliga a que todo cambio llegue por pull request con 1 aprobación, descarta las aprobaciones cuando llegan commits nuevos, exige la revisión de los propietarios del código y obliga a resolver las conversaciones antes de fusionar.</li>
+<li>Hay un ruleset de etiquetas llamado <code>proteger-versiones</code> sobre el patrón <code>v*</code> que impide mover y borrar las etiquetas.</li>
+</ul>
+<p>Qué hace cada regla: tabla del apartado 6. Cómo se llama cada una en GitHub: <a href="#recursos">Chuleta de GitHub y Git</a> de la pestaña Recursos.</p>
 </div>
 <div class="actividad">
 <h4>Actividad 10. Intentad saltaros las reglas</h4>
-<p><b>Para qué</b>: comprobar que las políticas funcionan para todos, también para la persona owner.</p>
-<p>Antes de empezar, cread y publicad una etiqueta: <code>git tag v0.1 &amp;&amp; git push origin v0.1</code>. Después, intentad:</p>
-<ol>
+<p><b>Para qué</b>: comprobar como lo haría un atacante que las políticas funcionan para todos, también para la persona owner.</p>
+<p>Antes de comunicar a dirección que el ticket está resuelto, haced de atacantes. Primero publicad una etiqueta <code>v0.1</code>. Después, intentad:</p>
+<ol class="casos">
 <li>Hacer un commit en <code>main</code> en el portátil y un <code>git push</code> directo.</li>
 <li>Abrir un pull request que cambie el <code>README.md</code> y fusionarlo sin aprobación.</li>
 <li>Que la pareja apruebe ese pull request y, después, añadirle otro commit. ¿Sigue aprobado?</li>
-<li>Abrir un pull request de la persona de desarrollo que cambie un fichero de <code>.github/</code>. ¿A quién pide la revisión GitHub?</li>
-<li>Hacer <code>git push --force</code> a <code>main</code>.</li>
-<li>Borrar la etiqueta: <code>git push --delete origin v0.1</code></li>
+<li>Que la persona de desarrollo abra un pull request que cambie un fichero de <code>.github/</code>. ¿A quién pide la revisión GitHub?</li>
+<li>Hacer un force push a <code>main</code>.</li>
+<li>Borrar la etiqueta <code>v0.1</code> del repositorio de GitHub.</li>
 </ol>
 <p>Añadid a <code>ACCESOS.md</code> una tabla con una fila por intento: qué esperabais, el mensaje exacto que devuelve Git o GitHub y qué regla lo explica. Terminad con una respuesta breve: ¿debería la persona owner poder saltarse estas reglas? ¿En qué caso tendría sentido una excepción?</p>
-<p class="entrega">Entrega en Aules: respuestas de las actividades 6 y 8 y enlace al repositorio con <code>ACCESOS.md</code> completo, <code>CODEOWNERS</code> y los dos rulesets activos.</p>
+<p>Dónde se configura cada cosa y las órdenes de Git y SSH: tabla <a href="#recursos">Chuleta de GitHub y Git</a> de la pestaña Recursos.</p>
+<p class="entrega">Entrega en Aules: la respuesta de la actividad 6, la respuesta al compañero de la actividad 8 y el enlace al repositorio con <code>ACCESOS.md</code> completo, <code>CODEOWNERS</code> y los dos rulesets activos.</p>
 </div>
 </section><section class="panel" role="tabpanel" id="p-p4" aria-labelledby="tab-p4" hidden>
 <p class="meta">Unidad 5 · 4. Validar cambios · 2 horas</p>
@@ -491,6 +500,8 @@ jobs:
 <li>Ejecutar en cada pull request el linter, el formateador y las pruebas con un mínimo de cobertura.</li>
 <li>Validar una modificación del código de principio a fin y documentar la validación.</li>
 </ul>
+
+<div class="nota"><p><b>Caso real.</b> El 19 de julio de 2024, CrowdStrike publicó una actualización de configuración de su software de seguridad para Windows que contenía un error. En pocas horas, unos 8,5 millones de ordenadores se quedaron bloqueados con la pantalla azul, y hubo aeropuertos, hospitales y bancos parados en todo el mundo. Según el análisis de la propia empresa, la comprobación automática que debía validar esa actualización tenía un fallo y la dejó pasar, y se distribuyó a todos los equipos a la vez en lugar de hacerlo poco a poco. Este punto trata de validar cada cambio antes de que llegue a producción.</p></div>
 
 <h3>1. GitHub Actions</h3>
 <p>Un <b>workflow</b> es un fichero YAML en la carpeta <code>.github/workflows/</code> del repositorio. Sus piezas:</p>
@@ -584,21 +595,21 @@ Revisado y aprobado por:</code></pre>
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 11. Pruebas en cada pull request</h4>
-<p><b>Para qué</b>: que ningún cambio llegue a <code>main</code> sin pasar el linter y las pruebas.</p>
-<ol>
-<li>La persona de desarrollo crea una rama <code>ci-calidad</code> con los ficheros <code>.github/workflows/calidad.yml</code> y <code>.github/pull_request_template.md</code> del apartado anterior y abre un pull request.</li>
-<li>Abrid la pestaña <i>Checks</i> del pull request y revisad cada paso del trabajo <code>pruebas</code>. ¿Qué cobertura tiene el código?</li>
-<li>La persona de operaciones lo aprueba (es código de <code>.github/</code>) y se fusiona.</li>
-<li>La persona de operaciones edita el ruleset <code>proteger-main</code>: añade <i>Require status checks to pass</i> con el check <code>pruebas</code>.</li>
-</ol>
+<h4>Actividad 11. Ningún cambio sin pruebas</h4>
+<p><b>Para qué</b>: que ningún cambio llegue a <code>main</code> sin pasar el linter, el formato y las pruebas.</p>
+<div class="nota"><p><b>Ticket · Responsable técnica</b></p><p>«La semana pasada se fusionó un cambio que rompía la API y no nos enteramos hasta que llamó el cliente. A partir de hoy, ningún pull request se fusiona si no pasa el linter, el formato y las pruebas con al menos un 80 % de cobertura. Y todos los cambios se documentan igual.»</p></div><p><b>Criterios de aceptación. El ticket se cierra cuando se cumple todo esto:</b></p>
+<ul>
+<li>El workflow <code>calidad.yml</code> (apartado 3) y la plantilla de pull request (apartado 4) están en <code>main</code>. Los propone la persona de desarrollo y los aprueba la de operaciones, porque son ficheros de <code>.github/</code>.</li>
+<li>El ruleset <code>proteger-main</code> exige que el check <code>pruebas</code> esté en verde para fusionar.</li>
+<li>Al abrir un pull request nuevo aparece la plantilla.</li>
+</ul>
+<p>Responded: ¿qué cobertura tiene ahora el código y qué líneas quedan sin probar? Lo encontraréis en el registro del paso de pruebas.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 12. Validar una modificación</h4>
-<p><b>Para qué</b>: validar un cambio real con las herramientas y dejarlo documentado.</p>
-<ol>
-<li>Cread una issue: "Consultar una cita por su identificador".</li>
-<li>La persona de operaciones crea una rama y añade al final de <code>app.py</code> esta ruta, con un error a propósito (la variable <code>total</code> no se usa):
+<h4>Actividad 12. Arreglar un pull request en rojo</h4>
+<p><b>Para qué</b>: validar un cambio real con las herramientas del pipeline y dejarlo documentado.</p>
+<p>Un compañero empezó la funcionalidad «Consultar una cita por su identificador» antes de irse de vacaciones. Ha dejado el código y las pruebas, pero el pipeline está en rojo y el cliente la quiere para el viernes.</p>
+<p><b>Preparación.</b> La persona de operaciones hace de compañero: crea la issue <i>Consultar una cita por su identificador</i>, crea una rama, añade al final de <code>app.py</code> esta ruta:</p>
 <pre><code>@app.route("/citas/&lt;int:cita_id&gt;")
 def cita(cita_id):
     total = len(CITAS)
@@ -606,7 +617,7 @@ def cita(cita_id):
         if c["id"] == cita_id:
             return jsonify(c)
     return jsonify(error="cita no encontrada"), 404</code></pre>
-y al final de <code>test_app.py</code> estas pruebas:
+<p>añade al final de <code>test_app.py</code> estas pruebas:</p>
 <pre><code>def test_cita_existente(cliente):
     r = cliente.get("/citas/1")
     assert r.status_code == 200
@@ -616,13 +627,17 @@ y al final de <code>test_app.py</code> estas pruebas:
 def test_cita_inexistente(cliente):
     r = cliente.get("/citas/99")
     assert r.status_code == 404
-    assert r.get_json()["error"] == "cita no encontrada"</code></pre></li>
-<li>Abre el pull request con <code>Closes #N</code> (el número de la issue) en la descripción. ¿Qué paso falla, qué dice y dónde lo muestra GitHub? ¿Se puede fusionar?</li>
-<li>Corrige el error quitando la línea de <code>total</code> y vuelve a hacer push. Comprobad que todo está en verde.</li>
-<li>Rellena la plantilla del pull request con los enlaces a la ejecución fallida y a la correcta.</li>
-<li>La persona de desarrollo lo revisa (es código de la aplicación) y lo aprueba. Fusionadlo con <i>Squash and merge</i> y comprobad que la issue se ha cerrado sola.</li>
-</ol>
-<p class="entrega">Entrega en Aules: enlace al pull request de la actividad 12 con la plantilla rellenada y respuestas de las actividades 11 y 12.</p>
+    assert r.get_json()["error"] == "cita no encontrada"</code></pre>
+<p>y abre el pull request con <code>Closes #N</code> en la descripción, donde N es el número de la issue.</p>
+<p><b>Lo que tenéis que conseguir:</b></p>
+<ul>
+<li>Habéis averiguado qué paso del pipeline falla y por qué, sin que nadie os lo diga.</li>
+<li>La persona de operaciones lo ha corregido en la misma rama y todos los checks están en verde.</li>
+<li>La plantilla del pull request está rellenada, con los enlaces a la ejecución que falló y a la correcta.</li>
+<li>La persona de desarrollo lo ha revisado y aprobado, se ha fusionado con <i>Squash and merge</i> y la issue se ha cerrado sola.</li>
+</ul>
+<p>Responded: ¿qué paso fallaba, qué decía y dónde lo mostraba GitHub? ¿Se podía fusionar mientras estaba en rojo? ¿Por qué?</p>
+<p class="entrega">Entrega en Aules: la respuesta de la actividad 11 y el enlace al pull request de la actividad 12, con la plantilla rellenada y sus respuestas.</p>
 </div>
 </section><section class="panel" role="tabpanel" id="p-p5" aria-labelledby="tab-p5" hidden>
 <p class="meta">Unidad 5 · 5. Seguridad y dependencias · 4 horas</p>
@@ -863,34 +878,34 @@ jobs:
 
 <h3>Actividades</h3>
 <div class="actividad">
-<h4>Actividad 13. Activar las comprobaciones de GitHub</h4>
+<h4>Actividad 13. Vigilancia continua</h4>
 <p><b>Para qué</b>: dejar en marcha las comprobaciones periódicas del código que ofrece GitHub.</p>
-<ol>
-<li>La persona de operaciones abre <i>Settings → Advanced Security</i> del repositorio (en algunas cuentas aparece como <i>Code security</i>) y activa <i>Dependency graph</i> y <i>Dependabot alerts</i>. Comprueba que <i>Secret Protection</i> (o <i>Secret scanning</i>) y <i>Push protection</i> están activados.</li>
-<li>En la misma página, en <i>Code scanning → CodeQL analysis</i>, elige <i>Set up → Default</i> y acepta la configuración.</li>
-<li>En la pestaña <i>Actions</i>, esperad a que termine el primer análisis de CodeQL y abrid su resultado en <i>Security → Code scanning</i>.</li>
-</ol>
-<p>Responded: ¿qué lenguajes ha detectado CodeQL? ¿Cuándo volverá a ejecutarse sin que nadie haga nada?</p>
+<div class="nota"><p><b>Ticket · Seguridad</b></p><p>«Quiero enterarme de las vulnerabilidades antes que los atacantes. También de las que se publiquen dentro de seis meses, aunque para entonces nadie esté tocando el código.»</p></div><p><b>Criterios de aceptación. El ticket se cierra cuando se cumple todo esto:</b></p>
+<ul>
+<li>El gráfico de dependencias y las alertas de Dependabot están activados.</li>
+<li>La detección de secretos y la protección contra el push de secretos están activadas.</li>
+<li>CodeQL está configurado con la configuración por defecto y su primer análisis ha terminado.</li>
+</ul>
+<p>Responded: ¿qué lenguajes ha detectado CodeQL? ¿Cuándo volverá a ejecutarse sin que nadie haga nada?</p><p>Dónde se configura cada cosa y las órdenes de Git y SSH: tabla <a href="#recursos">Chuleta de GitHub y Git</a> de la pestaña Recursos.</p>
 </div>
 <div class="actividad">
-<h4>Actividad 14. Comprobar la configuración con Scorecard</h4>
-<p><b>Para qué</b>: comprobar con una herramienta específica los parámetros de seguridad que configurasteis en los puntos 3 y 4.</p>
-<ol>
-<li>La persona de desarrollo añade <code>.github/workflows/scorecard.yml</code> en una rama, abre el pull request y lo aprueba la persona de operaciones. Al fusionarlo, el workflow se ejecuta solo.</li>
-<li>Cuando termine, abrid <i>Security → Code scanning</i> y filtrad por la herramienta Scorecard. Cada alerta es una comprobación que no tiene la nota máxima.</li>
-<li>Completad una tabla con una fila por alerta: comprobación, nota, qué dice la alerta, a qué parámetro configurado en la unidad se refiere y decisión (corregir, falso positivo, no aplica o aceptar el riesgo, apartado 6).</li>
-</ol>
-<p>Responded: ¿qué nota tiene Branch-Protection y qué regla del ruleset os falta para subirla? ¿Por qué baja Code-Review si habéis revisado todos los pull requests? (Pista: pensad en lo que se hizo directamente en <code>main</code> en el punto 3.)</p>
+<h4>Actividad 14. El informe para el cliente</h4>
+<p><b>Para qué</b>: comprobar con una herramienta independiente los parámetros de seguridad configurados e interpretar sus resultados.</p>
+<div class="nota"><p><b>Ticket · El cliente</b></p><p>«Antes de firmar la segunda fase del proyecto queremos un informe independiente sobre la seguridad de vuestro repositorio, no vuestra palabra.»</p></div><p><b>Criterios de aceptación. El ticket se cierra cuando se cumple todo esto:</b></p>
+<ul>
+<li>El workflow <code>scorecard.yml</code> (apartado 5) está en <code>main</code>. Lo propone la persona de desarrollo y lo aprueba la de operaciones.</li>
+<li>Scorecard se ha ejecutado y sus alertas aparecen en <i>Security → Code scanning</i>, con la herramienta Scorecard. Cada alerta es una comprobación que no tiene la nota máxima.</li>
+</ul>
+<p>El informe es una tabla con una fila por alerta: comprobación, nota, qué dice la alerta, a qué parámetro configurado en la unidad se refiere y vuestra decisión (corregir, falso positivo, no aplica o aceptar el riesgo, apartado 6), justificada en una línea.</p>
+<p>Responded también: ¿qué nota tiene Branch-Protection y qué regla del ruleset os falta para subirla? ¿Por qué baja Code-Review si habéis revisado todos los pull requests? (Pista: pensad en lo que se subió directamente a <code>main</code> en las actividades 5 y 6.)</p>
 </div>
 <div class="actividad">
-<h4>Actividad 15. Corregir y volver a comprobar</h4>
-<p><b>Para qué</b>: cerrar el ciclo de una comprobación periódica: detectar, corregir y verificar.</p>
-<ol>
-<li>La persona de desarrollo abre un pull request con dos ficheros que corrigen dos alertas de Scorecard:
- <ul>
- <li><code>.github/dependabot.yml</code>, el del apartado 4.</li>
- <li><code>SECURITY.md</code>, en la raíz, con este contenido (cambiad <code>ORGANIZACION</code> por la vuestra):
-<pre><code># Política de seguridad
+<h4>Actividad 15. Cerrar alertas y revisar el pull request de un compañero nuevo</h4>
+<p><b>Para qué</b>: cerrar el ciclo de una comprobación periódica y revisar un cambio con la mirada de seguridad.</p>
+<p><b>Parte A. Cerrar dos alertas del informe.</b> La persona de desarrollo abre un pull request con estos dos ficheros:</p>
+<ul>
+<li><code>.github/dependabot.yml</code>, el del apartado 4.</li>
+<li><code>SECURITY.md</code>, en la raíz, con este contenido (cambiad <code>ORGANIZACION</code> por la vuestra):<pre><code># Política de seguridad
 
 ## Comunicar una vulnerabilidad
 No abras una issue pública. Comunica la vulnerabilidad de forma privada en
@@ -902,40 +917,50 @@ en 72 horas como máximo y publicaremos la corrección y el aviso a la vez.
 
 ## Comprobaciones periódicas
 CodeQL y Scorecard se ejecutan cada semana. Secret scanning y push protection están activos.</code></pre></li>
- </ul></li>
-<li>Para que el enlace funcione, la persona de operaciones activa <i>Private vulnerability reporting</i> en <i>Settings → Advanced Security</i>.</li>
-<li>Tras fusionarlo, Scorecard se ejecuta otra vez. ¿Qué alertas se han cerrado solas? ¿Ha abierto Dependabot algún pull request?</li>
-<li>Por último, comprobad el código: la persona de operaciones crea una rama y, en <code>app.py</code>, añade <code>import sqlite3</code> debajo de <code>import os</code>, cambia <code>from flask import Flask, jsonify</code> por <code>from flask import Flask, jsonify, request</code> y añade al final esta ruta:
+</ul>
+<p>Para que el enlace de <code>SECURITY.md</code> funcione, la persona de operaciones activa el aviso privado de vulnerabilidades (<i>Private vulnerability reporting</i>). Tras fusionarlo, Scorecard se vuelve a ejecutar. ¿Qué alertas se han cerrado solas? ¿Ha abierto Dependabot algún pull request?</p>
+<p><b>Parte B. Revisar un pull request.</b> Un compañero que acaba de entrar en la empresa ha programado un buscador de citas por paciente. La persona de operaciones hace de compañero: crea una rama, en <code>app.py</code> añade <code>import sqlite3</code> debajo de <code>import os</code>, cambia <code>from flask import Flask, jsonify</code> por <code>from flask import Flask, jsonify, request</code>, añade al final esta ruta y abre el pull request:</p>
 <pre><code>@app.route("/buscar")
 def buscar():
     paciente = request.args.get("paciente", "")
     con = sqlite3.connect(":memory:")
     consulta = "SELECT * FROM citas WHERE paciente = '" + paciente + "'"
     return jsonify(con.execute(consulta).fetchall())</code></pre>
-Abre el pull request, esperad a que terminen los checks y cerradlo sin fusionar.</li>
-</ol>
-<p>Responded: ¿qué herramientas han detectado la inyección SQL del paso 4 y dónde lo muestra cada una? ¿Por qué un análisis semanal de CodeQL no sobra si ya analiza cada pull request?</p>
+<p>La persona de desarrollo lo revisa como lo haría alguien con experiencia: espera a que terminen los checks, mira qué herramientas han detectado el problema y dónde lo muestra cada una, y deja una revisión con <i>Request changes</i> que explique al compañero, con buenas palabras, qué riesgo tiene su código y cómo arreglarlo. La forma correcta es una <b>consulta parametrizada</b>, en la que el dato del usuario viaja aparte de la consulta y la base de datos nunca lo interpreta como código:</p>
+<pre><code>con.execute("SELECT * FROM citas WHERE paciente = ?", (paciente,))</code></pre>
+<p>Después, cerrad el pull request sin fusionar.</p>
+<p>Responded: ¿qué herramientas han detectado la inyección SQL y dónde lo muestra cada una? ¿Por qué el análisis semanal de CodeQL no sobra si ya analiza cada pull request?</p>
 </div>
 <div class="actividad">
-<h4>Actividad 16. Revisión de dependencias en cada pull request</h4>
+<h4>Actividad 16. Una dependencia sospechosa</h4>
 <p><b>Para qué</b>: parar en el pull request las dependencias que traen vulnerabilidades, antes de que lleguen a desplegarse.</p>
-<ol>
-<li>Antes de empezar, comprobad en <i>Actions</i> que el lunes se ejecutó Scorecard con el evento <code>schedule</code>.</li>
-<li>La persona de desarrollo añade el trabajo <code>dependencias</code> al final de <code>calidad.yml</code> en una rama. Abre el pull request y lo aprueba operaciones.</li>
-<li>La persona de operaciones abre un pull request que añade a <code>requirements.txt</code> la línea <code>requests==2.25.0</code>. ¿Qué pasos fallan y qué vulnerabilidades muestra cada uno? Cerradlo sin fusionar.</li>
-<li>Si Dependabot ha abierto algún pull request desde la actividad 15, abridlo: ¿qué dependencia actualiza y ha pasado el trabajo <code>dependencias</code>?</li>
-</ol>
+<div class="nota"><p><b>Ticket · Responsable técnica</b></p><p>«Que nadie pueda añadir una librería con vulnerabilidades conocidas sin que el pipeline lo pare.»</p></div><p><b>Criterios de aceptación. El ticket se cierra cuando se cumple todo esto:</b></p>
+<ul>
+<li>El trabajo <code>dependencias</code> (apartado 9) está al final de <code>calidad.yml</code> en <code>main</code>. Lo propone la persona de desarrollo y lo aprueba la de operaciones.</li>
+<li>Un pull request que introduce una dependencia vulnerable queda en rojo.</li>
+</ul>
+<p>Para comprobarlo, la persona de operaciones hace de compañero que copia de un tutorial de 2021: abre un pull request que añade a <code>requirements.txt</code> la línea <code>requests==2.25.0</code>. La persona de desarrollo deja en ese pull request un comentario para el compañero que explique qué checks han fallado, qué vulnerabilidades ha encontrado cada uno y qué versión debería usar. Después, cerradlo sin fusionar.</p>
+<p>Para terminar, comprobad en <i>Actions</i> que Scorecard se ha ejecutado solo el lunes, con el evento <code>schedule</code>. Si Dependabot ha abierto algún pull request desde la actividad 15, abridlo: ¿qué dependencia actualiza? ¿Ha pasado el trabajo <code>dependencias</code>?</p>
 </div>
 <div class="actividad">
-<h4>Actividad 17. Construir, escanear, probar y publicar</h4>
-<p><b>Para qué</b>: validar la imagen completa antes de publicarla para los entornos de despliegue.</p>
-<ol>
-<li>La persona de desarrollo añade <code>.github/workflows/imagen.yml</code> en una rama y abre el pull request. Comprobad que la imagen se construye, se escanea y se prueba, pero no se publica. Si el escaneo falla por una vulnerabilidad crítica de la imagen base, anotad cuál es: es justo lo que debe hacer el paso. Para seguir, esperad a que se publique una imagen base corregida o, solo en esta práctica, cambiad <code>exit-code</code> a <code>"0"</code> y documentadlo.</li>
-<li>En el mismo pull request, la persona de desarrollo provoca un fallo de integración: en la última línea del Dockerfile cambia <code>0.0.0.0:8000</code> por <code>0.0.0.0:9000</code>. ¿En qué paso falla? ¿Por qué las pruebas unitarias del punto 4 no lo detectaron?</li>
-<li>Deshaced el cambio, la persona de operaciones aprueba el pull request y se fusiona. Comprobad en la página de la organización, en <i>Packages</i>, que aparece la imagen <code>cita-previa-app</code> con la etiqueta <code>sha-...</code></li>
-<li>Cread la versión: <code>git pull</code>, <code>git tag v1.0.0</code> y <code>git push origin v1.0.0</code>. Comprobad que se publica también la etiqueta <code>1.0.0</code>.</li>
-</ol>
-<p class="entrega">Entrega en Aules: respuestas de las actividades 13 a 17, la tabla de alertas de la actividad 14 con una columna más que indique si la alerta se ha cerrado tras la actividad 15 y el enlace a la imagen 1.0.0 publicada.</p>
+<h4>Actividad 17. Día de la versión 1.0.0</h4>
+<p><b>Para qué</b>: validar la imagen completa antes de publicarla y aprender de un fallo antes de que llegue a producción.</p>
+<div class="nota"><p><b>Ticket · Responsable técnica</b></p><p>«El cliente quiere la versión 1.0.0 el lunes. Norma de la casa: ninguna imagen se publica sin escanearla y sin probarla tal como se va a desplegar.»</p></div><p><b>Criterios de aceptación. El ticket se cierra cuando se cumple todo esto:</b></p>
+<ul>
+<li>El workflow <code>imagen.yml</code> (apartado 10) está en <code>main</code>. En su pull request se comprueba que la imagen se construye, se escanea y se prueba, pero no se publica.</li>
+<li>En la página de la organización, en <i>Packages</i>, aparece la imagen <code>cita-previa-app</code> con una etiqueta <code>sha-...</code></li>
+<li>Existe la etiqueta de versión <code>v1.0.0</code> en el repositorio y la imagen publicada tiene también la etiqueta <code>1.0.0</code>.</li>
+</ul>
+<p>Si el escaneo falla por una vulnerabilidad crítica de la imagen base, anotad cuál es: el paso está haciendo justo lo que debe. Para seguir, esperad a que se publique una imagen base corregida o, solo en esta práctica, cambiad <code>exit-code</code> a <code>"0"</code> y documentadlo.</p>
+<p><b>Simulacro de incidente.</b> Antes de fusionar, la persona de desarrollo hace lo que haría un compañero con prisas: en el mismo pull request, en la última línea del Dockerfile, cambia <code>0.0.0.0:8000</code> por <code>0.0.0.0:9000</code>. Cuando el pipeline lo pare, escribid un informe de incidencia breve con cuatro apartados:</p>
+<ul>
+<li>Qué ha pasado.</li>
+<li>En qué paso del pipeline se ha detectado y con qué mensaje.</li>
+<li>Por qué las pruebas unitarias del punto 4 no lo detectaron.</li>
+<li>Cómo se ha resuelto.</li>
+</ul>
+<p>Después, deshaced el cambio y continuad hasta cumplir los criterios.</p><p>Dónde se configura cada cosa y las órdenes de Git y SSH: tabla <a href="#recursos">Chuleta de GitHub y Git</a> de la pestaña Recursos.</p>
+<p class="entrega">Entrega en Aules: las respuestas de las actividades 13, 15 y 16, el informe de Scorecard de la actividad 14 con una columna más que indique si la alerta se ha cerrado tras la actividad 15, los enlaces a la revisión de la actividad 15 y al comentario de la actividad 16, el informe de incidencia y el enlace a la imagen 1.0.0 publicada.</p>
 </div>
 </section><section class="panel" role="tabpanel" id="p-recursos" aria-labelledby="tab-recursos" hidden>
 <h2>Recursos y glosario</h2>
@@ -1000,6 +1025,13 @@ HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=3 \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/salud')"
 CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]</code></pre>
 <p>Para probarla en el portátil sin contenedor: <code>python3 -m venv .venv</code>, <code>. .venv/bin/activate</code>, <code>pip install -r requirements-dev.txt</code> y <code>flask --app app run</code>. Las pruebas se lanzan con <code>pytest</code>.</p>
+
+<h3>Chuleta de GitHub y Git</h3>
+<p>Las actividades de los puntos 3 a 5 dicen qué hay que conseguir, no dónde se pulsa. Aquí está dónde se configura cada cosa y las órdenes que necesitaréis. GitHub cambia a veces sus menús: si algo no está exactamente donde dice, buscadlo por su nombre.</p>
+<h4>Dónde se configura cada cosa en GitHub</h4>
+<div class="tabla"><table><tr><th>Para qué</th><th>Dónde</th></tr><tr><td>Permisos base de los miembros y creación de repositorios</td><td>Organización → <i>Settings → Member privileges</i> (<i>Base permissions</i> y <i>Repository creation</i>)</td></tr><tr><td>Invitar a una persona</td><td>Organización → <i>People → Invite member</i></td></tr><tr><td>Crear un equipo y añadirle miembros</td><td>Organización → <i>Teams → New team</i></td></tr><tr><td>Dar un rol a un equipo en un repositorio</td><td>Repositorio → <i>Settings → Collaborators and teams → Add teams</i></td></tr><tr><td>Permisos por defecto del <code>GITHUB_TOKEN</code></td><td>Organización → <i>Settings → Actions → General → Workflow permissions</i></td></tr><tr><td>Subir ficheros desde el navegador</td><td>Repositorio → <i>Add file → Upload files</i>. En el selector de ficheros, <code>Ctrl+H</code> muestra los ocultos</td></tr><tr><td>Entornos, sus revisores, ramas, secretos y variables</td><td>Repositorio → <i>Settings → Environments</i>: <i>Required reviewers</i>, <i>Prevent self-review</i>, <i>Allow administrators to bypass configured protection rules</i>, <i>Deployment branches and tags</i>, <i>Environment secrets</i> y <i>Environment variables</i></td></tr><tr><td>Lanzar a mano un workflow</td><td>Repositorio → <i>Actions</i> → el workflow → <i>Run workflow</i></td></tr><tr><td>Claves SSH de tu cuenta</td><td>Tu perfil → <i>Settings → SSH and GPG keys</i></td></tr><tr><td>Tokens de grano fino</td><td>Tu perfil → <i>Settings → Developer settings → Personal access tokens → Fine-grained tokens</i>. La owner los aprueba en Organización → <i>Settings → Personal access tokens → Pending requests</i></td></tr><tr><td>Rulesets de ramas y de etiquetas</td><td>Repositorio → <i>Settings → Rules → Rulesets → New ruleset</i> (<i>New branch ruleset</i> o <i>New tag ruleset</i>). Estado <i>Active</i>, destino <i>Include default branch</i> o <i>Include by pattern</i></td></tr><tr><td>Reglas de un ruleset</td><td><i>Restrict deletions</i> (borrar), <i>Block force pushes</i> (force push), <i>Restrict updates</i> (mover etiquetas), <i>Require a pull request before merging</i> con sus opciones <i>Required approvals</i>, <i>Dismiss stale pull request approvals when new commits are pushed</i>, <i>Require review from Code Owners</i> y <i>Require conversation resolution before merging</i>, y <i>Require status checks to pass</i> (checks obligatorios)</td></tr><tr><td>Revisar un pull request</td><td>Pull request → <i>Files changed → Review changes</i>: <i>Approve</i> o <i>Request changes</i>. Para fusionar con un solo commit: <i>Squash and merge</i></td></tr><tr><td>Dependabot, detección de secretos, CodeQL y aviso privado de vulnerabilidades</td><td>Repositorio → <i>Settings → Advanced Security</i> (en algunas cuentas, <i>Code security</i>): <i>Dependency graph</i>, <i>Dependabot alerts</i>, <i>Secret Protection</i> y <i>Push protection</i>, <i>CodeQL analysis → Set up → Default</i> y <i>Private vulnerability reporting</i></td></tr><tr><td>Resultados de los análisis de seguridad</td><td>Repositorio → <i>Security → Code scanning</i> (se puede filtrar por herramienta) y <i>Security → Dependabot</i></td></tr><tr><td>Imágenes publicadas</td><td>Página de la organización → <i>Packages</i></td></tr></table></div>
+<h4>Órdenes de Git y SSH</h4>
+<div class="tabla"><table><tr><th>Orden</th><th>Para qué sirve</th></tr><tr><td><code>ssh-keygen -t ed25519 -C "&lt;correo&gt;"</code></td><td>Crear un par de claves SSH. Pide una frase de paso</td></tr><tr><td><code>cat ~/.ssh/id_ed25519.pub</code></td><td>Ver la clave pública para copiarla en GitHub</td></tr><tr><td><code>ssh -T git@github.com</code></td><td>Comprobar que GitHub reconoce vuestra clave</td></tr><tr><td>Añadir a <code>~/.ssh/config</code> las líneas <code>Host github.com</code>, <code>Hostname ssh.github.com</code> y <code>Port 443</code></td><td>Usar SSH por el puerto 443 si la red bloquea el 22</td></tr><tr><td><code>git clone git@github.com:&lt;organización&gt;/&lt;repositorio&gt;.git</code></td><td>Clonar un repositorio por SSH</td></tr><tr><td><code>git switch -c &lt;rama&gt;</code> · <code>git switch &lt;rama&gt;</code></td><td>Crear una rama y cambiarse a ella · cambiarse a una rama que ya existe</td></tr><tr><td><code>git add &lt;fichero&gt;</code> · <code>git commit -m "&lt;mensaje&gt;"</code></td><td>Preparar un cambio · guardarlo en un commit</td></tr><tr><td><code>git push origin &lt;rama&gt;</code> · <code>git pull</code></td><td>Subir una rama a GitHub · traer los cambios de GitHub</td></tr><tr><td><code>git push --force origin &lt;rama&gt;</code></td><td>Reescribir la rama de GitHub con la vuestra (force push)</td></tr><tr><td><code>git tag &lt;etiqueta&gt;</code> · <code>git push origin &lt;etiqueta&gt;</code></td><td>Crear una etiqueta en el commit actual · publicarla</td></tr><tr><td><code>git push --delete origin &lt;etiqueta&gt;</code></td><td>Borrar una etiqueta de GitHub</td></tr><tr><td><code>git log --oneline</code></td><td>Ver el historial resumido</td></tr></table></div>
 
 <h3>Lista de comprobación de la unidad</h3>
 <div class="tabla"><table><tr><th>CE</th><th>Qué se comprueba en el repositorio</th><th>Actividades</th></tr>
